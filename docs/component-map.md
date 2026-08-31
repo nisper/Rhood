@@ -1,0 +1,67 @@
+# Component Map
+
+| Figma node | Figma component | Code component |
+| --- | --- | --- |
+| `10647:1326` | `Button` | `src/components/ui/button.tsx` / `Button` |
+| `2781:17673` | `button-brand` | `src/components/ui/brand-button.tsx` / `BrandButton` |
+| `2787:3105` | `button-error` | `src/components/ui/error-button.tsx` / `ErrorButton` |
+| `2789:3262` | `button-neutral` | `src/components/ui/neutral-button.tsx` / `NeutralButton` |
+| `2789:3403` | `button-contrast` | `src/components/ui/contrast-button.tsx` / `ContrastButton` |
+| `2789:3446` | `button-dark` | `src/components/ui/dark-button.tsx` / `DarkButton` |
+| `8701:15073` | `Indicator` | `src/components/ui/indicator.tsx` / `Indicator` |
+| `1171:18402` | `List` | `src/components/ui/list.tsx` / `List` |
+| `9929:5668` | `ListSmall` | `src/components/ui/list-small.tsx` / `ListSmall` |
+| `654:8330` | `ListItem` | `src/components/ui/list-item.tsx` / `ListItem` |
+| `9929:4765` | `ListItemSmall` | `src/components/ui/list-item-small.tsx` / `ListItemSmall` |
+| `435:1112` | `MenuDivider` | `src/components/ui/menu-divider.tsx` / `MenuDivider` |
+| `433:4194` | `MenuItemSingleSelect` | `src/components/ui/menu-item-single-select.tsx` / `MenuItemSingleSelect` |
+| `436:1556` | `MenuSingleSelect` | `src/components/ui/menu-single-select.tsx` / `MenuSingleSelect` |
+| `10471:2487` | `MenuItemMultiselect` | `src/components/ui/menu-item-multiselect.tsx` / `MenuItemMultiselect` |
+| `1088:155` | `MenuMultiselect` | `src/components/ui/menu-multiselect.tsx` / `MenuMultiselect` |
+| `3210:156` | `MenuItemAnchor` | `src/components/ui/menu-item-anchor.tsx` / `MenuItemAnchor` |
+| `3210:358` | `MenuAnchor` | `src/components/ui/menu-anchor.tsx` / `MenuAnchor` |
+| `746:1851` | `Tooltip` | `src/components/ui/tooltip.tsx` / `Tooltip` |
+| `913:6350` | `OnboardingTooltip` | `src/components/ui/onboarding-tooltip.tsx` / `OnboardingTooltip` |
+| `10389:13275` | `helpCenter` | `src/components/ui/help-center.tsx` / `HelpCenter` |
+| `4163:45161` | `toolbar filter` | `src/components/ui/toolbar-filter.tsx` / `ToolbarFilter` |
+| `10389:13764` | `PageTitle` | `src/components/ui/page-title.tsx` / `PageTitle` |
+| `10389:15628` | `UploadedDocument` | `src/components/ui/uploaded-document.tsx` / `UploadedDocument` |
+| `10389:15612` | `AddPhotos` | `src/components/ui/add-photos.tsx` / `AddPhotos` |
+| `10389:15621` | `AddAnyFile` | `src/components/ui/add-any-file.tsx` / `AddAnyFile` |
+| `464:3585` | `Tab` | `src/components/ui/tab.tsx` / `Tab` |
+| `8931:1882` | `TabBar` | `src/components/ui/tab-bar.tsx` / `TabBar` |
+| `1918:18189` | `ConfirmCode` | `src/components/ui/confirm-code.tsx` / `ConfirmCode` |
+| `3416:13658` | `PaginationButton` | `src/components/ui/pagination-button.tsx` / `PaginationButton` |
+| `3422:13713` | `PaginationAlt` | `src/components/ui/pagination-alt.tsx` / `PaginationAlt` |
+| `415:3766` | `Pagination` | `src/components/ui/pagination.tsx` / `Pagination` |
+| `2108:14193` | `ProgressLinear` | `src/components/ui/progress-linear.tsx` / `ProgressLinear` |
+| `348:8648` | `Select` | `src/components/ui/select.tsx` / `Select` |
+| `3875:16532` | `SelectGhost` | `src/components/ui/select-ghost.tsx` / `SelectGhost` |
+| `505:5354` | `SearchInput` | `src/components/ui/search-input.tsx` / `SearchInput` |
+| `8555:4017` | `ShowMore` | `src/components/ui/show-more.tsx` / `ShowMore` |
+| `930:25605` | `Snackbar` | `src/components/ui/snackbar.tsx` / `Snackbar` |
+| `414:3051` | `TableCell` | `src/components/ui/table-cell.tsx` / `TableCell` |
+| `405:2865` | `TableCellHead` | `src/components/ui/table-cell-head.tsx` / `TableCellHead` |
+| `416:3328` | `Table` | `src/components/ui/table.tsx` / `Table` |
+| `8555:1158` | `LikeButton` | `src/components/ui/like-button.tsx` / `LikeButton` |
+| `10252:5944` | `Tag` | `src/components/ui/tag.tsx` / `Tag` |
+| `8827:1349` | `ToggleButtonGroup` | `src/components/ui/toggle-button-group.tsx` / `ToggleButtonGroup` |
+| `8899:2485` | `ToggleButton` | `src/components/ui/toggle-button.tsx` / `ToggleButton` |
+| `8770:3286` | `IconButtonBrand` | `src/components/ui/icon-button-brand.tsx` / `IconButtonBrand` |
+| `8770:3773` | `IconButtonError` | `src/components/ui/icon-button-error.tsx` / `IconButtonError` |
+| `8772:3779` | `IconButtonNeutral` | `src/components/ui/icon-button-neutral.tsx` / `IconButtonNeutral` |
+| `8772:3778` | `IconButtonContrast` | `src/components/ui/icon-button-contrast.tsx` / `IconButtonContrast` |
+| `321:1423` | `IconButtonDark` | `src/components/ui/icon-button-dark.tsx` / `IconButtonDark` |
+| `712:480` | `HelpIcon` | `src/components/ui/help-icon.tsx` / `HelpIcon` |
+| `968:779` | `InfoIcon` | `src/components/ui/info-icon.tsx` / `InfoIcon` |
+| `787:12583` | `AlertDefault` | `src/components/ui/alert-default.tsx` / `AlertDefault` |
+| `1653:28207` | `Chip` | `src/components/ui/chip.tsx` / `Chip` |
+| `1336:8438` | `toggleChip` | `src/components/ui/toggle-chip.tsx` / `ToggleChip` |
+| `351:8845` | `avatar` | `src/components/ui/avatar.tsx` / `Avatar` |
+| `7603:2174` | `RangeInput` | `src/components/ui/range-input.tsx` / `RangeInput` |
+| `505:4429` | `textfield` | `src/components/ui/text-field.tsx` / `TextField` |
+| `734:6530` | `textfield multiline` | `src/components/ui/text-field-multiline.tsx` / `TextFieldMultiline` |
+| `785:7777` | `password` | `src/components/ui/password-field.tsx` / `PasswordField` |
+| `574:4467` | `DateInput` | `src/components/ui/date-input.tsx` / `DateInput` |
+| `399:2325` | `formControlLabel` | `src/components/ui/form-control-label.tsx` / `FormControlLabel` |
+| `351:2706` | `formHelperText` | `src/components/ui/form-helper-text.tsx` / `FormHelperText` |
