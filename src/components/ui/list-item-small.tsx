@@ -1,8 +1,7 @@
 import * as React from "react"
 import { ChevronRight, Star } from "lucide-react"
 
-import { BrandButton } from "@/components/ui/brand-button"
-import { NeutralButton } from "@/components/ui/neutral-button"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 type ListItemSmallFontWeight = "medium" | "regular"
@@ -135,7 +134,7 @@ function ListItemSmall({
 
       {iconButton && (
         <span className="shrink-0 pl-2">
-          <NeutralButton disabled={disabled} iconOnly size="sm" variant="text" />
+          <Button appearance="ghost" disabled={disabled} iconOnly size="sm" />
         </span>
       )}
 
@@ -149,9 +148,9 @@ function ListItemSmall({
 
       {button && (
         <span className="ml-2 shrink-0">
-          <BrandButton disabled={disabled} endIcon={false} startIcon={false} variant="text">
+          <Button appearance="ghost" disabled={disabled} endIcon={false} startIcon={false}>
             Label
-          </BrandButton>
+          </Button>
         </span>
       )}
     </div>

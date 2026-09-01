@@ -55,7 +55,7 @@ function PrototypeHome() {
         <nav className="flex flex-col items-start gap-2.5 whitespace-nowrap text-base font-normal leading-6 tracking-[0.15px]">
           {prototypeViews.map((view) => (
             <button
-              className="cursor-pointer border-0 bg-transparent p-0 text-left text-[var(--parser-text-neutral-primary)] transition-colors first:text-[var(--parser-text-brand)] hover:text-[var(--parser-text-brand)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+              className="cursor-pointer border-0 bg-transparent p-0 text-left text-[var(--parser-text-neutral-primary)] transition-colors hover:text-[var(--parser-text-brand)] focus-visible:text-[var(--parser-text-brand)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
               key={view.id}
               onClick={() => setActiveViewId(view.id)}
               type="button"

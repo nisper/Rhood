@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { NeutralButton } from "@/components/ui/neutral-button"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 type AddAnyFileState = "default" | "active"
@@ -23,9 +23,9 @@ function AddAnyFile({ className, state = "default", ...props }: AddAnyFileProps)
       )}
       {...props}
     >
-      <NeutralButton size="sm" variant="contained">
+      <Button appearance="secondary" size="sm">
         Выберите файлы
-      </NeutralButton>
+      </Button>
       <p
         className="whitespace-nowrap text-center text-[14px] leading-[1.43] tracking-[0.0238px] text-[color:var(--parser-text-neutral-secondary)]"
         style={{ fontVariationSettings: "'wdth' 100" }}

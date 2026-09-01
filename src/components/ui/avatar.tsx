@@ -2,8 +2,8 @@ import * as React from "react"
 import { User } from "lucide-react"
 
 import { cn } from "@/lib/utils"
-const imageContent =
-  "https://www.figma.com/api/mcp/asset/69fc6b90-0a84-4b64-ae87-a8f3965e8585"
+
+const imageContent = "/assets/avatar-32.png"
 
 type AvatarSize = "20px" | "24px" | "32px" | "40px"
 type AvatarVariant = "Circular" | "Rounded"

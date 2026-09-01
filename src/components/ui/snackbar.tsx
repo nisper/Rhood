@@ -1,7 +1,7 @@
 import * as React from "react"
 import { CircleAlert, X } from "lucide-react"
 
-import { ContrastButton } from "@/components/ui/contrast-button"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 type SnackbarProps = React.ComponentProps<"div"> & {
@@ -51,14 +51,14 @@ function Snackbar({
       </div>
 
       {button && (
-        <ContrastButton
+        <Button
+          appearance="contrast"
           endIcon={false}
           startIcon={false}
-          variant="text"
           size="sm"
         >
           {actionLabel}
-        </ContrastButton>
+        </Button>
       )}
 
       {close && (

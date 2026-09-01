@@ -1,8 +1,7 @@
 import * as React from "react"
 import { ChevronLeft } from "lucide-react"
 
-import { BrandButton } from "@/components/ui/brand-button"
-import { NeutralButton } from "@/components/ui/neutral-button"
+import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 type PageTitleProps = React.ComponentProps<"div"> & {
@@ -42,7 +41,8 @@ function PageTitle({
       <div className="flex min-w-px flex-1 items-center gap-2 px-0">
         {back && (
           <div className="flex w-7 shrink-0 items-center justify-end">
-            <NeutralButton
+            <Button
+              appearance="ghost"
               aria-label="Back"
               iconOnly
               size="sm"
@@ -51,7 +51,6 @@ function PageTitle({
                   <ChevronLeft aria-hidden="true" className="size-4" strokeWidth={2} />
                 </span>
               }
-              variant="text"
             />
           </div>
         )}
@@ -75,15 +74,15 @@ function PageTitle({
         </div>
 
         {button2 && (
-          <NeutralButton size="md" variant="contained">
+          <Button appearance="secondary" size="md">
             {button2Label}
-          </NeutralButton>
+          </Button>
         )}
 
         {button1 && (
-          <BrandButton size="md" variant="contained">
+          <Button appearance="primary" size="md">
             {button1Label}
-          </BrandButton>
+          </Button>
         )}
       </div>
     </div>

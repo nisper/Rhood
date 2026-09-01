@@ -13,10 +13,9 @@ import {
   UserRound,
 } from "lucide-react"
 import { Avatar } from "@/components/ui/avatar"
-import { BrandButton } from "@/components/ui/brand-button"
+import { Button } from "@/components/ui/button"
 import { ButtonFavorite } from "@/components/ui/button-favorite"
 import { MainHeader } from "@/components/ui/main-header"
-import { NeutralButton } from "@/components/ui/neutral-button"
 import { PaginationButton } from "@/components/ui/pagination-button"
 import { ToolbarFilter } from "@/components/ui/toolbar-filter"
 import {
@@ -156,14 +155,14 @@ function ResultsToolbar() {
     <div className="flex items-center gap-2 border-b border-[var(--parser-border-light)] px-6 py-4">
       <ToolbarSelect value="По дате — новые" widthClass="w-[210px]" />
 
-      <NeutralButton
+      <Button
+        appearance="secondary"
         endIcon={false}
         size="sm"
         startIcon={<Map aria-hidden="true" strokeWidth={2} />}
-        variant="outlined"
       >
         На карте
-      </NeutralButton>
+      </Button>
 
       <button className="flex items-center gap-2 px-2 py-2 text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-text-neutral-primary)]" type="button">
         <Layers3 aria-hidden="true" className="size-5" strokeWidth={2} />
@@ -174,14 +173,14 @@ function ResultsToolbar() {
       </button>
 
       <div className="ml-auto">
-        <NeutralButton
+        <Button
+          appearance="secondary"
           endIcon={false}
           size="sm"
           startIcon={<BarChart3 aria-hidden="true" strokeWidth={2} />}
-          variant="outlined"
         >
           Настроить столбцы
-        </NeutralButton>
+        </Button>
       </div>
     </div>
   )
@@ -293,14 +292,15 @@ function BuyerCell({ buyer }: { buyer: RowMeta["buyer"] }) {
 function CallCell() {
   return (
     <div className="flex justify-start">
-      <BrandButton
+      <Button
+        appearance="primary"
         className="rounded-lg"
         endIcon={false}
         size="xsm"
         startIcon={<Phone aria-hidden="true" strokeWidth={2.25} />}
       >
         Позвонить
-      </BrandButton>
+      </Button>
     </div>
   )
 }
@@ -413,24 +413,24 @@ function ResultRow({
         <div className="flex items-center justify-end pr-6">
           <div className="flex items-center gap-2">
             <ButtonFavorite checked={meta.favorite} size="sm" />
-            <NeutralButton
+            <Button
+              appearance="ghost"
               className="px-2"
               endIcon={false}
               size="sm"
               startIcon={<MessageCircleMore aria-hidden="true" strokeWidth={2} />}
-              variant="text"
             >
               {meta.comments}
-            </NeutralButton>
+            </Button>
           </div>
 
-          <NeutralButton
+          <Button
+            appearance="ghost"
             className="px-2"
             endIcon={false}
             iconOnly
             size="sm"
             startIcon={<Ellipsis aria-hidden="true" strokeWidth={2} />}
-            variant="text"
           />
         </div>
       </div>

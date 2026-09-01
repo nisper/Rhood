@@ -4,7 +4,6 @@ import { AlertDefault } from "@/components/ui/alert-default"
 import { AddAnyFile } from "@/components/ui/add-any-file"
 import { AddPhotos } from "@/components/ui/add-photos"
 import { Avatar } from "@/components/ui/avatar"
-import { BrandButton } from "@/components/ui/brand-button"
 import { PageTitle } from "@/components/ui/page-title"
 import { PaginationButton } from "@/components/ui/pagination-button"
 import { PaginationAlt } from "@/components/ui/pagination-alt"
@@ -33,22 +32,14 @@ import { ListItemSmall } from "@/components/ui/list-item-small"
 import { ListSmall } from "@/components/ui/list-small"
 import { LikeButton } from "@/components/ui/like-button"
 import { Tag } from "@/components/ui/tag"
-import { IconButtonBrand } from "@/components/ui/icon-button-brand"
-import { IconButtonDark } from "@/components/ui/icon-button-dark"
-import { IconButtonError } from "@/components/ui/icon-button-error"
-import { IconButtonContrast } from "@/components/ui/icon-button-contrast"
-import { IconButtonNeutral } from "@/components/ui/icon-button-neutral"
+import { IconButton } from "@/components/ui/icon-button"
 import { HelpIcon } from "@/components/ui/help-icon"
 import { InfoIcon } from "@/components/ui/info-icon"
 import { ButtonFavorite } from "@/components/ui/button-favorite"
 import { Chip } from "@/components/ui/chip"
-import { ContrastButton } from "@/components/ui/contrast-button"
-import { DarkButton } from "@/components/ui/dark-button"
-import { ErrorButton } from "@/components/ui/error-button"
 import { FormHelperText } from "@/components/ui/form-helper-text"
 import { FormControlLabel } from "@/components/ui/form-control-label"
 import { DateInput } from "@/components/ui/date-input"
-import { NeutralButton } from "@/components/ui/neutral-button"
 import { PasswordField } from "@/components/ui/password-field"
 import { RangeInput } from "@/components/ui/range-input"
 import { TextField } from "@/components/ui/text-field"
@@ -1059,10 +1050,10 @@ export function PrototypeShell() {
                     {size}
                   </div>
                   <div className="flex flex-wrap items-center gap-4">
-                    <IconButtonError appearance="ghost" size={size} />
-                    <IconButtonError appearance="ghost" size={size} state="hovered" />
-                    <IconButtonError appearance="filled" size={size} />
-                    <IconButtonError appearance="filled" size={size} state="hovered" />
+                    <IconButton appearance="ghost" size={size} />
+                    <IconButton appearance="ghost" size={size} state="hovered" />
+                    <IconButton appearance="filled" size={size} />
+                    <IconButton appearance="filled" size={size} state="hovered" />
                   </div>
                 </div>
               ))}
@@ -1080,8 +1071,8 @@ export function PrototypeShell() {
                     {size}
                   </div>
                   <div className="flex flex-wrap items-center gap-4 bg-[color:#ffffff] p-4">
-                    <IconButtonDark size={size} />
-                    <IconButtonDark size={size} state="hovered" />
+                    <IconButton size={size} />
+                    <IconButton size={size} state="hovered" />
                   </div>
                 </div>
               ))}
@@ -1099,10 +1090,10 @@ export function PrototypeShell() {
                     {size}
                   </div>
                   <div className="flex flex-wrap items-center gap-4 bg-[color:#d8e6ff] p-4">
-                    <IconButtonContrast appearance="ghost" size={size} />
-                    <IconButtonContrast appearance="ghost" size={size} state="hovered" />
-                    <IconButtonContrast appearance="filled" size={size} />
-                    <IconButtonContrast appearance="filled" size={size} state="hovered" />
+                    <IconButton appearance="ghost" size={size} />
+                    <IconButton appearance="ghost" size={size} state="hovered" />
+                    <IconButton appearance="filled" size={size} />
+                    <IconButton appearance="filled" size={size} state="hovered" />
                   </div>
                 </div>
               ))}
@@ -1120,12 +1111,12 @@ export function PrototypeShell() {
                     {size}
                   </div>
                   <div className="flex flex-wrap items-center gap-4">
-                    <IconButtonNeutral appearance="ghost" size={size} />
-                    <IconButtonNeutral appearance="ghost" size={size} state="hovered" />
-                    <IconButtonNeutral appearance="ghost" disabled size={size} />
-                    <IconButtonNeutral appearance="filled" size={size} />
-                    <IconButtonNeutral appearance="filled" size={size} state="hovered" />
-                    <IconButtonNeutral appearance="filled" disabled size={size} />
+                    <IconButton appearance="ghost" size={size} />
+                    <IconButton appearance="ghost" size={size} state="hovered" />
+                    <IconButton appearance="ghost" disabled size={size} />
+                    <IconButton appearance="filled" size={size} />
+                    <IconButton appearance="filled" size={size} state="hovered" />
+                    <IconButton appearance="filled" disabled size={size} />
                   </div>
                 </div>
               ))}
@@ -1143,12 +1134,12 @@ export function PrototypeShell() {
                     {size}
                   </div>
                   <div className="flex flex-wrap items-center gap-4">
-                    <IconButtonBrand appearance="ghost" size={size} />
-                    <IconButtonBrand appearance="ghost" size={size} state="hovered" />
-                    <IconButtonBrand appearance="ghost" disabled size={size} />
-                    <IconButtonBrand appearance="filled" size={size} />
-                    <IconButtonBrand appearance="filled" size={size} state="hovered" />
-                    <IconButtonBrand appearance="filled" disabled size={size} />
+                    <IconButton appearance="ghost" size={size} />
+                    <IconButton appearance="ghost" size={size} state="hovered" />
+                    <IconButton appearance="ghost" disabled size={size} />
+                    <IconButton appearance="filled" size={size} />
+                    <IconButton appearance="filled" size={size} state="hovered" />
+                    <IconButton appearance="filled" disabled size={size} />
                   </div>
                 </div>
               ))}
@@ -1787,12 +1778,12 @@ export function PrototypeShell() {
               </h4>
               <div className="flex flex-wrap items-center gap-5">
                 {variants.map((variant) => (
-                  <BrandButton key={variant} size={size} variant={variant}>
+                  <Button appearance="primary" key={variant} size={size} variant={variant}>
                     Label
-                  </BrandButton>
+                  </Button>
                 ))}
                 {variants.map((variant) => (
-                  <BrandButton
+                  <Button appearance="primary"
                     aria-label={`${variant} icon button`}
                     iconOnly
                     key={`${variant}-icon`}
@@ -1800,15 +1791,15 @@ export function PrototypeShell() {
                     variant={variant}
                   />
                 ))}
-                <BrandButton loading size={size} variant="contained">
+                <Button appearance="primary" loading size={size} variant="contained">
                   Label
-                </BrandButton>
-                <BrandButton disabled size={size} variant="contained">
+                </Button>
+                <Button appearance="primary" disabled size={size} variant="contained">
                   Label
-                </BrandButton>
-                <BrandButton disabled size={size} variant="outlined">
+                </Button>
+                <Button appearance="primary" disabled size={size} variant="outlined">
                   Label
-                </BrandButton>
+                </Button>
               </div>
             </section>
           ))}
@@ -1819,19 +1810,19 @@ export function PrototypeShell() {
             </h4>
             <div className="flex flex-wrap items-center gap-5">
               {variants.map((variant) => (
-                <ErrorButton key={variant} size="lg" variant={variant}>
+                <Button appearance="destructive" key={variant} size="lg" variant={variant}>
                   Label
-                </ErrorButton>
+                </Button>
               ))}
-              <ErrorButton loading size="lg" variant="contained">
+              <Button appearance="destructive" loading size="lg" variant="contained">
                 Label
-              </ErrorButton>
-              <ErrorButton disabled size="lg" variant="contained">
+              </Button>
+              <Button appearance="destructive" disabled size="lg" variant="contained">
                 Label
-              </ErrorButton>
-              <ErrorButton disabled size="lg" variant="outlined">
+              </Button>
+              <Button appearance="destructive" disabled size="lg" variant="outlined">
                 Label
-              </ErrorButton>
+              </Button>
             </div>
           </section>
 
@@ -1841,19 +1832,19 @@ export function PrototypeShell() {
             </h4>
             <div className="flex flex-wrap items-center gap-5">
               {variants.map((variant) => (
-                <NeutralButton key={variant} size="lg" variant={variant}>
+                <Button appearance="secondary" key={variant} size="lg" variant={variant}>
                   Label
-                </NeutralButton>
+                </Button>
               ))}
-              <NeutralButton loading size="lg" variant="contained">
+              <Button appearance="secondary" loading size="lg" variant="contained">
                 Label
-              </NeutralButton>
-              <NeutralButton disabled size="lg" variant="contained">
+              </Button>
+              <Button appearance="secondary" disabled size="lg" variant="contained">
                 Label
-              </NeutralButton>
-              <NeutralButton disabled size="lg" variant="outlined">
+              </Button>
+              <Button appearance="secondary" disabled size="lg" variant="outlined">
                 Label
-              </NeutralButton>
+              </Button>
             </div>
           </section>
 
@@ -1863,19 +1854,19 @@ export function PrototypeShell() {
             </h4>
             <div className="flex flex-wrap items-center gap-5 rounded-xl bg-[#0b57ff] p-4 text-white">
               {variants.map((variant) => (
-                <ContrastButton key={variant} size="lg" variant={variant}>
+                <Button appearance="contrast" key={variant} size="lg" variant={variant}>
                   Label
-                </ContrastButton>
+                </Button>
               ))}
-              <ContrastButton loading size="lg" variant="contained">
+              <Button appearance="contrast" loading size="lg" variant="contained">
                 Label
-              </ContrastButton>
-              <ContrastButton disabled size="lg" variant="contained">
+              </Button>
+              <Button appearance="contrast" disabled size="lg" variant="contained">
                 Label
-              </ContrastButton>
-              <ContrastButton disabled size="lg" variant="outlined">
+              </Button>
+              <Button appearance="contrast" disabled size="lg" variant="outlined">
                 Label
-              </ContrastButton>
+              </Button>
             </div>
           </section>
 
@@ -1885,23 +1876,23 @@ export function PrototypeShell() {
             </h4>
             <div className="flex flex-wrap items-center gap-5 rounded-xl bg-[#0f0f0f] p-4 text-white">
               {variants.map((variant) => (
-                <DarkButton
+                <Button appearance="ghost"
                   key={variant}
                   size="lg"
                   variant={variant === "outlined" ? "outline" : variant}
                 >
                   Label
-                </DarkButton>
+                </Button>
               ))}
-              <DarkButton loading size="lg" variant="contained">
+              <Button appearance="ghost" loading size="lg" variant="contained">
                 Label
-              </DarkButton>
-              <DarkButton disabled size="lg" variant="contained">
+              </Button>
+              <Button appearance="ghost" disabled size="lg" variant="contained">
                 Label
-              </DarkButton>
-              <DarkButton disabled size="lg" variant="outline">
+              </Button>
+              <Button appearance="ghost" disabled size="lg" variant="outline">
                 Label
-              </DarkButton>
+              </Button>
             </div>
           </section>
         </div>

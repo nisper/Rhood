@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { NeutralButton } from "@/components/ui/neutral-button"
+import { Button } from "@/components/ui/button"
 import { PaginationButton } from "@/components/ui/pagination-button"
 import { cn } from "@/lib/utils"
 
@@ -59,16 +59,16 @@ function OnboardingTooltip({
           </div>
 
           <div className="flex w-full items-center justify-between rounded-[10px] bg-[var(--parser-fill-neutral)] px-3 py-1">
-            <NeutralButton
+            <Button
+              appearance="ghost"
               className="rounded-lg"
               endIcon={false}
               iconOnly={false}
               size="sm"
               startIcon={false}
-              variant="text"
             >
               Закрыть
-            </NeutralButton>
+            </Button>
 
             <div className="flex min-w-px flex-1 items-center justify-end gap-4">
               <p

@@ -1,6 +1,75 @@
-import { Button, type ButtonAppearance, type ButtonSize } from "@/components/ui/button"
+import * as React from "react"
+import { Search } from "lucide-react"
 
-const appearances: ButtonAppearance[] = [
+import { AddAnyFile } from "@/components/ui/add-any-file"
+import { AddPhotos } from "@/components/ui/add-photos"
+import { AlertDefault } from "@/components/ui/alert-default"
+import { Avatar } from "@/components/ui/avatar"
+import { Button, type ButtonAppearance, type ButtonSize } from "@/components/ui/button"
+import { ButtonFavorite } from "@/components/ui/button-favorite"
+import { Chip } from "@/components/ui/chip"
+import { ConfirmCode } from "@/components/ui/confirm-code"
+import { DateInput } from "@/components/ui/date-input"
+import { FormControlLabel } from "@/components/ui/form-control-label"
+import { FormHelperText } from "@/components/ui/form-helper-text"
+import { HelpCenter } from "@/components/ui/help-center"
+import { HelpIcon } from "@/components/ui/help-icon"
+import { IconButton, type IconButtonAppearance, type IconButtonSize } from "@/components/ui/icon-button"
+import { Indicator } from "@/components/ui/indicator"
+import { InfoIcon } from "@/components/ui/info-icon"
+import { LikeButton } from "@/components/ui/like-button"
+import { List } from "@/components/ui/list"
+import { ListItem } from "@/components/ui/list-item"
+import { ListItemSmall } from "@/components/ui/list-item-small"
+import { ListSmall } from "@/components/ui/list-small"
+import { MainHeader } from "@/components/ui/main-header"
+import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button"
+import { MenuAnchor } from "@/components/ui/menu-anchor"
+import { MenuDivider } from "@/components/ui/menu-divider"
+import { MenuItemAnchor } from "@/components/ui/menu-item-anchor"
+import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect"
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
+import { MenuMultiselect } from "@/components/ui/menu-multiselect"
+import { MenuSingleSelect } from "@/components/ui/menu-single-select"
+import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip"
+import { PageTitle } from "@/components/ui/page-title"
+import { Pagination } from "@/components/ui/pagination"
+import { PaginationAlt } from "@/components/ui/pagination-alt"
+import { PaginationButton } from "@/components/ui/pagination-button"
+import { PasswordField } from "@/components/ui/password-field"
+import { ProgressLinear } from "@/components/ui/progress-linear"
+import { RangeInput } from "@/components/ui/range-input"
+import { SearchInput } from "@/components/ui/search-input"
+import { Select } from "@/components/ui/select"
+import { SelectGhost } from "@/components/ui/select-ghost"
+import { ShowMore } from "@/components/ui/show-more"
+import { Snackbar } from "@/components/ui/snackbar"
+import { Tab } from "@/components/ui/tab"
+import { TabBar } from "@/components/ui/tab-bar"
+import { Table } from "@/components/ui/table"
+import { TableCell } from "@/components/ui/table-cell"
+import { TableCellHead } from "@/components/ui/table-cell-head"
+import { Tag } from "@/components/ui/tag"
+import { TextField } from "@/components/ui/text-field"
+import { TextFieldMultiline } from "@/components/ui/text-field-multiline"
+import { ToggleButton } from "@/components/ui/toggle-button"
+import { ToggleButtonGroup } from "@/components/ui/toggle-button-group"
+import { ToggleChip } from "@/components/ui/toggle-chip"
+import { ToolbarFilter } from "@/components/ui/toolbar-filter"
+import { Tooltip } from "@/components/ui/tooltip"
+import { UploadedDocument } from "@/components/ui/uploaded-document"
+import { cn } from "@/lib/utils"
+
+type ComponentDoc = {
+  id: string
+  title: string
+  description: string
+  group: string
+  source: string
+  render: () => React.ReactNode
+}
+
+const buttonAppearances: ButtonAppearance[] = [
   "primary",
   "secondary",
   "ghost",
@@ -9,87 +78,1078 @@ const appearances: ButtonAppearance[] = [
   "inherit",
 ]
 
-const sizes: ButtonSize[] = ["md", "sm", "xsm"]
+const buttonSizes: ButtonSize[] = ["md", "sm", "xsm"]
+const iconButtonAppearances: IconButtonAppearance[] = [
+  "primary",
+  "secondary",
+  "ghost",
+  "contrast",
+  "inherit",
+]
+const iconButtonSizes: IconButtonSize[] = ["md", "sm", "xsm"]
 
-function ButtonRow({
-  appearance,
-  dark = false,
+function Canvas({
+  children,
+  tone = "default",
 }: {
-  appearance: ButtonAppearance
-  dark?: boolean
+  children: React.ReactNode
+  tone?: "default" | "blue" | "dark"
 }) {
   return (
-    <div className={dark ? "rounded-lg bg-[var(--parser-fill-neutral-dark-ultra)] p-4" : ""}>
-      <div className="flex flex-wrap items-center gap-3">
-        {sizes.map((size) => (
-          <Button appearance={appearance} key={`${appearance}-${size}`} size={size}>
-            Label
-          </Button>
-        ))}
-      </div>
+    <div
+      className={cn(
+        "h-auto min-h-0 overflow-visible py-5",
+        tone === "default" && "bg-white",
+        tone === "blue" && "bg-[#c7dbff]",
+        tone === "dark" && "bg-[var(--parser-fill-neutral-dark-ultra)]",
+      )}
+    >
+      {children}
     </div>
   )
 }
 
-export function ComponentDocs() {
+function Matrix({
+  children,
+  columns = false,
+}: {
+  children: React.ReactNode
+  columns?: boolean
+}) {
   return (
-    <main className="min-h-[calc(100svh-56px)] bg-white px-6 py-8 text-[var(--parser-text-neutral-primary)]">
-      <div className="mx-auto grid max-w-[1180px] gap-8">
-        <header className="grid gap-3 border-b border-[var(--parser-border-light)] pb-8">
-          <p className="text-sm font-semibold uppercase leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-            Components
+    <div className={columns ? "grid gap-4 md:grid-cols-2" : "flex flex-wrap items-center gap-3"}>
+      {children}
+    </div>
+  )
+}
+
+const componentDocs: ComponentDoc[] = [
+  {
+    id: "button",
+    title: "Button",
+    description: "Единая кнопка из обновленного Figma-компонента.",
+    group: "Actions",
+    source: "src/components/ui/button.tsx",
+    render: () => (
+      <div className="grid gap-5">
+        {buttonAppearances.map((appearance) => (
+          <div className="grid gap-2" key={appearance}>
+            <h3 className="text-sm font-semibold uppercase text-[var(--parser-text-neutral-secondary)]">
+              {appearance}
+            </h3>
+            <Canvas tone={appearance === "contrast" ? "dark" : "default"}>
+              <Matrix>
+                {buttonSizes.map((size) => (
+                  <Button appearance={appearance} key={`${appearance}-${size}`} size={size}>
+                    Label
+                  </Button>
+                ))}
+                <Button appearance={appearance} counter>
+                  Label
+                </Button>
+                <Button appearance={appearance} disabled>
+                  Label
+                </Button>
+              </Matrix>
+            </Canvas>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "button-favorite",
+    title: "ButtonFavorite",
+    description: "Кнопка добавления в избранное.",
+    group: "Actions",
+    source: "src/components/ui/button-favorite.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <ButtonFavorite />
+          <ButtonFavorite checked />
+          <ButtonFavorite size="sm" />
+          <ButtonFavorite checked size="sm" state="hovered" />
+          <ButtonFavorite size="xsm" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "like-button",
+    title: "LikeButton",
+    description: "Кнопка лайка.",
+    group: "Actions",
+    source: "src/components/ui/like-button.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <LikeButton />
+          <LikeButton checked />
+          <LikeButton state="hover" />
+          <LikeButton checked state="hover" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "icon-button",
+    title: "IconButton",
+    description: "Единая икон-кнопка из обновленного Figma-компонента.",
+    group: "Actions",
+    source: "src/components/ui/icon-button.tsx",
+    render: () => (
+      <div className="grid gap-5">
+        {iconButtonAppearances.map((appearance) => (
+          <div className="grid gap-2" key={appearance}>
+            <h3 className="text-sm font-semibold uppercase text-[var(--parser-text-neutral-secondary)]">
+              {appearance}
+            </h3>
+            <Canvas tone={appearance === "contrast" ? "dark" : "default"}>
+              <Matrix>
+                {iconButtonSizes.map((size) => (
+                  <IconButton appearance={appearance} key={`${appearance}-${size}`} size={size} />
+                ))}
+                <IconButton appearance={appearance} state="hovered" />
+                <IconButton appearance={appearance} disabled />
+              </Matrix>
+            </Canvas>
+          </div>
+        ))}
+      </div>
+    ),
+  },
+  {
+    id: "toggle-button",
+    title: "ToggleButton",
+    description: "Переключатель в виде кнопки.",
+    group: "Actions",
+    source: "src/components/ui/toggle-button.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <ToggleButton size="lg" />
+          <ToggleButton selected size="md" />
+          <ToggleButton size="sm" state="hover" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "toggle-button-group",
+    title: "ToggleButtonGroup",
+    description: "Группа переключателей.",
+    group: "Actions",
+    source: "src/components/ui/toggle-button-group.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <ToggleButtonGroup size="lg" />
+          <ToggleButtonGroup size="md" />
+          <ToggleButtonGroup color="contrast" size="sm" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "toggle-chip",
+    title: "ToggleChip",
+    description: "Переключаемый чип.",
+    group: "Actions",
+    source: "src/components/ui/toggle-chip.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <ToggleChip size="lg" />
+          <ToggleChip checked size="md" />
+          <ToggleChip size="sm" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "select",
+    title: "Select",
+    description: "Поле выбора.",
+    group: "Forms",
+    source: "src/components/ui/select.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <Select content="text" helperText="Helper text" label="Label" topLabel="dynamic" value="Value" />
+          <Select content="chips" helperText="Helper text" label="Label" topLabel="dynamic" />
+          <Select content="text" error helperText="Helper text" label="Label" state="focused" topLabel="dynamic" value="Value" />
+          <Select content="text" disabled helperText="Helper text" label="Label" topLabel="dynamic" value="Value" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "select-ghost",
+    title: "SelectGhost",
+    description: "Легкое поле выбора для компактных поверхностей.",
+    group: "Forms",
+    source: "src/components/ui/select-ghost.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[360px] gap-3">
+          <SelectGhost />
+          <SelectGhost error state="focused" />
+          <SelectGhost expanded state="focused" />
+          <SelectGhost disabled />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "search-input",
+    title: "SearchInput",
+    description: "Поисковое поле.",
+    group: "Forms",
+    source: "src/components/ui/search-input.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <SearchInput empty placeholder="Поиск" />
+          <SearchInput empty={false} placeholder="Поиск" value="Value" />
+          <SearchInput error empty placeholder="Поиск" />
+          <SearchInput disabled empty placeholder="Поиск" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "text-field",
+    title: "TextField",
+    description: "Текстовое поле.",
+    group: "Forms",
+    source: "src/components/ui/text-field.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <TextField empty placeholder="Placeholder" topLabel="static" />
+          <TextField defaultValue="Value" empty={false} placeholder="Placeholder" topLabel="dynamic" />
+          <TextField defaultValue="Value" empty={false} error placeholder="Placeholder" topLabel="dynamic" />
+          <TextField disabled empty placeholder="Placeholder" topLabel="static" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "text-field-multiline",
+    title: "TextFieldMultiline",
+    description: "Многострочное текстовое поле.",
+    group: "Forms",
+    source: "src/components/ui/text-field-multiline.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <TextFieldMultiline empty placeholder="Комментарий" />
+          <TextFieldMultiline empty={false} value="Текст комментария" />
+          <TextFieldMultiline empty={false} error value="Текст комментария" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "password-field",
+    title: "PasswordField",
+    description: "Поле пароля.",
+    group: "Forms",
+    source: "src/components/ui/password-field.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <PasswordField empty placeholder="Password" topLabel="static" />
+          <PasswordField defaultValue="Value" empty={false} placeholder="Password" topLabel="dynamic" />
+          <PasswordField defaultValue="Value" empty={false} error placeholder="Password" topLabel="dynamic" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "date-input",
+    title: "DateInput",
+    description: "Поле даты.",
+    group: "Forms",
+    source: "src/components/ui/date-input.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <DateInput empty label="Дата" placeholder="Placeholder" topLabel="dynamic" />
+          <DateInput defaultValue="24.08.2023" empty={false} label="Дата" placeholder="Placeholder" topLabel="dynamic" />
+          <DateInput defaultValue="24.08.2023" empty={false} error label="Дата" placeholder="Placeholder" topLabel="dynamic" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "range-input",
+    title: "RangeInput",
+    description: "Поле диапазона.",
+    group: "Forms",
+    source: "src/components/ui/range-input.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <RangeInput empty={false} topLabel="static" />
+          <RangeInput empty topLabel="dynamic" />
+          <RangeInput empty={false} error topLabel="dynamic" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "confirm-code",
+    title: "ConfirmCode",
+    description: "Поле подтверждения кода.",
+    group: "Forms",
+    source: "src/components/ui/confirm-code.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix columns>
+          <ConfirmCode empty />
+          <ConfirmCode empty={false} />
+          <ConfirmCode empty state="focused" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "form-control-label",
+    title: "FormControlLabel",
+    description: "Лейбл контрола формы.",
+    group: "Forms",
+    source: "src/components/ui/form-control-label.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <FormControlLabel>Label</FormControlLabel>
+          <FormControlLabel color="error">Label</FormControlLabel>
+          <FormControlLabel color="disabled">Label</FormControlLabel>
+          <FormControlLabel fontWeight="medium">Label</FormControlLabel>
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "form-helper-text",
+    title: "FormHelperText",
+    description: "Подсказка под полем.",
+    group: "Forms",
+    source: "src/components/ui/form-helper-text.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid gap-2">
+          <FormHelperText>Helper text</FormHelperText>
+          <FormHelperText color="error">Helper text</FormHelperText>
+          <FormHelperText color="warning">Helper text</FormHelperText>
+          <FormHelperText color="disabled">Helper text</FormHelperText>
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "menu-divider",
+    title: "MenuDivider",
+    description: "Разделитель меню.",
+    group: "Navigation",
+    source: "src/components/ui/menu-divider.tsx",
+    render: () => (
+      <Canvas>
+        <MenuDivider />
+      </Canvas>
+    ),
+  },
+  {
+    id: "menu-single-select",
+    title: "MenuSingleSelect",
+    description: "Меню одиночного выбора.",
+    group: "Navigation",
+    source: "src/components/ui/menu-single-select.tsx",
+    render: () => (
+      <Canvas>
+        <MenuSingleSelect />
+      </Canvas>
+    ),
+  },
+  {
+    id: "menu-multiselect",
+    title: "MenuMultiselect",
+    description: "Меню множественного выбора.",
+    group: "Navigation",
+    source: "src/components/ui/menu-multiselect.tsx",
+    render: () => (
+      <Canvas>
+        <MenuMultiselect />
+      </Canvas>
+    ),
+  },
+  {
+    id: "menu-anchor",
+    title: "MenuAnchor",
+    description: "Навигационное меню.",
+    group: "Navigation",
+    source: "src/components/ui/menu-anchor.tsx",
+    render: () => (
+      <Canvas>
+        <MenuAnchor />
+      </Canvas>
+    ),
+  },
+  {
+    id: "menu-item-single-select",
+    title: "MenuItemSingleSelect",
+    description: "Пункт меню одиночного выбора.",
+    group: "Navigation",
+    source: "src/components/ui/menu-item-single-select.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[420px] gap-2">
+          <MenuItemSingleSelect secondaryText />
+          <MenuItemSingleSelect rightSlot rightSlotChip selected />
+          <MenuItemSingleSelect disabled />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "menu-item-multiselect",
+    title: "MenuItemMultiselect",
+    description: "Пункт меню множественного выбора.",
+    group: "Navigation",
+    source: "src/components/ui/menu-item-multiselect.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[420px] gap-2">
+          <MenuItemMultiselect />
+          <MenuItemMultiselect selected />
+          <MenuItemMultiselect disabled />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "menu-item-anchor",
+    title: "MenuItemAnchor",
+    description: "Навигационный пункт меню.",
+    group: "Navigation",
+    source: "src/components/ui/menu-item-anchor.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[420px] gap-2">
+          <MenuItemAnchor />
+          <MenuItemAnchor selected secondaryText />
+          <MenuItemAnchor caption state="hovered" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "tab",
+    title: "Tab",
+    description: "Вкладка.",
+    group: "Navigation",
+    source: "src/components/ui/tab.tsx",
+    render: () => (
+      <Canvas tone="blue">
+        <Matrix>
+          <Tab />
+          <Tab selected secondaryText />
+          <Tab direction="vertical" />
+          <Tab direction="vertical" selected secondaryText />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "tab-bar",
+    title: "TabBar",
+    description: "Группа вкладок.",
+    group: "Navigation",
+    source: "src/components/ui/tab-bar.tsx",
+    render: () => (
+      <Canvas tone="blue">
+        <TabBar className="min-w-[320px]" />
+      </Canvas>
+    ),
+  },
+  {
+    id: "pagination-button",
+    title: "PaginationButton",
+    description: "Кнопка пагинации.",
+    group: "Navigation",
+    source: "src/components/ui/pagination-button.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <PaginationButton />
+          <PaginationButton state="hover" />
+          <PaginationButton state="checked" />
+          <PaginationButton type="icon" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "pagination",
+    title: "Pagination",
+    description: "Пагинация.",
+    group: "Navigation",
+    source: "src/components/ui/pagination.tsx",
+    render: () => (
+      <Canvas>
+        <Pagination className="min-w-[384px]" />
+      </Canvas>
+    ),
+  },
+  {
+    id: "pagination-alt",
+    title: "PaginationAlt",
+    description: "Альтернативная пагинация.",
+    group: "Navigation",
+    source: "src/components/ui/pagination-alt.tsx",
+    render: () => (
+      <Canvas>
+        <PaginationAlt className="min-w-[640px]" />
+      </Canvas>
+    ),
+  },
+  {
+    id: "main-header",
+    title: "MainHeader",
+    description: "Главный хедер продукта.",
+    group: "Layout",
+    source: "src/components/ui/main-header.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid gap-6">
+          <MainHeader />
+          <MainHeader resp="mob" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "main-header-menu-button",
+    title: "MainHeaderMenuButton",
+    description: "Кнопка меню в хедере.",
+    group: "Layout",
+    source: "src/components/ui/main-header-menu-button.tsx",
+    render: () => (
+      <Canvas>
+        <MainHeaderMenuButton />
+      </Canvas>
+    ),
+  },
+  {
+    id: "page-title",
+    title: "PageTitle",
+    description: "Заголовок страницы.",
+    group: "Layout",
+    source: "src/components/ui/page-title.tsx",
+    render: () => (
+      <Canvas tone="blue">
+        <PageTitle className="min-w-[960px]" />
+      </Canvas>
+    ),
+  },
+  {
+    id: "toolbar-filter",
+    title: "ToolbarFilter",
+    description: "Панель фильтров.",
+    group: "Layout",
+    source: "src/components/ui/toolbar-filter.tsx",
+    render: () => (
+      <Canvas>
+        <ToolbarFilter className="min-w-[960px]" />
+      </Canvas>
+    ),
+  },
+  {
+    id: "show-more",
+    title: "ShowMore",
+    description: "Кнопка раскрытия дополнительного контента.",
+    group: "Layout",
+    source: "src/components/ui/show-more.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <ShowMore appearance="brand" />
+          <ShowMore appearance="neutral" />
+          <ShowMore appearance="brand" state="hover" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "list",
+    title: "List",
+    description: "Список.",
+    group: "Data display",
+    source: "src/components/ui/list.tsx",
+    render: () => (
+      <Canvas>
+        <List />
+      </Canvas>
+    ),
+  },
+  {
+    id: "list-small",
+    title: "ListSmall",
+    description: "Компактный список.",
+    group: "Data display",
+    source: "src/components/ui/list-small.tsx",
+    render: () => (
+      <Canvas>
+        <ListSmall />
+      </Canvas>
+    ),
+  },
+  {
+    id: "list-item",
+    title: "ListItem",
+    description: "Элемент списка.",
+    group: "Data display",
+    source: "src/components/ui/list-item.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[460px] gap-2">
+          <ListItem />
+          <ListItem selected />
+          <ListItem state="hovered" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "list-item-small",
+    title: "ListItemSmall",
+    description: "Компактный элемент списка.",
+    group: "Data display",
+    source: "src/components/ui/list-item-small.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[460px] gap-2">
+          <ListItemSmall />
+          <ListItemSmall selected />
+          <ListItemSmall state="hovered" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "table",
+    title: "Table",
+    description: "Таблица.",
+    group: "Data display",
+    source: "src/components/ui/table.tsx",
+    render: () => (
+      <Canvas>
+        <Table />
+      </Canvas>
+    ),
+  },
+  {
+    id: "table-cell",
+    title: "TableCell",
+    description: "Ячейка таблицы.",
+    group: "Data display",
+    source: "src/components/ui/table-cell.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <TableCell type="text" />
+          <TableCell type="number" />
+          <TableCell type="skeleton" />
+          <TableCell type="checkbox" />
+          <TableCell type="placeholder" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "table-cell-head",
+    title: "TableCellHead",
+    description: "Заголовочная ячейка таблицы.",
+    group: "Data display",
+    source: "src/components/ui/table-cell-head.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <TableCellHead type="text" />
+          <TableCellHead type="number" />
+          <TableCellHead type="checkbox" />
+          <TableCellHead type="placeholder" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "chip",
+    title: "Chip",
+    description: "Чип значения или статуса.",
+    group: "Data display",
+    source: "src/components/ui/chip.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <Chip color="neutral" />
+          <Chip color="brand" />
+          <Chip color="warning" />
+          <Chip color="success" />
+          <Chip color="error" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "tag",
+    title: "Tag",
+    description: "Метка.",
+    group: "Data display",
+    source: "src/components/ui/tag.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <Tag color="neutral" />
+          <Tag color="brand" />
+          <Tag color="warning" />
+          <Tag color="success" />
+          <Tag color="error" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "avatar",
+    title: "Avatar",
+    description: "Аватар.",
+    group: "Data display",
+    source: "src/components/ui/avatar.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <Avatar content="text" />
+          <Avatar content="icon" />
+          <Avatar content="image" />
+          <Avatar content="image" skeleton />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "indicator",
+    title: "Indicator",
+    description: "Цветовой индикатор.",
+    group: "Data display",
+    source: "src/components/ui/indicator.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <Indicator color="primary" />
+          <Indicator color="success" />
+          <Indicator color="warning" />
+          <Indicator color="error" />
+          <Indicator color="info" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "alert-default",
+    title: "AlertDefault",
+    description: "Алерт.",
+    group: "Feedback",
+    source: "src/components/ui/alert-default.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid gap-3">
+          <AlertDefault color="brand" />
+          <AlertDefault color="warning" />
+          <AlertDefault color="error" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "snackbar",
+    title: "Snackbar",
+    description: "Всплывающее уведомление.",
+    group: "Feedback",
+    source: "src/components/ui/snackbar.tsx",
+    render: () => (
+      <Canvas tone="dark">
+        <Snackbar />
+      </Canvas>
+    ),
+  },
+  {
+    id: "progress-linear",
+    title: "ProgressLinear",
+    description: "Линейный прогресс.",
+    group: "Feedback",
+    source: "src/components/ui/progress-linear.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid gap-4">
+          <ProgressLinear position="start" />
+          <ProgressLinear position="medium" />
+          <ProgressLinear position="full" />
+        </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "tooltip",
+    title: "Tooltip",
+    description: "Тултип.",
+    group: "Feedback",
+    source: "src/components/ui/tooltip.tsx",
+    render: () => (
+      <Canvas>
+        <Tooltip>Typography</Tooltip>
+      </Canvas>
+    ),
+  },
+  {
+    id: "onboarding-tooltip",
+    title: "OnboardingTooltip",
+    description: "Onboarding-подсказка.",
+    group: "Feedback",
+    source: "src/components/ui/onboarding-tooltip.tsx",
+    render: () => (
+      <Canvas tone="blue">
+        <Matrix columns>
+          <OnboardingTooltip topArrow />
+          <OnboardingTooltip bottomArrow topArrow={false} />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "help-icon",
+    title: "HelpIcon",
+    description: "Иконка помощи.",
+    group: "Feedback",
+    source: "src/components/ui/help-icon.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <HelpIcon />
+          <HelpIcon state="hovered" />
+          <HelpIcon size="sm" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "info-icon",
+    title: "InfoIcon",
+    description: "Иконка информации.",
+    group: "Feedback",
+    source: "src/components/ui/info-icon.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <InfoIcon />
+          <InfoIcon state="hovered" />
+          <InfoIcon size="sm" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "help-center",
+    title: "HelpCenter",
+    description: "Блок ссылок помощи.",
+    group: "Feedback",
+    source: "src/components/ui/help-center.tsx",
+    render: () => (
+      <Canvas>
+        <HelpCenter />
+      </Canvas>
+    ),
+  },
+  {
+    id: "add-photos",
+    title: "AddPhotos",
+    description: "Загрузка фотографий.",
+    group: "Files",
+    source: "src/components/ui/add-photos.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix columns>
+          <AddPhotos />
+          <AddPhotos isLoad />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "add-any-file",
+    title: "AddAnyFile",
+    description: "Загрузка файла.",
+    group: "Files",
+    source: "src/components/ui/add-any-file.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix columns>
+          <AddAnyFile />
+          <AddAnyFile state="active" />
+        </Matrix>
+      </Canvas>
+    ),
+  },
+  {
+    id: "uploaded-document",
+    title: "UploadedDocument",
+    description: "Загруженный документ.",
+    group: "Files",
+    source: "src/components/ui/uploaded-document.tsx",
+    render: () => (
+      <Canvas>
+        <div className="grid max-w-[520px] gap-3">
+          <UploadedDocument />
+          <UploadedDocument state="hovered" />
+          <UploadedDocument fontWeight="medium" />
+        </div>
+      </Canvas>
+    ),
+  },
+]
+
+function getActiveComponentId() {
+  return new URLSearchParams(window.location.search).get("component") ?? componentDocs[0].id
+}
+
+function setActiveComponentId(id: string) {
+  const params = new URLSearchParams(window.location.search)
+
+  params.set("view", "components")
+  params.set("component", id)
+  window.history.pushState(null, "", `?${params.toString()}`)
+  window.dispatchEvent(new PopStateEvent("popstate"))
+}
+
+function groupDocs(items: ComponentDoc[]) {
+  return items.reduce<Record<string, ComponentDoc[]>>((groups, item) => {
+    groups[item.group] = [...(groups[item.group] ?? []), item]
+    return groups
+  }, {})
+}
+
+function ComponentPage({ doc }: { doc: ComponentDoc }) {
+  return (
+    <article className="grid min-w-0 gap-8">
+      <header className="grid gap-3 border-b border-[var(--parser-border-light)] pb-8">
+        <p className="text-sm font-semibold uppercase leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
+          Components
+        </p>
+        <div className="grid gap-2">
+          <h1 className="text-4xl font-semibold leading-[46px] tracking-normal">
+            {doc.title}
+          </h1>
+          <p className="max-w-[720px] text-base leading-6 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
+            {doc.description}
           </p>
-          <div className="grid gap-2">
-            <h1 className="text-4xl font-semibold leading-[46px] tracking-normal">
-              Button
-            </h1>
-            <p className="max-w-[720px] text-base leading-6 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-              Один React-компонент для всех вариантов кнопки из Figma:
-              primary, secondary, ghost, destructive, contrast и inherit.
-            </p>
-          </div>
-        </header>
+        </div>
+        <dl className="grid gap-1 text-sm leading-5">
+          <dt className="font-semibold text-[var(--parser-text-neutral-primary)]">Source</dt>
+          <dd className="text-[var(--parser-text-neutral-secondary)]">{doc.source}</dd>
+        </dl>
+      </header>
 
-        <section className="grid gap-4">
-          <h2 className="text-xl font-semibold leading-7 tracking-normal">Styles</h2>
-          <div className="grid gap-5 rounded-lg border border-[var(--parser-border-light)] bg-white p-5">
-            {appearances.map((appearance) => (
-              <div className="grid gap-2" key={appearance}>
-                <h3 className="text-sm font-semibold uppercase leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-                  {appearance}
-                </h3>
-                <ButtonRow appearance={appearance} dark={appearance === "contrast"} />
-              </div>
+      <section className="grid gap-4">
+        <h2 className="text-xl font-semibold leading-7 tracking-normal">Preview</h2>
+        {doc.render()}
+      </section>
+    </article>
+  )
+}
+
+export function ComponentDocs() {
+  const [activeId, setActiveId] = React.useState(getActiveComponentId)
+  const [query, setQuery] = React.useState("")
+
+  React.useEffect(() => {
+    const handlePopState = () => setActiveId(getActiveComponentId())
+
+    window.addEventListener("popstate", handlePopState)
+    return () => window.removeEventListener("popstate", handlePopState)
+  }, [])
+
+  const normalizedQuery = query.trim().toLowerCase()
+  const filteredDocs = componentDocs.filter((doc) =>
+    `${doc.title} ${doc.group} ${doc.source}`.toLowerCase().includes(normalizedQuery),
+  )
+  const groupedDocs = groupDocs(filteredDocs)
+  const activeDoc = componentDocs.find((doc) => doc.id === activeId) ?? componentDocs[0]
+
+  return (
+    <main className="min-h-[calc(100svh-56px)] bg-white text-[var(--parser-text-neutral-primary)]">
+      <div className="grid lg:grid-cols-[300px_minmax(0,1fr)]">
+        <aside className="border-b border-[var(--parser-border-light)] bg-[var(--parser-fill-neutral)] lg:sticky lg:top-14 lg:h-[calc(100svh-56px)] lg:overflow-y-auto lg:border-b-0 lg:border-r">
+          <div className="grid gap-4 p-4">
+            <div className="grid gap-1">
+              <p className="text-sm font-semibold uppercase leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
+                Product UI
+              </p>
+              <h1 className="text-lg font-semibold leading-6 tracking-normal">
+                Компоненты
+              </h1>
+              <p className="text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
+                {componentDocs.length} компонентов
+              </p>
+            </div>
+
+            <label className="flex h-10 items-center gap-2 rounded-lg border border-[var(--parser-border-light)] bg-white px-3">
+              <Search
+                aria-hidden="true"
+                className="size-4 text-[var(--parser-text-neutral-secondary)]"
+                strokeWidth={2}
+              />
+              <input
+                className="min-w-0 flex-1 bg-transparent text-sm leading-5 outline-none placeholder:text-[var(--parser-text-neutral-secondary)]"
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Поиск компонента"
+                value={query}
+              />
+            </label>
+          </div>
+
+          <nav className="grid gap-5 px-4 pb-5">
+            {Object.entries(groupedDocs).map(([group, items]) => (
+              <section className="grid gap-1" key={group}>
+                <h2 className="px-2 text-xs font-semibold uppercase leading-4 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
+                  {group}
+                </h2>
+                <ul className="grid gap-0.5">
+                  {items.map((doc) => (
+                    <li key={doc.id}>
+                      <button
+                        className={cn(
+                          "flex w-full cursor-pointer items-center rounded-lg px-2 py-2 text-left text-sm leading-5 transition-colors hover:bg-white",
+                          doc.id === activeDoc.id
+                            ? "bg-white font-semibold text-[var(--parser-text-neutral-primary)] shadow-sm"
+                            : "text-[var(--parser-text-neutral-secondary)]",
+                        )}
+                        onClick={() => setActiveComponentId(doc.id)}
+                        type="button"
+                      >
+                        <span className="min-w-0 flex-1 truncate">{doc.title}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
-          </div>
-        </section>
+          </nav>
+        </aside>
 
-        <section className="grid gap-4">
-          <h2 className="text-xl font-semibold leading-7 tracking-normal">States</h2>
-          <div className="flex flex-wrap items-center gap-3 rounded-lg border border-[var(--parser-border-light)] bg-white p-5">
-            <Button>Label</Button>
-            <Button state="hover">Label</Button>
-            <Button disabled>Label</Button>
-            <Button counter>Label</Button>
-            <Button loading>Label</Button>
-            <Button iconOnly />
-          </div>
-        </section>
-
-        <section className="grid gap-4">
-          <h2 className="text-xl font-semibold leading-7 tracking-normal">Usage</h2>
-          <pre className="overflow-x-auto rounded-lg border border-[var(--parser-border-light)] bg-[var(--parser-fill-neutral)] p-4 text-xs leading-5">
-            <code>{`import { Button } from "@/components/ui/button"
-
-<Button appearance="primary" size="md">
-  Label
-</Button>
-
-<Button appearance="destructive" counter state="hover">
-  Label
-</Button>`}</code>
-          </pre>
-        </section>
+        <div className="min-w-0 px-5 py-8 md:px-8 xl:px-10">
+          <ComponentPage doc={activeDoc} />
+        </div>
       </div>
     </main>
   )

@@ -1,8 +1,7 @@
 import * as React from "react"
 import { ChevronDown, Search, SlidersHorizontal, X } from "lucide-react"
 
-import { ContrastButton } from "@/components/ui/contrast-button"
-import { DarkButton } from "@/components/ui/dark-button"
+import { Button } from "@/components/ui/button"
 import { ToggleButton } from "@/components/ui/toggle-button"
 import { ToggleButtonGroup } from "@/components/ui/toggle-button-group"
 import { cn } from "@/lib/utils"
@@ -99,17 +98,17 @@ function RoominessGroup({ empty }: { empty: boolean }) {
 
 function MobileFilterButton({ empty }: { empty: boolean }) {
   return (
-    <ContrastButton
+    <Button
+      appearance="contrast"
       className="shrink-0"
       counter={!empty}
       counterValue={1}
       endIcon={false}
       size="sm"
       startIcon={empty ? <SlidersHorizontal aria-hidden="true" strokeWidth={2} /> : false}
-      variant="contained"
     >
       Фильтры
-    </ContrastButton>
+    </Button>
   )
 }
 
@@ -160,36 +159,36 @@ function ToolbarFilter({
         <FilterRange suffix="м²" widthClass="w-[152px]" />
         <FilterRange suffix="₽" widthClass="w-[240px]" />
 
-        <ContrastButton
+        <Button
+          appearance="contrast"
           counter={!empty}
           counterValue={8}
           endIcon={false}
           size="sm"
           startIcon={empty ? <SlidersHorizontal aria-hidden="true" strokeWidth={2} /> : false}
-          variant="contained"
         >
           Все фильтры
-        </ContrastButton>
+        </Button>
       </div>
 
       {!empty && (
         <div className="flex items-center gap-1">
-          <DarkButton
+          <Button
+            appearance="ghost"
             endIcon={false}
             size="sm"
             startIcon={<Search aria-hidden="true" strokeWidth={2} />}
-            variant="text"
           >
             Сохранить фильтры
-          </DarkButton>
-          <DarkButton
+          </Button>
+          <Button
+            appearance="ghost"
             aria-label="Clear filters"
             className="px-2"
             endIcon={false}
             iconOnly
             size="sm"
             startIcon={<X aria-hidden="true" strokeWidth={2} />}
-            variant="text"
           />
         </div>
       )}

@@ -3,11 +3,6 @@
 | Figma node | Figma component | Code component |
 | --- | --- | --- |
 | `10647:1326` | `Button` | `src/components/ui/button.tsx` / `Button` |
-| `2781:17673` | `button-brand` | `src/components/ui/brand-button.tsx` / `BrandButton` |
-| `2787:3105` | `button-error` | `src/components/ui/error-button.tsx` / `ErrorButton` |
-| `2789:3262` | `button-neutral` | `src/components/ui/neutral-button.tsx` / `NeutralButton` |
-| `2789:3403` | `button-contrast` | `src/components/ui/contrast-button.tsx` / `ContrastButton` |
-| `2789:3446` | `button-dark` | `src/components/ui/dark-button.tsx` / `DarkButton` |
 | `8701:15073` | `Indicator` | `src/components/ui/indicator.tsx` / `Indicator` |
 | `1171:18402` | `List` | `src/components/ui/list.tsx` / `List` |
 | `9929:5668` | `ListSmall` | `src/components/ui/list-small.tsx` / `ListSmall` |
@@ -23,6 +18,7 @@
 | `746:1851` | `Tooltip` | `src/components/ui/tooltip.tsx` / `Tooltip` |
 | `913:6350` | `OnboardingTooltip` | `src/components/ui/onboarding-tooltip.tsx` / `OnboardingTooltip` |
 | `10389:13275` | `helpCenter` | `src/components/ui/help-center.tsx` / `HelpCenter` |
+| `10389:13285` | `MainHeader` | `src/components/ui/main-header.tsx` / `MainHeader` |
 | `4163:45161` | `toolbar filter` | `src/components/ui/toolbar-filter.tsx` / `ToolbarFilter` |
 | `10389:13764` | `PageTitle` | `src/components/ui/page-title.tsx` / `PageTitle` |
 | `10389:15628` | `UploadedDocument` | `src/components/ui/uploaded-document.tsx` / `UploadedDocument` |
@@ -47,11 +43,7 @@
 | `10252:5944` | `Tag` | `src/components/ui/tag.tsx` / `Tag` |
 | `8827:1349` | `ToggleButtonGroup` | `src/components/ui/toggle-button-group.tsx` / `ToggleButtonGroup` |
 | `8899:2485` | `ToggleButton` | `src/components/ui/toggle-button.tsx` / `ToggleButton` |
-| `8770:3286` | `IconButtonBrand` | `src/components/ui/icon-button-brand.tsx` / `IconButtonBrand` |
-| `8770:3773` | `IconButtonError` | `src/components/ui/icon-button-error.tsx` / `IconButtonError` |
-| `8772:3779` | `IconButtonNeutral` | `src/components/ui/icon-button-neutral.tsx` / `IconButtonNeutral` |
-| `8772:3778` | `IconButtonContrast` | `src/components/ui/icon-button-contrast.tsx` / `IconButtonContrast` |
-| `321:1423` | `IconButtonDark` | `src/components/ui/icon-button-dark.tsx` / `IconButtonDark` |
+| `10742:281` | `IconButton` | `src/components/ui/icon-button.tsx` / `IconButton` |
 | `712:480` | `HelpIcon` | `src/components/ui/help-icon.tsx` / `HelpIcon` |
 | `968:779` | `InfoIcon` | `src/components/ui/info-icon.tsx` / `InfoIcon` |
 | `787:12583` | `AlertDefault` | `src/components/ui/alert-default.tsx` / `AlertDefault` |

@@ -2,16 +2,16 @@ import * as React from "react"
 import { CircleHelp, Heart, Menu } from "lucide-react"
 
 import { Avatar } from "@/components/ui/avatar"
-import { ContrastButton } from "@/components/ui/contrast-button"
 import { HelpCenter } from "@/components/ui/help-center"
+import { IconButton } from "@/components/ui/icon-button"
 import {
   MainHeaderMenuButton,
   type MainHeaderMenuButtonState,
 } from "@/components/ui/main-header-menu-button"
 import { cn } from "@/lib/utils"
 
-const logoDeskSrc = "https://www.figma.com/api/mcp/asset/2c71a79a-c7f4-46bb-915e-e68d040100a5"
-const logoMobileSrc = "https://www.figma.com/api/mcp/asset/3279bfec-7db0-46a2-9a7f-096fbe3ab4fe"
+const logoDeskSrc = "/assets/rhood-logo-header.svg"
+const logoMobileSrc = "/assets/rhood-logo-header-full.svg"
 
 type MainHeaderNavItem = {
   active?: boolean
@@ -26,10 +26,17 @@ type MainHeaderProps = React.ComponentProps<"header"> & {
   resp?: "mob" | "desk"
 }
 
+const defaultNavItems: MainHeaderNavItem[] = [
+  { active: true, label: "Набор базы" },
+  { label: "Мои объекты" },
+  { label: "Подборки" },
+  { label: "Статистика" },
+]
+
 function MainHeader({
   button = true,
   className,
-  navItems = [],
+  navItems = defaultNavItems,
   resp = "desk",
   ...props
 }: MainHeaderProps) {
@@ -57,28 +64,22 @@ function MainHeader({
     return (
       <header
         className={cn(
-          "flex flex-col bg-[var(--parser-fill-neutral-dark-ultra)] px-0 py-2",
+          "flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--parser-fill-neutral-dark-ultra)] px-3 py-2",
           className,
         )}
         {...props}
       >
-        <div className="flex h-10 w-full items-center px-3">
-          <div className="flex min-w-0 flex-1 items-center">
-            <img alt="Rhood" className="h-5 w-[104px] shrink-0" src={logoMobileSrc} />
-          </div>
+        <img alt="Rhood" className="h-6 w-[123px] shrink-0" src={logoMobileSrc} />
 
-          {button && (
-            <ContrastButton
-              aria-label="Open menu"
-              className="rounded-lg"
-              endIcon={false}
-              iconOnly
-              size="md"
-              startIcon={<Menu aria-hidden="true" strokeWidth={2} />}
-              variant="text"
-            />
-          )}
-        </div>
+        {button && (
+          <IconButton
+            appearance="inherit"
+            aria-label="Open menu"
+            className="text-[var(--parser-text-primary-contrast)]"
+            icon={<Menu aria-hidden="true" strokeWidth={2} />}
+            size="md"
+          />
+        )}
       </header>
     )
   }
@@ -86,7 +87,7 @@ function MainHeader({
   return (
     <header
       className={cn(
-        "flex items-center gap-4 bg-[var(--parser-fill-neutral-dark-ultra)] px-6 py-2",
+        "flex w-full items-center gap-4 bg-[var(--parser-fill-neutral-dark-ultra)] px-6 py-2",
         className,
       )}
       {...props}
@@ -107,36 +108,32 @@ function MainHeader({
         ))}
       </nav>
 
-      <div className="flex shrink-0 items-center gap-2">
-        <ContrastButton
+      <div className="flex h-[34px] shrink-0 items-center">
+        <IconButton
+          appearance="inherit"
           aria-label="Favorites"
-          className="rounded-full"
-          endIcon={false}
-          iconOnly
+          className="text-[var(--parser-text-primary-contrast)]"
+          icon={<Heart aria-hidden="true" strokeWidth={2} />}
           size="sm"
-          startIcon={<Heart aria-hidden="true" strokeWidth={2} />}
-          variant="text"
         />
         <div ref={helpMenuRef} className="relative">
-          <ContrastButton
+          <IconButton
+            appearance="inherit"
             aria-expanded={isHelpMenuOpen}
             aria-haspopup="menu"
             aria-label="Help"
-            className="rounded-full"
-            endIcon={false}
-            iconOnly
+            className="text-[var(--parser-text-primary-contrast)]"
+            icon={<CircleHelp aria-hidden="true" strokeWidth={2} />}
             onClick={() => setIsHelpMenuOpen((open) => !open)}
             size="sm"
-            startIcon={<CircleHelp aria-hidden="true" strokeWidth={2} />}
-            variant="text"
           />
 
           {isHelpMenuOpen && (
             <HelpCenter className="absolute right-0 top-full z-20 mt-2" />
           )}
         </div>
-        <Avatar content="image" size="32px" />
       </div>
+      <Avatar content="image" size="32px" />
     </header>
   )
 }
