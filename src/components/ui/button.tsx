@@ -4,6 +4,9 @@ import { CheckCircle2, LoaderCircle } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * Figma: https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10647-1326
+ */
 type ButtonAppearance =
   | "primary"
   | "secondary"
@@ -111,11 +114,11 @@ const appearanceClasses: Record<
     hover:
       "bg-[var(--parser-fill-contrast-hover)] text-[var(--parser-text-primary-static)]",
     disabled:
-      "bg-[var(--parser-fill-disabled)] text-[var(--parser-text-disabled)]",
+      "bg-[var(--parser-fill-contrast-disabled)] text-[var(--parser-text-neutral-contrast-disabled)]",
   },
   inherit: {
     default: "bg-transparent text-inherit",
-    hover: "bg-[var(--parser-fill-neutral-hover)] text-inherit",
+    hover: "bg-current/8 text-inherit",
     disabled: "bg-transparent text-[var(--parser-text-disabled)]",
   },
 }
@@ -131,7 +134,7 @@ const appearanceHoverClasses: Record<ButtonAppearance, string> = {
     "hover:bg-[var(--parser-fill-error-light-hover)] hover:text-[var(--parser-text-error)]",
   contrast:
     "hover:bg-[var(--parser-fill-contrast-hover)] hover:text-[var(--parser-text-primary-static)]",
-  inherit: "hover:bg-[var(--parser-fill-neutral-hover)] hover:text-inherit",
+  inherit: "hover:bg-current/8 hover:text-inherit",
 }
 
 const counterToneClasses: Record<ButtonAppearance, string> = {

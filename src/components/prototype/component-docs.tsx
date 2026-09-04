@@ -1,107 +1,104 @@
-import * as React from "react"
-import { Search } from "lucide-react"
+import * as React from "react";
+import { Search } from "lucide-react";
 
-import { AddAnyFile } from "@/components/ui/add-any-file"
-import { AddPhotos } from "@/components/ui/add-photos"
-import { AlertDefault } from "@/components/ui/alert-default"
-import { Avatar } from "@/components/ui/avatar"
-import { Button, type ButtonAppearance, type ButtonSize } from "@/components/ui/button"
-import { ButtonFavorite } from "@/components/ui/button-favorite"
-import { Checkbox } from "@/components/ui/checkbox"
-import { Chip } from "@/components/ui/chip"
-import { ConfirmCode } from "@/components/ui/confirm-code"
-import { DateInput } from "@/components/ui/date-input"
-import { FormControlLabel } from "@/components/ui/form-control-label"
-import { FormHelperText } from "@/components/ui/form-helper-text"
-import { HelpCenter } from "@/components/ui/help-center"
-import { HelpIcon } from "@/components/ui/help-icon"
-import { IconButton, type IconButtonAppearance, type IconButtonSize } from "@/components/ui/icon-button"
-import { Indicator } from "@/components/ui/indicator"
-import { InfoIcon } from "@/components/ui/info-icon"
-import { LikeButton } from "@/components/ui/like-button"
-import { List } from "@/components/ui/list"
-import { ListItem } from "@/components/ui/list-item"
-import { ListItemSmall } from "@/components/ui/list-item-small"
-import { ListSmall } from "@/components/ui/list-small"
-import { MainHeader } from "@/components/ui/main-header"
-import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button"
-import { MenuAnchor } from "@/components/ui/menu-anchor"
-import { MenuDivider } from "@/components/ui/menu-divider"
-import { MenuItemAnchor } from "@/components/ui/menu-item-anchor"
-import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect"
-import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { MenuMultiselect } from "@/components/ui/menu-multiselect"
-import { MenuSingleSelect } from "@/components/ui/menu-single-select"
-import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip"
-import { PageTitle } from "@/components/ui/page-title"
-import { Pagination } from "@/components/ui/pagination"
-import { PaginationAlt } from "@/components/ui/pagination-alt"
-import { PaginationButton } from "@/components/ui/pagination-button"
-import { PasswordField } from "@/components/ui/password-field"
-import { ProgressLinear } from "@/components/ui/progress-linear"
-import { RangeInput } from "@/components/ui/range-input"
-import { SearchInput } from "@/components/ui/search-input"
-import { Select } from "@/components/ui/select"
-import { SelectGhost } from "@/components/ui/select-ghost"
-import { ShowMore } from "@/components/ui/show-more"
-import { Snackbar } from "@/components/ui/snackbar"
-import { Tab } from "@/components/ui/tab"
-import { TabBar } from "@/components/ui/tab-bar"
-import { Table } from "@/components/ui/table"
-import { TableCell } from "@/components/ui/table-cell"
-import { TableCellHead } from "@/components/ui/table-cell-head"
-import { Tag } from "@/components/ui/tag"
-import { TextField } from "@/components/ui/text-field"
-import { TextFieldMultiline } from "@/components/ui/text-field-multiline"
-import { ToggleButton } from "@/components/ui/toggle-button"
-import { ToggleButtonGroup } from "@/components/ui/toggle-button-group"
-import { ToggleChip } from "@/components/ui/toggle-chip"
-import { ToolbarFilter } from "@/components/ui/toolbar-filter"
-import { Tooltip } from "@/components/ui/tooltip"
-import { UploadedDocument } from "@/components/ui/uploaded-document"
-import { cn } from "@/lib/utils"
+import { AddAnyFile } from "@/components/ui/add-any-file";
+import { AddPhotos } from "@/components/ui/add-photos";
+import { AlertDefault } from "@/components/ui/alert-default";
+import { Avatar } from "@/components/ui/avatar";
+import { Button, type ButtonSize } from "@/components/ui/button";
+import { ButtonFavorite } from "@/components/ui/button-favorite";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Chip } from "@/components/ui/chip";
+import { ConfirmCode } from "@/components/ui/confirm-code";
+import { DateInput } from "@/components/ui/date-input";
+import { FormControlLabel } from "@/components/ui/form-control-label";
+import { FormHelperText } from "@/components/ui/form-helper-text";
+import { HelpCenter } from "@/components/ui/help-center";
+import { HelpIcon } from "@/components/ui/help-icon";
+import {
+  IconButton,
+  type IconButtonAppearance,
+  type IconButtonSize,
+} from "@/components/ui/icon-button";
+import { Indicator } from "@/components/ui/indicator";
+import { InfoIcon } from "@/components/ui/info-icon";
+import { LikeButton } from "@/components/ui/like-button";
+import { List } from "@/components/ui/list";
+import { ListItem } from "@/components/ui/list-item";
+import { ListItemSmall } from "@/components/ui/list-item-small";
+import { ListSmall } from "@/components/ui/list-small";
+import { MainHeader } from "@/components/ui/main-header";
+import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button";
+import { MenuAnchor } from "@/components/ui/menu-anchor";
+import { MenuDivider } from "@/components/ui/menu-divider";
+import { MenuItemAnchor } from "@/components/ui/menu-item-anchor";
+import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { MenuMultiselect } from "@/components/ui/menu-multiselect";
+import { MenuSingleSelect } from "@/components/ui/menu-single-select";
+import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip";
+import { PageTitle } from "@/components/ui/page-title";
+import { Pagination } from "@/components/ui/pagination";
+import { PaginationAlt } from "@/components/ui/pagination-alt";
+import { PaginationButton } from "@/components/ui/pagination-button";
+import { PasswordField } from "@/components/ui/password-field";
+import { ProgressLinear } from "@/components/ui/progress-linear";
+import { RangeInput } from "@/components/ui/range-input";
+import { SearchInput } from "@/components/ui/search-input";
+import { Select } from "@/components/ui/select";
+import { SelectGhost } from "@/components/ui/select-ghost";
+import { ShowMore } from "@/components/ui/show-more";
+import { Snackbar } from "@/components/ui/snackbar";
+import { Tab } from "@/components/ui/tab";
+import { TabBar } from "@/components/ui/tab-bar";
+import { Table } from "@/components/ui/table";
+import { TableCell } from "@/components/ui/table-cell";
+import { TableCellHead } from "@/components/ui/table-cell-head";
+import { Tag } from "@/components/ui/tag";
+import { TextField } from "@/components/ui/text-field";
+import { TextFieldMultiline } from "@/components/ui/text-field-multiline";
+import { ToggleButton } from "@/components/ui/toggle-button";
+import { ToggleButtonGroup } from "@/components/ui/toggle-button-group";
+import { ToggleChip } from "@/components/ui/toggle-chip";
+import { ToolbarFilter } from "@/components/ui/toolbar-filter";
+import { Tooltip } from "@/components/ui/tooltip";
+import { UploadedDocument } from "@/components/ui/uploaded-document";
+import { cn } from "@/lib/utils";
 
 type ComponentDoc = {
-  id: string
-  title: string
-  description: string
-  figmaUrl?: string
-  group: string
+  id: string;
+  title: string;
+  description: string;
+  figmaUrl?: string;
+  group: string;
   properties?: Array<{
-    name: string
-    values: string
-    defaultValue: string
-    description: string
-  }>
-  source: string
-  render: () => React.ReactNode
-}
+    name: string;
+    values: string;
+    defaultValue: string;
+    description: string;
+  }>;
+  source: string;
+  render: () => React.ReactNode;
+};
 
-const buttonAppearances: ButtonAppearance[] = [
-  "primary",
-  "secondary",
-  "ghost",
-  "destructive",
-  "contrast",
-  "inherit",
-]
-
-const buttonSizes: ButtonSize[] = ["md", "sm", "xsm"]
+const buttonSizes: ButtonSize[] = ["md", "sm", "xsm"];
 const iconButtonAppearances: IconButtonAppearance[] = [
   "primary",
   "secondary",
   "ghost",
   "contrast",
   "inherit",
-]
-const iconButtonSizes: IconButtonSize[] = ["md", "sm", "xsm"]
+];
+const iconButtonSizes: IconButtonSize[] = ["md", "sm", "xsm"];
 
 function Canvas({
   children,
+  className,
   tone = "default",
 }: {
-  children: React.ReactNode
-  tone?: "default" | "blue" | "dark"
+  children: React.ReactNode;
+  className?: string;
+  tone?: "default" | "blue" | "dark";
 }) {
   return (
     <div
@@ -110,34 +107,56 @@ function Canvas({
         tone === "default" && "bg-white",
         tone === "blue" && "bg-[#c7dbff]",
         tone === "dark" && "bg-[var(--parser-fill-neutral-dark-ultra)]",
+        className,
       )}
     >
       {children}
     </div>
-  )
+  );
 }
 
 function Matrix({
   children,
   columns = false,
 }: {
-  children: React.ReactNode
-  columns?: boolean
+  children: React.ReactNode;
+  columns?: boolean;
 }) {
   return (
-    <div className={columns ? "grid gap-4 md:grid-cols-2" : "flex flex-wrap items-center gap-3"}>
+    <div
+      className={
+        columns
+          ? "grid gap-4 md:grid-cols-2"
+          : "flex flex-wrap items-center gap-3"
+      }
+    >
       {children}
     </div>
-  )
+  );
 }
 
-function PreviewItem({ label, children }: { label: string; children: React.ReactNode }) {
+function PreviewItem({
+  label,
+  labelClassName,
+  children,
+}: {
+  label: string;
+  labelClassName?: string;
+  children: React.ReactNode;
+}) {
   return (
     <div className="relative flex w-fit flex-col pt-5">
-      <p className="absolute left-0 top-0 whitespace-nowrap text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">{label}</p>
+      <p
+        className={cn(
+          "absolute left-0 top-0 whitespace-nowrap text-xs leading-4 text-[var(--parser-text-neutral-secondary)]",
+          labelClassName,
+        )}
+      >
+        {label}
+      </p>
       {children}
     </div>
-  )
+  );
 }
 
 const componentDocs: ComponentDoc[] = [
@@ -145,32 +164,167 @@ const componentDocs: ComponentDoc[] = [
     id: "button",
     title: "Button",
     description: "Единая кнопка из обновленного Figma-компонента.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10647-1326",
     group: "Actions",
+    properties: [
+      {
+        name: "appearance",
+        values:
+          "primary · secondary · ghost · destructive · inherit · contrast",
+        defaultValue: "primary",
+        description: "Визуальный стиль и допустимый контекст применения.",
+      },
+      {
+        name: "size",
+        values: "md · sm · xsm",
+        defaultValue: "md",
+        description: "Размер кнопки, текста и иконок.",
+      },
+      {
+        name: "state",
+        values: "default · hover",
+        defaultValue: "default",
+        description: "Визуальное состояние для витрины и тестирования.",
+      },
+      {
+        name: "disabled",
+        values: "true · false",
+        defaultValue: "false",
+        description: "Блокирует взаимодействие и применяет disabled-состояние.",
+      },
+      {
+        name: "children / label",
+        values: "ReactNode",
+        defaultValue: "Label",
+        description: "Текст действия.",
+      },
+      {
+        name: "startIcon",
+        values: "ReactNode · true · false",
+        defaultValue: "true",
+        description: "Иконка слева от label.",
+      },
+      {
+        name: "endIcon",
+        values: "ReactNode · true · false",
+        defaultValue: "true",
+        description: "Иконка справа от label.",
+      },
+      {
+        name: "counter",
+        values: "true · false",
+        defaultValue: "false",
+        description: "Счётчик рядом с label.",
+      },
+    ],
     source: "src/components/ui/button.tsx",
     render: () => (
-      <div className="grid gap-5">
-        {buttonAppearances.map((appearance) => (
-          <div className="grid gap-2" key={appearance}>
-            <h3 className="text-sm font-semibold uppercase text-[var(--parser-text-neutral-secondary)]">
-              {appearance}
-            </h3>
-            <Canvas tone={appearance === "contrast" ? "dark" : "default"}>
-              <Matrix>
-                {buttonSizes.map((size) => (
-                  <Button appearance={appearance} key={`${appearance}-${size}`} size={size}>
-                    Label
-                  </Button>
-                ))}
-                <Button appearance={appearance} counter>
+      <div className="grid gap-6">
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">
+            Стиль · appearance
+          </h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              <PreviewItem label="primary">
+                <Button appearance="primary">Label</Button>
+              </PreviewItem>
+              <PreviewItem label="secondary">
+                <Button appearance="secondary">Label</Button>
+              </PreviewItem>
+              <PreviewItem label="ghost">
+                <Button appearance="ghost">Label</Button>
+              </PreviewItem>
+              <PreviewItem label="destructive">
+                <Button appearance="destructive">Label</Button>
+              </PreviewItem>
+            </Matrix>
+          </Canvas>
+          <Canvas className="rounded-xl p-4" tone="blue">
+            <div className="text-[var(--parser-text-brand)]">
+              <PreviewItem label="inherit">
+                <Button appearance="inherit">Label</Button>
+              </PreviewItem>
+            </div>
+          </Canvas>
+          <Canvas className="rounded-xl p-4" tone="dark">
+            <PreviewItem
+              label="contrast"
+              labelClassName="text-[var(--parser-text-primary-contrast)]"
+            >
+              <Button appearance="contrast">Label</Button>
+            </PreviewItem>
+          </Canvas>
+        </section>
+
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">Размер · size</h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              {buttonSizes.map((size) => (
+                <PreviewItem key={size} label={size}>
+                  <Button size={size}>Label</Button>
+                </PreviewItem>
+              ))}
+            </Matrix>
+          </Canvas>
+        </section>
+
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">
+            Состояние · state, disabled
+          </h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              <PreviewItem label="default">
+                <Button>Label</Button>
+              </PreviewItem>
+              <PreviewItem label="hover">
+                <Button state="hover">Label</Button>
+              </PreviewItem>
+              <PreviewItem label="disabled">
+                <Button disabled>Label</Button>
+              </PreviewItem>
+            </Matrix>
+          </Canvas>
+          <Canvas className="rounded-xl p-4" tone="dark">
+            <PreviewItem
+              label="contrast + disabled"
+              labelClassName="text-[var(--parser-text-primary-contrast)]"
+            >
+              <Button appearance="contrast" disabled>
+                Label
+              </Button>
+            </PreviewItem>
+          </Canvas>
+        </section>
+
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">
+            Состав · startIcon, endIcon, counter
+          </h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              <PreviewItem label="без иконок">
+                <Button endIcon={false} startIcon={false}>
                   Label
                 </Button>
-                <Button appearance={appearance} disabled>
+              </PreviewItem>
+              <PreviewItem label="startIcon">
+                <Button endIcon={false}>Label</Button>
+              </PreviewItem>
+              <PreviewItem label="endIcon">
+                <Button startIcon={false}>Label</Button>
+              </PreviewItem>
+              <PreviewItem label="counter">
+                <Button counter endIcon={false} startIcon={false}>
                   Label
                 </Button>
-              </Matrix>
-            </Canvas>
-          </div>
-        ))}
+              </PreviewItem>
+            </Matrix>
+          </Canvas>
+        </section>
       </div>
     ),
   },
@@ -225,7 +379,11 @@ const componentDocs: ComponentDoc[] = [
             <Canvas tone={appearance === "contrast" ? "dark" : "default"}>
               <Matrix>
                 {iconButtonSizes.map((size) => (
-                  <IconButton appearance={appearance} key={`${appearance}-${size}`} size={size} />
+                  <IconButton
+                    appearance={appearance}
+                    key={`${appearance}-${size}`}
+                    size={size}
+                  />
                 ))}
                 <IconButton appearance={appearance} state="hovered" />
                 <IconButton appearance={appearance} disabled />
@@ -293,10 +451,36 @@ const componentDocs: ComponentDoc[] = [
     render: () => (
       <Canvas>
         <div className="grid max-w-[520px] gap-3">
-          <Select content="text" helperText="Helper text" label="Label" topLabel="dynamic" value="Value" />
-          <Select content="chips" helperText="Helper text" label="Label" topLabel="dynamic" />
-          <Select content="text" error helperText="Helper text" label="Label" state="focused" topLabel="dynamic" value="Value" />
-          <Select content="text" disabled helperText="Helper text" label="Label" topLabel="dynamic" value="Value" />
+          <Select
+            content="text"
+            helperText="Helper text"
+            label="Label"
+            topLabel="dynamic"
+            value="Value"
+          />
+          <Select
+            content="chips"
+            helperText="Helper text"
+            label="Label"
+            topLabel="dynamic"
+          />
+          <Select
+            content="text"
+            error
+            helperText="Helper text"
+            label="Label"
+            state="focused"
+            topLabel="dynamic"
+            value="Value"
+          />
+          <Select
+            content="text"
+            disabled
+            helperText="Helper text"
+            label="Label"
+            topLabel="dynamic"
+            value="Value"
+          />
         </div>
       </Canvas>
     ),
@@ -339,17 +523,60 @@ const componentDocs: ComponentDoc[] = [
     id: "checkbox",
     title: "Checkbox",
     description: "Выбор одного элемента или нескольких элементов в группе.",
-    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=405-3391",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=405-3391",
     group: "Forms",
     properties: [
-      { name: "size", values: "md · sm", defaultValue: "md", description: "Размер control и текста label." },
-      { name: "checked", values: "true · false", defaultValue: "false", description: "Значение в контролируемом режиме; используй вместе с onChange." },
-      { name: "defaultChecked", values: "true · false", defaultValue: "false", description: "Начальное значение в неконтролируемом режиме." },
-      { name: "indeterminate", values: "true · false", defaultValue: "false", description: "Частичный выбор группы; используй только вместе с checked=true." },
-      { name: "disabled", values: "true · false", defaultValue: "false", description: "Блокирует взаимодействие и применяет disabled-состояние." },
-      { name: "error", values: "true · false", defaultValue: "false", description: "Показывает ошибку для невыбранного Checkbox." },
-      { name: "label", values: "true · false", defaultValue: "true", description: "Показывает текст рядом с control." },
-      { name: "skeleton", values: "true · false", defaultValue: "false", description: "Показывает загрузочную заглушку вместо control и label." },
+      {
+        name: "size",
+        values: "md · sm",
+        defaultValue: "md",
+        description: "Размер control и текста label.",
+      },
+      {
+        name: "checked",
+        values: "true · false",
+        defaultValue: "false",
+        description:
+          "Значение в контролируемом режиме; используй вместе с onChange.",
+      },
+      {
+        name: "defaultChecked",
+        values: "true · false",
+        defaultValue: "false",
+        description: "Начальное значение в неконтролируемом режиме.",
+      },
+      {
+        name: "indeterminate",
+        values: "true · false",
+        defaultValue: "false",
+        description:
+          "Частичный выбор группы; используй только вместе с checked=true.",
+      },
+      {
+        name: "disabled",
+        values: "true · false",
+        defaultValue: "false",
+        description: "Блокирует взаимодействие и применяет disabled-состояние.",
+      },
+      {
+        name: "error",
+        values: "true · false",
+        defaultValue: "false",
+        description: "Показывает ошибку для невыбранного Checkbox.",
+      },
+      {
+        name: "label",
+        values: "true · false",
+        defaultValue: "true",
+        description: "Показывает текст рядом с control.",
+      },
+      {
+        name: "skeleton",
+        values: "true · false",
+        defaultValue: "false",
+        description: "Показывает загрузочную заглушку вместо control и label.",
+      },
     ],
     source: "src/components/ui/checkbox.tsx",
     render: () => (
@@ -358,33 +585,63 @@ const componentDocs: ComponentDoc[] = [
           <section className="grid gap-3">
             <h3 className="text-sm font-semibold leading-5">Размер · size</h3>
             <Matrix>
-              <PreviewItem label="md"><Checkbox size="md" /></PreviewItem>
-              <PreviewItem label="sm"><Checkbox size="sm" /></PreviewItem>
+              <PreviewItem label="md">
+                <Checkbox size="md" />
+              </PreviewItem>
+              <PreviewItem label="sm">
+                <Checkbox size="sm" />
+              </PreviewItem>
             </Matrix>
           </section>
           <section className="grid gap-3">
-            <h3 className="text-sm font-semibold leading-5">Значение · checked, indeterminate</h3>
+            <h3 className="text-sm font-semibold leading-5">
+              Значение · checked, indeterminate
+            </h3>
             <Matrix>
-              <PreviewItem label="checked=false"><Checkbox /></PreviewItem>
-              <PreviewItem label="checked=true"><Checkbox checked /></PreviewItem>
-              <PreviewItem label="checked + indeterminate"><Checkbox checked indeterminate /></PreviewItem>
+              <PreviewItem label="checked=false">
+                <Checkbox />
+              </PreviewItem>
+              <PreviewItem label="checked=true">
+                <Checkbox checked />
+              </PreviewItem>
+              <PreviewItem label="checked + indeterminate">
+                <Checkbox checked indeterminate />
+              </PreviewItem>
             </Matrix>
           </section>
           <section className="grid gap-3">
-            <h3 className="text-sm font-semibold leading-5">Состояние · state, error, disabled</h3>
+            <h3 className="text-sm font-semibold leading-5">
+              Состояние · state, error, disabled
+            </h3>
             <Matrix>
-              <PreviewItem label="default"><Checkbox /></PreviewItem>
-              <PreviewItem label="hovered"><Checkbox state="hovered" /></PreviewItem>
-              <PreviewItem label="error"><Checkbox error /></PreviewItem>
-              <PreviewItem label="disabled"><Checkbox disabled /></PreviewItem>
+              <PreviewItem label="default">
+                <Checkbox />
+              </PreviewItem>
+              <PreviewItem label="hovered">
+                <Checkbox state="hovered" />
+              </PreviewItem>
+              <PreviewItem label="error">
+                <Checkbox error />
+              </PreviewItem>
+              <PreviewItem label="disabled">
+                <Checkbox disabled />
+              </PreviewItem>
             </Matrix>
           </section>
           <section className="grid gap-3">
-            <h3 className="text-sm font-semibold leading-5">Состав · label, skeleton</h3>
+            <h3 className="text-sm font-semibold leading-5">
+              Состав · label, skeleton
+            </h3>
             <Matrix>
-              <PreviewItem label="label=true"><Checkbox /></PreviewItem>
-              <PreviewItem label="label=false"><Checkbox label={false} /></PreviewItem>
-              <PreviewItem label="skeleton"><Checkbox skeleton /></PreviewItem>
+              <PreviewItem label="label=true">
+                <Checkbox />
+              </PreviewItem>
+              <PreviewItem label="label=false">
+                <Checkbox label={false} />
+              </PreviewItem>
+              <PreviewItem label="skeleton">
+                <Checkbox skeleton />
+              </PreviewItem>
             </Matrix>
           </section>
         </div>
@@ -401,9 +658,25 @@ const componentDocs: ComponentDoc[] = [
       <Canvas>
         <div className="grid max-w-[520px] gap-3">
           <TextField empty placeholder="Placeholder" topLabel="static" />
-          <TextField defaultValue="Value" empty={false} placeholder="Placeholder" topLabel="dynamic" />
-          <TextField defaultValue="Value" empty={false} error placeholder="Placeholder" topLabel="dynamic" />
-          <TextField disabled empty placeholder="Placeholder" topLabel="static" />
+          <TextField
+            defaultValue="Value"
+            empty={false}
+            placeholder="Placeholder"
+            topLabel="dynamic"
+          />
+          <TextField
+            defaultValue="Value"
+            empty={false}
+            error
+            placeholder="Placeholder"
+            topLabel="dynamic"
+          />
+          <TextField
+            disabled
+            empty
+            placeholder="Placeholder"
+            topLabel="static"
+          />
         </div>
       </Canvas>
     ),
@@ -434,8 +707,19 @@ const componentDocs: ComponentDoc[] = [
       <Canvas>
         <div className="grid max-w-[520px] gap-3">
           <PasswordField empty placeholder="Password" topLabel="static" />
-          <PasswordField defaultValue="Value" empty={false} placeholder="Password" topLabel="dynamic" />
-          <PasswordField defaultValue="Value" empty={false} error placeholder="Password" topLabel="dynamic" />
+          <PasswordField
+            defaultValue="Value"
+            empty={false}
+            placeholder="Password"
+            topLabel="dynamic"
+          />
+          <PasswordField
+            defaultValue="Value"
+            empty={false}
+            error
+            placeholder="Password"
+            topLabel="dynamic"
+          />
         </div>
       </Canvas>
     ),
@@ -449,9 +733,27 @@ const componentDocs: ComponentDoc[] = [
     render: () => (
       <Canvas>
         <div className="grid max-w-[520px] gap-3">
-          <DateInput empty label="Дата" placeholder="Placeholder" topLabel="dynamic" />
-          <DateInput defaultValue="24.08.2023" empty={false} label="Дата" placeholder="Placeholder" topLabel="dynamic" />
-          <DateInput defaultValue="24.08.2023" empty={false} error label="Дата" placeholder="Placeholder" topLabel="dynamic" />
+          <DateInput
+            empty
+            label="Дата"
+            placeholder="Placeholder"
+            topLabel="dynamic"
+          />
+          <DateInput
+            defaultValue="24.08.2023"
+            empty={false}
+            label="Дата"
+            placeholder="Placeholder"
+            topLabel="dynamic"
+          />
+          <DateInput
+            defaultValue="24.08.2023"
+            empty={false}
+            error
+            label="Дата"
+            placeholder="Placeholder"
+            topLabel="dynamic"
+          />
         </div>
       </Canvas>
     ),
@@ -1090,26 +1392,29 @@ const componentDocs: ComponentDoc[] = [
       </Canvas>
     ),
   },
-]
+];
 
 function getActiveComponentId() {
-  return new URLSearchParams(window.location.search).get("component") ?? componentDocs[0].id
+  return (
+    new URLSearchParams(window.location.search).get("component") ??
+    componentDocs[0].id
+  );
 }
 
 function setActiveComponentId(id: string) {
-  const params = new URLSearchParams(window.location.search)
+  const params = new URLSearchParams(window.location.search);
 
-  params.set("view", "components")
-  params.set("component", id)
-  window.history.pushState(null, "", `?${params.toString()}`)
-  window.dispatchEvent(new PopStateEvent("popstate"))
+  params.set("view", "components");
+  params.set("component", id);
+  window.history.pushState(null, "", `?${params.toString()}`);
+  window.dispatchEvent(new PopStateEvent("popstate"));
 }
 
 function groupDocs(items: ComponentDoc[]) {
   return items.reduce<Record<string, ComponentDoc[]>>((groups, item) => {
-    groups[item.group] = [...(groups[item.group] ?? []), item]
-    return groups
-  }, {})
+    groups[item.group] = [...(groups[item.group] ?? []), item];
+    return groups;
+  }, {});
 }
 
 function ComponentPage({ doc }: { doc: ComponentDoc }) {
@@ -1128,11 +1433,17 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
           </p>
         </div>
         <dl className="grid gap-1 text-sm leading-5">
-          <dt className="font-semibold text-[var(--parser-text-neutral-primary)]">Source</dt>
-          <dd className="text-[var(--parser-text-neutral-secondary)]">{doc.source}</dd>
+          <dt className="font-semibold text-[var(--parser-text-neutral-primary)]">
+            Source
+          </dt>
+          <dd className="text-[var(--parser-text-neutral-secondary)]">
+            {doc.source}
+          </dd>
           {doc.figmaUrl && (
             <>
-              <dt className="mt-2 font-semibold text-[var(--parser-text-neutral-primary)]">Figma</dt>
+              <dt className="mt-2 font-semibold text-[var(--parser-text-neutral-primary)]">
+                Figma
+              </dt>
               <dd>
                 <a
                   className="text-[var(--parser-text-link)] underline underline-offset-2 hover:text-[var(--parser-text-link-hovered)]"
@@ -1149,13 +1460,17 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
       </header>
 
       <section className="grid gap-4">
-        <h2 className="text-xl font-semibold leading-7 tracking-normal">Preview</h2>
+        <h2 className="text-xl font-semibold leading-7 tracking-normal">
+          Preview
+        </h2>
         {doc.render()}
       </section>
 
       {doc.properties && (
         <section className="grid gap-4">
-          <h2 className="text-xl font-semibold leading-7 tracking-normal">Свойства</h2>
+          <h2 className="text-xl font-semibold leading-7 tracking-normal">
+            Свойства
+          </h2>
           <div className="overflow-x-auto rounded-xl border border-[var(--parser-border-light)]">
             <table className="w-full min-w-[680px] border-collapse text-left text-sm leading-5">
               <thead className="bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-secondary)]">
@@ -1168,11 +1483,22 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
               </thead>
               <tbody>
                 {doc.properties.map((property) => (
-                  <tr className="border-t border-[var(--parser-border-light)]" key={property.name}>
-                    <td className="px-4 py-3 font-mono text-[var(--parser-text-neutral-primary)]">{property.name}</td>
-                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">{property.values}</td>
-                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">{property.defaultValue}</td>
-                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">{property.description}</td>
+                  <tr
+                    className="border-t border-[var(--parser-border-light)]"
+                    key={property.name}
+                  >
+                    <td className="px-4 py-3 font-mono text-[var(--parser-text-neutral-primary)]">
+                      {property.name}
+                    </td>
+                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
+                      {property.values}
+                    </td>
+                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
+                      {property.defaultValue}
+                    </td>
+                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
+                      {property.description}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -1181,26 +1507,29 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
         </section>
       )}
     </article>
-  )
+  );
 }
 
 export function ComponentDocs() {
-  const [activeId, setActiveId] = React.useState(getActiveComponentId)
-  const [query, setQuery] = React.useState("")
+  const [activeId, setActiveId] = React.useState(getActiveComponentId);
+  const [query, setQuery] = React.useState("");
 
   React.useEffect(() => {
-    const handlePopState = () => setActiveId(getActiveComponentId())
+    const handlePopState = () => setActiveId(getActiveComponentId());
 
-    window.addEventListener("popstate", handlePopState)
-    return () => window.removeEventListener("popstate", handlePopState)
-  }, [])
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
-  const normalizedQuery = query.trim().toLowerCase()
+  const normalizedQuery = query.trim().toLowerCase();
   const filteredDocs = componentDocs.filter((doc) =>
-    `${doc.title} ${doc.group} ${doc.source}`.toLowerCase().includes(normalizedQuery),
-  )
-  const groupedDocs = groupDocs(filteredDocs)
-  const activeDoc = componentDocs.find((doc) => doc.id === activeId) ?? componentDocs[0]
+    `${doc.title} ${doc.group} ${doc.source}`
+      .toLowerCase()
+      .includes(normalizedQuery),
+  );
+  const groupedDocs = groupDocs(filteredDocs);
+  const activeDoc =
+    componentDocs.find((doc) => doc.id === activeId) ?? componentDocs[0];
 
   return (
     <main className="min-h-[calc(100svh-56px)] bg-white text-[var(--parser-text-neutral-primary)]">
@@ -1253,7 +1582,9 @@ export function ComponentDocs() {
                         onClick={() => setActiveComponentId(doc.id)}
                         type="button"
                       >
-                        <span className="min-w-0 flex-1 truncate">{doc.title}</span>
+                        <span className="min-w-0 flex-1 truncate">
+                          {doc.title}
+                        </span>
                       </button>
                     </li>
                   ))}
@@ -1268,5 +1599,5 @@ export function ComponentDocs() {
         </div>
       </div>
     </main>
-  )
+  );
 }
