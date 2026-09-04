@@ -7,6 +7,7 @@ import { AlertDefault } from "@/components/ui/alert-default"
 import { Avatar } from "@/components/ui/avatar"
 import { Button, type ButtonAppearance, type ButtonSize } from "@/components/ui/button"
 import { ButtonFavorite } from "@/components/ui/button-favorite"
+import { Checkbox } from "@/components/ui/checkbox"
 import { Chip } from "@/components/ui/chip"
 import { ConfirmCode } from "@/components/ui/confirm-code"
 import { DateInput } from "@/components/ui/date-input"
@@ -315,6 +316,27 @@ const componentDocs: ComponentDoc[] = [
           <SearchInput error empty placeholder="Поиск" />
           <SearchInput disabled empty placeholder="Поиск" />
         </div>
+      </Canvas>
+    ),
+  },
+  {
+    id: "checkbox",
+    title: "Checkbox",
+    description: "Выбор одного элемента или нескольких элементов в группе.",
+    group: "Forms",
+    source: "src/components/ui/checkbox.tsx",
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <Checkbox />
+          <Checkbox checked />
+          <Checkbox checked indeterminate />
+          <Checkbox error />
+          <Checkbox disabled />
+          <Checkbox skeleton />
+          <Checkbox label={false} size="sm" />
+          <Checkbox checked size="sm" state="hovered" />
+        </Matrix>
       </Canvas>
     ),
   },

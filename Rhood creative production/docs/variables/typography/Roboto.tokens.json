@@ -1,0 +1,42 @@
+{
+  "font-family": {
+    "body": {
+      "$type": "string",
+      "$value": "Roboto",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:7798:6514",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.type": "string"
+      }
+    },
+    "heading": {
+      "$type": "string",
+      "$value": "Merriweather",
+      "$extensions": {
+        "com.figma.variableId": "VariableID:8573:32427",
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ],
+        "com.figma.type": "string"
+      }
+    }
+  },
+  "font-weight": {
+    "medium": {
+      "$type": "number",
+      "$value": 480,
+      "$extensions": {
+        "com.figma.variableId": "VariableID:10245:1274",
+        "com.figma.hiddenFromPublishing": true,
+        "com.figma.scopes": [
+          "ALL_SCOPES"
+        ]
+      }
+    }
+  },
+  "$extensions": {
+    "com.figma.modeName": "Roboto"
+  }
+}
