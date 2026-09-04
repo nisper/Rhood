@@ -1536,6 +1536,13 @@ export function ComponentDocs() {
       <div className="grid lg:grid-cols-[300px_minmax(0,1fr)]">
         <aside className="border-b border-[var(--parser-border-light)] bg-[var(--parser-fill-neutral)] lg:sticky lg:top-14 lg:h-[calc(100svh-56px)] lg:overflow-y-auto lg:border-b-0 lg:border-r">
           <div className="grid gap-4 p-4">
+            <img
+              alt="RHOOD"
+              className="h-6 w-auto"
+              height="24"
+              src="/assets/rhood-logo-primary.svg"
+              width="101"
+            />
             <div className="grid gap-1">
               <p className="text-sm font-semibold uppercase leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
                 Product UI

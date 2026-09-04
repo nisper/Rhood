@@ -46,10 +46,10 @@ function PrototypeHome() {
       <div className="flex flex-col items-start gap-[60px]">
         <img
           alt="RHOOD"
-          className="h-8 w-[136px]"
+          className="h-8 w-auto"
           height="32"
-          src="/assets/rhood-logo.svg"
-          width="136"
+          src="/assets/rhood-logo-primary.svg"
+          width="134"
         />
 
         <nav className="flex flex-col items-start gap-2.5 whitespace-nowrap text-base font-normal leading-6 tracking-[0.15px]">
