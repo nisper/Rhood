@@ -5,7 +5,7 @@ import { AddAnyFile } from "@/components/ui/add-any-file"
 import { AddPhotos } from "@/components/ui/add-photos"
 import { AlertDefault } from "@/components/ui/alert-default"
 import { Avatar } from "@/components/ui/avatar"
-import { Button, type ButtonAppearance, type ButtonSize } from "@/components/ui/button"
+import { Button, type ButtonSize } from "@/components/ui/button"
 import { ButtonFavorite } from "@/components/ui/button-favorite"
 import { Chip } from "@/components/ui/chip"
 import { ConfirmCode } from "@/components/ui/confirm-code"
@@ -64,19 +64,17 @@ type ComponentDoc = {
   id: string
   title: string
   description: string
+  figmaUrl?: string
   group: string
+  properties?: Array<{
+    name: string
+    values: string
+    defaultValue: string
+    description: string
+  }>
   source: string
   render: () => React.ReactNode
 }
-
-const buttonAppearances: ButtonAppearance[] = [
-  "primary",
-  "secondary",
-  "ghost",
-  "destructive",
-  "contrast",
-  "inherit",
-]
 
 const buttonSizes: ButtonSize[] = ["md", "sm", "xsm"]
 const iconButtonAppearances: IconButtonAppearance[] = [
@@ -90,9 +88,11 @@ const iconButtonSizes: IconButtonSize[] = ["md", "sm", "xsm"]
 
 function Canvas({
   children,
+  className,
   tone = "default",
 }: {
   children: React.ReactNode
+  className?: string
   tone?: "default" | "blue" | "dark"
 }) {
   return (
@@ -102,6 +102,7 @@ function Canvas({
         tone === "default" && "bg-white",
         tone === "blue" && "bg-[#c7dbff]",
         tone === "dark" && "bg-[var(--parser-fill-neutral-dark-ultra)]",
+        className,
       )}
     >
       {children}
@@ -123,37 +124,104 @@ function Matrix({
   )
 }
 
+function PreviewItem({
+  label,
+  labelClassName,
+  children,
+}: {
+  label: string
+  labelClassName?: string
+  children: React.ReactNode
+}) {
+  return (
+    <div className="relative flex w-fit flex-col pt-5">
+      <p className={cn(
+        "absolute left-0 top-0 whitespace-nowrap text-xs leading-4 text-[var(--parser-text-neutral-secondary)]",
+        labelClassName,
+      )}>
+        {label}
+      </p>
+      {children}
+    </div>
+  )
+}
+
 const componentDocs: ComponentDoc[] = [
   {
     id: "button",
     title: "Button",
     description: "Единая кнопка из обновленного Figma-компонента.",
+    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10647-1326",
     group: "Actions",
+    properties: [
+      { name: "appearance", values: "primary · secondary · ghost · destructive · inherit · contrast", defaultValue: "primary", description: "Визуальный стиль и допустимый контекст применения." },
+      { name: "size", values: "md · sm · xsm", defaultValue: "md", description: "Размер кнопки, текста и иконок." },
+      { name: "state", values: "default · hover", defaultValue: "default", description: "Визуальное состояние для витрины и тестирования." },
+      { name: "disabled", values: "true · false", defaultValue: "false", description: "Блокирует взаимодействие и применяет disabled-состояние." },
+      { name: "children / label", values: "ReactNode", defaultValue: "Label", description: "Текст действия." },
+      { name: "startIcon", values: "ReactNode · true · false", defaultValue: "true", description: "Иконка слева от label." },
+      { name: "endIcon", values: "ReactNode · true · false", defaultValue: "true", description: "Иконка справа от label." },
+      { name: "counter", values: "true · false", defaultValue: "false", description: "Счётчик рядом с label." },
+    ],
     source: "src/components/ui/button.tsx",
     render: () => (
-      <div className="grid gap-5">
-        {buttonAppearances.map((appearance) => (
-          <div className="grid gap-2" key={appearance}>
-            <h3 className="text-sm font-semibold uppercase text-[var(--parser-text-neutral-secondary)]">
-              {appearance}
-            </h3>
-            <Canvas tone={appearance === "contrast" ? "dark" : "default"}>
-              <Matrix>
-                {buttonSizes.map((size) => (
-                  <Button appearance={appearance} key={`${appearance}-${size}`} size={size}>
-                    Label
-                  </Button>
-                ))}
-                <Button appearance={appearance} counter>
-                  Label
-                </Button>
-                <Button appearance={appearance} disabled>
-                  Label
-                </Button>
-              </Matrix>
-            </Canvas>
-          </div>
-        ))}
+      <div className="grid gap-6">
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">Стиль · appearance</h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              <PreviewItem label="primary"><Button appearance="primary">Label</Button></PreviewItem>
+              <PreviewItem label="secondary"><Button appearance="secondary">Label</Button></PreviewItem>
+              <PreviewItem label="ghost"><Button appearance="ghost">Label</Button></PreviewItem>
+              <PreviewItem label="destructive"><Button appearance="destructive">Label</Button></PreviewItem>
+            </Matrix>
+          </Canvas>
+          <Canvas className="rounded-xl p-4" tone="blue">
+            <div className="text-[var(--parser-text-brand)]">
+              <PreviewItem label="inherit"><Button appearance="inherit">Label</Button></PreviewItem>
+            </div>
+          </Canvas>
+          <Canvas className="rounded-xl p-4" tone="dark">
+            <PreviewItem label="contrast" labelClassName="text-[var(--parser-text-primary-contrast)]"><Button appearance="contrast">Label</Button></PreviewItem>
+          </Canvas>
+        </section>
+
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">Размер · size</h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              {buttonSizes.map((size) => (
+                <PreviewItem key={size} label={size}><Button size={size}>Label</Button></PreviewItem>
+              ))}
+            </Matrix>
+          </Canvas>
+        </section>
+
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">Состояние · state, disabled</h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              <PreviewItem label="default"><Button>Label</Button></PreviewItem>
+              <PreviewItem label="hover"><Button state="hover">Label</Button></PreviewItem>
+              <PreviewItem label="disabled"><Button disabled>Label</Button></PreviewItem>
+            </Matrix>
+          </Canvas>
+          <Canvas className="rounded-xl p-4" tone="dark">
+            <PreviewItem label="contrast + disabled" labelClassName="text-[var(--parser-text-primary-contrast)]"><Button appearance="contrast" disabled>Label</Button></PreviewItem>
+          </Canvas>
+        </section>
+
+        <section className="grid gap-3">
+          <h3 className="text-sm font-semibold leading-5">Состав · startIcon, endIcon, counter</h3>
+          <Canvas className="rounded-xl p-4">
+            <Matrix>
+              <PreviewItem label="без иконок"><Button endIcon={false} startIcon={false}>Label</Button></PreviewItem>
+              <PreviewItem label="startIcon"><Button endIcon={false}>Label</Button></PreviewItem>
+              <PreviewItem label="endIcon"><Button startIcon={false}>Label</Button></PreviewItem>
+              <PreviewItem label="counter"><Button counter endIcon={false} startIcon={false}>Label</Button></PreviewItem>
+            </Matrix>
+          </Canvas>
+        </section>
       </div>
     ),
   },
@@ -1057,6 +1125,21 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
         <dl className="grid gap-1 text-sm leading-5">
           <dt className="font-semibold text-[var(--parser-text-neutral-primary)]">Source</dt>
           <dd className="text-[var(--parser-text-neutral-secondary)]">{doc.source}</dd>
+          {doc.figmaUrl && (
+            <>
+              <dt className="mt-2 font-semibold text-[var(--parser-text-neutral-primary)]">Figma</dt>
+              <dd>
+                <a
+                  className="text-[var(--parser-text-link)] underline underline-offset-2 hover:text-[var(--parser-text-link-hovered)]"
+                  href={doc.figmaUrl}
+                  rel="noreferrer"
+                  target="_blank"
+                >
+                  Открыть component set
+                </a>
+              </dd>
+            </>
+          )}
         </dl>
       </header>
 
@@ -1064,6 +1147,34 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
         <h2 className="text-xl font-semibold leading-7 tracking-normal">Preview</h2>
         {doc.render()}
       </section>
+
+      {doc.properties && (
+        <section className="grid gap-4">
+          <h2 className="text-xl font-semibold leading-7 tracking-normal">Свойства</h2>
+          <div className="overflow-x-auto rounded-xl border border-[var(--parser-border-light)]">
+            <table className="w-full min-w-[680px] border-collapse text-left text-sm leading-5">
+              <thead className="bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-secondary)]">
+                <tr>
+                  <th className="px-4 py-3 font-semibold">Свойство</th>
+                  <th className="px-4 py-3 font-semibold">Значения</th>
+                  <th className="px-4 py-3 font-semibold">По умолчанию</th>
+                  <th className="px-4 py-3 font-semibold">Назначение</th>
+                </tr>
+              </thead>
+              <tbody>
+                {doc.properties.map((property) => (
+                  <tr className="border-t border-[var(--parser-border-light)]" key={property.name}>
+                    <td className="px-4 py-3 font-mono text-[var(--parser-text-neutral-primary)]">{property.name}</td>
+                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">{property.values}</td>
+                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">{property.defaultValue}</td>
+                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">{property.description}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      )}
     </article>
   )
 }
