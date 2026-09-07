@@ -1,22 +1,16 @@
-import * as React from "react"
-
+import { List, type ListProps } from "@/components/ui/list"
 import { ListItemSmall } from "@/components/ui/list-item-small"
-import { cn } from "@/lib/utils"
 
-type ListSmallProps = React.ComponentProps<"div">
+type ListSmallProps = ListProps
 
-/**
- * Parser small list matching the Figma `list small` component set.
- */
-function ListSmall({ className, ...props }: ListSmallProps) {
-  return (
-    <div className={cn("flex w-fit flex-col items-start", className)} {...props}>
-      <ListItemSmall className="w-[260px]" selected />
-      <ListItemSmall className="w-[260px]" state="hovered" />
-      <ListItemSmall className="w-[260px]" />
-      <ListItemSmall className="w-[260px]" />
-    </div>
-  )
+/** Compatibility example. Use List with ListItem dense in new compositions. */
+function ListSmall({ children, ...props }: ListSmallProps) {
+  return <List {...props}>{children ?? <>
+    <ListItemSmall selected />
+    <ListItemSmall state="hovered" />
+    <ListItemSmall />
+    <ListItemSmall />
+  </>}</List>
 }
 
 export { ListSmall }

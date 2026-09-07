@@ -57,3 +57,5 @@
 | `351:2706` | `formHelperText` | `src/components/ui/form-helper-text.tsx` / `FormHelperText` |
 
 MenuSingleSelect и MenuMultiselect сохранены как совместимые обёртки над Menu. На витрине контейнер, оба типа пунктов и разделитель представлены на общей странице Menu.
+
+List и ListItem представлены на общей странице List. Актуальный источник: `Rhood creative production/docs/components/list-item.md` (Figma `654:8330`). ListItemSmall сохранён как обёртка над ListItem с `dense=true`; ListSmall — совместимая сборка компактных строк, без отдельной страницы витрины. `paddingX` заменяет обратный по смыслу `disGutters`, старое свойство поддерживается.

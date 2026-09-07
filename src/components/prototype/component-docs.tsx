@@ -1,3 +1,4 @@
+import { ListExamples } from "./list-examples";
 import { MenuExamples } from "./menu-examples";
 import "./component-docs.css";
 import * as React from "react";
@@ -25,10 +26,6 @@ import {
 import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
 import { LikeButton } from "@/components/ui/like-button";
-import { List } from "@/components/ui/list";
-import { ListItem } from "@/components/ui/list-item";
-import { ListItemSmall } from "@/components/ui/list-item-small";
-import { ListSmall } from "@/components/ui/list-small";
 import { MainHeader } from "@/components/ui/main-header";
 import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
@@ -969,58 +966,11 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "list",
     title: "List",
-    description: "Список.",
-    group: "Data display",
-    source: "src/components/ui/list.tsx",
-    render: () => (
-      <Canvas>
-        <List />
-      </Canvas>
-    ),
-  },
-  {
-    id: "list-small",
-    title: "ListSmall",
-    description: "Компактный список.",
-    group: "Data display",
-    source: "src/components/ui/list-small.tsx",
-    render: () => (
-      <Canvas>
-        <ListSmall />
-      </Canvas>
-    ),
-  },
-  {
-    id: "list-item",
-    title: "ListItem",
-    description: "Элемент списка.",
-    group: "Data display",
-    source: "src/components/ui/list-item.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[460px] gap-2">
-          <ListItem />
-          <ListItem selected />
-          <ListItem state="hovered" />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "list-item-small",
-    title: "ListItemSmall",
-    description: "Компактный элемент списка.",
-    group: "Data display",
-    source: "src/components/ui/list-item-small.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[460px] gap-2">
-          <ListItemSmall />
-          <ListItemSmall selected />
-          <ListItemSmall state="hovered" />
-        </div>
-      </Canvas>
-    ),
+    description: "Навигационный список с обычными и компактными строками ListItem.",
+    group: "Navigation",
+    source: "src/components/ui/list.tsx · src/components/ui/list-item.tsx",
+    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=654-8330",
+    render: () => <ListExamples />,
   },
   {
     id: "table",
@@ -1305,6 +1255,7 @@ const componentDocs: ComponentDoc[] = [
 
 function getActiveComponentId() {
   const id = new URLSearchParams(window.location.search).get("component") ?? componentDocs[0].id;
+  if (["list-small", "list-item", "list-item-small"].includes(id)) return "list";
   return ["menu-divider", "menu-single-select", "menu-multiselect", "menu-item-single-select", "menu-item-multiselect"].includes(id) ? "menu" : id;
 }
 
@@ -1353,7 +1304,7 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
 
       <div className="mx-auto grid max-w-[1028px] gap-8 px-6 py-5">
         <section className="grid min-w-0 gap-4">
-          {doc.id !== "menu" && (
+          {!["menu", "list"].includes(doc.id) && (
             <h2 className="font-['Rhood_Inter',sans-serif] text-xl font-semibold leading-7">
               Preview
             </h2>
@@ -1422,7 +1373,7 @@ export function ComponentDocs() {
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredDocs = componentDocs.filter((doc) =>
-    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""}`
+    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem ListSmall ListItemSmall" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""}`
       .toLowerCase()
       .includes(normalizedQuery),
   );
