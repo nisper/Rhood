@@ -10,11 +10,9 @@
 | `9929:4765` | `ListItemSmall` | `src/components/ui/list-item-small.tsx` / `ListItemSmall` |
 | `435:1112` | `MenuDivider` | `src/components/ui/menu-divider.tsx` / `MenuDivider` |
 | `433:4194` | `MenuItemSingleSelect` | `src/components/ui/menu-item-single-select.tsx` / `MenuItemSingleSelect` |
-| `436:1556` | `MenuSingleSelect` | `src/components/ui/menu-single-select.tsx` / `MenuSingleSelect` |
+| `436:1556` | `Menu` | `src/components/ui/menu.tsx` / `Menu` |
 | `10471:2487` | `MenuItemMultiselect` | `src/components/ui/menu-item-multiselect.tsx` / `MenuItemMultiselect` |
 | `1088:155` | `MenuMultiselect` | `src/components/ui/menu-multiselect.tsx` / `MenuMultiselect` |
-| `3210:156` | `MenuItemAnchor` | `src/components/ui/menu-item-anchor.tsx` / `MenuItemAnchor` |
-| `3210:358` | `MenuAnchor` | `src/components/ui/menu-anchor.tsx` / `MenuAnchor` |
 | `746:1851` | `Tooltip` | `src/components/ui/tooltip.tsx` / `Tooltip` |
 | `913:6350` | `OnboardingTooltip` | `src/components/ui/onboarding-tooltip.tsx` / `OnboardingTooltip` |
 | `10389:13275` | `helpCenter` | `src/components/ui/help-center.tsx` / `HelpCenter` |
@@ -57,3 +55,5 @@
 | `574:4467` | `DateInput` | `src/components/ui/date-input.tsx` / `DateInput` |
 | `399:2325` | `formControlLabel` | `src/components/ui/form-control-label.tsx` / `FormControlLabel` |
 | `351:2706` | `formHelperText` | `src/components/ui/form-helper-text.tsx` / `FormHelperText` |
+
+MenuSingleSelect и MenuMultiselect сохранены как совместимые обёртки над Menu. На витрине контейнер, оба типа пунктов и разделитель представлены на общей странице Menu.

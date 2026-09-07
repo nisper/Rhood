@@ -1,13 +1,14 @@
 import * as React from "react"
-import { Square, SquareCheckBig, SquareMinus, Star } from "lucide-react"
+import { Square, SquareCheck, SquareMinus, Star } from "lucide-react"
 
 import { Chip } from "@/components/ui/chip"
 import { cn } from "@/lib/utils"
 
 type MenuItemMultiselectState = "default" | "hovered"
-type MenuItemMultiselectChecked = "none" | "true" | "indeterminate"
+type MenuItemMultiselectChecked = boolean | "none" | "true" | "indeterminate"
 
 type MenuItemMultiselectProps = React.ComponentProps<"div"> & {
+  icon?: boolean
   caption?: boolean
   checked?: MenuItemMultiselectChecked
   disabled?: boolean
@@ -35,20 +36,12 @@ function getBackground({
   return "bg-transparent"
 }
 
-function getTitleTone({
-  disabled,
-}: Pick<MenuItemMultiselectProps, "disabled">) {
-  return disabled
-    ? "text-[color:var(--parser-text-disabled)]"
-    : "text-[color:var(--parser-text-neutral-primary)]"
+function getTitleTone() {
+  return "text-[color:var(--parser-text-neutral-primary)]"
 }
 
-function getCaptionTone({
-  disabled,
-}: Pick<MenuItemMultiselectProps, "disabled">) {
-  return disabled
-    ? "text-[color:var(--parser-text-disabled)]"
-    : "text-[color:var(--parser-text-neutral-secondary)]"
+function getCaptionTone() {
+  return "text-[color:var(--parser-text-neutral-secondary)]"
 }
 
 function MenuCheckbox({
@@ -59,10 +52,10 @@ function MenuCheckbox({
   disabled?: boolean
 }) {
   const iconClassName = cn(
-    "size-4",
+    "size-5",
     checked === "true" || checked === "indeterminate"
       ? "text-[var(--parser-fill-brand)]"
-      : "text-[var(--parser-text-neutral-secondary)]",
+      : "text-[var(--parser-border-neutral)]",
   )
 
   return (
@@ -73,7 +66,7 @@ function MenuCheckbox({
       )}
     >
       {checked === "true" ? (
-        <SquareCheckBig aria-hidden="true" className={iconClassName} strokeWidth={2} />
+        <SquareCheck aria-hidden="true" className={iconClassName} strokeWidth={2} />
       ) : checked === "indeterminate" ? (
         <SquareMinus aria-hidden="true" className={iconClassName} strokeWidth={2} />
       ) : (
@@ -84,22 +77,24 @@ function MenuCheckbox({
 }
 
 function MenuItemMultiselect({
+  children = "Menu Item",
+  icon,
   caption = false,
   checked,
   className,
   disabled = false,
-  rightSlot = false,
-  rightSlotChip = false,
-  rightSlotText = false,
-  secondaryText = false,
+  rightSlot = true,
+  rightSlotChip = true,
+  rightSlotText = true,
+  secondaryText = true,
   selected = false,
-  startIcon = false,
+  startIcon = true,
   state = "default",
   ...props
 }: MenuItemMultiselectProps) {
-  const resolvedChecked: MenuItemMultiselectChecked = checked ?? (selected ? "true" : "none")
+  const resolvedChecked: MenuItemMultiselectChecked = typeof checked === "boolean" ? (checked ? "true" : "none") : checked ?? (selected ? "true" : "none")
   const resolvedRightSlotText = rightSlotText || caption
-  const rightSlotVisible = rightSlot || resolvedRightSlotText || rightSlotChip
+  const rightSlotVisible = rightSlot && (resolvedRightSlotText || rightSlotChip)
   const disabledOpacityClass = "opacity-[var(--opacity-disabled,0.5)]"
 
   return (
@@ -107,47 +102,51 @@ function MenuItemMultiselect({
       className={cn(
         "flex w-[360px] items-start gap-2 rounded-lg px-3 py-2",
         getBackground({ disabled, state }),
+        !disabled && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
         className,
       )}
       {...props}
+      aria-disabled={disabled || undefined}
+      onClick={disabled ? undefined : props.onClick}
+      onKeyDown={disabled ? undefined : props.onKeyDown}
     >
-      <div className="flex h-5 shrink-0 items-center justify-center pt-0.5">
+      <div className="flex h-5 shrink-0 items-center justify-center">
         <MenuCheckbox checked={resolvedChecked} disabled={disabled} />
       </div>
 
-      {startIcon && (
+      {(icon ?? startIcon) && (
         <span
           className={cn(
             "flex size-5 shrink-0 items-center justify-center text-[var(--parser-text-neutral-primary)]",
             disabled && disabledOpacityClass,
           )}
         >
-          <Star aria-hidden="true" className="size-4" strokeWidth={2} />
+          <Star aria-hidden="true" className="size-5" strokeWidth={2} />
         </span>
       )}
 
       <div
         className={cn(
           "flex min-w-px flex-1 flex-col items-start",
-          secondaryText && "gap-0.5 justify-center",
+          secondaryText && "justify-center",
           disabled && disabledOpacityClass,
         )}
       >
         <span
           className={cn(
             "w-full text-sm leading-5 tracking-[0.15px]",
-            getTitleTone({ disabled }),
+            getTitleTone(),
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
-          Menu Item
+          {children}
         </span>
 
         {secondaryText && (
           <span
             className={cn(
               "w-full text-sm leading-[1.43] tracking-[0.0238px]",
-              getCaptionTone({ disabled }),
+              getCaptionTone(),
             )}
             style={{ fontVariationSettings: "'wdth' 100" }}
           >
@@ -167,7 +166,7 @@ function MenuItemMultiselect({
             <span
               className={cn(
                 "whitespace-nowrap text-xs leading-[1.32] tracking-[0.3px]",
-                getCaptionTone({ disabled }),
+                getCaptionTone(),
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}
             >
@@ -180,7 +179,7 @@ function MenuItemMultiselect({
               appearance="outlined"
               color="brand"
               icon={false}
-              propDelete
+              propDelete={false}
               size="sm"
               thumbnail={false}
             >

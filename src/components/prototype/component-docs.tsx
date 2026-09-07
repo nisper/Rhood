@@ -1,3 +1,4 @@
+import { MenuExamples } from "./menu-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Search } from "lucide-react";
@@ -30,13 +31,7 @@ import { ListItemSmall } from "@/components/ui/list-item-small";
 import { ListSmall } from "@/components/ui/list-small";
 import { MainHeader } from "@/components/ui/main-header";
 import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button";
-import { MenuAnchor } from "@/components/ui/menu-anchor";
-import { MenuDivider } from "@/components/ui/menu-divider";
-import { MenuItemAnchor } from "@/components/ui/menu-item-anchor";
-import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
-import { MenuMultiselect } from "@/components/ui/menu-multiselect";
-import { MenuSingleSelect } from "@/components/ui/menu-single-select";
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip";
 import { PageTitle } from "@/components/ui/page-title";
 import { Pagination } from "@/components/ui/pagination";
@@ -826,100 +821,13 @@ const componentDocs: ComponentDoc[] = [
     ),
   },
   {
-    id: "menu-divider",
-    title: "MenuDivider",
-    description: "Разделитель меню.",
+    id: "menu",
+    title: "Menu",
+    description: "Выпадающий контейнер с пунктами одиночного и множественного выбора и разделителями.",
     group: "Navigation",
-    source: "src/components/ui/menu-divider.tsx",
-    render: () => (
-      <Canvas>
-        <MenuDivider />
-      </Canvas>
-    ),
-  },
-  {
-    id: "menu-single-select",
-    title: "MenuSingleSelect",
-    description: "Меню одиночного выбора.",
-    group: "Navigation",
-    source: "src/components/ui/menu-single-select.tsx",
-    render: () => (
-      <Canvas>
-        <MenuSingleSelect />
-      </Canvas>
-    ),
-  },
-  {
-    id: "menu-multiselect",
-    title: "MenuMultiselect",
-    description: "Меню множественного выбора.",
-    group: "Navigation",
-    source: "src/components/ui/menu-multiselect.tsx",
-    render: () => (
-      <Canvas>
-        <MenuMultiselect />
-      </Canvas>
-    ),
-  },
-  {
-    id: "menu-anchor",
-    title: "MenuAnchor",
-    description: "Навигационное меню.",
-    group: "Navigation",
-    source: "src/components/ui/menu-anchor.tsx",
-    render: () => (
-      <Canvas>
-        <MenuAnchor />
-      </Canvas>
-    ),
-  },
-  {
-    id: "menu-item-single-select",
-    title: "MenuItemSingleSelect",
-    description: "Пункт меню одиночного выбора.",
-    group: "Navigation",
-    source: "src/components/ui/menu-item-single-select.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[420px] gap-2">
-          <MenuItemSingleSelect secondaryText />
-          <MenuItemSingleSelect rightSlot rightSlotChip selected />
-          <MenuItemSingleSelect disabled />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "menu-item-multiselect",
-    title: "MenuItemMultiselect",
-    description: "Пункт меню множественного выбора.",
-    group: "Navigation",
-    source: "src/components/ui/menu-item-multiselect.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[420px] gap-2">
-          <MenuItemMultiselect />
-          <MenuItemMultiselect selected />
-          <MenuItemMultiselect disabled />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "menu-item-anchor",
-    title: "MenuItemAnchor",
-    description: "Навигационный пункт меню.",
-    group: "Navigation",
-    source: "src/components/ui/menu-item-anchor.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[420px] gap-2">
-          <MenuItemAnchor />
-          <MenuItemAnchor selected secondaryText />
-          <MenuItemAnchor caption state="hovered" />
-        </div>
-      </Canvas>
-    ),
+    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=436-1556",
+    source: "src/components/ui/menu.tsx",
+    render: () => <MenuExamples />,
   },
   {
     id: "tab",
@@ -1396,10 +1304,8 @@ const componentDocs: ComponentDoc[] = [
 ];
 
 function getActiveComponentId() {
-  return (
-    new URLSearchParams(window.location.search).get("component") ??
-    componentDocs[0].id
-  );
+  const id = new URLSearchParams(window.location.search).get("component") ?? componentDocs[0].id;
+  return ["menu-divider", "menu-single-select", "menu-multiselect", "menu-item-single-select", "menu-item-multiselect"].includes(id) ? "menu" : id;
 }
 
 function setActiveComponentId(id: string) {
@@ -1447,9 +1353,11 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
 
       <div className="mx-auto grid max-w-[1028px] gap-8 px-6 py-5">
         <section className="grid min-w-0 gap-4">
-          <h2 className="font-['Rhood_Inter',sans-serif] text-xl font-semibold leading-7">
-            Preview
-          </h2>
+          {doc.id !== "menu" && (
+            <h2 className="font-['Rhood_Inter',sans-serif] text-xl font-semibold leading-7">
+              Preview
+            </h2>
+          )}
           <div className="min-w-0 overflow-x-auto">{doc.render()}</div>
         </section>
 
@@ -1514,7 +1422,7 @@ export function ComponentDocs() {
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredDocs = componentDocs.filter((doc) =>
-    `${doc.title} ${doc.group} ${doc.source}`
+    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""}`
       .toLowerCase()
       .includes(normalizedQuery),
   );
@@ -1579,7 +1487,7 @@ function ComponentNavigation({ activeId, groups }: {
                   onClick={() => setActiveComponentId(doc.id)}
                   type="button"
                 >
-                  <MenuItemSingleSelect className="w-full" selected={doc.id === activeId} startIcon={false}>
+                  <MenuItemSingleSelect className="w-full" selected={doc.id === activeId} startIcon={false} secondaryText={false} rightSlot={false}>
                     {doc.title}
                   </MenuItemSingleSelect>
                 </button>

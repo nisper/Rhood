@@ -19,10 +19,8 @@ import { TableCell } from "@/components/ui/table-cell"
 import { Table } from "@/components/ui/table"
 import { ProgressLinear } from "@/components/ui/progress-linear"
 import { MenuDivider } from "@/components/ui/menu-divider"
-import { MenuItemAnchor } from "@/components/ui/menu-item-anchor"
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect"
-import { MenuAnchor } from "@/components/ui/menu-anchor"
 import { MenuSingleSelect } from "@/components/ui/menu-single-select"
 import { MenuMultiselect } from "@/components/ui/menu-multiselect"
 import { Indicator } from "@/components/ui/indicator"
@@ -139,8 +137,6 @@ export function PrototypeShell() {
   const tableExamples = ["default"] as const
   const menuSingleSelectExamples = ["default"] as const
   const menuMultiselectExamples = ["default"] as const
-  const menuAnchorExamples = ["default"] as const
-  const menuItemAnchorExamples = ["default", "selected", "hovered"] as const
   const menuItemSingleSelectStates = ["default", "hovered", "selected", "disabled"] as const
   const menuItemMultiselectStates = ["default", "hovered", "selected", "disabled"] as const
   const indicatorColors = ["primary", "error", "info", "success", "warning"] as const
@@ -831,43 +827,7 @@ export function PrototypeShell() {
             </div>
           </section>
 
-          <section className="grid gap-3">
-            <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
-              menu item anchor
-            </h4>
-            <div className="grid gap-6 rounded-xl bg-white p-4">
-              {menuItemAnchorExamples.map((example) => (
-                <div key={example} className="grid gap-3">
-                  <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
-                    {example}
-                  </div>
-                  <MenuItemAnchor
-                    caption={example === "hovered"}
-                    secondaryText={example !== "default"}
-                    selected={example === "selected"}
-                    startIcon={false}
-                    state={example === "hovered" ? "hovered" : "default"}
-                  />
-                </div>
-              ))}
-            </div>
-          </section>
 
-          <section className="grid gap-3">
-            <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
-              menu anchor
-            </h4>
-            <div className="grid gap-6 rounded-xl bg-white p-4">
-              {menuAnchorExamples.map((example) => (
-                <div key={example} className="grid gap-3">
-                  <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
-                    {example}
-                  </div>
-                  <MenuAnchor />
-                </div>
-              ))}
-            </div>
-          </section>
 
           <section className="grid gap-3">
             <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">

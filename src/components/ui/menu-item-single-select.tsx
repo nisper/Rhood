@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 type MenuItemSingleSelectState = "default" | "hovered"
 
 type MenuItemSingleSelectProps = React.ComponentProps<"div"> & {
+  icon?: boolean
   chip?: boolean
   disabled?: boolean
   rightSlot?: boolean
@@ -40,14 +41,15 @@ function getBackground({
 
 function MenuItemSingleSelect({
   chip,
+  icon,
   children = "Menu Item",
   className,
   disabled = false,
-  rightSlot = false,
-  rightSlotChip = false,
-  rightSlotText = false,
-  secondaryText = false,
-  selected = false,
+  rightSlot = true,
+  rightSlotChip = true,
+  rightSlotText = true,
+  secondaryText = true,
+  selected = true,
   startIcon = true,
   state = "default",
   ...props
@@ -61,25 +63,29 @@ function MenuItemSingleSelect({
       className={cn(
         "flex w-[360px] items-center gap-2 rounded-lg px-3 py-2",
         getBackground({ disabled, selected, state }),
+        !disabled && !selected && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
         className,
       )}
       {...props}
+      aria-disabled={disabled || undefined}
+      onClick={disabled ? undefined : props.onClick}
+      onKeyDown={disabled ? undefined : props.onKeyDown}
     >
-      {startIcon && (
+      {(icon ?? startIcon) && (
         <span
           className={cn(
             "flex size-5 shrink-0 items-center justify-center text-[var(--parser-text-neutral-primary)]",
             disabled && disabledOpacityClass,
           )}
         >
-          <Star aria-hidden="true" className="size-4" strokeWidth={2} />
+          <Star aria-hidden="true" className="size-5" strokeWidth={2} />
         </span>
       )}
 
       <span
         className={cn(
           "flex min-w-px flex-1 flex-col items-start font-normal",
-          selected && state === "default" && "justify-center gap-0.5",
+          selected && state === "default" && "justify-center",
           disabled && disabledOpacityClass,
         )}
       >
@@ -121,7 +127,7 @@ function MenuItemSingleSelect({
               appearance="outlined"
               color="brand"
               icon={false}
-              propDelete
+              propDelete={false}
               size="sm"
               thumbnail={false}
             >
