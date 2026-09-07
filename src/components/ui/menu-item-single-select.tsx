@@ -40,6 +40,7 @@ function getBackground({
 
 function MenuItemSingleSelect({
   chip,
+  children = "Menu Item",
   className,
   disabled = false,
   rightSlot = false,
@@ -86,7 +87,7 @@ function MenuItemSingleSelect({
           className="w-full text-sm leading-5 tracking-[0.15px] text-[color:var(--parser-text-neutral-primary)]"
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
-          Menu Item
+          {children}
         </span>
 
         {secondaryText && (

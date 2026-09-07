@@ -1,3 +1,4 @@
+import "./component-docs.css";
 import * as React from "react";
 import { Search } from "lucide-react";
 
@@ -1419,93 +1420,83 @@ function groupDocs(items: ComponentDoc[]) {
 
 function ComponentPage({ doc }: { doc: ComponentDoc }) {
   return (
-    <article className="grid min-w-0 gap-8">
-      <header className="grid gap-3 border-b border-[var(--parser-border-light)] pb-8">
-        <p className="text-sm font-semibold uppercase leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-          Components
-        </p>
-        <div className="grid gap-2">
-          <h1 className="text-4xl font-semibold leading-[46px] tracking-normal">
-            {doc.title}
-          </h1>
-          <p className="max-w-[720px] text-base leading-6 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-            {doc.description}
-          </p>
-        </div>
-        <dl className="grid gap-1 text-sm leading-5">
-          <dt className="font-semibold text-[var(--parser-text-neutral-primary)]">
-            Source
-          </dt>
-          <dd className="text-[var(--parser-text-neutral-secondary)]">
-            {doc.source}
-          </dd>
+    <article className="min-w-0">
+      <header className="bg-[var(--parser-surface-under-islands)] px-6 py-10">
+        <div className="mx-auto grid max-w-[980px] gap-5">
+          <div className="grid gap-2">
+            <h1 className="break-words font-['Unbounded',sans-serif] text-3xl font-bold leading-[1.16] sm:text-4xl">
+              {doc.title}
+            </h1>
+            <p className="font-['Rhood_Inter',sans-serif] text-base leading-6 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
+              {doc.description}
+            </p>
+          </div>
           {doc.figmaUrl && (
-            <>
-              <dt className="mt-2 font-semibold text-[var(--parser-text-neutral-primary)]">
-                Figma
-              </dt>
-              <dd>
-                <a
-                  className="text-[var(--parser-text-link)] underline underline-offset-2 hover:text-[var(--parser-text-link-hovered)]"
-                  href={doc.figmaUrl}
-                  rel="noreferrer"
-                  target="_blank"
-                >
-                  Открыть component set
-                </a>
-              </dd>
-            </>
+            <a
+              className="flex w-fit items-center gap-1 rounded text-base leading-6 hover:text-[var(--parser-text-link-hovered)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+              href={doc.figmaUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <img alt="" className="size-6 shrink-0" src="/assets/figma.svg" width="24" height="24" />
+              {doc.title} в Figma
+            </a>
           )}
-        </dl>
+        </div>
       </header>
 
-      <section className="grid gap-4">
-        <h2 className="text-xl font-semibold leading-7 tracking-normal">
-          Preview
-        </h2>
-        {doc.render()}
-      </section>
-
-      {doc.properties && (
-        <section className="grid gap-4">
-          <h2 className="text-xl font-semibold leading-7 tracking-normal">
-            Свойства
+      <div className="mx-auto grid max-w-[1028px] gap-8 px-6 py-5">
+        <section className="grid min-w-0 gap-4">
+          <h2 className="font-['Rhood_Inter',sans-serif] text-xl font-semibold leading-7">
+            Preview
           </h2>
-          <div className="overflow-x-auto rounded-xl border border-[var(--parser-border-light)]">
-            <table className="w-full min-w-[680px] border-collapse text-left text-sm leading-5">
-              <thead className="bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-secondary)]">
-                <tr>
-                  <th className="px-4 py-3 font-semibold">Свойство</th>
-                  <th className="px-4 py-3 font-semibold">Значения</th>
-                  <th className="px-4 py-3 font-semibold">По умолчанию</th>
-                  <th className="px-4 py-3 font-semibold">Назначение</th>
-                </tr>
-              </thead>
-              <tbody>
-                {doc.properties.map((property) => (
-                  <tr
-                    className="border-t border-[var(--parser-border-light)]"
-                    key={property.name}
-                  >
-                    <td className="px-4 py-3 font-mono text-[var(--parser-text-neutral-primary)]">
-                      {property.name}
-                    </td>
-                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
-                      {property.values}
-                    </td>
-                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
-                      {property.defaultValue}
-                    </td>
-                    <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
-                      {property.description}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <div className="min-w-0 overflow-x-auto">{doc.render()}</div>
         </section>
-      )}
+
+        {doc.properties && (
+          <section className="grid gap-4">
+            <h2 className="text-xl font-semibold leading-7 tracking-normal">
+              Свойства
+            </h2>
+            <div className="overflow-x-auto rounded-xl border border-[var(--parser-border-light)]">
+              <table className="w-full min-w-[680px] border-collapse text-left text-sm leading-5">
+                <thead className="bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-secondary)]">
+                  <tr>
+                    <th className="px-4 py-3 font-semibold">Свойство</th>
+                    <th className="px-4 py-3 font-semibold">Значения</th>
+                    <th className="px-4 py-3 font-semibold">По умолчанию</th>
+                    <th className="px-4 py-3 font-semibold">Назначение</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {doc.properties.map((property) => (
+                    <tr
+                      className="border-t border-[var(--parser-border-light)]"
+                      key={property.name}
+                    >
+                      <td className="px-4 py-3 font-mono text-[var(--parser-text-neutral-primary)]">
+                        {property.name}
+                      </td>
+                      <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
+                        {property.values}
+                      </td>
+                      <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
+                        {property.defaultValue}
+                      </td>
+                      <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
+                        {property.description}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </section>
+        )}
+        <p className="break-words text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
+          Source: <code>{doc.source}</code>
+        </p>
+      </div>
     </article>
   );
 }
@@ -1532,79 +1523,74 @@ export function ComponentDocs() {
     componentDocs.find((doc) => doc.id === activeId) ?? componentDocs[0];
 
   return (
-    <main className="min-h-[calc(100svh-56px)] bg-white text-[var(--parser-text-neutral-primary)]">
-      <div className="grid lg:grid-cols-[300px_minmax(0,1fr)]">
-        <aside className="border-b border-[var(--parser-border-light)] bg-[var(--parser-fill-neutral)] lg:sticky lg:top-14 lg:h-[calc(100svh-56px)] lg:overflow-y-auto lg:border-b-0 lg:border-r">
-          <div className="grid gap-4 p-4">
-            <img
-              alt="RHOOD"
-              className="h-6 w-auto"
-              height="24"
-              src="/assets/rhood-logo-primary.svg"
-              width="101"
-            />
-            <div className="grid gap-1">
-              <p className="text-sm font-semibold uppercase leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-                Product UI
-              </p>
-              <h1 className="text-lg font-semibold leading-6 tracking-normal">
-                Компоненты
-              </h1>
-              <p className="text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
-                {componentDocs.length} компонентов
-              </p>
-            </div>
-
-            <label className="flex h-10 items-center gap-2 rounded-lg border border-[var(--parser-border-light)] bg-white px-3">
-              <Search
-                aria-hidden="true"
-                className="size-4 text-[var(--parser-text-neutral-secondary)]"
-                strokeWidth={2}
-              />
-              <input
-                className="min-w-0 flex-1 bg-transparent text-sm leading-5 outline-none placeholder:text-[var(--parser-text-neutral-secondary)]"
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Поиск компонента"
-                value={query}
-              />
-            </label>
-          </div>
-
-          <nav className="grid gap-5 px-4 pb-5">
-            {Object.entries(groupedDocs).map(([group, items]) => (
-              <section className="grid gap-1" key={group}>
-                <h2 className="px-2 text-xs font-semibold uppercase leading-4 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-                  {group}
-                </h2>
-                <ul className="grid gap-0.5">
-                  {items.map((doc) => (
-                    <li key={doc.id}>
-                      <button
-                        className={cn(
-                          "flex w-full cursor-pointer items-center rounded-lg px-2 py-2 text-left text-sm leading-5 transition-colors hover:bg-white",
-                          doc.id === activeDoc.id
-                            ? "bg-white font-semibold text-[var(--parser-text-neutral-primary)] shadow-sm"
-                            : "text-[var(--parser-text-neutral-secondary)]",
-                        )}
-                        onClick={() => setActiveComponentId(doc.id)}
-                        type="button"
-                      >
-                        <span className="min-w-0 flex-1 truncate">
-                          {doc.title}
-                        </span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </nav>
-        </aside>
-
-        <div className="min-w-0 px-5 py-8 md:px-8 xl:px-10">
-          <ComponentPage doc={activeDoc} />
+    <div className="min-h-svh bg-[var(--parser-surface-bg)] text-[var(--parser-text-neutral-primary)]">
+      <header className="sticky top-0 z-50 flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-[var(--parser-border-light)] bg-[var(--parser-surface-bg)] px-6 py-2">
+        <div className="flex min-w-0 flex-1 items-center gap-4">
+          <a aria-label="RHOOD — все разделы" className="shrink-0 rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]" href={window.location.pathname}>
+            <img alt="RHOOD" className="h-[30px] w-[118px]" height="30" src="/assets/design-system-logo.svg" width="118" />
+          </a>
+          <span className="whitespace-nowrap text-base leading-6">Design system</span>
         </div>
+        <label className="flex h-9 w-full items-center gap-2 rounded-lg border border-[var(--parser-border-light)] px-3 focus-within:border-[var(--parser-border-focus)] sm:w-[298px]">
+          <Search aria-hidden="true" className="size-5 shrink-0 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} />
+          <input
+            aria-label="Найти компонент"
+            className="min-w-0 flex-1 bg-transparent text-sm leading-5 outline-none placeholder:text-[var(--parser-text-neutral-secondary)]"
+            onChange={(event) => setQuery(event.target.value)}
+            placeholder="Найти компонент"
+            type="search"
+            value={query}
+          />
+        </label>
+      </header>
+      <div className="grid md:grid-cols-[250px_minmax(0,1fr)]">
+        <aside className="border-b border-[var(--parser-border-light)] md:sticky md:top-[53px] md:h-[calc(100svh-53px)] md:overflow-y-auto md:border-b-0 md:border-r">
+          <details className="group md:hidden" open={normalizedQuery ? true : undefined}>
+            <summary className="cursor-pointer px-6 py-3 text-sm">Компоненты — {activeDoc.title}</summary>
+            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} />
+          </details>
+          <div className="hidden md:block">
+            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} />
+          </div>
+        </aside>
+        <main className="min-w-0">
+          <ComponentPage doc={activeDoc} key={activeDoc.id} />
+        </main>
       </div>
-    </main>
+    </div>
+  );
+}
+
+function ComponentNavigation({ activeId, groups }: {
+  activeId: string;
+  groups: Record<string, ComponentDoc[]>;
+}) {
+  return (
+    <nav aria-label="Компоненты" className="grid gap-5 px-6 py-4">
+      {Object.entries(groups).map(([group, items]) => (
+        <section key={group}>
+          <h2 className="text-xs font-normal uppercase leading-8 tracking-[0.83px] text-[var(--parser-text-neutral-secondary)]">{group}</h2>
+          <ul>
+            {items.map((doc) => (
+              <li key={doc.id}>
+                <button
+                  aria-current={doc.id === activeId ? "page" : undefined}
+                  className="block w-full cursor-pointer rounded-lg text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+                  onClick={() => setActiveComponentId(doc.id)}
+                  type="button"
+                >
+                  <MenuItemSingleSelect className="w-full" selected={doc.id === activeId} startIcon={false}>
+                    {doc.title}
+                  </MenuItemSingleSelect>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+      {Object.keys(groups).length === 0 && (
+        <p role="status" className="text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">Ничего не найдено. Попробуй другое название.</p>
+      )}
+    </nav>
   );
 }

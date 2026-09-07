@@ -108,5 +108,9 @@ export function PrototypeRouter() {
     return <PrototypeHome />
   }
 
+  if (activeView.id === "components") {
+    return <ComponentDocs />
+  }
+
   return <PrototypeViewFrame view={activeView} />
 }
