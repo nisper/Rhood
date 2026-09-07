@@ -26,9 +26,9 @@ import {
 import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
 import { LikeButton } from "@/components/ui/like-button";
+import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
 import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button";
-import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip";
 import { PageTitle } from "@/components/ui/page-title";
 import { Pagination } from "@/components/ui/pagination";
@@ -1438,9 +1438,16 @@ function ComponentNavigation({ activeId, groups }: {
                   onClick={() => setActiveComponentId(doc.id)}
                   type="button"
                 >
-                  <MenuItemSingleSelect className="w-full" selected={doc.id === activeId} startIcon={false} secondaryText={false} rightSlot={false}>
+                  <ListItem
+                    button={false}
+                    endIcon={false}
+                    iconButton={false}
+                    secondaryText={false}
+                    selected={doc.id === activeId}
+                    startIcon={false}
+                  >
                     {doc.title}
-                  </MenuItemSingleSelect>
+                  </ListItem>
                 </button>
               </li>
             ))}

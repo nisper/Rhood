@@ -61,7 +61,8 @@
 ◽️ Expiry
 ◽️ Info icon
 ◽️ Help icon
-◽️ List item
+✅ List
+❌ List item
 ◽️ Module title
 ◽️ Object card image
 ◽️ Object gallery preview
