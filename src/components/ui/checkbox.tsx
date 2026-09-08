@@ -56,7 +56,7 @@ function Checkbox({
   const [uncontrolledChecked, setUncontrolledChecked] = React.useState(defaultChecked)
   const inputRef = React.useRef<HTMLInputElement>(null)
   const resolvedChecked = isControlled ? checked : uncontrolledChecked
-  const resolvedIndeterminate = resolvedChecked && indeterminate
+  const resolvedIndeterminate = indeterminate
   const isDisabled = Boolean(disabled) || skeleton
   const isHovered = state === "hovered"
   const tokens = sizeClasses[size]
@@ -80,11 +80,11 @@ function Checkbox({
     tokens.control,
     isDisabled
       ? "text-[color:var(--parser-text-disabled)]"
-      : !resolvedChecked && error
+      : resolvedIndeterminate || resolvedChecked
+        ? "text-[color:var(--parser-fill-brand)]"
+        : error
         ? "text-[color:var(--parser-text-error)]"
-        : resolvedChecked
-          ? "text-[color:var(--parser-fill-brand)]"
-          : "text-[color:var(--parser-text-neutral-primary)]",
+        : "text-[color:var(--parser-text-neutral-primary)]",
   )
 
   const content = skeleton ? (

@@ -35,8 +35,8 @@
 | `8555:4017` | `ShowMore` | `src/components/ui/show-more.tsx` / `ShowMore` |
 | `930:25605` | `Snackbar` | `src/components/ui/snackbar.tsx` / `Snackbar` |
 | `414:3051` | `TableCell` | `src/components/ui/table-cell.tsx` / `TableCell` |
-| `405:2865` | `TableCellHead` | `src/components/ui/table-cell-head.tsx` / `TableCellHead` |
 | `416:3328` | `Table` | `src/components/ui/table.tsx` / `Table` |
+
 | `8555:1158` | `LikeButton` | `src/components/ui/like-button.tsx` / `LikeButton` |
 | `10252:5944` | `Tag` | `src/components/ui/tag.tsx` / `Tag` |
 | `8827:1349` | `ToggleButtonGroup` | `src/components/ui/toggle-button-group.tsx` / `ToggleButtonGroup` |
@@ -59,3 +59,7 @@
 MenuSingleSelect и MenuMultiselect сохранены как совместимые обёртки над Menu. На витрине контейнер, оба типа пунктов и разделитель представлены на общей странице Menu.
 
 List и ListItem представлены на общей странице List. Актуальный источник: `Rhood creative production/docs/components/list-item.md` (Figma `654:8330`). ListItemSmall сохранён как обёртка над ListItem с `dense=true`; ListSmall — совместимая сборка компактных строк, без отдельной страницы витрины. `paddingX` заменяет обратный по смыслу `disGutters`, старое свойство поддерживается.
+
+TableCellHead сохранён как совместимая обёртка над TableCell с `role="head"`. Для новых таблиц используй Table и TableCell с `role="head"` или `role="body"`; на витрине это одна страница Table.
+
+Правила выбора строк, сортировки и размеров колонок описаны в [Table](table.md).

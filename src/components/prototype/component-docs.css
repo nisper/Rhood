@@ -5,6 +5,12 @@
   font-display: swap;
   src: url(/assets/fonts/inter-regular.ttf) format('truetype');
 }
+
+.figma-link-icon {
+  background-color: currentColor;
+  -webkit-mask: url('/assets/figma.svg') center / contain no-repeat;
+  mask: url('/assets/figma.svg') center / contain no-repeat;
+}
 @font-face {
   font-family: 'Rhood Inter';
   font-style: normal;

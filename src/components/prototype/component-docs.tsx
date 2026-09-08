@@ -1,5 +1,6 @@
 import { ListExamples } from "./list-examples";
 import { MenuExamples } from "./menu-examples";
+import { TableExamples } from "./table-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Search } from "lucide-react";
@@ -44,9 +45,6 @@ import { ShowMore } from "@/components/ui/show-more";
 import { Snackbar } from "@/components/ui/snackbar";
 import { Tab } from "@/components/ui/tab";
 import { TabBar } from "@/components/ui/tab-bar";
-import { Table } from "@/components/ui/table";
-import { TableCell } from "@/components/ui/table-cell";
-import { TableCellHead } from "@/components/ui/table-cell-head";
 import { Tag } from "@/components/ui/tag";
 import { TextField } from "@/components/ui/text-field";
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline";
@@ -975,49 +973,11 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "table",
     title: "Table",
-    description: "Таблица.",
+    description: "Table показывает сопоставимые данные в строках и колонках. Контейнер Table и ячейки TableCell отвечают за вид, а данные, выбор, пагинация и сортировка принадлежат конкретному экрану.",
     group: "Data display",
-    source: "src/components/ui/table.tsx",
-    render: () => (
-      <Canvas>
-        <Table />
-      </Canvas>
-    ),
-  },
-  {
-    id: "table-cell",
-    title: "TableCell",
-    description: "Ячейка таблицы.",
-    group: "Data display",
-    source: "src/components/ui/table-cell.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <TableCell type="text" />
-          <TableCell type="number" />
-          <TableCell type="skeleton" />
-          <TableCell type="checkbox" />
-          <TableCell type="placeholder" />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
-    id: "table-cell-head",
-    title: "TableCellHead",
-    description: "Заголовочная ячейка таблицы.",
-    group: "Data display",
-    source: "src/components/ui/table-cell-head.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <TableCellHead type="text" />
-          <TableCellHead type="number" />
-          <TableCellHead type="checkbox" />
-          <TableCellHead type="placeholder" />
-        </Matrix>
-      </Canvas>
-    ),
+    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=416-3328",
+    source: "src/components/ui/table.tsx · src/components/ui/table-cell.tsx",
+    render: () => <TableExamples />,
   },
   {
     id: "chip",
@@ -1256,6 +1216,7 @@ const componentDocs: ComponentDoc[] = [
 function getActiveComponentId() {
   const id = new URLSearchParams(window.location.search).get("component") ?? componentDocs[0].id;
   if (["list-small", "list-item", "list-item-small"].includes(id)) return "list";
+  if (["table-cell", "table-cell-head"].includes(id)) return "table";
   return ["menu-divider", "menu-single-select", "menu-multiselect", "menu-item-single-select", "menu-item-multiselect"].includes(id) ? "menu" : id;
 }
 
@@ -1288,23 +1249,28 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
               {doc.description}
             </p>
           </div>
-          {doc.figmaUrl && (
-            <a
-              className="flex w-fit items-center gap-1 rounded text-base leading-6 hover:text-[var(--parser-text-link-hovered)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
-              href={doc.figmaUrl}
-              rel="noreferrer"
-              target="_blank"
-            >
-              <img alt="" className="size-6 shrink-0" src="/assets/figma.svg" width="24" height="24" />
-              {doc.title} в Figma
-            </a>
-          )}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-base leading-6">
+            {doc.figmaUrl && (
+              <a
+                className="group flex w-fit items-center gap-1 rounded text-base leading-6 hover:text-[var(--parser-text-link-hovered)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+                href={doc.figmaUrl}
+                rel="noreferrer"
+                target="_blank"
+              >
+                <span aria-hidden="true" className="figma-link-icon size-6 shrink-0" />
+                {doc.title} в Figma
+              </a>
+            )}
+            <p className="break-words text-base leading-6 text-[var(--parser-text-neutral-secondary)]">
+              Source: <code>{doc.source}</code>
+            </p>
+          </div>
         </div>
       </header>
 
       <div className="mx-auto grid max-w-[1028px] gap-8 px-6 py-5">
         <section className="grid min-w-0 gap-4">
-          {!["menu", "list"].includes(doc.id) && (
+          {!["menu", "list", "table"].includes(doc.id) && (
             <h2 className="font-['Rhood_Inter',sans-serif] text-xl font-semibold leading-7">
               Preview
             </h2>
@@ -1352,9 +1318,6 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
             </div>
           </section>
         )}
-        <p className="break-words text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
-          Source: <code>{doc.source}</code>
-        </p>
       </div>
     </article>
   );
@@ -1373,7 +1336,7 @@ export function ComponentDocs() {
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredDocs = componentDocs.filter((doc) =>
-    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem ListSmall ListItemSmall" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""}`
+    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem ListSmall ListItemSmall" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""} ${doc.id === "table" ? "TableCell TableCellHead" : ""}`
       .toLowerCase()
       .includes(normalizedQuery),
   );

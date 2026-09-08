@@ -1,167 +1,112 @@
 import * as React from "react"
-import { Square } from "lucide-react"
+import { ArrowDown, ArrowUp } from "lucide-react"
 
+import { Checkbox } from "@/components/ui/checkbox"
+import { HelpIcon } from "@/components/ui/help-icon"
 import { cn } from "@/lib/utils"
 
+type TableCellRole = "body" | "head"
 type TableCellType = "text" | "number" | "skeleton" | "checkbox" | "placeholder"
+type TableCellWidth = "content" | "fill" | number
 
 type TableCellProps = React.ComponentProps<"div"> & {
   children?: React.ReactNode
+  checked?: boolean
   custom?: boolean
+  /** Legacy alias; paddingX takes precedence when supplied. */
   disGutters?: boolean
+  helpIcon?: boolean
+  indeterminate?: boolean
   instance1?: boolean
   instance2?: boolean
+  /** Called when a checkbox cell is changed. */
+  onCheckedChange?: (checked: boolean) => void
+  paddingX?: boolean
+  role?: TableCellRole
   sizeSmall?: boolean
+  sort?: boolean
+  /** The active sorting direction. The arrow is visible only when this is set. */
+  sortDirection?: "asc" | "desc"
   type?: TableCellType
+  /** Column width: content (default), equal share of the table, or pixels. */
+  width?: TableCellWidth
 }
 
-const widthClass = "w-[120px]"
-
-function getRootClasses({
-  custom,
-  disGutters,
-  sizeSmall,
-  type,
-}: Pick<TableCellProps, "custom" | "disGutters" | "sizeSmall" | "type">) {
-  if (type === "placeholder") {
-    return sizeSmall ? "h-[36px]" : "h-[44px]"
-  }
-
-  if (type === "checkbox") {
-    if (disGutters) {
-      return sizeSmall ? "bg-transparent pr-2 py-0" : "bg-transparent pr-2 py-1"
-    }
-
-    return sizeSmall ? "bg-transparent px-2 py-0" : "bg-transparent px-2 py-1"
-  }
-
-  if (type === "skeleton" && !custom) {
-    return cn(
-      widthClass,
-      "content-stretch flex flex-col items-start",
-      disGutters ? (sizeSmall ? "py-[13px]" : "py-[23px]") : sizeSmall ? "px-3 py-[13px]" : "px-3 py-[23px]",
-    )
-  }
-
-  if (type === "text" || type === "number") {
-    return cn(
-      widthClass,
-      "content-stretch flex flex-col",
-      type === "number" ? "items-end" : "items-start",
-      disGutters ? (sizeSmall ? "py-2" : "py-3") : sizeSmall ? "px-3 py-2" : "px-3 py-3",
-    )
-  }
-
-  return cn("relative bg-transparent", widthClass)
-}
-
-/**
- * Parser table cell matching the Figma `TableCell` component.
- */
+/** A table cell for a header or a body row. */
 function TableCell({
-  children = null,
+  children,
+  checked,
   className,
   custom = false,
   disGutters = false,
+  helpIcon = true,
+  indeterminate = false,
   instance1 = true,
   instance2 = false,
+  onCheckedChange,
+  paddingX,
+  role = "head",
   sizeSmall = false,
-  type = "text",
+  sort = true,
+  sortDirection,
+  type = "checkbox",
+  width = "content",
+  style,
   ...props
 }: TableCellProps) {
-  const isText = type === "text"
+  const hasPaddingX = paddingX ?? !disGutters
+  const isHead = role === "head"
   const isNumber = type === "number"
-  const isSkeleton = type === "skeleton"
   const isCheckbox = type === "checkbox"
+  const isSkeleton = type === "skeleton"
+  const isPlaceholder = type === "placeholder"
+  const isSortable = isHead && !isCheckbox && !isSkeleton && !isPlaceholder && sort
+  const isSorted = isSortable && sortDirection !== undefined
+  const isContentWidth = width === "content"
+  const isFillWidth = width === "fill"
+  const fixedWidth = typeof width === "number" ? `${width}px` : undefined
 
   return (
     <div
+      {...props}
       className={cn(
-        "relative bg-transparent",
-        getRootClasses({ custom, disGutters, sizeSmall, type }),
+        "relative flex min-w-0 shrink-0",
+        isCheckbox ? "items-center" : "flex-col",
+        isNumber && "items-end text-right",
+        sizeSmall ? "py-2" : "py-3",
+        hasPaddingX && (isCheckbox ? "px-2" : "px-3"),
+        isContentWidth && "w-max",
+        isFillWidth && "flex-1 basis-0",
+        fixedWidth && "shrink-0",
+        isPlaceholder && (sizeSmall ? "h-9" : "h-11"),
+        isSortable && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
+        isSorted && "pr-6",
         className,
       )}
-      {...props}
+      role={isHead ? "columnheader" : "cell"}
+      style={{ ...style, flexBasis: fixedWidth, width: fixedWidth }}
     >
-      {!custom && (isText || isNumber) && (
-        <div
-          className={cn(
-            "flex h-5 w-full shrink-0 items-start",
-            isNumber && "justify-end",
-          )}
-        >
-          {isText && instance1 && (
-            <div className="flex w-full flex-col items-start">
-              <p
-                className="w-full whitespace-nowrap font-normal text-sm leading-[1.43] tracking-[0.0238px] text-[color:var(--parser-text-neutral-primary)]"
-                style={{ fontVariationSettings: "'wdth' 100" }}
-              >
-                Cell
-              </p>
-            </div>
-          )}
+      {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={checked} className="min-h-0 p-0" indeterminate={indeterminate} label={false} onChange={event => onCheckedChange?.(event.target.checked)} size="md" />}
 
-          {isText && instance2 && (
-            <div className="flex w-full flex-col items-start">
-              <p
-                className="w-full whitespace-nowrap font-normal text-sm leading-[1.43] tracking-[0.0238px] text-[color:var(--parser-text-neutral-primary)]"
-                style={{ fontVariationSettings: "'wdth' 100" }}
-              >
-                secondary instacne
-              </p>
-            </div>
-          )}
+      {isSkeleton && <span aria-hidden="true" className="block h-1.5 w-full rounded-lg bg-[var(--parser-fill-skeleton)]" />}
 
-          {isNumber && instance1 && (
-            <div className="flex w-full flex-col items-start">
-              <p
-                className="w-full whitespace-nowrap font-normal text-right text-sm leading-[1.43] tracking-[0.0238px] text-[color:var(--parser-text-neutral-primary)]"
-                style={{ fontVariationSettings: "'wdth' 100" }}
-              >
-                Cell
-              </p>
-            </div>
-          )}
-
-          {isNumber && instance2 && (
-            <div className="flex w-full flex-col items-start">
-              <p
-                className="w-full whitespace-nowrap font-normal text-right text-sm leading-[1.43] tracking-[0.0238px] text-[color:var(--parser-text-neutral-primary)]"
-                style={{ fontVariationSettings: "'wdth' 100" }}
-              >
-                secondary instacne
-              </p>
-            </div>
-          )}
-        </div>
-      )}
-
-      {isSkeleton && !custom && (
-        <div
-          className={cn(
-            "w-full overflow-clip rounded-lg bg-[var(--parser-fill-neutral-selected)]",
-            sizeSmall ? "h-[6px]" : "h-[6px]",
-          )}
-        />
-      )}
-
-      {isCheckbox && !custom && (
-        <div
-          className={cn(
-            "flex h-5 items-center justify-center",
-            sizeSmall ? "gap-2" : "gap-2",
-          )}
-        >
-          <span className="flex size-5 shrink-0 items-center justify-center text-[var(--parser-text-neutral-primary)]">
-            <Square aria-hidden="true" className="size-4" strokeWidth={2} />
+      {!isCheckbox && !isSkeleton && !isPlaceholder && (
+        <div className={cn("flex min-h-5 w-full items-center gap-1", isNumber && "justify-end")}>
+          <span className={cn(
+            "min-w-0 text-sm leading-5 tracking-[0.17px]",
+            isContentWidth ? "whitespace-nowrap" : "break-words",
+            isHead ? "font-normal text-[var(--parser-text-neutral-secondary)]" : isNumber ? "font-mono font-normal" : "font-normal",
+          )}>
+            {children ?? (instance1 && <>{isHead ? "Head" : "Cell"}{instance2 && " secondary instance"}</>)}
           </span>
+          {isHead && helpIcon && !custom && <HelpIcon aria-label="Справка по колонке" size="sm" tooltip="Typography" />}
         </div>
       )}
 
-      {type === "text" && custom && <div className="h-5 w-full">{children || null}</div>}
+      {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-1 top-1 size-3 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-1 top-1 size-3 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} />)}
     </div>
   )
 }
 
 export { TableCell }
-export type { TableCellProps, TableCellType }
+export type { TableCellProps, TableCellRole, TableCellType, TableCellWidth }
