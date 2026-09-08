@@ -68,7 +68,8 @@
 ◽️ Object gallery preview
 ◽️ Page heading
 ◽️ Show more
-◽️ Table cell
+✅ Table
+❌ Table cell
 ◽️ Tag
 
 ## Обратная связь и файлы

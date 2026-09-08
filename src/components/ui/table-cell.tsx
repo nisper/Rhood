@@ -72,7 +72,7 @@ function TableCell({
       {...props}
       className={cn(
         "relative flex min-w-0 shrink-0",
-        isCheckbox ? "items-center" : "flex-col",
+        isCheckbox ? "items-start" : "flex-col",
         isNumber && "items-end text-right",
         sizeSmall ? "py-2" : "py-3",
         hasPaddingX && (isCheckbox ? "px-2" : "px-3"),
@@ -91,7 +91,9 @@ function TableCell({
 
       {isSkeleton && <span aria-hidden="true" className="block h-1.5 w-full rounded-lg bg-[var(--parser-fill-skeleton)]" />}
 
-      {!isCheckbox && !isSkeleton && !isPlaceholder && (
+      {!isCheckbox && !isSkeleton && !isPlaceholder && (custom ? (
+        children
+      ) : (
         <div className={cn("flex min-h-5 w-full items-center gap-1", isNumber && "justify-end")}>
           <span className={cn(
             "min-w-0 text-sm leading-5 tracking-[0.17px]",
@@ -102,7 +104,7 @@ function TableCell({
           </span>
           {isHead && helpIcon && !custom && <HelpIcon aria-label="Справка по колонке" size="sm" tooltip="Typography" />}
         </div>
-      )}
+      ))}
 
       {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-1 top-1 size-3 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-1 top-1 size-3 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} />)}
     </div>

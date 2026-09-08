@@ -1,122 +1,12 @@
-import {
-  BarChart3,
-  ChevronDown,
-  CircleHelp,
-  Ellipsis,
-  Info,
-  Layers3,
-  Map,
-  MessageCircleMore,
-  Phone,
-  Square,
-  TrendingDown,
-  UserRound,
-} from "lucide-react"
-import { Avatar } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
-import { ButtonFavorite } from "@/components/ui/button-favorite"
+import { CircleHelp } from "lucide-react"
+import * as React from "react"
+
+import { Chip } from "@/components/ui/chip"
 import { MainHeader } from "@/components/ui/main-header"
-import { PaginationButton } from "@/components/ui/pagination-button"
+import { Table } from "@/components/ui/table"
+import { TableCell } from "@/components/ui/table-cell"
 import { ToolbarFilter } from "@/components/ui/toolbar-filter"
-import {
-  apartmentListings,
-  type ApartmentListing,
-} from "@/data/mock/apartment-listings"
-import { cn } from "@/lib/utils"
-
-type RowMeta = {
-  buyer: "avatar" | "lead"
-  comments: string
-  favorite: boolean
-  liquidity: string
-  liquidityColor: "success" | "warning" | "error"
-  publishedAt: string
-  status: string
-  statusColor: "brand" | "neutral" | "warning"
-}
-
-const rowMeta: RowMeta[] = [
-  {
-    buyer: "lead",
-    comments: "9+",
-    favorite: false,
-    liquidity: "Высокая",
-    liquidityColor: "success",
-    publishedAt: "24.01.2024, 6:30",
-    status: "Думает",
-    statusColor: "brand",
-  },
-  {
-    buyer: "avatar",
-    comments: "4",
-    favorite: true,
-    liquidity: "Средняя",
-    liquidityColor: "warning",
-    publishedAt: "25.01.2024, 9:15",
-    status: "Назначен показ",
-    statusColor: "warning",
-  },
-  {
-    buyer: "lead",
-    comments: "2",
-    favorite: false,
-    liquidity: "Высокая",
-    liquidityColor: "success",
-    publishedAt: "26.01.2024, 12:00",
-    status: "В работе",
-    statusColor: "neutral",
-  },
-  {
-    buyer: "avatar",
-    comments: "1",
-    favorite: false,
-    liquidity: "Низкая",
-    liquidityColor: "error",
-    publishedAt: "26.01.2024, 14:40",
-    status: "Новый",
-    statusColor: "brand",
-  },
-  {
-    buyer: "avatar",
-    comments: "6",
-    favorite: true,
-    liquidity: "Средняя",
-    liquidityColor: "warning",
-    publishedAt: "27.01.2024, 8:05",
-    status: "Думает",
-    statusColor: "brand",
-  },
-  {
-    buyer: "lead",
-    comments: "12",
-    favorite: false,
-    liquidity: "Высокая",
-    liquidityColor: "success",
-    publishedAt: "27.01.2024, 10:20",
-    status: "Перезвонить",
-    statusColor: "warning",
-  },
-  {
-    buyer: "lead",
-    comments: "3",
-    favorite: false,
-    liquidity: "Высокая",
-    liquidityColor: "success",
-    publishedAt: "27.01.2024, 16:55",
-    status: "В работе",
-    statusColor: "neutral",
-  },
-  {
-    buyer: "avatar",
-    comments: "7",
-    favorite: true,
-    liquidity: "Средняя",
-    liquidityColor: "warning",
-    publishedAt: "28.01.2024, 11:10",
-    status: "Думает",
-    statusColor: "brand",
-  },
-]
+import listings from "@/data/mock/real-estate-listings.json"
 
 const navItems = [
   { label: "Набор базы", active: true },
@@ -126,363 +16,159 @@ const navItems = [
   { label: "Статистика" },
 ]
 
-const screenRows = apartmentListings.slice(0, 8).map((listing, index) => ({
-  listing,
-  meta: rowMeta[index],
-}))
+type SortColumn = "buyer" | "price" | "publishedAt"
+type SortState = { column: SortColumn; direction: "asc" | "desc" } | null
 
-function formatInteger(value: number) {
+function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value)
 }
 
-function ToolbarSelect({ value, widthClass }: { value: string; widthClass: string }) {
-  return (
-    <button
-      className={cn(
-        "flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-[var(--parser-border-light)] bg-white px-3 py-2 text-sm leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-primary)]",
-        widthClass,
-      )}
-      type="button"
-    >
-      <span className="min-w-0 flex-1 truncate text-left">{value}</span>
-      <ChevronDown aria-hidden="true" className="size-4 shrink-0" strokeWidth={2} />
-    </button>
-  )
+function formatPublishedAt(value: string) {
+  return new Intl.DateTimeFormat("ru-RU", {
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    month: "2-digit",
+    timeZone: "Asia/Yekaterinburg",
+    year: "numeric",
+  }).format(new Date(value))
 }
 
-function ResultsToolbar() {
+function formatSource(domain: string) {
+  return {
+    AVITO: "Авито",
+    CIAN: "Циан",
+    DOMCLICK: "Домклик",
+    YANDEX: "Яндекс Недвижимость",
+  }[domain] ?? domain
+}
+
+function getPrice(listing: (typeof listings)[number]) {
+  return Number(listing.price) * 1_000
+}
+
+function getSpecs(listing: (typeof listings)[number]) {
+  const rooms = listing.roomCount === 0 ? "Ст." : `${listing.roomCount} ком.`
+  return `${rooms}, ${listing.area.toLocaleString("ru-RU")} м², этаж ${listing.floor}/${listing.floorCount}`
+}
+
+function ResultHeader({ onSort, sort }: { onSort: (column: SortColumn) => void; sort: SortState }) {
   return (
-    <div className="flex items-center gap-2 border-b border-[var(--parser-border-light)] px-6 py-4">
-      <ToolbarSelect value="По дате — новые" widthClass="w-[210px]" />
-
-      <Button
-        appearance="secondary"
-        endIcon={false}
-        size="sm"
-        startIcon={<Map aria-hidden="true" strokeWidth={2} />}
-      >
-        На карте
-      </Button>
-
-      <button className="flex items-center gap-2 px-2 py-2 text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-text-neutral-primary)]" type="button">
-        <Layers3 aria-hidden="true" className="size-5" strokeWidth={2} />
-        <span>Группировать по дублям</span>
-        <span className="relative h-5 w-9 rounded-full bg-[var(--parser-border-light)]">
-          <span className="absolute left-0.5 top-0.5 size-4 rounded-full bg-white shadow-sm" />
-        </span>
-      </button>
-
-      <div className="ml-auto">
-        <Button
-          appearance="secondary"
-          endIcon={false}
-          size="sm"
-          startIcon={<BarChart3 aria-hidden="true" strokeWidth={2} />}
-        >
-          Настроить столбцы
-        </Button>
-      </div>
+    <div className="flex border-b border-[var(--parser-border-light)]" role="row">
+      <TableCell paddingX role="head" sizeSmall sort={false} type="checkbox" width={28} />
+      <TableCell className="min-w-[300px]" helpIcon={false} role="head" sizeSmall sort={false} type="text" width="fill">Адрес</TableCell>
+      <TableCell onClick={() => onSort("buyer")} role="head" sizeSmall sort sortDirection={sort?.column === "buyer" ? sort.direction : undefined} type="number" width={130}>Покупатель</TableCell>
+      <TableCell helpIcon={false} onClick={() => onSort("price")} role="head" sizeSmall sort sortDirection={sort?.column === "price" ? sort.direction : undefined} type="number" width={175}>Цена, ₽</TableCell>
+      <TableCell helpIcon={false} role="head" sizeSmall sort={false} type="text" width={152}>Ликвид.</TableCell>
+      <TableCell helpIcon={false} role="head" sizeSmall sort={false} type="text" width={190}>Источник</TableCell>
+      <TableCell helpIcon={false} onClick={() => onSort("publishedAt")} role="head" sizeSmall sort sortDirection={sort?.column === "publishedAt" ? sort.direction : undefined} type="text" width={150}>Опубликован</TableCell>
+      <TableCell helpIcon={false} role="head" sizeSmall sort={false} type="text" width={236}>Статус</TableCell>
     </div>
   )
 }
 
-function HeaderLabel({
-  align = "left",
-  help = false,
-  secondary,
-  widthClass,
-  children,
-}: {
-  align?: "left" | "right"
-  children: string
-  help?: boolean
-  secondary?: string
-  widthClass: string
-}) {
-  return (
-    <div className={cn("shrink-0 px-3 py-2", widthClass)}>
-      <div className={cn("flex items-start gap-2", align === "right" && "justify-end")}>
-        <p
-          className={cn(
-            "text-sm leading-[1.43] tracking-[0.0238px] font-semibold text-[var(--parser-text-neutral-primary)]",
-            align === "right" && "text-right",
-          )}
-          style={{ fontVariationSettings: "'wdth' 100" }}
-        >
-          {children}
-        </p>
-        {help && (
-          <Info
-            aria-hidden="true"
-            className="mt-0.5 size-4 shrink-0 text-[var(--parser-icon-neutral-secondary)]"
-            strokeWidth={2}
-          />
-        )}
-      </div>
-
-      {secondary ? (
-        <p
-          className={cn(
-            "pt-0 text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-text-neutral-secondary)]",
-            align === "right" && "text-right",
-          )}
-          style={{ fontVariationSettings: "'wdth' 100" }}
-        >
-          {secondary}
-        </p>
-      ) : null}
-    </div>
-  )
-}
-
-function ResultsHeader() {
-  return (
-    <div className="flex min-w-[1896px] items-start border-b border-[var(--parser-border-light)] px-6">
-      <div className="flex h-11 w-7 shrink-0 items-center pr-2">
-        <Square
-          aria-hidden="true"
-          className="size-5 text-[var(--parser-icon-neutral-secondary)]"
-          strokeWidth={2}
-        />
-      </div>
-      <div className="min-w-[300px] flex-1 basis-[866px] py-2">
-        <p className="text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-text-neutral-primary)]">Адрес</p>
-      </div>
-      <HeaderLabel help widthClass="w-[130px]">
-        Покупатель
-      </HeaderLabel>
-      <HeaderLabel align="right" help secondary="Цена ₽/м²" widthClass="w-[175px]">
-        Цена, ₽
-      </HeaderLabel>
-      <div className="h-11 w-[123px] shrink-0" />
-      <HeaderLabel help widthClass="w-[152px]">
-        Ликвид.
-      </HeaderLabel>
-      <HeaderLabel help widthClass="w-[150px]">
-        Опубликован
-      </HeaderLabel>
-      <HeaderLabel widthClass="w-[120px]">Статус</HeaderLabel>
-      <div className="h-11 w-[152px] shrink-0" />
-    </div>
-  )
-}
-
-function BuyerCell({ buyer }: { buyer: RowMeta["buyer"] }) {
-  if (buyer === "avatar") {
-    return (
-      <div className="flex justify-start">
-        <Avatar content="image" size="24px" />
-      </div>
-    )
-  }
+function ResultRow({ listing }: { listing: (typeof listings)[number] }) {
+  const price = getPrice(listing)
+  const pricePerM2 = Math.round(price / listing.area)
 
   return (
-    <div className="flex justify-start">
-      <div className="inline-flex min-w-6 items-center justify-center rounded-sm bg-[var(--parser-fill-neutral)] px-[3px]">
-        <UserRound
-          aria-hidden="true"
-          className="size-5 text-[var(--parser-icon-neutral-primary)]"
-          strokeWidth={2}
-        />
-      </div>
-    </div>
-  )
-}
+    <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" role="row">
+      <TableCell paddingX role="body" sizeSmall type="checkbox" width={28} />
 
-function CallCell() {
-  return (
-    <div className="flex justify-start">
-      <Button
-        appearance="primary"
-        className="rounded-lg"
-        endIcon={false}
-        size="xsm"
-        startIcon={<Phone aria-hidden="true" strokeWidth={2.25} />}
-      >
-        Позвонить
-      </Button>
-    </div>
-  )
-}
-
-function ResultStatusTag({
-  color,
-  label,
-}: {
-  color: RowMeta["statusColor"] | RowMeta["liquidityColor"]
-  label: string
-}) {
-  const tone =
-    color === "success"
-      ? "bg-[var(--parser-fill-success-light)] text-[var(--parser-text-success)]"
-      : color === "warning"
-        ? "bg-[var(--parser-fill-warning-light)] text-[var(--parser-text-warning)]"
-        : color === "error"
-          ? "bg-[var(--parser-fill-error-light)] text-[var(--parser-text-error)]"
-          : color === "brand"
-            ? "bg-[var(--parser-fill-brand-light)] text-[var(--parser-text-brand)]"
-            : "bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-primary)]"
-
-  return (
-    <span
-      className={cn(
-        "inline-flex min-w-6 items-center justify-center rounded-sm px-[7px] text-sm leading-[1.43] tracking-[0.0238px]",
-        tone,
-      )}
-      style={{ fontVariationSettings: "'wdth' 100" }}
-    >
-      {label}
-    </span>
-  )
-}
-
-function ResultRow({
-  listing,
-  meta,
-}: {
-  listing: ApartmentListing
-  meta: RowMeta
-}) {
-  return (
-    <div className="flex min-w-[1896px] items-start border-b border-[var(--parser-border-light)] pl-6">
-      <div className="flex h-9 w-7 shrink-0 items-center pr-2 py-2">
-        <Square
-          aria-hidden="true"
-          className="size-5 text-[var(--parser-icon-neutral-secondary)]"
-          strokeWidth={2}
-        />
-      </div>
-
-      <div className="min-w-[300px] flex-1 basis-[866px] py-2">
-        <div className="flex flex-col">
-          <a
-            className="text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-fill-brand)]"
-            href="#"
-          >
-            {listing.specs}
-          </a>
-          <p className="text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-text-neutral-primary)]">
-            {listing.address}
-          </p>
+      <TableCell className="min-w-[300px]" custom role="body" sizeSmall type="text" width="fill">
+        <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
+          <p className="text-[var(--parser-text-brand)]">{getSpecs(listing)}</p>
+          <p className="text-[var(--parser-text-neutral-primary)]">{listing.address}</p>
         </div>
-      </div>
+      </TableCell>
 
-      <div className="w-[130px] shrink-0 px-3 py-2">
-        <BuyerCell buyer={meta.buyer} />
-      </div>
+      <TableCell custom role="body" sizeSmall type="number" width={130}>
+        <p className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">{listing.buyerDemandAvailableCount}</p>
+      </TableCell>
 
-      <div className="w-[175px] shrink-0 px-3 py-2">
-        <div className="flex justify-end gap-2">
-          <div className="font-mono text-right text-sm leading-[1.43] tracking-[0.0238px]">
-            <p className="text-[var(--parser-text-neutral-primary)]">
-              {formatInteger(listing.price)}
-            </p>
-            <p className="text-[var(--parser-text-neutral-secondary)]">
-              {formatInteger(listing.pricePerM2)}
-            </p>
-          </div>
-          <div className="flex items-center">
-            <TrendingDown
-              aria-hidden="true"
-              className="size-5 text-[var(--parser-icon-neutral-secondary)]"
-              strokeWidth={2}
-            />
-          </div>
+      <TableCell custom role="body" sizeSmall type="number" width={175}>
+        <div className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
+          <p className="text-[var(--parser-text-neutral-primary)]">{formatNumber(price)}</p>
+          <p className="text-[var(--parser-text-neutral-secondary)]">{formatNumber(pricePerM2)}</p>
         </div>
-      </div>
+      </TableCell>
 
-      <div className="w-[123px] shrink-0 px-3 py-2">
-        <CallCell />
-      </div>
+      <TableCell custom role="body" sizeSmall type="text" width={152}>
+        <Chip appearance="muted" className="self-start" color="neutral" icon={false} propDelete={false} size="sm" thumbnail={false}>
+          Оцениваем
+        </Chip>
+      </TableCell>
 
-      <div className="w-[152px] shrink-0 px-3 py-2">
-        <ResultStatusTag color={meta.liquidityColor} label={meta.liquidity} />
-      </div>
-
-      <div className="w-[150px] shrink-0 px-3 py-2">
-        <p className="text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-text-neutral-primary)]">
-          {meta.publishedAt}
-        </p>
-      </div>
-
-      <div className="w-[120px] shrink-0 px-3 py-2">
-        <ResultStatusTag color={meta.statusColor} label={meta.status} />
-      </div>
-
-      <div className="w-[152px] shrink-0 py-2">
-        <div className="flex items-center justify-end pr-6">
-          <div className="flex items-center gap-2">
-            <ButtonFavorite checked={meta.favorite} size="sm" />
-            <Button
-              appearance="ghost"
-              className="px-2"
-              endIcon={false}
-              size="sm"
-              startIcon={<MessageCircleMore aria-hidden="true" strokeWidth={2} />}
-            >
-              {meta.comments}
-            </Button>
-          </div>
-
-          <Button
-            appearance="ghost"
-            className="px-2"
-            endIcon={false}
-            iconOnly
-            size="sm"
-            startIcon={<Ellipsis aria-hidden="true" strokeWidth={2} />}
-          />
+      <TableCell custom role="body" sizeSmall type="text" width={190}>
+        <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
+          <p className="text-[var(--parser-text-brand)]">{formatSource(listing.domain)}</p>
+          <p className="text-[var(--parser-text-neutral-secondary)]">{listing.clientName ?? "Частное лицо"}</p>
         </div>
-      </div>
+      </TableCell>
+
+      <TableCell custom role="body" sizeSmall type="text" width={150}>
+        <p className="text-sm leading-5 tracking-[0.17px]">{formatPublishedAt(listing.publishedAt)}</p>
+      </TableCell>
+
+      <TableCell custom role="body" sizeSmall type="text" width={236}>
+        <Chip appearance="muted" className="self-start" color="neutral" icon={false} propDelete={false} size="sm" thumbnail={false}>
+          {listing.userStatus ? "В работе" : "Еще не звонили из Rhood"}
+        </Chip>
+      </TableCell>
     </div>
   )
 }
 
-function ResultsPagination() {
+function ListingsTable({ onSort, sort }: { onSort: (column: SortColumn) => void; sort: SortState }) {
+  const sortedListings = [...listings]
+    .sort((first, second) => {
+      if (!sort) return 0
+
+      const firstValue = sort.column === "price"
+        ? getPrice(first)
+        : sort.column === "publishedAt"
+          ? new Date(first.publishedAt).getTime()
+          : first.buyerDemandAvailableCount
+      const secondValue = sort.column === "price"
+        ? getPrice(second)
+        : sort.column === "publishedAt"
+          ? new Date(second.publishedAt).getTime()
+          : second.buyerDemandAvailableCount
+      const comparison = firstValue - secondValue
+
+      return sort.direction === "asc" ? comparison : -comparison
+    })
+    .slice(0, 20)
+
   return (
-    <div className="flex justify-end px-6 py-0.5">
-      <div className="flex items-center gap-6 py-0.5">
-        <p className="text-sm leading-[1.43] tracking-[0.0238px] text-[var(--parser-text-neutral-primary)]">
-          1–8 из 8
-        </p>
-        <div className="flex items-start">
-          <PaginationButton direction="left" type="icon" />
-          <PaginationButton direction="right" type="icon" />
-        </div>
-      </div>
-    </div>
+    <Table className="rounded-none">
+      <ResultHeader onSort={onSort} sort={sort} />
+      {sortedListings.map((listing) => <ResultRow key={listing.id} listing={listing} />)}
+    </Table>
   )
 }
 
 export function ApartmentListingsScreen() {
+  const [sort, setSort] = React.useState<SortState>(null)
+
+  function handleSort(column: SortColumn) {
+    setSort((current) => current?.column === column
+      ? { column, direction: current.direction === "asc" ? "desc" : "asc" }
+      : { column, direction: "asc" })
+  }
+
   return (
     <div className="min-h-screen bg-white text-[var(--parser-text-neutral-primary)]">
       <MainHeader navItems={navItems} />
       <ToolbarFilter empty resp="desk" />
 
-      <main className="flex flex-col">
-        <ResultsToolbar />
-
-        <section className="overflow-x-auto">
-          <ResultsHeader />
-          {screenRows.map(({ listing, meta }) => (
-            <ResultRow key={`${listing.address}-${listing.price}`} listing={listing} meta={meta} />
-          ))}
-        </section>
-
-        <ResultsPagination />
+      <main>
+        <ListingsTable onSort={handleSort} sort={sort} />
       </main>
 
-      <button
-        className="fixed bottom-4 right-4 inline-flex rounded-full"
-        type="button"
-      >
+      <button className="fixed bottom-4 right-4 inline-flex rounded-full" type="button">
         <div className="rounded-full bg-[var(--parser-fill-neutral-dark)]">
-          <CircleHelp
-            aria-hidden="true"
-            className="size-10 p-2 text-[var(--parser-text-primary-contrast)]"
-            strokeWidth={2}
-          />
+          <CircleHelp aria-hidden="true" className="size-10 p-2 text-[var(--parser-text-primary-contrast)]" strokeWidth={2} />
         </div>
       </button>
     </div>

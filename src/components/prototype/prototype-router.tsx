@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ArrowLeft, Component, LayoutDashboard } from "lucide-react"
+import { Component, LayoutDashboard } from "lucide-react"
 
 import { ComponentDocs } from "@/components/prototype/component-docs"
 import { ApartmentListingsScreen } from "@/screens/apartment-listings-screen"
@@ -69,29 +69,6 @@ function PrototypeHome() {
   )
 }
 
-function PrototypeViewFrame({ view }: { view: PrototypeView }) {
-  const View = view.View
-
-  return (
-    <div className="min-h-svh bg-background">
-      <header className="sticky top-0 z-50 flex min-h-14 items-center justify-between gap-4 border-b border-[var(--parser-border-light)] bg-white px-4">
-        <button
-          className="inline-flex h-10 items-center gap-2 rounded-lg px-3 text-sm font-semibold leading-5 text-[var(--parser-text-neutral-primary)] transition-colors hover:bg-[var(--parser-fill-neutral)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
-          onClick={() => setActiveViewId("")}
-          type="button"
-        >
-          <ArrowLeft aria-hidden="true" className="size-5" strokeWidth={2} />
-          Все разделы
-        </button>
-        <p className="min-w-0 truncate text-sm font-semibold leading-5 text-[var(--parser-text-neutral-secondary)]">
-          {view.title}
-        </p>
-      </header>
-      <View />
-    </div>
-  )
-}
-
 export function PrototypeRouter() {
   const [activeViewId, setActiveViewIdState] = React.useState(getActiveViewId)
 
@@ -108,9 +85,13 @@ export function PrototypeRouter() {
     return <PrototypeHome />
   }
 
+  const View = activeView.View
+
   if (activeView.id === "components") {
     return <ComponentDocs />
   }
 
-  return <PrototypeViewFrame view={activeView} />
+  // The listings screen is a product surface, not a component-preview page.
+  // Keep its viewport free of the prototype frame so it can be checked as-is.
+  return <View />
 }
