@@ -17,6 +17,13 @@ const pages = [
   ],
 ]
 
+const experimentalListings = [
+  { id: "cosmos", object: "Космос", city: "Екатеринбург", price: 899000 },
+  { id: "mayak", object: "Маяк", city: "Верхняя Пышма", price: 780000 },
+  { id: "orbit", object: "Орбита", city: "Екатеринбург", price: 650000 },
+  { id: "sever", object: "Северный", city: "Берёзовский", price: 420000 },
+]
+
 const cellProperties = [
   ["role", "head / body", "head", "Ячейка заголовка или данных."],
   ["type", "text / number / skeleton / checkbox", "checkbox", "Содержимое, выравнивание и состояние загрузки."],
@@ -79,7 +86,7 @@ export function TableExamples() {
   const allOnPageSelected = selectedOnPage === currentRows.length
   const someOnPageSelected = selectedOnPage > 0 && !allOnPageSelected
   const sortedRows = sortRows(pages.flat(), sort)
-  const experimentalRows = sortRows(pages.flat(), experimentalSort)
+  const experimentalRows = sortRows(experimentalListings, experimentalSort)
 
   function toggleSort(column: SortColumn) {
     setSort(current => current?.column === column
@@ -235,12 +242,12 @@ export function TableExamples() {
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
           <TableCell onClick={() => toggleExperimentalSort("object")} paddingX={false} role="head" sort sortDirection={experimentalSort?.column === "object" ? experimentalSort.direction : undefined} type="text" width="fill">Объект</TableCell>
           <TableCell helpIcon={false} onClick={() => toggleExperimentalSort("city")} paddingX={false} role="head" sort sortDirection={experimentalSort?.column === "city" ? experimentalSort.direction : undefined} type="text" width="fill">Город</TableCell>
-          <TableCell helpIcon={false} onClick={() => toggleExperimentalSort("price")} paddingX={false} role="head" sort sortDirection={experimentalSort?.column === "price" ? experimentalSort.direction : undefined} type="number" width={150}>Стоимость, ₽</TableCell>
+          <TableCell helpIcon={false} onClick={() => toggleExperimentalSort("price")} paddingX={false} role="head" sort sortDirection={experimentalSort?.column === "price" ? experimentalSort.direction : undefined} type="number" width="content">Стоимость, ₽</TableCell>
         </div>
         {experimentalRows.map(row => <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" key={row.id} role="row">
-          <TableCell paddingX={false} role="body" type="text" width="fill">{row.object}</TableCell>
-          <TableCell paddingX={false} role="body" type="text" width="fill">{row.city}</TableCell>
-          <TableCell paddingX={false} role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell>
+          <TableCell paddingX={false} role="body" sortDirection={experimentalSort?.column === "object" ? experimentalSort.direction : undefined} type="text" width="fill">{row.object}</TableCell>
+          <TableCell paddingX={false} role="body" sortDirection={experimentalSort?.column === "city" ? experimentalSort.direction : undefined} type="text" width="fill">{row.city}</TableCell>
+          <TableCell paddingX={false} role="body" sortDirection={experimentalSort?.column === "price" ? experimentalSort.direction : undefined} type="number" width="content">{row.price.toLocaleString("ru-RU")}</TableCell>
         </div>)}
       </Table>
     </section>

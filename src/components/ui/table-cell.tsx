@@ -62,6 +62,7 @@ function TableCell({
   const isPlaceholder = type === "placeholder"
   const isSortable = isHead && !isCheckbox && !isSkeleton && !isPlaceholder && sort
   const isSorted = isSortable && sortDirection !== undefined
+  const hasSortPadding = !hasPaddingX && sortDirection !== undefined
   const isContentWidth = width === "content"
   const isFillWidth = width === "fill"
   const fixedWidth = typeof width === "number" ? `${width}px` : undefined
@@ -80,7 +81,7 @@ function TableCell({
         fixedWidth && "shrink-0",
         isPlaceholder && (sizeSmall ? "h-9" : "h-11"),
         isSortable && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
-        isSorted && "pr-6",
+        hasSortPadding && "pr-[var(--table-padding-px,12px)]",
         className,
       )}
       role={isHead ? "columnheader" : "cell"}
