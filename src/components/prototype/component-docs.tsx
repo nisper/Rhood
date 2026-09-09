@@ -1349,7 +1349,7 @@ export function ComponentDocs() {
       <header className="sticky top-0 z-50 flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-[var(--parser-border-light)] bg-[var(--parser-surface-bg)] px-6 py-2">
         <div className="flex min-w-0 flex-1 items-center gap-4">
           <a aria-label="RHOOD — все разделы" className="shrink-0 rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]" href={window.location.pathname}>
-            <img alt="RHOOD" className="h-[30px] w-[118px]" height="30" src="/assets/design-system-logo.svg" width="118" />
+            <img alt="RHOOD" className="h-[30px] w-[118px]" height="30" src="/Rhood/assets/rhood-logo.svg" width="118" />
           </a>
           <span className="whitespace-nowrap text-base leading-6">Design system</span>
         </div>
