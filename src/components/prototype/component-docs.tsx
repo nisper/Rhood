@@ -1,6 +1,7 @@
 import { ListExamples } from "./list-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
+import { SelectExamples } from "./select-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Search } from "lucide-react";
@@ -436,45 +437,11 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "select",
     title: "Select",
-    description: "Поле выбора.",
+    description: "Select используется для выбора одного или нескольких значений из списка. Подпись находится над полем и не перекрывает его содержимое.",
     group: "Forms",
+    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=348-8648",
     source: "src/components/ui/select.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <Select
-            content="text"
-            helperText="Helper text"
-            label="Label"
-            topLabel="dynamic"
-            value="Value"
-          />
-          <Select
-            content="chips"
-            helperText="Helper text"
-            label="Label"
-            topLabel="dynamic"
-          />
-          <Select
-            content="text"
-            error
-            helperText="Helper text"
-            label="Label"
-            state="focused"
-            topLabel="dynamic"
-            value="Value"
-          />
-          <Select
-            content="text"
-            disabled
-            helperText="Helper text"
-            label="Label"
-            topLabel="dynamic"
-            value="Value"
-          />
-        </div>
-      </Canvas>
-    ),
+    render: () => <SelectExamples />,
   },
   {
     id: "select-ghost",
@@ -818,9 +785,11 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "menu",
     title: "Menu",
-    description: "Выпадающий контейнер с пунктами одиночного и множественного выбора и разделителями.",
+    description:
+      "Выпадающий контейнер с пунктами одиночного и множественного выбора и разделителями.",
     group: "Navigation",
-    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=436-1556",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=436-1556",
     source: "src/components/ui/menu.tsx",
     render: () => <MenuExamples />,
   },
@@ -964,18 +933,22 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "list",
     title: "List",
-    description: "Навигационный список с обычными и компактными строками ListItem.",
+    description:
+      "Навигационный список с обычными и компактными строками ListItem.",
     group: "Navigation",
     source: "src/components/ui/list.tsx · src/components/ui/list-item.tsx",
-    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=654-8330",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=654-8330",
     render: () => <ListExamples />,
   },
   {
     id: "table",
     title: "Table",
-    description: "Table показывает сопоставимые данные в строках и колонках. Контейнер Table и ячейки TableCell отвечают за вид, а данные, выбор, пагинация и сортировка принадлежат конкретному экрану.",
+    description:
+      "Table показывает сопоставимые данные в строках и колонках. Контейнер Table и ячейки TableCell отвечают за вид, а данные, выбор, пагинация и сортировка принадлежат конкретному экрану.",
     group: "Data display",
-    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=416-3328",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=416-3328",
     source: "src/components/ui/table.tsx · src/components/ui/table-cell.tsx",
     render: () => <TableExamples />,
   },
@@ -1214,10 +1187,21 @@ const componentDocs: ComponentDoc[] = [
 ];
 
 function getActiveComponentId() {
-  const id = new URLSearchParams(window.location.search).get("component") ?? componentDocs[0].id;
-  if (["list-small", "list-item", "list-item-small"].includes(id)) return "list";
+  const id =
+    new URLSearchParams(window.location.search).get("component") ??
+    componentDocs[0].id;
+  if (["list-small", "list-item", "list-item-small"].includes(id))
+    return "list";
   if (["table-cell", "table-cell-head"].includes(id)) return "table";
-  return ["menu-divider", "menu-single-select", "menu-multiselect", "menu-item-single-select", "menu-item-multiselect"].includes(id) ? "menu" : id;
+  return [
+    "menu-divider",
+    "menu-single-select",
+    "menu-multiselect",
+    "menu-item-single-select",
+    "menu-item-multiselect",
+  ].includes(id)
+    ? "menu"
+    : id;
 }
 
 function setActiveComponentId(id: string) {
@@ -1257,7 +1241,10 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
                 rel="noreferrer"
                 target="_blank"
               >
-                <span aria-hidden="true" className="figma-link-icon size-6 shrink-0" />
+                <span
+                  aria-hidden="true"
+                  className="figma-link-icon size-6 shrink-0"
+                />
                 {doc.title} в Figma
               </a>
             )}
@@ -1270,11 +1257,6 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
 
       <div className="mx-auto grid max-w-[1028px] gap-8 px-6 py-5">
         <section className="grid min-w-0 gap-4">
-          {!["menu", "list", "table"].includes(doc.id) && (
-            <h2 className="font-['Rhood_Inter',sans-serif] text-xl font-semibold leading-7">
-              Preview
-            </h2>
-          )}
           <div className="min-w-0 overflow-x-auto">{doc.render()}</div>
         </section>
 
@@ -1346,29 +1328,48 @@ export function ComponentDocs() {
 
   return (
     <div className="min-h-svh bg-[var(--parser-surface-bg)] text-[var(--parser-text-neutral-primary)]">
-      <header className="sticky top-0 z-50 flex flex-wrap items-center gap-x-6 gap-y-2 border-b border-[var(--parser-border-light)] bg-[var(--parser-surface-bg)] px-6 py-2">
-        <div className="flex min-w-0 flex-1 items-center gap-4">
-          <a aria-label="RHOOD — все разделы" className="shrink-0 rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]" href={window.location.pathname}>
-            <img alt="RHOOD" className="h-[30px] w-[118px]" height="30" src="/Rhood/assets/rhood-logo.svg" width="118" />
-          </a>
-          <span className="whitespace-nowrap text-base leading-6">Design system</span>
-        </div>
-        <label className="flex h-9 w-full items-center gap-2 rounded-lg border border-[var(--parser-border-light)] px-3 focus-within:border-[var(--parser-border-focus)] sm:w-[298px]">
-          <Search aria-hidden="true" className="size-5 shrink-0 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} />
-          <input
-            aria-label="Найти компонент"
-            className="min-w-0 flex-1 bg-transparent text-sm leading-5 outline-none placeholder:text-[var(--parser-text-neutral-secondary)]"
-            onChange={(event) => setQuery(event.target.value)}
-            placeholder="Найти компонент"
-            type="search"
-            value={query}
-          />
-        </label>
-      </header>
-      <div className="grid md:grid-cols-[250px_minmax(0,1fr)]">
-        <aside className="border-b border-[var(--parser-border-light)] md:sticky md:top-[53px] md:h-[calc(100svh-53px)] md:overflow-y-auto md:border-b-0 md:border-r">
-          <details className="group md:hidden" open={normalizedQuery ? true : undefined}>
-            <summary className="cursor-pointer px-6 py-3 text-sm">Компоненты — {activeDoc.title}</summary>
+      <div className="grid md:grid-cols-[300px_minmax(0,1fr)]">
+        <aside className="border-b border-[var(--parser-border-light)] md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
+          <div className="px-6 pt-4">
+            <a
+              aria-label="RHOOD — все разделы"
+              className="block w-fit rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+              href={window.location.pathname}
+            >
+              <img
+                alt="RHOOD"
+                className="h-[30px] w-[118px]"
+                height="30"
+                src="/Rhood/assets/rhood-logo.svg"
+                width="118"
+              />
+            </a>
+            <span className="pl-[29px] text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
+              Design system
+            </span>
+            <label className="mt-5 flex h-9 items-center gap-2 rounded-lg border border-[var(--parser-border-light)] px-3 focus-within:border-[var(--parser-border-focus)]">
+              <Search
+                aria-hidden="true"
+                className="size-5 shrink-0 text-[var(--parser-text-neutral-secondary)]"
+                strokeWidth={2}
+              />
+              <input
+                aria-label="Найти компонент"
+                className="min-w-0 flex-1 bg-transparent text-sm leading-5 outline-none placeholder:text-[var(--parser-text-neutral-secondary)]"
+                onChange={(event) => setQuery(event.target.value)}
+                placeholder="Найти компонент"
+                type="search"
+                value={query}
+              />
+            </label>
+          </div>
+          <details
+            className="group md:hidden"
+            open={normalizedQuery ? true : undefined}
+          >
+            <summary className="cursor-pointer px-6 py-3 text-sm">
+              Компоненты — {activeDoc.title}
+            </summary>
             <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} />
           </details>
           <div className="hidden md:block">
@@ -1383,7 +1384,10 @@ export function ComponentDocs() {
   );
 }
 
-function ComponentNavigation({ activeId, groups }: {
+function ComponentNavigation({
+  activeId,
+  groups,
+}: {
   activeId: string;
   groups: Record<string, ComponentDoc[]>;
 }) {
@@ -1391,7 +1395,9 @@ function ComponentNavigation({ activeId, groups }: {
     <nav aria-label="Компоненты" className="grid gap-5 px-6 py-4">
       {Object.entries(groups).map(([group, items]) => (
         <section key={group}>
-          <h2 className="text-xs font-normal uppercase leading-8 tracking-[0.83px] text-[var(--parser-text-neutral-secondary)]">{group}</h2>
+          <h2 className="text-xs font-normal uppercase leading-8 tracking-[0.83px] text-[var(--parser-text-neutral-secondary)]">
+            {group}
+          </h2>
           <ul>
             {items.map((doc) => (
               <li key={doc.id}>
@@ -1418,7 +1424,12 @@ function ComponentNavigation({ activeId, groups }: {
         </section>
       ))}
       {Object.keys(groups).length === 0 && (
-        <p role="status" className="text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">Ничего не найдено. Попробуй другое название.</p>
+        <p
+          role="status"
+          className="text-sm leading-5 text-[var(--parser-text-neutral-secondary)]"
+        >
+          Ничего не найдено. Попробуй другое название.
+        </p>
       )}
     </nav>
   );

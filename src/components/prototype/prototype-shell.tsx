@@ -116,7 +116,7 @@ export function PrototypeShell() {
   const paginationAltExamples = ["default"] as const
   const paginationExamples = ["default"] as const
   const progressLinearPositions = ["start", "medium", "full", "end"] as const
-  const selectSizes = ["lg", "md", "sm"] as const
+  const selectSizes = ["md", "sm"] as const
   const selectGhostSizes = ["md", "sm"] as const
   const searchInputSizes = ["md", "sm"] as const
   const textFieldMultilineSizes = ["md", "sm"] as const
@@ -579,7 +579,6 @@ export function PrototypeShell() {
                       helperText="Helper text"
                       label="Label"
                       size={size}
-                      topLabel="dynamic"
                       value="Value"
                     />
                     <Select
@@ -587,7 +586,6 @@ export function PrototypeShell() {
                       helperText="Helper text"
                       label="Label"
                       size={size}
-                      topLabel="dynamic"
                     />
                     <Select
                       content="text"
@@ -596,7 +594,6 @@ export function PrototypeShell() {
                       label="Label"
                       size={size}
                       state="focused"
-                      topLabel="dynamic"
                       value="Value"
                     />
                     <Select
@@ -605,7 +602,6 @@ export function PrototypeShell() {
                       helperText="Helper text"
                       label="Label"
                       size={size}
-                      topLabel="dynamic"
                       value="Value"
                     />
                   </div>

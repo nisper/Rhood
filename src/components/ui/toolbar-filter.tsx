@@ -1,7 +1,8 @@
 import * as React from "react"
-import { ChevronDown, Search, SlidersHorizontal, X } from "lucide-react"
+import { Search, SlidersHorizontal, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { Select } from "@/components/ui/select"
 import { ToggleButton } from "@/components/ui/toggle-button"
 import { ToggleButtonGroup } from "@/components/ui/toggle-button-group"
 import { cn } from "@/lib/utils"
@@ -24,16 +25,12 @@ function FilterSelect({
   widthClass?: string
 }) {
   return (
-    <button
-      className={cn(
-        "flex h-9 cursor-pointer items-center gap-2 rounded-lg border border-[var(--parser-border-light)] bg-white px-3 py-2 text-sm leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-primary)]",
-        widthClass,
-      )}
-      type="button"
-    >
-      <span className="min-w-0 flex-1 truncate text-left">{label}</span>
-      <ChevronDown aria-hidden="true" className="size-4 shrink-0" strokeWidth={2} />
-    </button>
+    <Select
+      className={widthClass}
+      label={false}
+      size="sm"
+      value={label}
+    />
   )
 }
 

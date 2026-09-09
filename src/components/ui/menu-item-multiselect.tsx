@@ -5,6 +5,7 @@ import { Chip } from "@/components/ui/chip"
 import { cn } from "@/lib/utils"
 
 type MenuItemMultiselectState = "default" | "hovered"
+type MenuItemMultiselectSize = "md" | "sm"
 type MenuItemMultiselectChecked = boolean | "none" | "true" | "indeterminate"
 
 type MenuItemMultiselectProps = React.ComponentProps<"div"> & {
@@ -17,6 +18,7 @@ type MenuItemMultiselectProps = React.ComponentProps<"div"> & {
   rightSlotText?: boolean
   secondaryText?: boolean
   selected?: boolean
+  size?: MenuItemMultiselectSize
   startIcon?: boolean
   state?: MenuItemMultiselectState
 }
@@ -88,6 +90,7 @@ function MenuItemMultiselect({
   rightSlotText = true,
   secondaryText = true,
   selected = false,
+  size = "md",
   startIcon = true,
   state = "default",
   ...props
@@ -100,7 +103,8 @@ function MenuItemMultiselect({
   return (
     <div
       className={cn(
-        "flex w-[360px] items-start gap-2 rounded-lg px-3 py-2",
+        "flex w-[360px] items-start gap-2 rounded-lg px-3",
+        size === "md" ? "py-2.5" : "py-2",
         getBackground({ disabled, state }),
         !disabled && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
         className,
@@ -134,7 +138,7 @@ function MenuItemMultiselect({
       >
         <span
           className={cn(
-            "w-full text-sm leading-5 tracking-[0.15px]",
+              size === "md" ? "w-full text-base leading-6 tracking-[0.15px]" : "w-full text-sm leading-5 tracking-[0.15px]",
             getTitleTone(),
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
@@ -196,5 +200,6 @@ export { MenuItemMultiselect }
 export type {
   MenuItemMultiselectChecked,
   MenuItemMultiselectProps,
+  MenuItemMultiselectSize,
   MenuItemMultiselectState,
 }

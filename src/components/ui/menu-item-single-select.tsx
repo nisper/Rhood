@@ -5,6 +5,7 @@ import { Chip } from "@/components/ui/chip"
 import { cn } from "@/lib/utils"
 
 type MenuItemSingleSelectState = "default" | "hovered"
+type MenuItemSingleSelectSize = "md" | "sm"
 
 type MenuItemSingleSelectProps = React.ComponentProps<"div"> & {
   icon?: boolean
@@ -15,6 +16,7 @@ type MenuItemSingleSelectProps = React.ComponentProps<"div"> & {
   rightSlotText?: boolean
   secondaryText?: boolean
   selected?: boolean
+  size?: MenuItemSingleSelectSize
   startIcon?: boolean
   state?: MenuItemSingleSelectState
 }
@@ -50,6 +52,7 @@ function MenuItemSingleSelect({
   rightSlotText = true,
   secondaryText = true,
   selected = true,
+  size = "md",
   startIcon = true,
   state = "default",
   ...props
@@ -61,7 +64,8 @@ function MenuItemSingleSelect({
   return (
     <div
       className={cn(
-        "flex w-[360px] items-center gap-2 rounded-lg px-3 py-2",
+        "flex w-[360px] items-center gap-2 rounded-lg px-3",
+        size === "md" ? "py-2.5" : "py-2",
         getBackground({ disabled, selected, state }),
         !disabled && !selected && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
         className,
@@ -90,7 +94,7 @@ function MenuItemSingleSelect({
         )}
       >
         <span
-          className="w-full text-sm leading-5 tracking-[0.15px] text-[color:var(--parser-text-neutral-primary)]"
+          className={cn("w-full tracking-[0.15px] text-[color:var(--parser-text-neutral-primary)]", size === "md" ? "text-base leading-6" : "text-sm leading-5")}
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           {children}
@@ -141,4 +145,4 @@ function MenuItemSingleSelect({
 }
 
 export { MenuItemSingleSelect }
-export type { MenuItemSingleSelectProps, MenuItemSingleSelectState }
+export type { MenuItemSingleSelectProps, MenuItemSingleSelectSize, MenuItemSingleSelectState }

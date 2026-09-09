@@ -5,10 +5,9 @@ import { Chip } from "@/components/ui/chip"
 import { FormHelperText } from "@/components/ui/form-helper-text"
 import { cn } from "@/lib/utils"
 
-type SelectSize = "lg" | "md" | "sm"
+type SelectSize = "md" | "sm"
 type SelectContent = "text" | "chips"
 type SelectState = "default" | "hovered" | "focused"
-type SelectTopLabel = "dynamic" | "static"
 
 type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
   content?: SelectContent
@@ -19,9 +18,10 @@ type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
   helperText?: React.ReactNode
   label?: React.ReactNode
   size?: SelectSize
+  icon?: React.ReactNode | boolean
+  /** @deprecated Use icon. Kept for compatibility with existing consumers. */
   startIcon?: React.ReactNode | boolean
   state?: SelectState
-  topLabel?: SelectTopLabel
   value?: React.ReactNode
 }
 
@@ -34,12 +34,6 @@ const sizeTokens: Record<
     staticLabel: string
   }
 > = {
-  lg: {
-    container: "min-h-14 px-4 py-4",
-    valueText: "text-base leading-6 tracking-normal",
-    helperText: "text-xs leading-[1.66] tracking-[0.15px]",
-    staticLabel: "text-xs leading-4 tracking-[0.15px]",
-  },
   md: {
     container: "min-h-10 px-3 py-2",
     valueText: "text-base leading-6 tracking-[0.15px]",
@@ -130,20 +124,19 @@ function Select({
   helperText,
   label = "Label",
   size = "md",
-  startIcon = false,
   state = "default",
-  topLabel = "dynamic",
+  icon = false,
+  startIcon = false,
   value,
   ...props
 }: SelectProps) {
   const resolvedState: SelectState = disabled ? "default" : state
-  const hasValue = value !== undefined ? Boolean(value) : !empty
-  const isFloating = topLabel === "dynamic" && (hasValue || resolvedState === "focused")
+  const hasIcon = icon || startIcon
   const resolvedValue = resolveValue(value, "Value")
 
   return (
-    <div className={cn("w-full", className)} {...props}>
-      {topLabel === "static" && (
+    <div className={cn("w-fit max-w-full", className)} {...props}>
+      {label !== false && (
         <label
           className={cn(
             "mb-1 block whitespace-nowrap font-normal",
@@ -158,26 +151,13 @@ function Select({
 
       <div
         className={cn(
-          "relative flex w-full items-center rounded-lg border bg-white transition-colors duration-150",
+          "relative flex w-fit max-w-full cursor-pointer items-center rounded-lg border bg-white transition-colors duration-150",
           sizeTokens[size].container,
           getBorderClasses({ disabled, error, state: resolvedState }),
+          !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--parser-border-neutral-dark)]",
         )}
       >
-        {topLabel === "dynamic" && (
-          <label
-            className={cn(
-              "pointer-events-none absolute left-3 z-10 inline-flex whitespace-nowrap rounded-[2px] bg-white px-1 font-normal transition-all duration-150",
-              sizeTokens[size].staticLabel,
-              getLabelTone({ disabled, error, state: resolvedState }),
-              isFloating ? "-top-2" : "top-1.5",
-            )}
-            style={{ fontVariationSettings: "'wdth' 100" }}
-          >
-            {label}
-          </label>
-        )}
-
-        {startIcon && (
+        {hasIcon && (
           <span className={cn("flex shrink-0 items-center pr-2", disabled && "opacity-60")}>
             <Star className="size-5 shrink-0" strokeWidth={2} />
           </span>
@@ -252,4 +232,4 @@ function Select({
 }
 
 export { Select }
-export type { SelectProps, SelectSize, SelectContent, SelectState, SelectTopLabel }
+export type { SelectProps, SelectSize, SelectContent, SelectState }
