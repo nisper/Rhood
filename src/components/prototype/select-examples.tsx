@@ -41,12 +41,26 @@ function Section({ title, children, description }: { title: string; description:
 function SelectWithMenu({ align = "left", showMenu = false, ...props }: React.ComponentProps<typeof Select> & { align?: "left" | "right"; showMenu?: boolean }) {
   const selectedValue = typeof props.value === "string" ? props.value : options[0]
   const [open, setOpen] = React.useState(showMenu)
+  const [value, setValue] = React.useState(selectedValue)
+  const containerRef = React.useRef<HTMLDivElement>(null)
 
-  return <div className={cn("flex w-fit max-w-full flex-col gap-1", align === "right" && "self-end")}>
-    <Select {...props} expanded={open} onClick={() => setOpen(value => !value)} value={selectedValue} />
-    {open && <Menu align={align}>
-      {options.map(option => <MenuItemSingleSelect icon={false} key={option} onClick={() => setOpen(false)} rightSlot={false} secondaryText={false} selected={option === selectedValue} size={props.size ?? "md"}>{option}</MenuItemSingleSelect>)}
-    </Menu>}
+  React.useEffect(() => {
+    if (!open) return
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+        setOpen(false)
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown)
+    return () => document.removeEventListener("pointerdown", handlePointerDown)
+  }, [open])
+
+  return <div className={cn("flex w-fit max-w-full flex-col gap-1", align === "right" && "self-end")} ref={containerRef}>
+    <Select {...props} expanded={open} onClick={() => { if (!props.disabled) setOpen(isOpen => !isOpen) }} value={value} menu={open && <Menu className={cn("absolute top-full z-50 mt-0.5", align === "left" ? "left-0" : "right-0")} align={align}>
+      {options.map(option => <MenuItemSingleSelect icon={false} key={option} onClick={event => { event.stopPropagation(); setValue(option); setOpen(false) }} rightSlot={false} secondaryText={false} selected={option === value} size={props.size ?? "md"}>{option}</MenuItemSingleSelect>)}
+    </Menu>} />
   </div>
 }
 

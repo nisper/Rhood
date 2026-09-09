@@ -103,7 +103,7 @@ function MenuItemMultiselect({
   return (
     <div
       className={cn(
-        "flex w-[360px] items-start gap-2 rounded-lg px-3",
+        "flex w-full items-start gap-2 rounded-lg px-3",
         size === "md" ? "py-2.5" : "py-2",
         getBackground({ disabled, state }),
         !disabled && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",

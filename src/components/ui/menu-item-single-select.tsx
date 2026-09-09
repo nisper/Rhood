@@ -64,7 +64,7 @@ function MenuItemSingleSelect({
   return (
     <div
       className={cn(
-        "flex w-[360px] items-center gap-2 rounded-lg px-3",
+        "flex w-full items-center gap-2 rounded-lg px-3",
         size === "md" ? "py-2.5" : "py-2",
         getBackground({ disabled, selected, state }),
         !disabled && !selected && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",

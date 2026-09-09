@@ -17,6 +17,7 @@ type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
   expanded?: boolean
   helperText?: React.ReactNode
   label?: React.ReactNode
+  menu?: React.ReactNode
   size?: SelectSize
   icon?: React.ReactNode | boolean
   /** @deprecated Use icon. Kept for compatibility with existing consumers. */
@@ -123,6 +124,7 @@ function Select({
   expanded = false,
   helperText,
   label = "Label",
+  menu,
   size = "md",
   state = "default",
   icon = false,
@@ -149,14 +151,15 @@ function Select({
         </label>
       )}
 
-      <div
-        className={cn(
-          "relative flex w-fit max-w-full cursor-pointer items-center rounded-lg border bg-white transition-colors duration-150",
-          sizeTokens[size].container,
-          getBorderClasses({ disabled, error, state: resolvedState }),
-          !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--parser-border-neutral-dark)]",
-        )}
-      >
+      <div className="relative w-fit max-w-full">
+        <div
+          className={cn(
+            "relative flex w-fit max-w-full cursor-pointer items-center gap-[var(--common-input-padding-gap-md,8px)] rounded-lg border bg-white transition-colors duration-150",
+            sizeTokens[size].container,
+            getBorderClasses({ disabled, error, state: resolvedState }),
+            !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--parser-border-neutral-dark)]",
+          )}
+        >
         {hasIcon && (
           <span className={cn("flex shrink-0 items-center pr-2", disabled && "opacity-60")}>
             <Star className="size-5 shrink-0" strokeWidth={2} />
@@ -210,13 +213,15 @@ function Select({
           </div>
         )}
 
-        <span className={cn("flex w-5 shrink-0 items-center justify-center", disabled && "opacity-60")}>
+        <span className={cn("mx-[-2px] flex w-5 shrink-0 items-center justify-center", disabled && "opacity-60")}>
           <ChevronDown
             className={cn("size-5 shrink-0 transition-transform duration-150", expanded && "rotate-180")}
             strokeWidth={2}
           />
         </span>
 
+        </div>
+        {menu}
       </div>
 
       {helperText && (
