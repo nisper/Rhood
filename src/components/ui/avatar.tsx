@@ -3,7 +3,7 @@ import { User } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-const imageContent = "/assets/avatar-32.png"
+const imageContent = "/Rhood/assets/avatar-32.png"
 
 type AvatarSize = "20px" | "24px" | "32px" | "40px"
 type AvatarVariant = "Circular" | "Rounded"

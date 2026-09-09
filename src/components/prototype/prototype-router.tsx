@@ -48,7 +48,7 @@ function PrototypeHome() {
           alt="RHOOD"
           className="h-8 w-auto"
           height="32"
-          src="/assets/rhood-logo-primary.svg"
+          src="/Rhood/assets/rhood-logo-primary.svg"
           width="134"
         />
 

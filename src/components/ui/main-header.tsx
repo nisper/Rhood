@@ -10,8 +10,8 @@ import {
 } from "@/components/ui/main-header-menu-button"
 import { cn } from "@/lib/utils"
 
-const logoDeskSrc = "/assets/rhood-logo-header.svg"
-const logoMobileSrc = "/assets/rhood-logo-header-full.svg"
+const logoDeskSrc = "/Rhood/assets/rhood-logo-header.svg"
+const logoMobileSrc = "/Rhood/assets/rhood-logo-header-full.svg"
 
 type MainHeaderNavItem = {
   active?: boolean
