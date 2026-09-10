@@ -15,6 +15,7 @@ type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
   empty?: boolean
   error?: boolean
   expanded?: boolean
+  fullWidth?: boolean
   helperText?: React.ReactNode
   label?: React.ReactNode
   menu?: React.ReactNode
@@ -122,6 +123,7 @@ function Select({
   empty = false,
   error = false,
   expanded = false,
+  fullWidth = false,
   helperText,
   label = "Label",
   menu,
@@ -137,7 +139,7 @@ function Select({
   const resolvedValue = resolveValue(value, "Value")
 
   return (
-    <div className={cn("w-fit max-w-full", className)} {...props}>
+    <div className={cn("w-fit max-w-full", fullWidth && "w-full", className)} {...props}>
       {label !== false && (
         <label
           className={cn(
@@ -151,10 +153,11 @@ function Select({
         </label>
       )}
 
-      <div className="relative w-fit max-w-full">
+      <div className={cn("relative w-fit max-w-full", fullWidth && "w-full")}>
         <div
           className={cn(
             "relative flex w-fit max-w-full cursor-pointer items-center gap-[var(--common-input-padding-gap-md,8px)] rounded-lg border bg-white transition-colors duration-150",
+            fullWidth && "w-full",
             sizeTokens[size].container,
             getBorderClasses({ disabled, error, state: resolvedState }),
             !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--parser-border-neutral-dark)]",

@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils"
 type SnackbarProps = React.ComponentProps<"div"> & {
   button?: boolean
   close?: boolean
-  icon?: boolean
+  icon?: boolean | React.ReactNode
   message?: React.ReactNode
   actionLabel?: React.ReactNode
 }
@@ -27,17 +27,21 @@ function Snackbar({
   return (
     <div
       className={cn(
-        "flex min-h-[42px] w-[320px] items-center gap-2 rounded-[4px] bg-[color:var(--parser-fill-neutral-dark-ultra)] px-4 py-[6px]",
+        "flex min-h-[42px] w-fit max-w-[calc(100vw-2.5rem)] items-center gap-2 rounded-[4px] bg-[color:var(--parser-fill-neutral-dark-ultra)] px-4 py-[6px]",
         className,
       )}
       {...props}
     >
       {icon && (
         <span className="flex w-5 shrink-0 items-center justify-end pr-1">
-          <CircleAlert
-            className="size-4 shrink-0 text-[color:var(--parser-text-primary-contrast)]"
-            strokeWidth={2}
-          />
+          {icon === true ? (
+            <CircleAlert
+              className="size-4 shrink-0 text-[color:var(--parser-text-primary-contrast)]"
+              strokeWidth={2}
+            />
+          ) : (
+            icon
+          )}
         </span>
       )}
 

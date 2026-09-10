@@ -2,9 +2,10 @@ import { ListExamples } from "./list-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
+import { SegmentedControlExamples } from "./segmented-control-examples";
 import "./component-docs.css";
 import * as React from "react";
-import { Search } from "lucide-react";
+import { Copy, Search } from "lucide-react";
 
 import { AddAnyFile } from "@/components/ui/add-any-file";
 import { AddPhotos } from "@/components/ui/add-photos";
@@ -50,7 +51,7 @@ import { Tag } from "@/components/ui/tag";
 import { TextField } from "@/components/ui/text-field";
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline";
 import { ToggleButton } from "@/components/ui/toggle-button";
-import { ToggleButtonGroup } from "@/components/ui/toggle-button-group";
+import { SegmentedControl } from "@/components/ui/segmented-control";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -403,20 +404,14 @@ const componentDocs: ComponentDoc[] = [
     ),
   },
   {
-    id: "toggle-button-group",
-    title: "ToggleButtonGroup",
-    description: "Группа переключателей.",
+    id: "segmented-control",
+    title: "Segmented control",
+    description: "Группа взаимоисключающих сегментов для выбора одного варианта.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11411-8070",
     group: "Actions",
-    source: "src/components/ui/toggle-button-group.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <ToggleButtonGroup size="lg" />
-          <ToggleButtonGroup size="md" />
-          <ToggleButtonGroup color="contrast" size="sm" />
-        </Matrix>
-      </Canvas>
-    ),
+    source: "src/components/ui/segmented-control.tsx · src/components/ui/segment.tsx",
+    render: () => <SegmentedControlExamples />,
   },
   {
     id: "toggle-chip",
@@ -787,7 +782,7 @@ const componentDocs: ComponentDoc[] = [
     title: "Menu",
     description:
       "Выпадающий контейнер с пунктами одиночного и множественного выбора и разделителями.",
-    group: "Navigation",
+    group: "Forms",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=436-1556",
     source: "src/components/ui/menu.tsx",
@@ -1193,6 +1188,7 @@ function getActiveComponentId() {
   if (["list-small", "list-item", "list-item-small"].includes(id))
     return "list";
   if (["table-cell", "table-cell-head"].includes(id)) return "table";
+  if (id === "segment-control") return "segmented-control";
   return [
     "menu-divider",
     "menu-single-select",
@@ -1220,7 +1216,16 @@ function groupDocs(items: ComponentDoc[]) {
   }, {});
 }
 
-function ComponentPage({ doc }: { doc: ComponentDoc }) {
+function ComponentPage({
+  doc,
+  onFigmaClick,
+}: {
+  doc: ComponentDoc;
+  onFigmaClick?: (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    url: string,
+  ) => void;
+}) {
   return (
     <article className="min-w-0">
       <header className="bg-[var(--parser-surface-under-islands)] px-6 py-10">
@@ -1238,6 +1243,7 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
               <a
                 className="group flex w-fit items-center gap-1 rounded text-base leading-6 hover:text-[var(--parser-text-link-hovered)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
                 href={doc.figmaUrl}
+                onClick={(event) => onFigmaClick?.(event, doc.figmaUrl!)}
                 rel="noreferrer"
                 target="_blank"
               >
@@ -1308,6 +1314,49 @@ function ComponentPage({ doc }: { doc: ComponentDoc }) {
 export function ComponentDocs() {
   const [activeId, setActiveId] = React.useState(getActiveComponentId);
   const [query, setQuery] = React.useState("");
+  const [snackbarVisible, setSnackbarVisible] = React.useState(false);
+  const snackbarTimer = React.useRef<number | undefined>(undefined);
+
+  React.useEffect(() => {
+    return () => {
+      if (snackbarTimer.current !== undefined) {
+        window.clearTimeout(snackbarTimer.current);
+      }
+    };
+  }, []);
+
+  const handleFigmaClick = React.useCallback(
+    async (
+      event: React.MouseEvent<HTMLAnchorElement>,
+      url: string,
+    ) => {
+      event.preventDefault();
+
+      try {
+        await navigator.clipboard.writeText(url);
+      } catch {
+        const textarea = document.createElement("textarea");
+        textarea.value = url;
+        textarea.setAttribute("readonly", "");
+        textarea.style.position = "fixed";
+        textarea.style.opacity = "0";
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand("copy");
+        textarea.remove();
+      }
+
+      setSnackbarVisible(true);
+      if (snackbarTimer.current !== undefined) {
+        window.clearTimeout(snackbarTimer.current);
+      }
+      snackbarTimer.current = window.setTimeout(
+        () => setSnackbarVisible(false),
+        2500,
+      );
+    },
+    [],
+  );
 
   React.useEffect(() => {
     const handlePopState = () => setActiveId(getActiveComponentId());
@@ -1377,9 +1426,28 @@ export function ComponentDocs() {
           </div>
         </aside>
         <main className="min-w-0">
-          <ComponentPage doc={activeDoc} key={activeDoc.id} />
+          <ComponentPage
+            doc={activeDoc}
+            key={activeDoc.id}
+            onFigmaClick={handleFigmaClick}
+          />
         </main>
       </div>
+      {snackbarVisible && (
+        <div className="fixed inset-x-0 bottom-5 z-50 flex justify-center px-5">
+          <Snackbar
+            button={false}
+            close={false}
+            icon={
+              <Copy
+                className="size-4 shrink-0 text-[color:var(--parser-text-primary-contrast)]"
+                strokeWidth={2}
+              />
+            }
+            message="Ссылка скопирована"
+          />
+        </div>
+      )}
     </div>
   );
 }

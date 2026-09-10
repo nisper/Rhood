@@ -27,6 +27,7 @@ function FilterSelect({
   return (
     <Select
       className={widthClass}
+      fullWidth={Boolean(widthClass)}
       label={false}
       size="sm"
       value={label}
