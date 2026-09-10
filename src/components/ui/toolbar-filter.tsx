@@ -2,6 +2,8 @@ import * as React from "react"
 import { Search, SlidersHorizontal, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { Menu } from "@/components/ui/menu"
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
 import { Segment } from "@/components/ui/segment"
 import { SegmentedControl } from "@/components/ui/segmented-control"
 import { Select } from "@/components/ui/select"
@@ -16,22 +18,66 @@ type ToolbarFilterProps = React.ComponentProps<"section"> & {
 }
 
 const roominessOptions = ["Студия", "1", "2", "3", "4+"]
+const propertyTypeOptions = ["Квартиры", "Дома", "Участки"]
 
 function FilterSelect({
   label,
+  options = [label],
   widthClass,
 }: {
   label: string
+  options?: readonly string[]
   widthClass?: string
 }) {
+  const [open, setOpen] = React.useState(false)
+  const [value, setValue] = React.useState(label)
+  const containerRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    if (!open) return
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!containerRef.current?.contains(event.target as Node)) setOpen(false)
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown)
+    return () => document.removeEventListener("pointerdown", handlePointerDown)
+  }, [open])
+
   return (
-    <Select
-      className={widthClass}
-      fullWidth={Boolean(widthClass)}
-      label={false}
-      size="sm"
-      value={label}
-    />
+    <div ref={containerRef}>
+      <Select
+        className={widthClass}
+        expanded={open}
+        fullWidth={Boolean(widthClass)}
+        label={false}
+        menu={open && (
+          <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full" role="listbox">
+            {options.map((option) => (
+              <MenuItemSingleSelect
+                icon={false}
+                key={option}
+                onClick={(event) => {
+                  event.stopPropagation()
+                  setValue(option)
+                  setOpen(false)
+                }}
+                rightSlot={false}
+                role="option"
+                secondaryText={false}
+                selected={option === value}
+                size="sm"
+              >
+                {option}
+              </MenuItemSingleSelect>
+            ))}
+          </Menu>
+        )}
+        onClick={() => setOpen((current) => !current)}
+        size="sm"
+        value={value}
+      />
+    </div>
   )
 }
 
@@ -63,6 +109,7 @@ function RoominessGroup({ empty }: { empty: boolean }) {
     <SegmentedControl
       color="contrast"
       defaultValue={empty ? undefined : roominessOptions[0]}
+      selectionMode="multiple"
       size="sm"
     >
       {roominessOptions.map((item) => <Segment key={item} value={item}>{item}</Segment>)}
@@ -105,7 +152,7 @@ function ToolbarFilter({
         {...props}
       >
         <MobileFilterButton empty={empty} />
-        <FilterSelect label="Квартиры" />
+        <FilterSelect label="Квартиры" options={propertyTypeOptions} />
         <FilterSelect label={empty ? "Комнаты" : "1 ком."} />
         <FilterSelect label={empty ? "Площадь" : "50–70 м²"} />
         <FilterSelect label={empty ? "Цена" : "8–12,5 млн. ₽"} />
@@ -122,13 +169,13 @@ function ToolbarFilter({
   return (
     <section
       className={cn(
-        "relative flex items-center gap-4 overflow-hidden bg-[var(--parser-fill-neutral)] px-6 py-3",
+        "relative flex items-center gap-4 overflow-visible bg-[var(--parser-fill-neutral)] px-6 py-3",
         className,
       )}
       {...props}
     >
-      <div className="flex items-start gap-2 overflow-hidden">
-        <FilterSelect label="Квартиры" widthClass="w-[150px]" />
+      <div className="flex items-start gap-2 overflow-visible">
+        <FilterSelect label="Квартиры" options={propertyTypeOptions} widthClass="w-[150px]" />
         <RoominessGroup empty={empty} />
         <FilterRange suffix="м²" widthClass="w-[152px]" />
         <FilterRange suffix="₽" widthClass="w-[240px]" />

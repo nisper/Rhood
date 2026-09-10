@@ -77,7 +77,7 @@ function getBorderClasses({
     return "border-[color:var(--parser-border-neutral-dark)]"
   }
 
-  return "border-[color:var(--parser-border-neutral)]"
+  return "border-[color:var(--parser-border-light)]"
 }
 
 function getLabelTone({
