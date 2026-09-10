@@ -25,6 +25,7 @@ function SegmentedControl({
   ...props
 }: SegmentedControlProps) {
   const height = size === "lg" ? "min-h-14" : size === "md" ? "min-h-10" : "min-h-9"
+  const radius = size === "lg" ? "rounded-xl" : "rounded-lg"
   const surface = color === "contrast"
     ? "border border-[var(--parser-border-light)] bg-[var(--parser-fill-contrast-static)]"
     : "bg-[var(--parser-fill-neutral)]"
@@ -80,7 +81,7 @@ function SegmentedControl({
   return (
     <div
       aria-label="Segmented control"
-      className={cn("inline-flex w-fit items-center gap-0.5 overflow-clip rounded-xl p-1", height, surface, className)}
+      className={cn("inline-flex w-fit items-center gap-0.5 overflow-clip p-1", height, radius, surface, className)}
       role={selectionMode === "single" ? "radiogroup" : "group"}
       {...props}
     >

@@ -18,9 +18,9 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
 }
 
 const sizes: Record<SegmentSize, { icon: string; label: string; padding: string; radius: string }> = {
-  lg: { icon: "size-6", label: "text-base leading-6 tracking-normal", padding: "px-4 py-3", radius: "rounded-[9px]" },
-  md: { icon: "size-5", label: "text-base leading-6 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded-[5px]" },
-  sm: { icon: "size-4", label: "text-sm leading-5 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded-[5px]" },
+  lg: { icon: "size-6", label: "text-base leading-6 tracking-normal", padding: "px-4 py-3", radius: "rounded-lg" },
+  md: { icon: "size-5", label: "text-base leading-6 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded" },
+  sm: { icon: "size-4", label: "text-sm leading-5 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded" },
 }
 
 /** An individual option inside a SegmentedControl. */

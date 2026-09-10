@@ -2,9 +2,9 @@ import * as React from "react"
 import { Search, SlidersHorizontal, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { Segment } from "@/components/ui/segment"
+import { SegmentedControl } from "@/components/ui/segmented-control"
 import { Select } from "@/components/ui/select"
-import { ToggleButton } from "@/components/ui/toggle-button"
-import { ToggleButtonGroup } from "@/components/ui/toggle-button-group"
 import { cn } from "@/lib/utils"
 
 type ToolbarFilterResp = "desk" | "mob"
@@ -60,37 +60,13 @@ function FilterRange({
 
 function RoominessGroup({ empty }: { empty: boolean }) {
   return (
-    <ToggleButtonGroup className="bg-white" color="contrast" size="sm">
-      {roominessOptions.map((item, index) => {
-        const active = index === 0
-
-        return (
-          <ToggleButton
-            color="neutral-dark"
-            defaultSelected={active}
-            icon={false}
-            key={item}
-            className={cn(
-              "min-w-9 bg-transparent",
-              empty && active && "bg-transparent",
-            )}
-            size="sm"
-          >
-            <span
-              className={cn(
-                "whitespace-nowrap text-sm leading-5 tracking-[0.15px] font-medium",
-                active && !empty
-                  ? "text-[var(--parser-text-primary-contrast)]"
-                  : "text-[var(--parser-text-neutral-primary)]",
-              )}
-              style={{ fontVariationSettings: "'wdth' 100" }}
-            >
-              {item}
-            </span>
-          </ToggleButton>
-        )
-      })}
-    </ToggleButtonGroup>
+    <SegmentedControl
+      color="contrast"
+      defaultValue={empty ? undefined : roominessOptions[0]}
+      size="sm"
+    >
+      {roominessOptions.map((item) => <Segment key={item} value={item}>{item}</Segment>)}
+    </SegmentedControl>
   )
 }
 
