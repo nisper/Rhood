@@ -43,7 +43,6 @@ import { RangeInput } from "@/components/ui/range-input"
 import { TextField } from "@/components/ui/text-field"
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline"
 import { ToggleButton } from "@/components/ui/toggle-button"
-import { SegmentedControl } from "@/components/ui/segmented-control"
 import { ToggleChip } from "@/components/ui/toggle-chip"
 import { Tooltip } from "@/components/ui/tooltip"
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip"
@@ -122,8 +121,6 @@ export function PrototypeShell() {
   const textFieldMultilineSizes = ["md", "sm"] as const
   const toggleButtonSizes = ["lg", "md", "sm"] as const
   const toggleButtonColors = ["contrast", "neutral-dark", "neutral"] as const
-  const segmentControlSizes = ["lg", "md", "sm"] as const
-  const segmentControlColors = ["contrast", "neutral"] as const
   const tooltipExamples = ["Typography", "Longer tooltip text"] as const
   const onboardingTooltipExamples = ["top", "left", "right", "bottom"] as const
   const addPhotosExamples = ["default", "hover", "load"] as const
@@ -1218,26 +1215,6 @@ export function PrototypeShell() {
                         size={size}
                         state="default"
                       />
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="grid gap-3">
-            <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
-              segment control
-            </h4>
-            <div className="grid gap-6 rounded-xl bg-white p-4">
-              {segmentControlSizes.map((size) => (
-                <div key={size} className="grid gap-3">
-                  <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
-                    {size}
-                  </div>
-                  <div className="flex flex-wrap items-center gap-4">
-                    {segmentControlColors.map((color) => (
-                      <SegmentedControl color={color} key={`${size}-${color}`} size={size} />
                     ))}
                   </div>
                 </div>

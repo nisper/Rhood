@@ -51,7 +51,6 @@ import { Tag } from "@/components/ui/tag";
 import { TextField } from "@/components/ui/text-field";
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline";
 import { ToggleButton } from "@/components/ui/toggle-button";
-import { SegmentedControl } from "@/components/ui/segmented-control";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -408,7 +407,7 @@ const componentDocs: ComponentDoc[] = [
     title: "Segmented control",
     description: "Группа взаимоисключающих сегментов для выбора одного варианта.",
     figmaUrl:
-      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11411-8070",
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=8827-1349",
     group: "Actions",
     source: "src/components/ui/segmented-control.tsx · src/components/ui/segment.tsx",
     render: () => <SegmentedControlExamples />,

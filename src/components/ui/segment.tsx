@@ -7,61 +7,87 @@ type SegmentSize = "lg" | "md" | "sm"
 type SegmentColor = "neutral" | "contrast"
 type SegmentState = "default" | "hover"
 
-type SegmentProps = React.ComponentProps<"button"> & {
+type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
   color?: SegmentColor
   defaultSelected?: boolean
-  selected?: boolean
   icon?: boolean
+  label?: boolean
+  selected?: boolean
   size?: SegmentSize
   state?: SegmentState
 }
 
-const sizes: Record<SegmentSize, { icon: string; label: string; px: string; py: string; radius: string }> = {
-  lg: { icon: "size-6", label: "text-base leading-6", px: "px-4", py: "py-2.5", radius: "rounded-lg" },
-  md: { icon: "size-5", label: "text-sm leading-5", px: "px-3", py: "py-1.5", radius: "rounded-md" },
-  sm: { icon: "size-4", label: "text-xs leading-4", px: "px-3", py: "py-1.5", radius: "rounded-md" },
+const sizes: Record<SegmentSize, { icon: string; label: string; padding: string; radius: string }> = {
+  lg: { icon: "size-6", label: "text-base leading-6 tracking-normal", padding: "px-4 py-3", radius: "rounded-[9px]" },
+  md: { icon: "size-5", label: "text-base leading-6 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded-[5px]" },
+  sm: { icon: "size-4", label: "text-sm leading-5 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded-[5px]" },
 }
 
+/** An individual option inside a SegmentedControl. */
 function Segment({
-  children = "Label",
+  children = "Option",
   className,
   color = "neutral",
   defaultSelected = false,
   disabled = false,
   icon = false,
+  label = true,
   selected,
-  size = "lg",
+  size = "md",
   state = "default",
   type = "button",
+  onClick,
+  role,
   ...props
 }: SegmentProps) {
-  const s = sizes[size]
-  const isControlled = selected !== undefined
   const [uncontrolledSelected, setUncontrolledSelected] = React.useState(defaultSelected)
-  const resolvedSelected = isControlled ? selected : uncontrolledSelected
-  const selectedBackground = color === "contrast" ? "bg-[var(--parser-fill-neutral-dark)]" : "bg-[var(--parser-fill-neutral-selected)]"
-  const hoverBackground = color === "contrast" ? "hover:bg-[var(--parser-fill-neutral-dark-hover)]" : "hover:bg-[var(--parser-fill-neutral-hover)]"
-  const background = disabled ? "bg-transparent" : resolvedSelected ? selectedBackground : state === "hover" ? "bg-[var(--parser-fill-neutral-hover)]" : "bg-transparent"
-  const text = disabled ? "text-[color:var(--parser-text-disabled)]" : resolvedSelected && color === "contrast" ? "text-[color:var(--parser-text-primary-contrast)]" : "text-[color:var(--parser-text-neutral-primary)]"
+  const isControlled = selected !== undefined
+  const isSelected = selected ?? uncontrolledSelected
+  const s = sizes[size]
+  const selectedBackground = color === "contrast"
+    ? "bg-[var(--parser-fill-neutral-dark)]"
+    : "bg-[var(--parser-fill-contrast-static)]"
+  const hoverBackground = "hover:bg-[var(--parser-fill-neutral-hover)]"
+  const textColor = disabled
+    ? "text-[var(--parser-text-disabled)]"
+    : color === "contrast" && isSelected
+      ? "text-[var(--parser-text-primary-contrast)]"
+      : "text-[var(--parser-text-neutral-primary)]"
+  const forcedHover = !disabled && !isSelected && state === "hover"
+    ? "bg-[var(--parser-fill-neutral-hover)]"
+    : ""
+  const hoverTextColor = color === "contrast" && !disabled
+    ? "hover:text-[var(--parser-text-neutral-primary)]"
+    : ""
+  const selectionAccessibility = role === "radio" || role === "checkbox"
+    ? { "aria-checked": isSelected }
+    : { "aria-pressed": isSelected }
 
   return (
     <button
-      aria-pressed={resolvedSelected}
+      {...selectionAccessibility}
       className={cn(
-        "inline-flex h-full min-w-0 shrink-0 cursor-pointer items-center justify-center gap-2 transition-colors duration-150 disabled:cursor-not-allowed",
-        s.radius, s.px, s.py, background, !disabled && hoverBackground,
-        text, className,
+        "inline-flex min-w-[36px] shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap font-[480] transition-colors duration-150 disabled:cursor-not-allowed",
+        s.padding,
+        s.radius,
+        isSelected && selectedBackground,
+        forcedHover,
+        !disabled && !isSelected && hoverBackground,
+        !isSelected && hoverTextColor,
+        textColor,
+        className,
       )}
       disabled={disabled}
-      {...props}
       onClick={(event) => {
         if (!isControlled && !disabled) setUncontrolledSelected((value) => !value)
-        props.onClick?.(event)
+        onClick?.(event)
       }}
+      role={role}
       type={type}
+      {...props}
     >
-      {icon && <Star className={cn("shrink-0", s.icon, text)} strokeWidth={2} />}
-      <span className={cn("whitespace-nowrap font-medium", s.label)} style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>
+      {icon && <Star aria-hidden="true" className={cn("shrink-0", s.icon)} strokeWidth={2} />}
+      {label && <span className={s.label} style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>}
     </button>
   )
 }

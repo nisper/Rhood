@@ -28,8 +28,8 @@
 ◽️ Favorite icon button
 ◽️ Icon buttons
 ◽️ Like button
-◽️ Toggle button
-◽️ Toggle button group
+✅ Toggle button → segment
+✅ Toggle button group → segment control
 ◽️ Toggle chip
 
 ## Навигация и оверлеи
