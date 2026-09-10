@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils"
  */
 type ButtonAppearance =
   | "primary"
-  | "secondary"
+  | "default"
   | "ghost"
   | "destructive"
   | "contrast"
@@ -86,7 +86,7 @@ const appearanceClasses: Record<
     disabled:
       "bg-[var(--parser-fill-disabled)] text-[var(--parser-text-disabled)]",
   },
-  secondary: {
+  default: {
     default:
       "bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-primary)]",
     hover:
@@ -126,7 +126,7 @@ const appearanceClasses: Record<
 const appearanceHoverClasses: Record<ButtonAppearance, string> = {
   primary:
     "hover:bg-[var(--parser-fill-brand-hover)] hover:text-[var(--parser-text-primary-contrast)]",
-  secondary:
+  default:
     "hover:bg-[var(--parser-fill-neutral-hover)] hover:text-[var(--parser-text-neutral-primary)]",
   ghost:
     "hover:bg-[var(--parser-fill-neutral-hover)] hover:text-[var(--parser-text-neutral-primary)]",
@@ -140,7 +140,7 @@ const appearanceHoverClasses: Record<ButtonAppearance, string> = {
 const counterToneClasses: Record<ButtonAppearance, string> = {
   primary:
     "bg-[var(--parser-fill-contrast-static)] text-[var(--parser-text-brand)]",
-  secondary:
+  default:
     "bg-[var(--parser-fill-neutral-dark)] text-[var(--parser-text-primary-contrast)]",
   ghost:
     "bg-[var(--parser-fill-neutral-dark)] text-[var(--parser-text-primary-contrast)]",
@@ -162,7 +162,7 @@ function resolveAppearance(
 
   if (
     variant === "primary" ||
-    variant === "secondary" ||
+    variant === "default" ||
     variant === "ghost" ||
     variant === "destructive" ||
     variant === "contrast" ||
@@ -172,7 +172,11 @@ function resolveAppearance(
   }
 
   if (variant === "outline" || variant === "outlined") {
-    return "secondary"
+    return "default"
+  }
+
+  if (variant === "secondary") {
+    return "default"
   }
 
   if (variant === "link" || variant === "text") {

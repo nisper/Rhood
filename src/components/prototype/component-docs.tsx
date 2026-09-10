@@ -1,17 +1,18 @@
 import { ListExamples } from "./list-examples";
+import { ButtonExamples } from "./button-examples";
+import { ShowcaseExamples } from "./showcase-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import "./component-docs.css";
 import * as React from "react";
-import { Copy, Search } from "lucide-react";
+import { Copy, PartyPopper, Search } from "lucide-react";
 
 import { AddAnyFile } from "@/components/ui/add-any-file";
 import { AddPhotos } from "@/components/ui/add-photos";
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
-import { Button, type ButtonSize } from "@/components/ui/button";
 import { ButtonFavorite } from "@/components/ui/button-favorite";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Chip } from "@/components/ui/chip";
@@ -41,7 +42,6 @@ import { PasswordField } from "@/components/ui/password-field";
 import { ProgressLinear } from "@/components/ui/progress-linear";
 import { RangeInput } from "@/components/ui/range-input";
 import { SearchInput } from "@/components/ui/search-input";
-import { Select } from "@/components/ui/select";
 import { SelectGhost } from "@/components/ui/select-ghost";
 import { ShowMore } from "@/components/ui/show-more";
 import { Snackbar } from "@/components/ui/snackbar";
@@ -73,7 +73,6 @@ type ComponentDoc = {
   render: () => React.ReactNode;
 };
 
-const buttonSizes: ButtonSize[] = ["md", "sm", "xsm"];
 const iconButtonAppearances: IconButtonAppearance[] = [
   "primary",
   "secondary",
@@ -153,172 +152,32 @@ function PreviewItem({
 
 const componentDocs: ComponentDoc[] = [
   {
+    id: "showcase-surface",
+    title: "Showcase surface",
+    description: "Поверхность для композиции примеров в Витрине компонентов.",
+    group: "Showcase",
+    properties: [
+      { name: "ShowcaseSurface.background", values: "muted · white", defaultValue: "muted", description: "Фон общей поверхности; transparent-панели показывают его." },
+      { name: "ShowcaseSurface radius", values: "16 px", defaultValue: "16 px", description: "Скругление общей поверхности, как у парных блоков Button." },
+      { name: "ShowcaseSurface padding", values: "4 px", defaultValue: "4 px", description: "Внутренний отступ и зазор между панелями." },
+      { name: "ShowcaseSurface.direction", values: "horizontal · vertical", defaultValue: "horizontal", description: "Расположение вложенных панелей в строку или столбец." },
+      { name: "ShowcaseSurface.children", values: "ReactNode", defaultValue: "—", description: "Один или несколько ShowcasePanel; число панелей задаётся их количеством." },
+      { name: "ShowcasePanel.tone", values: "white · transparent", defaultValue: "white", description: "Белая карточка или прозрачная панель на фоне ShowcaseSurface." },
+      { name: "ShowcasePanel padding", values: "24 px по горизонтали", defaultValue: "24 px", description: "Внутренние горизонтальные отступы панели; вертикальные — 16 px." },
+      { name: "ShowcasePanel radius", values: "12 px", defaultValue: "12 px", description: "Скругление панели, как в демонстрационных блоках Button." },
+    ],
+    source: "src/components/ui/showcase-surface.tsx · src/components/ui/showcase-panel.tsx",
+    render: () => <ShowcaseExamples />,
+  },
+  {
     id: "button",
     title: "Button",
     description: "Единая кнопка из обновленного Figma-компонента.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10647-1326",
     group: "Actions",
-    properties: [
-      {
-        name: "appearance",
-        values:
-          "primary · secondary · ghost · destructive · inherit · contrast",
-        defaultValue: "primary",
-        description: "Визуальный стиль и допустимый контекст применения.",
-      },
-      {
-        name: "size",
-        values: "md · sm · xsm",
-        defaultValue: "md",
-        description: "Размер кнопки, текста и иконок.",
-      },
-      {
-        name: "state",
-        values: "default · hover",
-        defaultValue: "default",
-        description: "Визуальное состояние для витрины и тестирования.",
-      },
-      {
-        name: "disabled",
-        values: "true · false",
-        defaultValue: "false",
-        description: "Блокирует взаимодействие и применяет disabled-состояние.",
-      },
-      {
-        name: "children / label",
-        values: "ReactNode",
-        defaultValue: "Label",
-        description: "Текст действия.",
-      },
-      {
-        name: "startIcon",
-        values: "ReactNode · true · false",
-        defaultValue: "true",
-        description: "Иконка слева от label.",
-      },
-      {
-        name: "endIcon",
-        values: "ReactNode · true · false",
-        defaultValue: "true",
-        description: "Иконка справа от label.",
-      },
-      {
-        name: "counter",
-        values: "true · false",
-        defaultValue: "false",
-        description: "Счётчик рядом с label.",
-      },
-    ],
     source: "src/components/ui/button.tsx",
-    render: () => (
-      <div className="grid gap-6">
-        <section className="grid gap-3">
-          <h3 className="text-sm font-semibold leading-5">
-            Стиль · appearance
-          </h3>
-          <Canvas className="rounded-xl p-4">
-            <Matrix>
-              <PreviewItem label="primary">
-                <Button appearance="primary">Label</Button>
-              </PreviewItem>
-              <PreviewItem label="secondary">
-                <Button appearance="secondary">Label</Button>
-              </PreviewItem>
-              <PreviewItem label="ghost">
-                <Button appearance="ghost">Label</Button>
-              </PreviewItem>
-              <PreviewItem label="destructive">
-                <Button appearance="destructive">Label</Button>
-              </PreviewItem>
-            </Matrix>
-          </Canvas>
-          <Canvas className="rounded-xl p-4" tone="blue">
-            <div className="text-[var(--parser-text-brand)]">
-              <PreviewItem label="inherit">
-                <Button appearance="inherit">Label</Button>
-              </PreviewItem>
-            </div>
-          </Canvas>
-          <Canvas className="rounded-xl p-4" tone="dark">
-            <PreviewItem
-              label="contrast"
-              labelClassName="text-[var(--parser-text-primary-contrast)]"
-            >
-              <Button appearance="contrast">Label</Button>
-            </PreviewItem>
-          </Canvas>
-        </section>
-
-        <section className="grid gap-3">
-          <h3 className="text-sm font-semibold leading-5">Размер · size</h3>
-          <Canvas className="rounded-xl p-4">
-            <Matrix>
-              {buttonSizes.map((size) => (
-                <PreviewItem key={size} label={size}>
-                  <Button size={size}>Label</Button>
-                </PreviewItem>
-              ))}
-            </Matrix>
-          </Canvas>
-        </section>
-
-        <section className="grid gap-3">
-          <h3 className="text-sm font-semibold leading-5">
-            Состояние · state, disabled
-          </h3>
-          <Canvas className="rounded-xl p-4">
-            <Matrix>
-              <PreviewItem label="default">
-                <Button>Label</Button>
-              </PreviewItem>
-              <PreviewItem label="hover">
-                <Button state="hover">Label</Button>
-              </PreviewItem>
-              <PreviewItem label="disabled">
-                <Button disabled>Label</Button>
-              </PreviewItem>
-            </Matrix>
-          </Canvas>
-          <Canvas className="rounded-xl p-4" tone="dark">
-            <PreviewItem
-              label="contrast + disabled"
-              labelClassName="text-[var(--parser-text-primary-contrast)]"
-            >
-              <Button appearance="contrast" disabled>
-                Label
-              </Button>
-            </PreviewItem>
-          </Canvas>
-        </section>
-
-        <section className="grid gap-3">
-          <h3 className="text-sm font-semibold leading-5">
-            Состав · startIcon, endIcon, counter
-          </h3>
-          <Canvas className="rounded-xl p-4">
-            <Matrix>
-              <PreviewItem label="без иконок">
-                <Button endIcon={false} startIcon={false}>
-                  Label
-                </Button>
-              </PreviewItem>
-              <PreviewItem label="startIcon">
-                <Button endIcon={false}>Label</Button>
-              </PreviewItem>
-              <PreviewItem label="endIcon">
-                <Button startIcon={false}>Label</Button>
-              </PreviewItem>
-              <PreviewItem label="counter">
-                <Button counter endIcon={false} startIcon={false}>
-                  Label
-                </Button>
-              </PreviewItem>
-            </Matrix>
-          </Canvas>
-        </section>
-      </div>
-    ),
+    render: () => <ButtonExamples />,
   },
   {
     id: "button-favorite",
@@ -409,6 +268,15 @@ const componentDocs: ComponentDoc[] = [
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=8827-1349",
     group: "Actions",
+    properties: [
+      { name: "color", values: "neutral · contrast", defaultValue: "neutral", description: "Цвет поверхности и сегментов." },
+      { name: "size", values: "lg · md · sm", defaultValue: "md", description: "Размер всего контрола и вложенных Segment." },
+      { name: "selectionMode", values: "single · multiple", defaultValue: "single", description: "Выбор одного или нескольких вариантов." },
+      { name: "defaultValue", values: "string · string[]", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
+      { name: "value", values: "string · string[]", defaultValue: "—", description: "Текущее значение в контролируемом режиме." },
+      { name: "onValueChange", values: "(value) => void", defaultValue: "—", description: "Вызывается после изменения выбора." },
+      { name: "children", values: "ReactNode", defaultValue: "2 × Segment", description: "Вложенные варианты выбора." },
+    ],
     source: "src/components/ui/segmented-control.tsx · src/components/ui/segment.tsx",
     render: () => <SegmentedControlExamples />,
   },
@@ -1458,6 +1326,8 @@ function ComponentNavigation({
   activeId: string;
   groups: Record<string, ComponentDoc[]>;
 }) {
+  const celebratoryComponentIds = new Set(["button", "select", "segmented-control", "menu", "list", "table"])
+
   return (
     <nav aria-label="Компоненты" className="grid gap-5 px-6 py-4">
       {Object.entries(groups).map(([group, items]) => (
@@ -1476,11 +1346,11 @@ function ComponentNavigation({
                 >
                   <ListItem
                     button={false}
-                    endIcon={false}
                     iconButton={false}
                     secondaryText={false}
                     selected={doc.id === activeId}
                     startIcon={false}
+                    endIcon={celebratoryComponentIds.has(doc.id) ? <PartyPopper aria-hidden="true" className="size-5" strokeWidth={2} /> : false}
                   >
                     {doc.title}
                   </ListItem>

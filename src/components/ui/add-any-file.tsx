@@ -23,7 +23,7 @@ function AddAnyFile({ className, state = "default", ...props }: AddAnyFileProps)
       )}
       {...props}
     >
-      <Button appearance="secondary" size="sm">
+      <Button appearance="default" size="sm">
         Выберите файлы
       </Button>
       <p

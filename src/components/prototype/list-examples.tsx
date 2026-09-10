@@ -1,6 +1,8 @@
 import * as React from "react"
 import { List } from "@/components/ui/list"
 import { ListItem, type ListItemProps } from "@/components/ui/list-item"
+import { Table } from "@/components/ui/table"
+import { TableCell } from "@/components/ui/table-cell"
 
 const states: { label: string; props: ListItemProps }[] = [
   { label: "Default", props: {} },
@@ -68,10 +70,14 @@ export function ListExamples() {
     <section className="grid min-w-0 gap-4">
       <h2 className="text-xl font-semibold">Свойства</h2>
       <p>Состав List задаётся через children. В ListItem доступны следующие настройки:</p>
-      <div className="overflow-x-auto rounded-lg border border-[var(--parser-border-light)]"><table className="w-full min-w-[640px] text-left text-sm leading-5">
-        <thead className="bg-[var(--parser-fill-neutral)]"><tr>{["Свойство", "Значения", "По умолчанию", "Назначение"].map(title => <th className="p-3 font-medium" key={title}>{title}</th>)}</tr></thead>
-        <tbody>{properties.map(row => <tr className="border-t border-[var(--parser-border-light)]" key={row[0]}>{row.map((cell,i) => <td className="p-3 align-top" key={i}>{cell}</td>)}</tr>)}</tbody>
-      </table></div>
+      <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
+        <div className="flex border-b border-[var(--parser-border-light)]" role="row">
+          {["Свойство", "Значения", "По умолчанию", "Назначение"].map((title, index) => <TableCell helpIcon={false} key={title} role="head" sort={false} type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{title}</TableCell>)}
+        </div>
+        {properties.map(row => <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" key={row[0]} role="row">
+          {row.map((cell, index) => <TableCell key={index} role="body" type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{cell}</TableCell>)}
+        </div>)}
+      </Table>
     </section>
   </div>
 }

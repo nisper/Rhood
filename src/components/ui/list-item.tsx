@@ -14,7 +14,7 @@ type ListItemProps = React.ComponentProps<"div"> & {
   /** Legacy alias; paddingX takes precedence when supplied. */
   disGutters?: boolean
   paddingX?: boolean
-  endIcon?: boolean
+  endIcon?: boolean | React.ReactNode
   fontWeight?: ListItemFontWeight
   iconButton?: boolean
   secondaryText?: boolean
@@ -76,7 +76,7 @@ function ListItem({
       </span>
       {iconButton && <Button aria-label="Действие со строкой" appearance="ghost" disabled={disabled} iconOnly size="sm" startIcon={<CircleCheckBig aria-hidden="true" className="size-5" strokeWidth={2} />} />}
       {endIcon && <span className={cn("flex size-6 shrink-0 items-center justify-center", disabledOpacity)}>
-        <Star aria-hidden="true" className="size-6" strokeWidth={2} />
+        {typeof endIcon === "boolean" ? <Star aria-hidden="true" className="size-6" strokeWidth={2} /> : endIcon}
       </span>}
       {button && <Button appearance="ghost" disabled={disabled} endIcon={false} startIcon={false}>Label</Button>}
     </div>

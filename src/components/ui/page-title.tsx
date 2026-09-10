@@ -74,7 +74,7 @@ function PageTitle({
         </div>
 
         {button2 && (
-          <Button appearance="secondary" size="md">
+          <Button appearance="default" size="md">
             {button2Label}
           </Button>
         )}

@@ -1765,17 +1765,17 @@ export function PrototypeShell() {
             </h4>
             <div className="flex flex-wrap items-center gap-5">
               {variants.map((variant) => (
-                <Button appearance="secondary" key={variant} size="lg" variant={variant}>
+                <Button appearance="default" key={variant} size="lg" variant={variant}>
                   Label
                 </Button>
               ))}
-              <Button appearance="secondary" loading size="lg" variant="contained">
+              <Button appearance="default" loading size="lg" variant="contained">
                 Label
               </Button>
-              <Button appearance="secondary" disabled size="lg" variant="contained">
+              <Button appearance="default" disabled size="lg" variant="contained">
                 Label
               </Button>
-              <Button appearance="secondary" disabled size="lg" variant="outlined">
+              <Button appearance="default" disabled size="lg" variant="outlined">
                 Label
               </Button>
             </div>
