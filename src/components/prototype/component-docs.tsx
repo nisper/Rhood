@@ -1,6 +1,7 @@
 import { ListExamples } from "./list-examples";
 import { ButtonExamples } from "./button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
+import { CheckboxExamples } from "./checkbox-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
@@ -14,7 +15,7 @@ import { AddPhotos } from "@/components/ui/add-photos";
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
 import { ButtonFavorite } from "@/components/ui/button-favorite";
-import { Checkbox } from "@/components/ui/checkbox";
+import { CheckboxDeprecated } from "@/components/ui/checkbox-deprecated";
 import { Chip } from "@/components/ui/chip";
 import { ConfirmCode } from "@/components/ui/confirm-code";
 import { DateInput } from "@/components/ui/date-input";
@@ -121,30 +122,6 @@ function Matrix({
           : "flex flex-wrap items-center gap-3"
       }
     >
-      {children}
-    </div>
-  );
-}
-
-function PreviewItem({
-  label,
-  labelClassName,
-  children,
-}: {
-  label: string;
-  labelClassName?: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="relative flex w-fit flex-col pt-5">
-      <p
-        className={cn(
-          "absolute left-0 top-0 whitespace-nowrap text-xs leading-4 text-[var(--parser-text-neutral-secondary)]",
-          labelClassName,
-        )}
-      >
-        {label}
-      </p>
       {children}
     </div>
   );
@@ -340,133 +317,22 @@ const componentDocs: ComponentDoc[] = [
     ),
   },
   {
+    id: "checkbox-deprecated",
+    title: "Checkbox deprecated",
+    description: "Устаревшая реализация Checkbox. Не использовать в новых интерфейсах.",
+    group: "Deprecated",
+    source: "src/components/ui/checkbox-deprecated.tsx",
+    render: () => <Canvas><Matrix><CheckboxDeprecated /><CheckboxDeprecated checked /><CheckboxDeprecated checked indeterminate /><CheckboxDeprecated disabled /></Matrix></Canvas>,
+  },
+  {
     id: "checkbox",
     title: "Checkbox",
     description: "Выбор одного элемента или нескольких элементов в группе.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=405-3391",
     group: "Forms",
-    properties: [
-      {
-        name: "size",
-        values: "md · sm",
-        defaultValue: "md",
-        description: "Размер control и текста label.",
-      },
-      {
-        name: "checked",
-        values: "true · false",
-        defaultValue: "false",
-        description:
-          "Значение в контролируемом режиме; используй вместе с onChange.",
-      },
-      {
-        name: "defaultChecked",
-        values: "true · false",
-        defaultValue: "false",
-        description: "Начальное значение в неконтролируемом режиме.",
-      },
-      {
-        name: "indeterminate",
-        values: "true · false",
-        defaultValue: "false",
-        description:
-          "Частичный выбор группы; используй только вместе с checked=true.",
-      },
-      {
-        name: "disabled",
-        values: "true · false",
-        defaultValue: "false",
-        description: "Блокирует взаимодействие и применяет disabled-состояние.",
-      },
-      {
-        name: "error",
-        values: "true · false",
-        defaultValue: "false",
-        description: "Показывает ошибку для невыбранного Checkbox.",
-      },
-      {
-        name: "label",
-        values: "true · false",
-        defaultValue: "true",
-        description: "Показывает текст рядом с control.",
-      },
-      {
-        name: "skeleton",
-        values: "true · false",
-        defaultValue: "false",
-        description: "Показывает загрузочную заглушку вместо control и label.",
-      },
-    ],
     source: "src/components/ui/checkbox.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid gap-6">
-          <section className="grid gap-3">
-            <h3 className="text-sm font-semibold leading-5">Размер · size</h3>
-            <Matrix>
-              <PreviewItem label="md">
-                <Checkbox size="md" />
-              </PreviewItem>
-              <PreviewItem label="sm">
-                <Checkbox size="sm" />
-              </PreviewItem>
-            </Matrix>
-          </section>
-          <section className="grid gap-3">
-            <h3 className="text-sm font-semibold leading-5">
-              Значение · checked, indeterminate
-            </h3>
-            <Matrix>
-              <PreviewItem label="checked=false">
-                <Checkbox />
-              </PreviewItem>
-              <PreviewItem label="checked=true">
-                <Checkbox checked />
-              </PreviewItem>
-              <PreviewItem label="checked + indeterminate">
-                <Checkbox checked indeterminate />
-              </PreviewItem>
-            </Matrix>
-          </section>
-          <section className="grid gap-3">
-            <h3 className="text-sm font-semibold leading-5">
-              Состояние · state, error, disabled
-            </h3>
-            <Matrix>
-              <PreviewItem label="default">
-                <Checkbox />
-              </PreviewItem>
-              <PreviewItem label="hovered">
-                <Checkbox state="hovered" />
-              </PreviewItem>
-              <PreviewItem label="error">
-                <Checkbox error />
-              </PreviewItem>
-              <PreviewItem label="disabled">
-                <Checkbox disabled />
-              </PreviewItem>
-            </Matrix>
-          </section>
-          <section className="grid gap-3">
-            <h3 className="text-sm font-semibold leading-5">
-              Состав · label, skeleton
-            </h3>
-            <Matrix>
-              <PreviewItem label="label=true">
-                <Checkbox />
-              </PreviewItem>
-              <PreviewItem label="label=false">
-                <Checkbox label={false} />
-              </PreviewItem>
-              <PreviewItem label="skeleton">
-                <Checkbox skeleton />
-              </PreviewItem>
-            </Matrix>
-          </section>
-        </div>
-      </Canvas>
-    ),
+    render: () => <CheckboxExamples />,
   },
   {
     id: "text-field",
