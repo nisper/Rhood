@@ -17,8 +17,8 @@ type CheckboxProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
 }
 
 const sizes: Record<CheckboxSize, { control: string; label: string; root: string; skeleton: string }> = {
-  md: { control: "size-6 rounded-[3px]", label: "text-base leading-6 tracking-[0.15px]", root: "min-h-10 gap-2 py-2", skeleton: "h-6 w-14 rounded-lg" },
-  sm: { control: "size-5 rounded-[3px]", label: "text-sm leading-5 tracking-[0.17px]", root: "min-h-9 gap-2 py-2", skeleton: "h-5 w-14 rounded-lg" },
+  md: { control: "m-0.5 size-5 rounded-[3px]", label: "text-base leading-6 tracking-[0.15px]", root: "min-h-10 gap-2 py-2", skeleton: "h-6 w-14 rounded-lg" },
+  sm: { control: "m-0.5 size-4 rounded-[3px]", label: "text-sm leading-5 tracking-[0.17px]", root: "min-h-9 gap-2 py-2", skeleton: "h-5 w-14 rounded-lg" },
 }
 
 /** Figma: https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=405-3391 */
@@ -40,13 +40,14 @@ function Checkbox({ checked, children = "Label", className, defaultChecked = fal
   if (skeleton) return <span aria-hidden="true" className={cn("inline-flex", token.root, className)}><span className={cn("block bg-[var(--parser-fill-skeleton)]", token.skeleton)} /></span>
 
   const controlClassName = cn(
-    "flex shrink-0 items-center justify-center border-2 transition-colors",
+    "flex shrink-0 items-center justify-center border-2",
     token.control,
     disabled ? "border-[var(--parser-border-light)] bg-transparent text-transparent" : isActive ? "border-[var(--parser-fill-brand)] bg-[var(--parser-fill-brand)] text-[var(--parser-text-primary-contrast)]" : error ? "border-[var(--parser-text-error)] bg-transparent text-transparent" : "border-[var(--parser-border-light)] bg-transparent text-transparent",
-    !disabled && !isActive && state === "hovered" && "border-[var(--parser-fill-brand)]",
+    !disabled && !error && !isActive && "group-hover:border-[var(--parser-fill-checkbox-neutral-hover)]",
+    !disabled && !isActive && state === "hovered" && "border-[var(--parser-fill-checkbox-neutral-hover)]",
   )
 
-  return <label className={cn("inline-flex shrink-0 items-start text-left", token.root, !disabled && "cursor-pointer", className)}>
+  return <label className={cn("group inline-flex shrink-0 items-start text-left", token.root, !disabled && "cursor-pointer", className)}>
     <input {...props} checked={isControlled ? checked : undefined} className="sr-only" defaultChecked={isControlled ? undefined : defaultChecked} disabled={disabled} onChange={handleChange} ref={inputRef} type="checkbox" />
     <span aria-hidden="true" className={controlClassName}>{indeterminate ? <Minus className={size === "md" ? "size-4" : "size-3.5"} strokeWidth={2} /> : isChecked ? <Check className={size === "md" ? "size-4" : "size-3.5"} strokeWidth={2.5} /> : null}</span>
     {label && <span className={cn("whitespace-nowrap font-normal", token.label, disabled ? "text-[var(--parser-text-disabled)]" : "text-[var(--parser-text-neutral-primary)]")} style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>}

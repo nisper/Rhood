@@ -73,7 +73,7 @@ function ResultRow({ listing }: { listing: (typeof listings)[number] }) {
 
   return (
     <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" role="row">
-      <TableCell paddingX role="body" sizeSmall type="checkbox" width={28} />
+      <TableCell paddingX role="body" rowId={listing.id} sizeSmall type="checkbox" width={28} />
 
       <TableCell className="min-w-[300px]" custom role="body" sizeSmall type="text" width="fill">
         <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
@@ -120,6 +120,7 @@ function ResultRow({ listing }: { listing: (typeof listings)[number] }) {
 }
 
 function ListingsTable({ onSort, sort }: { onSort: (column: SortColumn) => void; sort: SortState }) {
+  const [selectedIds, setSelectedIds] = React.useState<string[]>([])
   const sortedListings = [...listings]
     .sort((first, second) => {
       if (!sort) return 0
@@ -141,7 +142,7 @@ function ListingsTable({ onSort, sort }: { onSort: (column: SortColumn) => void;
     .slice(0, 20)
 
   return (
-    <Table className="rounded-none">
+    <Table className="rounded-none" selection={{ onSelectedIdsChange: setSelectedIds, rowIds: sortedListings.map(listing => listing.id), selectedIds }}>
       <ResultHeader onSort={onSort} sort={sort} />
       {sortedListings.map((listing) => <ResultRow key={listing.id} listing={listing} />)}
     </Table>

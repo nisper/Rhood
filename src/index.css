@@ -60,6 +60,7 @@
   --parser-fill-info-light-hover: #f0f9ff;
   --parser-fill-disabled: #131d3542;
   --parser-fill-input-neutral: var(--parser-fill-neutral);
+  --parser-fill-checkbox-neutral-hover: #a3a3a3;
   --parser-fill-skeleton: var(--parser-fill-neutral-selected);
   --parser-fill-toggle: #d1d1d1;
   --parser-border-brand-light: #729cfd;

@@ -27,8 +27,9 @@ const experimentalListings = [
 const cellProperties = [
   ["role", "head / body", "head", "Ячейка заголовка или данных."],
   ["type", "text / number / skeleton / checkbox", "checkbox", "Содержимое, выравнивание и состояние загрузки."],
-  ["checked / indeterminate", "boolean", "false", "Состояние checkbox. Для частичного выбора в шапке передай indeterminate."],
-  ["onCheckedChange", "(checked) => void", "—", "Передаёт выбор строки или текущей страницы в таблицу."],
+  ["checked / indeterminate", "boolean", "false", "Ручное состояние checkbox, если Table.selection не используется."],
+  ["onCheckedChange", "(checked) => void", "—", "Обработчик ручного выбора, если Table.selection не используется."],
+  ["rowId", "string", "—", "ID строки для встроенного выбора через Table.selection."],
   ["paddingX", "true / false", "true", "Стандартные горизонтальные отступы. false — если их задаёт родитель."],
   ["sizeSmall", "true / false", "false", "Компактная высота; должна совпадать у всех ячеек таблицы."],
   ["sort", "true / false", "true", "Делает заголовок сортируемым."],
@@ -82,9 +83,6 @@ export function TableExamples() {
   const [experimentalSort, setExperimentalSort] = React.useState<SortState>(null)
   const currentRows = pages[page]
   const currentIds = currentRows.map(row => row.id)
-  const selectedOnPage = currentIds.filter(id => selectedIds.includes(id)).length
-  const allOnPageSelected = selectedOnPage === currentRows.length
-  const someOnPageSelected = selectedOnPage > 0 && !allOnPageSelected
   const sortedRows = sortRows(pages.flat(), sort)
   const experimentalRows = sortRows(experimentalListings, experimentalSort)
 
@@ -100,31 +98,21 @@ export function TableExamples() {
       : { column, direction: "asc" })
   }
 
-  function setPageSelection(checked: boolean) {
-    setSelectedIds(current => checked
-      ? Array.from(new Set([...current, ...currentIds]))
-      : current.filter(id => !currentIds.includes(id)))
-  }
-
-  function toggleRow(id: string, checked: boolean) {
-    setSelectedIds(current => checked ? [...current, id] : current.filter(selectedId => selectedId !== id))
-  }
-
   return <div className="grid min-w-0 gap-10">
     <section className="grid gap-4">
       <div className="grid gap-1">
         <h2 className="text-xl font-semibold">Выбор</h2>
-        <p>Checkbox в шапке управляет строками только на текущей странице пагинации. Если выбрана часть строк, он показывает промежуточное состояние. Нажатие в этом состоянии выбирает все строки страницы.</p>
+        <p>Настройка Table.selection управляет строками текущей страницы пагинации. Если выбрана часть строк, Checkbox в шапке показывает промежуточное состояние. Нажатие в этом состоянии выбирает все строки страницы.</p>
       </div>
-      <Table className="border border-[var(--parser-border-light)] bg-white">
+      <Table className="border border-[var(--parser-border-light)] bg-white" selection={{ onSelectedIdsChange: setSelectedIds, rowIds: currentIds, selectedIds }}>
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
-          <TableCell checked={allOnPageSelected} indeterminate={someOnPageSelected} onCheckedChange={() => setPageSelection(!allOnPageSelected)} role="head" sort={false} type="checkbox" width={40} />
+          <TableCell role="head" sort={false} type="checkbox" width={40} />
           <TableCell role="head" sort={false} type="text" width="fill">Объект</TableCell>
           <TableCell helpIcon={false} role="head" sort={false} type="text" width="fill">Город</TableCell>
           <TableCell helpIcon={false} role="head" sort={false} type="number" width={150}>Стоимость, ₽</TableCell>
         </div>
         {currentRows.map(row => <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" role="row" key={row.id}>
-          <TableCell checked={selectedIds.includes(row.id)} onCheckedChange={checked => toggleRow(row.id, checked)} role="body" type="checkbox" width={40} />
+          <TableCell role="body" rowId={row.id} type="checkbox" width={40} />
           <TableCell role="body" type="text" width="fill">{row.object}</TableCell>
           <TableCell role="body" type="text" width="fill">{row.city}</TableCell>
           <TableCell role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell>

@@ -3,6 +3,7 @@ import { ArrowDown, ArrowUp } from "lucide-react"
 
 import { Checkbox } from "@/components/ui/checkbox"
 import { HelpIcon } from "@/components/ui/help-icon"
+import { useTableSelection } from "@/components/ui/table"
 import { cn } from "@/lib/utils"
 
 type TableCellRole = "body" | "head"
@@ -23,6 +24,8 @@ type TableCellProps = React.ComponentProps<"div"> & {
   onCheckedChange?: (checked: boolean) => void
   paddingX?: boolean
   role?: TableCellRole
+  /** Row identifier used by Table selection. */
+  rowId?: string
   sizeSmall?: boolean
   sort?: boolean
   /** The active sorting direction. The arrow is visible only when this is set. */
@@ -46,6 +49,7 @@ function TableCell({
   onCheckedChange,
   paddingX,
   role = "head",
+  rowId,
   sizeSmall = false,
   sort = true,
   sortDirection,
@@ -54,6 +58,7 @@ function TableCell({
   style,
   ...props
 }: TableCellProps) {
+  const tableSelection = useTableSelection()
   const hasPaddingX = paddingX ?? !disGutters
   const isHead = role === "head"
   const isNumber = type === "number"
@@ -66,6 +71,34 @@ function TableCell({
   const isContentWidth = width === "content"
   const isFillWidth = width === "fill"
   const fixedWidth = typeof width === "number" ? `${width}px` : undefined
+  const selectedIds = tableSelection?.selectedIds ?? []
+  const selectedIdSet = new Set(selectedIds)
+  const rowIds = tableSelection?.rowIds ?? []
+  const selectedOnPage = rowIds.filter(id => selectedIdSet.has(id)).length
+  const allOnPageSelected = rowIds.length > 0 && selectedOnPage === rowIds.length
+  const someOnPageSelected = selectedOnPage > 0 && !allOnPageSelected
+  const isSelectionCell = isCheckbox && tableSelection !== null && (isHead || rowId !== undefined)
+  const resolvedChecked = isSelectionCell ? (isHead ? allOnPageSelected : selectedIdSet.has(rowId!)) : checked
+  const resolvedIndeterminate = isSelectionCell && isHead ? someOnPageSelected : indeterminate
+
+  function handleCheckedChange(nextChecked: boolean) {
+    if (!isSelectionCell || !tableSelection) {
+      onCheckedChange?.(nextChecked)
+      return
+    }
+
+    if (isHead) {
+      const pageIdSet = new Set(rowIds)
+      tableSelection.onSelectedIdsChange(nextChecked
+        ? Array.from(new Set([...selectedIds, ...rowIds]))
+        : selectedIds.filter(id => !pageIdSet.has(id)))
+      return
+    }
+
+    tableSelection.onSelectedIdsChange(nextChecked
+      ? Array.from(new Set([...selectedIds, rowId!]))
+      : selectedIds.filter(id => id !== rowId))
+  }
 
   return (
     <div
@@ -87,7 +120,7 @@ function TableCell({
       role={isHead ? "columnheader" : "cell"}
       style={{ ...style, flexBasis: fixedWidth, width: fixedWidth }}
     >
-      {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={checked} className="min-h-0 p-0" indeterminate={indeterminate} label={false} onChange={event => onCheckedChange?.(event.target.checked)} size="md" />}
+      {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={resolvedChecked} className="min-h-0 p-0" indeterminate={resolvedIndeterminate} label={false} onChange={event => handleCheckedChange(event.target.checked)} size="sm" />}
 
       {isSkeleton && <span aria-hidden="true" className="block h-1.5 w-full rounded-lg bg-[var(--parser-fill-skeleton)]" />}
 
