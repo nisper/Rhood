@@ -156,7 +156,7 @@ export function PrototypeShell() {
   const tagColors = ["neutral", "brand", "error", "warning", "success", "contrast"] as const
   const tagStyles = ["outlined", "muted", "contrast"] as const
   const toggleChipSizes = ["lg", "md", "sm"] as const
-  const textFieldSizes = ["lg", "md", "sm"] as const
+  const textFieldSizes = ["md", "sm"] as const
   const passwordFieldSizes = ["lg", "md", "sm"] as const
   const dateInputSizes = ["md", "sm"] as const
   const rangeInputSizes = ["lg", "md", "sm"] as const
@@ -237,71 +237,47 @@ export function PrototypeShell() {
   ]
   const textFieldExamples = [
     {
-      key: "static-default",
-      props: { empty: true, placeholder: "Placeholder", topLabel: "static" as const },
+      key: "default",
+      props: {},
     },
     {
-      key: "static-value",
+      key: "value",
       props: {
         defaultValue: "Value",
-        empty: false,
-        placeholder: "Placeholder",
-        topLabel: "static" as const,
       },
     },
     {
-      key: "dynamic-empty",
+      key: "hovered",
       props: {
-        empty: true,
-        placeholder: "Placeholder",
-        topLabel: "dynamic" as const,
-      },
-    },
-    {
-      key: "static-hovered",
-      props: {
-        empty: true,
-        placeholder: "Placeholder",
         state: "hovered" as const,
-        topLabel: "static" as const,
       },
     },
     {
-      key: "dynamic-value",
+      key: "focused",
       props: {
-        defaultValue: "Value",
-        empty: false,
-        placeholder: "Placeholder",
-        topLabel: "dynamic" as const,
-      },
-    },
-    {
-      key: "dynamic-error",
-      props: {
-        defaultValue: "Value",
-        empty: false,
-        placeholder: "Placeholder",
-        error: true,
-        topLabel: "dynamic" as const,
-      },
-    },
-    {
-      key: "dynamic-focused",
-      props: {
-        defaultValue: "Value",
-        empty: false,
-        placeholder: "Placeholder",
         state: "focused" as const,
-        topLabel: "dynamic" as const,
+      },
+    },
+    {
+      key: "error",
+      props: {
+        defaultValue: "Value",
+        error: true,
+      },
+    },
+    {
+      key: "error-focused",
+      props: {
+        defaultValue: "Value",
+        error: true,
+        state: "focused" as const,
       },
     },
     {
       key: "disabled",
       props: {
         disabled: true,
-        empty: true,
-        placeholder: "Placeholder",
-        topLabel: "static" as const,
+        defaultValue: "Value",
       },
     },
   ]
@@ -1510,7 +1486,7 @@ export function PrototypeShell() {
                       <TextField
                         {...props}
                         key={`${size}-${key}`}
-                        label="Label"
+                        placeholder="Placeholder"
                         size={size}
                       />
                     ))}

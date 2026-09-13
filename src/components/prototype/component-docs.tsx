@@ -1,4 +1,5 @@
 import { ListExamples } from "./list-examples";
+import { InputExamples } from "./input-examples";
 import { ButtonExamples } from "./button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
@@ -49,7 +50,8 @@ import { Snackbar } from "@/components/ui/snackbar";
 import { Tab } from "@/components/ui/tab";
 import { TabBar } from "@/components/ui/tab-bar";
 import { Tag } from "@/components/ui/tag";
-import { TextField } from "@/components/ui/text-field";
+import { Table } from "@/components/ui/table";
+import { TableCell } from "@/components/ui/table-cell";
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline";
 import { ToggleButton } from "@/components/ui/toggle-button";
 import { ToggleChip } from "@/components/ui/toggle-chip";
@@ -134,16 +136,62 @@ const componentDocs: ComponentDoc[] = [
     description: "Поверхность для композиции примеров в Витрине компонентов.",
     group: "Showcase",
     properties: [
-      { name: "ShowcaseSurface.background", values: "muted · white", defaultValue: "muted", description: "Фон общей поверхности; transparent-панели показывают его." },
-      { name: "ShowcaseSurface radius", values: "16 px", defaultValue: "16 px", description: "Скругление общей поверхности, как у парных блоков Button." },
-      { name: "ShowcaseSurface padding", values: "4 px", defaultValue: "4 px", description: "Внутренний отступ и зазор между панелями." },
-      { name: "ShowcaseSurface.direction", values: "horizontal · vertical", defaultValue: "horizontal", description: "Расположение вложенных панелей в строку или столбец." },
-      { name: "ShowcaseSurface.children", values: "ReactNode", defaultValue: "—", description: "Один или несколько ShowcasePanel; число панелей задаётся их количеством." },
-      { name: "ShowcasePanel.tone", values: "white · transparent", defaultValue: "white", description: "Белая карточка или прозрачная панель на фоне ShowcaseSurface." },
-      { name: "ShowcasePanel padding", values: "24 px по горизонтали", defaultValue: "24 px", description: "Внутренние горизонтальные отступы панели; вертикальные — 16 px." },
-      { name: "ShowcasePanel radius", values: "12 px", defaultValue: "12 px", description: "Скругление панели, как в демонстрационных блоках Button." },
+      {
+        name: "ShowcaseSurface.background",
+        values: "muted · white",
+        defaultValue: "muted",
+        description:
+          "Фон общей поверхности; transparent-панели показывают его.",
+      },
+      {
+        name: "ShowcaseSurface radius",
+        values: "16 px",
+        defaultValue: "16 px",
+        description:
+          "Скругление общей поверхности, как у парных блоков Button.",
+      },
+      {
+        name: "ShowcaseSurface padding",
+        values: "4 px",
+        defaultValue: "4 px",
+        description: "Внутренний отступ и зазор между панелями.",
+      },
+      {
+        name: "ShowcaseSurface.direction",
+        values: "horizontal · vertical",
+        defaultValue: "horizontal",
+        description: "Расположение вложенных панелей в строку или столбец.",
+      },
+      {
+        name: "ShowcaseSurface.children",
+        values: "ReactNode",
+        defaultValue: "—",
+        description:
+          "Один или несколько ShowcasePanel; число панелей задаётся их количеством.",
+      },
+      {
+        name: "ShowcasePanel.tone",
+        values: "white · transparent",
+        defaultValue: "white",
+        description:
+          "Белая карточка или прозрачная панель на фоне ShowcaseSurface.",
+      },
+      {
+        name: "ShowcasePanel padding",
+        values: "24 px по горизонтали",
+        defaultValue: "24 px",
+        description:
+          "Внутренние горизонтальные отступы панели; вертикальные — 16 px.",
+      },
+      {
+        name: "ShowcasePanel radius",
+        values: "12 px",
+        defaultValue: "12 px",
+        description: "Скругление панели, как в демонстрационных блоках Button.",
+      },
     ],
-    source: "src/components/ui/showcase-surface.tsx · src/components/ui/showcase-panel.tsx",
+    source:
+      "src/components/ui/showcase-surface.tsx · src/components/ui/showcase-panel.tsx",
     render: () => <ShowcaseExamples />,
   },
   {
@@ -241,20 +289,57 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "segmented-control",
     title: "Segmented control",
-    description: "Группа взаимоисключающих сегментов для выбора одного варианта.",
+    description:
+      "Группа взаимоисключающих сегментов для выбора одного варианта.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=8827-1349",
     group: "Actions",
     properties: [
-      { name: "color", values: "neutral · contrast", defaultValue: "neutral", description: "Цвет поверхности и сегментов." },
-      { name: "size", values: "lg · md · sm", defaultValue: "md", description: "Размер всего контрола и вложенных Segment." },
-      { name: "selectionMode", values: "single · multiple", defaultValue: "single", description: "Выбор одного или нескольких вариантов." },
-      { name: "defaultValue", values: "string · string[]", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
-      { name: "value", values: "string · string[]", defaultValue: "—", description: "Текущее значение в контролируемом режиме." },
-      { name: "onValueChange", values: "(value) => void", defaultValue: "—", description: "Вызывается после изменения выбора." },
-      { name: "children", values: "ReactNode", defaultValue: "2 × Segment", description: "Вложенные варианты выбора." },
+      {
+        name: "color",
+        values: "neutral · contrast",
+        defaultValue: "neutral",
+        description: "Цвет поверхности и сегментов.",
+      },
+      {
+        name: "size",
+        values: "lg · md · sm",
+        defaultValue: "md",
+        description: "Размер всего контрола и вложенных Segment.",
+      },
+      {
+        name: "selectionMode",
+        values: "single · multiple",
+        defaultValue: "single",
+        description: "Выбор одного или нескольких вариантов.",
+      },
+      {
+        name: "defaultValue",
+        values: "string · string[]",
+        defaultValue: "—",
+        description: "Начальное значение в неконтролируемом режиме.",
+      },
+      {
+        name: "value",
+        values: "string · string[]",
+        defaultValue: "—",
+        description: "Текущее значение в контролируемом режиме.",
+      },
+      {
+        name: "onValueChange",
+        values: "(value) => void",
+        defaultValue: "—",
+        description: "Вызывается после изменения выбора.",
+      },
+      {
+        name: "children",
+        values: "ReactNode",
+        defaultValue: "2 × Segment",
+        description: "Вложенные варианты выбора.",
+      },
     ],
-    source: "src/components/ui/segmented-control.tsx · src/components/ui/segment.tsx",
+    source:
+      "src/components/ui/segmented-control.tsx · src/components/ui/segment.tsx",
     render: () => <SegmentedControlExamples />,
   },
   {
@@ -276,9 +361,11 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "select",
     title: "Select",
-    description: "Select используется для выбора одного или нескольких значений из списка. Подпись находится над полем и не перекрывает его содержимое.",
+    description:
+      "Select используется для выбора одного или нескольких значений из списка. Подпись находится над полем и не перекрывает его содержимое.",
     group: "Forms",
-    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=348-8648",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=348-8648",
     source: "src/components/ui/select.tsx",
     render: () => <SelectExamples />,
   },
@@ -319,10 +406,20 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "checkbox-deprecated",
     title: "Checkbox deprecated",
-    description: "Устаревшая реализация Checkbox. Не использовать в новых интерфейсах.",
+    description:
+      "Устаревшая реализация Checkbox. Не использовать в новых интерфейсах.",
     group: "Deprecated",
     source: "src/components/ui/checkbox-deprecated.tsx",
-    render: () => <Canvas><Matrix><CheckboxDeprecated /><CheckboxDeprecated checked /><CheckboxDeprecated checked indeterminate /><CheckboxDeprecated disabled /></Matrix></Canvas>,
+    render: () => (
+      <Canvas>
+        <Matrix>
+          <CheckboxDeprecated />
+          <CheckboxDeprecated checked />
+          <CheckboxDeprecated checked indeterminate />
+          <CheckboxDeprecated disabled />
+        </Matrix>
+      </Canvas>
+    ),
   },
   {
     id: "checkbox",
@@ -336,36 +433,25 @@ const componentDocs: ComponentDoc[] = [
   },
   {
     id: "text-field",
-    title: "TextField",
-    description: "Текстовое поле.",
+    title: "Input",
+    description: "Input — компонент для ввода текста в одну строку",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=505-4429",
     group: "Forms",
+    properties: [
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и отступы поля." },
+      { name: "placeholder", values: "string", defaultValue: "Placeholder", description: "Подсказка внутри пустого поля." },
+      { name: "value", values: "string · number", defaultValue: "—", description: "Текущее значение в контролируемом режиме." },
+      { name: "defaultValue", values: "string · number", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
+      { name: "state", values: "default · hovered · focused", defaultValue: "default", description: "Визуальное состояние для витрины; hover и focus работают нативно." },
+      { name: "error", values: "boolean", defaultValue: "false", description: "Красная граница и focus-обводка ошибки." },
+      { name: "disabled", values: "boolean", defaultValue: "false", description: "Блокирует ввод и отключает интерактивные состояния." },
+      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию и красную звёздочку в поле." },
+      { name: "clearButton", values: "boolean", defaultValue: "false", description: "Показывает кнопку очистки только для заполненного поля в состоянии focused." },
+      { name: "onClear", values: "() => void", defaultValue: "—", description: "Вызывается после нажатия на кнопку очистки; для контролируемого поля обнови value в обработчике." },
+    ],
     source: "src/components/ui/text-field.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <TextField empty placeholder="Placeholder" topLabel="static" />
-          <TextField
-            defaultValue="Value"
-            empty={false}
-            placeholder="Placeholder"
-            topLabel="dynamic"
-          />
-          <TextField
-            defaultValue="Value"
-            empty={false}
-            error
-            placeholder="Placeholder"
-            topLabel="dynamic"
-          />
-          <TextField
-            disabled
-            empty
-            placeholder="Placeholder"
-            topLabel="static"
-          />
-        </div>
-      </Canvas>
-    ),
+    render: () => <InputExamples />,
   },
   {
     id: "text-field-multiline",
@@ -1004,39 +1090,47 @@ function ComponentPage({
             <h2 className="text-xl font-semibold leading-7 tracking-normal">
               Свойства
             </h2>
-            <div className="overflow-x-auto rounded-xl border border-[var(--parser-border-light)]">
-              <table className="w-full min-w-[680px] border-collapse text-left text-sm leading-5">
-                <thead className="bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-secondary)]">
-                  <tr>
-                    <th className="px-4 py-3 font-semibold">Свойство</th>
-                    <th className="px-4 py-3 font-semibold">Значения</th>
-                    <th className="px-4 py-3 font-semibold">По умолчанию</th>
-                    <th className="px-4 py-3 font-semibold">Назначение</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {doc.properties.map((property) => (
-                    <tr
-                      className="border-t border-[var(--parser-border-light)]"
-                      key={property.name}
-                    >
-                      <td className="px-4 py-3 font-mono text-[var(--parser-text-neutral-primary)]">
-                        {property.name}
-                      </td>
-                      <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
-                        {property.values}
-                      </td>
-                      <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
-                        {property.defaultValue}
-                      </td>
-                      <td className="px-4 py-3 text-[var(--parser-text-neutral-secondary)]">
-                        {property.description}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
+              <div className="flex border-b border-[var(--parser-border-light)]" role="row">
+                {[
+                  "Свойство",
+                  "Значения",
+                  "По умолчанию",
+                  "Назначение",
+                ].map((title, index) => (
+                  <TableCell
+                    helpIcon={false}
+                    key={title}
+                    role="head"
+                    sort={false}
+                    type="text"
+                    width={index === 0 ? 160 : index === 2 ? 140 : "fill"}
+                  >
+                    {title}
+                  </TableCell>
+                ))}
+              </div>
+              {doc.properties.map((property) => (
+                <div
+                  className="flex border-b border-[var(--parser-border-light)] last:border-b-0"
+                  key={property.name}
+                  role="row"
+                >
+                  <TableCell role="body" type="text" width={160}>
+                    {property.name}
+                  </TableCell>
+                  <TableCell role="body" type="text" width="fill">
+                    {property.values}
+                  </TableCell>
+                  <TableCell role="body" type="text" width={140}>
+                    {property.defaultValue}
+                  </TableCell>
+                  <TableCell role="body" type="text" width="fill">
+                    {property.description}
+                  </TableCell>
+                </div>
+              ))}
+            </Table>
           </section>
         )}
       </div>
@@ -1059,10 +1153,7 @@ export function ComponentDocs() {
   }, []);
 
   const handleFigmaClick = React.useCallback(
-    async (
-      event: React.MouseEvent<HTMLAnchorElement>,
-      url: string,
-    ) => {
+    async (event: React.MouseEvent<HTMLAnchorElement>, url: string) => {
       event.preventDefault();
 
       try {
@@ -1192,7 +1283,15 @@ function ComponentNavigation({
   activeId: string;
   groups: Record<string, ComponentDoc[]>;
 }) {
-  const celebratoryComponentIds = new Set(["button", "select", "segmented-control", "menu", "list", "table"])
+  const celebratoryComponentIds = new Set([
+    "button",
+    "select",
+    "segmented-control",
+    "menu",
+    "list",
+    "table",
+    "text-field",
+  ]);
 
   return (
     <nav aria-label="Компоненты" className="grid gap-5 px-6 py-4">
@@ -1216,7 +1315,17 @@ function ComponentNavigation({
                     secondaryText={false}
                     selected={doc.id === activeId}
                     startIcon={false}
-                    endIcon={celebratoryComponentIds.has(doc.id) ? <PartyPopper aria-hidden="true" className="size-5" strokeWidth={2} /> : false}
+                    endIcon={
+                      celebratoryComponentIds.has(doc.id) ? (
+                        <PartyPopper
+                          aria-hidden="true"
+                          className="size-5"
+                          strokeWidth={2}
+                        />
+                      ) : (
+                        false
+                      )
+                    }
                   >
                     {doc.title}
                   </ListItem>
