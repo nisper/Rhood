@@ -1,5 +1,6 @@
 import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
+import { InputNumberExamples } from "./input-number-examples";
 import { ButtonExamples } from "./button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
@@ -468,6 +469,26 @@ const componentDocs: ComponentDoc[] = [
         </div>
       </Canvas>
     ),
+  },
+  {
+    id: "input-number",
+    title: "InputNumber",
+    description: "InputNumber — поле для ввода числовых значений.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11269-12380",
+    group: "Forms",
+    properties: [
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и размер кнопки очистки." },
+      { name: "value", values: "string · number", defaultValue: "—", description: "Текущее числовое значение в контролируемом режиме." },
+      { name: "defaultValue", values: "string · number", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
+      { name: "inputMode", values: "decimal · numeric", defaultValue: "decimal", description: "Подсказка подходящей числовой клавиатуры на мобильных устройствах." },
+      { name: "groupThousands", values: "boolean", defaultValue: "false", description: "Отделяет группы разрядов в целой части значения пробелами." },
+      { name: "startText / endText", values: "ReactNode", defaultValue: "—", description: "Префикс и суффикс: например, «с» и «м²»." },
+      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию и красную звёздочку." },
+      { name: "clearButton", values: "boolean", defaultValue: "false", description: "Показывает очистку заполненного focused-поля." },
+    ],
+    source: "src/components/ui/input-number.tsx",
+    render: () => <InputNumberExamples />,
   },
   {
     id: "password-field",
@@ -1291,6 +1312,7 @@ function ComponentNavigation({
     "list",
     "table",
     "text-field",
+    "input-number",
   ]);
 
   return (
