@@ -1,6 +1,7 @@
 import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
 import { InputNumberExamples } from "./input-number-examples";
+import { InputNumberRangeExamples } from "./input-number-range-examples";
 import { ButtonExamples } from "./button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
@@ -489,6 +490,25 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/input-number.tsx",
     render: () => <InputNumberExamples />,
+  },
+  {
+    id: "input-number-range",
+    title: "InputNumberRange",
+    description: "InputNumberRange — парный контрол для ввода числового диапазона.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=7603-2174",
+    group: "Forms",
+    properties: [
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и внутренние отступы пары полей." },
+      { name: "startValue / endValue", values: "string · number", defaultValue: "—", description: "Границы диапазона в контролируемом режиме." },
+      { name: "defaultStartValue / defaultEndValue", values: "string · number", defaultValue: "—", description: "Начальные границы в неконтролируемом режиме." },
+      { name: "endText", values: "ReactNode", defaultValue: "—", description: "Единица измерения рядом с правой границей." },
+      { name: "groupThousands", values: "boolean", defaultValue: "false", description: "Отделяет группы разрядов в каждом значении пробелами." },
+      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет красную звёздочку у правой границы." },
+      { name: "helperText", values: "ReactNode", defaultValue: "—", description: "Пояснение или текст ошибки под контролом." },
+    ],
+    source: "src/components/ui/input-number-range.tsx",
+    render: () => <InputNumberRangeExamples />,
   },
   {
     id: "password-field",

@@ -5,8 +5,11 @@ import { cn } from "@/lib/utils"
 
 type InputNumberSize = "md" | "sm"
 type InputNumberState = "default" | "hovered" | "focused"
+type InputNumberAppearance = "default" | "embedded"
 
 type InputNumberProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
+  /** `embedded` is for composite controls that own the common field border. */
+  appearance?: InputNumberAppearance
   clearButton?: boolean
   endText?: React.ReactNode
   error?: boolean
@@ -50,6 +53,7 @@ function stateClasses({ error, state }: { error: boolean; state: InputNumberStat
 
 /** A single-line numeric field with monospaced values and optional units. */
 function InputNumber({
+  appearance = "default",
   className,
   clearButton = false,
   defaultValue,
@@ -84,6 +88,52 @@ function InputNumber({
       ? "focus:border-[color:var(--parser-border-error)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--parser-border-error)]"
       : undefined
 
+  const input = (
+    <input
+      aria-invalid={error || undefined}
+      className={cn(
+        "box-border block min-w-0 appearance-none bg-transparent font-mono font-normal text-[color:var(--parser-text-neutral-primary)] outline-none placeholder:font-sans placeholder:text-[color:var(--parser-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:text-[color:var(--parser-text-disabled)]",
+        appearance === "embedded"
+          ? cn("h-full flex-1", size === "md" ? "text-base leading-6 tracking-[0.15px]" : "text-sm leading-5 tracking-[0.17px]")
+          : cn("w-full rounded-lg border bg-white transition-colors duration-150", sizeClasses[size], stateClasses({ error, state }), interactiveClasses, startText && "pl-8", (endText || required || showClearButton) && "pr-8"),
+      )}
+      disabled={disabled}
+      inputMode={inputMode}
+      onBlur={(event) => {
+        setIsFocused(false)
+        onBlur?.(event)
+      }}
+      onChange={(event) => {
+        if (!isControlled) {
+          setUncontrolledValue(
+            groupThousands ? event.target.value.replace(/ /g, "") : event.target.value,
+          )
+        }
+        onChange?.(event)
+      }}
+      onFocus={(event) => {
+        setIsFocused(true)
+        onFocus?.(event)
+      }}
+      placeholder={placeholder}
+      required={required}
+      type="text"
+      value={displayValue}
+      {...props}
+    />
+  )
+
+  if (appearance === "embedded") {
+    return (
+      <div className={cn("flex h-full min-w-0 flex-1 items-center px-3", className)}>
+        {startText && <span aria-hidden="true" className="mr-2 shrink-0 text-[var(--parser-text-neutral-secondary)]">{startText}</span>}
+        {input}
+        {endText && <span aria-hidden="true" className="ml-2 shrink-0">{endText}</span>}
+        {required && <span aria-hidden="true" className="ml-2 shrink-0 text-[var(--parser-text-error)]">*</span>}
+      </div>
+    )
+  }
+
   return (
     <div className="relative w-full">
       {startText && (
@@ -97,41 +147,7 @@ function InputNumber({
           {startText}
         </span>
       )}
-      <input
-        aria-invalid={error || undefined}
-        className={cn(
-          "box-border block w-full appearance-none rounded-lg border bg-white font-mono font-normal text-[color:var(--parser-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--parser-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--parser-border-light)] disabled:text-[color:var(--parser-text-disabled)]",
-          sizeClasses[size],
-          stateClasses({ error, state }),
-          interactiveClasses,
-          startText && "pl-8",
-          (endText || required || showClearButton) && "pr-8",
-          className,
-        )}
-        disabled={disabled}
-        inputMode={inputMode}
-        onBlur={(event) => {
-          setIsFocused(false)
-          onBlur?.(event)
-        }}
-        onChange={(event) => {
-          if (!isControlled) {
-            setUncontrolledValue(
-              groupThousands ? event.target.value.replace(/ /g, "") : event.target.value,
-            )
-          }
-          onChange?.(event)
-        }}
-        onFocus={(event) => {
-          setIsFocused(true)
-          onFocus?.(event)
-        }}
-        placeholder={placeholder}
-        required={required}
-        type="text"
-        value={displayValue}
-        {...props}
-      />
+      {React.cloneElement(input, { className: cn(input.props.className, className) })}
       {showClearButton && (
         <span
           className={cn(
@@ -185,4 +201,4 @@ function InputNumber({
 }
 
 export { InputNumber }
-export type { InputNumberProps, InputNumberSize, InputNumberState }
+export type { InputNumberAppearance, InputNumberProps, InputNumberSize, InputNumberState }
