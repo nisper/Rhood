@@ -16,7 +16,6 @@ import { AddPhotos } from "@/components/ui/add-photos";
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
 import { ButtonFavorite } from "@/components/ui/button-favorite";
-import { CheckboxDeprecated } from "@/components/ui/checkbox-deprecated";
 import { Chip } from "@/components/ui/chip";
 import { ConfirmCode } from "@/components/ui/confirm-code";
 import { DateInput } from "@/components/ui/date-input";
@@ -400,24 +399,6 @@ const componentDocs: ComponentDoc[] = [
           <SearchInput error empty placeholder="Поиск" />
           <SearchInput disabled empty placeholder="Поиск" />
         </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "checkbox-deprecated",
-    title: "Checkbox deprecated",
-    description:
-      "Устаревшая реализация Checkbox. Не использовать в новых интерфейсах.",
-    group: "Deprecated",
-    source: "src/components/ui/checkbox-deprecated.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <CheckboxDeprecated />
-          <CheckboxDeprecated checked />
-          <CheckboxDeprecated checked indeterminate />
-          <CheckboxDeprecated disabled />
-        </Matrix>
       </Canvas>
     ),
   },
