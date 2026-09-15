@@ -3,24 +3,26 @@ import * as React from "react"
 import { IconButton } from "@/components/ui/icon-button"
 import { cn } from "@/lib/utils"
 
-type TextFieldSize = "md" | "sm"
-type TextFieldState = "default" | "hovered" | "focused"
+type TextfieldSize = "md" | "sm"
+type TextfieldState = "default" | "hovered" | "focused"
 
-type TextFieldProps = Omit<React.ComponentProps<"input">, "size"> & {
+type TextfieldProps = Omit<React.ComponentProps<"input">, "size"> & {
   /** Visual state for component previews. Native hover and focus work by default. */
   clearButton?: boolean
-  state?: TextFieldState
-  size?: TextFieldSize
+  /** Non-interactive element fixed at the start of the field. */
+  startAdornment?: React.ReactNode
+  state?: TextfieldState
+  size?: TextfieldSize
   error?: boolean
   onClear?: () => void
 }
 
-const sizeClasses: Record<TextFieldSize, string> = {
+const sizeClasses: Record<TextfieldSize, string> = {
   md: "h-10 px-3 text-base leading-6 tracking-[0.15px]",
   sm: "h-9 px-3 text-sm leading-5 tracking-[0.15px]",
 }
 
-function stateClasses({ error, state }: { error: boolean; state: TextFieldState }) {
+function stateClasses({ error, state }: { error: boolean; state: TextfieldState }) {
   if (error) {
     return state === "focused"
       ? "border-[color:var(--parser-border-error)] ring-1 ring-inset ring-[color:var(--parser-border-error)]"
@@ -36,7 +38,7 @@ function stateClasses({ error, state }: { error: boolean; state: TextFieldState 
 }
 
 /** A native, single-line text input styled with Parser tokens. */
-function TextField({
+function Textfield({
   className,
   clearButton = false,
   defaultValue,
@@ -49,11 +51,12 @@ function TextField({
   placeholder = "Placeholder",
   required = false,
   size = "md",
+  startAdornment,
   state = "default",
   type = "text",
   value,
   ...props
-}: TextFieldProps) {
+}: TextfieldProps) {
   const isControlled = value !== undefined
   const [isFocused, setIsFocused] = React.useState(false)
   const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue ?? "")
@@ -61,6 +64,7 @@ function TextField({
   const currentValue = isControlled ? value : uncontrolledValue
   const hasValue = `${currentValue ?? ""}`.length > 0
   const showClearButton = clearButton && hasValue && !disabled && (isFocused || isFocusedPreview)
+  const hasStartAdornment = Boolean(startAdornment)
   const interactiveClasses = !disabled && !error && !isFocusedPreview
     ? "hover:border-[color:var(--parser-border-hover)] hover:bg-[var(--input-hover,white)] focus:border-[color:var(--parser-border-focus)] focus:bg-[var(--input-focus,white)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--parser-border-focus)]"
     : !disabled && error
@@ -75,6 +79,7 @@ function TextField({
         sizeClasses[size],
         stateClasses({ error, state }),
         interactiveClasses,
+        hasStartAdornment && (size === "md" ? "pl-11" : "pl-10"),
         (required || showClearButton) && "pr-8",
         className,
       )}
@@ -99,11 +104,19 @@ function TextField({
     />
   )
 
-  if (!required && !clearButton) return input
+  if (!required && !clearButton && !hasStartAdornment) return input
 
   return (
     <span className="relative block w-full">
       {input}
+      {hasStartAdornment && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-3 top-1/2 flex -translate-y-1/2 items-center justify-center text-[var(--parser-text-neutral-secondary)]"
+        >
+          {startAdornment}
+        </span>
+      )}
       {showClearButton && (
         <span
           className={cn(
@@ -142,5 +155,5 @@ function TextField({
   )
 }
 
-export { TextField }
-export type { TextFieldProps, TextFieldSize, TextFieldState }
+export { Textfield }
+export type { TextfieldProps, TextfieldSize, TextfieldState }

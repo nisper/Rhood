@@ -9,8 +9,7 @@ import { PaginationButton } from "@/components/ui/pagination-button"
 import { PaginationAlt } from "@/components/ui/pagination-alt"
 import { Pagination } from "@/components/ui/pagination"
 import { Select } from "@/components/ui/select"
-import { SelectGhost } from "@/components/ui/select-ghost"
-import { SearchInput } from "@/components/ui/search-input"
+import { Search } from "@/components/ui/search"
 import { ShowMore } from "@/components/ui/show-more"
 import { Snackbar } from "@/components/ui/snackbar"
 import { UploadedDocument } from "@/components/ui/uploaded-document"
@@ -40,7 +39,7 @@ import { FormControlLabel } from "@/components/ui/form-control-label"
 import { DateInput } from "@/components/ui/date-input"
 import { PasswordField } from "@/components/ui/password-field"
 import { RangeInput } from "@/components/ui/range-input"
-import { TextField } from "@/components/ui/text-field"
+import { Textfield } from "@/components/ui/text-field"
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline"
 import { ToggleButton } from "@/components/ui/toggle-button"
 import { ToggleChip } from "@/components/ui/toggle-chip"
@@ -116,8 +115,7 @@ export function PrototypeShell() {
   const paginationExamples = ["default"] as const
   const progressLinearPositions = ["start", "medium", "full", "end"] as const
   const selectSizes = ["md", "sm"] as const
-  const selectGhostSizes = ["md", "sm"] as const
-  const searchInputSizes = ["md", "sm"] as const
+  const searchSizes = ["md", "sm"] as const
   const textFieldMultilineSizes = ["md", "sm"] as const
   const toggleButtonSizes = ["lg", "md", "sm"] as const
   const toggleButtonColors = ["contrast", "neutral-dark", "neutral"] as const
@@ -585,46 +583,23 @@ export function PrototypeShell() {
 
           <section className="grid gap-3">
             <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
-              select ghost
-            </h4>
-            <div className="grid gap-6 rounded-xl bg-white p-4">
-              {selectGhostSizes.map((size) => (
-                <div key={size} className="grid gap-3">
-                  <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
-                    {size}
-                  </div>
-                  <div className="grid gap-3">
-                    <SelectGhost size={size} />
-                    <SelectGhost error size={size} state="focused" />
-                    <SelectGhost disabled size={size} />
-                    <SelectGhost expanded size={size} state="focused" />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="grid gap-3">
-            <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
               search input
             </h4>
             <div className="grid gap-6 rounded-xl bg-white p-4">
-              {searchInputSizes.map((size) => (
+              {searchSizes.map((size) => (
                 <div key={size} className="grid gap-3">
                   <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
                     {size}
                   </div>
                   <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                    <SearchInput empty placeholder="Поиск" size={size} state="default" />
-                    <SearchInput empty placeholder="Поиск" size={size} state="hovered" />
-                    <SearchInput empty placeholder="Поиск" size={size} state="focused" />
-                    <SearchInput empty={false} placeholder="Поиск" size={size} state="default" value="Value" />
-                    <SearchInput empty={false} placeholder="Поиск" size={size} state="hovered" value="Value" />
-                    <SearchInput empty={false} placeholder="Поиск" size={size} state="focused" value="Value" />
-                    <SearchInput disabled empty placeholder="Поиск" size={size} state="default" />
-                    <SearchInput disabled empty={false} placeholder="Поиск" size={size} state="default" value="Value" />
-                    <SearchInput error empty placeholder="Поиск" size={size} state="default" />
-                    <SearchInput error empty={false} placeholder="Поиск" size={size} state="focused" value="Value" />
+                    <Search placeholder="Поиск" size={size} state="default" />
+                    <Search placeholder="Поиск" size={size} state="hovered" />
+                    <Search placeholder="Поиск" size={size} state="focused" />
+                    <Search defaultValue="Value" placeholder="Поиск" size={size} state="default" />
+                    <Search defaultValue="Value" placeholder="Поиск" size={size} state="hovered" />
+                    <Search defaultValue="Value" placeholder="Поиск" size={size} state="focused" />
+                    <Search disabled placeholder="Поиск" size={size} state="default" />
+                    <Search defaultValue="Value" disabled placeholder="Поиск" size={size} state="default" />
                   </div>
                 </div>
               ))}
@@ -1483,7 +1458,7 @@ export function PrototypeShell() {
                   </div>
                   <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                     {textFieldExamples.map(({ key, props }) => (
-                      <TextField
+                      <Textfield
                         {...props}
                         key={`${size}-${key}`}
                         placeholder="Placeholder"

@@ -7,9 +7,10 @@ import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
+import { SearchExamples } from "./search-input-examples";
 import "./component-docs.css";
 import * as React from "react";
-import { Copy, PartyPopper, Search } from "lucide-react";
+import { Copy, PartyPopper } from "lucide-react";
 
 import { AddAnyFile } from "@/components/ui/add-any-file";
 import { AddPhotos } from "@/components/ui/add-photos";
@@ -42,8 +43,7 @@ import { PaginationButton } from "@/components/ui/pagination-button";
 import { PasswordField } from "@/components/ui/password-field";
 import { ProgressLinear } from "@/components/ui/progress-linear";
 import { RangeInput } from "@/components/ui/range-input";
-import { SearchInput } from "@/components/ui/search-input";
-import { SelectGhost } from "@/components/ui/select-ghost";
+import { Search } from "@/components/ui/search";
 import { ShowMore } from "@/components/ui/show-more";
 import { Snackbar } from "@/components/ui/snackbar";
 import { Tab } from "@/components/ui/tab";
@@ -369,38 +369,14 @@ const componentDocs: ComponentDoc[] = [
     render: () => <SelectExamples />,
   },
   {
-    id: "select-ghost",
-    title: "SelectGhost",
-    description: "Легкое поле выбора для компактных поверхностей.",
+    id: "search",
+    title: "Search",
+    description: "Search — поле поиска с фиксированной иконкой слева.",
     group: "Forms",
-    source: "src/components/ui/select-ghost.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[360px] gap-3">
-          <SelectGhost />
-          <SelectGhost error state="focused" />
-          <SelectGhost expanded state="focused" />
-          <SelectGhost disabled />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "search-input",
-    title: "SearchInput",
-    description: "Поисковое поле.",
-    group: "Forms",
-    source: "src/components/ui/search-input.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <SearchInput empty placeholder="Поиск" />
-          <SearchInput empty={false} placeholder="Поиск" value="Value" />
-          <SearchInput error empty placeholder="Поиск" />
-          <SearchInput disabled empty placeholder="Поиск" />
-        </div>
-      </Canvas>
-    ),
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11269-12350",
+    source: "src/components/ui/search.tsx",
+    render: () => <SearchExamples />,
   },
   {
     id: "checkbox",
@@ -414,10 +390,10 @@ const componentDocs: ComponentDoc[] = [
   },
   {
     id: "text-field",
-    title: "Input",
-    description: "Input — компонент для ввода текста в одну строку",
+    title: "Textfield",
+    description: "Textfield — компонент для ввода текста в одну строку",
     figmaUrl:
-      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=505-4429",
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=505-4164",
     group: "Forms",
     properties: [
       { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и отступы поля." },
@@ -1201,21 +1177,14 @@ export function ComponentDocs() {
             <span className="pl-[29px] text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
               Design system
             </span>
-            <label className="mt-5 flex h-9 items-center gap-2 rounded-lg border border-[var(--parser-border-light)] px-3 focus-within:border-[var(--parser-border-focus)]">
-              <Search
-                aria-hidden="true"
-                className="size-5 shrink-0 text-[var(--parser-text-neutral-secondary)]"
-                strokeWidth={2}
-              />
-              <input
-                aria-label="Найти компонент"
-                className="min-w-0 flex-1 bg-transparent text-sm leading-5 outline-none placeholder:text-[var(--parser-text-neutral-secondary)]"
-                onChange={(event) => setQuery(event.target.value)}
-                placeholder="Найти компонент"
-                type="search"
-                value={query}
-              />
-            </label>
+            <Search
+              aria-label="Найти компонент"
+              className="mt-5"
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Найти компонент"
+              size="sm"
+              value={query}
+            />
           </div>
           <details
             className="group md:hidden"
@@ -1272,6 +1241,7 @@ function ComponentNavigation({
     "list",
     "table",
     "text-field",
+    "search",
   ]);
 
   return (

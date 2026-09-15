@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { ShowcasePanel } from "@/components/ui/showcase-panel";
 import { ShowcaseSurface } from "@/components/ui/showcase-surface";
-import { TextField } from "@/components/ui/text-field";
+import { Textfield } from "@/components/ui/text-field";
 import { cn } from "@/lib/utils";
 
 function Section({
@@ -72,7 +72,7 @@ function ContentInput({
 }) {
   return (
     <div className="relative">
-      <TextField
+      <Textfield
         aria-label="Пример Input"
         className={cn(startText && "pl-8", endText && "pr-8")}
         placeholder={placeholder ? "Placeholder" : ""}
@@ -107,7 +107,7 @@ function ClearableInput({ size = "md" }: { size?: "md" | "sm" }) {
   const [value, setValue] = React.useState("Value");
 
   return (
-    <TextField
+    <Textfield
       aria-label="Пример значения"
       clearButton
       onChange={(event) => setValue(event.target.value)}
@@ -131,14 +131,14 @@ export function InputExamples() {
           <ShowcasePanel>
             <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
               <FieldCell label="md">
-                <TextField
+                <Textfield
                   aria-label="Input md"
                   placeholder="Placeholder"
                   size="md"
                 />
               </FieldCell>
               <FieldCell label="sm">
-                <TextField
+                <Textfield
                   aria-label="Input sm"
                   placeholder="Placeholder"
                   size="sm"
@@ -157,34 +157,34 @@ export function InputExamples() {
           <ShowcasePanel>
             <div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <FieldCell label="default">
-                <TextField
+                <Textfield
                   aria-label="Default input"
                   placeholder="Placeholder"
                 />
               </FieldCell>
               <FieldCell label="hovered">
-                <TextField
+                <Textfield
                   aria-label="Hovered input"
                   placeholder="Placeholder"
                   state="hovered"
                 />
               </FieldCell>
               <FieldCell label="focused">
-                <TextField
+                <Textfield
                   aria-label="Focused input"
                   placeholder="Placeholder"
                   state="focused"
                 />
               </FieldCell>
               <FieldCell label="error">
-                <TextField
+                <Textfield
                   aria-label="Error input"
                   error
                   placeholder="Placeholder"
                 />
               </FieldCell>
               <FieldCell label="error focused">
-                <TextField
+                <Textfield
                   aria-label="Focused error input"
                   error
                   placeholder="Placeholder"
@@ -192,7 +192,7 @@ export function InputExamples() {
                 />
               </FieldCell>
               <FieldCell label="disabled">
-                <TextField
+                <Textfield
                   aria-label="Disabled input"
                   disabled
                   placeholder="Placeholder"

@@ -30,8 +30,7 @@
 | `415:3766` | `Pagination` | `src/components/ui/pagination.tsx` / `Pagination` |
 | `2108:14193` | `ProgressLinear` | `src/components/ui/progress-linear.tsx` / `ProgressLinear` |
 | `348:8648` | `Select` | `src/components/ui/select.tsx` / `Select` |
-| `3875:16532` | `SelectGhost` | `src/components/ui/select-ghost.tsx` / `SelectGhost` |
-| `505:5354` | `SearchInput` | `src/components/ui/search-input.tsx` / `SearchInput` |
+| `11269:12350` | `search` | `src/components/ui/search.tsx` / `Search` |
 | `8555:4017` | `ShowMore` | `src/components/ui/show-more.tsx` / `ShowMore` |
 | `930:25605` | `Snackbar` | `src/components/ui/snackbar.tsx` / `Snackbar` |
 | `414:3051` | `TableCell` | `src/components/ui/table-cell.tsx` / `TableCell` |
@@ -49,7 +48,7 @@
 | `1336:8438` | `toggleChip` | `src/components/ui/toggle-chip.tsx` / `ToggleChip` |
 | `351:8845` | `avatar` | `src/components/ui/avatar.tsx` / `Avatar` |
 | `7603:2174` | `RangeInput` | `src/components/ui/range-input.tsx` / `RangeInput` |
-| `505:4429` | `textfield` | `src/components/ui/text-field.tsx` / `TextField` |
+| `505:4164` | `textfield` | `src/components/ui/text-field.tsx` / `Textfield` |
 | `734:6530` | `textfield multiline` | `src/components/ui/text-field-multiline.tsx` / `TextFieldMultiline` |
 | `785:7777` | `password` | `src/components/ui/password-field.tsx` / `PasswordField` |
 | `574:4467` | `DateInput` | `src/components/ui/date-input.tsx` / `DateInput` |
