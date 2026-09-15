@@ -160,7 +160,7 @@ export function ApartmentListingsScreen() {
 
   return (
     <div className="min-h-screen bg-white text-[var(--parser-text-neutral-primary)]">
-      <MainHeader navItems={navItems} />
+      <MainHeader logoHref="/Rhood/" navItems={navItems} />
       <ToolbarFilter empty resp="desk" />
 
       <main>

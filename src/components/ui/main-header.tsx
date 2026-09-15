@@ -22,6 +22,7 @@ type MainHeaderNavItem = {
 
 type MainHeaderProps = React.ComponentProps<"header"> & {
   button?: boolean
+  logoHref?: string
   navItems?: MainHeaderNavItem[]
   resp?: "mob" | "desk"
 }
@@ -36,6 +37,7 @@ const defaultNavItems: MainHeaderNavItem[] = [
 function MainHeader({
   button = true,
   className,
+  logoHref,
   navItems = defaultNavItems,
   resp = "desk",
   ...props
@@ -69,7 +71,13 @@ function MainHeader({
         )}
         {...props}
       >
-        <img alt="Rhood" className="h-6 w-[123px] shrink-0" src={logoMobileSrc} />
+        {logoHref ? (
+          <a aria-label="На главную" className="shrink-0" href={logoHref}>
+            <img alt="Rhood" className="h-6 w-[123px]" src={logoMobileSrc} />
+          </a>
+        ) : (
+          <img alt="Rhood" className="h-6 w-[123px] shrink-0" src={logoMobileSrc} />
+        )}
 
         {button && (
           <IconButton
@@ -93,7 +101,13 @@ function MainHeader({
       {...props}
     >
       <div className="flex w-[90px] shrink-0 items-center justify-start">
-        <img alt="Rhood" className="h-4 w-[90px] shrink-0" src={logoDeskSrc} />
+        {logoHref ? (
+          <a aria-label="На главную" href={logoHref}>
+            <img alt="Rhood" className="h-4 w-[90px]" src={logoDeskSrc} />
+          </a>
+        ) : (
+          <img alt="Rhood" className="h-4 w-[90px] shrink-0" src={logoDeskSrc} />
+        )}
       </div>
 
       <nav className="flex min-w-0 flex-1 items-start justify-center gap-4 pl-2">
