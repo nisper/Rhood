@@ -17,10 +17,27 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
   state?: SegmentState
 }
 
-const sizes: Record<SegmentSize, { icon: string; label: string; padding: string; radius: string }> = {
-  lg: { icon: "size-6", label: "text-base leading-6 tracking-normal", padding: "px-4 py-3", radius: "rounded-lg" },
-  md: { icon: "size-5", label: "text-base leading-6 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded" },
-  sm: { icon: "size-4", label: "text-sm leading-5 tracking-[0.15px]", padding: "px-3 py-1", radius: "rounded" },
+const sizeClasses: Record<SegmentSize, string> = {
+  lg: "h-[var(--rhood-sizing-base-module-6)] min-w-[var(--rhood-sizing-base-module-4-5)] gap-[var(--rhood-sizing-base-module-1)] rounded-[var(--rhood-sizing-border-radius-border-radius-md)] px-[var(--rhood-sizing-base-module-2)] py-[var(--rhood-sizing-base-module-1-5)] text-[length:var(--rhood-sizing-typography-font-size-lg)] leading-[var(--rhood-sizing-typography-line-height-lg)] tracking-[var(--rhood-sizing-typography-letter-spacing-lg)]",
+  md: "h-[var(--rhood-sizing-base-module-4)] min-w-[var(--rhood-sizing-base-module-4-5)] gap-[var(--rhood-sizing-base-module-1)] rounded-[var(--rhood-sizing-border-radius-border-radius-sm)] px-[var(--rhood-sizing-base-module-1-5)] py-[var(--rhood-sizing-base-module-0-5)] text-[length:var(--rhood-sizing-typography-font-size-md)] leading-[var(--rhood-sizing-typography-line-height-md)] tracking-[var(--rhood-sizing-typography-letter-spacing-md)]",
+  sm: "h-[calc(var(--rhood-sizing-base-module-3)+var(--rhood-sizing-base-module-0-5))] min-w-[var(--rhood-sizing-base-module-4-5)] gap-[var(--rhood-sizing-base-module-1)] rounded-[var(--rhood-sizing-border-radius-border-radius-sm)] px-[var(--rhood-sizing-base-module-1-5)] py-[var(--rhood-sizing-base-module-0-5)] text-[length:var(--rhood-sizing-typography-font-size-sm)] leading-[var(--rhood-sizing-typography-line-height-sm)] tracking-[var(--rhood-sizing-typography-letter-spacing-sm)]",
+}
+
+const iconClasses: Record<SegmentSize, string> = {
+  lg: "size-[var(--rhood-sizing-icon-icon-md)]",
+  md: "size-[var(--rhood-sizing-base-module-2-5)]",
+  sm: "size-[var(--rhood-sizing-base-module-2)]",
+}
+
+const colorClasses: Record<SegmentColor, { default: string; selected: string }> = {
+  neutral: {
+    default: "text-[var(--rhood-theme-text-neutral-primary)]",
+    selected: "bg-[var(--rhood-theme-fill-contrast-static)] text-[var(--rhood-theme-text-neutral-primary)]",
+  },
+  contrast: {
+    default: "text-[var(--rhood-theme-text-neutral-primary)]",
+    selected: "bg-[var(--rhood-theme-fill-neutral-dark)] text-[var(--rhood-theme-text-neutral-primary-contrast)]",
+  },
 }
 
 /** An individual option inside a SegmentedControl. */
@@ -43,22 +60,6 @@ function Segment({
   const [uncontrolledSelected, setUncontrolledSelected] = React.useState(defaultSelected)
   const isControlled = selected !== undefined
   const isSelected = selected ?? uncontrolledSelected
-  const s = sizes[size]
-  const selectedBackground = color === "contrast"
-    ? "bg-[var(--parser-fill-neutral-dark)]"
-    : "bg-[var(--parser-fill-contrast-static)]"
-  const hoverBackground = "hover:bg-[var(--parser-fill-neutral-hover)]"
-  const textColor = disabled
-    ? "text-[var(--parser-text-disabled)]"
-    : color === "contrast" && isSelected
-      ? "text-[var(--parser-text-primary-contrast)]"
-      : "text-[var(--parser-text-neutral-primary)]"
-  const forcedHover = !disabled && !isSelected && state === "hover"
-    ? "bg-[var(--parser-fill-neutral-hover)]"
-    : ""
-  const hoverTextColor = color === "contrast" && !disabled
-    ? "hover:text-[var(--parser-text-neutral-primary)]"
-    : ""
   const selectionAccessibility = role === "radio" || role === "checkbox"
     ? { "aria-checked": isSelected }
     : { "aria-pressed": isSelected }
@@ -67,14 +68,11 @@ function Segment({
     <button
       {...selectionAccessibility}
       className={cn(
-        "inline-flex min-w-[36px] shrink-0 cursor-pointer items-center justify-center gap-2 whitespace-nowrap font-[480] transition-colors duration-150 disabled:cursor-not-allowed",
-        s.padding,
-        s.radius,
-        isSelected && selectedBackground,
-        forcedHover,
-        !disabled && !isSelected && hoverBackground,
-        !isSelected && hoverTextColor,
-        textColor,
+        "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-0 bg-transparent font-[480] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rhood-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-[var(--rhood-theme-text-neutral-disabled)]",
+        sizeClasses[size],
+        colorClasses[color][isSelected ? "selected" : "default"],
+        !disabled && !isSelected && state === "hover" && "bg-[var(--rhood-theme-fill-neutral-hover)]",
+        !disabled && !isSelected && "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
         className,
       )}
       disabled={disabled}
@@ -86,8 +84,8 @@ function Segment({
       type={type}
       {...props}
     >
-      {icon && <Star aria-hidden="true" className={cn("shrink-0", s.icon)} strokeWidth={2} />}
-      {label && <span className={s.label} style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>}
+      {icon && <Star aria-hidden="true" className={cn("shrink-0", iconClasses[size])} strokeWidth={2} />}
+      {label && <span style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>}
     </button>
   )
 }

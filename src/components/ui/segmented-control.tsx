@@ -12,6 +12,17 @@ type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
   value?: string | readonly string[]
 }
 
+const sizeClasses: Record<SegmentSize, string> = {
+  lg: "h-[var(--rhood-sizing-base-module-7)] rounded-[var(--rhood-sizing-border-radius-border-radius-lg)]",
+  md: "h-[var(--rhood-sizing-base-module-5)] rounded-[var(--rhood-sizing-border-radius-border-radius-md)]",
+  sm: "h-[var(--rhood-sizing-base-module-4-5)] rounded-[var(--rhood-sizing-border-radius-border-radius-md)]",
+}
+
+const colorClasses: Record<SegmentColor, string> = {
+  neutral: "bg-[var(--rhood-theme-fill-neutral)]",
+  contrast: "border border-[var(--rhood-theme-border-light)] bg-[var(--rhood-theme-fill-contrast-static)]",
+}
+
 /** A shared surface that visually combines two or more Segment components. */
 function SegmentedControl({
   children,
@@ -24,12 +35,6 @@ function SegmentedControl({
   value,
   ...props
 }: SegmentedControlProps) {
-  const height = size === "lg" ? "min-h-14" : size === "md" ? "min-h-10" : "min-h-9"
-  const radius = size === "lg" ? "rounded-xl" : "rounded-lg"
-  const surface = color === "contrast"
-    ? "border border-[var(--parser-border-light)] bg-[var(--parser-fill-contrast-static)]"
-    : "bg-[var(--parser-fill-neutral)]"
-
   const content = children ?? <><Segment defaultSelected /><Segment /></>
   const childArray = React.Children.toArray(content)
   const getSegmentValue = (child: React.ReactNode, index: number) => {
@@ -81,7 +86,12 @@ function SegmentedControl({
   return (
     <div
       aria-label="Segmented control"
-      className={cn("inline-flex w-fit items-center gap-0.5 overflow-clip p-1", height, radius, surface, className)}
+      className={cn(
+        "inline-flex w-fit items-center gap-[var(--rhood-sizing-base-module-0-25)] overflow-clip p-[var(--rhood-sizing-base-module-0-5)]",
+        sizeClasses[size],
+        colorClasses[color],
+        className,
+      )}
       role={selectionMode === "single" ? "radiogroup" : "group"}
       {...props}
     >
