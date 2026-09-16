@@ -1,6 +1,7 @@
 import * as React from "react"
-import { Search, X } from "lucide-react"
+import { Search } from "lucide-react"
 
+import { ClearButton } from "@/components/ui/clear-button"
 import { FormHelperText } from "@/components/ui/form-helper-text"
 import { cn } from "@/lib/utils"
 
@@ -32,7 +33,6 @@ type TextFieldMultilineProps = Omit<React.ComponentProps<"textarea">, "size"> & 
 const sizeClasses: Record<
   TextFieldMultilineSize,
   {
-    clearIcon: string
     clearWrap: string
     container: string
     iconSize: string
@@ -46,7 +46,6 @@ const sizeClasses: Record<
   }
 > = {
   md: {
-    clearIcon: "size-5",
     clearWrap: "size-6",
     container: "px-3 py-2",
     iconSize: "size-6",
@@ -59,7 +58,6 @@ const sizeClasses: Record<
     startText: "text-base leading-6 tracking-[0.15px]",
   },
   sm: {
-    clearIcon: "size-4",
     clearWrap: "size-5",
     container: "px-3 py-2",
     iconSize: "size-5",
@@ -256,6 +254,7 @@ function TextFieldMultiline({
           disabled={disabled}
           id={inputId}
           placeholder={placeholder}
+          required={required}
           rows={rows}
           style={{ fontVariationSettings: "'wdth' 100" }}
           value={value}
@@ -278,18 +277,20 @@ function TextFieldMultiline({
         )}
 
         {clearButton && (
-          <button
-            aria-label="Clear text"
+          <span
             className={cn(
-              "ml-1 inline-flex shrink-0 items-center justify-center rounded-full p-[5px] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]",
-              disabled && "pointer-events-none opacity-50",
+              "ml-1 inline-flex shrink-0 items-center justify-center",
+              sizeClasses[size].clearWrap,
             )}
-            disabled={disabled}
-            onClick={onClearClick}
-            type="button"
           >
-            <X className={cn("shrink-0", sizeClasses[size].clearIcon)} strokeWidth={2} />
-          </button>
+            <ClearButton
+              aria-label="Очистить поле"
+              className={cn(size === "md" ? "m-[-12px]" : "m-[-8px]", disabled && "opacity-50")}
+              disabled={disabled}
+              onClick={onClearClick}
+              size={size}
+            />
+          </span>
         )}
 
         {resolvedEndText && (

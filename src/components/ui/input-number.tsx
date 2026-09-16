@@ -1,6 +1,6 @@
 import * as React from "react"
 
-import { IconButton } from "@/components/ui/icon-button"
+import { ClearButton } from "@/components/ui/clear-button"
 import { cn } from "@/lib/utils"
 
 type InputNumberSize = "md" | "sm"
@@ -146,20 +146,17 @@ function InputNumber({
             endText || required ? "right-8" : "right-2",
           )}
         >
-          <IconButton
+          <ClearButton
             aria-label="Очистить поле"
-            appearance="inherit"
             className={cn(
-              "focus-visible:ring-2 focus-visible:ring-[var(--parser-border-focus)]",
+              "focus-visible:ring-2 focus-visible:ring-[var(--rhood-theme-border-focus)]",
               size === "md" ? "m-[-12px]" : "m-[-8px]",
             )}
-            icon={<img alt="" className={size === "md" ? "size-5" : "size-4"} src="/Rhood/assets/circle-x.svg" />}
-            onMouseDown={(event) => event.preventDefault()}
             onClick={() => {
               if (!isControlled) setUncontrolledValue("")
               onClear?.()
             }}
-            size={size === "md" ? "sm" : "xsm"}
+            size={size}
           />
         </span>
       )}

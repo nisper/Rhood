@@ -2,6 +2,7 @@ import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
 import { InputNumberExamples } from "./input-number-examples";
 import { InputNumberRangeExamples } from "./input-number-range-examples";
+import { ClearButtonExamples } from "./clear-button-examples";
 import { IconButtonExamples } from "./icon-button-examples";
 import { TokenColorsExamples } from "./token-colors-examples";
 import { TokenSizingExamples } from "./token-sizing-examples";
@@ -372,6 +373,21 @@ const componentDocs: ComponentDoc[] = [
     group: "Forms",
     source: "src/components/ui/checkbox.tsx",
     render: () => <CheckboxExamples />,
+  },
+  {
+    id: "clear-button",
+    title: "ClearButton",
+    description: "Кнопка очистки значения в однострочных текстовых полях.",
+    group: "Forms",
+    properties: [
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Размер области нажатия и иконки." },
+      { name: "state", values: "default · hovered", defaultValue: "default", description: "Визуальное состояние для витрины." },
+      { name: "disabled", values: "boolean", defaultValue: "false", description: "Блокирует действие." },
+      { name: "onClick", values: "MouseEventHandler", defaultValue: "—", description: "Вызывается при очистке значения." },
+      { name: "aria-label", values: "string", defaultValue: "Очистить поле", description: "Доступное имя кнопки." },
+    ],
+    source: "src/components/ui/clear-button.tsx",
+    render: () => <ClearButtonExamples />,
   },
   {
     id: "text-field",
