@@ -103,7 +103,7 @@ function InputNumber({
           sizeClasses[size],
           stateClasses({ error, state }),
           interactiveClasses,
-          startText && "pl-8",
+          startText && "pl-10",
           (endText || required || showClearButton) && "pr-8",
           className,
         )}
