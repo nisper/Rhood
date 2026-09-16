@@ -6,6 +6,7 @@ const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "
 const sources = [
   { collection: "palette", file: "src/tmp/palette.json" },
   { collection: "theme", file: "src/tmp/theme.json" },
+  { collection: "sizing", file: "src/tmp/sizing.json" },
 ]
 const cssOutput = "src/styles/design-tokens.css"
 const dataOutput = "src/data/generated/tokens.generated.json"
@@ -29,6 +30,12 @@ function colorToCss(value) {
 
   const [red, green, blue] = value.components.map((component) => Math.round(component * 255))
   return `rgb(${red} ${green} ${blue} / ${formatNumber(alpha)})`
+}
+
+function rawValueToCss(value, type, collection) {
+  if (type === "color") return colorToCss(value)
+  if (type === "number" && collection === "sizing") return `${formatNumber(value)}px`
+  return String(value)
 }
 
 function aliasFromToken(token, collection, knownNames) {
@@ -66,16 +73,50 @@ function cssVariableName(collection, tokenPath) {
 }
 
 async function readSource({ collection, file }) {
-  const absolutePath = path.join(projectRoot, file)
-  const json = JSON.parse(await readFile(absolutePath, "utf8"))
-  return flattenTokens(json, collection)
+  try {
+    const absolutePath = path.join(projectRoot, file)
+    const json = JSON.parse(await readFile(absolutePath, "utf8"))
+    return { collection, tokens: flattenTokens(json, collection) }
+  } catch (error) {
+    if (error.code === "ENOENT") return { collection, tokens: null }
+    throw error
+  }
 }
 
-const sourceTokens = (await Promise.all(sources.map(readSource))).flat()
-const knownTokenNames = new Set(sourceTokens.map(({ collection, path: tokenPath }) => `${collection}/${tokenPath.join("/")}`))
+async function readPreviousTokens() {
+  try {
+    const json = JSON.parse(await readFile(path.join(projectRoot, dataOutput), "utf8"))
+    return Array.isArray(json.tokens) ? json.tokens : []
+  } catch (error) {
+    if (error.code === "ENOENT") return []
+    throw error
+  }
+}
+
+const sourceResults = await Promise.all(sources.map(readSource))
+const previousTokens = await readPreviousTokens()
+const presentCollections = new Set(sourceResults.filter((source) => source.tokens !== null).map((source) => source.collection))
+const missingCollections = sources.filter((source) => !presentCollections.has(source.collection)).map((source) => source.collection)
+const preservedTokens = previousTokens
+  .filter((token) => missingCollections.includes(token.collection))
+  .map(({ scopes: _scopes, ...token }) => token)
+const sourceTokens = sourceResults.flatMap((source) => source.tokens ?? [])
 const warnings = []
 
-const generatedTokens = sourceTokens.map(({ collection, path: tokenPath, token }) => {
+for (const collection of missingCollections) {
+  if (!preservedTokens.some((token) => token.collection === collection)) {
+    warnings.push(`Missing source and no previously generated tokens: ${collection}`)
+  }
+}
+
+if (sourceTokens.length === 0) warnings.push("No token source files were found")
+
+const knownTokenNames = new Set([
+  ...sourceTokens.map(({ collection, path: tokenPath }) => `${collection}/${tokenPath.join("/")}`),
+  ...preservedTokens.map((token) => `${token.collection}/${token.name}`),
+])
+
+const newTokens = sourceTokens.map(({ collection, path: tokenPath, token }) => {
   const alias = aliasFromToken(token, collection, knownTokenNames)
   const cssVariable = cssVariableName(collection, tokenPath)
   const value = token.$value
@@ -90,10 +131,8 @@ const generatedTokens = sourceTokens.map(({ collection, path: tokenPath, token }
     cssValue = alpha !== null && alpha !== 1
       ? `color-mix(in srgb, ${target} ${formatNumber(alpha * 100)}%, transparent)`
       : target
-  } else if (token.$type === "color") {
-    cssValue = colorToCss(value)
   } else {
-    cssValue = String(value)
+    cssValue = rawValueToCss(value, token.$type, collection)
   }
 
   return {
@@ -102,18 +141,18 @@ const generatedTokens = sourceTokens.map(({ collection, path: tokenPath, token }
     cssVariable,
     type: token.$type,
     cssValue,
-    resolvedValue: token.$type === "color" && typeof value === "object" ? colorToCss(value) : null,
+    resolvedValue: alias ? null : rawValueToCss(value, token.$type, collection),
     alias,
     figmaVariableId: token.$extensions?.["com.figma.variableId"] ?? null,
-    scopes: token.$extensions?.["com.figma.scopes"] ?? [],
   }
 })
 
+const generatedTokens = [...preservedTokens, ...newTokens]
+
 const tokensByName = new Map(generatedTokens.map((token) => [`${token.collection}/${token.name}`, token]))
 
-function resolveColorValue(token, trail = new Set()) {
-  if (token.type !== "color") return token.resolvedValue
-  if (token.resolvedValue) return token.resolvedValue
+function resolveValue(token, trail = new Set()) {
+  if (token.resolvedValue !== null) return token.resolvedValue
 
   const tokenKey = `${token.collection}/${token.name}`
   if (trail.has(tokenKey)) {
@@ -124,27 +163,30 @@ function resolveColorValue(token, trail = new Set()) {
   const target = token.alias && tokensByName.get(`${token.alias.collection}/${token.alias.name}`)
   if (!target) return null
 
-  return resolveColorValue(target, new Set([...trail, tokenKey]))
+  return resolveValue(target, new Set([...trail, tokenKey]))
 }
 
-for (const token of generatedTokens) {
-  if (token.type === "color") token.resolvedValue = resolveColorValue(token)
-  if (token.type !== "color") token.resolvedValue = sourceTokens.find(({ collection, path: tokenPath }) => collection === token.collection && tokenPath.join("/") === token.name)?.token.$value ?? null
-}
+for (const token of generatedTokens) token.resolvedValue = resolveValue(token)
+
+const sourceDescription = sources
+  .filter((source) => presentCollections.has(source.collection))
+  .map((source) => source.file)
+  .join(", ")
 
 const css = [
   "/* This file is generated by scripts/generate-tokens.mjs. Do not edit it manually. */",
-  "/* Source: src/tmp/palette.json and src/tmp/theme.json */",
+  `/* Updated from: ${sourceDescription || "previous generated data"} */`,
   ":root {",
   ...generatedTokens.map((token) => `  ${token.cssVariable}: ${token.cssValue};`),
   "}",
   "",
 ].join("\n")
 
+const collections = [...new Set(generatedTokens.map((token) => token.collection))]
 const tokenData = {
   summary: {
     total: generatedTokens.length,
-    byCollection: Object.fromEntries(sources.map(({ collection }) => [collection, generatedTokens.filter((token) => token.collection === collection).length])),
+    byCollection: Object.fromEntries(collections.map((collection) => [collection, generatedTokens.filter((token) => token.collection === collection).length])),
     aliases: generatedTokens.filter((token) => token.alias).length,
     warnings,
   },

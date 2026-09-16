@@ -1,6 +1,6 @@
 # Генератор токенов
 
-Генератор переносит цветовые токены из JSON-экспорта Figma в CSS-переменные для приложения и JSON-данные для таблицы токенов.
+Генератор переносит токены из JSON-экспорта Figma в CSS-переменные для приложения и JSON-данные для таблиц токенов в витрине.
 
 ## Входные файлы
 
@@ -9,9 +9,10 @@
 ```text
 src/tmp/palette.json
 src/tmp/theme.json
+src/tmp/sizing.json
 ```
 
-`palette.json` содержит primitive-цвета. `theme.json` содержит semantic и component-токены.
+`palette.json` содержит primitive-цвета. `theme.json` содержит semantic и component-токены. `sizing.json` содержит размеры: базовый модуль, отступы, размеры элементов, радиусы и responsive-значения.
 
 ## Запуск
 
@@ -32,7 +33,7 @@ src/styles/design-tokens.css
 src/data/generated/tokens.generated.json
 ```
 
-- `design-tokens.css` подключён в `src/index.css` и содержит CSS-переменные.
+- `design-tokens.css` уже подключён один раз в `src/index.css`, поэтому компонентам не нужно импортировать его отдельно. В коде используется нужная CSS-переменная, например `var(--rhood-sizing-base-module-2)`.
 - `tokens.generated.json` предназначен для страницы/таблицы токенов в витрине компонентов.
 
 `design-tokens.css` руками не редактируют: его нужно перегенерировать из JSON.
@@ -51,7 +52,7 @@ CSS:  --rhood-theme-text-brand: var(--rhood-palette-brand-600)
 - metadata Figma: `com.figma.aliasData`;
 - DTCG-ссылки в значении: `{blue.600}`.
 
-В JSON для таблицы у каждого токена есть CSS-переменная, итоговое значение, alias, Figma variable ID и scopes.
+В JSON для таблицы у каждого токена есть CSS-переменная, итоговое значение, alias и Figma variable ID. Служебные Figma scopes в приложение не переносятся.
 
 ## Проверки
 
@@ -64,8 +65,14 @@ CSS:  --rhood-theme-text-brand: var(--rhood-palette-brand-600)
 
 ## Текущий порядок работы
 
-1. Экспортируй `palette.json` и `theme.json` из Figma.
-2. Замени файлы в `src/tmp`.
+1. Экспортируй нужные JSON из Figma и положи их в `src/tmp`.
+2. Замени файлы, которые обновились.
 3. Запусти `npm run tokens:generate`.
 4. Проверь вывод команды и изменения generated-файлов.
 5. Используй semantic/component CSS-токены в новых или обновляемых компонентах.
+
+## Частичное обновление
+
+Можно принести один файл — например, только `sizing.json`. Генератор обновит эту коллекцию, а отсутствующие в `src/tmp` коллекции возьмёт из последнего `tokens.generated.json`. Это позволяет обновлять размеры отдельно от цветов.
+
+Для полной синхронизации всё равно лучше периодически положить в `src/tmp` актуальные `palette.json`, `theme.json` и `sizing.json` вместе.

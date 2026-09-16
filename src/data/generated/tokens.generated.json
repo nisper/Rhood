@@ -1,11 +1,12 @@
 {
   "summary": {
-    "total": 274,
+    "total": 415,
     "byCollection": {
       "palette": 161,
-      "theme": 113
+      "theme": 113,
+      "sizing": 141
     },
-    "aliases": 106,
+    "aliases": 206,
     "warnings": []
   },
   "tokens": [
@@ -17,10 +18,7 @@
       "cssValue": "#f4f4f4",
       "resolvedValue": "#f4f4f4",
       "alias": null,
-      "figmaVariableId": "VariableID:31:268",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:268"
     },
     {
       "collection": "palette",
@@ -30,10 +28,7 @@
       "cssValue": "#e8e8e8",
       "resolvedValue": "#e8e8e8",
       "alias": null,
-      "figmaVariableId": "VariableID:31:267",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:267"
     },
     {
       "collection": "palette",
@@ -43,10 +38,7 @@
       "cssValue": "#d1d1d1",
       "resolvedValue": "#d1d1d1",
       "alias": null,
-      "figmaVariableId": "VariableID:31:266",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:266"
     },
     {
       "collection": "palette",
@@ -56,10 +48,7 @@
       "cssValue": "#bababa",
       "resolvedValue": "#bababa",
       "alias": null,
-      "figmaVariableId": "VariableID:31:265",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:265"
     },
     {
       "collection": "palette",
@@ -69,10 +58,7 @@
       "cssValue": "#a3a3a3",
       "resolvedValue": "#a3a3a3",
       "alias": null,
-      "figmaVariableId": "VariableID:31:264",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:264"
     },
     {
       "collection": "palette",
@@ -82,10 +68,7 @@
       "cssValue": "#8c8c8c",
       "resolvedValue": "#8c8c8c",
       "alias": null,
-      "figmaVariableId": "VariableID:31:263",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:263"
     },
     {
       "collection": "palette",
@@ -95,10 +78,7 @@
       "cssValue": "#767676",
       "resolvedValue": "#767676",
       "alias": null,
-      "figmaVariableId": "VariableID:31:262",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:262"
     },
     {
       "collection": "palette",
@@ -108,10 +88,7 @@
       "cssValue": "#454545",
       "resolvedValue": "#454545",
       "alias": null,
-      "figmaVariableId": "VariableID:31:261",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:261"
     },
     {
       "collection": "palette",
@@ -121,10 +98,7 @@
       "cssValue": "#2b2b2b",
       "resolvedValue": "#2b2b2b",
       "alias": null,
-      "figmaVariableId": "VariableID:31:260",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:260"
     },
     {
       "collection": "palette",
@@ -134,10 +108,7 @@
       "cssValue": "#1a1a1a",
       "resolvedValue": "#1a1a1a",
       "alias": null,
-      "figmaVariableId": "VariableID:31:259",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:259"
     },
     {
       "collection": "palette",
@@ -147,10 +118,7 @@
       "cssValue": "#ffffff",
       "resolvedValue": "#ffffff",
       "alias": null,
-      "figmaVariableId": "VariableID:31:346",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:346"
     },
     {
       "collection": "palette",
@@ -160,10 +128,7 @@
       "cssValue": "#f1f6fe",
       "resolvedValue": "#f1f6fe",
       "alias": null,
-      "figmaVariableId": "VariableID:244:2497",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:244:2497"
     },
     {
       "collection": "palette",
@@ -173,10 +138,7 @@
       "cssValue": "#d0e0fe",
       "resolvedValue": "#d0e0fe",
       "alias": null,
-      "figmaVariableId": "VariableID:31:257",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:257"
     },
     {
       "collection": "palette",
@@ -186,10 +148,7 @@
       "cssValue": "#a1bffe",
       "resolvedValue": "#a1bffe",
       "alias": null,
-      "figmaVariableId": "VariableID:31:256",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:256"
     },
     {
       "collection": "palette",
@@ -199,10 +158,7 @@
       "cssValue": "#729cfd",
       "resolvedValue": "#729cfd",
       "alias": null,
-      "figmaVariableId": "VariableID:31:255",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:255"
     },
     {
       "collection": "palette",
@@ -212,10 +168,7 @@
       "cssValue": "#4e7efb",
       "resolvedValue": "#4e7efb",
       "alias": null,
-      "figmaVariableId": "VariableID:31:254",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:254"
     },
     {
       "collection": "palette",
@@ -225,10 +178,7 @@
       "cssValue": "#154ef9",
       "resolvedValue": "#154ef9",
       "alias": null,
-      "figmaVariableId": "VariableID:21:26",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:21:26"
     },
     {
       "collection": "palette",
@@ -238,10 +188,7 @@
       "cssValue": "#0f3bd6",
       "resolvedValue": "#0f3bd6",
       "alias": null,
-      "figmaVariableId": "VariableID:31:253",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:253"
     },
     {
       "collection": "palette",
@@ -251,10 +198,7 @@
       "cssValue": "#0a2cb3",
       "resolvedValue": "#0a2cb3",
       "alias": null,
-      "figmaVariableId": "VariableID:31:252",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:252"
     },
     {
       "collection": "palette",
@@ -264,10 +208,7 @@
       "cssValue": "#061e90",
       "resolvedValue": "#061e90",
       "alias": null,
-      "figmaVariableId": "VariableID:31:251",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:251"
     },
     {
       "collection": "palette",
@@ -277,10 +218,7 @@
       "cssValue": "#041477",
       "resolvedValue": "#041477",
       "alias": null,
-      "figmaVariableId": "VariableID:31:250",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:250"
     },
     {
       "collection": "palette",
@@ -290,10 +228,7 @@
       "cssValue": "#f8fafc",
       "resolvedValue": "#f8fafc",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3358",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3358"
     },
     {
       "collection": "palette",
@@ -303,10 +238,7 @@
       "cssValue": "#f1f5f9",
       "resolvedValue": "#f1f5f9",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3357",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3357"
     },
     {
       "collection": "palette",
@@ -316,10 +248,7 @@
       "cssValue": "#e1e7ef",
       "resolvedValue": "#e1e7ef",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3356",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3356"
     },
     {
       "collection": "palette",
@@ -329,10 +258,7 @@
       "cssValue": "#cbd5e1",
       "resolvedValue": "#cbd5e1",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3355",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3355"
     },
     {
       "collection": "palette",
@@ -342,10 +268,7 @@
       "cssValue": "#94a3b8",
       "resolvedValue": "#94a3b8",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3354",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3354"
     },
     {
       "collection": "palette",
@@ -355,10 +278,7 @@
       "cssValue": "#65758b",
       "resolvedValue": "#65758b",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3353",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3353"
     },
     {
       "collection": "palette",
@@ -368,10 +288,7 @@
       "cssValue": "#48566a",
       "resolvedValue": "#48566a",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3352",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3352"
     },
     {
       "collection": "palette",
@@ -381,10 +298,7 @@
       "cssValue": "#334156",
       "resolvedValue": "#334156",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3351",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3351"
     },
     {
       "collection": "palette",
@@ -394,10 +308,7 @@
       "cssValue": "#1d2839",
       "resolvedValue": "#1d2839",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3350",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3350"
     },
     {
       "collection": "palette",
@@ -407,10 +318,7 @@
       "cssValue": "#131d35",
       "resolvedValue": "#131d35",
       "alias": null,
-      "figmaVariableId": "VariableID:538:3349",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:538:3349"
     },
     {
       "collection": "palette",
@@ -420,10 +328,7 @@
       "cssValue": "#f0f9ff",
       "resolvedValue": "#f0f9ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1572",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1572"
     },
     {
       "collection": "palette",
@@ -433,10 +338,7 @@
       "cssValue": "#ddf2ff",
       "resolvedValue": "#ddf2ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1571",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1571"
     },
     {
       "collection": "palette",
@@ -446,10 +348,7 @@
       "cssValue": "#bbe3ff",
       "resolvedValue": "#bbe3ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1570",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1570"
     },
     {
       "collection": "palette",
@@ -459,10 +358,7 @@
       "cssValue": "#99d0ff",
       "resolvedValue": "#99d0ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1569",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1569"
     },
     {
       "collection": "palette",
@@ -472,10 +368,7 @@
       "cssValue": "#80bfff",
       "resolvedValue": "#80bfff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1568",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1568"
     },
     {
       "collection": "palette",
@@ -485,10 +378,7 @@
       "cssValue": "#56a2ff",
       "resolvedValue": "#56a2ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1567",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1567"
     },
     {
       "collection": "palette",
@@ -498,10 +388,7 @@
       "cssValue": "#3e7edb",
       "resolvedValue": "#3e7edb",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1566",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1566"
     },
     {
       "collection": "palette",
@@ -511,10 +398,7 @@
       "cssValue": "#2b5db7",
       "resolvedValue": "#2b5db7",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1565",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1565"
     },
     {
       "collection": "palette",
@@ -524,10 +408,7 @@
       "cssValue": "#1b4193",
       "resolvedValue": "#1b4193",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1564",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1564"
     },
     {
       "collection": "palette",
@@ -537,10 +418,7 @@
       "cssValue": "#102c7a",
       "resolvedValue": "#102c7a",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1563",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1563"
     },
     {
       "collection": "palette",
@@ -550,10 +428,7 @@
       "cssValue": "#f7fdf2",
       "resolvedValue": "#f7fdf2",
       "alias": null,
-      "figmaVariableId": "VariableID:31:278",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:278"
     },
     {
       "collection": "palette",
@@ -563,10 +438,7 @@
       "cssValue": "#e7fcd5",
       "resolvedValue": "#e7fcd5",
       "alias": null,
-      "figmaVariableId": "VariableID:31:277",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:277"
     },
     {
       "collection": "palette",
@@ -576,10 +448,7 @@
       "cssValue": "#cbfaad",
       "resolvedValue": "#cbfaad",
       "alias": null,
-      "figmaVariableId": "VariableID:31:276",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:276"
     },
     {
       "collection": "palette",
@@ -589,10 +458,7 @@
       "cssValue": "#a4f282",
       "resolvedValue": "#a4f282",
       "alias": null,
-      "figmaVariableId": "VariableID:31:275",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:275"
     },
     {
       "collection": "palette",
@@ -602,10 +468,7 @@
       "cssValue": "#7fe661",
       "resolvedValue": "#7fe661",
       "alias": null,
-      "figmaVariableId": "VariableID:31:274",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:274"
     },
     {
       "collection": "palette",
@@ -615,10 +478,7 @@
       "cssValue": "#4ad631",
       "resolvedValue": "#4ad631",
       "alias": null,
-      "figmaVariableId": "VariableID:31:273",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:273"
     },
     {
       "collection": "palette",
@@ -628,10 +488,7 @@
       "cssValue": "#2eb823",
       "resolvedValue": "#2eb823",
       "alias": null,
-      "figmaVariableId": "VariableID:31:272",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:272"
     },
     {
       "collection": "palette",
@@ -641,10 +498,7 @@
       "cssValue": "#189a19",
       "resolvedValue": "#189a19",
       "alias": null,
-      "figmaVariableId": "VariableID:31:271",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:271"
     },
     {
       "collection": "palette",
@@ -654,10 +508,7 @@
       "cssValue": "#0f7c18",
       "resolvedValue": "#0f7c18",
       "alias": null,
-      "figmaVariableId": "VariableID:31:270",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:270"
     },
     {
       "collection": "palette",
@@ -667,10 +518,7 @@
       "cssValue": "#096618",
       "resolvedValue": "#096618",
       "alias": null,
-      "figmaVariableId": "VariableID:31:269",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:269"
     },
     {
       "collection": "palette",
@@ -680,10 +528,7 @@
       "cssValue": "#fffaeb",
       "resolvedValue": "#fffaeb",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1338",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1338"
     },
     {
       "collection": "palette",
@@ -693,10 +538,7 @@
       "cssValue": "#fff5d7",
       "resolvedValue": "#fff5d7",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1337",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1337"
     },
     {
       "collection": "palette",
@@ -706,10 +548,7 @@
       "cssValue": "#ffe9af",
       "resolvedValue": "#ffe9af",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1336",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1336"
     },
     {
       "collection": "palette",
@@ -719,10 +558,7 @@
       "cssValue": "#ffda87",
       "resolvedValue": "#ffda87",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1335",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1335"
     },
     {
       "collection": "palette",
@@ -732,10 +568,7 @@
       "cssValue": "#ffcb69",
       "resolvedValue": "#ffcb69",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1334",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1334"
     },
     {
       "collection": "palette",
@@ -745,10 +578,7 @@
       "cssValue": "#ffb238",
       "resolvedValue": "#ffb238",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1333",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1333"
     },
     {
       "collection": "palette",
@@ -758,10 +588,7 @@
       "cssValue": "#db8f28",
       "resolvedValue": "#db8f28",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1332",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1332"
     },
     {
       "collection": "palette",
@@ -771,10 +598,7 @@
       "cssValue": "#b76f1c",
       "resolvedValue": "#b76f1c",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1331",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1331"
     },
     {
       "collection": "palette",
@@ -784,10 +608,7 @@
       "cssValue": "#935211",
       "resolvedValue": "#935211",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1330",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1330"
     },
     {
       "collection": "palette",
@@ -797,10 +618,7 @@
       "cssValue": "#7a3d0a",
       "resolvedValue": "#7a3d0a",
       "alias": null,
-      "figmaVariableId": "VariableID:198:1329",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:198:1329"
     },
     {
       "collection": "palette",
@@ -810,10 +628,7 @@
       "cssValue": "#fef6f1",
       "resolvedValue": "#fef6f1",
       "alias": null,
-      "figmaVariableId": "VariableID:31:333",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:333"
     },
     {
       "collection": "palette",
@@ -823,10 +638,7 @@
       "cssValue": "#fee5d4",
       "resolvedValue": "#fee5d4",
       "alias": null,
-      "figmaVariableId": "VariableID:31:332",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:332"
     },
     {
       "collection": "palette",
@@ -836,10 +648,7 @@
       "cssValue": "#fec5a9",
       "resolvedValue": "#fec5a9",
       "alias": null,
-      "figmaVariableId": "VariableID:31:331",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:331"
     },
     {
       "collection": "palette",
@@ -849,10 +658,7 @@
       "cssValue": "#fe9e7f",
       "resolvedValue": "#fe9e7f",
       "alias": null,
-      "figmaVariableId": "VariableID:31:330",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:330"
     },
     {
       "collection": "palette",
@@ -862,10 +668,7 @@
       "cssValue": "#fd795e",
       "resolvedValue": "#fd795e",
       "alias": null,
-      "figmaVariableId": "VariableID:31:329",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:329"
     },
     {
       "collection": "palette",
@@ -875,10 +678,7 @@
       "cssValue": "#fc3c2a",
       "resolvedValue": "#fc3c2a",
       "alias": null,
-      "figmaVariableId": "VariableID:31:328",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:328"
     },
     {
       "collection": "palette",
@@ -888,10 +688,7 @@
       "cssValue": "#d81f1e",
       "resolvedValue": "#d81f1e",
       "alias": null,
-      "figmaVariableId": "VariableID:31:327",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:327"
     },
     {
       "collection": "palette",
@@ -901,10 +698,7 @@
       "cssValue": "#b51521",
       "resolvedValue": "#b51521",
       "alias": null,
-      "figmaVariableId": "VariableID:31:326",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:326"
     },
     {
       "collection": "palette",
@@ -914,10 +708,7 @@
       "cssValue": "#920d22",
       "resolvedValue": "#920d22",
       "alias": null,
-      "figmaVariableId": "VariableID:31:325",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:325"
     },
     {
       "collection": "palette",
@@ -927,10 +718,7 @@
       "cssValue": "#780823",
       "resolvedValue": "#780823",
       "alias": null,
-      "figmaVariableId": "VariableID:31:324",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:31:324"
     },
     {
       "collection": "palette",
@@ -940,10 +728,7 @@
       "cssValue": "#faf5ff",
       "resolvedValue": "#faf5ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1551",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1551"
     },
     {
       "collection": "palette",
@@ -953,10 +738,7 @@
       "cssValue": "#f2e5ff",
       "resolvedValue": "#f2e5ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1550",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1550"
     },
     {
       "collection": "palette",
@@ -966,10 +748,7 @@
       "cssValue": "#e9d6ff",
       "resolvedValue": "#e9d6ff",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1549",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1549"
     },
     {
       "collection": "palette",
@@ -979,10 +758,7 @@
       "cssValue": "#d8b4fe",
       "resolvedValue": "#d8b4fe",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1548",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1548"
     },
     {
       "collection": "palette",
@@ -992,10 +768,7 @@
       "cssValue": "#bf82fb",
       "resolvedValue": "#bf82fb",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1547",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1547"
     },
     {
       "collection": "palette",
@@ -1005,10 +778,7 @@
       "cssValue": "#a855f7",
       "resolvedValue": "#a855f7",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1546",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1546"
     },
     {
       "collection": "palette",
@@ -1018,10 +788,7 @@
       "cssValue": "#9133e9",
       "resolvedValue": "#9133e9",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1545",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1545"
     },
     {
       "collection": "palette",
@@ -1031,10 +798,7 @@
       "cssValue": "#7e22ce",
       "resolvedValue": "#7e22ce",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1544",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1544"
     },
     {
       "collection": "palette",
@@ -1044,10 +808,7 @@
       "cssValue": "#6a20a6",
       "resolvedValue": "#6a20a6",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1543",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1543"
     },
     {
       "collection": "palette",
@@ -1057,10 +818,7 @@
       "cssValue": "#591c87",
       "resolvedValue": "#591c87",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1542",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:248:1542"
     },
     {
       "collection": "palette",
@@ -1070,10 +828,7 @@
       "cssValue": "#fefce7",
       "resolvedValue": "#fefce7",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22289",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22289"
     },
     {
       "collection": "palette",
@@ -1083,10 +838,7 @@
       "cssValue": "#fef9c3",
       "resolvedValue": "#fef9c3",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22288",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22288"
     },
     {
       "collection": "palette",
@@ -1096,10 +848,7 @@
       "cssValue": "#fef08b",
       "resolvedValue": "#fef08b",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22287",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22287"
     },
     {
       "collection": "palette",
@@ -1109,10 +858,7 @@
       "cssValue": "#fef08b",
       "resolvedValue": "#fef08b",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22286",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22286"
     },
     {
       "collection": "palette",
@@ -1122,10 +868,7 @@
       "cssValue": "#facc14",
       "resolvedValue": "#facc14",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22285",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22285"
     },
     {
       "collection": "palette",
@@ -1135,10 +878,7 @@
       "cssValue": "#e7b008",
       "resolvedValue": "#e7b008",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22284",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22284"
     },
     {
       "collection": "palette",
@@ -1148,10 +888,7 @@
       "cssValue": "#c88a04",
       "resolvedValue": "#c88a04",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22283",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22283"
     },
     {
       "collection": "palette",
@@ -1161,10 +898,7 @@
       "cssValue": "#a26107",
       "resolvedValue": "#a26107",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22282",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22282"
     },
     {
       "collection": "palette",
@@ -1174,10 +908,7 @@
       "cssValue": "#864e0e",
       "resolvedValue": "#864e0e",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22281",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22281"
     },
     {
       "collection": "palette",
@@ -1187,10 +918,7 @@
       "cssValue": "#733f12",
       "resolvedValue": "#733f12",
       "alias": null,
-      "figmaVariableId": "VariableID:875:22280",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:875:22280"
     },
     {
       "collection": "palette",
@@ -1200,10 +928,7 @@
       "cssValue": "#fafaf9",
       "resolvedValue": "#fafaf9",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22299",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22299"
     },
     {
       "collection": "palette",
@@ -1213,10 +938,7 @@
       "cssValue": "#f5f5f4",
       "resolvedValue": "#f5f5f4",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22298",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22298"
     },
     {
       "collection": "palette",
@@ -1226,10 +948,7 @@
       "cssValue": "#e7e5e4",
       "resolvedValue": "#e7e5e4",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22297",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22297"
     },
     {
       "collection": "palette",
@@ -1239,10 +958,7 @@
       "cssValue": "#d6d3d1",
       "resolvedValue": "#d6d3d1",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22296",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22296"
     },
     {
       "collection": "palette",
@@ -1252,10 +968,7 @@
       "cssValue": "#a8a29f",
       "resolvedValue": "#a8a29f",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22295",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22295"
     },
     {
       "collection": "palette",
@@ -1265,10 +978,7 @@
       "cssValue": "#78726d",
       "resolvedValue": "#78726d",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22294",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22294"
     },
     {
       "collection": "palette",
@@ -1278,10 +988,7 @@
       "cssValue": "#56524e",
       "resolvedValue": "#56524e",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22293",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22293"
     },
     {
       "collection": "palette",
@@ -1291,10 +998,7 @@
       "cssValue": "#44403c",
       "resolvedValue": "#44403c",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22292",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22292"
     },
     {
       "collection": "palette",
@@ -1304,10 +1008,7 @@
       "cssValue": "#292524",
       "resolvedValue": "#292524",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22291",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22291"
     },
     {
       "collection": "palette",
@@ -1317,10 +1018,7 @@
       "cssValue": "#211e1b",
       "resolvedValue": "#211e1b",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22290",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22290"
     },
     {
       "collection": "palette",
@@ -1330,10 +1028,7 @@
       "cssValue": "#ebfeff",
       "resolvedValue": "#ebfeff",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22309",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22309"
     },
     {
       "collection": "palette",
@@ -1343,10 +1038,7 @@
       "cssValue": "#cdfafe",
       "resolvedValue": "#cdfafe",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22308",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22308"
     },
     {
       "collection": "palette",
@@ -1356,10 +1048,7 @@
       "cssValue": "#a6f3fc",
       "resolvedValue": "#a6f3fc",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22307",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22307"
     },
     {
       "collection": "palette",
@@ -1369,10 +1058,7 @@
       "cssValue": "#67e8f9",
       "resolvedValue": "#67e8f9",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22306",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22306"
     },
     {
       "collection": "palette",
@@ -1382,10 +1068,7 @@
       "cssValue": "#20d3ee",
       "resolvedValue": "#20d3ee",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22305",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22305"
     },
     {
       "collection": "palette",
@@ -1395,10 +1078,7 @@
       "cssValue": "#07b6d5",
       "resolvedValue": "#07b6d5",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22304",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22304"
     },
     {
       "collection": "palette",
@@ -1408,10 +1088,7 @@
       "cssValue": "#088eaf",
       "resolvedValue": "#088eaf",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22303",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22303"
     },
     {
       "collection": "palette",
@@ -1421,10 +1098,7 @@
       "cssValue": "#0e7490",
       "resolvedValue": "#0e7490",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22302",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22302"
     },
     {
       "collection": "palette",
@@ -1434,10 +1108,7 @@
       "cssValue": "#155f75",
       "resolvedValue": "#155f75",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22301",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22301"
     },
     {
       "collection": "palette",
@@ -1447,10 +1118,7 @@
       "cssValue": "#164f64",
       "resolvedValue": "#164f64",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22300",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22300"
     },
     {
       "collection": "palette",
@@ -1460,10 +1128,7 @@
       "cssValue": "#f0f3ff",
       "resolvedValue": "#f0f3ff",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22319",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22319"
     },
     {
       "collection": "palette",
@@ -1473,10 +1138,7 @@
       "cssValue": "#e0e8ff",
       "resolvedValue": "#e0e8ff",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22318",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22318"
     },
     {
       "collection": "palette",
@@ -1486,10 +1148,7 @@
       "cssValue": "#c8d3fe",
       "resolvedValue": "#c8d3fe",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22317",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22317"
     },
     {
       "collection": "palette",
@@ -1499,10 +1158,7 @@
       "cssValue": "#a6b5fc",
       "resolvedValue": "#a6b5fc",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22316",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22316"
     },
     {
       "collection": "palette",
@@ -1512,10 +1168,7 @@
       "cssValue": "#828df8",
       "resolvedValue": "#828df8",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22315",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22315"
     },
     {
       "collection": "palette",
@@ -1525,10 +1178,7 @@
       "cssValue": "#6366f2",
       "resolvedValue": "#6366f2",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22314",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22314"
     },
     {
       "collection": "palette",
@@ -1538,10 +1188,7 @@
       "cssValue": "#5048e5",
       "resolvedValue": "#5048e5",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22313",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22313"
     },
     {
       "collection": "palette",
@@ -1551,10 +1198,7 @@
       "cssValue": "#463acb",
       "resolvedValue": "#463acb",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22312",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22312"
     },
     {
       "collection": "palette",
@@ -1564,10 +1208,7 @@
       "cssValue": "#372fa2",
       "resolvedValue": "#372fa2",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22311",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22311"
     },
     {
       "collection": "palette",
@@ -1577,10 +1218,7 @@
       "cssValue": "#312e7f",
       "resolvedValue": "#312e7f",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22310",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22310"
     },
     {
       "collection": "palette",
@@ -1590,10 +1228,7 @@
       "cssValue": "#fdf2f8",
       "resolvedValue": "#fdf2f8",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22329",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22329"
     },
     {
       "collection": "palette",
@@ -1603,10 +1238,7 @@
       "cssValue": "#fce8f4",
       "resolvedValue": "#fce8f4",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22328",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22328"
     },
     {
       "collection": "palette",
@@ -1616,10 +1248,7 @@
       "cssValue": "#fbd0e8",
       "resolvedValue": "#fbd0e8",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22327",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22327"
     },
     {
       "collection": "palette",
@@ -1629,10 +1258,7 @@
       "cssValue": "#f9a9d5",
       "resolvedValue": "#f9a9d5",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22326",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22326"
     },
     {
       "collection": "palette",
@@ -1642,10 +1268,7 @@
       "cssValue": "#f471b5",
       "resolvedValue": "#f471b5",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22325",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22325"
     },
     {
       "collection": "palette",
@@ -1655,10 +1278,7 @@
       "cssValue": "#ec4699",
       "resolvedValue": "#ec4699",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22324",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22324"
     },
     {
       "collection": "palette",
@@ -1668,10 +1288,7 @@
       "cssValue": "#db2979",
       "resolvedValue": "#db2979",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22323",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22323"
     },
     {
       "collection": "palette",
@@ -1681,10 +1298,7 @@
       "cssValue": "#bf185d",
       "resolvedValue": "#bf185d",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22322",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22322"
     },
     {
       "collection": "palette",
@@ -1694,10 +1308,7 @@
       "cssValue": "#9b174c",
       "resolvedValue": "#9b174c",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22321",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22321"
     },
     {
       "collection": "palette",
@@ -1707,10 +1318,7 @@
       "cssValue": "#811842",
       "resolvedValue": "#811842",
       "alias": null,
-      "figmaVariableId": "VariableID:877:22320",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:877:22320"
     },
     {
       "collection": "palette",
@@ -1720,10 +1328,7 @@
       "cssValue": "#f2fdfa",
       "resolvedValue": "#f2fdfa",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22339",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22339"
     },
     {
       "collection": "palette",
@@ -1733,10 +1338,7 @@
       "cssValue": "#cbfbf0",
       "resolvedValue": "#cbfbf0",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22338",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22338"
     },
     {
       "collection": "palette",
@@ -1746,10 +1348,7 @@
       "cssValue": "#98f6e3",
       "resolvedValue": "#98f6e3",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22337",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22337"
     },
     {
       "collection": "palette",
@@ -1759,10 +1358,7 @@
       "cssValue": "#5dead5",
       "resolvedValue": "#5dead5",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22336",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22336"
     },
     {
       "collection": "palette",
@@ -1772,10 +1368,7 @@
       "cssValue": "#2bd4bd",
       "resolvedValue": "#2bd4bd",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22335",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22335"
     },
     {
       "collection": "palette",
@@ -1785,10 +1378,7 @@
       "cssValue": "#14b8a5",
       "resolvedValue": "#14b8a5",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22334",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22334"
     },
     {
       "collection": "palette",
@@ -1798,10 +1388,7 @@
       "cssValue": "#0d968b",
       "resolvedValue": "#0d968b",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22333",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22333"
     },
     {
       "collection": "palette",
@@ -1811,10 +1398,7 @@
       "cssValue": "#0f756d",
       "resolvedValue": "#0f756d",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22332",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22332"
     },
     {
       "collection": "palette",
@@ -1824,10 +1408,7 @@
       "cssValue": "#115f5a",
       "resolvedValue": "#115f5a",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22331",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22331"
     },
     {
       "collection": "palette",
@@ -1837,10 +1418,7 @@
       "cssValue": "#134e4a",
       "resolvedValue": "#134e4a",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22330",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22330"
     },
     {
       "collection": "palette",
@@ -1850,10 +1428,7 @@
       "cssValue": "#f7fee7",
       "resolvedValue": "#f7fee7",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22349",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22349"
     },
     {
       "collection": "palette",
@@ -1863,10 +1438,7 @@
       "cssValue": "#ebfcca",
       "resolvedValue": "#ebfcca",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22348",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22348"
     },
     {
       "collection": "palette",
@@ -1876,10 +1448,7 @@
       "cssValue": "#d9f99f",
       "resolvedValue": "#d9f99f",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22347",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22347"
     },
     {
       "collection": "palette",
@@ -1889,10 +1458,7 @@
       "cssValue": "#bef263",
       "resolvedValue": "#bef263",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22346",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22346"
     },
     {
       "collection": "palette",
@@ -1902,10 +1468,7 @@
       "cssValue": "#a1e633",
       "resolvedValue": "#a1e633",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22345",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22345"
     },
     {
       "collection": "palette",
@@ -1915,10 +1478,7 @@
       "cssValue": "#82cb15",
       "resolvedValue": "#82cb15",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22344",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22344"
     },
     {
       "collection": "palette",
@@ -1928,10 +1488,7 @@
       "cssValue": "#66a50d",
       "resolvedValue": "#66a50d",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22343",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22343"
     },
     {
       "collection": "palette",
@@ -1941,10 +1498,7 @@
       "cssValue": "#4c7b0f",
       "resolvedValue": "#4c7b0f",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22342",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22342"
     },
     {
       "collection": "palette",
@@ -1954,10 +1508,7 @@
       "cssValue": "#406312",
       "resolvedValue": "#406312",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22341",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22341"
     },
     {
       "collection": "palette",
@@ -1967,10 +1518,7 @@
       "cssValue": "#355214",
       "resolvedValue": "#355214",
       "alias": null,
-      "figmaVariableId": "VariableID:879:22340",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:879:22340"
     },
     {
       "collection": "palette",
@@ -1984,10 +1532,7 @@
         "name": "blue/50",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1458",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1458"
     },
     {
       "collection": "palette",
@@ -2001,10 +1546,7 @@
         "name": "blue/100",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1456",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1456"
     },
     {
       "collection": "palette",
@@ -2018,10 +1560,7 @@
         "name": "blue/200",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1457",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1457"
     },
     {
       "collection": "palette",
@@ -2035,10 +1574,7 @@
         "name": "blue/300",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1461",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1461"
     },
     {
       "collection": "palette",
@@ -2052,10 +1588,7 @@
         "name": "blue/400",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1459",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1459"
     },
     {
       "collection": "palette",
@@ -2069,10 +1602,7 @@
         "name": "blue/500",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1464",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1464"
     },
     {
       "collection": "palette",
@@ -2086,10 +1616,7 @@
         "name": "blue/600",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1460",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1460"
     },
     {
       "collection": "palette",
@@ -2103,10 +1630,7 @@
         "name": "blue/700",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1462",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1462"
     },
     {
       "collection": "palette",
@@ -2120,10 +1644,7 @@
         "name": "blue/800",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1463",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1463"
     },
     {
       "collection": "palette",
@@ -2137,10 +1658,7 @@
         "name": "blue/900",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:1465",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8705:1465"
     },
     {
       "collection": "theme",
@@ -2150,10 +1668,7 @@
       "cssValue": "light",
       "resolvedValue": "light",
       "alias": null,
-      "figmaVariableId": "VariableID:9421:34894",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:9421:34894"
     },
     {
       "collection": "theme",
@@ -2163,10 +1678,7 @@
       "cssValue": "50",
       "resolvedValue": 50,
       "alias": null,
-      "figmaVariableId": "VariableID:10471:11880",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:10471:11880"
     },
     {
       "collection": "theme",
@@ -2180,10 +1692,7 @@
         "name": "brand/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2038:15897",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:2038:15897"
     },
     {
       "collection": "theme",
@@ -2197,10 +1706,7 @@
         "name": "green/700",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8645:15927",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:8645:15927"
     },
     {
       "collection": "theme",
@@ -2214,10 +1720,7 @@
         "name": "red/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2038:15896",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:2038:15896"
     },
     {
       "collection": "theme",
@@ -2231,10 +1734,7 @@
         "name": "orange/700",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2038:15895",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:2038:15895"
     },
     {
       "collection": "theme",
@@ -2248,10 +1748,7 @@
         "name": "light blue/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8666:13762",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:8666:13762"
     },
     {
       "collection": "theme",
@@ -2265,10 +1762,7 @@
         "name": "brand/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1654:29578",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:1654:29578"
     },
     {
       "collection": "theme",
@@ -2282,10 +1776,7 @@
         "name": "brand/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1654:29579",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:1654:29579"
     },
     {
       "collection": "theme",
@@ -2295,10 +1786,7 @@
       "cssValue": "rgb(26 26 26 / 0.87)",
       "resolvedValue": "rgb(26 26 26 / 0.87)",
       "alias": null,
-      "figmaVariableId": "VariableID:319:486",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:319:486"
     },
     {
       "collection": "theme",
@@ -2312,10 +1800,7 @@
         "name": "neutral/white",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:319:495",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:319:495"
     },
     {
       "collection": "theme",
@@ -2325,10 +1810,7 @@
       "cssValue": "rgb(26 26 26 / 0.87)",
       "resolvedValue": "rgb(26 26 26 / 0.87)",
       "alias": null,
-      "figmaVariableId": "VariableID:1507:19415",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:1507:19415"
     },
     {
       "collection": "theme",
@@ -2338,10 +1820,7 @@
       "cssValue": "rgb(26 26 26 / 0.6)",
       "resolvedValue": "rgb(26 26 26 / 0.6)",
       "alias": null,
-      "figmaVariableId": "VariableID:351:2711",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:351:2711"
     },
     {
       "collection": "theme",
@@ -2351,10 +1830,7 @@
       "cssValue": "rgb(255 255 255 / 0.6)",
       "resolvedValue": "rgb(255 255 255 / 0.6)",
       "alias": null,
-      "figmaVariableId": "VariableID:1603:12016",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:1603:12016"
     },
     {
       "collection": "theme",
@@ -2364,10 +1840,7 @@
       "cssValue": "rgb(26 26 26 / 0.38)",
       "resolvedValue": "rgb(26 26 26 / 0.38)",
       "alias": null,
-      "figmaVariableId": "VariableID:351:2710",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:351:2710"
     },
     {
       "collection": "theme",
@@ -2377,10 +1850,7 @@
       "cssValue": "rgb(255 255 255 / 0.62)",
       "resolvedValue": "rgb(255 255 255 / 0.62)",
       "alias": null,
-      "figmaVariableId": "VariableID:1670:4286",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:1670:4286"
     },
     {
       "collection": "theme",
@@ -2390,10 +1860,7 @@
       "cssValue": "rgb(26 26 26 / 0.12)",
       "resolvedValue": "rgb(26 26 26 / 0.12)",
       "alias": null,
-      "figmaVariableId": "VariableID:405:6017",
-      "scopes": [
-        "TEXT_FILL"
-      ]
+      "figmaVariableId": "VariableID:405:6017"
     },
     {
       "collection": "theme",
@@ -2407,10 +1874,7 @@
         "name": "neutral/white",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1506:18095",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:1506:18095"
     },
     {
       "collection": "theme",
@@ -2424,10 +1888,7 @@
         "name": "neutral/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2017:8021",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:2017:8021"
     },
     {
       "collection": "theme",
@@ -2441,10 +1902,7 @@
         "name": "blue grey/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:3309:1617",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:3309:1617"
     },
     {
       "collection": "theme",
@@ -2458,10 +1916,7 @@
         "name": "neutral/900",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2870:3117",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:2870:3117"
     },
     {
       "collection": "theme",
@@ -2471,10 +1926,7 @@
       "cssValue": "rgb(0 0 0 / 0.4)",
       "resolvedValue": "rgb(0 0 0 / 0.4)",
       "alias": null,
-      "figmaVariableId": "VariableID:2805:6053",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:2805:6053"
     },
     {
       "collection": "theme",
@@ -2488,10 +1940,7 @@
         "name": "neutral/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8669:13909",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8669:13909"
     },
     {
       "collection": "theme",
@@ -2501,10 +1950,7 @@
       "cssValue": "rgb(43 43 43 / 0.04)",
       "resolvedValue": "rgb(43 43 43 / 0.04)",
       "alias": null,
-      "figmaVariableId": "VariableID:8669:13910",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8669:13910"
     },
     {
       "collection": "theme",
@@ -2518,10 +1964,7 @@
         "name": "neutral/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:248:1582",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:248:1582"
     },
     {
       "collection": "theme",
@@ -2535,10 +1978,7 @@
         "name": "neutral/700",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2047:15921",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:2047:15921"
     },
     {
       "collection": "theme",
@@ -2552,10 +1992,7 @@
         "name": "neutral/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2047:15922",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:2047:15922"
     },
     {
       "collection": "theme",
@@ -2569,10 +2006,7 @@
         "name": "neutral/900",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1972:17485",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:1972:17485"
     },
     {
       "collection": "theme",
@@ -2586,10 +2020,7 @@
         "name": "neutral/white",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2058:16153",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:2058:16153"
     },
     {
       "collection": "theme",
@@ -2603,10 +2034,7 @@
         "name": "neutral/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8670:1147",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8670:1147"
     },
     {
       "collection": "theme",
@@ -2620,10 +2048,7 @@
         "name": "neutral/white",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:6845:10002",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:6845:10002"
     },
     {
       "collection": "theme",
@@ -2633,10 +2058,7 @@
       "cssValue": "rgb(255 255 255 / 0.08)",
       "resolvedValue": "rgb(255 255 255 / 0.08)",
       "alias": null,
-      "figmaVariableId": "VariableID:1670:1045",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:1670:1045"
     },
     {
       "collection": "theme",
@@ -2646,10 +2068,7 @@
       "cssValue": "rgb(255 255 255 / 0.04)",
       "resolvedValue": "rgb(255 255 255 / 0.04)",
       "alias": null,
-      "figmaVariableId": "VariableID:1670:4246",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:1670:4246"
     },
     {
       "collection": "theme",
@@ -2663,10 +2082,7 @@
         "name": "brand/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8649:1200",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8649:1200"
     },
     {
       "collection": "theme",
@@ -2680,10 +2096,7 @@
         "name": "brand/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8649:1913",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8649:1913"
     },
     {
       "collection": "theme",
@@ -2697,10 +2110,7 @@
         "name": "brand/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8689:5208",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8689:5208"
     },
     {
       "collection": "theme",
@@ -2714,10 +2124,7 @@
         "name": "brand/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8649:1914",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8649:1914"
     },
     {
       "collection": "theme",
@@ -2731,10 +2138,7 @@
         "name": "brand/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:10217:982",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:10217:982"
     },
     {
       "collection": "theme",
@@ -2748,10 +2152,7 @@
         "name": "brand/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:10402:490",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:10402:490"
     },
     {
       "collection": "theme",
@@ -2765,10 +2166,7 @@
         "name": "brand/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:10269:167",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:10269:167"
     },
     {
       "collection": "theme",
@@ -2782,10 +2180,7 @@
         "name": "red/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8665:13733",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8665:13733"
     },
     {
       "collection": "theme",
@@ -2799,10 +2194,7 @@
         "name": "red/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8689:5206",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8689:5206"
     },
     {
       "collection": "theme",
@@ -2816,10 +2208,7 @@
         "name": "red/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8665:13734",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8665:13734"
     },
     {
       "collection": "theme",
@@ -2833,10 +2222,7 @@
         "name": "red/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8665:13735",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8665:13735"
     },
     {
       "collection": "theme",
@@ -2850,10 +2236,7 @@
         "name": "orange/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8680:1953",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8680:1953"
     },
     {
       "collection": "theme",
@@ -2867,10 +2250,7 @@
         "name": "orange/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8689:5207",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8689:5207"
     },
     {
       "collection": "theme",
@@ -2884,10 +2264,7 @@
         "name": "orange/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8680:1954",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8680:1954"
     },
     {
       "collection": "theme",
@@ -2901,10 +2278,7 @@
         "name": "orange/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8680:1955",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8680:1955"
     },
     {
       "collection": "theme",
@@ -2918,10 +2292,7 @@
         "name": "light blue/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8666:13758",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8666:13758"
     },
     {
       "collection": "theme",
@@ -2935,10 +2306,7 @@
         "name": "light blue/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8689:5204",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8689:5204"
     },
     {
       "collection": "theme",
@@ -2952,10 +2320,7 @@
         "name": "light blue/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8666:13759",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8666:13759"
     },
     {
       "collection": "theme",
@@ -2969,10 +2334,7 @@
         "name": "light blue/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8666:13760",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8666:13760"
     },
     {
       "collection": "theme",
@@ -2986,10 +2348,7 @@
         "name": "green/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8688:4781",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8688:4781"
     },
     {
       "collection": "theme",
@@ -3003,10 +2362,7 @@
         "name": "green/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8719:28317",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8719:28317"
     },
     {
       "collection": "theme",
@@ -3020,10 +2376,7 @@
         "name": "green/600",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8688:4782",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8688:4782"
     },
     {
       "collection": "theme",
@@ -3037,10 +2390,7 @@
         "name": "green/50",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8688:4783",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:8688:4783"
     },
     {
       "collection": "theme",
@@ -3050,10 +2400,7 @@
       "cssValue": "rgb(19 29 53 / 0.26)",
       "resolvedValue": "rgb(19 29 53 / 0.26)",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1583",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:248:1583"
     },
     {
       "collection": "theme",
@@ -3063,10 +2410,7 @@
       "cssValue": "rgb(255 255 255 / 0.12)",
       "resolvedValue": "rgb(255 255 255 / 0.12)",
       "alias": null,
-      "figmaVariableId": "VariableID:9348:1394",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:9348:1394"
     },
     {
       "collection": "theme",
@@ -3080,10 +2424,7 @@
         "name": "neutral/white",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1532:22837",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:1532:22837"
     },
     {
       "collection": "theme",
@@ -3097,10 +2438,7 @@
         "name": "fill/neutral",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:9118:5529",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:9118:5529"
     },
     {
       "collection": "theme",
@@ -3114,10 +2452,7 @@
         "name": "neutral/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:3682:1540",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:3682:1540"
     },
     {
       "collection": "theme",
@@ -3131,10 +2466,7 @@
         "name": "neutral/200",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:10343:860",
-      "scopes": [
-        "FRAME_FILL"
-      ]
+      "figmaVariableId": "VariableID:10343:860"
     },
     {
       "collection": "theme",
@@ -3148,10 +2480,7 @@
         "name": "text/brand",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8664:1400",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8664:1400"
     },
     {
       "collection": "theme",
@@ -3165,10 +2494,7 @@
         "name": "text/error",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8665:13756",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8665:13756"
     },
     {
       "collection": "theme",
@@ -3182,10 +2508,7 @@
         "name": "text/info",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8666:13767",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8666:13767"
     },
     {
       "collection": "theme",
@@ -3199,10 +2522,7 @@
         "name": "text/warning",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8685:4546",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8685:4546"
     },
     {
       "collection": "theme",
@@ -3216,10 +2536,7 @@
         "name": "text/success",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8705:3976",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8705:3976"
     },
     {
       "collection": "theme",
@@ -3233,10 +2550,7 @@
         "name": "text/neutral/contrast-disabled",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:9348:1393",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:9348:1393"
     },
     {
       "collection": "theme",
@@ -3250,10 +2564,7 @@
         "name": "text/neutral/primary",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8669:13805",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8669:13805"
     },
     {
       "collection": "theme",
@@ -3267,10 +2578,7 @@
         "name": "text/neutral/primary-static",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8670:1152",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8670:1152"
     },
     {
       "collection": "theme",
@@ -3284,10 +2592,7 @@
         "name": "text/neutral/secondary",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8703:24692",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8703:24692"
     },
     {
       "collection": "theme",
@@ -3301,10 +2606,7 @@
         "name": "text/neutral/primary-contrast",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8670:1279",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8670:1279"
     },
     {
       "collection": "theme",
@@ -3318,10 +2620,7 @@
         "name": "text/neutral/secondary-contrast",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:9000:1431",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:9000:1431"
     },
     {
       "collection": "theme",
@@ -3335,10 +2634,7 @@
         "name": "text/neutral/disabled",
         "source": "dtcg"
       },
-      "figmaVariableId": "VariableID:8669:14048",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8669:14048"
     },
     {
       "collection": "theme",
@@ -3352,10 +2648,7 @@
         "name": "neutral/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1507:19416",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:1507:19416"
     },
     {
       "collection": "theme",
@@ -3369,10 +2662,7 @@
         "name": "neutral/300",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1519:18494",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:1519:18494"
     },
     {
       "collection": "theme",
@@ -3386,10 +2676,7 @@
         "name": "neutral/200",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9072:114",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9072:114"
     },
     {
       "collection": "theme",
@@ -3403,10 +2690,7 @@
         "name": "neutral/700",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:2866:3116",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:2866:3116"
     },
     {
       "collection": "theme",
@@ -3420,10 +2704,7 @@
         "name": "neutral/white",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1670:972",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:1670:972"
     },
     {
       "collection": "theme",
@@ -3437,10 +2718,7 @@
         "name": "blue/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1532:24357",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:1532:24357"
     },
     {
       "collection": "theme",
@@ -3454,10 +2732,7 @@
         "name": "neutral/white",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:1670:1044",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:1670:1044"
     },
     {
       "collection": "theme",
@@ -3471,10 +2746,7 @@
         "name": "brand/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9063:451",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9063:451"
     },
     {
       "collection": "theme",
@@ -3488,10 +2760,7 @@
         "name": "brand/300",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8650:1949",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8650:1949"
     },
     {
       "collection": "theme",
@@ -3505,10 +2774,7 @@
         "name": "red/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8666:13757",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8666:13757"
     },
     {
       "collection": "theme",
@@ -3522,10 +2788,7 @@
         "name": "red/300",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9063:453",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9063:453"
     },
     {
       "collection": "theme",
@@ -3539,10 +2802,7 @@
         "name": "light blue/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9063:454",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9063:454"
     },
     {
       "collection": "theme",
@@ -3556,10 +2816,7 @@
         "name": "light blue/300",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8667:13804",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8667:13804"
     },
     {
       "collection": "theme",
@@ -3573,10 +2830,7 @@
         "name": "green/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9063:455",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9063:455"
     },
     {
       "collection": "theme",
@@ -3590,10 +2844,7 @@
         "name": "green/300",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8707:18073",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8707:18073"
     },
     {
       "collection": "theme",
@@ -3607,10 +2858,7 @@
         "name": "orange/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9063:456",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9063:456"
     },
     {
       "collection": "theme",
@@ -3624,10 +2872,7 @@
         "name": "orange/300",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8707:18074",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8707:18074"
     },
     {
       "collection": "theme",
@@ -3637,10 +2882,7 @@
       "cssValue": "rgb(19 29 53 / 0.12)",
       "resolvedValue": "rgb(19 29 53 / 0.12)",
       "alias": null,
-      "figmaVariableId": "VariableID:248:1584",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:248:1584"
     },
     {
       "collection": "theme",
@@ -3650,10 +2892,7 @@
       "cssValue": "rgb(255 255 255 / 0.12)",
       "resolvedValue": "rgb(255 255 255 / 0.12)",
       "alias": null,
-      "figmaVariableId": "VariableID:1670:4285",
-      "scopes": [
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:1670:4285"
     },
     {
       "collection": "theme",
@@ -3667,11 +2906,7 @@
         "name": "indigo/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9591:4106",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9591:4106"
     },
     {
       "collection": "theme",
@@ -3685,11 +2920,7 @@
         "name": "pink/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9591:4695",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9591:4695"
     },
     {
       "collection": "theme",
@@ -3703,11 +2934,7 @@
         "name": "lime/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8850:4678",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8850:4678"
     },
     {
       "collection": "theme",
@@ -3721,11 +2948,7 @@
         "name": "orange/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8850:4682",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8850:4682"
     },
     {
       "collection": "theme",
@@ -3739,11 +2962,7 @@
         "name": "light blue/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8850:4679",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8850:4679"
     },
     {
       "collection": "theme",
@@ -3757,11 +2976,7 @@
         "name": "purple/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9591:4105",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9591:4105"
     },
     {
       "collection": "theme",
@@ -3775,11 +2990,7 @@
         "name": "blue grey/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9591:4101",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9591:4101"
     },
     {
       "collection": "theme",
@@ -3793,11 +3004,7 @@
         "name": "red/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8850:4680",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:8850:4680"
     },
     {
       "collection": "theme",
@@ -3811,11 +3018,7 @@
         "name": "cian/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9591:4108",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9591:4108"
     },
     {
       "collection": "theme",
@@ -3829,11 +3032,7 @@
         "name": "green/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:9591:4109",
-      "scopes": [
-        "SHAPE_FILL",
-        "STROKE"
-      ]
+      "figmaVariableId": "VariableID:9591:4109"
     },
     {
       "collection": "theme",
@@ -3847,10 +3046,7 @@
         "name": "brand/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8850:4681",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8850:4681"
     },
     {
       "collection": "theme",
@@ -3864,10 +3060,7 @@
         "name": "neutral/200",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8850:4684",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8850:4684"
     },
     {
       "collection": "theme",
@@ -3881,10 +3074,7 @@
         "name": "neutral/400",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8850:4683",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8850:4683"
     },
     {
       "collection": "theme",
@@ -3898,10 +3088,7 @@
         "name": "neutral/200",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8854:3292",
-      "scopes": [
-        "SHAPE_FILL"
-      ]
+      "figmaVariableId": "VariableID:8854:3292"
     },
     {
       "collection": "theme",
@@ -3915,10 +3102,7 @@
         "name": "indigo/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8993:45",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8993:45"
     },
     {
       "collection": "theme",
@@ -3932,10 +3116,7 @@
         "name": "indigo/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8993:46",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8993:46"
     },
     {
       "collection": "theme",
@@ -3949,10 +3130,7 @@
         "name": "pink/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8993:47",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8993:47"
     },
     {
       "collection": "theme",
@@ -3966,10 +3144,7 @@
         "name": "pink/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8993:48",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8993:48"
     },
     {
       "collection": "theme",
@@ -3983,10 +3158,7 @@
         "name": "purple/500",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8993:49",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8993:49"
     },
     {
       "collection": "theme",
@@ -4000,10 +3172,1817 @@
         "name": "purple/100",
         "source": "figma"
       },
-      "figmaVariableId": "VariableID:8993:50",
-      "scopes": [
-        "ALL_SCOPES"
-      ]
+      "figmaVariableId": "VariableID:8993:50"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/1",
+      "cssVariable": "--rhood-sizing-base-module-1",
+      "type": "number",
+      "cssValue": "8px",
+      "resolvedValue": "8px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16482"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/2",
+      "cssVariable": "--rhood-sizing-base-module-2",
+      "type": "number",
+      "cssValue": "16px",
+      "resolvedValue": "16px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16484"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/3",
+      "cssVariable": "--rhood-sizing-base-module-3",
+      "type": "number",
+      "cssValue": "24px",
+      "resolvedValue": "24px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16486"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/4",
+      "cssVariable": "--rhood-sizing-base-module-4",
+      "type": "number",
+      "cssValue": "32px",
+      "resolvedValue": "32px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16487"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/5",
+      "cssVariable": "--rhood-sizing-base-module-5",
+      "type": "number",
+      "cssValue": "40px",
+      "resolvedValue": "40px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16488"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/6",
+      "cssVariable": "--rhood-sizing-base-module-6",
+      "type": "number",
+      "cssValue": "48px",
+      "resolvedValue": "48px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16489"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/7",
+      "cssVariable": "--rhood-sizing-base-module-7",
+      "type": "number",
+      "cssValue": "56px",
+      "resolvedValue": "56px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16490"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/8",
+      "cssVariable": "--rhood-sizing-base-module-8",
+      "type": "number",
+      "cssValue": "64px",
+      "resolvedValue": "64px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16491"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/0,25",
+      "cssVariable": "--rhood-sizing-base-module-0-25",
+      "type": "number",
+      "cssValue": "2px",
+      "resolvedValue": "2px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16480"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/0,5",
+      "cssVariable": "--rhood-sizing-base-module-0-5",
+      "type": "number",
+      "cssValue": "4px",
+      "resolvedValue": "4px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16481"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/0,75",
+      "cssVariable": "--rhood-sizing-base-module-0-75",
+      "type": "number",
+      "cssValue": "6px",
+      "resolvedValue": "6px",
+      "alias": null,
+      "figmaVariableId": "VariableID:10256:530"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/1,5",
+      "cssVariable": "--rhood-sizing-base-module-1-5",
+      "type": "number",
+      "cssValue": "12px",
+      "resolvedValue": "12px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16483"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/2,5",
+      "cssVariable": "--rhood-sizing-base-module-2-5",
+      "type": "number",
+      "cssValue": "20px",
+      "resolvedValue": "20px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1692:16485"
+    },
+    {
+      "collection": "sizing",
+      "name": "base module/4,5",
+      "cssVariable": "--rhood-sizing-base-module-4-5",
+      "type": "number",
+      "cssValue": "36px",
+      "resolvedValue": "36px",
+      "alias": null,
+      "figmaVariableId": "VariableID:8575:34344"
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/resp",
+      "cssVariable": "--rhood-sizing-resp-resp",
+      "type": "string",
+      "cssValue": "desk",
+      "resolvedValue": "desk",
+      "alias": null,
+      "figmaVariableId": "VariableID:2912:8054"
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-width-min",
+      "cssVariable": "--rhood-sizing-resp-vp-width-min",
+      "type": "number",
+      "cssValue": "1367px",
+      "resolvedValue": "1367px",
+      "alias": null,
+      "figmaVariableId": "VariableID:8632:19077"
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-width-max",
+      "cssVariable": "--rhood-sizing-resp-vp-width-max",
+      "type": "number",
+      "cssValue": "1920px",
+      "resolvedValue": "1920px",
+      "alias": null,
+      "figmaVariableId": "VariableID:8632:19076"
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-height-min",
+      "cssVariable": "--rhood-sizing-resp-vp-height-min",
+      "type": "number",
+      "cssValue": "668px",
+      "resolvedValue": "668px",
+      "alias": null,
+      "figmaVariableId": "VariableID:8632:19073"
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-height-max",
+      "cssVariable": "--rhood-sizing-resp-vp-height-max",
+      "type": "number",
+      "cssValue": "980px",
+      "resolvedValue": "980px",
+      "alias": null,
+      "figmaVariableId": "VariableID:8632:19072"
+    },
+    {
+      "collection": "sizing",
+      "name": "accordion/px",
+      "cssVariable": "--rhood-sizing-accordion-px",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3288:2979"
+    },
+    {
+      "collection": "sizing",
+      "name": "accordion/py",
+      "cssVariable": "--rhood-sizing-accordion-py",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3288:2980"
+    },
+    {
+      "collection": "sizing",
+      "name": "accordion/gap",
+      "cssVariable": "--rhood-sizing-accordion-gap",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3288:2981"
+    },
+    {
+      "collection": "sizing",
+      "name": "accordion/pxy-alt",
+      "cssVariable": "--rhood-sizing-accordion-pxy-alt",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3288:2982"
+    },
+    {
+      "collection": "sizing",
+      "name": "avatar/20",
+      "cssVariable": "--rhood-sizing-avatar-20",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2-5)",
+      "resolvedValue": "20px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:548"
+    },
+    {
+      "collection": "sizing",
+      "name": "avatar/24",
+      "cssVariable": "--rhood-sizing-avatar-24",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:547"
+    },
+    {
+      "collection": "sizing",
+      "name": "avatar/32",
+      "cssVariable": "--rhood-sizing-avatar-32",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-4)",
+      "resolvedValue": "32px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/4",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:546"
+    },
+    {
+      "collection": "sizing",
+      "name": "avatar/40",
+      "cssVariable": "--rhood-sizing-avatar-40",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-5)",
+      "resolvedValue": "40px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:545"
+    },
+    {
+      "collection": "sizing",
+      "name": "badge/px",
+      "cssVariable": "--rhood-sizing-badge-px",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:1877"
+    },
+    {
+      "collection": "sizing",
+      "name": "badge/min-width",
+      "cssVariable": "--rhood-sizing-badge-min-width",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2-5)",
+      "resolvedValue": "20px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:1878"
+    },
+    {
+      "collection": "sizing",
+      "name": "body/reclaim-the-padding (deprecated)",
+      "cssVariable": "--rhood-sizing-body-reclaim-the-padding-deprecated",
+      "type": "number",
+      "cssValue": "0px",
+      "resolvedValue": "0px",
+      "alias": null,
+      "figmaVariableId": "VariableID:8560:1186"
+    },
+    {
+      "collection": "sizing",
+      "name": "border-radius/border-radius-sm",
+      "cssVariable": "--rhood-sizing-border-radius-border-radius-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4346:18356"
+    },
+    {
+      "collection": "sizing",
+      "name": "border-radius/border-radius-md",
+      "cssVariable": "--rhood-sizing-border-radius-border-radius-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1016:14253"
+    },
+    {
+      "collection": "sizing",
+      "name": "border-radius/border-radius-lg",
+      "cssVariable": "--rhood-sizing-border-radius-border-radius-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1679:1317"
+    },
+    {
+      "collection": "sizing",
+      "name": "border-radius/border-radius-xlg",
+      "cssVariable": "--rhood-sizing-border-radius-border-radius-xlg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1679:1318"
+    },
+    {
+      "collection": "sizing",
+      "name": "border-radius/modal",
+      "cssVariable": "--rhood-sizing-border-radius-modal",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-border-radius-border-radius-lg)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "border-radius/border-radius-lg",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1923:19139"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/py-lg",
+      "cssVariable": "--rhood-sizing-chips-padding-py-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:7165:11593"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/px-lg",
+      "cssVariable": "--rhood-sizing-chips-padding-px-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:7165:11592"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/px-md",
+      "cssVariable": "--rhood-sizing-chips-padding-px-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:2216"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/label-px-md",
+      "cssVariable": "--rhood-sizing-chips-padding-label-px-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:2217"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/py-md",
+      "cssVariable": "--rhood-sizing-chips-padding-py-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:397:2220"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/label-px-sm",
+      "cssVariable": "--rhood-sizing-chips-padding-label-px-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6632:17006"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/py-sm",
+      "cssVariable": "--rhood-sizing-chips-padding-py-sm",
+      "type": "number",
+      "cssValue": "3px",
+      "resolvedValue": "3px",
+      "alias": null,
+      "figmaVariableId": "VariableID:397:2221"
+    },
+    {
+      "collection": "sizing",
+      "name": "chips/padding/px-sm",
+      "cssVariable": "--rhood-sizing-chips-padding-px-sm",
+      "type": "number",
+      "cssValue": "3px",
+      "resolvedValue": "3px",
+      "alias": null,
+      "figmaVariableId": "VariableID:421:3527"
+    },
+    {
+      "collection": "sizing",
+      "name": "comments/avatar margin",
+      "cssVariable": "--rhood-sizing-comments-avatar-margin",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:7588:10"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/icon/width-md",
+      "cssVariable": "--rhood-sizing-common-input-icon-width-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4842:16863"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/icon/width-sm",
+      "cssVariable": "--rhood-sizing-common-input-icon-width-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2-5)",
+      "resolvedValue": "20px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4842:16865"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/icon/width-xsm",
+      "cssVariable": "--rhood-sizing-common-input-icon-width-xsm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4842:16866"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/text_btn-px-lg",
+      "cssVariable": "--rhood-sizing-common-input-padding-text-btn-px-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1114:14115"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/py-lg",
+      "cssVariable": "--rhood-sizing-common-input-padding-py-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1114:14114"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/py-chips-lg",
+      "cssVariable": "--rhood-sizing-common-input-padding-py-chips-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9572:25204"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/px-lg",
+      "cssVariable": "--rhood-sizing-common-input-padding-px-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1114:14113"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/gap-lg",
+      "cssVariable": "--rhood-sizing-common-input-padding-gap-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4842:16862"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/text_btn-px-md",
+      "cssVariable": "--rhood-sizing-common-input-padding-text-btn-px-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:393:4809"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/px-md",
+      "cssVariable": "--rhood-sizing-common-input-padding-px-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1016:14252"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/py-md",
+      "cssVariable": "--rhood-sizing-common-input-padding-py-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:399:2541"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/py-chips-md",
+      "cssVariable": "--rhood-sizing-common-input-padding-py-chips-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9572:25206"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/gap-md",
+      "cssVariable": "--rhood-sizing-common-input-padding-gap-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4839:19417"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/text_btn-px-sm",
+      "cssVariable": "--rhood-sizing-common-input-padding-text-btn-px-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:394:4812"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/px-sm",
+      "cssVariable": "--rhood-sizing-common-input-padding-px-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:1114:14111"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/py-sm",
+      "cssVariable": "--rhood-sizing-common-input-padding-py-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:399:2544"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/py-chips-sm",
+      "cssVariable": "--rhood-sizing-common-input-padding-py-chips-sm",
+      "type": "number",
+      "cssValue": "5px",
+      "resolvedValue": "5px",
+      "alias": null,
+      "figmaVariableId": "VariableID:9572:25207"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/gap-sm",
+      "cssVariable": "--rhood-sizing-common-input-padding-gap-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:394:4813"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/text_btn-px-xsm",
+      "cssVariable": "--rhood-sizing-common-input-padding-text-btn-px-xsm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6562:3894"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/py-xsm",
+      "cssVariable": "--rhood-sizing-common-input-padding-py-xsm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-75)",
+      "resolvedValue": "6px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,75",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6562:3892"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/px-xsm",
+      "cssVariable": "--rhood-sizing-common-input-padding-px-xsm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6562:3895"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/padding/gap-xsm",
+      "cssVariable": "--rhood-sizing-common-input-padding-gap-xsm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6562:3893"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/shape/border_radius",
+      "cssVariable": "--rhood-sizing-common-input-shape-border-radius",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-border-radius-border-radius-md)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "border-radius/border-radius-md",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:589:3932"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/shape/size_icon-x",
+      "cssVariable": "--rhood-sizing-common-input-shape-size-icon-x",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:595:6070"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/shape/size_icon-y",
+      "cssVariable": "--rhood-sizing-common-input-shape-size-icon-y",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:595:6071"
+    },
+    {
+      "collection": "sizing",
+      "name": "drawer/comment/width",
+      "cssVariable": "--rhood-sizing-drawer-comment-width",
+      "type": "number",
+      "cssValue": "450px",
+      "resolvedValue": "450px",
+      "alias": null,
+      "figmaVariableId": "VariableID:4346:20743"
+    },
+    {
+      "collection": "sizing",
+      "name": "dubai/input width",
+      "cssVariable": "--rhood-sizing-dubai-input-width",
+      "type": "number",
+      "cssValue": "400px",
+      "resolvedValue": "400px",
+      "alias": null,
+      "figmaVariableId": "VariableID:2994:4145"
+    },
+    {
+      "collection": "sizing",
+      "name": "dubai/cards gap horizontal",
+      "cssVariable": "--rhood-sizing-dubai-cards-gap-horizontal",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2-5)",
+      "resolvedValue": "20px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3015:1424"
+    },
+    {
+      "collection": "sizing",
+      "name": "dubai/cards gap vertical",
+      "cssVariable": "--rhood-sizing-dubai-cards-gap-vertical",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3016:1790"
+    },
+    {
+      "collection": "sizing",
+      "name": "filter/filter-row",
+      "cssVariable": "--rhood-sizing-filter-filter-row",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3535:24"
+    },
+    {
+      "collection": "sizing",
+      "name": "floating bar/pxy",
+      "cssVariable": "--rhood-sizing-floating-bar-pxy",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:2915:8651"
+    },
+    {
+      "collection": "sizing",
+      "name": "floating bar/border-radius",
+      "cssVariable": "--rhood-sizing-floating-bar-border-radius",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:2915:8652"
+    },
+    {
+      "collection": "sizing",
+      "name": "floating bar/gap",
+      "cssVariable": "--rhood-sizing-floating-bar-gap",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:2915:8653"
+    },
+    {
+      "collection": "sizing",
+      "name": "icon/icon-lg",
+      "cssVariable": "--rhood-sizing-icon-icon-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-4)",
+      "resolvedValue": "32px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/4",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:395:4826"
+    },
+    {
+      "collection": "sizing",
+      "name": "icon/icon-md",
+      "cssVariable": "--rhood-sizing-icon-icon-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:409:925"
+    },
+    {
+      "collection": "sizing",
+      "name": "icon/icon-sm",
+      "cssVariable": "--rhood-sizing-icon-icon-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2-5)",
+      "resolvedValue": "20px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:409:923"
+    },
+    {
+      "collection": "sizing",
+      "name": "island/px",
+      "cssVariable": "--rhood-sizing-island-px",
+      "type": "number",
+      "cssValue": "0px",
+      "resolvedValue": "0px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3189:11848"
+    },
+    {
+      "collection": "sizing",
+      "name": "island/py",
+      "cssVariable": "--rhood-sizing-island-py",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3189:11849"
+    },
+    {
+      "collection": "sizing",
+      "name": "island/py-mega",
+      "cssVariable": "--rhood-sizing-island-py-mega",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-5)",
+      "resolvedValue": "40px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6685:2822"
+    },
+    {
+      "collection": "sizing",
+      "name": "island/margin",
+      "cssVariable": "--rhood-sizing-island-margin",
+      "type": "number",
+      "cssValue": "0px",
+      "resolvedValue": "0px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3204:566"
+    },
+    {
+      "collection": "sizing",
+      "name": "island/gap",
+      "cssVariable": "--rhood-sizing-island-gap",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3578:83"
+    },
+    {
+      "collection": "sizing",
+      "name": "island/border-radius",
+      "cssVariable": "--rhood-sizing-island-border-radius",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-border-radius-border-radius-lg)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "border-radius/border-radius-lg",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6286:1069"
+    },
+    {
+      "collection": "sizing",
+      "name": "layout/column-container-md",
+      "cssVariable": "--rhood-sizing-layout-column-container-md",
+      "type": "number",
+      "cssValue": "800px",
+      "resolvedValue": "800px",
+      "alias": null,
+      "figmaVariableId": "VariableID:1998:932"
+    },
+    {
+      "collection": "sizing",
+      "name": "layout/column-container-lg",
+      "cssVariable": "--rhood-sizing-layout-column-container-lg",
+      "type": "number",
+      "cssValue": "1000px",
+      "resolvedValue": "1000px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3556:39"
+    },
+    {
+      "collection": "sizing",
+      "name": "layout/island-title-limit",
+      "cssVariable": "--rhood-sizing-layout-island-title-limit",
+      "type": "number",
+      "cssValue": "350px",
+      "resolvedValue": "350px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3565:40"
+    },
+    {
+      "collection": "sizing",
+      "name": "layout/container",
+      "cssVariable": "--rhood-sizing-layout-container",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:3194:12025"
+    },
+    {
+      "collection": "sizing",
+      "name": "layout/edge-to-edge/wrapper",
+      "cssVariable": "--rhood-sizing-layout-edge-to-edge-wrapper",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:2849:8585"
+    },
+    {
+      "collection": "sizing",
+      "name": "layout/edge-to-edge/content",
+      "cssVariable": "--rhood-sizing-layout-edge-to-edge-content",
+      "type": "number",
+      "cssValue": "0px",
+      "resolvedValue": "0px",
+      "alias": null,
+      "figmaVariableId": "VariableID:9330:233"
+    },
+    {
+      "collection": "sizing",
+      "name": "map/container-pxy",
+      "cssVariable": "--rhood-sizing-map-container-pxy",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6727:613"
+    },
+    {
+      "collection": "sizing",
+      "name": "menu/border_radius",
+      "cssVariable": "--rhood-sizing-menu-border-radius",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-border-radius-border-radius-md)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "border-radius/border-radius-md",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8755:2317"
+    },
+    {
+      "collection": "sizing",
+      "name": "menu/padding/px-sm",
+      "cssVariable": "--rhood-sizing-menu-padding-px-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8755:2318"
+    },
+    {
+      "collection": "sizing",
+      "name": "menu/padding/py-sm",
+      "cssVariable": "--rhood-sizing-menu-padding-py-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8755:2316"
+    },
+    {
+      "collection": "sizing",
+      "name": "menu/padding/gap-sm",
+      "cssVariable": "--rhood-sizing-menu-padding-gap-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8755:2319"
+    },
+    {
+      "collection": "sizing",
+      "name": "menu/padding/menu-py",
+      "cssVariable": "--rhood-sizing-menu-padding-menu-py",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:436:1551"
+    },
+    {
+      "collection": "sizing",
+      "name": "menu/padding/menu-px",
+      "cssVariable": "--rhood-sizing-menu-padding-menu-px",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8764:9825"
+    },
+    {
+      "collection": "sizing",
+      "name": "modal/margin-top",
+      "cssVariable": "--rhood-sizing-modal-margin-top",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:598:6936"
+    },
+    {
+      "collection": "sizing",
+      "name": "modal/margin-x",
+      "cssVariable": "--rhood-sizing-modal-margin-x",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10926:4113"
+    },
+    {
+      "collection": "sizing",
+      "name": "modal/margin-bottom",
+      "cssVariable": "--rhood-sizing-modal-margin-bottom",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10926:4114"
+    },
+    {
+      "collection": "sizing",
+      "name": "modal/py",
+      "cssVariable": "--rhood-sizing-modal-py",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6278:1068"
+    },
+    {
+      "collection": "sizing",
+      "name": "modal/grabber-bottom-margin",
+      "cssVariable": "--rhood-sizing-modal-grabber-bottom-margin",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6277:1067"
+    },
+    {
+      "collection": "sizing",
+      "name": "object page/gutter",
+      "cssVariable": "--rhood-sizing-object-page-gutter",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:6392:1704"
+    },
+    {
+      "collection": "sizing",
+      "name": "search-results/card/pxy",
+      "cssVariable": "--rhood-sizing-search-results-card-pxy",
+      "type": "number",
+      "cssValue": "0px",
+      "resolvedValue": "0px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3695:10971"
+    },
+    {
+      "collection": "sizing",
+      "name": "search-results/card/min-width",
+      "cssVariable": "--rhood-sizing-search-results-card-min-width",
+      "type": "number",
+      "cssValue": "260px",
+      "resolvedValue": "260px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3702:10973"
+    },
+    {
+      "collection": "sizing",
+      "name": "search-results/card/max-width",
+      "cssVariable": "--rhood-sizing-search-results-card-max-width",
+      "type": "number",
+      "cssValue": "270px",
+      "resolvedValue": "270px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3701:10972"
+    },
+    {
+      "collection": "sizing",
+      "name": "table/padding/py",
+      "cssVariable": "--rhood-sizing-table-padding-py",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:407:8889"
+    },
+    {
+      "collection": "sizing",
+      "name": "table/padding/py-size-small",
+      "cssVariable": "--rhood-sizing-table-padding-py-size-small",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:407:8892"
+    },
+    {
+      "collection": "sizing",
+      "name": "table/padding/px",
+      "cssVariable": "--rhood-sizing-table-padding-px",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:407:8890"
+    },
+    {
+      "collection": "sizing",
+      "name": "table/padding/pl-checkbox",
+      "cssVariable": "--rhood-sizing-table-padding-pl-checkbox",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-5)",
+      "resolvedValue": "40px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:407:8891"
+    },
+    {
+      "collection": "sizing",
+      "name": "table/padding/pr-moreMenu",
+      "cssVariable": "--rhood-sizing-table-padding-pr-moremenu",
+      "type": "number",
+      "cssValue": "28px",
+      "resolvedValue": "28px",
+      "alias": null,
+      "figmaVariableId": "VariableID:410:880"
+    },
+    {
+      "collection": "sizing",
+      "name": "tabs/padding/px",
+      "cssVariable": "--rhood-sizing-tabs-padding-px",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-common-input-padding-px-md)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "common-input/padding/px-md",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:470:3586"
+    },
+    {
+      "collection": "sizing",
+      "name": "tabs/padding/py",
+      "cssVariable": "--rhood-sizing-tabs-padding-py",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-common-input-padding-py-md)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "common-input/padding/py-md",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:470:3587"
+    },
+    {
+      "collection": "sizing",
+      "name": "tabs/padding/gap",
+      "cssVariable": "--rhood-sizing-tabs-padding-gap",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8935:969"
+    },
+    {
+      "collection": "sizing",
+      "name": "toggle-button/pxy",
+      "cssVariable": "--rhood-sizing-toggle-button-pxy",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9235:7071"
+    },
+    {
+      "collection": "sizing",
+      "name": "toggle-button/gap",
+      "cssVariable": "--rhood-sizing-toggle-button-gap",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-25)",
+      "resolvedValue": "2px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,25",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9235:7072"
+    },
+    {
+      "collection": "sizing",
+      "name": "tooltip/px",
+      "cssVariable": "--rhood-sizing-tooltip-px",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-75)",
+      "resolvedValue": "6px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,75",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9031:1736"
+    },
+    {
+      "collection": "sizing",
+      "name": "tooltip/py",
+      "cssVariable": "--rhood-sizing-tooltip-py",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-25)",
+      "resolvedValue": "2px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,25",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9031:1737"
+    },
+    {
+      "collection": "sizing",
+      "name": "tooltip/border-radius",
+      "cssVariable": "--rhood-sizing-tooltip-border-radius",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9031:1739"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/font-size/h1",
+      "cssVariable": "--rhood-sizing-typography-font-size-h1",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-4-5)",
+      "resolvedValue": "36px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/4,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8632:19081"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/font-size/lg",
+      "cssVariable": "--rhood-sizing-typography-font-size-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4348:20880"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/font-size/md",
+      "cssVariable": "--rhood-sizing-typography-font-size-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4348:20879"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/font-size/sm",
+      "cssVariable": "--rhood-sizing-typography-font-size-sm",
+      "type": "number",
+      "cssValue": "14px",
+      "resolvedValue": "14px",
+      "alias": null,
+      "figmaVariableId": "VariableID:4348:20878"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/font-size/xsm",
+      "cssVariable": "--rhood-sizing-typography-font-size-xsm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-1-5)",
+      "resolvedValue": "12px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/1,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10101:1482"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/line-height/lg",
+      "cssVariable": "--rhood-sizing-typography-line-height-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4348:20883"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/line-height/md",
+      "cssVariable": "--rhood-sizing-typography-line-height-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4348:20882"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/line-height/sm",
+      "cssVariable": "--rhood-sizing-typography-line-height-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2-5)",
+      "resolvedValue": "20px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:4348:20881"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/line-height/xsm",
+      "cssVariable": "--rhood-sizing-typography-line-height-xsm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2)",
+      "resolvedValue": "16px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10101:1483"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/letter-spacing/lg",
+      "cssVariable": "--rhood-sizing-typography-letter-spacing-lg",
+      "type": "number",
+      "cssValue": "0px",
+      "resolvedValue": "0px",
+      "alias": null,
+      "figmaVariableId": "VariableID:4691:21342"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/letter-spacing/md",
+      "cssVariable": "--rhood-sizing-typography-letter-spacing-md",
+      "type": "number",
+      "cssValue": "0.15px",
+      "resolvedValue": "0.15px",
+      "alias": null,
+      "figmaVariableId": "VariableID:4691:21343"
+    },
+    {
+      "collection": "sizing",
+      "name": "typography/letter-spacing/sm",
+      "cssVariable": "--rhood-sizing-typography-letter-spacing-sm",
+      "type": "number",
+      "cssValue": "0.15px",
+      "resolvedValue": "0.15px",
+      "alias": null,
+      "figmaVariableId": "VariableID:4691:21344"
+    },
+    {
+      "collection": "sizing",
+      "name": "visibility/desk only",
+      "cssVariable": "--rhood-sizing-visibility-desk-only",
+      "type": "number",
+      "cssValue": "1px",
+      "resolvedValue": "1px",
+      "alias": null,
+      "figmaVariableId": "VariableID:3513:28"
+    },
+    {
+      "collection": "sizing",
+      "name": "visibility/tab-mob only",
+      "cssVariable": "--rhood-sizing-visibility-tab-mob-only",
+      "type": "number",
+      "cssValue": "0px",
+      "resolvedValue": "0px",
+      "alias": null,
+      "figmaVariableId": "VariableID:9405:40"
+    },
+    {
+      "collection": "sizing",
+      "name": "button counter/min-width/lg",
+      "cssVariable": "--rhood-sizing-button-counter-min-width-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10373:1778"
+    },
+    {
+      "collection": "sizing",
+      "name": "button counter/min-width/md",
+      "cssVariable": "--rhood-sizing-button-counter-min-width-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-3)",
+      "resolvedValue": "24px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/3",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10373:1779"
+    },
+    {
+      "collection": "sizing",
+      "name": "button counter/min-width/sm",
+      "cssVariable": "--rhood-sizing-button-counter-min-width-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-2-5)",
+      "resolvedValue": "20px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/2,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10373:1780"
+    },
+    {
+      "collection": "sizing",
+      "name": "button counter/padding/px-lg",
+      "cssVariable": "--rhood-sizing-button-counter-padding-px-lg",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-75)",
+      "resolvedValue": "6px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,75",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10373:1677"
+    },
+    {
+      "collection": "sizing",
+      "name": "button counter/padding/px-md",
+      "cssVariable": "--rhood-sizing-button-counter-padding-px-md",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-75)",
+      "resolvedValue": "6px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,75",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10373:1678"
+    },
+    {
+      "collection": "sizing",
+      "name": "button counter/padding/px-sm",
+      "cssVariable": "--rhood-sizing-button-counter-padding-px-sm",
+      "type": "number",
+      "cssValue": "var(--rhood-sizing-base-module-0-5)",
+      "resolvedValue": "4px",
+      "alias": {
+        "collection": "sizing",
+        "name": "base module/0,5",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:10373:1679"
     }
   ]
 }

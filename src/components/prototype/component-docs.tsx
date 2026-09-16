@@ -2,6 +2,8 @@ import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
 import { InputNumberExamples } from "./input-number-examples";
 import { InputNumberRangeExamples } from "./input-number-range-examples";
+import { TokenColorsExamples } from "./token-colors-examples";
+import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
@@ -63,7 +65,7 @@ import { cn } from "@/lib/utils";
 type ComponentDoc = {
   id: string;
   title: string;
-  description: string;
+  description?: string;
   figmaUrl?: string;
   group: string;
   properties?: Array<{
@@ -130,6 +132,20 @@ function Matrix({
 }
 
 const componentDocs: ComponentDoc[] = [
+  {
+    id: "colors",
+    title: "Colors",
+    group: "Foundations",
+    source: "src/tmp/palette.json · src/tmp/theme.json",
+    render: () => <TokenColorsExamples />,
+  },
+  {
+    id: "sizing",
+    title: "Sizing",
+    group: "Foundations",
+    source: "src/tmp/sizing.json",
+    render: () => <TokenSizingExamples />,
+  },
   {
     id: "showcase-surface",
     title: "Showcase surface",
@@ -1034,9 +1050,9 @@ function ComponentPage({
             <h1 className="break-words font-['Unbounded',sans-serif] text-3xl font-bold leading-[1.16] sm:text-4xl">
               {doc.title}
             </h1>
-            <p className="font-['Rhood_Inter',sans-serif] text-base leading-6 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
+            {doc.description && <p className="font-['Rhood_Inter',sans-serif] text-base leading-6 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
               {doc.description}
-            </p>
+            </p>}
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-base leading-6">
             {doc.figmaUrl && (
