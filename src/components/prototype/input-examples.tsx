@@ -8,10 +8,12 @@ import { cn } from "@/lib/utils";
 function Section({
   children,
   description,
+  settings,
   title,
 }: {
   children: React.ReactNode;
   description: string;
+  settings: string[];
   title: string;
 }) {
   return (
@@ -21,6 +23,11 @@ function Section({
         <p className="text-base leading-6 tracking-[0.15px]">{description}</p>
       </div>
       {children}
+      <div className="grid gap-0.5">
+        {settings.map((setting) => (
+          <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>
+        ))}
+      </div>
     </section>
   );
 }
@@ -125,6 +132,7 @@ export function InputExamples() {
     <div className="grid min-w-0 gap-10">
       <Section
         description="md — основной размер для форм; sm — компактный вариант для плотных панелей и фильтров."
+        settings={["size: md · sm"]}
         title="Размер"
       >
         <ShowcaseSurface>
@@ -151,6 +159,7 @@ export function InputExamples() {
 
       <Section
         description="Hover и focus работают у нативного input. Error и disabled имеют приоритет над обычными состояниями."
+        settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]}
         title="Состояния"
       >
         <ShowcaseSurface>
@@ -205,6 +214,7 @@ export function InputExamples() {
 
       <Section
         description="Каждый дополнительный элемент показан отдельным вариантом: пустое поле, placeholder, prefix, suffix, обязательность и helper text."
+        settings={["placeholder: string", "startText: ReactNode", "endText: ReactNode", "required: boolean", "helperText: ReactNode"]}
         title="Наполнение"
       >
         <ShowcaseSurface>
@@ -235,6 +245,7 @@ export function InputExamples() {
 
       <Section
         description="Обязательное поле отмечается красной звёздочкой в правой части Input."
+        settings={["required: boolean"]}
         title="Обязательное поле"
       >
         <ShowcaseSurface>
@@ -248,6 +259,7 @@ export function InputExamples() {
 
       <Section
         description="Опциональный крестик появляется только у заполненного Input в состоянии focused. Нажми на него, чтобы очистить значение."
+        settings={["clearButton: boolean", "onClear: () => void"]}
         title="Очистка ввода"
       >
         <ShowcaseSurface>

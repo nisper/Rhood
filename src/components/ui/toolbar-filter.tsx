@@ -2,6 +2,7 @@ import * as React from "react"
 import { Search, SlidersHorizontal, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
+import { InputNumberRange } from "@/components/ui/input-number-range"
 import { Menu } from "@/components/ui/menu"
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
 import { Segment } from "@/components/ui/segment"
@@ -89,18 +90,13 @@ function FilterRange({
   widthClass: string
 }) {
   return (
-    <button
-      className={cn(
-        "flex h-9 cursor-pointer items-center rounded-lg border border-[var(--parser-border-light)] bg-white text-sm leading-5 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]",
-        widthClass,
-      )}
-      type="button"
-    >
-      <span className="min-w-0 flex-1 px-3 py-2 text-left">от</span>
-      <span className="shrink-0">–</span>
-      <span className="min-w-0 flex-1 px-3 py-2 text-left">до</span>
-      <span className="shrink-0 pr-3 text-[var(--parser-text-neutral-primary)]">{suffix}</span>
-    </button>
+    <InputNumberRange
+      aria-label={`Диапазон ${suffix}`}
+      className={widthClass}
+      endInputProps={{ endText: suffix, placeholder: "до" }}
+      size="sm"
+      startInputProps={{ placeholder: "от" }}
+    />
   )
 }
 

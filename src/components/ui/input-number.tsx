@@ -18,14 +18,12 @@ type InputNumberProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
   state?: InputNumberState
 }
 
-function formatThousands(value: string | number | readonly string[] | undefined) {
-  const normalizedValue = `${value ?? ""}`.replace(/ /g, "")
-  const [integerPart, fractionalPart] = normalizedValue.split(/([,.])/)
-  const sign = integerPart.startsWith("-") ? "-" : ""
-  const digits = sign ? integerPart.slice(1) : integerPart
-  const groupedInteger = digits.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+function digitsOnly(value: string | number | readonly string[] | undefined) {
+  return `${value ?? ""}`.replace(/\D/g, "")
+}
 
-  return `${sign}${groupedInteger}${fractionalPart ?? ""}${normalizedValue.split(/[,.]/).slice(1).join("")}`
+function formatThousands(value: string | number | readonly string[] | undefined) {
+  return digitsOnly(value).replace(/\B(?=(\d{3})+(?!\d))/g, " ")
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
@@ -57,11 +55,12 @@ function InputNumber({
   endText,
   error = false,
   groupThousands = false,
-  inputMode = "decimal",
+  inputMode = "numeric",
   onBlur,
   onChange,
   onClear,
   onFocus,
+  onKeyDown,
   placeholder = "Введите значение",
   required = false,
   size = "md",
@@ -74,9 +73,9 @@ function InputNumber({
   const [isFocused, setIsFocused] = React.useState(false)
   const [uncontrolledValue, setUncontrolledValue] = React.useState(defaultValue ?? "")
   const isFocusedPreview = state === "focused"
-  const currentValue = isControlled ? value : uncontrolledValue
+  const currentValue = digitsOnly(isControlled ? value : uncontrolledValue)
   const displayValue = groupThousands ? formatThousands(currentValue) : currentValue
-  const hasValue = `${currentValue ?? ""}`.replace(/ /g, "").length > 0
+  const hasValue = currentValue.length > 0
   const showClearButton = clearButton && hasValue && !disabled && (isFocused || isFocusedPreview)
   const interactiveClasses = !disabled && !error && !isFocusedPreview
     ? "hover:border-[color:var(--parser-border-hover)] hover:bg-[var(--input-hover,white)] focus:border-[color:var(--parser-border-focus)] focus:bg-[var(--input-focus,white)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--parser-border-focus)]"
@@ -90,7 +89,7 @@ function InputNumber({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-[var(--parser-text-neutral-secondary)]",
+            "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 font-mono text-[var(--parser-text-neutral-secondary)]",
             size === "md" ? "text-base leading-6" : "text-sm leading-5",
           )}
         >
@@ -115,16 +114,23 @@ function InputNumber({
           onBlur?.(event)
         }}
         onChange={(event) => {
+          const normalizedValue = digitsOnly(event.target.value)
+          event.target.value = normalizedValue
+
           if (!isControlled) {
-            setUncontrolledValue(
-              groupThousands ? event.target.value.replace(/ /g, "") : event.target.value,
-            )
+            setUncontrolledValue(normalizedValue)
           }
           onChange?.(event)
         }}
         onFocus={(event) => {
           setIsFocused(true)
           onFocus?.(event)
+        }}
+        onKeyDown={(event) => {
+          onKeyDown?.(event)
+
+          if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey || event.key.length !== 1) return
+          if (!/\d/.test(event.key)) event.preventDefault()
         }}
         placeholder={placeholder}
         required={required}

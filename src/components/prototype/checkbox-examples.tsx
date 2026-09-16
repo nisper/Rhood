@@ -51,10 +51,12 @@ const selectionOptions = [
 function Section({
   children,
   description,
+  settings,
   title,
 }: {
   children: React.ReactNode;
   description: string;
+  settings?: string[];
   title: string;
 }) {
   return (
@@ -64,6 +66,13 @@ function Section({
         <p className="text-base leading-6 tracking-[0.15px]">{description}</p>
       </div>
       {children}
+      {settings && (
+        <div className="grid gap-0.5">
+          {settings.map((setting) => (
+            <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>
+          ))}
+        </div>
+      )}
     </section>
   );
 }
@@ -102,6 +111,7 @@ export function CheckboxExamples() {
     <div className="grid min-w-0 gap-10">
       <Section
         description="md использует control 20 px, sm — 16 px; у обоих control внешний margin 2 px. В обоих размерах вертикальные отступы строки составляют 8 px."
+        settings={["size: md · sm"]}
         title="Размер"
       >
         <ShowcaseSurface>
@@ -116,6 +126,7 @@ export function CheckboxExamples() {
 
       <Section
         description="Checkbox поддерживает пустое, выбранное и частично выбранное состояния."
+        settings={["checked: boolean", "indeterminate: boolean"]}
         title="Значение"
       >
         <ShowcaseSurface>
@@ -133,6 +144,7 @@ export function CheckboxExamples() {
 
       <Section
         description="При выборе части пунктов Checkbox «Выбрать все» переходит в промежуточное состояние."
+        settings={["checked: boolean", "onChange: (event) => void"]}
         title="Выбор"
       >
         <ShowcaseSurface>
@@ -163,6 +175,7 @@ export function CheckboxExamples() {
 
       <Section
         description="Hover доступен для невыбранного и выбранного Checkbox. Disabled имеет приоритет над выбранным и частично выбранным состояниями."
+        settings={["state: default · hovered", "error: boolean", "disabled: boolean"]}
         title="Состояния"
       >
         <ShowcaseSurface direction="vertical">
@@ -191,6 +204,7 @@ export function CheckboxExamples() {
 
       <Section
         description="Подпись можно скрыть для табличных строк и компактных интерфейсов. Skeleton занимает ширину 56 px."
+        settings={["label: boolean", "skeleton: boolean"]}
         title="Состав"
       >
         <ShowcaseSurface>

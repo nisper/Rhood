@@ -1,0 +1,4009 @@
+{
+  "summary": {
+    "total": 274,
+    "byCollection": {
+      "palette": 161,
+      "theme": 113
+    },
+    "aliases": 106,
+    "warnings": []
+  },
+  "tokens": [
+    {
+      "collection": "palette",
+      "name": "neutral/50",
+      "cssVariable": "--rhood-palette-neutral-50",
+      "type": "color",
+      "cssValue": "#f4f4f4",
+      "resolvedValue": "#f4f4f4",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:268",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/100",
+      "cssVariable": "--rhood-palette-neutral-100",
+      "type": "color",
+      "cssValue": "#e8e8e8",
+      "resolvedValue": "#e8e8e8",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:267",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/200",
+      "cssVariable": "--rhood-palette-neutral-200",
+      "type": "color",
+      "cssValue": "#d1d1d1",
+      "resolvedValue": "#d1d1d1",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:266",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/300",
+      "cssVariable": "--rhood-palette-neutral-300",
+      "type": "color",
+      "cssValue": "#bababa",
+      "resolvedValue": "#bababa",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:265",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/400",
+      "cssVariable": "--rhood-palette-neutral-400",
+      "type": "color",
+      "cssValue": "#a3a3a3",
+      "resolvedValue": "#a3a3a3",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:264",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/500",
+      "cssVariable": "--rhood-palette-neutral-500",
+      "type": "color",
+      "cssValue": "#8c8c8c",
+      "resolvedValue": "#8c8c8c",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:263",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/600",
+      "cssVariable": "--rhood-palette-neutral-600",
+      "type": "color",
+      "cssValue": "#767676",
+      "resolvedValue": "#767676",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:262",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/700",
+      "cssVariable": "--rhood-palette-neutral-700",
+      "type": "color",
+      "cssValue": "#454545",
+      "resolvedValue": "#454545",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:261",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/800",
+      "cssVariable": "--rhood-palette-neutral-800",
+      "type": "color",
+      "cssValue": "#2b2b2b",
+      "resolvedValue": "#2b2b2b",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:260",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/900",
+      "cssVariable": "--rhood-palette-neutral-900",
+      "type": "color",
+      "cssValue": "#1a1a1a",
+      "resolvedValue": "#1a1a1a",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:259",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "neutral/white",
+      "cssVariable": "--rhood-palette-neutral-white",
+      "type": "color",
+      "cssValue": "#ffffff",
+      "resolvedValue": "#ffffff",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:346",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/50",
+      "cssVariable": "--rhood-palette-blue-50",
+      "type": "color",
+      "cssValue": "#f1f6fe",
+      "resolvedValue": "#f1f6fe",
+      "alias": null,
+      "figmaVariableId": "VariableID:244:2497",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/100",
+      "cssVariable": "--rhood-palette-blue-100",
+      "type": "color",
+      "cssValue": "#d0e0fe",
+      "resolvedValue": "#d0e0fe",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:257",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/200",
+      "cssVariable": "--rhood-palette-blue-200",
+      "type": "color",
+      "cssValue": "#a1bffe",
+      "resolvedValue": "#a1bffe",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:256",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/300",
+      "cssVariable": "--rhood-palette-blue-300",
+      "type": "color",
+      "cssValue": "#729cfd",
+      "resolvedValue": "#729cfd",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:255",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/400",
+      "cssVariable": "--rhood-palette-blue-400",
+      "type": "color",
+      "cssValue": "#4e7efb",
+      "resolvedValue": "#4e7efb",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:254",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/500",
+      "cssVariable": "--rhood-palette-blue-500",
+      "type": "color",
+      "cssValue": "#154ef9",
+      "resolvedValue": "#154ef9",
+      "alias": null,
+      "figmaVariableId": "VariableID:21:26",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/600",
+      "cssVariable": "--rhood-palette-blue-600",
+      "type": "color",
+      "cssValue": "#0f3bd6",
+      "resolvedValue": "#0f3bd6",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:253",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/700",
+      "cssVariable": "--rhood-palette-blue-700",
+      "type": "color",
+      "cssValue": "#0a2cb3",
+      "resolvedValue": "#0a2cb3",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:252",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/800",
+      "cssVariable": "--rhood-palette-blue-800",
+      "type": "color",
+      "cssValue": "#061e90",
+      "resolvedValue": "#061e90",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:251",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue/900",
+      "cssVariable": "--rhood-palette-blue-900",
+      "type": "color",
+      "cssValue": "#041477",
+      "resolvedValue": "#041477",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:250",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/50",
+      "cssVariable": "--rhood-palette-blue-grey-50",
+      "type": "color",
+      "cssValue": "#f8fafc",
+      "resolvedValue": "#f8fafc",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3358",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/100",
+      "cssVariable": "--rhood-palette-blue-grey-100",
+      "type": "color",
+      "cssValue": "#f1f5f9",
+      "resolvedValue": "#f1f5f9",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3357",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/200",
+      "cssVariable": "--rhood-palette-blue-grey-200",
+      "type": "color",
+      "cssValue": "#e1e7ef",
+      "resolvedValue": "#e1e7ef",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3356",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/300",
+      "cssVariable": "--rhood-palette-blue-grey-300",
+      "type": "color",
+      "cssValue": "#cbd5e1",
+      "resolvedValue": "#cbd5e1",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3355",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/400",
+      "cssVariable": "--rhood-palette-blue-grey-400",
+      "type": "color",
+      "cssValue": "#94a3b8",
+      "resolvedValue": "#94a3b8",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3354",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/500",
+      "cssVariable": "--rhood-palette-blue-grey-500",
+      "type": "color",
+      "cssValue": "#65758b",
+      "resolvedValue": "#65758b",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3353",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/600",
+      "cssVariable": "--rhood-palette-blue-grey-600",
+      "type": "color",
+      "cssValue": "#48566a",
+      "resolvedValue": "#48566a",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3352",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/700",
+      "cssVariable": "--rhood-palette-blue-grey-700",
+      "type": "color",
+      "cssValue": "#334156",
+      "resolvedValue": "#334156",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3351",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/800",
+      "cssVariable": "--rhood-palette-blue-grey-800",
+      "type": "color",
+      "cssValue": "#1d2839",
+      "resolvedValue": "#1d2839",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3350",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "blue grey/900",
+      "cssVariable": "--rhood-palette-blue-grey-900",
+      "type": "color",
+      "cssValue": "#131d35",
+      "resolvedValue": "#131d35",
+      "alias": null,
+      "figmaVariableId": "VariableID:538:3349",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/50",
+      "cssVariable": "--rhood-palette-light-blue-50",
+      "type": "color",
+      "cssValue": "#f0f9ff",
+      "resolvedValue": "#f0f9ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1572",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/100",
+      "cssVariable": "--rhood-palette-light-blue-100",
+      "type": "color",
+      "cssValue": "#ddf2ff",
+      "resolvedValue": "#ddf2ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1571",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/200",
+      "cssVariable": "--rhood-palette-light-blue-200",
+      "type": "color",
+      "cssValue": "#bbe3ff",
+      "resolvedValue": "#bbe3ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1570",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/300",
+      "cssVariable": "--rhood-palette-light-blue-300",
+      "type": "color",
+      "cssValue": "#99d0ff",
+      "resolvedValue": "#99d0ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1569",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/400",
+      "cssVariable": "--rhood-palette-light-blue-400",
+      "type": "color",
+      "cssValue": "#80bfff",
+      "resolvedValue": "#80bfff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1568",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/500",
+      "cssVariable": "--rhood-palette-light-blue-500",
+      "type": "color",
+      "cssValue": "#56a2ff",
+      "resolvedValue": "#56a2ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1567",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/600",
+      "cssVariable": "--rhood-palette-light-blue-600",
+      "type": "color",
+      "cssValue": "#3e7edb",
+      "resolvedValue": "#3e7edb",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1566",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/700",
+      "cssVariable": "--rhood-palette-light-blue-700",
+      "type": "color",
+      "cssValue": "#2b5db7",
+      "resolvedValue": "#2b5db7",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1565",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/800",
+      "cssVariable": "--rhood-palette-light-blue-800",
+      "type": "color",
+      "cssValue": "#1b4193",
+      "resolvedValue": "#1b4193",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1564",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "light blue/900",
+      "cssVariable": "--rhood-palette-light-blue-900",
+      "type": "color",
+      "cssValue": "#102c7a",
+      "resolvedValue": "#102c7a",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1563",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/50",
+      "cssVariable": "--rhood-palette-green-50",
+      "type": "color",
+      "cssValue": "#f7fdf2",
+      "resolvedValue": "#f7fdf2",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:278",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/100",
+      "cssVariable": "--rhood-palette-green-100",
+      "type": "color",
+      "cssValue": "#e7fcd5",
+      "resolvedValue": "#e7fcd5",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:277",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/200",
+      "cssVariable": "--rhood-palette-green-200",
+      "type": "color",
+      "cssValue": "#cbfaad",
+      "resolvedValue": "#cbfaad",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:276",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/300",
+      "cssVariable": "--rhood-palette-green-300",
+      "type": "color",
+      "cssValue": "#a4f282",
+      "resolvedValue": "#a4f282",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:275",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/400",
+      "cssVariable": "--rhood-palette-green-400",
+      "type": "color",
+      "cssValue": "#7fe661",
+      "resolvedValue": "#7fe661",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:274",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/500",
+      "cssVariable": "--rhood-palette-green-500",
+      "type": "color",
+      "cssValue": "#4ad631",
+      "resolvedValue": "#4ad631",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:273",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/600",
+      "cssVariable": "--rhood-palette-green-600",
+      "type": "color",
+      "cssValue": "#2eb823",
+      "resolvedValue": "#2eb823",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:272",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/700",
+      "cssVariable": "--rhood-palette-green-700",
+      "type": "color",
+      "cssValue": "#189a19",
+      "resolvedValue": "#189a19",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:271",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/800",
+      "cssVariable": "--rhood-palette-green-800",
+      "type": "color",
+      "cssValue": "#0f7c18",
+      "resolvedValue": "#0f7c18",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:270",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "green/900",
+      "cssVariable": "--rhood-palette-green-900",
+      "type": "color",
+      "cssValue": "#096618",
+      "resolvedValue": "#096618",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:269",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/50",
+      "cssVariable": "--rhood-palette-orange-50",
+      "type": "color",
+      "cssValue": "#fffaeb",
+      "resolvedValue": "#fffaeb",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1338",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/100",
+      "cssVariable": "--rhood-palette-orange-100",
+      "type": "color",
+      "cssValue": "#fff5d7",
+      "resolvedValue": "#fff5d7",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1337",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/200",
+      "cssVariable": "--rhood-palette-orange-200",
+      "type": "color",
+      "cssValue": "#ffe9af",
+      "resolvedValue": "#ffe9af",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1336",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/300",
+      "cssVariable": "--rhood-palette-orange-300",
+      "type": "color",
+      "cssValue": "#ffda87",
+      "resolvedValue": "#ffda87",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1335",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/400",
+      "cssVariable": "--rhood-palette-orange-400",
+      "type": "color",
+      "cssValue": "#ffcb69",
+      "resolvedValue": "#ffcb69",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1334",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/500",
+      "cssVariable": "--rhood-palette-orange-500",
+      "type": "color",
+      "cssValue": "#ffb238",
+      "resolvedValue": "#ffb238",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1333",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/600",
+      "cssVariable": "--rhood-palette-orange-600",
+      "type": "color",
+      "cssValue": "#db8f28",
+      "resolvedValue": "#db8f28",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1332",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/700",
+      "cssVariable": "--rhood-palette-orange-700",
+      "type": "color",
+      "cssValue": "#b76f1c",
+      "resolvedValue": "#b76f1c",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1331",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/800",
+      "cssVariable": "--rhood-palette-orange-800",
+      "type": "color",
+      "cssValue": "#935211",
+      "resolvedValue": "#935211",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1330",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "orange/900",
+      "cssVariable": "--rhood-palette-orange-900",
+      "type": "color",
+      "cssValue": "#7a3d0a",
+      "resolvedValue": "#7a3d0a",
+      "alias": null,
+      "figmaVariableId": "VariableID:198:1329",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/50",
+      "cssVariable": "--rhood-palette-red-50",
+      "type": "color",
+      "cssValue": "#fef6f1",
+      "resolvedValue": "#fef6f1",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:333",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/100",
+      "cssVariable": "--rhood-palette-red-100",
+      "type": "color",
+      "cssValue": "#fee5d4",
+      "resolvedValue": "#fee5d4",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:332",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/200",
+      "cssVariable": "--rhood-palette-red-200",
+      "type": "color",
+      "cssValue": "#fec5a9",
+      "resolvedValue": "#fec5a9",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:331",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/300",
+      "cssVariable": "--rhood-palette-red-300",
+      "type": "color",
+      "cssValue": "#fe9e7f",
+      "resolvedValue": "#fe9e7f",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:330",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/400",
+      "cssVariable": "--rhood-palette-red-400",
+      "type": "color",
+      "cssValue": "#fd795e",
+      "resolvedValue": "#fd795e",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:329",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/500",
+      "cssVariable": "--rhood-palette-red-500",
+      "type": "color",
+      "cssValue": "#fc3c2a",
+      "resolvedValue": "#fc3c2a",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:328",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/600",
+      "cssVariable": "--rhood-palette-red-600",
+      "type": "color",
+      "cssValue": "#d81f1e",
+      "resolvedValue": "#d81f1e",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:327",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/700",
+      "cssVariable": "--rhood-palette-red-700",
+      "type": "color",
+      "cssValue": "#b51521",
+      "resolvedValue": "#b51521",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:326",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/800",
+      "cssVariable": "--rhood-palette-red-800",
+      "type": "color",
+      "cssValue": "#920d22",
+      "resolvedValue": "#920d22",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:325",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "red/900",
+      "cssVariable": "--rhood-palette-red-900",
+      "type": "color",
+      "cssValue": "#780823",
+      "resolvedValue": "#780823",
+      "alias": null,
+      "figmaVariableId": "VariableID:31:324",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/50",
+      "cssVariable": "--rhood-palette-purple-50",
+      "type": "color",
+      "cssValue": "#faf5ff",
+      "resolvedValue": "#faf5ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1551",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/100",
+      "cssVariable": "--rhood-palette-purple-100",
+      "type": "color",
+      "cssValue": "#f2e5ff",
+      "resolvedValue": "#f2e5ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1550",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/200",
+      "cssVariable": "--rhood-palette-purple-200",
+      "type": "color",
+      "cssValue": "#e9d6ff",
+      "resolvedValue": "#e9d6ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1549",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/300",
+      "cssVariable": "--rhood-palette-purple-300",
+      "type": "color",
+      "cssValue": "#d8b4fe",
+      "resolvedValue": "#d8b4fe",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1548",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/400",
+      "cssVariable": "--rhood-palette-purple-400",
+      "type": "color",
+      "cssValue": "#bf82fb",
+      "resolvedValue": "#bf82fb",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1547",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/500",
+      "cssVariable": "--rhood-palette-purple-500",
+      "type": "color",
+      "cssValue": "#a855f7",
+      "resolvedValue": "#a855f7",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1546",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/600",
+      "cssVariable": "--rhood-palette-purple-600",
+      "type": "color",
+      "cssValue": "#9133e9",
+      "resolvedValue": "#9133e9",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1545",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/700",
+      "cssVariable": "--rhood-palette-purple-700",
+      "type": "color",
+      "cssValue": "#7e22ce",
+      "resolvedValue": "#7e22ce",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1544",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/800",
+      "cssVariable": "--rhood-palette-purple-800",
+      "type": "color",
+      "cssValue": "#6a20a6",
+      "resolvedValue": "#6a20a6",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1543",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "purple/900",
+      "cssVariable": "--rhood-palette-purple-900",
+      "type": "color",
+      "cssValue": "#591c87",
+      "resolvedValue": "#591c87",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1542",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/50",
+      "cssVariable": "--rhood-palette-yellow-50",
+      "type": "color",
+      "cssValue": "#fefce7",
+      "resolvedValue": "#fefce7",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22289",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/100",
+      "cssVariable": "--rhood-palette-yellow-100",
+      "type": "color",
+      "cssValue": "#fef9c3",
+      "resolvedValue": "#fef9c3",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22288",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/200",
+      "cssVariable": "--rhood-palette-yellow-200",
+      "type": "color",
+      "cssValue": "#fef08b",
+      "resolvedValue": "#fef08b",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22287",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/300",
+      "cssVariable": "--rhood-palette-yellow-300",
+      "type": "color",
+      "cssValue": "#fef08b",
+      "resolvedValue": "#fef08b",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22286",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/400",
+      "cssVariable": "--rhood-palette-yellow-400",
+      "type": "color",
+      "cssValue": "#facc14",
+      "resolvedValue": "#facc14",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22285",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/500",
+      "cssVariable": "--rhood-palette-yellow-500",
+      "type": "color",
+      "cssValue": "#e7b008",
+      "resolvedValue": "#e7b008",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22284",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/600",
+      "cssVariable": "--rhood-palette-yellow-600",
+      "type": "color",
+      "cssValue": "#c88a04",
+      "resolvedValue": "#c88a04",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22283",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/700",
+      "cssVariable": "--rhood-palette-yellow-700",
+      "type": "color",
+      "cssValue": "#a26107",
+      "resolvedValue": "#a26107",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22282",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/800",
+      "cssVariable": "--rhood-palette-yellow-800",
+      "type": "color",
+      "cssValue": "#864e0e",
+      "resolvedValue": "#864e0e",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22281",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "yellow/900",
+      "cssVariable": "--rhood-palette-yellow-900",
+      "type": "color",
+      "cssValue": "#733f12",
+      "resolvedValue": "#733f12",
+      "alias": null,
+      "figmaVariableId": "VariableID:875:22280",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/50",
+      "cssVariable": "--rhood-palette-brown-50",
+      "type": "color",
+      "cssValue": "#fafaf9",
+      "resolvedValue": "#fafaf9",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22299",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/100",
+      "cssVariable": "--rhood-palette-brown-100",
+      "type": "color",
+      "cssValue": "#f5f5f4",
+      "resolvedValue": "#f5f5f4",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22298",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/200",
+      "cssVariable": "--rhood-palette-brown-200",
+      "type": "color",
+      "cssValue": "#e7e5e4",
+      "resolvedValue": "#e7e5e4",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22297",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/300",
+      "cssVariable": "--rhood-palette-brown-300",
+      "type": "color",
+      "cssValue": "#d6d3d1",
+      "resolvedValue": "#d6d3d1",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22296",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/400",
+      "cssVariable": "--rhood-palette-brown-400",
+      "type": "color",
+      "cssValue": "#a8a29f",
+      "resolvedValue": "#a8a29f",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22295",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/500",
+      "cssVariable": "--rhood-palette-brown-500",
+      "type": "color",
+      "cssValue": "#78726d",
+      "resolvedValue": "#78726d",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22294",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/600",
+      "cssVariable": "--rhood-palette-brown-600",
+      "type": "color",
+      "cssValue": "#56524e",
+      "resolvedValue": "#56524e",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22293",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/700",
+      "cssVariable": "--rhood-palette-brown-700",
+      "type": "color",
+      "cssValue": "#44403c",
+      "resolvedValue": "#44403c",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22292",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/800",
+      "cssVariable": "--rhood-palette-brown-800",
+      "type": "color",
+      "cssValue": "#292524",
+      "resolvedValue": "#292524",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22291",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brown/900",
+      "cssVariable": "--rhood-palette-brown-900",
+      "type": "color",
+      "cssValue": "#211e1b",
+      "resolvedValue": "#211e1b",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22290",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/50",
+      "cssVariable": "--rhood-palette-cian-50",
+      "type": "color",
+      "cssValue": "#ebfeff",
+      "resolvedValue": "#ebfeff",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22309",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/100",
+      "cssVariable": "--rhood-palette-cian-100",
+      "type": "color",
+      "cssValue": "#cdfafe",
+      "resolvedValue": "#cdfafe",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22308",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/200",
+      "cssVariable": "--rhood-palette-cian-200",
+      "type": "color",
+      "cssValue": "#a6f3fc",
+      "resolvedValue": "#a6f3fc",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22307",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/300",
+      "cssVariable": "--rhood-palette-cian-300",
+      "type": "color",
+      "cssValue": "#67e8f9",
+      "resolvedValue": "#67e8f9",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22306",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/400",
+      "cssVariable": "--rhood-palette-cian-400",
+      "type": "color",
+      "cssValue": "#20d3ee",
+      "resolvedValue": "#20d3ee",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22305",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/500",
+      "cssVariable": "--rhood-palette-cian-500",
+      "type": "color",
+      "cssValue": "#07b6d5",
+      "resolvedValue": "#07b6d5",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22304",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/600",
+      "cssVariable": "--rhood-palette-cian-600",
+      "type": "color",
+      "cssValue": "#088eaf",
+      "resolvedValue": "#088eaf",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22303",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/700",
+      "cssVariable": "--rhood-palette-cian-700",
+      "type": "color",
+      "cssValue": "#0e7490",
+      "resolvedValue": "#0e7490",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22302",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/800",
+      "cssVariable": "--rhood-palette-cian-800",
+      "type": "color",
+      "cssValue": "#155f75",
+      "resolvedValue": "#155f75",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22301",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "cian/900",
+      "cssVariable": "--rhood-palette-cian-900",
+      "type": "color",
+      "cssValue": "#164f64",
+      "resolvedValue": "#164f64",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22300",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/50",
+      "cssVariable": "--rhood-palette-indigo-50",
+      "type": "color",
+      "cssValue": "#f0f3ff",
+      "resolvedValue": "#f0f3ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22319",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/100",
+      "cssVariable": "--rhood-palette-indigo-100",
+      "type": "color",
+      "cssValue": "#e0e8ff",
+      "resolvedValue": "#e0e8ff",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22318",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/200",
+      "cssVariable": "--rhood-palette-indigo-200",
+      "type": "color",
+      "cssValue": "#c8d3fe",
+      "resolvedValue": "#c8d3fe",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22317",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/300",
+      "cssVariable": "--rhood-palette-indigo-300",
+      "type": "color",
+      "cssValue": "#a6b5fc",
+      "resolvedValue": "#a6b5fc",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22316",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/400",
+      "cssVariable": "--rhood-palette-indigo-400",
+      "type": "color",
+      "cssValue": "#828df8",
+      "resolvedValue": "#828df8",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22315",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/500",
+      "cssVariable": "--rhood-palette-indigo-500",
+      "type": "color",
+      "cssValue": "#6366f2",
+      "resolvedValue": "#6366f2",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22314",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/600",
+      "cssVariable": "--rhood-palette-indigo-600",
+      "type": "color",
+      "cssValue": "#5048e5",
+      "resolvedValue": "#5048e5",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22313",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/700",
+      "cssVariable": "--rhood-palette-indigo-700",
+      "type": "color",
+      "cssValue": "#463acb",
+      "resolvedValue": "#463acb",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22312",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/800",
+      "cssVariable": "--rhood-palette-indigo-800",
+      "type": "color",
+      "cssValue": "#372fa2",
+      "resolvedValue": "#372fa2",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22311",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "indigo/900",
+      "cssVariable": "--rhood-palette-indigo-900",
+      "type": "color",
+      "cssValue": "#312e7f",
+      "resolvedValue": "#312e7f",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22310",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/50",
+      "cssVariable": "--rhood-palette-pink-50",
+      "type": "color",
+      "cssValue": "#fdf2f8",
+      "resolvedValue": "#fdf2f8",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22329",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/100",
+      "cssVariable": "--rhood-palette-pink-100",
+      "type": "color",
+      "cssValue": "#fce8f4",
+      "resolvedValue": "#fce8f4",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22328",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/200",
+      "cssVariable": "--rhood-palette-pink-200",
+      "type": "color",
+      "cssValue": "#fbd0e8",
+      "resolvedValue": "#fbd0e8",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22327",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/300",
+      "cssVariable": "--rhood-palette-pink-300",
+      "type": "color",
+      "cssValue": "#f9a9d5",
+      "resolvedValue": "#f9a9d5",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22326",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/400",
+      "cssVariable": "--rhood-palette-pink-400",
+      "type": "color",
+      "cssValue": "#f471b5",
+      "resolvedValue": "#f471b5",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22325",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/500",
+      "cssVariable": "--rhood-palette-pink-500",
+      "type": "color",
+      "cssValue": "#ec4699",
+      "resolvedValue": "#ec4699",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22324",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/600",
+      "cssVariable": "--rhood-palette-pink-600",
+      "type": "color",
+      "cssValue": "#db2979",
+      "resolvedValue": "#db2979",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22323",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/700",
+      "cssVariable": "--rhood-palette-pink-700",
+      "type": "color",
+      "cssValue": "#bf185d",
+      "resolvedValue": "#bf185d",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22322",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/800",
+      "cssVariable": "--rhood-palette-pink-800",
+      "type": "color",
+      "cssValue": "#9b174c",
+      "resolvedValue": "#9b174c",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22321",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "pink/900",
+      "cssVariable": "--rhood-palette-pink-900",
+      "type": "color",
+      "cssValue": "#811842",
+      "resolvedValue": "#811842",
+      "alias": null,
+      "figmaVariableId": "VariableID:877:22320",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/50",
+      "cssVariable": "--rhood-palette-teal-50",
+      "type": "color",
+      "cssValue": "#f2fdfa",
+      "resolvedValue": "#f2fdfa",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22339",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/100",
+      "cssVariable": "--rhood-palette-teal-100",
+      "type": "color",
+      "cssValue": "#cbfbf0",
+      "resolvedValue": "#cbfbf0",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22338",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/200",
+      "cssVariable": "--rhood-palette-teal-200",
+      "type": "color",
+      "cssValue": "#98f6e3",
+      "resolvedValue": "#98f6e3",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22337",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/300",
+      "cssVariable": "--rhood-palette-teal-300",
+      "type": "color",
+      "cssValue": "#5dead5",
+      "resolvedValue": "#5dead5",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22336",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/400",
+      "cssVariable": "--rhood-palette-teal-400",
+      "type": "color",
+      "cssValue": "#2bd4bd",
+      "resolvedValue": "#2bd4bd",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22335",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/500",
+      "cssVariable": "--rhood-palette-teal-500",
+      "type": "color",
+      "cssValue": "#14b8a5",
+      "resolvedValue": "#14b8a5",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22334",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/600",
+      "cssVariable": "--rhood-palette-teal-600",
+      "type": "color",
+      "cssValue": "#0d968b",
+      "resolvedValue": "#0d968b",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22333",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/700",
+      "cssVariable": "--rhood-palette-teal-700",
+      "type": "color",
+      "cssValue": "#0f756d",
+      "resolvedValue": "#0f756d",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22332",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/800",
+      "cssVariable": "--rhood-palette-teal-800",
+      "type": "color",
+      "cssValue": "#115f5a",
+      "resolvedValue": "#115f5a",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22331",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "teal/900",
+      "cssVariable": "--rhood-palette-teal-900",
+      "type": "color",
+      "cssValue": "#134e4a",
+      "resolvedValue": "#134e4a",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22330",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/50",
+      "cssVariable": "--rhood-palette-lime-50",
+      "type": "color",
+      "cssValue": "#f7fee7",
+      "resolvedValue": "#f7fee7",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22349",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/100",
+      "cssVariable": "--rhood-palette-lime-100",
+      "type": "color",
+      "cssValue": "#ebfcca",
+      "resolvedValue": "#ebfcca",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22348",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/200",
+      "cssVariable": "--rhood-palette-lime-200",
+      "type": "color",
+      "cssValue": "#d9f99f",
+      "resolvedValue": "#d9f99f",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22347",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/300",
+      "cssVariable": "--rhood-palette-lime-300",
+      "type": "color",
+      "cssValue": "#bef263",
+      "resolvedValue": "#bef263",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22346",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/400",
+      "cssVariable": "--rhood-palette-lime-400",
+      "type": "color",
+      "cssValue": "#a1e633",
+      "resolvedValue": "#a1e633",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22345",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/500",
+      "cssVariable": "--rhood-palette-lime-500",
+      "type": "color",
+      "cssValue": "#82cb15",
+      "resolvedValue": "#82cb15",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22344",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/600",
+      "cssVariable": "--rhood-palette-lime-600",
+      "type": "color",
+      "cssValue": "#66a50d",
+      "resolvedValue": "#66a50d",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22343",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/700",
+      "cssVariable": "--rhood-palette-lime-700",
+      "type": "color",
+      "cssValue": "#4c7b0f",
+      "resolvedValue": "#4c7b0f",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22342",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/800",
+      "cssVariable": "--rhood-palette-lime-800",
+      "type": "color",
+      "cssValue": "#406312",
+      "resolvedValue": "#406312",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22341",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "lime/900",
+      "cssVariable": "--rhood-palette-lime-900",
+      "type": "color",
+      "cssValue": "#355214",
+      "resolvedValue": "#355214",
+      "alias": null,
+      "figmaVariableId": "VariableID:879:22340",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/50",
+      "cssVariable": "--rhood-palette-brand-50",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-50)",
+      "resolvedValue": "#f1f6fe",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/50",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1458",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/100",
+      "cssVariable": "--rhood-palette-brand-100",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-100)",
+      "resolvedValue": "#d0e0fe",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/100",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1456",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/200",
+      "cssVariable": "--rhood-palette-brand-200",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-200)",
+      "resolvedValue": "#a1bffe",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/200",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1457",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/300",
+      "cssVariable": "--rhood-palette-brand-300",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-300)",
+      "resolvedValue": "#729cfd",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/300",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1461",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/400",
+      "cssVariable": "--rhood-palette-brand-400",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-400)",
+      "resolvedValue": "#4e7efb",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/400",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1459",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/500",
+      "cssVariable": "--rhood-palette-brand-500",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-500)",
+      "resolvedValue": "#154ef9",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/500",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1464",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/600",
+      "cssVariable": "--rhood-palette-brand-600",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-600)",
+      "resolvedValue": "#0f3bd6",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/600",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1460",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/700",
+      "cssVariable": "--rhood-palette-brand-700",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-700)",
+      "resolvedValue": "#0a2cb3",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/700",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1462",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/800",
+      "cssVariable": "--rhood-palette-brand-800",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-800)",
+      "resolvedValue": "#061e90",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/800",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1463",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "palette",
+      "name": "brand/900",
+      "cssVariable": "--rhood-palette-brand-900",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-900)",
+      "resolvedValue": "#041477",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/900",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:1465",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "theme",
+      "cssVariable": "--rhood-theme-theme",
+      "type": "string",
+      "cssValue": "light",
+      "resolvedValue": "light",
+      "alias": null,
+      "figmaVariableId": "VariableID:9421:34894",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "opacity-disabled",
+      "cssVariable": "--rhood-theme-opacity-disabled",
+      "type": "number",
+      "cssValue": "50",
+      "resolvedValue": 50,
+      "alias": null,
+      "figmaVariableId": "VariableID:10471:11880",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/brand",
+      "cssVariable": "--rhood-theme-text-brand",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-600)",
+      "resolvedValue": "#0f3bd6",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2038:15897",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/success",
+      "cssVariable": "--rhood-theme-text-success",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-700)",
+      "resolvedValue": "#189a19",
+      "alias": {
+        "collection": "palette",
+        "name": "green/700",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8645:15927",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/error",
+      "cssVariable": "--rhood-theme-text-error",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-600)",
+      "resolvedValue": "#d81f1e",
+      "alias": {
+        "collection": "palette",
+        "name": "red/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2038:15896",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/warning",
+      "cssVariable": "--rhood-theme-text-warning",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-700)",
+      "resolvedValue": "#b76f1c",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/700",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2038:15895",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/info",
+      "cssVariable": "--rhood-theme-text-info",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-600)",
+      "resolvedValue": "#3e7edb",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8666:13762",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/link",
+      "cssVariable": "--rhood-theme-text-link",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-500)",
+      "resolvedValue": "#154ef9",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1654:29578",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/link-hovered",
+      "cssVariable": "--rhood-theme-text-link-hovered",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-600)",
+      "resolvedValue": "#0f3bd6",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1654:29579",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/primary",
+      "cssVariable": "--rhood-theme-text-neutral-primary",
+      "type": "color",
+      "cssValue": "rgb(26 26 26 / 0.87)",
+      "resolvedValue": "rgb(26 26 26 / 0.87)",
+      "alias": null,
+      "figmaVariableId": "VariableID:319:486",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/primary-contrast",
+      "cssVariable": "--rhood-theme-text-neutral-primary-contrast",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-white)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/white",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:319:495",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/primary-static",
+      "cssVariable": "--rhood-theme-text-neutral-primary-static",
+      "type": "color",
+      "cssValue": "rgb(26 26 26 / 0.87)",
+      "resolvedValue": "rgb(26 26 26 / 0.87)",
+      "alias": null,
+      "figmaVariableId": "VariableID:1507:19415",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/secondary",
+      "cssVariable": "--rhood-theme-text-neutral-secondary",
+      "type": "color",
+      "cssValue": "rgb(26 26 26 / 0.6)",
+      "resolvedValue": "rgb(26 26 26 / 0.6)",
+      "alias": null,
+      "figmaVariableId": "VariableID:351:2711",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/secondary-contrast",
+      "cssVariable": "--rhood-theme-text-neutral-secondary-contrast",
+      "type": "color",
+      "cssValue": "rgb(255 255 255 / 0.6)",
+      "resolvedValue": "rgb(255 255 255 / 0.6)",
+      "alias": null,
+      "figmaVariableId": "VariableID:1603:12016",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/disabled",
+      "cssVariable": "--rhood-theme-text-neutral-disabled",
+      "type": "color",
+      "cssValue": "rgb(26 26 26 / 0.38)",
+      "resolvedValue": "rgb(26 26 26 / 0.38)",
+      "alias": null,
+      "figmaVariableId": "VariableID:351:2710",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/contrast-disabled",
+      "cssVariable": "--rhood-theme-text-neutral-contrast-disabled",
+      "type": "color",
+      "cssValue": "rgb(255 255 255 / 0.62)",
+      "resolvedValue": "rgb(255 255 255 / 0.62)",
+      "alias": null,
+      "figmaVariableId": "VariableID:1670:4286",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "text/neutral/focus",
+      "cssVariable": "--rhood-theme-text-neutral-focus",
+      "type": "color",
+      "cssValue": "rgb(26 26 26 / 0.12)",
+      "resolvedValue": "rgb(26 26 26 / 0.12)",
+      "alias": null,
+      "figmaVariableId": "VariableID:405:6017",
+      "scopes": [
+        "TEXT_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "surface/bg",
+      "cssVariable": "--rhood-theme-surface-bg",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-white)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/white",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1506:18095",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "surface/under-islands",
+      "cssVariable": "--rhood-theme-surface-under-islands",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-50)",
+      "resolvedValue": "#f4f4f4",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2017:8021",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "surface/under-islands-alt",
+      "cssVariable": "--rhood-theme-surface-under-islands-alt",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-grey-100)",
+      "resolvedValue": "#f1f5f9",
+      "alias": {
+        "collection": "palette",
+        "name": "blue grey/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:3309:1617",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "surface/neutral-ultra-dark",
+      "cssVariable": "--rhood-theme-surface-neutral-ultra-dark",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-900)",
+      "resolvedValue": "#1a1a1a",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/900",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2870:3117",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "surface/backdrop",
+      "cssVariable": "--rhood-theme-surface-backdrop",
+      "type": "color",
+      "cssValue": "rgb(0 0 0 / 0.4)",
+      "resolvedValue": "rgb(0 0 0 / 0.4)",
+      "alias": null,
+      "figmaVariableId": "VariableID:2805:6053",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/neutral",
+      "cssVariable": "--rhood-theme-fill-neutral",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-50)",
+      "resolvedValue": "#f4f4f4",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8669:13909",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/neutral-hover",
+      "cssVariable": "--rhood-theme-fill-neutral-hover",
+      "type": "color",
+      "cssValue": "rgb(43 43 43 / 0.04)",
+      "resolvedValue": "rgb(43 43 43 / 0.04)",
+      "alias": null,
+      "figmaVariableId": "VariableID:8669:13910",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/neutral-selected",
+      "cssVariable": "--rhood-theme-fill-neutral-selected",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-100)",
+      "resolvedValue": "#e8e8e8",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:248:1582",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/neutral-dark",
+      "cssVariable": "--rhood-theme-fill-neutral-dark",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-700)",
+      "resolvedValue": "#454545",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/700",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2047:15921",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/neutral-dark-hover",
+      "cssVariable": "--rhood-theme-fill-neutral-dark-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-600)",
+      "resolvedValue": "#767676",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2047:15922",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/neutral-dark-ultra",
+      "cssVariable": "--rhood-theme-fill-neutral-dark-ultra",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-900)",
+      "resolvedValue": "#1a1a1a",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/900",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1972:17485",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/contrast",
+      "cssVariable": "--rhood-theme-fill-contrast",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-white)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/white",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2058:16153",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/contrast-hover",
+      "cssVariable": "--rhood-theme-fill-contrast-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-100)",
+      "resolvedValue": "#e8e8e8",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8670:1147",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/contrast-static",
+      "cssVariable": "--rhood-theme-fill-contrast-static",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-white)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/white",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:6845:10002",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/contrast-light",
+      "cssVariable": "--rhood-theme-fill-contrast-light",
+      "type": "color",
+      "cssValue": "rgb(255 255 255 / 0.08)",
+      "resolvedValue": "rgb(255 255 255 / 0.08)",
+      "alias": null,
+      "figmaVariableId": "VariableID:1670:1045",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/contrast-light-hover",
+      "cssVariable": "--rhood-theme-fill-contrast-light-hover",
+      "type": "color",
+      "cssValue": "rgb(255 255 255 / 0.04)",
+      "resolvedValue": "rgb(255 255 255 / 0.04)",
+      "alias": null,
+      "figmaVariableId": "VariableID:1670:4246",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/brand",
+      "cssVariable": "--rhood-theme-fill-brand",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-500)",
+      "resolvedValue": "#154ef9",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8649:1200",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/brand-hover",
+      "cssVariable": "--rhood-theme-fill-brand-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-600)",
+      "resolvedValue": "#0f3bd6",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8649:1913",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/brand-light",
+      "cssVariable": "--rhood-theme-fill-brand-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-100)",
+      "resolvedValue": "#d0e0fe",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8689:5208",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/brand-light-hover",
+      "cssVariable": "--rhood-theme-fill-brand-light-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-50)",
+      "resolvedValue": "#f1f6fe",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8649:1914",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/brand-selected",
+      "cssVariable": "--rhood-theme-fill-brand-selected",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-50)",
+      "resolvedValue": "#f1f6fe",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:10217:982",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/brand-selected-hover",
+      "cssVariable": "--rhood-theme-fill-brand-selected-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-100)",
+      "resolvedValue": "#d0e0fe",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:10402:490",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/brand-highlighted",
+      "cssVariable": "--rhood-theme-fill-brand-highlighted",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-50)",
+      "resolvedValue": "#f1f6fe",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:10269:167",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/error",
+      "cssVariable": "--rhood-theme-fill-error",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-500)",
+      "resolvedValue": "#fc3c2a",
+      "alias": {
+        "collection": "palette",
+        "name": "red/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8665:13733",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/error-light",
+      "cssVariable": "--rhood-theme-fill-error-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-100)",
+      "resolvedValue": "#fee5d4",
+      "alias": {
+        "collection": "palette",
+        "name": "red/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8689:5206",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/error-hover",
+      "cssVariable": "--rhood-theme-fill-error-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-600)",
+      "resolvedValue": "#d81f1e",
+      "alias": {
+        "collection": "palette",
+        "name": "red/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8665:13734",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/error-light-hover",
+      "cssVariable": "--rhood-theme-fill-error-light-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-50)",
+      "resolvedValue": "#fef6f1",
+      "alias": {
+        "collection": "palette",
+        "name": "red/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8665:13735",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/warning",
+      "cssVariable": "--rhood-theme-fill-warning",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-500)",
+      "resolvedValue": "#ffb238",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8680:1953",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/warning-light",
+      "cssVariable": "--rhood-theme-fill-warning-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-100)",
+      "resolvedValue": "#fff5d7",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8689:5207",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/warning-hover",
+      "cssVariable": "--rhood-theme-fill-warning-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-600)",
+      "resolvedValue": "#db8f28",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8680:1954",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/warning-light-hover",
+      "cssVariable": "--rhood-theme-fill-warning-light-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-50)",
+      "resolvedValue": "#fffaeb",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8680:1955",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/info",
+      "cssVariable": "--rhood-theme-fill-info",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-500)",
+      "resolvedValue": "#56a2ff",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8666:13758",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/info-light",
+      "cssVariable": "--rhood-theme-fill-info-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-50)",
+      "resolvedValue": "#f0f9ff",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8689:5204",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/info-hover",
+      "cssVariable": "--rhood-theme-fill-info-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-600)",
+      "resolvedValue": "#3e7edb",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8666:13759",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/info-light-hover",
+      "cssVariable": "--rhood-theme-fill-info-light-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-50)",
+      "resolvedValue": "#f0f9ff",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8666:13760",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/success",
+      "cssVariable": "--rhood-theme-fill-success",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-500)",
+      "resolvedValue": "#4ad631",
+      "alias": {
+        "collection": "palette",
+        "name": "green/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8688:4781",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/success-light",
+      "cssVariable": "--rhood-theme-fill-success-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-100)",
+      "resolvedValue": "#e7fcd5",
+      "alias": {
+        "collection": "palette",
+        "name": "green/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8719:28317",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/success-hover",
+      "cssVariable": "--rhood-theme-fill-success-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-600)",
+      "resolvedValue": "#2eb823",
+      "alias": {
+        "collection": "palette",
+        "name": "green/600",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8688:4782",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/success-light-hover",
+      "cssVariable": "--rhood-theme-fill-success-light-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-50)",
+      "resolvedValue": "#f7fdf2",
+      "alias": {
+        "collection": "palette",
+        "name": "green/50",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8688:4783",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/disabled",
+      "cssVariable": "--rhood-theme-fill-disabled",
+      "type": "color",
+      "cssValue": "rgb(19 29 53 / 0.26)",
+      "resolvedValue": "rgb(19 29 53 / 0.26)",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1583",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/contrast-disabled",
+      "cssVariable": "--rhood-theme-fill-contrast-disabled",
+      "type": "color",
+      "cssValue": "rgb(255 255 255 / 0.12)",
+      "resolvedValue": "rgb(255 255 255 / 0.12)",
+      "alias": null,
+      "figmaVariableId": "VariableID:9348:1394",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/input (deprecated)",
+      "cssVariable": "--rhood-theme-fill-input-deprecated",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-white)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/white",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1532:22837",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/input-neutral",
+      "cssVariable": "--rhood-theme-fill-input-neutral",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-fill-neutral)",
+      "resolvedValue": "#f4f4f4",
+      "alias": {
+        "collection": "theme",
+        "name": "fill/neutral",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9118:5529",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/skeleton",
+      "cssVariable": "--rhood-theme-fill-skeleton",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-100)",
+      "resolvedValue": "#e8e8e8",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:3682:1540",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "fill/toggle",
+      "cssVariable": "--rhood-theme-fill-toggle",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-200)",
+      "resolvedValue": "#d1d1d1",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/200",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:10343:860",
+      "scopes": [
+        "FRAME_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/brand",
+      "cssVariable": "--rhood-theme-icon-brand",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-brand)",
+      "resolvedValue": "#0f3bd6",
+      "alias": {
+        "collection": "theme",
+        "name": "text/brand",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8664:1400",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/error",
+      "cssVariable": "--rhood-theme-icon-error",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-error)",
+      "resolvedValue": "#d81f1e",
+      "alias": {
+        "collection": "theme",
+        "name": "text/error",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8665:13756",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/info",
+      "cssVariable": "--rhood-theme-icon-info",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-info)",
+      "resolvedValue": "#3e7edb",
+      "alias": {
+        "collection": "theme",
+        "name": "text/info",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8666:13767",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/warning",
+      "cssVariable": "--rhood-theme-icon-warning",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-warning)",
+      "resolvedValue": "#b76f1c",
+      "alias": {
+        "collection": "theme",
+        "name": "text/warning",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8685:4546",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/success",
+      "cssVariable": "--rhood-theme-icon-success",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-success)",
+      "resolvedValue": "#189a19",
+      "alias": {
+        "collection": "theme",
+        "name": "text/success",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8705:3976",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/contrast-disabled",
+      "cssVariable": "--rhood-theme-icon-contrast-disabled",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-neutral-contrast-disabled)",
+      "resolvedValue": "rgb(255 255 255 / 0.62)",
+      "alias": {
+        "collection": "theme",
+        "name": "text/neutral/contrast-disabled",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9348:1393",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/neutral/primary",
+      "cssVariable": "--rhood-theme-icon-neutral-primary",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-neutral-primary)",
+      "resolvedValue": "rgb(26 26 26 / 0.87)",
+      "alias": {
+        "collection": "theme",
+        "name": "text/neutral/primary",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8669:13805",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/neutral/primary-static",
+      "cssVariable": "--rhood-theme-icon-neutral-primary-static",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-neutral-primary-static)",
+      "resolvedValue": "rgb(26 26 26 / 0.87)",
+      "alias": {
+        "collection": "theme",
+        "name": "text/neutral/primary-static",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8670:1152",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/neutral/secondary",
+      "cssVariable": "--rhood-theme-icon-neutral-secondary",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-neutral-secondary)",
+      "resolvedValue": "rgb(26 26 26 / 0.6)",
+      "alias": {
+        "collection": "theme",
+        "name": "text/neutral/secondary",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8703:24692",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/neutral/primary-contrast",
+      "cssVariable": "--rhood-theme-icon-neutral-primary-contrast",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-neutral-primary-contrast)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "theme",
+        "name": "text/neutral/primary-contrast",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8670:1279",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/neutral/secondary-contrast",
+      "cssVariable": "--rhood-theme-icon-neutral-secondary-contrast",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-neutral-secondary-contrast)",
+      "resolvedValue": "rgb(255 255 255 / 0.6)",
+      "alias": {
+        "collection": "theme",
+        "name": "text/neutral/secondary-contrast",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:9000:1431",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "icon/neutral/disabled",
+      "cssVariable": "--rhood-theme-icon-neutral-disabled",
+      "type": "color",
+      "cssValue": "var(--rhood-theme-text-neutral-disabled)",
+      "resolvedValue": "rgb(26 26 26 / 0.38)",
+      "alias": {
+        "collection": "theme",
+        "name": "text/neutral/disabled",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8669:14048",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/light",
+      "cssVariable": "--rhood-theme-border-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-100)",
+      "resolvedValue": "#e8e8e8",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1507:19416",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/hover",
+      "cssVariable": "--rhood-theme-border-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-300)",
+      "resolvedValue": "#bababa",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/300",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1519:18494",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/neutral",
+      "cssVariable": "--rhood-theme-border-neutral",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-200)",
+      "resolvedValue": "#d1d1d1",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/200",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9072:114",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/neutral-dark",
+      "cssVariable": "--rhood-theme-border-neutral-dark",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-700)",
+      "resolvedValue": "#454545",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/700",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:2866:3116",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/contrast",
+      "cssVariable": "--rhood-theme-border-contrast",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-white)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/white",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1670:972",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/focus",
+      "cssVariable": "--rhood-theme-border-focus",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-500)",
+      "resolvedValue": "#154ef9",
+      "alias": {
+        "collection": "palette",
+        "name": "blue/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1532:24357",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/hover-inverse",
+      "cssVariable": "--rhood-theme-border-hover-inverse",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-white)",
+      "resolvedValue": "#ffffff",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/white",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:1670:1044",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/brand",
+      "cssVariable": "--rhood-theme-border-brand",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-500)",
+      "resolvedValue": "#154ef9",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9063:451",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/brand-light",
+      "cssVariable": "--rhood-theme-border-brand-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-300)",
+      "resolvedValue": "#729cfd",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/300",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8650:1949",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/error",
+      "cssVariable": "--rhood-theme-border-error",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-500)",
+      "resolvedValue": "#fc3c2a",
+      "alias": {
+        "collection": "palette",
+        "name": "red/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8666:13757",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/error-light",
+      "cssVariable": "--rhood-theme-border-error-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-300)",
+      "resolvedValue": "#fe9e7f",
+      "alias": {
+        "collection": "palette",
+        "name": "red/300",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9063:453",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/info",
+      "cssVariable": "--rhood-theme-border-info",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-500)",
+      "resolvedValue": "#56a2ff",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9063:454",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/info-light",
+      "cssVariable": "--rhood-theme-border-info-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-300)",
+      "resolvedValue": "#99d0ff",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/300",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8667:13804",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/success",
+      "cssVariable": "--rhood-theme-border-success",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-500)",
+      "resolvedValue": "#4ad631",
+      "alias": {
+        "collection": "palette",
+        "name": "green/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9063:455",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/succees-light",
+      "cssVariable": "--rhood-theme-border-succees-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-300)",
+      "resolvedValue": "#a4f282",
+      "alias": {
+        "collection": "palette",
+        "name": "green/300",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8707:18073",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/warning",
+      "cssVariable": "--rhood-theme-border-warning",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-500)",
+      "resolvedValue": "#ffb238",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9063:456",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/warning-light",
+      "cssVariable": "--rhood-theme-border-warning-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-300)",
+      "resolvedValue": "#ffda87",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/300",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8707:18074",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/disabled",
+      "cssVariable": "--rhood-theme-border-disabled",
+      "type": "color",
+      "cssValue": "rgb(19 29 53 / 0.12)",
+      "resolvedValue": "rgb(19 29 53 / 0.12)",
+      "alias": null,
+      "figmaVariableId": "VariableID:248:1584",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "border/disabled-inverse",
+      "cssVariable": "--rhood-theme-border-disabled-inverse",
+      "type": "color",
+      "cssValue": "rgb(255 255 255 / 0.12)",
+      "resolvedValue": "rgb(255 255 255 / 0.12)",
+      "alias": null,
+      "figmaVariableId": "VariableID:1670:4285",
+      "scopes": [
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-1",
+      "cssVariable": "--rhood-theme-component-charts-color-1",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-indigo-500)",
+      "resolvedValue": "#6366f2",
+      "alias": {
+        "collection": "palette",
+        "name": "indigo/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9591:4106",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-2",
+      "cssVariable": "--rhood-theme-component-charts-color-2",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-pink-500)",
+      "resolvedValue": "#ec4699",
+      "alias": {
+        "collection": "palette",
+        "name": "pink/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9591:4695",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-3",
+      "cssVariable": "--rhood-theme-component-charts-color-3",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-lime-500)",
+      "resolvedValue": "#82cb15",
+      "alias": {
+        "collection": "palette",
+        "name": "lime/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8850:4678",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-4",
+      "cssVariable": "--rhood-theme-component-charts-color-4",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-orange-500)",
+      "resolvedValue": "#ffb238",
+      "alias": {
+        "collection": "palette",
+        "name": "orange/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8850:4682",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-5",
+      "cssVariable": "--rhood-theme-component-charts-color-5",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-light-blue-500)",
+      "resolvedValue": "#56a2ff",
+      "alias": {
+        "collection": "palette",
+        "name": "light blue/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8850:4679",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-6",
+      "cssVariable": "--rhood-theme-component-charts-color-6",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-purple-500)",
+      "resolvedValue": "#a855f7",
+      "alias": {
+        "collection": "palette",
+        "name": "purple/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9591:4105",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-7",
+      "cssVariable": "--rhood-theme-component-charts-color-7",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-blue-grey-500)",
+      "resolvedValue": "#65758b",
+      "alias": {
+        "collection": "palette",
+        "name": "blue grey/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9591:4101",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-8",
+      "cssVariable": "--rhood-theme-component-charts-color-8",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-red-500)",
+      "resolvedValue": "#fc3c2a",
+      "alias": {
+        "collection": "palette",
+        "name": "red/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8850:4680",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-9",
+      "cssVariable": "--rhood-theme-component-charts-color-9",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-cian-500)",
+      "resolvedValue": "#07b6d5",
+      "alias": {
+        "collection": "palette",
+        "name": "cian/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9591:4108",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/charts/color-10",
+      "cssVariable": "--rhood-theme-component-charts-color-10",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-green-500)",
+      "resolvedValue": "#4ad631",
+      "alias": {
+        "collection": "palette",
+        "name": "green/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:9591:4109",
+      "scopes": [
+        "SHAPE_FILL",
+        "STROKE"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/checkbox/fill/brand",
+      "cssVariable": "--rhood-theme-component-checkbox-fill-brand",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-brand-500)",
+      "resolvedValue": "#154ef9",
+      "alias": {
+        "collection": "palette",
+        "name": "brand/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8850:4681",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/checkbox/fill/neutral",
+      "cssVariable": "--rhood-theme-component-checkbox-fill-neutral",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-200)",
+      "resolvedValue": "#d1d1d1",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/200",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8850:4684",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/checkbox/fill/neutral-hover",
+      "cssVariable": "--rhood-theme-component-checkbox-fill-neutral-hover",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-400)",
+      "resolvedValue": "#a3a3a3",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/400",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8850:4683",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "component/checkbox/fill/disabled",
+      "cssVariable": "--rhood-theme-component-checkbox-fill-disabled",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-neutral-200)",
+      "resolvedValue": "#d1d1d1",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/200",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8854:3292",
+      "scopes": [
+        "SHAPE_FILL"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "additional/indigo",
+      "cssVariable": "--rhood-theme-additional-indigo",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-indigo-500)",
+      "resolvedValue": "#6366f2",
+      "alias": {
+        "collection": "palette",
+        "name": "indigo/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8993:45",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "additional/indigo-light",
+      "cssVariable": "--rhood-theme-additional-indigo-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-indigo-100)",
+      "resolvedValue": "#e0e8ff",
+      "alias": {
+        "collection": "palette",
+        "name": "indigo/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8993:46",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "additional/pink",
+      "cssVariable": "--rhood-theme-additional-pink",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-pink-500)",
+      "resolvedValue": "#ec4699",
+      "alias": {
+        "collection": "palette",
+        "name": "pink/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8993:47",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "additional/pink-light",
+      "cssVariable": "--rhood-theme-additional-pink-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-pink-100)",
+      "resolvedValue": "#fce8f4",
+      "alias": {
+        "collection": "palette",
+        "name": "pink/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8993:48",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "additional/purple",
+      "cssVariable": "--rhood-theme-additional-purple",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-purple-500)",
+      "resolvedValue": "#a855f7",
+      "alias": {
+        "collection": "palette",
+        "name": "purple/500",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8993:49",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    },
+    {
+      "collection": "theme",
+      "name": "additional/purple-light",
+      "cssVariable": "--rhood-theme-additional-purple-light",
+      "type": "color",
+      "cssValue": "var(--rhood-palette-purple-100)",
+      "resolvedValue": "#f2e5ff",
+      "alias": {
+        "collection": "palette",
+        "name": "purple/100",
+        "source": "figma"
+      },
+      "figmaVariableId": "VariableID:8993:50",
+      "scopes": [
+        "ALL_SCOPES"
+      ]
+    }
+  ]
+}

@@ -34,8 +34,8 @@ function SelectProperties() {
   )
 }
 
-function Section({ title, children, description }: { title: string; description: string; children: React.ReactNode }) {
-  return <section className="grid w-full gap-4"><div className="grid gap-1"><h2 className="text-xl font-semibold">{title}</h2><p>{description}</p></div>{children}</section>
+function Section({ title, children, description, settings }: { title: string; description: string; children: React.ReactNode; settings: string[] }) {
+  return <section className="grid w-full gap-4"><div className="grid gap-1"><h2 className="text-xl font-semibold">{title}</h2><p>{description}</p></div>{children}<div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div></section>
 }
 
 function SelectWithMenu({ align = "left", showMenu = false, ...props }: React.ComponentProps<typeof Select> & { align?: "left" | "right"; showMenu?: boolean }) {
@@ -66,14 +66,14 @@ function SelectWithMenu({ align = "left", showMenu = false, ...props }: React.Co
 
 export function SelectExamples() {
   return <div className="grid min-w-0 gap-10">
-    <Section description="content=text показывает одно выбранное значение. Для нескольких значений используй content=chips: выбранные значения отображаются как Chip." title="Контент">
+    <Section description="content=text показывает одно выбранное значение. Для нескольких значений используй content=chips: выбранные значения отображаются как Chip." settings={["content: text · chips"]} title="Контент">
       <div className="grid gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2">
         <div className="grid gap-2"><p className="text-xs text-[var(--parser-text-neutral-secondary)]">Одно значение</p><SelectWithMenu label="Тип объекта" /></div>
         <div className="grid gap-2"><p className="text-xs text-[var(--parser-text-neutral-secondary)]">Несколько значений</p><SelectWithMenu content="chips" label="Тип объекта" /></div>
       </div>
     </Section>
 
-    <Section description="Состояние focused обозначает активное поле, expanded — открытое меню. Ошибка и disabled имеют приоритет над состоянием взаимодействия." title="Состояния">
+    <Section description="Состояние focused обозначает активное поле, expanded — открытое меню. Ошибка и disabled имеют приоритет над состоянием взаимодействия." settings={["state: default · hovered · focused", "expanded: boolean", "error: boolean", "disabled: boolean"]} title="Состояния">
       <div className="grid gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2">
         <SelectWithMenu label="По умолчанию" />
         <SelectWithMenu label="Наведение" />
@@ -83,7 +83,7 @@ export function SelectExamples() {
       </div>
     </Section>
 
-    <Section description={'При раскрытии Select открывает компонент Menu на расстоянии 4px от поля. По умолчанию Menu выравнивается по левому краю Select; для выравнивания по правому краю передай align="right". Menu содержит пункты MenuItemSingleSelect, а выбранный пункт отмечается selected=true.'} title="Выпадающее меню">
+    <Section description={'При раскрытии Select открывает компонент Menu на расстоянии 4px от поля. По умолчанию Menu выравнивается по левому краю Select; для выравнивания по правому краю передай align="right". Menu содержит пункты MenuItemSingleSelect, а выбранный пункт отмечается selected=true.'} settings={["menu: ReactNode", "align: left · right"]} title="Выпадающее меню">
       <div className="grid w-full gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2">
         {["left", "right"].map((align) => (
           <div className="flex w-full flex-col" key={align}>
@@ -94,11 +94,11 @@ export function SelectExamples() {
       </div>
     </Section>
 
-    <Section description="md — основной размер поля, sm — компактный вариант для плотных форм и панелей." title="Размер">
+    <Section description="md — основной размер поля, sm — компактный вариант для плотных форм и панелей." settings={["size: md · sm"]} title="Размер">
       <div className="grid w-full gap-4 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2"><SelectWithMenu label="md" size="md" /><SelectWithMenu label="sm" size="sm" /></div>
     </Section>
 
-    <Section description="helperText поясняет поле или сообщает об ошибке. icon добавляет иконку слева от значения." title="Дополнительные элементы">
+    <Section description="helperText поясняет поле или сообщает об ошибке. icon добавляет иконку слева от значения." settings={["helperText: ReactNode", "icon: ReactNode · boolean"]} title="Дополнительные элементы">
       <div className="grid w-full gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2"><SelectWithMenu helperText="Выбери один вариант" icon label="С иконкой" /><SelectWithMenu helperText="Helper text" label="С пояснением" /></div>
     </Section>
 

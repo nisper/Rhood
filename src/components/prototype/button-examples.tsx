@@ -17,8 +17,8 @@ const properties = [
   ["counter", "true · false", "false", "Счётчик рядом с label."],
 ]
 
-function Section({ children, description, title }: { children: React.ReactNode; description: string; title: string }) {
-  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="text-xl font-semibold leading-7">{title}</h2><p className="text-base leading-6 tracking-[0.15px]">{description}</p></div>{children}</section>
+function Section({ children, description, settings, title }: { children: React.ReactNode; description: string; settings?: string[]; title: string }) {
+  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="text-xl font-semibold leading-7">{title}</h2><p className="text-base leading-6 tracking-[0.15px]">{description}</p></div>{children}{settings && <div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div>}</section>
 }
 
 function ButtonSet({ appearance, children, ...props }: React.ComponentProps<typeof Button>) {
@@ -36,19 +36,19 @@ function StateRow({ appearance }: { appearance: NonNullable<React.ComponentProps
 
 export function ButtonExamples() {
   return <div className="grid min-w-0 gap-10">
-    <Section description="Визуальный стиль кнопки выбирают по контексту: primary — для основного действия, default и ghost — для второстепенных." title="Стиль">
+    <Section description="Визуальный стиль кнопки выбирают по контексту: primary — для основного действия, default и ghost — для второстепенных." settings={["appearance: primary · default · ghost · destructive · inherit · contrast"]} title="Стиль">
       <ShowcaseSurface direction="vertical"><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><LabeledButton appearance="primary" /><LabeledButton appearance="default" /><LabeledButton appearance="ghost" /><LabeledButton appearance="destructive" /><LabeledButton appearance="inherit" /></div></ShowcasePanel><ShowcasePanel tone="transparent"><LabeledButton appearance="contrast" /></ShowcasePanel></ShowcaseSurface>
     </Section>
 
-    <Section description="md — размер по умолчанию; lg подходит для основного действия, sm и xsm — для плотных интерфейсов." title="Размер">
+    <Section description="md — размер по умолчанию; lg подходит для основного действия, sm и xsm — для плотных интерфейсов." settings={["size: lg · md · sm · xsm"]} title="Размер">
       <ShowcaseSurface><ShowcasePanel><div className="grid gap-3">{(["lg", "md", "sm", "xsm"] as const).map(size => <div className="flex items-center gap-3" key={size}><span className="w-7 text-right text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">{size}</span><ButtonSet appearance="default" endIcon={false} size={size} startIcon={false}>Default</ButtonSet></div>)}</div></ShowcasePanel></ShowcaseSurface>
     </Section>
 
-    <Section description="Hover показывает реакцию на наведение. Disabled блокирует действие и использует нейтральное состояние." title="Состояния">
+    <Section description="Hover показывает реакцию на наведение. Disabled блокирует действие и использует нейтральное состояние." settings={["state: default · hover", "disabled: boolean"]} title="Состояния">
       <ShowcaseSurface direction="vertical"><ShowcasePanel><div className="grid w-full max-w-[640px] gap-2"><div className="grid grid-cols-3 gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hover</span><span>disabled</span></div>{(["primary", "default", "ghost", "destructive", "inherit"] as const).map(appearance => <StateRow appearance={appearance} key={appearance} />)}</div></ShowcasePanel><ShowcasePanel tone="transparent"><div className="grid w-full max-w-[640px] gap-2"><div className="grid grid-cols-3 gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hover</span><span>disabled</span></div><StateRow appearance="contrast" /></div></ShowcasePanel></ShowcaseSurface>
     </Section>
 
-    <Section description="Иконки поясняют действие, а счётчик показывает количество связанного контента. Отключай элементы состава только при необходимости." title="Состав">
+    <Section description="Иконки поясняют действие, а счётчик показывает количество связанного контента. Отключай элементы состава только при необходимости." settings={["startIcon: ReactNode · boolean", "endIcon: ReactNode · boolean", "counter: boolean"]} title="Состав">
       <ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><ButtonSet appearance="default" endIcon={false} startIcon={false} /><ButtonSet appearance="default" endIcon={false} /><ButtonSet appearance="default" startIcon={false} /><ButtonSet appearance="default" counter endIcon={false} startIcon={false} /></div></ShowcasePanel></ShowcaseSurface>
     </Section>
 

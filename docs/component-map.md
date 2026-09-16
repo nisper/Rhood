@@ -49,6 +49,7 @@
 | `351:8845` | `avatar` | `src/components/ui/avatar.tsx` / `Avatar` |
 | `505:4164` | `textfield` | `src/components/ui/text-field.tsx` / `Textfield` |
 | `11269:12380` | `InputNumber` | `src/components/ui/input-number.tsx` / `InputNumber` |
+| `11270:13059` | `InputNumberRange` | `src/components/ui/input-number-range.tsx` / `InputNumberRange` |
 | `734:6530` | `textfield multiline` | `src/components/ui/text-field-multiline.tsx` / `TextFieldMultiline` |
 | `785:7777` | `password` | `src/components/ui/password-field.tsx` / `PasswordField` |
 | `574:4467` | `DateInput` | `src/components/ui/date-input.tsx` / `DateInput` |

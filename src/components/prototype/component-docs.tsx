@@ -1,6 +1,7 @@
 import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
 import { InputNumberExamples } from "./input-number-examples";
+import { InputNumberRangeExamples } from "./input-number-range-examples";
 import { ButtonExamples } from "./button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
@@ -421,7 +422,8 @@ const componentDocs: ComponentDoc[] = [
       { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и размер кнопки очистки." },
       { name: "value", values: "string · number", defaultValue: "—", description: "Текущее числовое значение в контролируемом режиме." },
       { name: "defaultValue", values: "string · number", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
-      { name: "inputMode", values: "decimal · numeric", defaultValue: "decimal", description: "Подсказка подходящей числовой клавиатуры на мобильных устройствах." },
+      { name: "inputMode", values: "numeric", defaultValue: "numeric", description: "Показывает цифровую клавиатуру на мобильных устройствах." },
+      { name: "Ввод", values: "0–9", defaultValue: "—", description: "Буквы, пробелы и специальные символы блокируются; вставленный текст очищается до цифр." },
       { name: "groupThousands", values: "boolean", defaultValue: "false", description: "Отделяет группы разрядов в целой части значения пробелами." },
       { name: "startText / endText", values: "ReactNode", defaultValue: "—", description: "Префикс и суффикс: например, «с» и «м²»." },
       { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию и красную звёздочку." },
@@ -429,6 +431,24 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/input-number.tsx",
     render: () => <InputNumberExamples />,
+  },
+  {
+    id: "input-number-range",
+    title: "InputNumberRange",
+    description: "Диапазон из двух InputNumber с единой внешней обводкой группы.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11270-13059",
+    group: "Forms",
+    properties: [
+      { name: "startInputProps / endInputProps", values: "InputNumberProps", defaultValue: "—", description: "Props для начального и конечного значений; стили border и state управляются группой." },
+      { name: "state", values: "default · hovered · focused", defaultValue: "native", description: "Preview-состояние группы; без него hover и focus определяются по взаимодействию." },
+      { name: "error", values: "boolean", defaultValue: "false", description: "Показывает error-обводку на группе." },
+      { name: "disabled", values: "boolean", defaultValue: "false", description: "Одновременно отключает оба числовых поля." },
+      { name: "separator", values: "ReactNode", defaultValue: "–", description: "Разделитель между начальным и конечным значениями." },
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Единый размер двух вложенных InputNumber." },
+    ],
+    source: "src/components/ui/input-number-range.tsx",
+    render: () => <InputNumberRangeExamples />,
   },
   {
     id: "text-field-multiline",
