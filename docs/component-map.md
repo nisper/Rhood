@@ -47,8 +47,8 @@
 | `1653:28207` | `Chip` | `src/components/ui/chip.tsx` / `Chip` |
 | `1336:8438` | `toggleChip` | `src/components/ui/toggle-chip.tsx` / `ToggleChip` |
 | `351:8845` | `avatar` | `src/components/ui/avatar.tsx` / `Avatar` |
-| `7603:2174` | `RangeInput` | `src/components/ui/range-input.tsx` / `RangeInput` |
 | `505:4164` | `textfield` | `src/components/ui/text-field.tsx` / `Textfield` |
+| `11269:12380` | `InputNumber` | `src/components/ui/input-number.tsx` / `InputNumber` |
 | `734:6530` | `textfield multiline` | `src/components/ui/text-field-multiline.tsx` / `TextFieldMultiline` |
 | `785:7777` | `password` | `src/components/ui/password-field.tsx` / `PasswordField` |
 | `574:4467` | `DateInput` | `src/components/ui/date-input.tsx` / `DateInput` |

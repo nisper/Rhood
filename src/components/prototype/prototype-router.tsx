@@ -23,7 +23,7 @@ const prototypeViews: PrototypeView[] = [
   },
   {
     id: "apartment-listings",
-    title: "Набор базы: список объявлений",
+    title: "Набор базы",
     homeLabel: "Набор базы",
     icon: LayoutDashboard,
     View: ApartmentListingsScreen,
@@ -79,6 +79,7 @@ function PrototypeHome() {
 
 export function PrototypeRouter() {
   const [activeViewId, setActiveViewIdState] = React.useState(getActiveViewId)
+  const activeView = prototypeViews.find((view) => view.id === activeViewId)
 
   React.useEffect(() => {
     const handlePopState = () => setActiveViewIdState(getActiveViewId())
@@ -87,7 +88,16 @@ export function PrototypeRouter() {
     return () => window.removeEventListener("popstate", handlePopState)
   }, [])
 
-  const activeView = prototypeViews.find((view) => view.id === activeViewId)
+  React.useEffect(() => {
+    if (!activeView) {
+      document.title = "RHOOD"
+      return
+    }
+
+    if (activeView.id !== "components") {
+      document.title = activeView.title
+    }
+  }, [activeView])
 
   if (!activeView) {
     return <PrototypeHome />

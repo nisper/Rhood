@@ -38,7 +38,6 @@ import { FormHelperText } from "@/components/ui/form-helper-text"
 import { FormControlLabel } from "@/components/ui/form-control-label"
 import { DateInput } from "@/components/ui/date-input"
 import { PasswordField } from "@/components/ui/password-field"
-import { RangeInput } from "@/components/ui/range-input"
 import { Textfield } from "@/components/ui/text-field"
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline"
 import { ToggleButton } from "@/components/ui/toggle-button"
@@ -157,81 +156,12 @@ export function PrototypeShell() {
   const textFieldSizes = ["md", "sm"] as const
   const passwordFieldSizes = ["lg", "md", "sm"] as const
   const dateInputSizes = ["md", "sm"] as const
-  const rangeInputSizes = ["lg", "md", "sm"] as const
   const variants = ["contained", "outlined", "text"] as const
   const avatarExamples = [
     { key: "text", props: { content: "text" as const } },
     { key: "icon", props: { content: "icon" as const } },
     { key: "image", props: { content: "image" as const } },
     { key: "skeleton", props: { content: "image" as const, skeleton: true } },
-  ]
-  const rangeInputExamples = [
-    {
-      key: "static-default",
-      props: { empty: false, topLabel: "static" as const },
-    },
-    {
-      key: "static-empty",
-      props: { empty: true, topLabel: "static" as const },
-    },
-    {
-      key: "static-hovered",
-      props: { empty: true, state: "hovered" as const, topLabel: "static" as const },
-    },
-    {
-      key: "static-focused",
-      props: { empty: true, state: "focused" as const, topLabel: "static" as const },
-    },
-    {
-      key: "static-error",
-      props: {
-        empty: false,
-        error: true,
-        state: "focused" as const,
-        topLabel: "static" as const,
-      },
-    },
-    {
-      key: "static-disabled",
-      props: { disabled: true, empty: false, topLabel: "static" as const },
-    },
-    {
-      key: "dynamic-default",
-      props: { empty: false, topLabel: "dynamic" as const },
-    },
-    {
-      key: "dynamic-empty",
-      props: { empty: true, topLabel: "dynamic" as const },
-    },
-    {
-      key: "dynamic-hovered",
-      props: {
-        empty: true,
-        state: "hovered" as const,
-        topLabel: "dynamic" as const,
-      },
-    },
-    {
-      key: "dynamic-focused",
-      props: {
-        empty: true,
-        state: "focused" as const,
-        topLabel: "dynamic" as const,
-      },
-    },
-    {
-      key: "dynamic-error",
-      props: {
-        empty: false,
-        error: true,
-        state: "focused" as const,
-        topLabel: "dynamic" as const,
-      },
-    },
-    {
-      key: "dynamic-disabled",
-      props: { disabled: true, empty: false, topLabel: "dynamic" as const },
-    },
   ]
   const textFieldExamples = [
     {
@@ -1395,31 +1325,6 @@ export function PrototypeShell() {
                   )}
                 </div>
               </div>
-            </div>
-          </section>
-
-          <section className="grid gap-3">
-            <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
-              range input
-            </h4>
-            <div className="grid gap-6 rounded-xl bg-white p-4">
-              {rangeInputSizes.map((size) => (
-                <div key={size} className="grid gap-3">
-                  <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
-                    {size}
-                  </div>
-                  <div className="grid gap-3 xl:grid-cols-2">
-                    {rangeInputExamples.map(({ key, props }) => (
-                      <RangeInput
-                        {...props}
-                        key={`${size}-${key}`}
-                        label="Label"
-                        size={size}
-                      />
-                    ))}
-                  </div>
-                </div>
-              ))}
             </div>
           </section>
 

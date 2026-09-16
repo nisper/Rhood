@@ -49,7 +49,7 @@ No product screens or layouts were generated. This document keeps the Figma sour
 - The core spacing scale is an 8px module with half and quarter steps. These map to Tailwind spacing in `docs/tokens.md`.
 - Figma component sets mapped into component token groups:
   - Buttons: `button-brand`, `button-error`, `button-info`, `button-neutral`, `button-contrast`, `button-dark`.
-  - Inputs: `textfield`, `textfield multiline`, `select`, `search`, `dateInput`, `password`, `RangeInput`, `autoComlete`.
+  - Inputs: `textfield`, `textfield multiline`, `select`, `search`, `dateInput`, `password`, `autoComlete`.
   - Tags, chips, and badges: `tag`, `chip`, `toggleChip`, `badge`.
 - No dedicated `card` token collection was present. Figma uses island/layout tokens for framed surfaces and result cards.
 - Figma has no local paint styles; colors are stored as variables.

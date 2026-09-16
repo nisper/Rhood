@@ -1,5 +1,6 @@
 import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
+import { InputNumberExamples } from "./input-number-examples";
 import { ButtonExamples } from "./button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
@@ -42,7 +43,6 @@ import { PaginationAlt } from "@/components/ui/pagination-alt";
 import { PaginationButton } from "@/components/ui/pagination-button";
 import { PasswordField } from "@/components/ui/password-field";
 import { ProgressLinear } from "@/components/ui/progress-linear";
-import { RangeInput } from "@/components/ui/range-input";
 import { Search } from "@/components/ui/search";
 import { ShowMore } from "@/components/ui/show-more";
 import { Snackbar } from "@/components/ui/snackbar";
@@ -411,6 +411,26 @@ const componentDocs: ComponentDoc[] = [
     render: () => <InputExamples />,
   },
   {
+    id: "input-number",
+    title: "InputNumber",
+    description: "InputNumber — поле для ввода числовых значений.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11269-12380",
+    group: "Forms",
+    properties: [
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и размер кнопки очистки." },
+      { name: "value", values: "string · number", defaultValue: "—", description: "Текущее числовое значение в контролируемом режиме." },
+      { name: "defaultValue", values: "string · number", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
+      { name: "inputMode", values: "decimal · numeric", defaultValue: "decimal", description: "Подсказка подходящей числовой клавиатуры на мобильных устройствах." },
+      { name: "groupThousands", values: "boolean", defaultValue: "false", description: "Отделяет группы разрядов в целой части значения пробелами." },
+      { name: "startText / endText", values: "ReactNode", defaultValue: "—", description: "Префикс и суффикс: например, «с» и «м²»." },
+      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию и красную звёздочку." },
+      { name: "clearButton", values: "boolean", defaultValue: "false", description: "Показывает очистку заполненного focused-поля." },
+    ],
+    source: "src/components/ui/input-number.tsx",
+    render: () => <InputNumberExamples />,
+  },
+  {
     id: "text-field-multiline",
     title: "TextFieldMultiline",
     description: "Многострочное текстовое поле.",
@@ -483,22 +503,6 @@ const componentDocs: ComponentDoc[] = [
             placeholder="Placeholder"
             topLabel="dynamic"
           />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "range-input",
-    title: "RangeInput",
-    description: "Поле диапазона.",
-    group: "Forms",
-    source: "src/components/ui/range-input.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <RangeInput empty={false} topLabel="static" />
-          <RangeInput empty topLabel="dynamic" />
-          <RangeInput empty={false} error topLabel="dynamic" />
         </div>
       </Canvas>
     ),
@@ -1156,6 +1160,10 @@ export function ComponentDocs() {
   const activeDoc =
     componentDocs.find((doc) => doc.id === activeId) ?? componentDocs[0];
 
+  React.useEffect(() => {
+    document.title = `Design system — ${activeDoc.title}`;
+  }, [activeDoc.title]);
+
   return (
     <div className="min-h-svh bg-[var(--parser-surface-bg)] text-[var(--parser-text-neutral-primary)]">
       <div className="grid md:grid-cols-[300px_minmax(0,1fr)]">
@@ -1242,6 +1250,7 @@ function ComponentNavigation({
     "table",
     "text-field",
     "search",
+    "input-number",
   ]);
 
   return (
