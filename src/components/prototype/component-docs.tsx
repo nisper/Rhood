@@ -2,6 +2,7 @@ import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
 import { InputNumberExamples } from "./input-number-examples";
 import { InputNumberRangeExamples } from "./input-number-range-examples";
+import { IconButtonExamples } from "./icon-button-examples";
 import { TokenColorsExamples } from "./token-colors-examples";
 import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
@@ -28,11 +29,6 @@ import { FormControlLabel } from "@/components/ui/form-control-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
-import {
-  IconButton,
-  type IconButtonAppearance,
-  type IconButtonSize,
-} from "@/components/ui/icon-button";
 import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
 import { LikeButton } from "@/components/ui/like-button";
@@ -60,6 +56,8 @@ import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
 import { UploadedDocument } from "@/components/ui/uploaded-document";
+import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 import { cn } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -77,15 +75,6 @@ type ComponentDoc = {
   source: string;
   render: () => React.ReactNode;
 };
-
-const iconButtonAppearances: IconButtonAppearance[] = [
-  "primary",
-  "secondary",
-  "ghost",
-  "contrast",
-  "inherit",
-];
-const iconButtonSizes: IconButtonSize[] = ["md", "sm", "xsm"];
 
 function Canvas({
   children,
@@ -258,33 +247,12 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "icon-button",
     title: "IconButton",
-    description: "Единая икон-кнопка из обновленного Figma-компонента.",
+    description: "Икон-кнопка для компактных действий.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10742-281",
     group: "Actions",
     source: "src/components/ui/icon-button.tsx",
-    render: () => (
-      <div className="grid gap-5">
-        {iconButtonAppearances.map((appearance) => (
-          <div className="grid gap-2" key={appearance}>
-            <h3 className="text-sm font-semibold uppercase text-[var(--parser-text-neutral-secondary)]">
-              {appearance}
-            </h3>
-            <Canvas tone={appearance === "contrast" ? "dark" : "default"}>
-              <Matrix>
-                {iconButtonSizes.map((size) => (
-                  <IconButton
-                    appearance={appearance}
-                    key={`${appearance}-${size}`}
-                    size={size}
-                  />
-                ))}
-                <IconButton appearance={appearance} state="hovered" />
-                <IconButton appearance={appearance} disabled />
-              </Matrix>
-            </Canvas>
-          </div>
-        ))}
-      </div>
-    ),
+    render: () => <IconButtonExamples />,
   },
   {
     id: "toggle-button",
@@ -1279,6 +1247,7 @@ function ComponentNavigation({
 }) {
   const celebratoryComponentIds = new Set([
     "button",
+    "icon-button",
     "select",
     "segmented-control",
     "menu",

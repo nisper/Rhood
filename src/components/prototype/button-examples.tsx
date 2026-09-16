@@ -41,7 +41,7 @@ export function ButtonExamples() {
     </Section>
 
     <Section description="md — размер по умолчанию; lg подходит для основного действия, sm и xsm — для плотных интерфейсов." settings={["size: lg · md · sm · xsm"]} title="Размер">
-      <ShowcaseSurface><ShowcasePanel><div className="grid gap-3">{(["lg", "md", "sm", "xsm"] as const).map(size => <div className="flex items-center gap-3" key={size}><span className="w-7 text-right text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">{size}</span><ButtonSet appearance="default" endIcon={false} size={size} startIcon={false}>Default</ButtonSet></div>)}</div></ShowcasePanel></ShowcaseSurface>
+      <ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3">{(["lg", "md", "sm", "xsm"] as const).map(size => <ButtonSet appearance="default" className="w-[100px]" endIcon={false} key={size} size={size} startIcon={false}>{({ lg: "Large", md: "Medium", sm: "Small", xsm: "Extra small" } as const)[size]}</ButtonSet>)}</div></ShowcasePanel></ShowcaseSurface>
     </Section>
 
     <Section description="Hover показывает реакцию на наведение. Disabled блокирует действие и использует нейтральное состояние." settings={["state: default · hover", "disabled: boolean"]} title="Состояния">

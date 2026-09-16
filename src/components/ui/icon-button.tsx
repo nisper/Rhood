@@ -19,9 +19,9 @@ type IconButtonProps = Omit<React.ComponentProps<"button">, "style"> & {
 }
 
 const sizeClasses: Record<IconButtonSize, string> = {
-  md: "size-10 p-2 [&_svg]:size-6",
-  sm: "size-9 p-2 [&_svg]:size-5",
-  xsm: "size-7 p-1.5 [&_svg]:size-4",
+  md: "size-[var(--rhood-sizing-base-module-5)] p-[var(--rhood-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rhood-sizing-base-module-3)]",
+  sm: "size-[var(--rhood-sizing-base-module-4-5)] p-[var(--rhood-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rhood-sizing-base-module-2-5)]",
+  xsm: "size-[calc(var(--rhood-sizing-base-module-4)-var(--rhood-sizing-base-module-0-5))] p-[var(--rhood-sizing-common-input-padding-py-xsm)] [&_svg]:size-[var(--rhood-sizing-base-module-2)]",
 }
 
 const toneClasses: Record<
@@ -30,39 +30,47 @@ const toneClasses: Record<
 > = {
   primary: {
     default:
-      "bg-[var(--parser-fill-brand)] text-[var(--parser-text-primary-contrast)]",
+      "bg-[var(--rhood-theme-fill-brand)] text-[var(--rhood-theme-text-neutral-primary-contrast)]",
     hovered:
-      "bg-[var(--parser-fill-brand-hover)] text-[var(--parser-text-primary-contrast)]",
+      "bg-[var(--rhood-theme-fill-brand-hover)] text-[var(--rhood-theme-text-neutral-primary-contrast)]",
     disabled:
-      "bg-[var(--parser-fill-disabled)] text-[var(--parser-text-disabled)]",
+      "bg-[var(--rhood-theme-fill-disabled)] text-[var(--rhood-theme-text-neutral-disabled)]",
   },
   secondary: {
     default:
-      "bg-[var(--parser-fill-neutral)] text-[var(--parser-text-neutral-primary)]",
+      "bg-[var(--rhood-theme-fill-neutral)] text-[var(--rhood-theme-text-neutral-primary)]",
     hovered:
-      "bg-[var(--parser-fill-neutral-hover)] text-[var(--parser-text-neutral-primary)]",
+      "bg-[var(--rhood-theme-fill-neutral-hover)] text-[var(--rhood-theme-text-neutral-primary)]",
     disabled:
-      "bg-[var(--parser-fill-disabled)] text-[var(--parser-text-disabled)]",
+      "bg-[var(--rhood-theme-fill-disabled)] text-[var(--rhood-theme-text-neutral-disabled)]",
   },
   ghost: {
-    default: "bg-transparent text-[var(--parser-text-neutral-primary)]",
+    default: "bg-transparent text-[var(--rhood-theme-text-neutral-primary)]",
     hovered:
-      "bg-[var(--parser-fill-neutral-hover)] text-[var(--parser-text-neutral-primary)]",
-    disabled: "bg-transparent text-[var(--parser-text-disabled)]",
+      "bg-[var(--rhood-theme-fill-neutral-hover)] text-[var(--rhood-theme-text-neutral-primary)]",
+    disabled: "bg-transparent text-[var(--rhood-theme-text-neutral-disabled)]",
   },
   contrast: {
     default:
-      "bg-[var(--parser-fill-contrast)] text-[var(--parser-text-primary-static)]",
+      "bg-[var(--rhood-theme-fill-contrast)] text-[var(--rhood-theme-text-neutral-primary-static)]",
     hovered:
-      "bg-[var(--parser-fill-contrast-hover)] text-[var(--parser-text-primary-static)]",
+      "bg-[var(--rhood-theme-fill-contrast-hover)] text-[var(--rhood-theme-text-neutral-primary-static)]",
     disabled:
-      "bg-[var(--parser-fill-disabled)] text-[var(--parser-text-disabled)]",
+      "bg-[var(--rhood-theme-fill-disabled)] text-[var(--rhood-theme-text-neutral-disabled)]",
   },
   inherit: {
     default: "bg-transparent text-inherit",
-    hovered: "bg-[var(--parser-fill-neutral-hover)] text-inherit",
-    disabled: "bg-transparent text-[var(--parser-text-disabled)]",
+    hovered: "bg-[var(--rhood-theme-fill-neutral-hover)] text-inherit",
+    disabled: "bg-transparent text-[var(--rhood-theme-text-neutral-disabled)]",
   },
+}
+
+const hoverClasses: Record<IconButtonAppearance, string> = {
+  primary: "hover:bg-[var(--rhood-theme-fill-brand-hover)]",
+  secondary: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
+  ghost: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
+  contrast: "hover:bg-[var(--rhood-theme-fill-contrast-hover)]",
+  inherit: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
 }
 
 function resolveAppearance({
@@ -128,11 +136,10 @@ function IconButton({
   return (
     <button
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rhood-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
         sizeClasses[resolvedSize],
         toneClasses[resolvedAppearance][resolvedState],
-        !disabled && resolvedState === "default" && resolvedAppearance === "primary" && "hover:bg-[var(--parser-fill-brand-hover)]",
-        !disabled && resolvedState === "default" && resolvedAppearance !== "primary" && "hover:bg-[var(--parser-fill-neutral-hover)]",
+        !disabled && resolvedState === "default" && hoverClasses[resolvedAppearance],
         className,
       )}
       disabled={disabled}
