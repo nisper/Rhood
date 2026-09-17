@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Search, SlidersHorizontal, X } from "lucide-react"
+import { Search, Settings2, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { InputNumberRange } from "@/components/ui/input-number-range"
@@ -182,7 +182,7 @@ function ToolbarFilter({
           counterValue={8}
           endIcon={false}
           size="sm"
-          startIcon={empty ? <SlidersHorizontal aria-hidden="true" strokeWidth={2} /> : false}
+          startIcon={empty ? <Settings2 aria-hidden="true" strokeWidth={2} /> : false}
         >
           Все фильтры
         </Button>

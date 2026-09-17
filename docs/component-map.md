@@ -3,6 +3,7 @@
 | Figma node | Figma component | Code component |
 | --- | --- | --- |
 | `10647:1326` | `Button` | `src/components/ui/button.tsx` / `Button` |
+| `10103:2350` | `buttonFavorite` | `src/components/ui/button-favorite.tsx` / `ButtonFavorite` |
 | `8701:15073` | `Indicator` | `src/components/ui/indicator.tsx` / `Indicator` |
 | `1171:18402` | `List` | `src/components/ui/list.tsx` / `List` |
 | `9929:5668` | `ListSmall` | `src/components/ui/list-small.tsx` / `ListSmall` |

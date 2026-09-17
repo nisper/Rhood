@@ -4,6 +4,7 @@ import { InputNumberExamples } from "./input-number-examples";
 import { InputNumberRangeExamples } from "./input-number-range-examples";
 import { ClearButtonExamples } from "./clear-button-examples";
 import { IconButtonExamples } from "./icon-button-examples";
+import { ButtonFavoriteExamples } from "./button-favorite-examples";
 import { TokenColorsExamples } from "./token-colors-examples";
 import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
@@ -22,7 +23,6 @@ import { AddAnyFile } from "@/components/ui/add-any-file";
 import { AddPhotos } from "@/components/ui/add-photos";
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
-import { ButtonFavorite } from "@/components/ui/button-favorite";
 import { Chip } from "@/components/ui/chip";
 import { ConfirmCode } from "@/components/ui/confirm-code";
 import { DateInput } from "@/components/ui/date-input";
@@ -57,8 +57,6 @@ import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
 import { UploadedDocument } from "@/components/ui/uploaded-document";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 import { cn } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -213,20 +211,12 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "button-favorite",
     title: "ButtonFavorite",
-    description: "Кнопка добавления в избранное.",
+    description: "Кнопка добавления в избранное — компактная или с подписью.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10103-2350",
     group: "Actions",
     source: "src/components/ui/button-favorite.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <ButtonFavorite />
-          <ButtonFavorite checked />
-          <ButtonFavorite size="sm" />
-          <ButtonFavorite checked size="sm" state="hovered" />
-          <ButtonFavorite size="xsm" />
-        </Matrix>
-      </Canvas>
-    ),
+    render: () => <ButtonFavoriteExamples />,
   },
   {
     id: "like-button",
