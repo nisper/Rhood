@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Search, Settings2, X } from "lucide-react"
+import { Search, Settings2, SlidersHorizontal, X } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { InputNumberRange } from "@/components/ui/input-number-range"
@@ -142,7 +142,7 @@ function ToolbarFilter({
     return (
       <section
         className={cn(
-          "relative flex items-center gap-1 bg-[var(--parser-fill-neutral)] px-3 py-2",
+          "rhood-page-gutter-mobile relative flex items-center gap-1 bg-[var(--parser-fill-neutral)] py-2",
           className,
         )}
         {...props}
@@ -165,7 +165,7 @@ function ToolbarFilter({
   return (
     <section
       className={cn(
-        "relative flex items-center gap-4 overflow-visible bg-[var(--parser-fill-neutral)] px-6 py-3",
+        "rhood-page-gutter relative flex items-center gap-4 overflow-visible bg-[var(--parser-fill-neutral)] py-3",
         className,
       )}
       {...props}

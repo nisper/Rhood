@@ -19,9 +19,9 @@ type IconButtonProps = Omit<React.ComponentProps<"button">, "style"> & {
 }
 
 const sizeClasses: Record<IconButtonSize, string> = {
-  md: "size-[var(--rhood-sizing-base-module-5)] p-[var(--rhood-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rhood-sizing-base-module-3)]",
-  sm: "size-[var(--rhood-sizing-base-module-4-5)] p-[var(--rhood-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rhood-sizing-base-module-2-5)]",
-  xsm: "size-[calc(var(--rhood-sizing-base-module-4)-var(--rhood-sizing-base-module-0-5))] p-[var(--rhood-sizing-common-input-padding-py-xsm)] [&_svg]:size-[var(--rhood-sizing-base-module-2)]",
+  md: "size-[var(--rh-sizing-base-module-5)] p-[var(--rh-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rh-sizing-base-module-3)]",
+  sm: "size-[var(--rh-sizing-base-module-4-5)] p-[var(--rh-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rh-sizing-base-module-2-5)]",
+  xsm: "size-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))] p-[var(--rh-sizing-common-input-padding-py-xsm)] [&_svg]:size-[var(--rh-sizing-base-module-2)]",
 }
 
 const toneClasses: Record<
@@ -30,47 +30,47 @@ const toneClasses: Record<
 > = {
   primary: {
     default:
-      "bg-[var(--rhood-theme-fill-brand)] text-[var(--rhood-theme-text-neutral-primary-contrast)]",
+      "bg-[var(--rh-theme-fill-brand)] text-[var(--rh-theme-text-neutral-primary-contrast)]",
     hovered:
-      "bg-[var(--rhood-theme-fill-brand-hover)] text-[var(--rhood-theme-text-neutral-primary-contrast)]",
+      "bg-[var(--rh-theme-fill-brand-hover)] text-[var(--rh-theme-text-neutral-primary-contrast)]",
     disabled:
-      "bg-[var(--rhood-theme-fill-disabled)] text-[var(--rhood-theme-text-neutral-disabled)]",
+      "bg-[var(--rh-theme-fill-disabled)] text-[var(--rh-theme-text-neutral-disabled)]",
   },
   secondary: {
     default:
-      "bg-[var(--rhood-theme-fill-neutral)] text-[var(--rhood-theme-text-neutral-primary)]",
+      "bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-primary)]",
     hovered:
-      "bg-[var(--rhood-theme-fill-neutral-hover)] text-[var(--rhood-theme-text-neutral-primary)]",
+      "bg-[var(--rh-theme-fill-neutral-hover)] text-[var(--rh-theme-text-neutral-primary)]",
     disabled:
-      "bg-[var(--rhood-theme-fill-disabled)] text-[var(--rhood-theme-text-neutral-disabled)]",
+      "bg-[var(--rh-theme-fill-disabled)] text-[var(--rh-theme-text-neutral-disabled)]",
   },
   ghost: {
-    default: "bg-transparent text-[var(--rhood-theme-text-neutral-primary)]",
+    default: "bg-transparent text-[var(--rh-theme-text-neutral-primary)]",
     hovered:
-      "bg-[var(--rhood-theme-fill-neutral-hover)] text-[var(--rhood-theme-text-neutral-primary)]",
-    disabled: "bg-transparent text-[var(--rhood-theme-text-neutral-disabled)]",
+      "bg-[var(--rh-theme-fill-neutral-hover)] text-[var(--rh-theme-text-neutral-primary)]",
+    disabled: "bg-transparent text-[var(--rh-theme-text-neutral-disabled)]",
   },
   contrast: {
     default:
-      "bg-[var(--rhood-theme-fill-contrast)] text-[var(--rhood-theme-text-neutral-primary-static)]",
+      "bg-[var(--rh-theme-fill-contrast)] text-[var(--rh-theme-text-neutral-primary-static)]",
     hovered:
-      "bg-[var(--rhood-theme-fill-contrast-hover)] text-[var(--rhood-theme-text-neutral-primary-static)]",
+      "bg-[var(--rh-theme-fill-contrast-hover)] text-[var(--rh-theme-text-neutral-primary-static)]",
     disabled:
-      "bg-[var(--rhood-theme-fill-disabled)] text-[var(--rhood-theme-text-neutral-disabled)]",
+      "bg-[var(--rh-theme-fill-disabled)] text-[var(--rh-theme-text-neutral-disabled)]",
   },
   inherit: {
     default: "bg-transparent text-inherit",
-    hovered: "bg-[var(--rhood-theme-fill-neutral-hover)] text-inherit",
-    disabled: "bg-transparent text-[var(--rhood-theme-text-neutral-disabled)]",
+    hovered: "bg-[var(--rh-theme-fill-neutral-hover)] text-inherit",
+    disabled: "bg-transparent text-[var(--rh-theme-text-neutral-disabled)]",
   },
 }
 
 const hoverClasses: Record<IconButtonAppearance, string> = {
-  primary: "hover:bg-[var(--rhood-theme-fill-brand-hover)]",
-  secondary: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
-  ghost: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
-  contrast: "hover:bg-[var(--rhood-theme-fill-contrast-hover)]",
-  inherit: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
+  primary: "hover:bg-[var(--rh-theme-fill-brand-hover)]",
+  secondary: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+  ghost: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+  contrast: "hover:bg-[var(--rh-theme-fill-contrast-hover)]",
+  inherit: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
 }
 
 function resolveAppearance({
@@ -136,7 +136,7 @@ function IconButton({
   return (
     <button
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rhood-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
         sizeClasses[resolvedSize],
         toneClasses[resolvedAppearance][resolvedState],
         !disabled && resolvedState === "default" && hoverClasses[resolvedAppearance],

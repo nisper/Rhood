@@ -12,8 +12,8 @@ type ClearButtonProps = Omit<React.ComponentProps<"button">, "size" | "style" | 
 }
 
 const sizeClasses: Record<ClearButtonSize, { button: "sm" | "xsm"; icon: string }> = {
-  md: { button: "sm", icon: "size-[var(--rhood-sizing-base-module-2-5)]" },
-  sm: { button: "xsm", icon: "size-[var(--rhood-sizing-base-module-2)]" },
+  md: { button: "sm", icon: "size-[var(--rh-sizing-base-module-2-5)]" },
+  sm: { button: "xsm", icon: "size-[var(--rh-sizing-base-module-2)]" },
 }
 
 /** Clears the current value while keeping focus on its associated text input. */
@@ -33,7 +33,7 @@ function ClearButton({
       aria-label={ariaLabel}
       appearance="inherit"
       className={cn(
-        "focus-visible:ring-2 focus-visible:ring-[var(--rhood-theme-border-focus)]",
+        "focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-border-focus)]",
         className,
       )}
       icon={<img alt="" className={resolvedSize.icon} src="/Rhood/assets/circle-x.svg" />}

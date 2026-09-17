@@ -149,7 +149,7 @@ function InputNumber({
           <ClearButton
             aria-label="Очистить поле"
             className={cn(
-              "focus-visible:ring-2 focus-visible:ring-[var(--rhood-theme-border-focus)]",
+              "focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-border-focus)]",
               size === "md" ? "m-[-12px]" : "m-[-8px]",
             )}
             onClick={() => {

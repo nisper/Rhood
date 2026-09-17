@@ -29,24 +29,24 @@ const sizeClasses: Record<
 > = {
   md: {
     button:
-      "min-h-[var(--rhood-sizing-base-module-5)] gap-[var(--rhood-sizing-common-input-padding-gap-md)] px-[var(--rhood-sizing-common-input-padding-px-md)] py-[var(--rhood-sizing-common-input-padding-py-md)]",
-    icon: "size-[var(--rhood-sizing-base-module-3)]",
+      "min-h-[var(--rh-sizing-base-module-5)] gap-[var(--rh-sizing-common-input-padding-gap-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+    icon: "size-[var(--rh-sizing-base-module-3)]",
     label:
-      "text-[length:var(--rhood-sizing-typography-font-size-md)] leading-[var(--rhood-sizing-typography-line-height-md)] tracking-[var(--rhood-sizing-typography-letter-spacing-md)]",
+      "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
     button:
-      "min-h-[var(--rhood-sizing-base-module-4-5)] gap-[var(--rhood-sizing-common-input-padding-gap-sm)] px-[var(--rhood-sizing-common-input-padding-px-sm)] py-[var(--rhood-sizing-common-input-padding-py-sm)]",
-    icon: "size-[var(--rhood-sizing-base-module-2-5)]",
+      "min-h-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-common-input-padding-gap-sm)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+    icon: "size-[var(--rh-sizing-base-module-2-5)]",
     label:
-      "text-[length:var(--rhood-sizing-typography-font-size-sm)] leading-[var(--rhood-sizing-typography-line-height-sm)] tracking-[var(--rhood-sizing-typography-letter-spacing-sm)]",
+      "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   },
   xsm: {
     button:
-      "min-h-[calc(var(--rhood-sizing-base-module-4)-var(--rhood-sizing-base-module-0-5))] gap-[var(--rhood-sizing-common-input-padding-gap-xsm)] px-[var(--rhood-sizing-common-input-padding-px-xsm)] py-[var(--rhood-sizing-common-input-padding-py-xsm)]",
-    icon: "size-[var(--rhood-sizing-base-module-2)]",
+      "min-h-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))] gap-[var(--rh-sizing-common-input-padding-gap-xsm)] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)]",
+    icon: "size-[var(--rh-sizing-base-module-2)]",
     label:
-      "text-[length:var(--rhood-sizing-typography-font-size-xsm)] leading-[var(--rhood-sizing-typography-line-height-xsm)] tracking-[var(--rhood-sizing-typography-letter-spacing-sm)]",
+      "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   },
 }
 
@@ -55,18 +55,18 @@ const surfaceClasses: Record<
   { default: string; hovered: string }
 > = {
   neutral: {
-    default: "bg-[var(--rhood-theme-fill-neutral)]",
-    hovered: "bg-[var(--rhood-theme-fill-neutral-hover)]",
+    default: "bg-[var(--rh-theme-fill-neutral)]",
+    hovered: "bg-[var(--rh-theme-fill-neutral-hover)]",
   },
   ghost: {
     default: "bg-transparent",
-    hovered: "bg-[var(--rhood-theme-fill-neutral-hover)]",
+    hovered: "bg-[var(--rh-theme-fill-neutral-hover)]",
   },
 }
 
 const surfaceHoverClasses: Record<ButtonFavoriteAppearance, string> = {
-  neutral: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
-  ghost: "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
+  neutral: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+  ghost: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
 }
 
 /**
@@ -121,18 +121,18 @@ function ButtonFavorite({
       aria-label={ariaLabel ?? (isIconOnly ? (isChecked ? "Удалить из избранного" : "Добавить в избранное") : undefined)}
       aria-pressed={isChecked}
       className={cn(
-        "group inline-flex shrink-0 cursor-pointer items-center justify-center border-0 font-semibold text-[var(--rhood-theme-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rhood-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--rhood-theme-fill-disabled)] disabled:text-[var(--rhood-theme-text-neutral-disabled)]",
+        "group inline-flex shrink-0 cursor-pointer items-center justify-center border-0 font-semibold text-[var(--rh-theme-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--rh-theme-fill-disabled)] disabled:text-[var(--rh-theme-text-neutral-disabled)]",
         isIconOnly
           ? cn(
               "rounded-full",
-              size === "md" && "size-[var(--rhood-sizing-base-module-5)]",
-              size === "sm" && "size-[var(--rhood-sizing-base-module-4-5)]",
-              size === "xsm" && "size-[calc(var(--rhood-sizing-base-module-4)-var(--rhood-sizing-base-module-0-5))]",
-              !disabled && "hover:bg-[var(--rhood-theme-fill-error-light-hover)]",
-              isHovered && !disabled && "bg-[var(--rhood-theme-fill-error-light-hover)]",
+              size === "md" && "size-[var(--rh-sizing-base-module-5)]",
+              size === "sm" && "size-[var(--rh-sizing-base-module-4-5)]",
+              size === "xsm" && "size-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))]",
+              !disabled && "hover:bg-[var(--rh-theme-fill-error-light-hover)]",
+              isHovered && !disabled && "bg-[var(--rh-theme-fill-error-light-hover)]",
             )
           : cn(
-              "rounded-[var(--rhood-sizing-common-input-shape-border-radius)]",
+              "rounded-[var(--rh-sizing-common-input-shape-border-radius)]",
               tokens.button,
               surfaceClasses[resolvedAppearance][visualState],
               !disabled && surfaceHoverClasses[resolvedAppearance],
@@ -150,13 +150,13 @@ function ButtonFavorite({
           "shrink-0 transition-colors",
           tokens.icon,
           disabled
-            ? "text-[var(--rhood-theme-icon-neutral-disabled)]"
+            ? "text-[var(--rh-theme-icon-neutral-disabled)]"
             : isChecked
-              ? "fill-current text-[var(--rhood-theme-icon-error)]"
+              ? "fill-current text-[var(--rh-theme-icon-error)]"
               : isHovered
-                ? "text-[var(--rhood-theme-icon-error)]"
-                : "text-[var(--rhood-theme-icon-neutral-secondary)]",
-          !disabled && !isChecked && "group-hover:text-[var(--rhood-theme-icon-error)]",
+                ? "text-[var(--rh-theme-icon-error)]"
+                : "text-[var(--rh-theme-icon-neutral-secondary)]",
+          !disabled && !isChecked && "group-hover:text-[var(--rh-theme-icon-error)]",
         )}
         strokeWidth={2}
       />

@@ -159,6 +159,16 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
+@layer components {
+  .rhood-page-gutter {
+    padding-inline: var(--rh-sizing-layout-edge-to-edge-wrapper);
+  }
+
+  .rhood-page-gutter-mobile {
+    padding-inline: var(--rh-sizing-base-module-1-5);
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;

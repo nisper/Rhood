@@ -43,7 +43,7 @@ export function TokenSizingExamples() {
     <section className="grid min-w-0 gap-4">
       <div>
         <h2 className="text-xl font-semibold leading-7">Токены размеров</h2>
-        <p className="text-sm leading-5 text-[color:var(--rhood-theme-text-neutral-secondary)]">{allTokens.length} токенов из sizing.json</p>
+        <p className="text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">{allTokens.length} токенов из sizing.json</p>
       </div>
 
       <div className="flex items-center gap-3">
@@ -53,21 +53,21 @@ export function TokenSizingExamples() {
         <Search aria-label="Название токена" className="min-w-0 flex-1" onChange={(event) => setQuery(event.target.value)} placeholder="Название токена" size="sm" value={query} />
       </div>
 
-      <Table className="min-w-[760px] border border-[color:var(--rhood-theme-border-light)] bg-[var(--rhood-theme-surface-bg)]">
-        <div className="flex border-b border-[color:var(--rhood-theme-border-light)]" role="row">
+      <Table className="min-w-[760px] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]">
+        <div className="flex border-b border-[color:var(--rh-theme-border-light)]" role="row">
           <TableCell helpIcon={false} role="head" sort={false} type="text" width={230}>Figma token</TableCell>
           <TableCell helpIcon={false} role="head" sort={false} type="text" width={150}>Итоговое значение</TableCell>
           <TableCell helpIcon={false} role="head" sort={false} type="text" width={220}>Alias</TableCell>
           <TableCell helpIcon={false} role="head" sort={false} type="text" width="fill">CSS variable</TableCell>
         </div>
-        {tokens.map((token) => <div className="flex border-b border-[color:var(--rhood-theme-border-light)] last:border-b-0" key={`${token.collection}/${token.name}`} role="row">
-          <TableCell custom role="body" type="text" width={230}><code className="font-mono text-sm leading-5 text-[color:var(--rhood-theme-text-neutral-primary)]">{token.name}</code></TableCell>
-          <TableCell custom role="body" type="text" width={150}><code className="font-mono text-sm leading-5 text-[color:var(--rhood-theme-text-neutral-primary)]">{token.resolvedValue ?? "—"}</code></TableCell>
-          <TableCell custom role="body" type="text" width={220}><code className="font-mono text-sm leading-5 text-[color:var(--rhood-theme-text-neutral-secondary)]">{token.alias ? `${token.alias.collection}/${token.alias.name}` : "—"}</code></TableCell>
-          <TableCell custom role="body" type="text" width="fill"><code className="font-mono text-sm leading-5 text-[color:var(--rhood-theme-text-neutral-secondary)]">{token.cssVariable}</code></TableCell>
+        {tokens.map((token) => <div className="flex border-b border-[color:var(--rh-theme-border-light)] last:border-b-0" key={`${token.collection}/${token.name}`} role="row">
+          <TableCell custom role="body" type="text" width={230}><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">{token.name}</code></TableCell>
+          <TableCell custom role="body" type="text" width={150}><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">{token.resolvedValue ?? "—"}</code></TableCell>
+          <TableCell custom role="body" type="text" width={220}><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">{token.alias ? `${token.alias.collection}/${token.alias.name}` : "—"}</code></TableCell>
+          <TableCell custom role="body" type="text" width="fill"><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">{token.cssVariable}</code></TableCell>
         </div>)}
       </Table>
-      {tokenData.summary.warnings.length > 0 && <p className="text-sm leading-5 text-[color:var(--rhood-theme-text-error)]">Проверь JSON: {tokenData.summary.warnings.join("; ")}</p>}
+      {tokenData.summary.warnings.length > 0 && <p className="text-sm leading-5 text-[color:var(--rh-theme-text-error)]">Проверь JSON: {tokenData.summary.warnings.join("; ")}</p>}
     </section>
   )
 }

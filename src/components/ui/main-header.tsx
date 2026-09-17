@@ -66,7 +66,7 @@ function MainHeader({
     return (
       <header
         className={cn(
-          "flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--parser-fill-neutral-dark-ultra)] px-3 py-2",
+          "rhood-page-gutter-mobile flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--parser-fill-neutral-dark-ultra)] py-2",
           className,
         )}
         {...props}
@@ -95,7 +95,7 @@ function MainHeader({
   return (
     <header
       className={cn(
-        "flex w-full items-center gap-4 bg-[var(--parser-fill-neutral-dark-ultra)] px-6 py-2",
+        "rhood-page-gutter flex w-full items-center gap-4 bg-[var(--parser-fill-neutral-dark-ultra)] py-2",
         className,
       )}
       {...props}

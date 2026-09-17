@@ -18,25 +18,25 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[var(--rhood-sizing-base-module-6)] min-w-[var(--rhood-sizing-base-module-4-5)] gap-[var(--rhood-sizing-base-module-1)] rounded-[var(--rhood-sizing-border-radius-border-radius-md)] px-[var(--rhood-sizing-base-module-2)] py-[var(--rhood-sizing-base-module-1-5)] text-[length:var(--rhood-sizing-typography-font-size-lg)] leading-[var(--rhood-sizing-typography-line-height-lg)] tracking-[var(--rhood-sizing-typography-letter-spacing-lg)]",
-  md: "h-[var(--rhood-sizing-base-module-4)] min-w-[var(--rhood-sizing-base-module-4-5)] gap-[var(--rhood-sizing-base-module-1)] rounded-[var(--rhood-sizing-border-radius-border-radius-sm)] px-[var(--rhood-sizing-base-module-1-5)] py-[var(--rhood-sizing-base-module-0-5)] text-[length:var(--rhood-sizing-typography-font-size-md)] leading-[var(--rhood-sizing-typography-line-height-md)] tracking-[var(--rhood-sizing-typography-letter-spacing-md)]",
-  sm: "h-[calc(var(--rhood-sizing-base-module-3)+var(--rhood-sizing-base-module-0-5))] min-w-[var(--rhood-sizing-base-module-4-5)] gap-[var(--rhood-sizing-base-module-1)] rounded-[var(--rhood-sizing-border-radius-border-radius-sm)] px-[var(--rhood-sizing-base-module-1-5)] py-[var(--rhood-sizing-base-module-0-5)] text-[length:var(--rhood-sizing-typography-font-size-sm)] leading-[var(--rhood-sizing-typography-line-height-sm)] tracking-[var(--rhood-sizing-typography-letter-spacing-sm)]",
+  lg: "h-[var(--rh-sizing-base-module-6)] min-w-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-base-module-1)] rounded-[var(--rh-sizing-border-radius-border-radius-md)] px-[var(--rh-sizing-base-module-2)] py-[var(--rh-sizing-base-module-1-5)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
+  md: "h-[var(--rh-sizing-base-module-4)] min-w-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-base-module-1)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[var(--rh-sizing-base-module-1-5)] py-[var(--rh-sizing-base-module-0-5)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "h-[calc(var(--rh-sizing-base-module-3)+var(--rh-sizing-base-module-0-5))] min-w-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-base-module-1)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[var(--rh-sizing-base-module-1-5)] py-[var(--rh-sizing-base-module-0-5)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 const iconClasses: Record<SegmentSize, string> = {
-  lg: "size-[var(--rhood-sizing-icon-icon-md)]",
-  md: "size-[var(--rhood-sizing-base-module-2-5)]",
-  sm: "size-[var(--rhood-sizing-base-module-2)]",
+  lg: "size-[var(--rh-sizing-icon-icon-md)]",
+  md: "size-[var(--rh-sizing-base-module-2-5)]",
+  sm: "size-[var(--rh-sizing-base-module-2)]",
 }
 
 const colorClasses: Record<SegmentColor, { default: string; selected: string }> = {
   neutral: {
-    default: "text-[var(--rhood-theme-text-neutral-primary)]",
-    selected: "bg-[var(--rhood-theme-fill-contrast-static)] text-[var(--rhood-theme-text-neutral-primary)]",
+    default: "text-[var(--rh-theme-text-neutral-primary)]",
+    selected: "bg-[var(--rh-theme-fill-contrast-static)] text-[var(--rh-theme-text-neutral-primary)]",
   },
   contrast: {
-    default: "text-[var(--rhood-theme-text-neutral-primary)]",
-    selected: "bg-[var(--rhood-theme-fill-neutral-dark)] text-[var(--rhood-theme-text-neutral-primary-contrast)]",
+    default: "text-[var(--rh-theme-text-neutral-primary)]",
+    selected: "bg-[var(--rh-theme-fill-neutral-dark)] text-[var(--rh-theme-text-neutral-primary-contrast)]",
   },
 }
 
@@ -68,11 +68,11 @@ function Segment({
     <button
       {...selectionAccessibility}
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-0 bg-transparent font-[480] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rhood-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-[var(--rhood-theme-text-neutral-disabled)]",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-0 bg-transparent font-[480] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-[var(--rh-theme-text-neutral-disabled)]",
         sizeClasses[size],
         colorClasses[color][isSelected ? "selected" : "default"],
-        !disabled && !isSelected && state === "hover" && "bg-[var(--rhood-theme-fill-neutral-hover)]",
-        !disabled && !isSelected && "hover:bg-[var(--rhood-theme-fill-neutral-hover)]",
+        !disabled && !isSelected && state === "hover" && "bg-[var(--rh-theme-fill-neutral-hover)]",
+        !disabled && !isSelected && "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         className,
       )}
       disabled={disabled}

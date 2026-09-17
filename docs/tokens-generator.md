@@ -33,7 +33,7 @@ src/styles/design-tokens.css
 src/data/generated/tokens.generated.json
 ```
 
-- `design-tokens.css` уже подключён один раз в `src/index.css`, поэтому компонентам не нужно импортировать его отдельно. В коде используется нужная CSS-переменная, например `var(--rhood-sizing-base-module-2)`.
+- `design-tokens.css` уже подключён один раз в `src/index.css`, поэтому компонентам не нужно импортировать его отдельно. В коде используется нужная CSS-переменная, например `var(--rh-sizing-base-module-2)`.
 - `tokens.generated.json` предназначен для страницы/таблицы токенов в витрине компонентов.
 
 `design-tokens.css` руками не редактируют: его нужно перегенерировать из JSON.
@@ -44,7 +44,7 @@ Alias сохраняются как CSS-зависимости, а не заме
 
 ```text
 Figma: text/brand → brand/600 → blue/600
-CSS:  --rhood-theme-text-brand: var(--rhood-palette-brand-600)
+CSS:  --rh-theme-text-brand: var(--rh-palette-brand-600)
 ```
 
 Скрипт поддерживает оба формата из текущего Figma-экспорта:

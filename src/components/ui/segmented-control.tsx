@@ -13,14 +13,14 @@ type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[var(--rhood-sizing-base-module-7)] rounded-[var(--rhood-sizing-border-radius-border-radius-lg)]",
-  md: "h-[var(--rhood-sizing-base-module-5)] rounded-[var(--rhood-sizing-border-radius-border-radius-md)]",
-  sm: "h-[var(--rhood-sizing-base-module-4-5)] rounded-[var(--rhood-sizing-border-radius-border-radius-md)]",
+  lg: "h-[var(--rh-sizing-base-module-7)] rounded-[var(--rh-sizing-border-radius-border-radius-lg)]",
+  md: "h-[var(--rh-sizing-base-module-5)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
+  sm: "h-[var(--rh-sizing-base-module-4-5)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
 }
 
 const colorClasses: Record<SegmentColor, string> = {
-  neutral: "bg-[var(--rhood-theme-fill-neutral)]",
-  contrast: "border border-[var(--rhood-theme-border-light)] bg-[var(--rhood-theme-fill-contrast-static)]",
+  neutral: "bg-[var(--rh-theme-fill-neutral)]",
+  contrast: "border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-fill-contrast-static)]",
 }
 
 /** A shared surface that visually combines two or more Segment components. */
@@ -87,7 +87,7 @@ function SegmentedControl({
     <div
       aria-label="Segmented control"
       className={cn(
-        "inline-flex w-fit items-center gap-[var(--rhood-sizing-base-module-0-25)] overflow-clip p-[var(--rhood-sizing-base-module-0-5)]",
+        "inline-flex w-fit items-center gap-[var(--rh-sizing-base-module-0-25)] overflow-clip p-[var(--rh-sizing-base-module-0-5)]",
         sizeClasses[size],
         colorClasses[color],
         className,

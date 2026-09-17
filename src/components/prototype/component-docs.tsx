@@ -8,6 +8,7 @@ import { ButtonFavoriteExamples } from "./button-favorite-examples";
 import { TokenColorsExamples } from "./token-colors-examples";
 import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
+import { LikeButtonExamples } from "./like-button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
 import { MenuExamples } from "./menu-examples";
@@ -32,7 +33,6 @@ import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
 import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
-import { LikeButton } from "@/components/ui/like-button";
 import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
 import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button";
@@ -221,19 +221,12 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "like-button",
     title: "LikeButton",
-    description: "Кнопка лайка.",
+    description: "Круглая кнопка для отметки понравившегося объекта.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=8555-1158&t=qgpeAUwfz0SYZxkD-11",
     group: "Actions",
     source: "src/components/ui/like-button.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <LikeButton />
-          <LikeButton checked />
-          <LikeButton state="hover" />
-          <LikeButton checked state="hover" />
-        </Matrix>
-      </Canvas>
-    ),
+    render: () => <LikeButtonExamples />,
   },
   {
     id: "icon-button",
@@ -1253,7 +1246,9 @@ function ComponentNavigation({
 }) {
   const celebratoryComponentIds = new Set([
     "button",
+    "button-favorite",
     "icon-button",
+    "like-button",
     "select",
     "segmented-control",
     "menu",

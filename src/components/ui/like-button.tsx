@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Heart } from "lucide-react"
+import { ThumbsUp } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
@@ -58,7 +58,7 @@ function LikeButton({
             : "text-[var(--parser-text-neutral-primary)]",
         )}
       >
-        <Heart aria-hidden="true" className={cn("size-5", checked && "fill-current")} strokeWidth={2} />
+        <ThumbsUp aria-hidden="true" className="size-5" strokeWidth={2} />
       </span>
     </button>
   )

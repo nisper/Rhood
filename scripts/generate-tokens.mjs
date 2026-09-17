@@ -69,7 +69,7 @@ function flattenTokens(node, collection, pathParts = []) {
 }
 
 function cssVariableName(collection, tokenPath) {
-  return `--rhood-${toKebabCase(collection)}-${tokenPath.map(toKebabCase).join("-")}`
+  return `--rh-${toKebabCase(collection)}-${tokenPath.map(toKebabCase).join("-")}`
 }
 
 async function readSource({ collection, file }) {
