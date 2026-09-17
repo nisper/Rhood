@@ -9,6 +9,7 @@ import { TokenColorsExamples } from "./token-colors-examples";
 import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
 import { LikeButtonExamples } from "./like-button-examples";
+import { DrawerExamples } from "./drawer-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { CheckboxExamples } from "./checkbox-examples";
 import { MenuExamples } from "./menu-examples";
@@ -16,6 +17,7 @@ import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
+import { ModalExamples } from "./modal-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Copy, PartyPopper } from "lucide-react";
@@ -237,6 +239,16 @@ const componentDocs: ComponentDoc[] = [
     group: "Actions",
     source: "src/components/ui/icon-button.tsx",
     render: () => <IconButtonExamples />,
+  },
+  {
+    id: "modal",
+    title: "Modal",
+    description: "Поверхность модального диалога для подтверждения действий.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10389-14068",
+    group: "Feedback",
+    source: "src/components/ui/modal.tsx",
+    render: () => <ModalExamples />,
   },
   {
     id: "toggle-button",
@@ -655,6 +667,16 @@ const componentDocs: ComponentDoc[] = [
         </div>
       </Canvas>
     ),
+  },
+  {
+    id: "drawer",
+    title: "Drawer",
+    description: "Боковая панель с хедером, содержимым и областью действий.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10389-14220",
+    group: "Layout",
+    source: "src/components/ui/drawer.tsx",
+    render: () => <DrawerExamples />,
   },
   {
     id: "main-header-menu-button",

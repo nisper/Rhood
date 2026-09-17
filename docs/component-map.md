@@ -36,6 +36,7 @@
 | `930:25605` | `Snackbar` | `src/components/ui/snackbar.tsx` / `Snackbar` |
 | `414:3051` | `TableCell` | `src/components/ui/table-cell.tsx` / `TableCell` |
 | `416:3328` | `Table` | `src/components/ui/table.tsx` / `Table` |
+| `10389:14068` | `modal` | `src/components/ui/modal.tsx` / `Modal` |
 
 | `8555:1158` | `LikeButton` | `src/components/ui/like-button.tsx` / `LikeButton` |
 | `10252:5944` | `Tag` | `src/components/ui/tag.tsx` / `Tag` |
