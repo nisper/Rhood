@@ -1088,6 +1088,7 @@ function ComponentPage({
 export function ComponentDocs() {
   const [activeId, setActiveId] = React.useState(getActiveComponentId);
   const [query, setQuery] = React.useState("");
+  const [mobileNavigationOpen, setMobileNavigationOpen] = React.useState(false);
   const [snackbarVisible, setSnackbarVisible] = React.useState(false);
   const mobileNavigationRef = React.useRef<HTMLElement | null>(null);
   const desktopNavigationRef = React.useRef<HTMLElement | null>(null);
@@ -1153,17 +1154,19 @@ export function ComponentDocs() {
   }, [activeDoc.title]);
 
   const focusFirstNavigationItem = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key !== "Tab" || event.shiftKey || !normalizedQuery) return;
+    if (event.key !== "Tab" || event.shiftKey) return;
 
-    const navigation = [mobileNavigationRef.current, desktopNavigationRef.current].find(
-      (node) => node?.getClientRects().length,
-    );
+    const isMobileNavigation = window.matchMedia("(max-width: 767px)").matches;
+    const navigation = isMobileNavigation
+      ? mobileNavigationRef.current
+      : desktopNavigationRef.current;
     const firstItem = navigation?.querySelector<HTMLButtonElement>("button:not(:disabled)");
 
     if (!firstItem) return;
 
     event.preventDefault();
-    firstItem.focus();
+    if (isMobileNavigation) setMobileNavigationOpen(true);
+    window.requestAnimationFrame(() => firstItem.focus());
   };
 
   return (
@@ -1199,7 +1202,8 @@ export function ComponentDocs() {
           </div>
           <details
             className="group md:hidden"
-            open={normalizedQuery ? true : undefined}
+            onToggle={(event) => setMobileNavigationOpen(event.currentTarget.open)}
+            open={mobileNavigationOpen || Boolean(normalizedQuery)}
           >
             <summary className="cursor-pointer px-6 py-3 text-sm">
               Компоненты — {activeDoc.title}
