@@ -52,7 +52,6 @@ import { Tag } from "@/components/ui/tag";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline";
-import { ToggleButton } from "@/components/ui/toggle-button";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -237,22 +236,6 @@ const componentDocs: ComponentDoc[] = [
     group: "Actions",
     source: "src/components/ui/icon-button.tsx",
     render: () => <IconButtonExamples />,
-  },
-  {
-    id: "toggle-button",
-    title: "ToggleButton",
-    description: "Переключатель в виде кнопки.",
-    group: "Actions",
-    source: "src/components/ui/toggle-button.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <ToggleButton size="lg" />
-          <ToggleButton selected size="md" />
-          <ToggleButton size="sm" state="hover" />
-        </Matrix>
-      </Canvas>
-    ),
   },
   {
     id: "segmented-control",
@@ -1106,6 +1089,8 @@ export function ComponentDocs() {
   const [activeId, setActiveId] = React.useState(getActiveComponentId);
   const [query, setQuery] = React.useState("");
   const [snackbarVisible, setSnackbarVisible] = React.useState(false);
+  const mobileNavigationRef = React.useRef<HTMLElement | null>(null);
+  const desktopNavigationRef = React.useRef<HTMLElement | null>(null);
   const snackbarTimer = React.useRef<number | undefined>(undefined);
 
   React.useEffect(() => {
@@ -1167,6 +1152,20 @@ export function ComponentDocs() {
     document.title = `Design system — ${activeDoc.title}`;
   }, [activeDoc.title]);
 
+  const focusFirstNavigationItem = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key !== "Tab" || event.shiftKey || !normalizedQuery) return;
+
+    const navigation = [mobileNavigationRef.current, desktopNavigationRef.current].find(
+      (node) => node?.getClientRects().length,
+    );
+    const firstItem = navigation?.querySelector<HTMLButtonElement>("button:not(:disabled)");
+
+    if (!firstItem) return;
+
+    event.preventDefault();
+    firstItem.focus();
+  };
+
   return (
     <div className="min-h-svh bg-[var(--parser-surface-bg)] text-[var(--parser-text-neutral-primary)]">
       <div className="grid md:grid-cols-[300px_minmax(0,1fr)]">
@@ -1192,6 +1191,7 @@ export function ComponentDocs() {
               aria-label="Найти компонент"
               className="mt-5"
               onChange={(event) => setQuery(event.target.value)}
+              onKeyDown={focusFirstNavigationItem}
               placeholder="Найти компонент"
               size="sm"
               value={query}
@@ -1204,10 +1204,10 @@ export function ComponentDocs() {
             <summary className="cursor-pointer px-6 py-3 text-sm">
               Компоненты — {activeDoc.title}
             </summary>
-            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} />
+            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} ref={mobileNavigationRef} />
           </details>
           <div className="hidden md:block">
-            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} />
+            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} ref={desktopNavigationRef} />
           </div>
         </aside>
         <main className="min-w-0">
@@ -1237,13 +1237,11 @@ export function ComponentDocs() {
   );
 }
 
-function ComponentNavigation({
-  activeId,
-  groups,
-}: {
+const ComponentNavigation = React.forwardRef<HTMLElement, {
   activeId: string;
   groups: Record<string, ComponentDoc[]>;
-}) {
+}>(function ComponentNavigation({ activeId, groups }, ref) {
+  const [focusedId, setFocusedId] = React.useState<string | undefined>();
   const celebratoryComponentIds = new Set([
     "button",
     "button-favorite",
@@ -1259,8 +1257,40 @@ function ComponentNavigation({
     "input-number",
   ]);
 
+  const handleItemKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
+    const navigation = event.currentTarget.closest("nav");
+    const items = navigation
+      ? Array.from(navigation.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"))
+      : [];
+    const currentIndex = items.indexOf(event.currentTarget);
+
+    if (currentIndex === -1) return;
+
+    const nextIndex = event.key === "ArrowDown"
+      ? Math.min(currentIndex + 1, items.length - 1)
+      : event.key === "ArrowUp"
+        ? Math.max(currentIndex - 1, 0)
+        : event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? items.length - 1
+            : event.key === "Tab"
+              ? currentIndex + (event.shiftKey ? -1 : 1)
+              : currentIndex;
+
+    if (nextIndex < 0 || nextIndex >= items.length || nextIndex === currentIndex) {
+      if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
+        event.preventDefault();
+      }
+      return;
+    }
+
+    event.preventDefault();
+    items[nextIndex].focus();
+  };
+
   return (
-    <nav aria-label="Компоненты" className="grid gap-5 px-6 py-4">
+    <nav aria-label="Компоненты" className="grid gap-5 px-6 py-4" ref={ref}>
       {Object.entries(groups).map(([group, items]) => (
         <section key={group}>
           <h2 className="text-xs font-normal uppercase leading-8 tracking-[0.83px] text-[var(--parser-text-neutral-secondary)]">
@@ -1272,7 +1302,10 @@ function ComponentNavigation({
                 <button
                   aria-current={doc.id === activeId ? "page" : undefined}
                   className="block w-full cursor-pointer rounded-lg text-left focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+                  onBlur={() => setFocusedId(undefined)}
                   onClick={() => setActiveComponentId(doc.id)}
+                  onFocus={() => setFocusedId(doc.id)}
+                  onKeyDown={handleItemKeyDown}
                   type="button"
                 >
                   <ListItem
@@ -1281,6 +1314,7 @@ function ComponentNavigation({
                     secondaryText={false}
                     selected={doc.id === activeId}
                     startIcon={false}
+                    state={doc.id === focusedId ? "focused" : "default"}
                     endIcon={
                       celebratoryComponentIds.has(doc.id) ? (
                         <PartyPopper
@@ -1311,4 +1345,4 @@ function ComponentNavigation({
       )}
     </nav>
   );
-}
+});

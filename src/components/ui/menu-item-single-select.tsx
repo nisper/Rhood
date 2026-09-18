@@ -31,11 +31,11 @@ function getBackground({
   }
 
   if (selected && state === "default") {
-    return "bg-[var(--parser-fill-neutral-selected)]"
+    return "bg-[var(--rh-theme-fill-neutral-selected)]"
   }
 
   if (!selected && state === "hovered") {
-    return "bg-[var(--parser-fill-neutral-hover)]"
+    return "bg-[var(--rh-theme-fill-neutral-hover)]"
   }
 
   return "bg-transparent"
@@ -59,15 +59,15 @@ function MenuItemSingleSelect({
 }: MenuItemSingleSelectProps) {
   const resolvedRightSlotChip = chip ?? rightSlotChip
   const rightSlotVisible = rightSlot && (rightSlotText || resolvedRightSlotChip)
-  const disabledOpacityClass = "opacity-[var(--opacity-disabled,0.5)]"
+  const disabledOpacityClass = "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]"
 
   return (
     <div
       className={cn(
-        "flex w-full items-center gap-2 rounded-lg px-3",
+        "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-menu-border-radius)] px-[var(--rh-sizing-menu-padding-px-sm)]",
         size === "md" ? "py-2.5" : "py-2",
         getBackground({ disabled, selected, state }),
-        !disabled && !selected && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
+        !disabled && !selected && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         className,
       )}
       {...props}
@@ -78,11 +78,11 @@ function MenuItemSingleSelect({
       {(icon ?? startIcon) && (
         <span
           className={cn(
-            "flex size-5 shrink-0 items-center justify-center text-[var(--parser-text-neutral-primary)]",
+            "flex size-[var(--rh-sizing-base-module-2-5)] shrink-0 items-center justify-center text-[var(--rh-theme-text-neutral-primary)]",
             disabled && disabledOpacityClass,
           )}
         >
-          <Star aria-hidden="true" className="size-5" strokeWidth={2} />
+          <Star aria-hidden="true" className="size-[var(--rh-sizing-base-module-2-5)]" strokeWidth={2} />
         </span>
       )}
 
@@ -94,7 +94,7 @@ function MenuItemSingleSelect({
         )}
       >
         <span
-          className={cn("w-full tracking-[0.15px] text-[color:var(--parser-text-neutral-primary)]", size === "md" ? "text-base leading-6" : "text-sm leading-5")}
+          className={cn("w-full tracking-[var(--rh-sizing-typography-letter-spacing-md)] text-[color:var(--rh-theme-text-neutral-primary)]", size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]")}
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           {children}
@@ -102,7 +102,7 @@ function MenuItemSingleSelect({
 
         {secondaryText && (
           <span
-            className="w-full text-sm leading-[1.43] tracking-[0.0238px] text-[color:var(--parser-text-neutral-secondary)]"
+            className="w-full text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)] text-[color:var(--rh-theme-text-neutral-secondary)]"
             style={{ fontVariationSettings: "'wdth' 100" }}
           >
             Secondary text
@@ -119,7 +119,7 @@ function MenuItemSingleSelect({
         >
           {rightSlotText && (
             <span
-              className="whitespace-nowrap text-xs leading-[1.32] tracking-[0.3px] text-[color:var(--parser-text-neutral-secondary)]"
+              className="whitespace-nowrap text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)] text-[color:var(--rh-theme-text-neutral-secondary)]"
               style={{ fontVariationSettings: "'wdth' 100" }}
             >
               rightSlot text

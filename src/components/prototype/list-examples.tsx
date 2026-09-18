@@ -7,6 +7,7 @@ import { TableCell } from "@/components/ui/table-cell"
 const states: { label: string; props: ListItemProps }[] = [
   { label: "Default", props: {} },
   { label: "Hovered", props: { state: "hovered" } },
+  { label: "Focused", props: { state: "focused" } },
   { label: "Selected — текущий раздел", props: { selected: true } },
   { label: "Disabled", props: { disabled: true } },
 ]
@@ -15,8 +16,8 @@ const properties = [
   ["dense", "boolean", "false", "Вертикальные отступы строки: 8 px или 4 px для компактной плотности."],
   ["fontWeight", "medium / regular", "medium", "Насыщенность основного текста."],
   ["selected", "boolean", "false", "Текущий раздел навигации."],
-  ["state", "default / hovered", "default", "Hovered применяется только к доступной невыбранной строке."],
-  ["disabled", "boolean", "false", "Отключает обработчики строки и вложенные кнопки; отменяет selected и hovered."],
+  ["state", "default / hovered / focused", "default", "Hovered и focused используют фон hover только у доступной невыбранной строки."],
+  ["disabled", "boolean", "false", "Отключает обработчики строки и вложенные кнопки; отменяет selected, hovered и focused."],
   ["startIcon / endIcon", "boolean", "true", "Иконки в начале и конце строки."],
   ["secondaryText", "boolean", "true", "Вторичный текст во всех состояниях и при обеих насыщенностях."],
   ["iconButton / button", "boolean", "true", "Дополнительные действия справа."],

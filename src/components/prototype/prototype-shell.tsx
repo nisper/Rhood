@@ -40,7 +40,6 @@ import { DateInput } from "@/components/ui/date-input"
 import { PasswordField } from "@/components/ui/password-field"
 import { Textfield } from "@/components/ui/text-field"
 import { TextFieldMultiline } from "@/components/ui/text-field-multiline"
-import { ToggleButton } from "@/components/ui/toggle-button"
 import { ToggleChip } from "@/components/ui/toggle-chip"
 import { Tooltip } from "@/components/ui/tooltip"
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip"
@@ -116,8 +115,6 @@ export function PrototypeShell() {
   const selectSizes = ["md", "sm"] as const
   const searchSizes = ["md", "sm"] as const
   const textFieldMultilineSizes = ["md", "sm"] as const
-  const toggleButtonSizes = ["lg", "md", "sm"] as const
-  const toggleButtonColors = ["contrast", "neutral-dark", "neutral"] as const
   const tooltipExamples = ["Typography", "Longer tooltip text"] as const
   const onboardingTooltipExamples = ["top", "left", "right", "bottom"] as const
   const addPhotosExamples = ["default", "hover", "load"] as const
@@ -1052,51 +1049,6 @@ export function PrototypeShell() {
                   <div className="flex flex-wrap items-center gap-4">
                     <ToggleChip size={size} />
                     <ToggleChip checked size={size} />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          <section className="grid gap-3">
-            <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
-              toggle button
-            </h4>
-            <div className="grid gap-6 rounded-xl bg-white p-4">
-              {toggleButtonSizes.map((size) => (
-                <div key={size} className="grid gap-3">
-                  <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
-                    {size}
-                  </div>
-                  <div className="grid gap-3 md:grid-cols-3 xl:grid-cols-9">
-                    {toggleButtonColors.map((color) => (
-                      <ToggleButton
-                        color={color}
-                        key={`${size}-${color}-default`}
-                        label
-                        size={size}
-                        state="default"
-                      />
-                    ))}
-                    {toggleButtonColors.map((color) => (
-                      <ToggleButton
-                        color={color}
-                        key={`${size}-${color}-hover`}
-                        label
-                        size={size}
-                        state="hover"
-                      />
-                    ))}
-                    {toggleButtonColors.map((color) => (
-                      <ToggleButton
-                        color={color}
-                        key={`${size}-${color}-selected`}
-                        label
-                        selected
-                        size={size}
-                        state="default"
-                      />
-                    ))}
                   </div>
                 </div>
               ))}

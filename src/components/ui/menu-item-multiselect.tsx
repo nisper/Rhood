@@ -32,18 +32,18 @@ function getBackground({
   }
 
   if (state === "hovered") {
-    return "bg-[var(--parser-fill-neutral-hover)]"
+    return "bg-[var(--rh-theme-fill-neutral-hover)]"
   }
 
   return "bg-transparent"
 }
 
 function getTitleTone() {
-  return "text-[color:var(--parser-text-neutral-primary)]"
+  return "text-[color:var(--rh-theme-text-neutral-primary)]"
 }
 
 function getCaptionTone() {
-  return "text-[color:var(--parser-text-neutral-secondary)]"
+  return "text-[color:var(--rh-theme-text-neutral-secondary)]"
 }
 
 function MenuCheckbox({
@@ -56,15 +56,15 @@ function MenuCheckbox({
   const iconClassName = cn(
     "size-5",
     checked === "true" || checked === "indeterminate"
-      ? "text-[var(--parser-fill-brand)]"
-      : "text-[var(--parser-border-neutral)]",
+      ? "text-[var(--rh-theme-icon-brand)]"
+      : "text-[var(--rh-theme-border-neutral)]",
   )
 
   return (
     <span
       className={cn(
         "flex size-5 shrink-0 items-center justify-center",
-        disabled && "opacity-[var(--opacity-disabled,0.5)]",
+        disabled && "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]",
       )}
     >
       {checked === "true" ? (
@@ -98,15 +98,15 @@ function MenuItemMultiselect({
   const resolvedChecked: MenuItemMultiselectChecked = typeof checked === "boolean" ? (checked ? "true" : "none") : checked ?? (selected ? "true" : "none")
   const resolvedRightSlotText = rightSlotText || caption
   const rightSlotVisible = rightSlot && (resolvedRightSlotText || rightSlotChip)
-  const disabledOpacityClass = "opacity-[var(--opacity-disabled,0.5)]"
+  const disabledOpacityClass = "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]"
 
   return (
     <div
       className={cn(
-        "flex w-full items-start gap-2 rounded-lg px-3",
+        "flex w-full items-start gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-menu-border-radius)] px-[var(--rh-sizing-menu-padding-px-sm)]",
         size === "md" ? "py-2.5" : "py-2",
         getBackground({ disabled, state }),
-        !disabled && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
+        !disabled && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         className,
       )}
       {...props}
@@ -114,18 +114,18 @@ function MenuItemMultiselect({
       onClick={disabled ? undefined : props.onClick}
       onKeyDown={disabled ? undefined : props.onKeyDown}
     >
-      <div className="flex h-5 shrink-0 items-center justify-center">
+      <div className="flex h-[var(--rh-sizing-base-module-2-5)] shrink-0 items-center justify-center">
         <MenuCheckbox checked={resolvedChecked} disabled={disabled} />
       </div>
 
       {(icon ?? startIcon) && (
         <span
           className={cn(
-            "flex size-5 shrink-0 items-center justify-center text-[var(--parser-text-neutral-primary)]",
+            "flex size-[var(--rh-sizing-base-module-2-5)] shrink-0 items-center justify-center text-[var(--rh-theme-text-neutral-primary)]",
             disabled && disabledOpacityClass,
           )}
         >
-          <Star aria-hidden="true" className="size-5" strokeWidth={2} />
+          <Star aria-hidden="true" className="size-[var(--rh-sizing-base-module-2-5)]" strokeWidth={2} />
         </span>
       )}
 
@@ -138,7 +138,7 @@ function MenuItemMultiselect({
       >
         <span
           className={cn(
-              size === "md" ? "w-full text-base leading-6 tracking-[0.15px]" : "w-full text-sm leading-5 tracking-[0.15px]",
+              size === "md" ? "w-full text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]" : "w-full text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
             getTitleTone(),
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
@@ -149,7 +149,7 @@ function MenuItemMultiselect({
         {secondaryText && (
           <span
             className={cn(
-              "w-full text-sm leading-[1.43] tracking-[0.0238px]",
+              "w-full text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
               getCaptionTone(),
             )}
             style={{ fontVariationSettings: "'wdth' 100" }}
@@ -169,7 +169,7 @@ function MenuItemMultiselect({
           {resolvedRightSlotText && (
             <span
               className={cn(
-                "whitespace-nowrap text-xs leading-[1.32] tracking-[0.3px]",
+                "whitespace-nowrap text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
                 getCaptionTone(),
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}

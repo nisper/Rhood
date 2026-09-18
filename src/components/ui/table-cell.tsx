@@ -107,14 +107,14 @@ function TableCell({
         "relative flex min-w-0 shrink-0",
         isCheckbox ? "items-start" : "flex-col",
         isNumber && "items-end text-right",
-        sizeSmall ? "py-2" : "py-3",
-        hasPaddingX && (isCheckbox ? "px-2" : "px-3"),
+        sizeSmall ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
+        hasPaddingX && (isCheckbox ? "px-[var(--rh-sizing-base-module-1)]" : "px-[var(--rh-sizing-table-padding-px)]"),
         isContentWidth && "w-max",
         isFillWidth && "flex-1 basis-0",
         fixedWidth && "shrink-0",
-        isPlaceholder && (sizeSmall ? "h-9" : "h-11"),
-        isSortable && "cursor-pointer hover:bg-[var(--parser-fill-neutral-hover)]",
-        hasSortPadding && "pr-[var(--table-padding-px,12px)]",
+        isPlaceholder && (sizeSmall ? "h-[var(--rh-sizing-base-module-4-5)]" : "h-[calc(var(--rh-sizing-base-module-5)+var(--rh-sizing-base-module-0-5))]"),
+        isSortable && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+        hasSortPadding && "pr-[var(--rh-sizing-table-padding-px)]",
         className,
       )}
       role={isHead ? "columnheader" : "cell"}
@@ -122,16 +122,16 @@ function TableCell({
     >
       {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={resolvedChecked} className="min-h-0 p-0" indeterminate={resolvedIndeterminate} label={false} onChange={event => handleCheckedChange(event.target.checked)} size="sm" />}
 
-      {isSkeleton && <span aria-hidden="true" className="block h-1.5 w-full rounded-lg bg-[var(--parser-fill-skeleton)]" />}
+      {isSkeleton && <span aria-hidden="true" className="block h-[var(--rh-sizing-base-module-0-75)] w-full rounded-[var(--rh-sizing-border-radius-border-radius-md)] bg-[var(--rh-theme-fill-skeleton)]" />}
 
       {!isCheckbox && !isSkeleton && !isPlaceholder && (custom ? (
         children
       ) : (
         <div className={cn("flex min-h-5 w-full items-center gap-1", isNumber && "justify-end")}>
           <span className={cn(
-            "min-w-0 text-sm leading-5 tracking-[0.17px]",
+          "min-w-0 text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
             isContentWidth ? "whitespace-nowrap" : "break-words",
-            isHead ? "font-normal text-[var(--parser-text-neutral-secondary)]" : isNumber ? "font-mono font-normal" : "font-normal",
+            isHead ? "font-normal text-[var(--rh-theme-text-neutral-secondary)]" : isNumber ? "font-mono font-normal" : "font-normal",
           )}>
             {children ?? (instance1 && <>{isHead ? "Head" : "Cell"}{instance2 && " secondary instance"}</>)}
           </span>
@@ -139,7 +139,7 @@ function TableCell({
         </div>
       ))}
 
-      {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-1 top-1 size-3 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-1 top-1 size-3 text-[var(--parser-text-neutral-secondary)]" strokeWidth={2} />)}
+      {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-[var(--rh-sizing-base-module-0-5)] top-[var(--rh-sizing-base-module-0-5)] size-[var(--rh-sizing-base-module-1-5)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-[var(--rh-sizing-base-module-0-5)] top-[var(--rh-sizing-base-module-0-5)] size-[var(--rh-sizing-base-module-1-5)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} />)}
     </div>
   )
 }

@@ -37,16 +37,16 @@ const sizeTokens: Record<
   }
 > = {
   md: {
-    container: "min-h-10 px-3 py-2",
-    valueText: "text-base leading-6 tracking-[0.15px]",
-    helperText: "text-xs leading-[1.66] tracking-[0.15px]",
-    staticLabel: "text-xs leading-4 tracking-[0.15px]",
+    container: "min-h-[var(--rh-sizing-base-module-5)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+    valueText: "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
-    container: "min-h-9 px-3 py-2",
-    valueText: "text-sm leading-5 tracking-[0.15px]",
-    helperText: "text-xs leading-[1.66] tracking-[0.15px]",
-    staticLabel: "text-xs leading-4 tracking-[0.15px]",
+    container: "min-h-[var(--rh-sizing-base-module-4-5)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+    valueText: "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+    helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
 }
 
@@ -60,24 +60,24 @@ function getBorderClasses({
   state: SelectState
 }) {
   if (disabled) {
-    return "border-[color:var(--parser-border-disabled)]"
+    return "border-[color:var(--rh-theme-border-disabled)]"
   }
 
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--parser-fill-error)] ring-1 ring-[color:var(--parser-fill-error)]"
-      : "border-[color:var(--parser-fill-error)]"
+      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-[color:var(--rh-theme-border-error)]"
+      : "border-[color:var(--rh-theme-border-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--parser-fill-brand)] ring-1 ring-[color:var(--parser-fill-brand)]"
+    return "border-[color:var(--rh-theme-border-focus)] ring-1 ring-[color:var(--rh-theme-border-focus)]"
   }
 
   if (state === "hovered") {
-    return "border-[color:var(--parser-border-neutral-dark)]"
+    return "border-[color:var(--rh-theme-border-neutral-dark)]"
   }
 
-  return "border-[color:var(--parser-border-light)]"
+  return "border-[color:var(--rh-theme-border-light)]"
 }
 
 function getLabelTone({
@@ -90,18 +90,18 @@ function getLabelTone({
   state: SelectState
 }) {
   if (disabled) {
-    return "text-[color:var(--parser-text-disabled)]"
+    return "text-[color:var(--rh-theme-text-neutral-disabled)]"
   }
 
   if (error) {
-    return "text-[color:var(--parser-text-error)]"
+    return "text-[color:var(--rh-theme-text-error)]"
   }
 
   if (state === "focused") {
-    return "text-[color:var(--parser-text-brand)]"
+    return "text-[color:var(--rh-theme-text-brand)]"
   }
 
-  return "text-[color:var(--parser-text-neutral-secondary)]"
+  return "text-[color:var(--rh-theme-text-neutral-secondary)]"
 }
 
 function resolveValue(value: React.ReactNode | undefined, fallback: string) {
@@ -156,11 +156,11 @@ function Select({
       <div className={cn("relative w-fit max-w-full", fullWidth && "w-full")}>
         <div
           className={cn(
-            "relative flex w-fit max-w-full cursor-pointer items-center gap-[var(--common-input-padding-gap-md,8px)] rounded-lg border bg-white transition-colors duration-150",
+            "relative flex w-fit max-w-full cursor-pointer items-center gap-[var(--rh-sizing-common-input-padding-gap-md)] rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] transition-colors duration-150",
             fullWidth && "w-full",
             sizeTokens[size].container,
             getBorderClasses({ disabled, error, state: resolvedState }),
-            !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--parser-border-neutral-dark)]",
+            !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--rh-theme-border-neutral-dark)]",
           )}
         >
         {hasIcon && (
@@ -195,7 +195,7 @@ function Select({
             </Chip>
             <span
               className={cn(
-                "whitespace-nowrap pl-3 pr-0.5 font-normal text-[color:var(--parser-text-neutral-primary)]",
+                "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[var(--rh-sizing-base-module-0-5)] font-normal text-[color:var(--rh-theme-text-neutral-primary)]",
                 sizeTokens[size].valueText,
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}
@@ -206,7 +206,7 @@ function Select({
         ) : (
           <div
             className={cn(
-              "flex min-w-0 flex-1 items-center overflow-hidden font-normal text-[color:var(--parser-text-neutral-primary)]",
+              "flex min-w-0 flex-1 items-center overflow-hidden font-normal text-[color:var(--rh-theme-text-neutral-primary)]",
               disabled && "opacity-60",
               sizeTokens[size].valueText,
             )}

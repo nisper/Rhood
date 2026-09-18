@@ -7,10 +7,10 @@ function MenuDivider({ className, ...props }: MenuDividerProps) {
   return (
     <div
       role="separator"
-      className={cn("flex h-4 w-full shrink-0 items-center px-3", className)}
+      className={cn("flex h-[var(--rh-sizing-base-module-2)] w-full shrink-0 items-center px-[var(--rh-sizing-menu-padding-px-sm)]", className)}
       {...props}
     >
-      <div className="h-px w-full bg-[var(--parser-border-light)]" />
+      <div className="h-px w-full bg-[var(--rh-theme-border-light)]" />
     </div>
   )
 }

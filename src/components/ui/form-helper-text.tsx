@@ -10,10 +10,10 @@ type FormHelperTextProps = React.ComponentProps<"p"> & {
 }
 
 const colorClasses: Record<FormHelperTextColor, string> = {
-  default: "text-[color:var(--parser-text-neutral-secondary)]",
-  error: "text-[color:var(--parser-text-error)]",
-  disabled: "text-[color:var(--parser-text-disabled)]",
-  warning: "text-[color:var(--parser-text-warning)]",
+  default: "text-[color:var(--rh-theme-text-neutral-secondary)]",
+  error: "text-[color:var(--rh-theme-text-error)]",
+  disabled: "text-[color:var(--rh-theme-text-neutral-disabled)]",
+  warning: "text-[color:var(--rh-theme-text-warning)]",
 }
 
 function FormHelperText({

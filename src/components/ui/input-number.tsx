@@ -27,23 +27,23 @@ function formatThousands(value: string | number | readonly string[] | undefined)
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
-  md: "h-10 px-3 text-base leading-6 tracking-[0.15px]",
-  sm: "h-9 px-3 text-sm leading-5 tracking-[0.17px]",
+  md: "h-[var(--rh-sizing-base-module-5)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "h-[var(--rh-sizing-base-module-4-5)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 function stateClasses({ error, state }: { error: boolean; state: InputNumberState }) {
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--parser-border-error)] ring-1 ring-inset ring-[color:var(--parser-border-error)]"
-      : "border-[color:var(--parser-border-error)]"
+      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      : "border-[color:var(--rh-theme-border-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--parser-border-focus)] ring-1 ring-inset ring-[color:var(--parser-border-focus)]"
+    return "border-[color:var(--rh-theme-border-focus)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
   }
 
-  if (state === "hovered") return "border-[color:var(--parser-border-hover)] bg-[var(--input-hover,white)]"
-  return "border-[color:var(--parser-border-light)]"
+  if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
+  return "border-[color:var(--rh-theme-border-light)]"
 }
 
 /** A single-line numeric field with monospaced values and optional units. */
@@ -78,9 +78,9 @@ function InputNumber({
   const hasValue = currentValue.length > 0
   const showClearButton = clearButton && hasValue && !disabled && (isFocused || isFocusedPreview)
   const interactiveClasses = !disabled && !error && !isFocusedPreview
-    ? "hover:border-[color:var(--parser-border-hover)] hover:bg-[var(--input-hover,white)] focus:border-[color:var(--parser-border-focus)] focus:bg-[var(--input-focus,white)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--parser-border-focus)]"
+    ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-focus)]"
     : !disabled && error
-      ? "focus:border-[color:var(--parser-border-error)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--parser-border-error)]"
+      ? "focus:border-[color:var(--rh-theme-border-error)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-error)]"
       : undefined
 
   return (
@@ -89,8 +89,8 @@ function InputNumber({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 font-mono text-[var(--parser-text-neutral-secondary)]",
-            size === "md" ? "text-base leading-6" : "text-sm leading-5",
+            "pointer-events-none absolute left-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 font-mono text-[var(--rh-theme-text-neutral-secondary)]",
+            size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >
           {startText}
@@ -99,12 +99,12 @@ function InputNumber({
       <input
         aria-invalid={error || undefined}
         className={cn(
-          "box-border block w-full appearance-none rounded-lg border bg-white font-mono font-normal text-[color:var(--parser-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--parser-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--parser-border-light)] disabled:text-[color:var(--parser-text-disabled)]",
+          "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] font-mono font-normal text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
           sizeClasses[size],
           stateClasses({ error, state }),
           interactiveClasses,
-          startText && "pl-10",
-          (endText || required || showClearButton) && "pr-8",
+          startText && "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+var(--rh-sizing-base-module-2-5)+var(--rh-sizing-common-input-padding-gap-md))]",
+          (endText || required || showClearButton) && "pr-[var(--rh-sizing-base-module-4)]",
           className,
         )}
         disabled={disabled}
@@ -142,15 +142,15 @@ function InputNumber({
         <span
           className={cn(
             "absolute top-1/2 flex -translate-y-1/2 items-center justify-center",
-            size === "md" ? "size-6" : "size-5",
-            endText || required ? "right-8" : "right-2",
+            size === "md" ? "size-[var(--rh-sizing-base-module-3)]" : "size-[var(--rh-sizing-base-module-2-5)]",
+            endText || required ? "right-[var(--rh-sizing-base-module-4)]" : "right-[var(--rh-sizing-base-module-1)]",
           )}
         >
           <ClearButton
             aria-label="Очистить поле"
             className={cn(
               "focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-border-focus)]",
-              size === "md" ? "m-[-12px]" : "m-[-8px]",
+              size === "md" ? "m-[calc(var(--rh-sizing-base-module-1-5)*-1)]" : "m-[calc(var(--rh-sizing-base-module-1)*-1)]",
             )}
             onClick={() => {
               if (!isControlled) setUncontrolledValue("")
@@ -164,8 +164,8 @@ function InputNumber({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--parser-text-neutral-primary)]",
-            size === "md" ? "text-base leading-6" : "text-sm leading-5",
+            "pointer-events-none absolute right-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 text-[var(--rh-theme-text-neutral-primary)]",
+            size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >
           {endText}
@@ -175,9 +175,9 @@ function InputNumber({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute top-1/2 -translate-y-1/2 text-[var(--parser-text-error)]",
-            endText ? "right-8" : "right-3",
-            size === "md" ? "text-base leading-6" : "text-sm leading-5",
+            "pointer-events-none absolute top-1/2 -translate-y-1/2 text-[var(--rh-theme-text-error)]",
+            endText ? "right-[var(--rh-sizing-base-module-4)]" : "right-[var(--rh-sizing-common-input-padding-px-md)]",
+            size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >
           *
