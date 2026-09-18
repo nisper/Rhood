@@ -12,22 +12,22 @@ type LikeButtonProps = React.ComponentProps<"button"> & {
 
 function resolveBackground(checked: boolean, state: LikeButtonState) {
   if (checked && state === "hover") {
-    return "bg-[var(--parser-fill-neutral-dark-hover)]"
+    return "bg-[var(--rh-theme-fill-neutral-dark-hover)]"
   }
 
   if (checked) {
-    return "bg-[var(--parser-fill-neutral-dark)]"
+    return "bg-[var(--rh-theme-fill-neutral-dark)]"
   }
 
   if (state === "hover") {
-    return "bg-[var(--parser-fill-neutral-hover)]"
+    return "bg-[var(--rh-theme-fill-neutral-hover)]"
   }
 
   return "bg-transparent"
 }
 
 /**
- * Parser like button matching the Figma `LikeButton` component set.
+ * Like button matching the Figma `LikeButton` component set.
  */
 function LikeButton({
   checked = false,
@@ -42,9 +42,9 @@ function LikeButton({
     <button
       aria-pressed={checked}
       className={cn(
-        "inline-flex size-10 shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full p-2 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)] hover:bg-[var(--parser-fill-neutral-hover)]",
+        "inline-flex size-[var(--rh-sizing-base-module-5)] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full p-[var(--rh-sizing-base-module-1)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         backgroundClass,
-        checked && "hover:bg-[var(--parser-fill-neutral-dark-hover)]",
+        checked && "hover:bg-[var(--rh-theme-fill-neutral-dark-hover)]",
         className,
       )}
       type={type}
@@ -52,13 +52,13 @@ function LikeButton({
     >
       <span
         className={cn(
-          "flex size-6 shrink-0 items-center justify-center",
+          "flex size-[var(--rh-sizing-base-module-3)] shrink-0 items-center justify-center",
           checked
-            ? "text-[var(--parser-text-primary-contrast)]"
-            : "text-[var(--parser-text-neutral-primary)]",
+            ? "text-[var(--rh-theme-text-neutral-primary-contrast)]"
+            : "text-[var(--rh-theme-text-neutral-primary)]",
         )}
       >
-        <ThumbsUp aria-hidden="true" className="size-5" strokeWidth={2} />
+        <ThumbsUp aria-hidden="true" className="size-[var(--rh-sizing-base-module-2-5)]" strokeWidth={2} />
       </span>
     </button>
   )
