@@ -1252,9 +1252,12 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
     "menu",
     "list",
     "table",
+    "checkbox",
+    "clear-button",
     "text-field",
     "search",
     "input-number",
+    "input-number-range",
   ]);
 
   const handleItemKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
