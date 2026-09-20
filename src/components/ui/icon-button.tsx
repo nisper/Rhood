@@ -19,9 +19,9 @@ type IconButtonProps = Omit<React.ComponentProps<"button">, "style"> & {
 }
 
 const sizeClasses: Record<IconButtonSize, string> = {
-  md: "size-[var(--rh-sizing-base-module-5)] p-[var(--rh-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rh-sizing-base-module-3)]",
-  sm: "size-[var(--rh-sizing-base-module-4-5)] p-[var(--rh-sizing-common-input-padding-py-sm)] [&_svg]:size-[var(--rh-sizing-base-module-2-5)]",
-  xsm: "size-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))] p-[var(--rh-sizing-common-input-padding-py-xsm)] [&_svg]:size-[var(--rh-sizing-base-module-2)]",
+  md: "size-[calc(var(--spacing)*10)] p-[var(--rh-sizing-common-input-padding-py-sm)] [&_svg]:size-[calc(var(--spacing)*6)]",
+  sm: "size-[calc(var(--spacing)*9)] p-[var(--rh-sizing-common-input-padding-py-sm)] [&_svg]:size-[calc(var(--spacing)*5)]",
+  xsm: "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] p-[var(--rh-sizing-common-input-padding-py-xsm)] [&_svg]:size-[calc(var(--spacing)*4)]",
 }
 
 const toneClasses: Record<

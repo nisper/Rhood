@@ -18,8 +18,8 @@ type TextfieldProps = Omit<React.ComponentProps<"input">, "size"> & {
 }
 
 const sizeClasses: Record<TextfieldSize, string> = {
-  md: "h-[var(--rh-sizing-base-module-5)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "h-[var(--rh-sizing-base-module-4-5)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  md: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 function stateClasses({ error, state }: { error: boolean; state: TextfieldState }) {
@@ -79,8 +79,8 @@ function Textfield({
         sizeClasses[size],
         stateClasses({ error, state }),
         interactiveClasses,
-        hasStartAdornment && (size === "md" ? "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+var(--rh-sizing-base-module-3)+var(--rh-sizing-common-input-padding-gap-md))]" : "pl-[calc(var(--rh-sizing-common-input-padding-px-sm)+var(--rh-sizing-base-module-2-5)+var(--rh-sizing-common-input-padding-gap-sm))]"),
-        (required || showClearButton) && "pr-[var(--rh-sizing-base-module-4)]",
+        hasStartAdornment && (size === "md" ? "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*6)+var(--rh-sizing-common-input-padding-gap-md))]" : "pl-[calc(var(--rh-sizing-common-input-padding-px-sm)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-sm))]"),
+        (required || showClearButton) && "pr-[calc(var(--spacing)*8)]",
         className,
       )}
       disabled={disabled}
@@ -121,15 +121,15 @@ function Textfield({
         <span
           className={cn(
             "absolute top-1/2 flex -translate-y-1/2 items-center justify-center",
-            size === "md" ? "size-[var(--rh-sizing-base-module-3)]" : "size-[var(--rh-sizing-base-module-2-5)]",
-            required ? "right-[var(--rh-sizing-base-module-4)]" : "right-[var(--rh-sizing-base-module-1)]",
+            size === "md" ? "size-[calc(var(--spacing)*6)]" : "size-[calc(var(--spacing)*5)]",
+            required ? "right-[calc(var(--spacing)*8)]" : "right-[calc(var(--spacing)*2)]",
           )}
         >
           <ClearButton
             aria-label="Очистить поле"
             className={cn(
               "focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-border-focus)]",
-              size === "md" ? "m-[calc(var(--rh-sizing-base-module-1-5)*-1)]" : "m-[calc(var(--rh-sizing-base-module-1)*-1)]",
+              size === "md" ? "m-[calc(calc(var(--spacing)*3)*-1)]" : "m-[calc(calc(var(--spacing)*2)*-1)]",
             )}
             onClick={() => {
               if (!isControlled) setUncontrolledValue("")

@@ -3425,7 +3425,7 @@
       "name": "avatar/20",
       "cssVariable": "--rh-sizing-avatar-20",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2-5)",
+      "cssValue": "calc(var(--spacing) * 5)",
       "resolvedValue": "20px",
       "alias": {
         "collection": "sizing",
@@ -3439,7 +3439,7 @@
       "name": "avatar/24",
       "cssVariable": "--rh-sizing-avatar-24",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -3453,7 +3453,7 @@
       "name": "avatar/32",
       "cssVariable": "--rh-sizing-avatar-32",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-4)",
+      "cssValue": "calc(var(--spacing) * 8)",
       "resolvedValue": "32px",
       "alias": {
         "collection": "sizing",
@@ -3467,7 +3467,7 @@
       "name": "avatar/40",
       "cssVariable": "--rh-sizing-avatar-40",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-5)",
+      "cssValue": "calc(var(--spacing) * 10)",
       "resolvedValue": "40px",
       "alias": {
         "collection": "sizing",
@@ -3481,7 +3481,7 @@
       "name": "badge/px",
       "cssVariable": "--rh-sizing-badge-px",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -3495,7 +3495,7 @@
       "name": "badge/min-width",
       "cssVariable": "--rh-sizing-badge-min-width",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2-5)",
+      "cssValue": "calc(var(--spacing) * 5)",
       "resolvedValue": "20px",
       "alias": {
         "collection": "sizing",
@@ -3519,7 +3519,7 @@
       "name": "border-radius/border-radius-sm",
       "cssVariable": "--rh-sizing-border-radius-border-radius-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -3533,7 +3533,7 @@
       "name": "border-radius/border-radius-md",
       "cssVariable": "--rh-sizing-border-radius-border-radius-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3547,7 +3547,7 @@
       "name": "border-radius/border-radius-lg",
       "cssVariable": "--rh-sizing-border-radius-border-radius-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -3561,7 +3561,7 @@
       "name": "border-radius/border-radius-xlg",
       "cssVariable": "--rh-sizing-border-radius-border-radius-xlg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -3589,7 +3589,7 @@
       "name": "chips/padding/py-lg",
       "cssVariable": "--rh-sizing-chips-padding-py-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3603,7 +3603,7 @@
       "name": "chips/padding/px-lg",
       "cssVariable": "--rh-sizing-chips-padding-px-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3617,7 +3617,7 @@
       "name": "chips/padding/px-md",
       "cssVariable": "--rh-sizing-chips-padding-px-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -3631,7 +3631,7 @@
       "name": "chips/padding/label-px-md",
       "cssVariable": "--rh-sizing-chips-padding-label-px-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3645,7 +3645,7 @@
       "name": "chips/padding/py-md",
       "cssVariable": "--rh-sizing-chips-padding-py-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -3659,7 +3659,7 @@
       "name": "chips/padding/label-px-sm",
       "cssVariable": "--rh-sizing-chips-padding-label-px-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -3693,7 +3693,7 @@
       "name": "comments/avatar margin",
       "cssVariable": "--rh-sizing-comments-avatar-margin",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -3707,7 +3707,7 @@
       "name": "common-input/icon/width-md",
       "cssVariable": "--rh-sizing-common-input-icon-width-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -3721,7 +3721,7 @@
       "name": "common-input/icon/width-sm",
       "cssVariable": "--rh-sizing-common-input-icon-width-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2-5)",
+      "cssValue": "calc(var(--spacing) * 5)",
       "resolvedValue": "20px",
       "alias": {
         "collection": "sizing",
@@ -3735,7 +3735,7 @@
       "name": "common-input/icon/width-xsm",
       "cssVariable": "--rh-sizing-common-input-icon-width-xsm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -3749,7 +3749,7 @@
       "name": "common-input/padding/text_btn-px-lg",
       "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3763,7 +3763,7 @@
       "name": "common-input/padding/py-lg",
       "cssVariable": "--rh-sizing-common-input-padding-py-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -3777,7 +3777,7 @@
       "name": "common-input/padding/py-chips-lg",
       "cssVariable": "--rh-sizing-common-input-padding-py-chips-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -3791,7 +3791,7 @@
       "name": "common-input/padding/px-lg",
       "cssVariable": "--rh-sizing-common-input-padding-px-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -3805,7 +3805,7 @@
       "name": "common-input/padding/gap-lg",
       "cssVariable": "--rh-sizing-common-input-padding-gap-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3819,7 +3819,7 @@
       "name": "common-input/padding/text_btn-px-md",
       "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3833,7 +3833,7 @@
       "name": "common-input/padding/px-md",
       "cssVariable": "--rh-sizing-common-input-padding-px-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -3847,7 +3847,7 @@
       "name": "common-input/padding/py-md",
       "cssVariable": "--rh-sizing-common-input-padding-py-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3861,7 +3861,7 @@
       "name": "common-input/padding/py-chips-md",
       "cssVariable": "--rh-sizing-common-input-padding-py-chips-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -3875,7 +3875,7 @@
       "name": "common-input/padding/gap-md",
       "cssVariable": "--rh-sizing-common-input-padding-gap-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3889,7 +3889,7 @@
       "name": "common-input/padding/text_btn-px-sm",
       "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3903,7 +3903,7 @@
       "name": "common-input/padding/px-sm",
       "cssVariable": "--rh-sizing-common-input-padding-px-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -3917,7 +3917,7 @@
       "name": "common-input/padding/py-sm",
       "cssVariable": "--rh-sizing-common-input-padding-py-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3941,7 +3941,7 @@
       "name": "common-input/padding/gap-sm",
       "cssVariable": "--rh-sizing-common-input-padding-gap-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3955,7 +3955,7 @@
       "name": "common-input/padding/text_btn-px-xsm",
       "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-xsm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3969,7 +3969,7 @@
       "name": "common-input/padding/py-xsm",
       "cssVariable": "--rh-sizing-common-input-padding-py-xsm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-75)",
+      "cssValue": "calc(var(--spacing) * 1.5)",
       "resolvedValue": "6px",
       "alias": {
         "collection": "sizing",
@@ -3983,7 +3983,7 @@
       "name": "common-input/padding/px-xsm",
       "cssVariable": "--rh-sizing-common-input-padding-px-xsm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3997,7 +3997,7 @@
       "name": "common-input/padding/gap-xsm",
       "cssVariable": "--rh-sizing-common-input-padding-gap-xsm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -4025,7 +4025,7 @@
       "name": "common-input/shape/size_icon-x",
       "cssVariable": "--rh-sizing-common-input-shape-size-icon-x",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4039,7 +4039,7 @@
       "name": "common-input/shape/size_icon-y",
       "cssVariable": "--rh-sizing-common-input-shape-size-icon-y",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4073,7 +4073,7 @@
       "name": "dubai/cards gap horizontal",
       "cssVariable": "--rh-sizing-dubai-cards-gap-horizontal",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2-5)",
+      "cssValue": "calc(var(--spacing) * 5)",
       "resolvedValue": "20px",
       "alias": {
         "collection": "sizing",
@@ -4087,7 +4087,7 @@
       "name": "dubai/cards gap vertical",
       "cssVariable": "--rh-sizing-dubai-cards-gap-vertical",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4101,7 +4101,7 @@
       "name": "filter/filter-row",
       "cssVariable": "--rh-sizing-filter-filter-row",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4115,7 +4115,7 @@
       "name": "floating bar/pxy",
       "cssVariable": "--rh-sizing-floating-bar-pxy",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4129,7 +4129,7 @@
       "name": "floating bar/border-radius",
       "cssVariable": "--rh-sizing-floating-bar-border-radius",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4143,7 +4143,7 @@
       "name": "floating bar/gap",
       "cssVariable": "--rh-sizing-floating-bar-gap",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4157,7 +4157,7 @@
       "name": "icon/icon-lg",
       "cssVariable": "--rh-sizing-icon-icon-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-4)",
+      "cssValue": "calc(var(--spacing) * 8)",
       "resolvedValue": "32px",
       "alias": {
         "collection": "sizing",
@@ -4171,7 +4171,7 @@
       "name": "icon/icon-md",
       "cssVariable": "--rh-sizing-icon-icon-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4185,7 +4185,7 @@
       "name": "icon/icon-sm",
       "cssVariable": "--rh-sizing-icon-icon-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2-5)",
+      "cssValue": "calc(var(--spacing) * 5)",
       "resolvedValue": "20px",
       "alias": {
         "collection": "sizing",
@@ -4209,7 +4209,7 @@
       "name": "island/py",
       "cssVariable": "--rh-sizing-island-py",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4223,7 +4223,7 @@
       "name": "island/py-mega",
       "cssVariable": "--rh-sizing-island-py-mega",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-5)",
+      "cssValue": "calc(var(--spacing) * 10)",
       "resolvedValue": "40px",
       "alias": {
         "collection": "sizing",
@@ -4247,7 +4247,7 @@
       "name": "island/gap",
       "cssVariable": "--rh-sizing-island-gap",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4305,7 +4305,7 @@
       "name": "layout/container",
       "cssVariable": "--rh-sizing-layout-container",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4319,7 +4319,7 @@
       "name": "layout/edge-to-edge/wrapper",
       "cssVariable": "--rh-sizing-layout-edge-to-edge-wrapper",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4343,7 +4343,7 @@
       "name": "map/container-pxy",
       "cssVariable": "--rh-sizing-map-container-pxy",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4371,7 +4371,7 @@
       "name": "menu/padding/px-sm",
       "cssVariable": "--rh-sizing-menu-padding-px-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -4385,7 +4385,7 @@
       "name": "menu/padding/py-sm",
       "cssVariable": "--rh-sizing-menu-padding-py-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4399,7 +4399,7 @@
       "name": "menu/padding/gap-sm",
       "cssVariable": "--rh-sizing-menu-padding-gap-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4413,7 +4413,7 @@
       "name": "menu/padding/menu-py",
       "cssVariable": "--rh-sizing-menu-padding-menu-py",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -4427,7 +4427,7 @@
       "name": "menu/padding/menu-px",
       "cssVariable": "--rh-sizing-menu-padding-menu-px",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -4441,7 +4441,7 @@
       "name": "modal/margin-top",
       "cssVariable": "--rh-sizing-modal-margin-top",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4455,7 +4455,7 @@
       "name": "modal/margin-x",
       "cssVariable": "--rh-sizing-modal-margin-x",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4469,7 +4469,7 @@
       "name": "modal/margin-bottom",
       "cssVariable": "--rh-sizing-modal-margin-bottom",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4483,7 +4483,7 @@
       "name": "modal/py",
       "cssVariable": "--rh-sizing-modal-py",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4497,7 +4497,7 @@
       "name": "modal/grabber-bottom-margin",
       "cssVariable": "--rh-sizing-modal-grabber-bottom-margin",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -4511,7 +4511,7 @@
       "name": "object page/gutter",
       "cssVariable": "--rh-sizing-object-page-gutter",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4555,7 +4555,7 @@
       "name": "table/padding/py",
       "cssVariable": "--rh-sizing-table-padding-py",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -4569,7 +4569,7 @@
       "name": "table/padding/py-size-small",
       "cssVariable": "--rh-sizing-table-padding-py-size-small",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4583,7 +4583,7 @@
       "name": "table/padding/px",
       "cssVariable": "--rh-sizing-table-padding-px",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -4597,7 +4597,7 @@
       "name": "table/padding/pl-checkbox",
       "cssVariable": "--rh-sizing-table-padding-pl-checkbox",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-5)",
+      "cssValue": "calc(var(--spacing) * 10)",
       "resolvedValue": "40px",
       "alias": {
         "collection": "sizing",
@@ -4649,7 +4649,7 @@
       "name": "tabs/padding/gap",
       "cssVariable": "--rh-sizing-tabs-padding-gap",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4663,7 +4663,7 @@
       "name": "toggle-button/pxy",
       "cssVariable": "--rh-sizing-toggle-button-pxy",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -4677,7 +4677,7 @@
       "name": "toggle-button/gap",
       "cssVariable": "--rh-sizing-toggle-button-gap",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-25)",
+      "cssValue": "calc(var(--spacing) * 0.5)",
       "resolvedValue": "2px",
       "alias": {
         "collection": "sizing",
@@ -4691,7 +4691,7 @@
       "name": "tooltip/px",
       "cssVariable": "--rh-sizing-tooltip-px",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-75)",
+      "cssValue": "calc(var(--spacing) * 1.5)",
       "resolvedValue": "6px",
       "alias": {
         "collection": "sizing",
@@ -4705,7 +4705,7 @@
       "name": "tooltip/py",
       "cssVariable": "--rh-sizing-tooltip-py",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-25)",
+      "cssValue": "calc(var(--spacing) * 0.5)",
       "resolvedValue": "2px",
       "alias": {
         "collection": "sizing",
@@ -4719,7 +4719,7 @@
       "name": "tooltip/border-radius",
       "cssVariable": "--rh-sizing-tooltip-border-radius",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",
@@ -4733,7 +4733,7 @@
       "name": "typography/font-size/h1",
       "cssVariable": "--rh-sizing-typography-font-size-h1",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-4-5)",
+      "cssValue": "calc(var(--spacing) * 9)",
       "resolvedValue": "36px",
       "alias": {
         "collection": "sizing",
@@ -4747,7 +4747,7 @@
       "name": "typography/font-size/lg",
       "cssVariable": "--rh-sizing-typography-font-size-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4761,7 +4761,7 @@
       "name": "typography/font-size/md",
       "cssVariable": "--rh-sizing-typography-font-size-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4785,7 +4785,7 @@
       "name": "typography/font-size/xsm",
       "cssVariable": "--rh-sizing-typography-font-size-xsm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -4799,7 +4799,7 @@
       "name": "typography/line-height/lg",
       "cssVariable": "--rh-sizing-typography-line-height-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4813,7 +4813,7 @@
       "name": "typography/line-height/md",
       "cssVariable": "--rh-sizing-typography-line-height-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4827,7 +4827,7 @@
       "name": "typography/line-height/sm",
       "cssVariable": "--rh-sizing-typography-line-height-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2-5)",
+      "cssValue": "calc(var(--spacing) * 5)",
       "resolvedValue": "20px",
       "alias": {
         "collection": "sizing",
@@ -4841,7 +4841,7 @@
       "name": "typography/line-height/xsm",
       "cssVariable": "--rh-sizing-typography-line-height-xsm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -4905,7 +4905,7 @@
       "name": "button counter/min-width/lg",
       "cssVariable": "--rh-sizing-button-counter-min-width-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4919,7 +4919,7 @@
       "name": "button counter/min-width/md",
       "cssVariable": "--rh-sizing-button-counter-min-width-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-3)",
+      "cssValue": "calc(var(--spacing) * 6)",
       "resolvedValue": "24px",
       "alias": {
         "collection": "sizing",
@@ -4933,7 +4933,7 @@
       "name": "button counter/min-width/sm",
       "cssVariable": "--rh-sizing-button-counter-min-width-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2-5)",
+      "cssValue": "calc(var(--spacing) * 5)",
       "resolvedValue": "20px",
       "alias": {
         "collection": "sizing",
@@ -4947,7 +4947,7 @@
       "name": "button counter/padding/px-lg",
       "cssVariable": "--rh-sizing-button-counter-padding-px-lg",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-75)",
+      "cssValue": "calc(var(--spacing) * 1.5)",
       "resolvedValue": "6px",
       "alias": {
         "collection": "sizing",
@@ -4961,7 +4961,7 @@
       "name": "button counter/padding/px-md",
       "cssVariable": "--rh-sizing-button-counter-padding-px-md",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-75)",
+      "cssValue": "calc(var(--spacing) * 1.5)",
       "resolvedValue": "6px",
       "alias": {
         "collection": "sizing",
@@ -4975,7 +4975,7 @@
       "name": "button counter/padding/px-sm",
       "cssVariable": "--rh-sizing-button-counter-padding-px-sm",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-0-5)",
+      "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
       "alias": {
         "collection": "sizing",

@@ -18,15 +18,15 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[var(--rh-sizing-base-module-6)] min-w-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-base-module-1)] rounded-[var(--rh-sizing-border-radius-border-radius-md)] px-[var(--rh-sizing-base-module-2)] py-[var(--rh-sizing-base-module-1-5)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
-  md: "h-[var(--rh-sizing-base-module-4)] min-w-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-base-module-1)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[var(--rh-sizing-base-module-1-5)] py-[var(--rh-sizing-base-module-0-5)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "h-[calc(var(--rh-sizing-base-module-3)+var(--rh-sizing-base-module-0-5))] min-w-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-base-module-1)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[var(--rh-sizing-base-module-1-5)] py-[var(--rh-sizing-base-module-0-5)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  lg: "h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-border-radius-md)] px-[calc(var(--spacing)*4)] py-[calc(var(--spacing)*3)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
+  md: "h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "h-[calc(calc(var(--spacing)*6)+calc(var(--spacing)*1))] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 const iconClasses: Record<SegmentSize, string> = {
   lg: "size-[var(--rh-sizing-icon-icon-md)]",
-  md: "size-[var(--rh-sizing-base-module-2-5)]",
-  sm: "size-[var(--rh-sizing-base-module-2)]",
+  md: "size-[calc(var(--spacing)*5)]",
+  sm: "size-[calc(var(--spacing)*4)]",
 }
 
 const colorClasses: Record<SegmentColor, { default: string; selected: string }> = {

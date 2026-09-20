@@ -13,9 +13,9 @@ type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[var(--rh-sizing-base-module-7)] rounded-[var(--rh-sizing-border-radius-border-radius-lg)]",
-  md: "h-[var(--rh-sizing-base-module-5)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
-  sm: "h-[var(--rh-sizing-base-module-4-5)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
+  lg: "h-[calc(var(--spacing)*14)] rounded-[var(--rh-sizing-border-radius-border-radius-lg)]",
+  md: "h-[calc(var(--spacing)*10)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
+  sm: "h-[calc(var(--spacing)*9)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
 }
 
 const colorClasses: Record<SegmentColor, string> = {
@@ -87,7 +87,7 @@ function SegmentedControl({
     <div
       aria-label="Segmented control"
       className={cn(
-        "inline-flex w-fit items-center gap-[var(--rh-sizing-base-module-0-25)] overflow-clip p-[var(--rh-sizing-base-module-0-5)]",
+        "inline-flex w-fit items-center gap-[calc(var(--spacing)*0.5)] overflow-clip p-[calc(var(--spacing)*1)]",
         sizeClasses[size],
         colorClasses[color],
         className,

@@ -37,13 +37,13 @@ const sizeTokens: Record<
   }
 > = {
   md: {
-    container: "min-h-[var(--rh-sizing-base-module-5)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+    container: "min-h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
     valueText: "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
-    container: "min-h-[var(--rh-sizing-base-module-4-5)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+    container: "min-h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
     valueText: "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
@@ -195,7 +195,7 @@ function Select({
             </Chip>
             <span
               className={cn(
-                "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[var(--rh-sizing-base-module-0-5)] font-normal text-[color:var(--rh-theme-text-neutral-primary)]",
+                "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[calc(var(--spacing)*1)] font-normal text-[color:var(--rh-theme-text-neutral-primary)]",
                 sizeTokens[size].valueText,
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}

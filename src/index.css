@@ -165,7 +165,7 @@
   }
 
   .rhood-page-gutter-mobile {
-    padding-inline: var(--rh-sizing-base-module-1-5);
+    padding-inline: calc(var(--spacing)*3);
   }
 }
 

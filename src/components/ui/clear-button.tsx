@@ -12,8 +12,8 @@ type ClearButtonProps = Omit<React.ComponentProps<"button">, "size" | "style" | 
 }
 
 const sizeClasses: Record<ClearButtonSize, { button: "sm" | "xsm"; icon: string }> = {
-  md: { button: "sm", icon: "size-[var(--rh-sizing-base-module-2-5)]" },
-  sm: { button: "xsm", icon: "size-[var(--rh-sizing-base-module-2)]" },
+  md: { button: "sm", icon: "size-[calc(var(--spacing)*5)]" },
+  sm: { button: "xsm", icon: "size-[calc(var(--spacing)*4)]" },
 }
 
 /** Clears the current value while keeping focus on its associated text input. */

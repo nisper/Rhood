@@ -23,7 +23,6 @@ type TokenData = {
 
 const tokenData = tokenDataJson as TokenData;
 const sizingGroups = {
-  base: "Base module",
   component: "Component sizing",
   tailwind: "Tailwind",
 } as const;
@@ -48,17 +47,14 @@ const tailwindSpacingTokens = [
 ] as const;
 
 export function TokenSizingExamples() {
-  const [group, setGroup] = React.useState<SizingGroup>("base");
+  const [group, setGroup] = React.useState<SizingGroup>("component");
   const [query, setQuery] = React.useState("");
   const allTokens = tokenData.tokens.filter(
     (token) => token.collection === "sizing",
   );
   const normalizedQuery = query.trim().toLowerCase();
   const tokens = allTokens.filter((token) => {
-    const belongsToGroup =
-      group === "base"
-        ? token.name.startsWith("base module/")
-        : group === "component" && !token.name.startsWith("base module/");
+    const belongsToGroup = group === "component" && !token.name.startsWith("base module/");
     const searchableText = [
       token.name,
       token.cssValue,
@@ -170,7 +166,7 @@ export function TokenSizingExamples() {
           ))}
         </Table>
       ) : (
-        <Table className="min-w-[980px] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]">
+        <Table className="min-w-[760px] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]">
           <div
             className="flex border-b border-[color:var(--rh-theme-border-light)]"
             role="row"
@@ -192,15 +188,6 @@ export function TokenSizingExamples() {
               width={150}
             >
               Итоговое значение
-            </TableCell>
-            <TableCell
-              helpIcon={false}
-              role="head"
-              sort={false}
-              type="text"
-              width={220}
-            >
-              Figma alias
             </TableCell>
             <TableCell
               helpIcon={false}
@@ -235,13 +222,6 @@ export function TokenSizingExamples() {
               <TableCell custom role="body" type="text" width={150}>
                 <code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">
                   {token.resolvedValue ?? "—"}
-                </code>
-              </TableCell>
-              <TableCell custom role="body" type="text" width={220}>
-                <code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">
-                  {token.alias
-                    ? `${token.alias.collection}/${token.alias.name}`
-                    : "—"}
                 </code>
               </TableCell>
               <TableCell custom role="body" type="text" width={250}>

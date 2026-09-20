@@ -29,22 +29,22 @@ const sizeClasses: Record<
 > = {
   md: {
     button:
-      "min-h-[var(--rh-sizing-base-module-5)] gap-[var(--rh-sizing-common-input-padding-gap-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
-    icon: "size-[var(--rh-sizing-base-module-3)]",
+      "min-h-[calc(var(--spacing)*10)] gap-[var(--rh-sizing-common-input-padding-gap-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+    icon: "size-[calc(var(--spacing)*6)]",
     label:
       "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
     button:
-      "min-h-[var(--rh-sizing-base-module-4-5)] gap-[var(--rh-sizing-common-input-padding-gap-sm)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
-    icon: "size-[var(--rh-sizing-base-module-2-5)]",
+      "min-h-[calc(var(--spacing)*9)] gap-[var(--rh-sizing-common-input-padding-gap-sm)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+    icon: "size-[calc(var(--spacing)*5)]",
     label:
       "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   },
   xsm: {
     button:
-      "min-h-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))] gap-[var(--rh-sizing-common-input-padding-gap-xsm)] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)]",
-    icon: "size-[var(--rh-sizing-base-module-2)]",
+      "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] gap-[var(--rh-sizing-common-input-padding-gap-xsm)] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)]",
+    icon: "size-[calc(var(--spacing)*4)]",
     label:
       "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   },
@@ -125,9 +125,9 @@ function ButtonFavorite({
         isIconOnly
           ? cn(
               "rounded-full",
-              size === "md" && "size-[var(--rh-sizing-base-module-5)]",
-              size === "sm" && "size-[var(--rh-sizing-base-module-4-5)]",
-              size === "xsm" && "size-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))]",
+              size === "md" && "size-[calc(var(--spacing)*10)]",
+              size === "sm" && "size-[calc(var(--spacing)*9)]",
+              size === "xsm" && "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))]",
               !disabled && "hover:bg-[var(--rh-theme-fill-error-light-hover)]",
               isHovered && !disabled && "bg-[var(--rh-theme-fill-error-light-hover)]",
             )

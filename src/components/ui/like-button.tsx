@@ -42,7 +42,7 @@ function LikeButton({
     <button
       aria-pressed={checked}
       className={cn(
-        "inline-flex size-[var(--rh-sizing-base-module-5)] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full p-[var(--rh-sizing-base-module-1)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+        "inline-flex size-[calc(var(--spacing)*10)] shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full p-[calc(var(--spacing)*2)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         backgroundClass,
         checked && "hover:bg-[var(--rh-theme-fill-neutral-dark-hover)]",
         className,
@@ -52,13 +52,13 @@ function LikeButton({
     >
       <span
         className={cn(
-          "flex size-[var(--rh-sizing-base-module-3)] shrink-0 items-center justify-center",
+          "flex size-[calc(var(--spacing)*6)] shrink-0 items-center justify-center",
           checked
             ? "text-[var(--rh-theme-text-neutral-primary-contrast)]"
             : "text-[var(--rh-theme-text-neutral-primary)]",
         )}
       >
-        <ThumbsUp aria-hidden="true" className="size-[var(--rh-sizing-base-module-2-5)]" strokeWidth={2} />
+        <ThumbsUp aria-hidden="true" className="size-[calc(var(--spacing)*5)]" strokeWidth={2} />
       </span>
     </button>
   )

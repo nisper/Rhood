@@ -114,18 +114,18 @@ function MenuItemMultiselect({
       onClick={disabled ? undefined : props.onClick}
       onKeyDown={disabled ? undefined : props.onKeyDown}
     >
-      <div className="flex h-[var(--rh-sizing-base-module-2-5)] shrink-0 items-center justify-center">
+      <div className="flex h-[calc(var(--spacing)*5)] shrink-0 items-center justify-center">
         <MenuCheckbox checked={resolvedChecked} disabled={disabled} />
       </div>
 
       {(icon ?? startIcon) && (
         <span
           className={cn(
-            "flex size-[var(--rh-sizing-base-module-2-5)] shrink-0 items-center justify-center text-[var(--rh-theme-text-neutral-primary)]",
+            "flex size-[calc(var(--spacing)*5)] shrink-0 items-center justify-center text-[var(--rh-theme-text-neutral-primary)]",
             disabled && disabledOpacityClass,
           )}
         >
-          <Star aria-hidden="true" className="size-[var(--rh-sizing-base-module-2-5)]" strokeWidth={2} />
+          <Star aria-hidden="true" className="size-[calc(var(--spacing)*5)]" strokeWidth={2} />
         </span>
       )}
 

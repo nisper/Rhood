@@ -108,11 +108,11 @@ function TableCell({
         isCheckbox ? "items-start" : "flex-col",
         isNumber && "items-end text-right",
         sizeSmall ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
-        hasPaddingX && (isCheckbox ? "px-[var(--rh-sizing-base-module-1)]" : "px-[var(--rh-sizing-table-padding-px)]"),
+        hasPaddingX && (isCheckbox ? "px-[calc(var(--spacing)*2)]" : "px-[var(--rh-sizing-table-padding-px)]"),
         isContentWidth && "w-max",
         isFillWidth && "flex-1 basis-0",
         fixedWidth && "shrink-0",
-        isPlaceholder && (sizeSmall ? "h-[var(--rh-sizing-base-module-4-5)]" : "h-[calc(var(--rh-sizing-base-module-5)+var(--rh-sizing-base-module-0-5))]"),
+        isPlaceholder && (sizeSmall ? "h-[calc(var(--spacing)*9)]" : "h-[calc(calc(var(--spacing)*10)+calc(var(--spacing)*1))]"),
         isSortable && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         hasSortPadding && "pr-[var(--rh-sizing-table-padding-px)]",
         className,
@@ -122,7 +122,7 @@ function TableCell({
     >
       {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={resolvedChecked} className="min-h-0 p-0" indeterminate={resolvedIndeterminate} label={false} onChange={event => handleCheckedChange(event.target.checked)} size="sm" />}
 
-      {isSkeleton && <span aria-hidden="true" className="block h-[var(--rh-sizing-base-module-0-75)] w-full rounded-[var(--rh-sizing-border-radius-border-radius-md)] bg-[var(--rh-theme-fill-skeleton)]" />}
+      {isSkeleton && <span aria-hidden="true" className="block h-[calc(var(--spacing)*1.5)] w-full rounded-[var(--rh-sizing-border-radius-border-radius-md)] bg-[var(--rh-theme-fill-skeleton)]" />}
 
       {!isCheckbox && !isSkeleton && !isPlaceholder && (custom ? (
         children
@@ -139,7 +139,7 @@ function TableCell({
         </div>
       ))}
 
-      {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-[var(--rh-sizing-base-module-0-5)] top-[var(--rh-sizing-base-module-0-5)] size-[var(--rh-sizing-base-module-1-5)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-[var(--rh-sizing-base-module-0-5)] top-[var(--rh-sizing-base-module-0-5)] size-[var(--rh-sizing-base-module-1-5)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} />)}
+      {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} />)}
     </div>
   )
 }

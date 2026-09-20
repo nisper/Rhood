@@ -27,8 +27,8 @@ function formatThousands(value: string | number | readonly string[] | undefined)
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
-  md: "h-[var(--rh-sizing-base-module-5)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "h-[var(--rh-sizing-base-module-4-5)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  md: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 function stateClasses({ error, state }: { error: boolean; state: InputNumberState }) {
@@ -103,8 +103,8 @@ function InputNumber({
           sizeClasses[size],
           stateClasses({ error, state }),
           interactiveClasses,
-          startText && "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+var(--rh-sizing-base-module-2-5)+var(--rh-sizing-common-input-padding-gap-md))]",
-          (endText || required || showClearButton) && "pr-[var(--rh-sizing-base-module-4)]",
+          startText && "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-md))]",
+          (endText || required || showClearButton) && "pr-[calc(var(--spacing)*8)]",
           className,
         )}
         disabled={disabled}
@@ -142,15 +142,15 @@ function InputNumber({
         <span
           className={cn(
             "absolute top-1/2 flex -translate-y-1/2 items-center justify-center",
-            size === "md" ? "size-[var(--rh-sizing-base-module-3)]" : "size-[var(--rh-sizing-base-module-2-5)]",
-            endText || required ? "right-[var(--rh-sizing-base-module-4)]" : "right-[var(--rh-sizing-base-module-1)]",
+            size === "md" ? "size-[calc(var(--spacing)*6)]" : "size-[calc(var(--spacing)*5)]",
+            endText || required ? "right-[calc(var(--spacing)*8)]" : "right-[calc(var(--spacing)*2)]",
           )}
         >
           <ClearButton
             aria-label="Очистить поле"
             className={cn(
               "focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-border-focus)]",
-              size === "md" ? "m-[calc(var(--rh-sizing-base-module-1-5)*-1)]" : "m-[calc(var(--rh-sizing-base-module-1)*-1)]",
+              size === "md" ? "m-[calc(calc(var(--spacing)*3)*-1)]" : "m-[calc(calc(var(--spacing)*2)*-1)]",
             )}
             onClick={() => {
               if (!isControlled) setUncontrolledValue("")
@@ -176,7 +176,7 @@ function InputNumber({
           aria-hidden="true"
           className={cn(
             "pointer-events-none absolute top-1/2 -translate-y-1/2 text-[var(--rh-theme-text-error)]",
-            endText ? "right-[var(--rh-sizing-base-module-4)]" : "right-[var(--rh-sizing-common-input-padding-px-md)]",
+            endText ? "right-[calc(var(--spacing)*8)]" : "right-[var(--rh-sizing-common-input-padding-px-md)]",
             size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >

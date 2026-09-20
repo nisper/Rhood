@@ -53,8 +53,8 @@ function ListItem({
       {...props}
       className={cn(
         "flex w-full items-center rounded-[var(--rh-sizing-border-radius-border-radius-md)] text-[var(--rh-theme-text-neutral-primary)]",
-        dense ? "py-[var(--rh-sizing-base-module-0-5)]" : "py-[var(--rh-sizing-base-module-1)]",
-        hasPaddingX && "px-[var(--rh-sizing-base-module-2)]",
+        dense ? "py-[calc(var(--spacing)*1)]" : "py-[calc(var(--spacing)*2)]",
+        hasPaddingX && "px-[calc(var(--spacing)*4)]",
         isSelected && "bg-[var(--rh-theme-fill-neutral-selected)]",
         isHighlighted && "bg-[var(--rh-theme-fill-neutral-hover)]",
         !disabled && !isSelected && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
@@ -65,18 +65,18 @@ function ListItem({
       onKeyDown={disabled ? undefined : props.onKeyDown}
       tabIndex={disabled ? -1 : props.tabIndex}
     >
-      {startIcon && <span className={cn("mr-[var(--rh-sizing-base-module-2)] flex size-[var(--rh-sizing-base-module-3)] shrink-0 items-center justify-center", disabledOpacity)}>
-        <Star aria-hidden="true" className="size-[var(--rh-sizing-base-module-3)]" strokeWidth={2} />
+      {startIcon && <span className={cn("mr-[calc(var(--spacing)*4)] flex size-[calc(var(--spacing)*6)] shrink-0 items-center justify-center", disabledOpacity)}>
+        <Star aria-hidden="true" className="size-[calc(var(--spacing)*6)]" strokeWidth={2} />
       </span>}
-      <span className={cn("flex min-w-0 flex-1 flex-col py-[var(--rh-sizing-base-module-0-5)]", disabledOpacity)}>
+      <span className={cn("flex min-w-0 flex-1 flex-col py-[calc(var(--spacing)*1)]", disabledOpacity)}>
         <span className={cn("break-words text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]", fontWeight === "medium" ? "font-medium tracking-[var(--rh-sizing-typography-letter-spacing-md)]" : "font-normal tracking-[var(--rh-sizing-typography-letter-spacing-md)]")}>
           {children}
         </span>
         {secondaryText && <span className="break-words text-[length:var(--rh-sizing-typography-font-size-sm)] font-normal leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)] text-[var(--rh-theme-text-neutral-secondary)]">{secondaryLabel}</span>}
       </span>
-      {iconButton && <Button aria-label="Действие со строкой" appearance="ghost" disabled={disabled} iconOnly size="sm" startIcon={<CircleCheckBig aria-hidden="true" className="size-[var(--rh-sizing-base-module-2-5)]" strokeWidth={2} />} />}
-      {endIcon && <span className={cn("flex size-[var(--rh-sizing-base-module-3)] shrink-0 items-center justify-center", disabledOpacity)}>
-        {typeof endIcon === "boolean" ? <Star aria-hidden="true" className="size-[var(--rh-sizing-base-module-3)]" strokeWidth={2} /> : endIcon}
+      {iconButton && <Button aria-label="Действие со строкой" appearance="ghost" disabled={disabled} iconOnly size="sm" startIcon={<CircleCheckBig aria-hidden="true" className="size-[calc(var(--spacing)*5)]" strokeWidth={2} />} />}
+      {endIcon && <span className={cn("flex size-[calc(var(--spacing)*6)] shrink-0 items-center justify-center", disabledOpacity)}>
+        {typeof endIcon === "boolean" ? <Star aria-hidden="true" className="size-[calc(var(--spacing)*6)]" strokeWidth={2} /> : endIcon}
       </span>}
       {button && <Button appearance="ghost" disabled={disabled} endIcon={false} startIcon={false}>Label</Button>}
     </div>

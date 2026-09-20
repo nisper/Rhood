@@ -16,12 +16,12 @@ type TextareaProps = Omit<React.ComponentProps<"textarea">, "rows" | "size"> & {
 
 const sizeClasses: Record<TextareaSize, Record<TextareaRows, string>> = {
   md: {
-    1: "h-[var(--rh-sizing-base-module-5)] px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-    2: "h-[var(--rh-sizing-base-module-8)] px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    1: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    2: "h-[calc(var(--spacing)*16)] px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
-    1: "h-[var(--rh-sizing-base-module-4-5)] px-[var(--rh-sizing-common-input-padding-px-sm)] pb-[calc(var(--rh-sizing-common-input-padding-py-sm)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-sm)-1px)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
-    2: "h-[var(--rh-sizing-base-module-7)] px-[var(--rh-sizing-common-input-padding-px-sm)] pb-[calc(var(--rh-sizing-common-input-padding-py-sm)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-sm)-1px)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+    1: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] pb-[calc(var(--rh-sizing-common-input-padding-py-sm)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-sm)-1px)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+    2: "h-[calc(var(--spacing)*14)] px-[var(--rh-sizing-common-input-padding-px-sm)] pb-[calc(var(--rh-sizing-common-input-padding-py-sm)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-sm)-1px)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   },
 }
 
@@ -67,7 +67,7 @@ function Textarea({
         sizeClasses[size][rows],
         stateClasses({ error, state }),
         interactiveClasses,
-        required && "pr-[var(--rh-sizing-base-module-4)]",
+        required && "pr-[calc(var(--spacing)*8)]",
         className,
       )}
       disabled={disabled}

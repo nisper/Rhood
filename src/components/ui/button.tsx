@@ -47,10 +47,10 @@ type ButtonProps = React.ComponentProps<"button"> & {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  lg: "min-h-[var(--rh-sizing-base-module-7)] px-[var(--rh-sizing-common-input-padding-px-lg)] py-[var(--rh-sizing-common-input-padding-py-lg)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
-  md: "min-h-[var(--rh-sizing-base-module-5)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "min-h-[var(--rh-sizing-base-module-4-5)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
-  xsm: "min-h-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  lg: "min-h-[calc(var(--spacing)*14)] px-[var(--rh-sizing-common-input-padding-px-lg)] py-[var(--rh-sizing-common-input-padding-py-lg)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
+  md: "min-h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "min-h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 const gapClasses: Record<ButtonSize, string> = {
@@ -61,17 +61,17 @@ const gapClasses: Record<ButtonSize, string> = {
 }
 
 const iconOnlyClasses: Record<ButtonSize, string> = {
-  lg: "size-[var(--rh-sizing-base-module-7)] p-0",
-  md: "size-[var(--rh-sizing-base-module-5)] p-0",
-  sm: "size-[var(--rh-sizing-base-module-4-5)] p-0",
-  xsm: "size-[calc(var(--rh-sizing-base-module-4)-var(--rh-sizing-base-module-0-5))] p-0",
+  lg: "size-[calc(var(--spacing)*14)] p-0",
+  md: "size-[calc(var(--spacing)*10)] p-0",
+  sm: "size-[calc(var(--spacing)*9)] p-0",
+  xsm: "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] p-0",
 }
 
 const iconSlotClasses: Record<ButtonSize, string> = {
-  lg: "w-[var(--rh-sizing-base-module-3)] [&_svg]:size-[var(--rh-sizing-base-module-3)]",
-  md: "w-[var(--rh-sizing-base-module-2-5)] [&_svg]:size-[var(--rh-sizing-base-module-3)]",
-  sm: "w-[var(--rh-sizing-base-module-2)] [&_svg]:size-[var(--rh-sizing-base-module-2-5)]",
-  xsm: "w-[var(--rh-sizing-base-module-2)] [&_svg]:size-[var(--rh-sizing-base-module-2)]",
+  lg: "w-[calc(var(--spacing)*6)] [&_svg]:size-[calc(var(--spacing)*6)]",
+  md: "w-[calc(var(--spacing)*5)] [&_svg]:size-[calc(var(--spacing)*6)]",
+  sm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*5)]",
+  xsm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*4)]",
 }
 
 const counterClasses: Record<ButtonSize, string> = {
@@ -274,7 +274,7 @@ function Button({
       {!iconOnly && counter && (
         <span
           className={cn(
-            "flex h-[var(--rh-sizing-base-module-3)] shrink-0 items-center justify-center rounded-full font-semibold tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+            "flex h-[calc(var(--spacing)*6)] shrink-0 items-center justify-center rounded-full font-semibold tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
             counterClasses[resolvedSize],
             counterToneClasses[resolvedAppearance],
             disabled && "bg-transparent text-current",
