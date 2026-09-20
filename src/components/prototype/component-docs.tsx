@@ -1,5 +1,6 @@
 import { ListExamples } from "./list-examples";
 import { InputExamples } from "./input-examples";
+import { TextareaExamples } from "./textarea-examples";
 import { InputNumberExamples } from "./input-number-examples";
 import { InputNumberRangeExamples } from "./input-number-range-examples";
 import { ClearButtonExamples } from "./clear-button-examples";
@@ -51,7 +52,6 @@ import { TabBar } from "@/components/ui/tab-bar";
 import { Tag } from "@/components/ui/tag";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
-import { TextFieldMultiline } from "@/components/ui/text-field-multiline";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -417,20 +417,25 @@ const componentDocs: ComponentDoc[] = [
     render: () => <InputNumberRangeExamples />,
   },
   {
-    id: "text-field-multiline",
-    title: "TextFieldMultiline",
+    id: "textarea",
+    title: "Textarea",
     description: "Многострочное текстовое поле.",
+    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=734-6530&t=Z265nVfuUs3IusXh-11",
     group: "Forms",
-    source: "src/components/ui/text-field-multiline.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <TextFieldMultiline empty placeholder="Комментарий" />
-          <TextFieldMultiline empty={false} value="Текст комментария" />
-          <TextFieldMultiline empty={false} error value="Текст комментария" />
-        </div>
-      </Canvas>
-    ),
+    properties: [
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Минимальная высота, типографика и отступы поля." },
+      { name: "placeholder", values: "string", defaultValue: "Placeholder", description: "Подсказка внутри пустого поля." },
+      { name: "value", values: "string", defaultValue: "—", description: "Текущее значение в контролируемом режиме." },
+      { name: "defaultValue", values: "string", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
+      { name: "rows", values: "1 · 2", defaultValue: "1", description: "Высота поля для одного или двух рядов текста." },
+      { name: "state", values: "default · hovered · focused", defaultValue: "default", description: "Визуальное состояние для витрины; hover и focus работают нативно." },
+      { name: "error", values: "boolean", defaultValue: "false", description: "Красная граница и focus-обводка ошибки." },
+      { name: "disabled", values: "boolean", defaultValue: "false", description: "Блокирует ввод и отключает интерактивные состояния." },
+      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию поля." },
+      { name: "onChange", values: "ChangeEventHandler<HTMLTextAreaElement>", defaultValue: "—", description: "Вызывается при изменении текста." },
+    ],
+    source: "src/components/ui/textarea.tsx",
+    render: () => <TextareaExamples />,
   },
   {
     id: "password-field",

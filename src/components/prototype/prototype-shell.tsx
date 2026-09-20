@@ -39,7 +39,7 @@ import { FormControlLabel } from "@/components/ui/form-control-label"
 import { DateInput } from "@/components/ui/date-input"
 import { PasswordField } from "@/components/ui/password-field"
 import { Textfield } from "@/components/ui/text-field"
-import { TextFieldMultiline } from "@/components/ui/text-field-multiline"
+import { Textarea } from "@/components/ui/textarea"
 import { ToggleChip } from "@/components/ui/toggle-chip"
 import { Tooltip } from "@/components/ui/tooltip"
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip"
@@ -114,7 +114,7 @@ export function PrototypeShell() {
   const progressLinearPositions = ["start", "medium", "full", "end"] as const
   const selectSizes = ["md", "sm"] as const
   const searchSizes = ["md", "sm"] as const
-  const textFieldMultilineSizes = ["md", "sm"] as const
+  const textareaSizes = ["md", "sm"] as const
   const tooltipExamples = ["Typography", "Longer tooltip text"] as const
   const onboardingTooltipExamples = ["top", "left", "right", "bottom"] as const
   const addPhotosExamples = ["default", "hover", "load"] as const
@@ -1330,77 +1330,18 @@ export function PrototypeShell() {
 
           <section className="grid gap-3">
             <h4 className="text-sm font-semibold uppercase tracking-[0.15px] text-muted-foreground">
-              textfield multiline
+              textarea
             </h4>
             <div className="grid gap-6 rounded-xl bg-white p-4">
-              {textFieldMultilineSizes.map((size) => (
+              {textareaSizes.map((size) => (
                 <div key={size} className="grid gap-3">
                   <div className="text-xs font-medium uppercase tracking-[0.15px] text-muted-foreground">
                     {size}
                   </div>
                   <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                    <TextFieldMultiline
-                      empty
-                      helperText="Helper text"
-                      label="Label"
-                      minLines="2"
-                      placeholder="Placeholder"
-                      size={size}
-                      topLabel="dynamic"
-                    />
-                    <TextFieldMultiline
-                      defaultValue={"Value\nValue"}
-                      empty={false}
-                      helperText="Helper text"
-                      label="Label"
-                      minLines="2"
-                      placeholder="Placeholder"
-                      size={size}
-                      topLabel="dynamic"
-                    />
-                    <TextFieldMultiline
-                      defaultValue={"Value\nValue"}
-                      empty={false}
-                      error
-                      helperText="Helper text"
-                      label="Label"
-                      minLines="2"
-                      placeholder="Placeholder"
-                      size={size}
-                      state="focused"
-                      topLabel="dynamic"
-                    />
-                    <TextFieldMultiline
-                      empty
-                      helperText="Helper text"
-                      label="Label"
-                      minLines="1"
-                      placeholder="Placeholder"
-                      size={size}
-                      topLabel="static"
-                    />
-                    <TextFieldMultiline
-                      defaultValue={"Value\nValue"}
-                      empty={false}
-                      helperText="Helper text"
-                      label="Label"
-                      minLines="1"
-                      placeholder="Placeholder"
-                      size={size}
-                      topLabel="static"
-                    />
-                    <TextFieldMultiline
-                      defaultValue={"Value\nValue"}
-                      empty={false}
-                      error
-                      helperText="Helper text"
-                      label="Label"
-                      minLines="1"
-                      placeholder="Placeholder"
-                      size={size}
-                      state="focused"
-                      topLabel="static"
-                    />
+                    <Textarea placeholder="Placeholder" rows={2} size={size} />
+                    <Textarea defaultValue={"Value\nValue"} rows={2} size={size} />
+                    <Textarea defaultValue={"Value\nValue"} error rows={2} size={size} state="focused" />
                   </div>
                 </div>
               ))}
