@@ -3369,7 +3369,7 @@
       "name": "accordion/px",
       "cssVariable": "--rh-sizing-accordion-px",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",
@@ -3383,7 +3383,7 @@
       "name": "accordion/py",
       "cssVariable": "--rh-sizing-accordion-py",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1-5)",
+      "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -3397,7 +3397,7 @@
       "name": "accordion/gap",
       "cssVariable": "--rh-sizing-accordion-gap",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-1)",
+      "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -3411,7 +3411,7 @@
       "name": "accordion/pxy-alt",
       "cssVariable": "--rh-sizing-accordion-pxy-alt",
       "type": "number",
-      "cssValue": "var(--rh-sizing-base-module-2)",
+      "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
       "alias": {
         "collection": "sizing",

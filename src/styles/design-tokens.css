@@ -294,10 +294,10 @@
   --rh-sizing-resp-vp-width-max: 1920px;
   --rh-sizing-resp-vp-height-min: 668px;
   --rh-sizing-resp-vp-height-max: 980px;
-  --rh-sizing-accordion-px: var(--rh-sizing-base-module-2);
-  --rh-sizing-accordion-py: var(--rh-sizing-base-module-1-5);
-  --rh-sizing-accordion-gap: var(--rh-sizing-base-module-1);
-  --rh-sizing-accordion-pxy-alt: var(--rh-sizing-base-module-2);
+  --rh-sizing-accordion-px: calc(var(--spacing) * 4);
+  --rh-sizing-accordion-py: calc(var(--spacing) * 3);
+  --rh-sizing-accordion-gap: calc(var(--spacing) * 2);
+  --rh-sizing-accordion-pxy-alt: calc(var(--spacing) * 4);
   --rh-sizing-avatar-20: var(--rh-sizing-base-module-2-5);
   --rh-sizing-avatar-24: var(--rh-sizing-base-module-3);
   --rh-sizing-avatar-32: var(--rh-sizing-base-module-4);

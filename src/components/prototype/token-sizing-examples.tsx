@@ -10,6 +10,7 @@ import { TableCell } from "@/components/ui/table-cell";
 type SizingToken = {
   alias: { collection: string; name: string } | null;
   collection: string;
+  cssValue: string;
   cssVariable: string;
   name: string;
   resolvedValue: string | null;
@@ -60,6 +61,7 @@ export function TokenSizingExamples() {
         : group === "component" && !token.name.startsWith("base module/");
     const searchableText = [
       token.name,
+      token.cssValue,
       token.cssVariable,
       token.alias ? `${token.alias.collection}/${token.alias.name}` : "",
     ]
@@ -168,7 +170,7 @@ export function TokenSizingExamples() {
           ))}
         </Table>
       ) : (
-        <Table className="min-w-[760px] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]">
+        <Table className="min-w-[980px] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]">
           <div
             className="flex border-b border-[color:var(--rh-theme-border-light)]"
             role="row"
@@ -198,7 +200,16 @@ export function TokenSizingExamples() {
               type="text"
               width={220}
             >
-              Alias
+              Figma alias
+            </TableCell>
+            <TableCell
+              helpIcon={false}
+              role="head"
+              sort={false}
+              type="text"
+              width={250}
+            >
+              CSS value
             </TableCell>
             <TableCell
               helpIcon={false}
@@ -231,6 +242,11 @@ export function TokenSizingExamples() {
                   {token.alias
                     ? `${token.alias.collection}/${token.alias.name}`
                     : "—"}
+                </code>
+              </TableCell>
+              <TableCell custom role="body" type="text" width={250}>
+                <code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">
+                  {token.cssValue}
                 </code>
               </TableCell>
               <TableCell custom role="body" type="text" width="fill">

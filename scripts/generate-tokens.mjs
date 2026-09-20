@@ -115,6 +115,16 @@ const knownTokenNames = new Set([
   ...sourceTokens.map(({ collection, path: tokenPath }) => `${collection}/${tokenPath.join("/")}`),
   ...preservedTokens.map((token) => `${token.collection}/${token.name}`),
 ])
+const sourceTokensByName = new Map(sourceTokens.map((entry) => [`${entry.collection}/${entry.path.join("/")}`, entry]))
+
+function tailwindSpacingExpression({ alias, collection, tokenPath }) {
+  if (collection !== "sizing" || tokenPath[0] !== "accordion" || alias?.collection !== "sizing" || !alias.name.startsWith("base module/")) return null
+
+  const target = sourceTokensByName.get(`${alias.collection}/${alias.name}`)
+  if (target?.token.$type !== "number" || typeof target.token.$value !== "number") return null
+
+  return `calc(var(--spacing) * ${formatNumber(target.token.$value / 4)})`
+}
 
 const newTokens = sourceTokens.map(({ collection, path: tokenPath, token }) => {
   const alias = aliasFromToken(token, collection, knownTokenNames)
@@ -123,7 +133,11 @@ const newTokens = sourceTokens.map(({ collection, path: tokenPath, token }) => {
   const alpha = token.$type === "color" && typeof value === "object" ? value.alpha ?? 1 : null
   let cssValue
 
-  if (alias?.collection && alias?.name) {
+  const spacingExpression = tailwindSpacingExpression({ alias, collection, tokenPath })
+
+  if (spacingExpression) {
+    cssValue = spacingExpression
+  } else if (alias?.collection && alias?.name) {
     const aliasKey = `${alias.collection}/${alias.name}`
     if (!knownTokenNames.has(aliasKey)) warnings.push(`Unresolved alias: ${collection}/${tokenPath.join("/")} → ${aliasKey}`)
 
