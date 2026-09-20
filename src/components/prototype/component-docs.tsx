@@ -1267,6 +1267,7 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
     "search",
     "input-number",
     "input-number-range",
+    "textarea",
   ]);
 
   const handleItemKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
