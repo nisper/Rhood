@@ -173,7 +173,11 @@ function InteractiveTabBar({
 export function TabExamples() {
   return (
     <div className="grid min-w-0 gap-10">
-      <Section settings={["state: default · hovered"]} title="Состояния">
+      <Section
+        description="Витрина показывает обычное, наведённое и выбранное состояния вкладки."
+        settings={["state: default · hovered"]}
+        title="Состояния"
+      >
         <ShowcaseSurface>
           <ShowcasePanel>
             <div className="grid grid-cols-3 items-start gap-3">
