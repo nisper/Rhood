@@ -1304,6 +1304,7 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
                 >
                   <ListItem
                     button={false}
+                    dense
                     iconButton={false}
                     secondaryText={false}
                     selected={doc.id === activeId}
