@@ -1,7 +1,7 @@
 import * as React from "react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
-import { PaginationButton } from "@/components/ui/pagination-button"
 import { cn } from "@/lib/utils"
 
 type OnboardingTooltipProps = React.ComponentProps<"div"> & {
@@ -79,8 +79,12 @@ function OnboardingTooltip({
               </p>
 
               <div className="flex items-start gap-1">
-                <PaginationButton direction="left" state="default" type="icon" />
-                <PaginationButton direction="right" state="default" type="icon" />
+                <button aria-label="Предыдущий шаг" className="flex size-8 cursor-pointer items-center justify-center rounded-full" type="button">
+                  <ChevronLeft aria-hidden="true" className="size-4" strokeWidth={2} />
+                </button>
+                <button aria-label="Следующий шаг" className="flex size-8 cursor-pointer items-center justify-center rounded-full" type="button">
+                  <ChevronRight aria-hidden="true" className="size-4" strokeWidth={2} />
+                </button>
               </div>
             </div>
           </div>

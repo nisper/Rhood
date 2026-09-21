@@ -46,8 +46,6 @@
 ◽️ Modal header
 ◽️ Modal top
 ◽️ Onboarding tooltip
-◽️ Pagination
-◽️ Pagination page button
 ◽️ Tab
 ◽️ Tooltip
 

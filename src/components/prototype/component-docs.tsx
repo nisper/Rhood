@@ -23,13 +23,9 @@ import "./component-docs.css";
 import * as React from "react";
 import { Copy, PartyPopper } from "lucide-react";
 
-import { AddAnyFile } from "@/components/ui/add-any-file";
-import { AddPhotos } from "@/components/ui/add-photos";
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
 import { Chip } from "@/components/ui/chip";
-import { ConfirmCode } from "@/components/ui/confirm-code";
-import { DateInput } from "@/components/ui/date-input";
 import { FormControlLabel } from "@/components/ui/form-control-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
@@ -38,16 +34,8 @@ import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
 import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
-import { MainHeaderMenuButton } from "@/components/ui/main-header-menu-button";
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip";
-import { PageTitle } from "@/components/ui/page-title";
-import { Pagination } from "@/components/ui/pagination";
-import { PaginationAlt } from "@/components/ui/pagination-alt";
-import { PaginationButton } from "@/components/ui/pagination-button";
-import { PasswordField } from "@/components/ui/password-field";
-import { ProgressLinear } from "@/components/ui/progress-linear";
 import { Search } from "@/components/ui/search";
-import { ShowMore } from "@/components/ui/show-more";
 import { Snackbar } from "@/components/ui/snackbar";
 import { Tag } from "@/components/ui/tag";
 import { Table } from "@/components/ui/table";
@@ -55,7 +43,6 @@ import { TableCell } from "@/components/ui/table-cell";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
-import { UploadedDocument } from "@/components/ui/uploaded-document";
 import { cn } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -448,83 +435,6 @@ const componentDocs: ComponentDoc[] = [
     render: () => <TextareaExamples />,
   },
   {
-    id: "password-field",
-    title: "PasswordField",
-    description: "Поле пароля.",
-    group: "Forms",
-    source: "src/components/ui/password-field.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <PasswordField empty placeholder="Password" topLabel="static" />
-          <PasswordField
-            defaultValue="Value"
-            empty={false}
-            placeholder="Password"
-            topLabel="dynamic"
-          />
-          <PasswordField
-            defaultValue="Value"
-            empty={false}
-            error
-            placeholder="Password"
-            topLabel="dynamic"
-          />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "date-input",
-    title: "DateInput",
-    description: "Поле даты.",
-    group: "Forms",
-    source: "src/components/ui/date-input.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <DateInput
-            empty
-            label="Дата"
-            placeholder="Placeholder"
-            topLabel="dynamic"
-          />
-          <DateInput
-            defaultValue="24.08.2023"
-            empty={false}
-            label="Дата"
-            placeholder="Placeholder"
-            topLabel="dynamic"
-          />
-          <DateInput
-            defaultValue="24.08.2023"
-            empty={false}
-            error
-            label="Дата"
-            placeholder="Placeholder"
-            topLabel="dynamic"
-          />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
-    id: "confirm-code",
-    title: "ConfirmCode",
-    description: "Поле подтверждения кода.",
-    group: "Forms",
-    source: "src/components/ui/confirm-code.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix columns>
-          <ConfirmCode empty />
-          <ConfirmCode empty={false} />
-          <ConfirmCode empty state="focused" />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
     id: "form-control-label",
     title: "FormControlLabel",
     description: "Лейбл контрола формы.",
@@ -580,47 +490,6 @@ const componentDocs: ComponentDoc[] = [
     render: () => <TabExamples />,
   },
   {
-    id: "pagination-button",
-    title: "PaginationButton",
-    description: "Кнопка пагинации.",
-    group: "Navigation",
-    source: "src/components/ui/pagination-button.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <PaginationButton />
-          <PaginationButton state="hover" />
-          <PaginationButton state="checked" />
-          <PaginationButton type="icon" />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
-    id: "pagination",
-    title: "Pagination",
-    description: "Пагинация.",
-    group: "Navigation",
-    source: "src/components/ui/pagination.tsx",
-    render: () => (
-      <Canvas>
-        <Pagination className="min-w-[384px]" />
-      </Canvas>
-    ),
-  },
-  {
-    id: "pagination-alt",
-    title: "PaginationAlt",
-    description: "Альтернативная пагинация.",
-    group: "Navigation",
-    source: "src/components/ui/pagination-alt.tsx",
-    render: () => (
-      <Canvas>
-        <PaginationAlt className="min-w-[640px]" />
-      </Canvas>
-    ),
-  },
-  {
     id: "main-header",
     title: "MainHeader",
     description: "Главный хедер продукта.",
@@ -636,30 +505,6 @@ const componentDocs: ComponentDoc[] = [
     ),
   },
   {
-    id: "main-header-menu-button",
-    title: "MainHeaderMenuButton",
-    description: "Кнопка меню в хедере.",
-    group: "Layout",
-    source: "src/components/ui/main-header-menu-button.tsx",
-    render: () => (
-      <Canvas>
-        <MainHeaderMenuButton />
-      </Canvas>
-    ),
-  },
-  {
-    id: "page-title",
-    title: "PageTitle",
-    description: "Заголовок страницы.",
-    group: "Layout",
-    source: "src/components/ui/page-title.tsx",
-    render: () => (
-      <Canvas tone="blue">
-        <PageTitle className="min-w-[960px]" />
-      </Canvas>
-    ),
-  },
-  {
     id: "toolbar-filter",
     title: "ToolbarFilter",
     description: "Панель фильтров.",
@@ -668,22 +513,6 @@ const componentDocs: ComponentDoc[] = [
     render: () => (
       <Canvas>
         <ToolbarFilter className="min-w-[960px]" />
-      </Canvas>
-    ),
-  },
-  {
-    id: "show-more",
-    title: "ShowMore",
-    description: "Кнопка раскрытия дополнительного контента.",
-    group: "Layout",
-    source: "src/components/ui/show-more.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <ShowMore appearance="brand" />
-          <ShowMore appearance="neutral" />
-          <ShowMore appearance="brand" state="hover" />
-        </Matrix>
       </Canvas>
     ),
   },
@@ -809,22 +638,6 @@ const componentDocs: ComponentDoc[] = [
     ),
   },
   {
-    id: "progress-linear",
-    title: "ProgressLinear",
-    description: "Линейный прогресс.",
-    group: "Feedback",
-    source: "src/components/ui/progress-linear.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid gap-4">
-          <ProgressLinear position="start" />
-          <ProgressLinear position="medium" />
-          <ProgressLinear position="full" />
-        </div>
-      </Canvas>
-    ),
-  },
-  {
     id: "tooltip",
     title: "Tooltip",
     description: "Тултип.",
@@ -892,52 +705,6 @@ const componentDocs: ComponentDoc[] = [
     render: () => (
       <Canvas>
         <HelpCenter />
-      </Canvas>
-    ),
-  },
-  {
-    id: "add-photos",
-    title: "AddPhotos",
-    description: "Загрузка фотографий.",
-    group: "Files",
-    source: "src/components/ui/add-photos.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix columns>
-          <AddPhotos />
-          <AddPhotos isLoad />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
-    id: "add-any-file",
-    title: "AddAnyFile",
-    description: "Загрузка файла.",
-    group: "Files",
-    source: "src/components/ui/add-any-file.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix columns>
-          <AddAnyFile />
-          <AddAnyFile state="active" />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
-    id: "uploaded-document",
-    title: "UploadedDocument",
-    description: "Загруженный документ.",
-    group: "Files",
-    source: "src/components/ui/uploaded-document.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid max-w-[520px] gap-3">
-          <UploadedDocument />
-          <UploadedDocument state="hovered" />
-          <UploadedDocument fontWeight="medium" />
-        </div>
       </Canvas>
     ),
   },

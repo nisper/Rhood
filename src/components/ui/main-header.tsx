@@ -4,20 +4,16 @@ import { CircleHelp, Heart, Menu } from "lucide-react"
 import { Avatar } from "@/components/ui/avatar"
 import { HelpCenter } from "@/components/ui/help-center"
 import { IconButton } from "@/components/ui/icon-button"
-import {
-  MainHeaderMenuButton,
-  type MainHeaderMenuButtonState,
-} from "@/components/ui/main-header-menu-button"
 import { cn } from "@/lib/utils"
 
 const logoDeskSrc = "/Rhood/assets/rhood-logo-header.svg"
-const logoMobileSrc = "/Rhood/assets/rhood-logo-header-full.svg"
+const logoMobileSrc = "/Rhood/assets/rhood-logo-header.svg"
 
 type MainHeaderNavItem = {
   active?: boolean
   label: string
   propNew?: boolean
-  state?: MainHeaderMenuButtonState
+  state?: "default" | "hovered"
 }
 
 type MainHeaderProps = React.ComponentProps<"header"> & {
@@ -112,13 +108,36 @@ function MainHeader({
 
       <nav className="flex min-w-0 flex-1 items-start justify-center gap-4 pl-2">
         {navItems.map((item) => (
-          <MainHeaderMenuButton
+          <button
+            className={cn(
+              "inline-flex cursor-pointer items-center justify-center rounded-full py-0.5",
+              item.active || item.state === "hovered" ? "gap-2" : "gap-1 hover:gap-2",
+            )}
             key={item.label}
-            propNew={item.propNew}
-            selected={item.active}
-            state={item.state ?? "default"}
-            text={item.label}
-          />
+            type="button"
+          >
+            <span
+              className={cn(
+                "whitespace-nowrap text-sm leading-5 tracking-[0.17px] font-medium",
+                item.active || item.state === "hovered"
+                  ? "text-[var(--parser-text-primary-contrast)]"
+                  : "text-[rgba(255,255,255,0.6)] hover:text-[var(--parser-text-primary-contrast)]",
+              )}
+              style={{ fontVariationSettings: "'wdth' 100" }}
+            >
+              {item.label}
+            </span>
+            {item.propNew && (
+              <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
+                <span
+                  className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
+                  style={{ fontVariationSettings: "'wdth' 100" }}
+                >
+                  НОВОЕ
+                </span>
+              </span>
+            )}
+          </button>
         ))}
       </nav>
 

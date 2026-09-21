@@ -19,20 +19,10 @@
 | `10389:13275` | `helpCenter` | `src/components/ui/help-center.tsx` / `HelpCenter` |
 | `10389:13285` | `MainHeader` | `src/components/ui/main-header.tsx` / `MainHeader` |
 | `4163:45161` | `toolbar filter` | `src/components/ui/toolbar-filter.tsx` / `ToolbarFilter` |
-| `10389:13764` | `PageTitle` | `src/components/ui/page-title.tsx` / `PageTitle` |
-| `10389:15628` | `UploadedDocument` | `src/components/ui/uploaded-document.tsx` / `UploadedDocument` |
-| `10389:15612` | `AddPhotos` | `src/components/ui/add-photos.tsx` / `AddPhotos` |
-| `10389:15621` | `AddAnyFile` | `src/components/ui/add-any-file.tsx` / `AddAnyFile` |
 | `464:3585` | `Tab` | `src/components/ui/tab.tsx` / `Tab` |
 | `8931:1882` | `TabBar` | `src/components/ui/tab-bar.tsx` / `TabBar` |
-| `1918:18189` | `ConfirmCode` | `src/components/ui/confirm-code.tsx` / `ConfirmCode` |
-| `3416:13658` | `PaginationButton` | `src/components/ui/pagination-button.tsx` / `PaginationButton` |
-| `3422:13713` | `PaginationAlt` | `src/components/ui/pagination-alt.tsx` / `PaginationAlt` |
-| `415:3766` | `Pagination` | `src/components/ui/pagination.tsx` / `Pagination` |
-| `2108:14193` | `ProgressLinear` | `src/components/ui/progress-linear.tsx` / `ProgressLinear` |
 | `348:8648` | `Select` | `src/components/ui/select.tsx` / `Select` |
 | `11269:12350` | `search` | `src/components/ui/search.tsx` / `Search` |
-| `8555:4017` | `ShowMore` | `src/components/ui/show-more.tsx` / `ShowMore` |
 | `930:25605` | `Snackbar` | `src/components/ui/snackbar.tsx` / `Snackbar` |
 | `414:3051` | `TableCell` | `src/components/ui/table-cell.tsx` / `TableCell` |
 | `416:3328` | `Table` | `src/components/ui/table.tsx` / `Table` |
@@ -51,8 +41,6 @@
 | `11269:12380` | `InputNumber` | `src/components/ui/input-number.tsx` / `InputNumber` |
 | `11270:13059` | `InputNumberRange` | `src/components/ui/input-number-range.tsx` / `InputNumberRange` |
 | `734:6530` | `Textarea` | `src/components/ui/textarea.tsx` / `Textarea` |
-| `785:7777` | `password` | `src/components/ui/password-field.tsx` / `PasswordField` |
-| `574:4467` | `DateInput` | `src/components/ui/date-input.tsx` / `DateInput` |
 | `399:2325` | `formControlLabel` | `src/components/ui/form-control-label.tsx` / `FormControlLabel` |
 | `351:2706` | `formHelperText` | `src/components/ui/form-helper-text.tsx` / `FormHelperText` |
 
