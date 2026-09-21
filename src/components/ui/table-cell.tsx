@@ -129,9 +129,9 @@ function TableCell({
       ) : (
         <div className={cn("flex min-h-5 w-full items-center gap-1", isNumber && "justify-end")}>
           <span className={cn(
-          "min-w-0 text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+          "rh-typography-body-2 min-w-0",
             isContentWidth ? "whitespace-nowrap" : "break-words",
-            isHead ? "font-normal text-[var(--rh-theme-text-neutral-secondary)]" : isNumber ? "font-mono font-normal" : "font-normal",
+            isHead ? "text-[var(--rh-theme-text-neutral-secondary)]" : isNumber ? "rh-typography-body-2-mono" : "",
           )}>
             {children ?? (instance1 && <>{isHead ? "Head" : "Cell"}{instance2 && " secondary instance"}</>)}
           </span>

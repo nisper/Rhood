@@ -38,13 +38,13 @@ const sizeTokens: Record<
 > = {
   md: {
     container: "min-h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
-    valueText: "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    valueText: "rh-typography-body-1",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
     container: "min-h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
-    valueText: "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+    valueText: "rh-typography-body-2",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
@@ -195,7 +195,7 @@ function Select({
             </Chip>
             <span
               className={cn(
-                "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[calc(var(--spacing)*1)] font-normal text-[color:var(--rh-theme-text-neutral-primary)]",
+            "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[calc(var(--spacing)*1)] text-[color:var(--rh-theme-text-neutral-primary)]",
                 sizeTokens[size].valueText,
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}
@@ -206,7 +206,7 @@ function Select({
         ) : (
           <div
             className={cn(
-              "flex min-w-0 flex-1 items-center overflow-hidden font-normal text-[color:var(--rh-theme-text-neutral-primary)]",
+              "flex min-w-0 flex-1 items-center overflow-hidden text-[color:var(--rh-theme-text-neutral-primary)]",
               disabled && "opacity-60",
               sizeTokens[size].valueText,
             )}

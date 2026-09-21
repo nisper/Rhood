@@ -16,7 +16,7 @@ function Tooltip({ className, children = "Typography", ...props }: TooltipProps)
       {...props}
     >
       <div
-        className="min-w-px flex-1 text-sm font-normal leading-[1.43] tracking-[0.0238px] text-[color:var(--parser-text-primary-contrast)]"
+        className="rh-typography-body-2 min-w-px flex-1 text-[color:var(--parser-text-primary-contrast)]"
         style={{ fontVariationSettings: "'wdth' 100" }}
       >
         {children}

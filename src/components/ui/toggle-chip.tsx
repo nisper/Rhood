@@ -28,7 +28,7 @@ const sizeTokens: Record<
   lg: {
     container: "min-h-11",
     iconSize: "size-6",
-    label: "text-base leading-[1.5] tracking-[0.024px]",
+    label: "rh-typography-body-1",
     paddingX: "px-2",
     paddingY: "py-2",
     thumbSize: "24px",
@@ -37,7 +37,7 @@ const sizeTokens: Record<
   md: {
     container: "min-h-10",
     iconSize: "size-6",
-    label: "text-base leading-[1.5] tracking-[0.024px]",
+    label: "rh-typography-body-1",
     paddingX: "px-1",
     paddingY: "py-1",
     thumbSize: "24px",
@@ -46,7 +46,7 @@ const sizeTokens: Record<
   sm: {
     container: "min-h-8",
     iconSize: "size-5",
-    label: "text-sm leading-[1.43] tracking-[0.0238px]",
+    label: "rh-typography-body-2",
     paddingX: "px-[3px]",
     paddingY: "py-[3px]",
     thumbSize: "20px",
@@ -106,7 +106,7 @@ function ToggleChip({
 
       {label && (
         <span
-          className={cn("whitespace-nowrap font-normal", s.label)}
+          className={cn("whitespace-nowrap", s.label)}
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           Chip

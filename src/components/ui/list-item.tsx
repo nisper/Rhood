@@ -91,16 +91,16 @@ function ListItem({
       >
         <span
           className={cn(
-            "break-words text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]",
+            "break-words",
             fontWeight === "medium"
-              ? "font-medium tracking-[var(--rh-sizing-typography-letter-spacing-md)]"
-              : "font-normal tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+              ? "rh-typography-body-1-medium"
+              : "rh-typography-body-1",
           )}
         >
           {children}
         </span>
         {secondaryText && (
-          <span className="break-words text-[length:var(--rh-sizing-typography-font-size-sm)] font-normal leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)] text-[var(--rh-theme-text-neutral-secondary)]">
+          <span className="rh-typography-body-2 break-words text-[var(--rh-theme-text-neutral-secondary)]">
             {secondaryLabel}
           </span>
         )}

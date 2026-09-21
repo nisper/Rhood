@@ -24,12 +24,12 @@ const textClasses: Record<
   Record<FormControlLabelFontWeight, string>
 > = {
   md: {
-    regular: "text-base leading-6 tracking-[0.024px] font-normal",
-    medium: "text-base leading-6 tracking-[0.024px] [font-weight:500]",
+    regular: "rh-typography-body-1",
+    medium: "rh-typography-body-1-medium",
   },
   sm: {
-    regular: "text-sm leading-[1.43] tracking-[0.0238px] font-normal",
-    medium: "text-sm leading-[1.43] tracking-[0.0238px] [font-weight:500]",
+    regular: "rh-typography-body-2",
+    medium: "rh-typography-body-2-medium",
   },
 }
 

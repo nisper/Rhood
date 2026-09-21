@@ -97,7 +97,7 @@ function Tab({
       >
         <p
           className={cn(
-            "relative shrink-0 text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)] font-medium",
+            "rh-typography-body-2-medium relative shrink-0",
             isHorizontal && "whitespace-nowrap",
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
@@ -107,7 +107,7 @@ function Tab({
 
         {secondaryText && (
           <p
-            className="relative shrink-0 text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[1.43] tracking-[0.0238px] font-normal"
+            className="rh-typography-body-2 relative shrink-0"
             style={{ fontVariationSettings: "'wdth' 100" }}
           >
             {secondaryLabel}

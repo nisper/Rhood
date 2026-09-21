@@ -118,7 +118,7 @@ function MainHeader({
           >
             <span
               className={cn(
-                "whitespace-nowrap text-sm leading-5 tracking-[0.17px] font-medium",
+                "rh-typography-body-2-medium whitespace-nowrap",
                 item.active || item.state === "hovered"
                   ? "text-[var(--parser-text-primary-contrast)]"
                   : "text-[rgba(255,255,255,0.6)] hover:text-[var(--parser-text-primary-contrast)]",

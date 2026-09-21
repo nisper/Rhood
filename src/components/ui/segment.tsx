@@ -18,9 +18,9 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-md)] px-[calc(var(--spacing)*4)] py-[calc(var(--spacing)*3)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
-  md: "h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "h-[calc(calc(var(--spacing)*6)+calc(var(--spacing)*1))] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  lg: "rh-typography-body-1-medium h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-md)] px-[calc(var(--spacing)*4)] py-[calc(var(--spacing)*3)]",
+  md: "rh-typography-body-1-medium h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)]",
+  sm: "rh-typography-body-2-medium h-[calc(calc(var(--spacing)*6)+calc(var(--spacing)*1))] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)]",
 }
 
 const iconClasses: Record<SegmentSize, string> = {
@@ -68,7 +68,7 @@ function Segment({
     <button
       {...selectionAccessibility}
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-0 bg-transparent font-[480] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-[var(--rh-theme-text-neutral-disabled)]",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center whitespace-nowrap border-0 bg-transparent transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:text-[var(--rh-theme-text-neutral-disabled)]",
         sizeClasses[size],
         colorClasses[color][isSelected ? "selected" : "default"],
         !disabled && !isSelected && state === "hover" && "bg-[var(--rh-theme-fill-neutral-hover)]",

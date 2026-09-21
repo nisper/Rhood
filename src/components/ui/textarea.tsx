@@ -19,8 +19,8 @@ type TextareaProps = Omit<React.ComponentProps<"textarea">, "rows" | "size"> & {
 }
 
 const sizeClasses: Record<TextareaSize, string> = {
-  md: "px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  md: "rh-typography-body-1 px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)]",
+  sm: "rh-typography-body-2 px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
 }
 
 function stateClasses({ error, state }: { error: boolean; state: TextareaState }) {
@@ -94,7 +94,7 @@ function Textarea({
     <textarea
       aria-invalid={error || undefined}
       className={cn(
-        "box-border block w-full resize-none appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] font-normal text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        "box-border block w-full resize-none appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
         sizeClasses[size],
         stateClasses({ error, state }),
         interactiveClasses,

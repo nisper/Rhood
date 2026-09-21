@@ -31,22 +31,19 @@ const sizeClasses: Record<
     button:
       "min-h-[calc(var(--spacing)*10)] gap-[var(--rh-sizing-common-input-padding-gap-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
     icon: "size-[calc(var(--spacing)*6)]",
-    label:
-      "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    label: "rh-typography-body-1-medium",
   },
   sm: {
     button:
       "min-h-[calc(var(--spacing)*9)] gap-[var(--rh-sizing-common-input-padding-gap-sm)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
     icon: "size-[calc(var(--spacing)*5)]",
-    label:
-      "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+    label: "rh-typography-body-1-medium",
   },
   xsm: {
     button:
       "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] gap-[var(--rh-sizing-common-input-padding-gap-xsm)] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)]",
     icon: "size-[calc(var(--spacing)*4)]",
-    label:
-      "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+    label: "rh-typography-body-1-medium",
   },
 }
 
@@ -121,7 +118,7 @@ function ButtonFavorite({
       aria-label={ariaLabel ?? (isIconOnly ? (isChecked ? "Удалить из избранного" : "Добавить в избранное") : undefined)}
       aria-pressed={isChecked}
       className={cn(
-        "group inline-flex shrink-0 cursor-pointer items-center justify-center border-0 font-semibold text-[var(--rh-theme-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--rh-theme-fill-disabled)] disabled:text-[var(--rh-theme-text-neutral-disabled)]",
+        "group inline-flex shrink-0 cursor-pointer items-center justify-center border-0 text-[var(--rh-theme-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--rh-theme-fill-disabled)] disabled:text-[var(--rh-theme-text-neutral-disabled)]",
         isIconOnly
           ? cn(
               "rounded-full",

@@ -34,7 +34,7 @@ const sizeTokens: Record<
   lg: {
     chipPadding: "px-2 py-2",
     iconSize: "size-6",
-    labelClass: "text-base leading-[1.5] tracking-[0.024px]",
+    labelClass: "rh-typography-body-1",
     labelPadding: "px-2",
     thumbSize: "size-6",
     thumbText: "text-xs leading-[1.66] tracking-[0.4px]",
@@ -43,7 +43,7 @@ const sizeTokens: Record<
   md: {
     chipPadding: "px-1 py-1",
     iconSize: "size-6",
-    labelClass: "text-base leading-[1.5] tracking-[0.024px]",
+    labelClass: "rh-typography-body-1",
     labelPadding: "px-2",
     thumbSize: "size-6",
     thumbText: "text-xs leading-[1.66] tracking-[0.4px]",
@@ -52,7 +52,7 @@ const sizeTokens: Record<
   sm: {
     chipPadding: "px-[3px] py-[3px]",
     iconSize: "size-5",
-    labelClass: "text-sm leading-[1.43] tracking-[0.0238px]",
+    labelClass: "rh-typography-body-2",
     labelPadding: "px-1",
     thumbSize: "size-5",
     thumbText: "text-[10px] leading-[1.66] tracking-[0.4px]",
@@ -304,7 +304,7 @@ function Chip({
       {label && (
         <span
           className={cn(
-            "whitespace-nowrap font-normal",
+            "whitespace-nowrap",
             sizeTokens[size].labelClass,
             sizeTokens[size].labelPadding,
           )}

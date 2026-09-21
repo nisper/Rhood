@@ -18,8 +18,8 @@ type TextfieldProps = Omit<React.ComponentProps<"input">, "size"> & {
 }
 
 const sizeClasses: Record<TextfieldSize, string> = {
-  md: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  md: "rh-typography-body-1 h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)]",
+  sm: "rh-typography-body-2 h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)]",
 }
 
 function stateClasses({ error, state }: { error: boolean; state: TextfieldState }) {
@@ -75,7 +75,7 @@ function Textfield({
     <input
       aria-invalid={error || undefined}
       className={cn(
-        "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] font-normal text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
         sizeClasses[size],
         stateClasses({ error, state }),
         interactiveClasses,
