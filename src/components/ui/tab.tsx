@@ -1,48 +1,54 @@
-import * as React from "react"
-import { Star } from "lucide-react"
+import * as React from "react";
+import { Star } from "lucide-react";
 
-import { cn } from "@/lib/utils"
+import { cn } from "@/lib/utils";
 
-type TabState = "default" | "hovered"
-type TabDirection = "horizontal" | "vertical"
+type TabState = "default" | "hovered";
+type TabDirection = "horizontal" | "vertical";
 
 type TabProps = React.ComponentProps<"div"> & {
-  direction?: TabDirection
-  disGutters?: boolean
-  label?: React.ReactNode
-  secondaryLabel?: React.ReactNode
-  secondaryText?: boolean
-  selected?: boolean
-  startIcon?: boolean
-  state?: TabState
-}
+  direction?: TabDirection;
+  disGutters?: boolean;
+  label?: React.ReactNode;
+  secondaryLabel?: React.ReactNode;
+  secondaryText?: boolean;
+  selected?: boolean;
+  startIcon?: boolean;
+  state?: TabState;
+};
 
 function getRootClasses({
   direction,
   disGutters,
   selected,
 }: Pick<TabProps, "direction" | "disGutters" | "selected">) {
-  const isHorizontal = direction === "horizontal"
+  const isHorizontal = direction === "horizontal";
 
   if (isHorizontal) {
     return cn(
-      "relative flex items-start gap-2 justify-center",
-      selected && "border-b-2 border-[color:var(--parser-text-neutral-primary)]",
-      disGutters ? "min-w-[38px] py-2" : "px-4 py-2",
-    )
+      "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
+      selected &&
+        "border-b-2 border-[color:var(--rh-theme-text-neutral-primary)]",
+      disGutters
+        ? "min-w-[38px] py-[var(--rh-sizing-tabs-padding-py)]"
+        : "px-[var(--rh-sizing-common-input-padding-px-lg)] py-[var(--rh-sizing-tabs-padding-py)]",
+    );
   }
 
   return cn(
-    "relative flex items-start gap-2",
-    selected && "border-l-2 border-[color:var(--parser-text-neutral-primary)]",
-    disGutters ? "px-3" : "px-3 py-2",
-  )
+    "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
+    selected &&
+      "border-l-2 border-[color:var(--rh-theme-text-neutral-primary)]",
+    disGutters
+      ? "px-[var(--rh-sizing-tabs-padding-px)]"
+      : "px-[var(--rh-sizing-tabs-padding-px)] py-[var(--rh-sizing-tabs-padding-py)]",
+  );
 }
 
 function getToneClass(selected: boolean) {
   return selected
-    ? "text-[color:var(--parser-text-neutral-primary)]"
-    : "text-[color:var(--parser-text-neutral-secondary)]"
+    ? "text-[color:var(--rh-theme-text-neutral-primary)]"
+    : "text-[color:var(--rh-theme-text-neutral-secondary)] hover:text-[color:var(--rh-theme-text-neutral-primary)]";
 }
 
 /**
@@ -60,21 +66,24 @@ function Tab({
   state = "default",
   ...props
 }: TabProps) {
-  const isHorizontal = direction === "horizontal"
-  const isActive = selected || state === "hovered"
+  const isHorizontal = direction === "horizontal";
+  const isActive = selected || state === "hovered";
 
   return (
     <div
-      className={cn(getRootClasses({ direction, disGutters, selected }), className)}
+      className={cn(
+        getRootClasses({ direction, disGutters, selected }),
+        className,
+      )}
       {...props}
     >
       {startIcon && (
         <Star
           className={cn(
-            "size-4 shrink-0",
+            "size-[var(--rh-sizing-icon-icon-sm)] shrink-0",
             isActive
-              ? "text-[color:var(--parser-text-neutral-primary)]"
-              : "text-[color:var(--parser-text-neutral-secondary)]",
+              ? "text-[color:var(--rh-theme-icon-neutral-primary)]"
+              : "text-[color:var(--rh-theme-icon-neutral-secondary)] group-hover:text-[color:var(--rh-theme-icon-neutral-primary)]",
           )}
           strokeWidth={2}
         />
@@ -82,13 +91,13 @@ function Tab({
 
       <div
         className={cn(
-          "flex min-w-px shrink-0 flex-col items-start justify-center gap-1 whitespace-nowrap",
+          "flex min-w-px shrink-0 flex-col items-start justify-center gap-0.5 whitespace-nowrap",
           getToneClass(isActive),
         )}
       >
         <p
           className={cn(
-            "relative shrink-0 text-[14px] leading-5 tracking-[0.15px] font-medium",
+            "relative shrink-0 text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)] font-medium",
             isHorizontal && "whitespace-nowrap",
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
@@ -98,7 +107,7 @@ function Tab({
 
         {secondaryText && (
           <p
-            className="relative shrink-0 text-[14px] leading-[1.43] tracking-[0.0238px] font-normal"
+            className="relative shrink-0 text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[1.43] tracking-[0.0238px] font-normal"
             style={{ fontVariationSettings: "'wdth' 100" }}
           >
             {secondaryLabel}
@@ -106,8 +115,8 @@ function Tab({
         )}
       </div>
     </div>
-  )
+  );
 }
 
-export { Tab }
-export type { TabDirection, TabProps, TabState }
+export { Tab };
+export type { TabDirection, TabProps, TabState };

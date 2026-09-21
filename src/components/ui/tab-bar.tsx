@@ -10,29 +10,25 @@ type TabBarProps = React.ComponentProps<"div"> & {
 /**
  * Parser tab bar matching the Figma `TabBar` component.
  */
-function TabBar({ className, disGutters = false, ...props }: TabBarProps) {
+function TabBar({ children, className, disGutters = false, ...props }: TabBarProps) {
+  const defaultTabs = (
+    <>
+      <Tab disGutters={disGutters} selected />
+      <Tab disGutters={disGutters} />
+      <Tab disGutters={disGutters} />
+    </>
+  )
+
   return (
     <div
       className={cn(
-        "flex items-start border-b border-[color:var(--parser-border-light)]",
-        disGutters ? "gap-4" : "gap-0",
+        "flex items-start border-b border-[color:var(--rh-theme-border-light)]",
+        disGutters && "gap-[var(--rh-sizing-tabs-padding-gap)]",
         className,
       )}
       {...props}
     >
-      {disGutters ? (
-        <>
-          <Tab disGutters selected />
-          <Tab disGutters />
-          <Tab disGutters />
-        </>
-      ) : (
-        <>
-          <Tab selected />
-          <Tab />
-          <Tab />
-        </>
-      )}
+      {children ?? defaultTabs}
     </div>
   )
 }

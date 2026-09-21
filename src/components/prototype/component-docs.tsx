@@ -17,6 +17,7 @@ import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
+import { TabExamples } from "./tab-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Copy, PartyPopper } from "lucide-react";
@@ -47,8 +48,6 @@ import { ProgressLinear } from "@/components/ui/progress-linear";
 import { Search } from "@/components/ui/search";
 import { ShowMore } from "@/components/ui/show-more";
 import { Snackbar } from "@/components/ui/snackbar";
-import { Tab } from "@/components/ui/tab";
-import { TabBar } from "@/components/ui/tab-bar";
 import { Tag } from "@/components/ui/tag";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
@@ -562,31 +561,12 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "tab",
     title: "Tab",
-    description: "Вкладка.",
+    description: "Вкладка и группа вкладок с горизонтальной или вертикальной активной границей.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=464-3585",
     group: "Navigation",
-    source: "src/components/ui/tab.tsx",
-    render: () => (
-      <Canvas tone="blue">
-        <Matrix>
-          <Tab />
-          <Tab selected secondaryText />
-          <Tab direction="vertical" />
-          <Tab direction="vertical" selected secondaryText />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
-    id: "tab-bar",
-    title: "TabBar",
-    description: "Группа вкладок.",
-    group: "Navigation",
-    source: "src/components/ui/tab-bar.tsx",
-    render: () => (
-      <Canvas tone="blue">
-        <TabBar className="min-w-[320px]" />
-      </Canvas>
-    ),
+    source: "src/components/ui/tab.tsx · src/components/ui/tab-bar.tsx",
+    render: () => <TabExamples />,
   },
   {
     id: "pagination-button",
@@ -1259,6 +1239,7 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
     "select",
     "segmented-control",
     "menu",
+    "tab",
     "list",
     "table",
     "checkbox",
