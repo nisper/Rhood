@@ -18,6 +18,7 @@ import { SelectExamples } from "./select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
+import { TypographyExamples } from "./typography-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Copy, PartyPopper } from "lucide-react";
@@ -131,6 +132,16 @@ const componentDocs: ComponentDoc[] = [
     group: "Foundations",
     source: "src/tmp/sizing.json",
     render: () => <TokenSizingExamples />,
+  },
+  {
+    id: "typography",
+    title: "Typography",
+    description: "Текстовые стили из Figma, доступные в коде как семантические CSS-классы.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=0-1&p=f&t=fFqfPGDMPXDzmfVo-11",
+    group: "Foundations",
+    source: "src/styles/typography.css · docs/tokens.md#Typography",
+    render: () => <TypographyExamples />,
   },
   {
     id: "showcase-surface",
@@ -1126,7 +1137,7 @@ export function ComponentDocs() {
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredDocs = componentDocs.filter((doc) =>
-    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem ListSmall ListItemSmall" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""} ${doc.id === "table" ? "TableCell TableCellHead" : ""}`
+    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""} ${doc.id === "table" ? "TableCell TableCellHead" : ""}`
       .toLowerCase()
       .includes(normalizedQuery),
   );
@@ -1241,6 +1252,7 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
     "menu",
     "tab",
     "list",
+    "typography",
     "table",
     "checkbox",
     "clear-button",
