@@ -1243,6 +1243,8 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
 }>(function ComponentNavigation({ activeId, groups }, ref) {
   const [focusedId, setFocusedId] = React.useState<string | undefined>();
   const celebratoryComponentIds = new Set([
+    "colors",
+    "sizing",
     "button",
     "button-favorite",
     "icon-button",
