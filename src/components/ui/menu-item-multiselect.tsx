@@ -1,81 +1,48 @@
-import * as React from "react"
-import { Square, SquareCheck, SquareMinus, Star } from "lucide-react"
+import * as React from "react";
+import { Star } from "lucide-react";
 
-import { Chip } from "@/components/ui/chip"
-import { cn } from "@/lib/utils"
+import { Checkbox } from "@/components/ui/checkbox";
+import { Chip } from "@/components/ui/chip";
+import { cn } from "@/lib/utils";
 
-type MenuItemMultiselectState = "default" | "hovered"
-type MenuItemMultiselectSize = "md" | "sm"
-type MenuItemMultiselectChecked = boolean | "none" | "true" | "indeterminate"
+type MenuItemMultiselectState = "default" | "hovered";
+type MenuItemMultiselectChecked = boolean | "none" | "true" | "indeterminate";
 
 type MenuItemMultiselectProps = React.ComponentProps<"div"> & {
-  icon?: boolean
-  caption?: boolean
-  checked?: MenuItemMultiselectChecked
-  disabled?: boolean
-  rightSlot?: boolean
-  rightSlotChip?: boolean
-  rightSlotText?: boolean
-  secondaryText?: boolean
-  selected?: boolean
-  size?: MenuItemMultiselectSize
-  startIcon?: boolean
-  state?: MenuItemMultiselectState
-}
+  icon?: boolean;
+  caption?: boolean;
+  checked?: MenuItemMultiselectChecked;
+  disabled?: boolean;
+  rightSlot?: boolean;
+  rightSlotChip?: boolean;
+  rightSlotText?: boolean;
+  secondaryText?: boolean;
+  selected?: boolean;
+  startIcon?: boolean;
+  state?: MenuItemMultiselectState;
+};
 
 function getBackground({
   disabled,
   state,
 }: Pick<MenuItemMultiselectProps, "disabled" | "state">) {
   if (disabled) {
-    return "bg-transparent"
+    return "bg-transparent";
   }
 
   if (state === "hovered") {
-    return "bg-[var(--rh-theme-fill-neutral-hover)]"
+    return "bg-[var(--rh-theme-fill-neutral-hover)]";
   }
 
-  return "bg-transparent"
+  return "bg-transparent";
 }
 
 function getTitleTone() {
-  return "text-[color:var(--rh-theme-text-neutral-primary)]"
+  return "text-[color:var(--rh-theme-text-neutral-primary)]";
 }
 
 function getCaptionTone() {
-  return "text-[color:var(--rh-theme-text-neutral-secondary)]"
-}
-
-function MenuCheckbox({
-  checked = "none",
-  disabled = false,
-}: {
-  checked?: MenuItemMultiselectChecked
-  disabled?: boolean
-}) {
-  const iconClassName = cn(
-    "size-5",
-    checked === "true" || checked === "indeterminate"
-      ? "text-[var(--rh-theme-icon-brand)]"
-      : "text-[var(--rh-theme-border-neutral)]",
-  )
-
-  return (
-    <span
-      className={cn(
-        "flex size-5 shrink-0 items-center justify-center",
-        disabled && "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]",
-      )}
-    >
-      {checked === "true" ? (
-        <SquareCheck aria-hidden="true" className={iconClassName} strokeWidth={2} />
-      ) : checked === "indeterminate" ? (
-        <SquareMinus aria-hidden="true" className={iconClassName} strokeWidth={2} />
-      ) : (
-        <Square aria-hidden="true" className={iconClassName} strokeWidth={2} />
-      )}
-    </span>
-  )
+  return "text-[color:var(--rh-theme-text-neutral-secondary)]";
 }
 
 function MenuItemMultiselect({
@@ -90,23 +57,30 @@ function MenuItemMultiselect({
   rightSlotText = true,
   secondaryText = true,
   selected = false,
-  size = "md",
   startIcon = true,
   state = "default",
   ...props
 }: MenuItemMultiselectProps) {
-  const resolvedChecked: MenuItemMultiselectChecked = typeof checked === "boolean" ? (checked ? "true" : "none") : checked ?? (selected ? "true" : "none")
-  const resolvedRightSlotText = rightSlotText || caption
-  const rightSlotVisible = rightSlot && (resolvedRightSlotText || rightSlotChip)
-  const disabledOpacityClass = "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]"
+  const resolvedChecked: MenuItemMultiselectChecked =
+    typeof checked === "boolean"
+      ? checked
+        ? "true"
+        : "none"
+      : (checked ?? (selected ? "true" : "none"));
+  const resolvedRightSlotText = rightSlotText || caption;
+  const rightSlotVisible =
+    rightSlot && (resolvedRightSlotText || rightSlotChip);
+  const disabledOpacityClass =
+    "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]";
 
   return (
     <div
       className={cn(
-        "flex w-full items-start gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-menu-border-radius)] px-[var(--rh-sizing-menu-padding-px-sm)]",
-        size === "md" ? "py-2.5" : "py-2",
+        "flex w-full items-start gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-menu-padding-px-sm)]",
+        "py-2.5",
         getBackground({ disabled, state }),
-        !disabled && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+        !disabled &&
+          "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         className,
       )}
       {...props}
@@ -114,9 +88,16 @@ function MenuItemMultiselect({
       onClick={disabled ? undefined : props.onClick}
       onKeyDown={disabled ? undefined : props.onKeyDown}
     >
-      <div className="flex h-[calc(var(--spacing)*5)] shrink-0 items-center justify-center">
-        <MenuCheckbox checked={resolvedChecked} disabled={disabled} />
-      </div>
+      <Checkbox
+        aria-label={
+          typeof children === "string" ? children : "Выбрать пункт меню"
+        }
+        checked={resolvedChecked === "true"}
+        className="min-h-0 gap-0 py-0"
+        disabled={disabled}
+        indeterminate={resolvedChecked === "indeterminate"}
+        label={false}
+      />
 
       {(icon ?? startIcon) && (
         <span
@@ -125,7 +106,11 @@ function MenuItemMultiselect({
             disabled && disabledOpacityClass,
           )}
         >
-          <Star aria-hidden="true" className="size-[calc(var(--spacing)*5)]" strokeWidth={2} />
+          <Star
+            aria-hidden="true"
+            className="size-[calc(var(--spacing)*5)]"
+            strokeWidth={2}
+          />
         </span>
       )}
 
@@ -138,7 +123,7 @@ function MenuItemMultiselect({
       >
         <span
           className={cn(
-              size === "md" ? "w-full text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]" : "w-full text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+            "w-full text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
             getTitleTone(),
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
@@ -193,13 +178,12 @@ function MenuItemMultiselect({
         </div>
       )}
     </div>
-  )
+  );
 }
 
-export { MenuItemMultiselect }
+export { MenuItemMultiselect };
 export type {
   MenuItemMultiselectChecked,
   MenuItemMultiselectProps,
-  MenuItemMultiselectSize,
   MenuItemMultiselectState,
-}
+};

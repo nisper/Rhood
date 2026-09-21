@@ -13,9 +13,9 @@ type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[calc(var(--spacing)*14)] rounded-[var(--rh-sizing-border-radius-border-radius-lg)]",
-  md: "h-[calc(var(--spacing)*10)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
-  sm: "h-[calc(var(--spacing)*9)] rounded-[var(--rh-sizing-border-radius-border-radius-md)]",
+  lg: "h-[calc(var(--spacing)*14)] rounded-[var(--rh-sizing-border-radius-lg)]",
+  md: "h-[calc(var(--spacing)*10)] rounded-[var(--rh-sizing-border-radius-md)]",
+  sm: "h-[calc(var(--spacing)*9)] rounded-[var(--rh-sizing-border-radius-md)]",
 }
 
 const colorClasses: Record<SegmentColor, string> = {

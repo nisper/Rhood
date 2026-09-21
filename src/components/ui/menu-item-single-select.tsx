@@ -1,25 +1,23 @@
-import * as React from "react"
-import { Star } from "lucide-react"
+import * as React from "react";
+import { Star } from "lucide-react";
 
-import { Chip } from "@/components/ui/chip"
-import { cn } from "@/lib/utils"
+import { Chip } from "@/components/ui/chip";
+import { cn } from "@/lib/utils";
 
-type MenuItemSingleSelectState = "default" | "hovered"
-type MenuItemSingleSelectSize = "md" | "sm"
+type MenuItemSingleSelectState = "default" | "hovered";
 
 type MenuItemSingleSelectProps = React.ComponentProps<"div"> & {
-  icon?: boolean
-  chip?: boolean
-  disabled?: boolean
-  rightSlot?: boolean
-  rightSlotChip?: boolean
-  rightSlotText?: boolean
-  secondaryText?: boolean
-  selected?: boolean
-  size?: MenuItemSingleSelectSize
-  startIcon?: boolean
-  state?: MenuItemSingleSelectState
-}
+  icon?: boolean;
+  chip?: boolean;
+  disabled?: boolean;
+  rightSlot?: boolean;
+  rightSlotChip?: boolean;
+  rightSlotText?: boolean;
+  secondaryText?: boolean;
+  selected?: boolean;
+  startIcon?: boolean;
+  state?: MenuItemSingleSelectState;
+};
 
 function getBackground({
   disabled,
@@ -27,18 +25,18 @@ function getBackground({
   state,
 }: Pick<MenuItemSingleSelectProps, "disabled" | "selected" | "state">) {
   if (disabled) {
-    return "bg-transparent"
+    return "bg-transparent";
   }
 
   if (selected && state === "default") {
-    return "bg-[var(--rh-theme-fill-neutral-selected)]"
+    return "bg-[var(--rh-theme-fill-neutral-selected)]";
   }
 
   if (!selected && state === "hovered") {
-    return "bg-[var(--rh-theme-fill-neutral-hover)]"
+    return "bg-[var(--rh-theme-fill-neutral-hover)]";
   }
 
-  return "bg-transparent"
+  return "bg-transparent";
 }
 
 function MenuItemSingleSelect({
@@ -52,22 +50,25 @@ function MenuItemSingleSelect({
   rightSlotText = true,
   secondaryText = true,
   selected = true,
-  size = "md",
   startIcon = true,
   state = "default",
   ...props
 }: MenuItemSingleSelectProps) {
-  const resolvedRightSlotChip = chip ?? rightSlotChip
-  const rightSlotVisible = rightSlot && (rightSlotText || resolvedRightSlotChip)
-  const disabledOpacityClass = "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]"
+  const resolvedRightSlotChip = chip ?? rightSlotChip;
+  const rightSlotVisible =
+    rightSlot && (rightSlotText || resolvedRightSlotChip);
+  const disabledOpacityClass =
+    "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]";
 
   return (
     <div
       className={cn(
-        "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-menu-border-radius)] px-[var(--rh-sizing-menu-padding-px-sm)]",
-        size === "md" ? "py-2.5" : "py-2",
+        "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-menu-padding-px-sm)]",
+        "py-2.5",
         getBackground({ disabled, selected, state }),
-        !disabled && !selected && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+        !disabled &&
+          !selected &&
+          "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         className,
       )}
       {...props}
@@ -82,7 +83,11 @@ function MenuItemSingleSelect({
             disabled && disabledOpacityClass,
           )}
         >
-          <Star aria-hidden="true" className="size-[calc(var(--spacing)*5)]" strokeWidth={2} />
+          <Star
+            aria-hidden="true"
+            className="size-[calc(var(--spacing)*5)]"
+            strokeWidth={2}
+          />
         </span>
       )}
 
@@ -94,7 +99,7 @@ function MenuItemSingleSelect({
         )}
       >
         <span
-          className={cn("w-full tracking-[var(--rh-sizing-typography-letter-spacing-md)] text-[color:var(--rh-theme-text-neutral-primary)]", size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]")}
+          className="w-full tracking-[var(--rh-sizing-typography-letter-spacing-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] text-[color:var(--rh-theme-text-neutral-primary)]"
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           {children}
@@ -141,8 +146,8 @@ function MenuItemSingleSelect({
         </span>
       )}
     </div>
-  )
+  );
 }
 
-export { MenuItemSingleSelect }
-export type { MenuItemSingleSelectProps, MenuItemSingleSelectSize, MenuItemSingleSelectState }
+export { MenuItemSingleSelect };
+export type { MenuItemSingleSelectProps, MenuItemSingleSelectState };

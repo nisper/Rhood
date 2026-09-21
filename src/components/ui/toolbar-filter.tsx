@@ -67,7 +67,6 @@ function FilterSelect({
                 role="option"
                 secondaryText={false}
                 selected={option === value}
-                size="sm"
               >
                 {option}
               </MenuItemSingleSelect>

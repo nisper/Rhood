@@ -3517,7 +3517,7 @@
     {
       "collection": "sizing",
       "name": "border-radius/border-radius-sm",
-      "cssVariable": "--rh-sizing-border-radius-border-radius-sm",
+      "cssVariable": "--rh-sizing-border-radius-sm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
@@ -3531,7 +3531,7 @@
     {
       "collection": "sizing",
       "name": "border-radius/border-radius-md",
-      "cssVariable": "--rh-sizing-border-radius-border-radius-md",
+      "cssVariable": "--rh-sizing-border-radius-md",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3545,7 +3545,7 @@
     {
       "collection": "sizing",
       "name": "border-radius/border-radius-lg",
-      "cssVariable": "--rh-sizing-border-radius-border-radius-lg",
+      "cssVariable": "--rh-sizing-border-radius-lg",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
@@ -3559,7 +3559,7 @@
     {
       "collection": "sizing",
       "name": "border-radius/border-radius-xlg",
-      "cssVariable": "--rh-sizing-border-radius-border-radius-xlg",
+      "cssVariable": "--rh-sizing-border-radius-xlg",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
@@ -3575,7 +3575,7 @@
       "name": "border-radius/modal",
       "cssVariable": "--rh-sizing-border-radius-modal",
       "type": "number",
-      "cssValue": "var(--rh-sizing-border-radius-border-radius-lg)",
+      "cssValue": "var(--rh-sizing-border-radius-lg)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -4011,7 +4011,7 @@
       "name": "common-input/shape/border_radius",
       "cssVariable": "--rh-sizing-common-input-shape-border-radius",
       "type": "number",
-      "cssValue": "var(--rh-sizing-border-radius-border-radius-md)",
+      "cssValue": "var(--rh-sizing-border-radius-md)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",
@@ -4261,7 +4261,7 @@
       "name": "island/border-radius",
       "cssVariable": "--rh-sizing-island-border-radius",
       "type": "number",
-      "cssValue": "var(--rh-sizing-border-radius-border-radius-lg)",
+      "cssValue": "var(--rh-sizing-border-radius-lg)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -4351,20 +4351,6 @@
         "source": "dtcg"
       },
       "figmaVariableId": "VariableID:6727:613"
-    },
-    {
-      "collection": "sizing",
-      "name": "menu/border_radius",
-      "cssVariable": "--rh-sizing-menu-border-radius",
-      "type": "number",
-      "cssValue": "var(--rh-sizing-border-radius-border-radius-md)",
-      "resolvedValue": "8px",
-      "alias": {
-        "collection": "sizing",
-        "name": "border-radius/border-radius-md",
-        "source": "dtcg"
-      },
-      "figmaVariableId": "VariableID:8755:2317"
     },
     {
       "collection": "sizing",

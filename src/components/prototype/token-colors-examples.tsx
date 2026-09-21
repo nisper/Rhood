@@ -62,17 +62,15 @@ export function TokenColorsExamples() {
         <Table className="min-w-[940px] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]">
           <div className="flex border-b border-[color:var(--rh-theme-border-light)]" role="row">
             <TableCell helpIcon={false} role="head" sort={false} type="text" width={72}>Цвет</TableCell>
-            <TableCell helpIcon={false} role="head" sort={false} type="text" width={200}>Figma token</TableCell>
+            <TableCell helpIcon={false} role="head" sort={false} type="text" width="fill">CSS variable</TableCell>
             <TableCell helpIcon={false} role="head" sort={false} type="text" width={180}>Итоговое значение</TableCell>
             <TableCell helpIcon={false} role="head" sort={false} type="text" width={220}>Alias</TableCell>
-            <TableCell helpIcon={false} role="head" sort={false} type="text" width="fill">CSS variable</TableCell>
           </div>
           {tokens.map((token) => <div className="flex border-b border-[color:var(--rh-theme-border-light)] last:border-b-0" key={`${token.collection}/${token.name}`} role="row">
             <TableCell custom role="body" type="text" width={72}><span aria-label={token.resolvedValue ?? token.name} className="block size-8 rounded border border-black/10" style={{ backgroundColor: token.resolvedValue ?? "transparent" }} /></TableCell>
-            <TableCell custom role="body" type="text" width={200}><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">{token.name}</code></TableCell>
+            <TableCell custom role="body" type="text" width="fill"><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">{token.cssVariable}</code></TableCell>
             <TableCell custom role="body" type="text" width={180}><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">{token.resolvedValue ?? "—"}</code></TableCell>
             <TableCell custom role="body" type="text" width={220}><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">{token.alias ? `${token.alias.collection}/${token.alias.name}` : "—"}</code></TableCell>
-            <TableCell custom role="body" type="text" width="fill"><code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">{token.cssVariable}</code></TableCell>
           </div>)}
         </Table>
         {tokenData.summary.warnings.length > 0 && <p className="text-sm leading-5 text-[color:var(--rh-theme-text-error)]">Проверь JSON: {tokenData.summary.warnings.join("; ")}</p>}

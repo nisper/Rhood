@@ -59,7 +59,7 @@ function SelectWithMenu({ align = "left", showMenu = false, ...props }: React.Co
 
   return <div className={cn("flex w-fit max-w-full flex-col gap-1", align === "right" && "self-end")} ref={containerRef}>
     <Select {...props} expanded={open} onClick={() => { if (!props.disabled) setOpen(isOpen => !isOpen) }} value={value} menu={open && <Menu className={cn("absolute top-full z-50 mt-0.5", align === "left" ? "left-0" : "right-0")} align={align}>
-      {options.map(option => <MenuItemSingleSelect icon={false} key={option} onClick={event => { event.stopPropagation(); setValue(option); setOpen(false) }} rightSlot={false} secondaryText={false} selected={option === value} size={props.size ?? "md"}>{option}</MenuItemSingleSelect>)}
+      {options.map(option => <MenuItemSingleSelect icon={false} key={option} onClick={event => { event.stopPropagation(); setValue(option); setOpen(false) }} rightSlot={false} secondaryText={false} selected={option === value}>{option}</MenuItemSingleSelect>)}
     </Menu>} />
   </div>
 }

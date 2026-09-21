@@ -122,7 +122,7 @@ function TableCell({
     >
       {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={resolvedChecked} className="min-h-0 p-0" indeterminate={resolvedIndeterminate} label={false} onChange={event => handleCheckedChange(event.target.checked)} size="sm" />}
 
-      {isSkeleton && <span aria-hidden="true" className="block h-[calc(var(--spacing)*1.5)] w-full rounded-[var(--rh-sizing-border-radius-border-radius-md)] bg-[var(--rh-theme-fill-skeleton)]" />}
+      {isSkeleton && <span aria-hidden="true" className="block h-[calc(var(--spacing)*1.5)] w-full rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-skeleton)]" />}
 
       {!isCheckbox && !isSkeleton && !isPlaceholder && (custom ? (
         children

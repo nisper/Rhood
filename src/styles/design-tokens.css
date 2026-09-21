@@ -305,11 +305,11 @@
   --rh-sizing-badge-px: calc(var(--spacing) * 1);
   --rh-sizing-badge-min-width: calc(var(--spacing) * 5);
   --rh-sizing-body-reclaim-the-padding-deprecated: 0px;
-  --rh-sizing-border-radius-border-radius-sm: calc(var(--spacing) * 1);
-  --rh-sizing-border-radius-border-radius-md: calc(var(--spacing) * 2);
-  --rh-sizing-border-radius-border-radius-lg: calc(var(--spacing) * 3);
-  --rh-sizing-border-radius-border-radius-xlg: calc(var(--spacing) * 4);
-  --rh-sizing-border-radius-modal: var(--rh-sizing-border-radius-border-radius-lg);
+  --rh-sizing-border-radius-sm: calc(var(--spacing) * 1);
+  --rh-sizing-border-radius-md: calc(var(--spacing) * 2);
+  --rh-sizing-border-radius-lg: calc(var(--spacing) * 3);
+  --rh-sizing-border-radius-xlg: calc(var(--spacing) * 4);
+  --rh-sizing-border-radius-modal: var(--rh-sizing-border-radius-lg);
   --rh-sizing-chips-padding-py-lg: calc(var(--spacing) * 2);
   --rh-sizing-chips-padding-px-lg: calc(var(--spacing) * 2);
   --rh-sizing-chips-padding-px-md: calc(var(--spacing) * 1);
@@ -341,7 +341,7 @@
   --rh-sizing-common-input-padding-py-xsm: calc(var(--spacing) * 1.5);
   --rh-sizing-common-input-padding-px-xsm: calc(var(--spacing) * 2);
   --rh-sizing-common-input-padding-gap-xsm: calc(var(--spacing) * 1);
-  --rh-sizing-common-input-shape-border-radius: var(--rh-sizing-border-radius-border-radius-md);
+  --rh-sizing-common-input-shape-border-radius: var(--rh-sizing-border-radius-md);
   --rh-sizing-common-input-shape-size-icon-x: calc(var(--spacing) * 4);
   --rh-sizing-common-input-shape-size-icon-y: calc(var(--spacing) * 6);
   --rh-sizing-drawer-comment-width: 450px;
@@ -360,7 +360,7 @@
   --rh-sizing-island-py-mega: calc(var(--spacing) * 10);
   --rh-sizing-island-margin: 0px;
   --rh-sizing-island-gap: calc(var(--spacing) * 6);
-  --rh-sizing-island-border-radius: var(--rh-sizing-border-radius-border-radius-lg);
+  --rh-sizing-island-border-radius: var(--rh-sizing-border-radius-lg);
   --rh-sizing-layout-column-container-md: 800px;
   --rh-sizing-layout-column-container-lg: 1000px;
   --rh-sizing-layout-island-title-limit: 350px;
@@ -368,7 +368,6 @@
   --rh-sizing-layout-edge-to-edge-wrapper: calc(var(--spacing) * 6);
   --rh-sizing-layout-edge-to-edge-content: 0px;
   --rh-sizing-map-container-pxy: calc(var(--spacing) * 4);
-  --rh-sizing-menu-border-radius: var(--rh-sizing-border-radius-border-radius-md);
   --rh-sizing-menu-padding-px-sm: calc(var(--spacing) * 3);
   --rh-sizing-menu-padding-py-sm: calc(var(--spacing) * 2);
   --rh-sizing-menu-padding-gap-sm: calc(var(--spacing) * 2);

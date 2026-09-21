@@ -52,7 +52,7 @@ function ListItem({
     <div
       {...props}
       className={cn(
-        "flex w-full items-center rounded-[var(--rh-sizing-border-radius-border-radius-md)] text-[var(--rh-theme-text-neutral-primary)]",
+        "flex w-full items-center rounded-[var(--rh-sizing-border-radius-md)] text-[var(--rh-theme-text-neutral-primary)]",
         dense ? "py-[calc(var(--spacing)*1)]" : "py-[calc(var(--spacing)*2)]",
         hasPaddingX && "px-[calc(var(--spacing)*4)]",
         isSelected && "bg-[var(--rh-theme-fill-neutral-selected)]",

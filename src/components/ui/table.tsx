@@ -29,7 +29,7 @@ function Table({ className, children, selection, ...props }: TableProps) {
       <div className="w-full overflow-x-auto">
         <div
           {...props}
-          className={cn("flex min-w-max flex-col items-stretch overflow-hidden rounded-[var(--rh-sizing-border-radius-border-radius-md)]", className)}
+          className={cn("flex min-w-max flex-col items-stretch overflow-hidden rounded-[var(--rh-sizing-border-radius-md)]", className)}
           role="table"
         >
           {children}

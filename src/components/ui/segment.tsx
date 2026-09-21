@@ -18,9 +18,9 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-border-radius-md)] px-[calc(var(--spacing)*4)] py-[calc(var(--spacing)*3)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
-  md: "h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "h-[calc(calc(var(--spacing)*6)+calc(var(--spacing)*1))] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  lg: "h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-md)] px-[calc(var(--spacing)*4)] py-[calc(var(--spacing)*3)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
+  md: "h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "h-[calc(calc(var(--spacing)*6)+calc(var(--spacing)*1))] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 const iconClasses: Record<SegmentSize, string> = {

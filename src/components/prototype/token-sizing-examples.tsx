@@ -176,9 +176,9 @@ export function TokenSizingExamples() {
               role="head"
               sort={false}
               type="text"
-              width={230}
+              width={"fill"}
             >
-              Figma token
+              CSS variable
             </TableCell>
             <TableCell
               helpIcon={false}
@@ -198,15 +198,6 @@ export function TokenSizingExamples() {
             >
               CSS value
             </TableCell>
-            <TableCell
-              helpIcon={false}
-              role="head"
-              sort={false}
-              type="text"
-              width="fill"
-            >
-              CSS variable
-            </TableCell>
           </div>
           {tokens.map((token) => (
             <div
@@ -214,9 +205,9 @@ export function TokenSizingExamples() {
               key={`${token.collection}/${token.name}`}
               role="row"
             >
-              <TableCell custom role="body" type="text" width={230}>
+              <TableCell custom role="body" type="text" width="fill">
                 <code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">
-                  {token.name}
+                  {token.cssVariable}
                 </code>
               </TableCell>
               <TableCell custom role="body" type="text" width={150}>
@@ -227,11 +218,6 @@ export function TokenSizingExamples() {
               <TableCell custom role="body" type="text" width={250}>
                 <code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-primary)]">
                   {token.cssValue}
-                </code>
-              </TableCell>
-              <TableCell custom role="body" type="text" width="fill">
-                <code className="font-mono text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">
-                  {token.cssVariable}
                 </code>
               </TableCell>
             </div>
