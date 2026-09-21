@@ -18,10 +18,3 @@
   font-display: swap;
   src: url(/assets/fonts/inter-semibold.ttf) format('truetype');
 }
-@font-face {
-  font-family: 'Unbounded';
-  font-style: normal;
-  font-weight: 700;
-  font-display: swap;
-  src: url(/assets/fonts/unbounded-bold.ttf) format('truetype');
-}

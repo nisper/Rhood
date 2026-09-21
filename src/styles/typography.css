@@ -1,0 +1,163 @@
+@font-face {
+  font-family: "Unbounded";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/assets/fonts/unbounded-bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 100 900;
+  font-stretch: 75% 100%;
+  font-display: swap;
+  src: url("/assets/fonts/roboto-variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Roboto Mono";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/assets/fonts/roboto-mono-variable.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Merriweather";
+  font-style: normal;
+  font-weight: 300 900;
+  font-display: swap;
+  src: url("/assets/fonts/merriweather-variable.ttf") format("truetype");
+}
+
+:root {
+  --rh-typography-font-family-sans: "Roboto", Inter, ui-sans-serif, system-ui, sans-serif;
+  --rh-typography-font-family-mono: "Roboto Mono", ui-monospace, monospace;
+  --rh-typography-font-family-display: "Unbounded", ui-sans-serif, sans-serif;
+}
+
+.rh-typography-headline-1 {
+  font-family: var(--rh-typography-font-family-display);
+  font-size: 36px;
+  font-weight: 700;
+  letter-spacing: -0.01px;
+  line-height: 42px;
+}
+
+.rh-typography-headline-2 {
+  font-family: var(--rh-typography-font-family-display);
+  font-size: 60px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 72px;
+}
+
+.rh-typography-headline-3,
+.rh-typography-headline-3-medium {
+  font-family: var(--rh-typography-font-family-display);
+  font-size: 48px;
+  letter-spacing: 0;
+  line-height: 56px;
+}
+
+.rh-typography-headline-3,
+.rh-typography-headline-3-medium { font-weight: 700; }
+
+.rh-typography-headline-4 {
+  font-family: var(--rh-typography-font-family-display);
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 42px;
+}
+
+.rh-typography-headline-5,
+.rh-typography-headline-5-regular {
+  font-family: var(--rh-typography-font-family-display);
+  font-size: 24px;
+  letter-spacing: 0;
+  line-height: 32px;
+}
+
+.rh-typography-headline-5,
+.rh-typography-headline-5-regular { font-weight: 700; }
+
+.rh-typography-headline-6,
+.rh-typography-headline-6-regular {
+  font-family: var(--rh-typography-font-family-display);
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: 26px;
+}
+
+.rh-typography-headline-6,
+.rh-typography-headline-6-regular { font-weight: 700; }
+
+.rh-typography-body-1,
+.rh-typography-body-1-medium,
+.rh-typography-link-1,
+.rh-typography-link-1-medium {
+  font-family: var(--rh-typography-font-family-sans);
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+}
+
+.rh-typography-body-1,
+.rh-typography-link-1 { font-weight: 400; }
+.rh-typography-body-1-medium,
+.rh-typography-link-1-medium { font-weight: 480; }
+
+.rh-typography-body-2,
+.rh-typography-body-2-medium,
+.rh-typography-link-2,
+.rh-typography-link-2-medium {
+  font-family: var(--rh-typography-font-family-sans);
+  font-size: 14px;
+  letter-spacing: 0.17px;
+  line-height: 20px;
+}
+
+.rh-typography-body-2,
+.rh-typography-link-2 { font-weight: 400; }
+.rh-typography-body-2-medium,
+.rh-typography-link-2-medium { font-weight: 480; }
+
+.rh-typography-body-1-mono,
+.rh-typography-body-1-mono-medium {
+  font-family: var(--rh-typography-font-family-mono);
+  font-size: 16px;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+}
+
+.rh-typography-body-1-mono { font-weight: 400; }
+.rh-typography-body-1-mono-medium { font-weight: 480; }
+
+.rh-typography-body-2-mono,
+.rh-typography-body-2-mono-medium {
+  font-family: var(--rh-typography-font-family-mono);
+  font-size: 14px;
+  letter-spacing: 0.17px;
+  line-height: 20px;
+}
+
+.rh-typography-body-2-mono { font-weight: 400; }
+.rh-typography-body-2-mono-medium { font-weight: 480; }
+
+.rh-typography-subtitle-1 {
+  font-family: var(--rh-typography-font-family-sans);
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.15px;
+  line-height: 28px;
+}
+
+.rh-typography-subtitle-2 {
+  font-family: var(--rh-typography-font-family-sans);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 22px;
+}
