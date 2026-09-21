@@ -9,147 +9,68 @@ type TextStyle = {
   className: string;
   name: string;
   settings: string;
-  usage: string;
 };
 
 const styles: TextStyle[] = [
   {
     className: "rh-typography-headline-1",
     name: "headline/headline1",
-    settings: "Unbounded Bold · 36 / 42 · −0.01",
-    usage: "Главный заголовок.",
+    settings: "Unbounded Bold · 40 / 48 · 0",
   },
   {
     className: "rh-typography-headline-2",
     name: "headline/headline2",
-    settings: "Unbounded Bold · 60 / 72 · 0",
-    usage: "Крупный акцентный заголовок.",
+    settings: "Unbounded Bold · 32 / 40 · 0",
   },
   {
     className: "rh-typography-headline-3",
     name: "headline/headline3",
-    settings: "Unbounded Bold · 48 / 56 · 0",
-    usage: "Заголовок раздела.",
-  },
-  {
-    className: "rh-typography-headline-3-medium",
-    name: "headline/headline3 medium",
-    settings: "Unbounded Bold · 48 / 56 · 0",
-    usage: "Акцентный заголовок раздела.",
+    settings: "Unbounded Bold · 24 / 32 · 0",
   },
   {
     className: "rh-typography-headline-4",
     name: "headline/headline4",
-    settings: "Unbounded Bold · 34 / 42 · 0",
-    usage: "Заголовок блока.",
-  },
-  {
-    className: "rh-typography-headline-5",
-    name: "headline/headline5",
-    settings: "Unbounded Bold · 24 / 32 · 0",
-    usage: "Заголовок карточки или секции.",
-  },
-  {
-    className: "rh-typography-headline-5-regular",
-    name: "headline/headline5 reg",
-    settings: "Unbounded Bold · 24 / 32 · 0",
-    usage: "Заголовок карточки или секции.",
-  },
-  {
-    className: "rh-typography-headline-6",
-    name: "headline/headline6",
-    settings: "Unbounded Bold · 20 / 26 · 0",
-    usage: "Заголовок элемента.",
-  },
-  {
-    className: "rh-typography-headline-6-regular",
-    name: "headline/headline6 reg",
-    settings: "Unbounded Bold · 20 / 26 · 0",
-    usage: "Заголовок элемента.",
+    settings: "Unbounded Bold · 20 / 28 · 0",
   },
   {
     className: "rh-typography-body-1",
     name: "body/body1",
     settings: "Roboto Regular · 16 / 24 · 0.15",
-    usage: "Основной текст.",
   },
   {
     className: "rh-typography-body-1-medium",
     name: "body/body1 medium",
     settings: "Roboto SemiBold · 16 / 24 · 0.15",
-    usage: "Акцент в основном тексте.",
-  },
-  {
-    className: "rh-typography-link-1",
-    name: "link/link1",
-    settings: "Roboto Regular · 16 / 24 · 0.15",
-    usage: "Ссылка в основном тексте.",
-  },
-  {
-    className: "rh-typography-link-1-medium",
-    name: "link/link1 medium",
-    settings: "Roboto SemiBold · 16 / 24 · 0.15",
-    usage: "Акцентная ссылка в основном тексте.",
   },
   {
     className: "rh-typography-body-2",
     name: "body/body2",
     settings: "Roboto Regular · 14 / 20 · 0.17",
-    usage: "Вторичный текст.",
   },
   {
     className: "rh-typography-body-2-medium",
     name: "body/body2 medium",
     settings: "Roboto SemiBold · 14 / 20 · 0.17",
-    usage: "Акцент во вторичном тексте.",
-  },
-  {
-    className: "rh-typography-link-2",
-    name: "link/link2",
-    settings: "Roboto Regular · 14 / 20 · 0.17",
-    usage: "Ссылка во вторичном тексте.",
-  },
-  {
-    className: "rh-typography-link-2-medium",
-    name: "link/link2 medium",
-    settings: "Roboto SemiBold · 14 / 20 · 0.17",
-    usage: "Акцентная ссылка во вторичном тексте.",
   },
   {
     className: "rh-typography-body-1-mono",
     name: "body/body1 mono",
     settings: "Roboto Mono Regular · 16 / 24 · 0.15",
-    usage: "Код и технические значения.",
   },
   {
     className: "rh-typography-body-1-mono-medium",
     name: "body/body1 mono medium",
     settings: "Roboto Mono Medium · 16 / 24 · 0.15",
-    usage: "Акцентный код и технические значения.",
   },
   {
     className: "rh-typography-body-2-mono",
     name: "body/body2 mono",
     settings: "Roboto Mono Regular · 14 / 20 · 0.17",
-    usage: "Компактный код и технические значения.",
   },
   {
     className: "rh-typography-body-2-mono-medium",
     name: "body/body2 mono medium",
     settings: "Roboto Mono Medium · 14 / 20 · 0.17",
-    usage: "Акцентный компактный код.",
-  },
-  {
-    className: "rh-typography-subtitle-1",
-    name: "subtitle1",
-    settings: "Roboto Regular · 16 / 28 · 0.15",
-    usage: "Подзаголовок или вводный текст.",
-  },
-  {
-    className: "rh-typography-subtitle-2",
-    name: "subtitle2",
-    settings: "Roboto Medium · 14 / 22 · 0",
-    usage: "Компактный подзаголовок.",
   },
 ];
 
@@ -173,21 +94,86 @@ function Section({
   );
 }
 
-function TypeSample({ style }: { style: TextStyle }) {
+function TypeSample({
+  compactLabel = false,
+  sample = "Типографика",
+  style,
+}: {
+  compactLabel?: boolean;
+  sample?: string;
+  style: TextStyle;
+}) {
+  const name = style.name.split("/").pop() ?? style.name;
+  const fontSize = style.settings.split(" · ")[1]?.split(" / ")[0];
+  const label = compactLabel && fontSize ? `${name} · ${fontSize}px` : style.name;
+
+  if (compactLabel) {
+    return (
+      <div className="flex min-w-0 items-baseline gap-4">
+        <p className={`${style.className} shrink-0`}>{sample}</p>
+        <p className="min-w-0 flex-1 text-right text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">
+          {label}
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div className="grid gap-2">
       <p className="text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">
-        {style.name}
+        {label}
       </p>
       <p className={style.className}>Типографика</p>
     </div>
   );
 }
 
+function ListSample({ ordered }: { ordered: boolean }) {
+  const items = (
+    <>
+      <li>Адрес объекта</li>
+      <li>Основные характеристики</li>
+      <li>
+        Фотографии
+        {ordered ? (
+          <ol className="mt-1 list-[lower-alpha] pl-6">
+            <li>Планировка</li>
+            <li>Вид из окна</li>
+          </ol>
+        ) : (
+          <ul className="mt-1 list-[circle] pl-6">
+            <li>Планировка</li>
+            <li>Вид из окна</li>
+          </ul>
+        )}
+      </li>
+      <li>Описание</li>
+      <li>Контакты</li>
+    </>
+  );
+
+  return (
+    <div className="min-w-0">
+      <p className="mb-3 text-sm font-medium leading-5">
+        {ordered ? "Нумерованный список" : "Маркированный список"}
+      </p>
+      {ordered ? (
+        <ol className="rh-typography-body-1 list-decimal space-y-1 pl-6">
+          {items}
+        </ol>
+      ) : (
+        <ul className="rh-typography-body-1 list-disc space-y-1 pl-6">{items}</ul>
+      )}
+    </div>
+  );
+}
+
 export function TypographyExamples() {
-  const headlines = styles.slice(0, 9);
-  const bodyStyles = styles.slice(9, 17);
-  const supportingStyles = styles.slice(17);
+  const headlines = styles.filter((style) => style.name.startsWith("headline/"));
+  const bodyStyles = styles.filter(
+    (style) => style.name.startsWith("body/") && !style.name.includes(" mono"),
+  );
+  const monoStyles = styles.filter((style) => style.name.includes(" mono"));
 
   return (
     <div className="grid min-w-0 gap-10">
@@ -199,7 +185,7 @@ export function TypographyExamples() {
           <ShowcasePanel>
             <div className="grid w-full gap-6">
               {headlines.map((style) => (
-                <TypeSample key={style.name} style={style} />
+                <TypeSample compactLabel key={style.name} style={style} />
               ))}
             </div>
           </ShowcasePanel>
@@ -207,14 +193,28 @@ export function TypographyExamples() {
       </Section>
 
       <Section
-        description="Body задаёт ритм интерфейсного текста, а Link повторяет его метрики и получает цвет ссылки от контекста."
-        title="Основной текст и ссылки"
+        description="Списки помогают объединять связанные пункты и показывать их порядок, когда он важен."
+        title="Списки"
       >
         <ShowcaseSurface>
           <ShowcasePanel>
-            <div className="grid w-full gap-5 sm:grid-cols-2">
+            <div className="grid w-full gap-8 md:grid-cols-2">
+              <ListSample ordered={false} />
+              <ListSample ordered />
+            </div>
+          </ShowcasePanel>
+        </ShowcaseSurface>
+      </Section>
+
+      <Section
+        description="Body задаёт ритм основного и вторичного текста интерфейса."
+        title="Основной текст"
+      >
+        <ShowcaseSurface>
+          <ShowcasePanel>
+            <div className="grid w-full gap-5">
               {bodyStyles.map((style) => (
-                <TypeSample key={style.name} style={style} />
+                <TypeSample compactLabel key={style.name} style={style} />
               ))}
             </div>
           </ShowcasePanel>
@@ -222,14 +222,19 @@ export function TypographyExamples() {
       </Section>
 
       <Section
-        description="Моноширинные стили подходят для технических значений. Subtitle1 и subtitle2 существуют в Figma как локальные настройки и зафиксированы здесь теми же метриками."
-        title="Моноширинный и вспомогательный текст"
+        description="Моноширинные стили подходят для кода и технических значений."
+        title="Моноширинный текст"
       >
         <ShowcaseSurface>
           <ShowcasePanel>
-            <div className="grid w-full gap-5 sm:grid-cols-2">
-              {supportingStyles.map((style) => (
-                <TypeSample key={style.name} style={style} />
+            <div className="grid w-full gap-5">
+              {monoStyles.map((style) => (
+                <TypeSample
+                  compactLabel
+                  key={style.name}
+                  sample="0 152 088"
+                  style={style}
+                />
               ))}
             </div>
           </ShowcasePanel>
@@ -245,14 +250,14 @@ export function TypographyExamples() {
             className="flex border-b border-[var(--parser-border-light)]"
             role="row"
           >
-            {["Стиль", "Параметры", "Назначение"].map((title, index) => (
+            {["Стиль", "Параметры"].map((title, index) => (
               <TableCell
                 helpIcon={false}
                 key={title}
                 role="head"
                 sort={false}
                 type="text"
-                width={index === 0 ? 220 : index === 1 ? 280 : "fill"}
+                width={index === 0 ? 220 : "fill"}
               >
                 {title}
               </TableCell>
@@ -269,11 +274,8 @@ export function TypographyExamples() {
                   .{style.className}
                 </code>
               </TableCell>
-              <TableCell role="body" type="text" width={280}>
-                {style.settings}
-              </TableCell>
               <TableCell role="body" type="text" width="fill">
-                {style.usage}
+                {style.settings}
               </TableCell>
             </div>
           ))}

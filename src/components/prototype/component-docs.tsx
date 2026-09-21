@@ -1252,6 +1252,7 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
     "menu",
     "tab",
     "list",
+    "typography",
     "table",
     "checkbox",
     "clear-button",

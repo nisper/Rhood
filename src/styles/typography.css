@@ -39,90 +39,58 @@
 
 .rh-typography-headline-1 {
   font-family: var(--rh-typography-font-family-display);
-  font-size: 36px;
+  font-size: 40px;
   font-weight: 700;
-  letter-spacing: -0.01px;
-  line-height: 42px;
+  letter-spacing: 0;
+  line-height: 48px;
 }
 
 .rh-typography-headline-2 {
   font-family: var(--rh-typography-font-family-display);
-  font-size: 60px;
+  font-size: 32px;
   font-weight: 700;
   letter-spacing: 0;
-  line-height: 72px;
+  line-height: 40px;
 }
 
-.rh-typography-headline-3,
-.rh-typography-headline-3-medium {
-  font-family: var(--rh-typography-font-family-display);
-  font-size: 48px;
-  letter-spacing: 0;
-  line-height: 56px;
-}
-
-.rh-typography-headline-3,
-.rh-typography-headline-3-medium { font-weight: 700; }
-
-.rh-typography-headline-4 {
-  font-family: var(--rh-typography-font-family-display);
-  font-size: 34px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: 42px;
-}
-
-.rh-typography-headline-5,
-.rh-typography-headline-5-regular {
+.rh-typography-headline-3 {
   font-family: var(--rh-typography-font-family-display);
   font-size: 24px;
   letter-spacing: 0;
   line-height: 32px;
 }
 
-.rh-typography-headline-5,
-.rh-typography-headline-5-regular { font-weight: 700; }
+.rh-typography-headline-3 { font-weight: 700; }
 
-.rh-typography-headline-6,
-.rh-typography-headline-6-regular {
+.rh-typography-headline-4 {
   font-family: var(--rh-typography-font-family-display);
   font-size: 20px;
+  font-weight: 700;
   letter-spacing: 0;
-  line-height: 26px;
+  line-height: 28px;
 }
 
-.rh-typography-headline-6,
-.rh-typography-headline-6-regular { font-weight: 700; }
-
 .rh-typography-body-1,
-.rh-typography-body-1-medium,
-.rh-typography-link-1,
-.rh-typography-link-1-medium {
+.rh-typography-body-1-medium {
   font-family: var(--rh-typography-font-family-sans);
   font-size: 16px;
   letter-spacing: 0.15px;
   line-height: 24px;
 }
 
-.rh-typography-body-1,
-.rh-typography-link-1 { font-weight: 400; }
-.rh-typography-body-1-medium,
-.rh-typography-link-1-medium { font-weight: 480; }
+.rh-typography-body-1 { font-weight: 400; }
+.rh-typography-body-1-medium { font-weight: 480; }
 
 .rh-typography-body-2,
-.rh-typography-body-2-medium,
-.rh-typography-link-2,
-.rh-typography-link-2-medium {
+.rh-typography-body-2-medium {
   font-family: var(--rh-typography-font-family-sans);
   font-size: 14px;
   letter-spacing: 0.17px;
   line-height: 20px;
 }
 
-.rh-typography-body-2,
-.rh-typography-link-2 { font-weight: 400; }
-.rh-typography-body-2-medium,
-.rh-typography-link-2-medium { font-weight: 480; }
+.rh-typography-body-2 { font-weight: 400; }
+.rh-typography-body-2-medium { font-weight: 480; }
 
 .rh-typography-body-1-mono,
 .rh-typography-body-1-mono-medium {
@@ -145,19 +113,3 @@
 
 .rh-typography-body-2-mono { font-weight: 400; }
 .rh-typography-body-2-mono-medium { font-weight: 480; }
-
-.rh-typography-subtitle-1 {
-  font-family: var(--rh-typography-font-family-sans);
-  font-size: 16px;
-  font-weight: 400;
-  letter-spacing: 0.15px;
-  line-height: 28px;
-}
-
-.rh-typography-subtitle-2 {
-  font-family: var(--rh-typography-font-family-sans);
-  font-size: 14px;
-  font-weight: 500;
-  letter-spacing: 0;
-  line-height: 22px;
-}
