@@ -1,4 +1,4 @@
-import { CircleHelp, Columns3, Map, Settings2 } from "lucide-react";
+import { CircleHelp, Columns3Cog, Map } from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
@@ -186,7 +186,7 @@ function TableToolbar({
             setSortOpen(false);
           }}
           size="sm"
-          startIcon={<span aria-hidden="true" className="relative flex size-5 items-center justify-center"><Columns3 className="size-5" strokeWidth={2} /><Settings2 className="absolute -bottom-0.5 -right-0.5 size-2.5 bg-[var(--rh-theme-fill-neutral)]" strokeWidth={2.5} /></span>}
+          startIcon={<Columns3Cog aria-hidden="true" strokeWidth={2} />}
         >
           Столбцы
         </Button>
