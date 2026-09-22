@@ -163,7 +163,7 @@ export function ApartmentListingsScreen() {
       <MainHeader logoHref="/Rhood/" navItems={navItems} />
       <ToolbarFilter empty resp="desk" />
 
-      <main>
+      <main className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
         <ListingsTable onSort={handleSort} sort={sort} />
       </main>
 
