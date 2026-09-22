@@ -36,13 +36,13 @@ const sizeTokens: Record<
   }
 > = {
   md: {
-    container: "min-h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+    container: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
     valueText: "rh-typography-body-1",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
-    container: "min-h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+    container: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
     valueText: "rh-typography-body-2",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
@@ -73,7 +73,7 @@ function getBorderClasses({
   }
 
   if (state === "hovered") {
-    return "border-[color:var(--rh-theme-border-neutral-dark)]"
+    return "border-[color:var(--rh-theme-border-hover)]"
   }
 
   return "border-[color:var(--rh-theme-border-light)]"
@@ -158,7 +158,7 @@ function Select({
             fullWidth && "w-full",
             sizeTokens[size].container,
             getBorderClasses({ disabled, error, state: resolvedState }),
-            !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--rh-theme-border-neutral-dark)]",
+            !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--rh-theme-border-hover)]",
           )}
         >
         {hasIcon && (

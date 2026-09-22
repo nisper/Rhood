@@ -7,6 +7,8 @@ type InputNumberSize = "md" | "sm"
 type InputNumberState = "default" | "hovered" | "focused"
 
 type InputNumberProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
+  /** Removes the field chrome when the input is embedded in another control. */
+  bare?: boolean
   clearButton?: boolean
   endText?: React.ReactNode
   error?: boolean
@@ -31,6 +33,8 @@ const sizeClasses: Record<InputNumberSize, string> = {
   sm: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
+const bareInputClasses = "h-full rounded-none border-0 bg-transparent hover:border-0 hover:bg-transparent focus:border-0 focus:bg-transparent focus:ring-0 disabled:border-0 disabled:bg-transparent"
+
 function stateClasses({ error, state }: { error: boolean; state: InputNumberState }) {
   if (error) {
     return state === "focused"
@@ -48,6 +52,7 @@ function stateClasses({ error, state }: { error: boolean; state: InputNumberStat
 
 /** A single-line numeric field with monospaced values and optional units. */
 function InputNumber({
+  bare = false,
   className,
   clearButton = false,
   defaultValue,
@@ -84,7 +89,7 @@ function InputNumber({
       : undefined
 
   return (
-    <div className="relative w-full">
+    <div className={cn("relative w-full", bare && "h-full", className)}>
       {startText && (
         <span
           aria-hidden="true"
@@ -103,9 +108,9 @@ function InputNumber({
           sizeClasses[size],
           stateClasses({ error, state }),
           interactiveClasses,
+          bare && bareInputClasses,
           startText && "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-md))]",
           (endText || required || showClearButton) && "pr-[calc(var(--spacing)*8)]",
-          className,
         )}
         disabled={disabled}
         inputMode={inputMode}

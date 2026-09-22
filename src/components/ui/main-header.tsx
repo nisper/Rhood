@@ -62,7 +62,7 @@ function MainHeader({
     return (
       <header
         className={cn(
-          "rhood-page-gutter-mobile flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--parser-fill-neutral-dark-ultra)] py-2",
+          "rhood-page-gutter flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--parser-fill-neutral-dark-ultra)] py-2",
           className,
         )}
         {...props}

@@ -141,7 +141,7 @@ function ToolbarFilter({
     return (
       <section
         className={cn(
-          "rhood-page-gutter-mobile relative flex items-center gap-1 bg-[var(--parser-fill-neutral)] py-2",
+          "rhood-page-gutter relative flex items-center gap-1 bg-[var(--parser-fill-neutral)] py-2",
           className,
         )}
         {...props}

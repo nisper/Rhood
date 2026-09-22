@@ -29,6 +29,7 @@ import { Copy, PartyPopper } from "lucide-react";
 
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { FormControlLabel } from "@/components/ui/form-control-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
@@ -36,10 +37,13 @@ import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
 import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
+import { InputNumber } from "@/components/ui/input-number";
+import { InputNumberRange } from "@/components/ui/input-number-range";
 import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip";
 import { Search } from "@/components/ui/search";
+import { Select } from "@/components/ui/select";
 import { Snackbar } from "@/components/ui/snackbar";
 import { Tag } from "@/components/ui/tag";
 import { Table } from "@/components/ui/table";
@@ -47,6 +51,7 @@ import { TableCell } from "@/components/ui/table-cell";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
+import { Textfield } from "@/components/ui/text-field";
 import { cn } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -771,7 +776,23 @@ const componentDocs: ComponentDoc[] = [
     source: "src/components/ui/toolbar-filter.tsx",
     render: () => (
       <Canvas>
-        <ToolbarFilter className="min-w-[960px]" />
+        <div className="grid gap-6">
+          <ToolbarFilter className="min-w-[960px]" />
+          <div className="flex items-center gap-3">
+            <InputNumberRange
+              className="w-[180px]"
+              endInputProps={{ placeholder: "до" }}
+              size="sm"
+              startInputProps={{ placeholder: "от" }}
+            />
+            <InputNumber className="w-[140px]" placeholder="Число" size="sm" />
+            <Select label={false} size="sm" value="Select" />
+            <Textfield className="w-[140px]" placeholder="Textfield" size="sm" />
+            <Button appearance="contrast" endIcon={false} size="sm" startIcon={false}>
+              Button
+            </Button>
+          </div>
+        </div>
       </Canvas>
     ),
   },

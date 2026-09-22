@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/instructions/formatting-code-snippets.md",
+                "file": "docs/instructions/drawing-a-user-flow.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "formatting-code-snippets"
+              "title": "drawing-a-user-flow"
             }
           }
         ]
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "docs/instructions/formatting-code-snippets.md",
+                "file": "docs/instructions/drawing-a-user-flow.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/instructions/formatting-code-snippets.md",
+                "file": "docs/instructions/drawing-a-user-flow.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/instructions/formatting-code-snippets.md",
+                "file": "docs/instructions/drawing-a-user-flow.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,33 +188,44 @@
       "bases:Create new base": false
     }
   },
-  "active": "74befaa4e56b076f",
+  "active": "b413f16690e5ff24",
   "lastOpenFiles": [
-    "dist/assets/index-BJdHHOui.css",
-    "dist/assets/index-CXxu8AZD.js",
-    "dist/assets/index-CLv5_FhU.js",
-    "dist/assets/index-CKT6MmRV.css",
-    "dist/assets/index-tNSfRP0f.js",
-    "dist/assets/index-Dlxetfrn.js",
-    "dist/assets/index-iDp39cOu.js",
-    "dist/assets/index-DsJXCfF8.css",
-    "dist/assets/index-DmCeQIeC.js",
-    "dist/assets/index-C3y2iyFo.css",
-    "dist/assets/index-Blb4eUbi.js",
+    "dist/assets/index-IMyn7kUw.js",
+    "dist/assets/index-CU85PVvN.js",
+    "dist/assets/index-DMAMrh42.css",
+    "dist/assets/index-DYU0HFX2.js",
+    "dist/assets/index-BQn3lwmp.js",
+    "dist/assets/index-Dh5mojX2.js",
+    "dist/assets/index-BOKgCaXb.js",
+    "dist/assets/index-DHb0X7kf.js",
+    "dist/assets/index-FEtecute.css",
+    "dist/assets/index-CCA_zELh.js",
+    "dist/assets/index-DkmNV-ZG.css",
+    "docs/instructions/formatting-code-snippets.md",
+    "docs/tokens.md",
+    "docs/token-mapping.md",
+    "docs/table.md",
+    "docs/instructions/working-in-figma.md",
+    "docs/instructions/updating-a-component.md",
+    "docs/instructions/implementing-a-figma-frame.md",
+    "docs/instructions/implementing-a-component.md",
+    "docs/instructions/figma/entities/table.md",
+    "docs/instructions/figma/entities/page.md",
+    "docs/instructions/figma/entities/modal.md",
+    "docs/instructions/figma/entities/form.md",
+    "docs/instructions/figma/entities/filters.md",
+    "docs/instructions/figma/entities/empty-state.md",
+    "docs/instructions/figma/entities/drawer.md",
+    "docs/instructions/figma/layout-rules.md",
+    "docs/instructions/figma/component-groups.md",
+    "docs/instructions/figma/anti-patterns.md",
+    "docs/instructions/figma/README.md",
+    "docs/component-checklist.md",
     "docs/instructions/drawing-a-user-flow.md",
     "docs/tokens-generator.md",
     "docs/backlog.md",
-    "docs/tokens.md",
-    "docs/table.md",
     "docs/instructions/product-design-reasoning.md",
-    "docs/instructions/working-in-figma.md",
-    "docs/instructions/updating-a-component.md",
     "docs/instructions/formatting-component-showcase-page.md",
-    "docs/instructions/implementing-a-figma-frame.md",
-    "docs/instructions/implementing-a-component.md",
-    "docs/instructions/formatting-code-snippets.md",
-    "docs/component-map.md",
-    "docs/component-checklist.md",
     "dist/assets/figma.svg",
     "dist/assets/circle-x.svg",
     "dist/assets/avatar-32.png"

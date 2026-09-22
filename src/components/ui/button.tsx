@@ -15,7 +15,7 @@ type ButtonAppearance =
   | "contrast"
   | "inherit"
 
-type ButtonSize = "lg" | "md" | "sm" | "xsm"
+type ButtonSize = "md" | "sm" | "xsm"
 type ButtonState = "default" | "hover"
 
 type LegacyButtonVariant =
@@ -29,7 +29,7 @@ type LegacyButtonVariant =
   | "link"
   | "text"
 
-type LegacyButtonSize = "default" | "lg" | "icon"
+type LegacyButtonSize = "default" | "icon"
 
 type ButtonProps = React.ComponentProps<"button"> & {
   appearance?: ButtonAppearance
@@ -47,35 +47,36 @@ type ButtonProps = React.ComponentProps<"button"> & {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  lg: "min-h-[calc(var(--spacing)*14)] px-[var(--rh-sizing-common-input-padding-px-lg)] py-[var(--rh-sizing-common-input-padding-py-lg)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)] tracking-[var(--rh-sizing-typography-letter-spacing-lg)]",
   md: "min-h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   sm: "min-h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
+const typographyClasses: Record<ButtonSize, string> = {
+  md: "rh-typography-body-1-medium",
+  sm: "rh-typography-body-2-medium",
+  xsm: "font-[family-name:var(--rh-typography-font-family-sans)] font-[480]",
+}
+
 const gapClasses: Record<ButtonSize, string> = {
-  lg: "gap-[var(--rh-sizing-common-input-padding-gap-lg)]",
   md: "gap-[var(--rh-sizing-common-input-padding-gap-md)]",
   sm: "gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
   xsm: "gap-[var(--rh-sizing-common-input-padding-gap-xsm)]",
 }
 
 const iconOnlyClasses: Record<ButtonSize, string> = {
-  lg: "size-[calc(var(--spacing)*14)] p-0",
   md: "size-[calc(var(--spacing)*10)] p-0",
   sm: "size-[calc(var(--spacing)*9)] p-0",
   xsm: "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] p-0",
 }
 
 const iconSlotClasses: Record<ButtonSize, string> = {
-  lg: "w-[calc(var(--spacing)*6)] [&_svg]:size-[calc(var(--spacing)*6)]",
   md: "w-[calc(var(--spacing)*5)] [&_svg]:size-[calc(var(--spacing)*6)]",
   sm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*5)]",
   xsm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*4)]",
 }
 
 const counterClasses: Record<ButtonSize, string> = {
-  lg: "min-w-[var(--rh-sizing-button-counter-min-width-lg)] px-[var(--rh-sizing-button-counter-padding-px-lg)] text-[length:var(--rh-sizing-typography-font-size-lg)] leading-[var(--rh-sizing-typography-line-height-lg)]",
   md: "min-w-[var(--rh-sizing-button-counter-min-width-md)] px-[var(--rh-sizing-button-counter-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]",
   sm: "min-w-[var(--rh-sizing-button-counter-min-width-sm)] px-[var(--rh-sizing-button-counter-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
   xsm: "min-w-[var(--rh-sizing-button-counter-min-width-sm)] px-[var(--rh-sizing-button-counter-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
@@ -194,7 +195,7 @@ function resolveAppearance(
 }
 
 function resolveSize(size: ButtonProps["size"]): ButtonSize {
-  if (size === "lg" || size === "sm" || size === "md" || size === "xsm") {
+  if (size === "sm" || size === "md" || size === "xsm") {
     return size
   }
 
@@ -247,7 +248,8 @@ function Button({
   return (
     <Comp
       className={cn(
-        "rh-typography-body-1-medium inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] border border-transparent transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        typographyClasses[resolvedSize],
         sizeClasses[resolvedSize],
         gapClasses[resolvedSize],
         appearanceClasses[resolvedAppearance][stateKey],

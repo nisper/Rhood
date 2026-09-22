@@ -21,6 +21,11 @@ type InputNumberRangeProps = Omit<React.ComponentProps<"div">, "onChange"> & {
   size?: InputNumberSize
 }
 
+const sizeClasses: Record<InputNumberSize, string> = {
+  md: "h-[calc(var(--spacing)*10)]",
+  sm: "h-[calc(var(--spacing)*9)]",
+}
+
 function groupStateClasses({ error, state }: { error: boolean; state: InputNumberState }) {
   if (error) {
     return state === "focused"
@@ -35,8 +40,6 @@ function groupStateClasses({ error, state }: { error: boolean; state: InputNumbe
   if (state === "hovered") return "border-[color:var(--parser-border-hover)] bg-[var(--input-hover,white)]"
   return "border-[color:var(--parser-border-light)]"
 }
-
-const bareInputClasses = "rounded-none border-0 bg-transparent hover:border-0 hover:bg-transparent focus:border-0 focus:bg-transparent focus:ring-0 disabled:border-0 disabled:bg-transparent"
 
 /** Two numeric values in one shared field outline, for example a minimum and maximum area. */
 function InputNumberRange({
@@ -62,7 +65,8 @@ function InputNumberRange({
       {...props}
       aria-disabled={disabled || undefined}
       className={cn(
-        "flex w-full items-center overflow-hidden rounded-lg border bg-white transition-colors duration-150",
+        "flex w-full items-stretch overflow-hidden rounded-lg border bg-white transition-colors duration-150",
+        sizeClasses[size],
         groupStateClasses({ error, state: resolvedState }),
         disabled && "cursor-not-allowed bg-white text-[color:var(--parser-text-disabled)]",
         className,
@@ -88,19 +92,19 @@ function InputNumberRange({
       <InputNumber
         {...startProps}
         aria-label={startProps["aria-label"] ?? "Начальное значение"}
-        className={bareInputClasses}
+        bare
         disabled={disabled}
         error={false}
         size={size}
         state="default"
       />
-      <span aria-hidden="true" className="shrink-0 text-base leading-6 text-[color:var(--parser-text-neutral-secondary)]">
+      <span aria-hidden="true" className="shrink-0 self-center text-base leading-6 text-[color:var(--parser-text-neutral-secondary)]">
         {separator}
       </span>
       <InputNumber
         {...endProps}
         aria-label={endProps["aria-label"] ?? "Конечное значение"}
-        className={bareInputClasses}
+        bare
         disabled={disabled}
         error={false}
         size={size}
