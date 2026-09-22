@@ -63,8 +63,7 @@ function MenuItemSingleSelect({
   return (
     <div
       className={cn(
-        "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-menu-padding-px-sm)]",
-        "py-2.5",
+        "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
         getBackground({ disabled, selected, state }),
         !disabled &&
           !selected &&
@@ -99,7 +98,7 @@ function MenuItemSingleSelect({
         )}
       >
         <span
-          className="w-full tracking-[var(--rh-sizing-typography-letter-spacing-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] text-[color:var(--rh-theme-text-neutral-primary)]"
+          className="rh-typography-body-2 w-full text-[color:var(--rh-theme-text-neutral-primary)]"
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           {children}

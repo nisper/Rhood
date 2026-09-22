@@ -6,6 +6,7 @@ import { Segment } from "@/components/ui/segment"
 import { SegmentedControl } from "@/components/ui/segmented-control"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
+import { matchesSearchTerms } from "@/lib/utils"
 
 type TokenCollection = "palette" | "theme"
 
@@ -37,10 +38,9 @@ const collectionLabels: Record<TokenCollection, string> = {
 export function TokenColorsExamples() {
   const [collection, setCollection] = React.useState<TokenCollection>("palette")
   const [query, setQuery] = React.useState("")
-  const normalizedQuery = query.trim().toLowerCase()
   const tokens = tokenData.tokens.filter((token) => {
     const searchableText = [token.name, token.cssVariable, token.resolvedValue ?? "", token.alias ? `${token.alias.collection}/${token.alias.name}` : ""].join(" ").toLowerCase()
-    return token.type === "color" && token.collection === collection && (!normalizedQuery || searchableText.includes(normalizedQuery))
+    return token.type === "color" && token.collection === collection && matchesSearchTerms(searchableText, query)
   })
 
   return (

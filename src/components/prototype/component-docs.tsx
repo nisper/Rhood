@@ -52,7 +52,7 @@ import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
 import { Textfield } from "@/components/ui/text-field";
-import { cn } from "@/lib/utils";
+import { cn, matchesSearchTerms } from "@/lib/utils";
 
 type ComponentDoc = {
   id: string;
@@ -739,7 +739,8 @@ const componentDocs: ComponentDoc[] = [
     group: "Forms",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=436-1556",
-    source: "src/components/ui/menu.tsx",
+    source:
+      "src/components/ui/menu.tsx · src/components/ui/menu-item-single-select.tsx · src/components/ui/menu-item-multiselect.tsx",
     render: () => <MenuExamples />,
   },
   {
@@ -1287,9 +1288,10 @@ export function ComponentDocs() {
 
   const normalizedQuery = query.trim().toLowerCase();
   const filteredDocs = componentDocs.filter((doc) =>
-    `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""} ${doc.id === "table" ? "TableCell TableCellHead" : ""}`
-      .toLowerCase()
-      .includes(normalizedQuery),
+    matchesSearchTerms(
+      `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""} ${doc.id === "table" ? "TableCell TableCellHead" : ""}`,
+      query,
+    ),
   );
   const groupedDocs = groupDocs(filteredDocs);
   const activeDoc =

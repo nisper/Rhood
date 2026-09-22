@@ -7,6 +7,7 @@ import { Segment } from "@/components/ui/segment";
 import { SegmentedControl } from "@/components/ui/segmented-control";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
+import { matchesSearchTerms } from "@/lib/utils";
 
 type SizingToken = {
   alias: { collection: string; name: string } | null;
@@ -63,7 +64,6 @@ export function TokenSizingExamples() {
   const allTokens = tokenData.tokens.filter(
     (token) => token.collection === "sizing",
   );
-  const normalizedQuery = query.trim().toLowerCase();
   const tokens = allTokens.filter((token) => {
     const belongsToGroup =
       group === "component" && !token.name.startsWith("base module/");
@@ -77,17 +77,17 @@ export function TokenSizingExamples() {
       .toLowerCase();
     return (
       belongsToGroup &&
-      (!normalizedQuery || searchableText.includes(normalizedQuery))
+      matchesSearchTerms(searchableText, query)
     );
   });
   const filteredTailwindTokens = tailwindSpacingTokens.filter((token) =>
-    token.join(" ").toLowerCase().includes(normalizedQuery),
+    matchesSearchTerms(token.join(" "), query),
   );
   const filteredStyleIgnoreTokens = styleIgnore.tokens.filter((token) =>
-    [token.collection, token.name, token.reason ?? ""]
-      .join(" ")
-      .toLowerCase()
-      .includes(normalizedQuery),
+    matchesSearchTerms(
+      [token.collection, token.name, token.reason ?? ""].join(" "),
+      query,
+    ),
   );
 
   return (

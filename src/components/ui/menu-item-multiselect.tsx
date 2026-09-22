@@ -76,8 +76,7 @@ function MenuItemMultiselect({
   return (
     <div
       className={cn(
-        "flex w-full items-start gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-menu-padding-px-sm)]",
-        "py-2.5",
+        "flex w-full items-start gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
         getBackground({ disabled, state }),
         !disabled &&
           "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
@@ -97,6 +96,7 @@ function MenuItemMultiselect({
         disabled={disabled}
         indeterminate={resolvedChecked === "indeterminate"}
         label={false}
+        size="sm"
       />
 
       {(icon ?? startIcon) && (
@@ -123,7 +123,7 @@ function MenuItemMultiselect({
       >
         <span
           className={cn(
-            "w-full text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+            "rh-typography-body-2 w-full",
             getTitleTone(),
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}

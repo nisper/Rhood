@@ -1,12 +1,16 @@
-import { CircleHelp } from "lucide-react"
-import * as React from "react"
+import { ArrowDownUp, CircleHelp, Columns3, Map } from "lucide-react";
+import * as React from "react";
 
-import { Chip } from "@/components/ui/chip"
-import { MainHeader } from "@/components/ui/main-header"
-import { Table } from "@/components/ui/table"
-import { TableCell } from "@/components/ui/table-cell"
-import { ToolbarFilter } from "@/components/ui/toolbar-filter"
-import listings from "@/data/mock/real-estate-listings.json"
+import { Button } from "@/components/ui/button";
+import { Chip } from "@/components/ui/chip";
+import { MainHeader } from "@/components/ui/main-header";
+import { Menu } from "@/components/ui/menu";
+import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { Table } from "@/components/ui/table";
+import { TableCell } from "@/components/ui/table-cell";
+import { ToolbarFilter } from "@/components/ui/toolbar-filter";
+import listings from "@/data/mock/real-estate-listings.json";
 
 const navItems = [
   { label: "Набор базы", active: true },
@@ -14,13 +18,48 @@ const navItems = [
   { label: "Подборки" },
   { label: "Подключение городов" },
   { label: "Статистика" },
-]
+];
 
-type SortColumn = "buyer" | "price" | "publishedAt"
-type SortState = { column: SortColumn; direction: "asc" | "desc" } | null
+type SortColumn = "buyer" | "price" | "publishedAt";
+type SortState = { column: SortColumn; direction: "asc" | "desc" } | null;
+type ColumnKey =
+  | "buyer"
+  | "price"
+  | "liquidity"
+  | "source"
+  | "publishedAt"
+  | "status";
+
+const tableColumns: { key: ColumnKey; label: string }[] = [
+  { key: "buyer", label: "Покупатель" },
+  { key: "price", label: "Цена" },
+  { key: "liquidity", label: "Ликвидность" },
+  { key: "source", label: "Источник" },
+  { key: "publishedAt", label: "Опубликован" },
+  { key: "status", label: "Статус" },
+];
+
+const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
+  {
+    label: "По цене: сначала дешевле",
+    value: { column: "price", direction: "asc" },
+  },
+  {
+    label: "По цене: сначала дороже",
+    value: { column: "price", direction: "desc" },
+  },
+  {
+    label: "По спросу: по возрастанию",
+    value: { column: "buyer", direction: "asc" },
+  },
+  {
+    label: "По дате: сначала новые",
+    value: { column: "publishedAt", direction: "desc" },
+  },
+];
 
 function formatNumber(value: number) {
-  return new Intl.NumberFormat("ru-RU").format(value)
+  return new Intl.NumberFormat("ru-RU").format(value);
 }
 
 function formatPublishedAt(value: string) {
@@ -31,131 +70,402 @@ function formatPublishedAt(value: string) {
     month: "2-digit",
     timeZone: "Asia/Yekaterinburg",
     year: "numeric",
-  }).format(new Date(value))
+  }).format(new Date(value));
 }
 
 function formatSource(domain: string) {
-  return {
-    AVITO: "Авито",
-    CIAN: "Циан",
-    DOMCLICK: "Домклик",
-    YANDEX: "Яндекс Недвижимость",
-  }[domain] ?? domain
+  return (
+    {
+      AVITO: "Авито",
+      CIAN: "Циан",
+      DOMCLICK: "Домклик",
+      YANDEX: "Яндекс Недвижимость",
+    }[domain] ?? domain
+  );
 }
 
 function getPrice(listing: (typeof listings)[number]) {
-  return Number(listing.price) * 1_000
+  return Number(listing.price) * 1_000;
 }
 
 function getSpecs(listing: (typeof listings)[number]) {
-  const rooms = listing.roomCount === 0 ? "Ст." : `${listing.roomCount} ком.`
-  return `${rooms}, ${listing.area.toLocaleString("ru-RU")} м², этаж ${listing.floor}/${listing.floorCount}`
+  const rooms = listing.roomCount === 0 ? "Ст." : `${listing.roomCount} ком.`;
+  return `${rooms}, ${listing.area.toLocaleString("ru-RU")} м², этаж ${listing.floor}/${listing.floorCount}`;
 }
 
-function ResultHeader({ onSort, sort }: { onSort: (column: SortColumn) => void; sort: SortState }) {
+function TableToolbar({
+  hiddenColumns,
+  onHiddenColumnsChange,
+  onSortChange,
+  sort,
+}: {
+  hiddenColumns: ReadonlySet<ColumnKey>;
+  onHiddenColumnsChange: (columns: Set<ColumnKey>) => void;
+  onSortChange: (sort: SortState) => void;
+  sort: SortState;
+}) {
+  const [columnsOpen, setColumnsOpen] = React.useState(false);
+  const [sortOpen, setSortOpen] = React.useState(false);
+
+  function isSelected(option: Exclude<SortState, null>) {
+    return sort?.column === option.column && sort.direction === option.direction;
+  }
+
+  function toggleColumn(column: ColumnKey) {
+    const nextColumns = new Set(hiddenColumns);
+    if (nextColumns.has(column)) nextColumns.delete(column);
+    else nextColumns.add(column);
+    onHiddenColumnsChange(nextColumns);
+  }
+
   return (
-    <div className="flex border-b border-[var(--parser-border-light)]" role="row">
-      <TableCell paddingX role="head" sizeSmall sort={false} type="checkbox" width={28} />
-      <TableCell className="min-w-[300px]" helpIcon={false} role="head" sizeSmall sort={false} type="text" width="fill">Адрес</TableCell>
-      <TableCell onClick={() => onSort("buyer")} role="head" sizeSmall sort sortDirection={sort?.column === "buyer" ? sort.direction : undefined} type="number" width={130}>Покупатель</TableCell>
-      <TableCell helpIcon={false} onClick={() => onSort("price")} role="head" sizeSmall sort sortDirection={sort?.column === "price" ? sort.direction : undefined} type="number" width={175}>Цена, ₽</TableCell>
-      <TableCell helpIcon={false} role="head" sizeSmall sort={false} type="text" width={152}>Ликвид.</TableCell>
-      <TableCell helpIcon={false} role="head" sizeSmall sort={false} type="text" width={190}>Источник</TableCell>
-      <TableCell helpIcon={false} onClick={() => onSort("publishedAt")} role="head" sizeSmall sort sortDirection={sort?.column === "publishedAt" ? sort.direction : undefined} type="text" width={150}>Опубликован</TableCell>
-      <TableCell helpIcon={false} role="head" sizeSmall sort={false} type="text" width={236}>Статус</TableCell>
+    <section aria-label="Управление выдачей" className="flex flex-wrap items-center gap-2">
+      <div className="relative">
+        <Button
+          appearance="default"
+          aria-expanded={sortOpen}
+          aria-haspopup="menu"
+          endIcon={false}
+          onClick={() => {
+            setSortOpen((open) => !open);
+            setColumnsOpen(false);
+          }}
+          size="sm"
+          startIcon={<ArrowDownUp aria-hidden="true" strokeWidth={2} />}
+        >
+          Сортировка
+        </Button>
+        {sortOpen && (
+          <Menu className="absolute left-0 top-full z-20 mt-1 min-w-[280px]" role="menu">
+            {sortOptions.map((option) => (
+              <MenuItemSingleSelect
+                icon={false}
+                key={option.label}
+                onClick={() => {
+                  onSortChange(option.value);
+                  setSortOpen(false);
+                }}
+                rightSlot={false}
+                secondaryText={false}
+                selected={isSelected(option.value)}
+                startIcon={false}
+              >
+                {option.label}
+              </MenuItemSingleSelect>
+            ))}
+          </Menu>
+        )}
+      </div>
+
+      <Button
+        appearance="default"
+        endIcon={false}
+        onClick={() => window.open("https://yandex.ru/maps/55/tyumen/", "_blank", "noopener,noreferrer")}
+        size="sm"
+        startIcon={<Map aria-hidden="true" strokeWidth={2} />}
+      >
+        На карте
+      </Button>
+
+      <div className="relative">
+        <Button
+          appearance="default"
+          aria-expanded={columnsOpen}
+          aria-haspopup="menu"
+          endIcon={false}
+          onClick={() => {
+            setColumnsOpen((open) => !open);
+            setSortOpen(false);
+          }}
+          size="sm"
+          startIcon={<Columns3 aria-hidden="true" strokeWidth={2} />}
+        >
+          Столбцы
+        </Button>
+        {columnsOpen && (
+          <Menu align="right" className="absolute right-0 top-full z-20 mt-1 min-w-[240px]" role="menu">
+            {tableColumns.map((column) => (
+              <MenuItemMultiselect
+                checked={!hiddenColumns.has(column.key)}
+                icon={false}
+                key={column.key}
+                onClick={() => toggleColumn(column.key)}
+                rightSlot={false}
+                secondaryText={false}
+                startIcon={false}
+              >
+                {column.label}
+              </MenuItemMultiselect>
+            ))}
+          </Menu>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function ResultHeader({
+  hiddenColumns,
+  onSort,
+  sort,
+}: {
+  hiddenColumns: ReadonlySet<ColumnKey>;
+  onSort: (column: SortColumn) => void;
+  sort: SortState;
+}) {
+  return (
+    <div
+      className="flex border-b border-[var(--parser-border-light)]"
+      role="row"
+    >
+      <TableCell
+        paddingX
+        role="head"
+        sizeSmall
+        sort={false}
+        type="checkbox"
+        width={28}
+      />
+      <TableCell
+        className="min-w-[300px]"
+        helpIcon={false}
+        role="head"
+        sizeSmall
+        sort={false}
+        type="text"
+        width="fill"
+      >
+        Адрес
+      </TableCell>
+      {!hiddenColumns.has("buyer") && <TableCell
+        onClick={() => onSort("buyer")}
+        role="head"
+        sizeSmall
+        sort
+        sortDirection={sort?.column === "buyer" ? sort.direction : undefined}
+        type="number"
+        width={130}
+      >
+        Покупатель
+      </TableCell>}
+      {!hiddenColumns.has("price") && <TableCell
+        helpIcon={false}
+        onClick={() => onSort("price")}
+        role="head"
+        sizeSmall
+        sort
+        sortDirection={sort?.column === "price" ? sort.direction : undefined}
+        type="number"
+        width={175}
+      >
+        Цена, ₽
+      </TableCell>}
+      {!hiddenColumns.has("liquidity") && <TableCell
+        helpIcon={false}
+        role="head"
+        sizeSmall
+        sort={false}
+        type="text"
+        width={152}
+      >
+        Ликвид.
+      </TableCell>}
+      {!hiddenColumns.has("source") && <TableCell
+        helpIcon={false}
+        role="head"
+        sizeSmall
+        sort={false}
+        type="text"
+        width={190}
+      >
+        Источник
+      </TableCell>}
+      {!hiddenColumns.has("publishedAt") && <TableCell
+        helpIcon={false}
+        onClick={() => onSort("publishedAt")}
+        role="head"
+        sizeSmall
+        sort
+        sortDirection={
+          sort?.column === "publishedAt" ? sort.direction : undefined
+        }
+        type="text"
+        width={150}
+      >
+        Опубликован
+      </TableCell>}
+      {!hiddenColumns.has("status") && <TableCell
+        helpIcon={false}
+        role="head"
+        sizeSmall
+        sort={false}
+        type="text"
+        width={236}
+      >
+        Статус
+      </TableCell>}
     </div>
-  )
+  );
 }
 
-function ResultRow({ listing }: { listing: (typeof listings)[number] }) {
-  const price = getPrice(listing)
-  const pricePerM2 = Math.round(price / listing.area)
+function ResultRow({ hiddenColumns, listing }: { hiddenColumns: ReadonlySet<ColumnKey>; listing: (typeof listings)[number] }) {
+  const price = getPrice(listing);
+  const pricePerM2 = Math.round(price / listing.area);
 
   return (
-    <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" role="row">
-      <TableCell paddingX role="body" rowId={listing.id} sizeSmall type="checkbox" width={28} />
+    <div
+      className="flex border-b border-[var(--parser-border-light)] last:border-b-0"
+      role="row"
+    >
+      <TableCell
+        paddingX
+        role="body"
+        rowId={listing.id}
+        sizeSmall
+        type="checkbox"
+        width={28}
+      />
 
-      <TableCell className="min-w-[300px]" custom role="body" sizeSmall type="text" width="fill">
+      <TableCell
+        className="min-w-[300px]"
+        custom
+        role="body"
+        sizeSmall
+        type="text"
+        width="fill"
+      >
         <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
           <p className="text-[var(--parser-text-brand)]">{getSpecs(listing)}</p>
-          <p className="text-[var(--parser-text-neutral-primary)]">{listing.address}</p>
+          <p className="text-[var(--parser-text-neutral-primary)]">
+            {listing.address}
+          </p>
         </div>
       </TableCell>
 
-      <TableCell custom role="body" sizeSmall type="number" width={130}>
-        <p className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">{listing.buyerDemandAvailableCount}</p>
-      </TableCell>
+      {!hiddenColumns.has("buyer") && <TableCell custom role="body" sizeSmall type="number" width={130}>
+        <p className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
+          {listing.buyerDemandAvailableCount}
+        </p>
+      </TableCell>}
 
-      <TableCell custom role="body" sizeSmall type="number" width={175}>
+      {!hiddenColumns.has("price") && <TableCell custom role="body" sizeSmall type="number" width={175}>
         <div className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
-          <p className="text-[var(--parser-text-neutral-primary)]">{formatNumber(price)}</p>
-          <p className="text-[var(--parser-text-neutral-secondary)]">{formatNumber(pricePerM2)}</p>
+          <p className="text-[var(--parser-text-neutral-primary)]">
+            {formatNumber(price)}
+          </p>
+          <p className="text-[var(--parser-text-neutral-secondary)]">
+            {formatNumber(pricePerM2)}
+          </p>
         </div>
-      </TableCell>
+      </TableCell>}
 
-      <TableCell custom role="body" sizeSmall type="text" width={152}>
-        <Chip appearance="muted" className="self-start" color="neutral" icon={false} propDelete={false} size="sm" thumbnail={false}>
+      {!hiddenColumns.has("liquidity") && <TableCell custom role="body" sizeSmall type="text" width={152}>
+        <Chip
+          appearance="muted"
+          className="self-start"
+          color="neutral"
+          icon={false}
+          propDelete={false}
+          size="sm"
+          thumbnail={false}
+        >
           Оцениваем
         </Chip>
-      </TableCell>
+      </TableCell>}
 
-      <TableCell custom role="body" sizeSmall type="text" width={190}>
+      {!hiddenColumns.has("source") && <TableCell custom role="body" sizeSmall type="text" width={190}>
         <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
-          <p className="text-[var(--parser-text-brand)]">{formatSource(listing.domain)}</p>
-          <p className="text-[var(--parser-text-neutral-secondary)]">{listing.clientName ?? "Частное лицо"}</p>
+          <p className="text-[var(--parser-text-brand)]">
+            {formatSource(listing.domain)}
+          </p>
+          <p className="text-[var(--parser-text-neutral-secondary)]">
+            {listing.clientName ?? "Частное лицо"}
+          </p>
         </div>
-      </TableCell>
+      </TableCell>}
 
-      <TableCell custom role="body" sizeSmall type="text" width={150}>
-        <p className="text-sm leading-5 tracking-[0.17px]">{formatPublishedAt(listing.publishedAt)}</p>
-      </TableCell>
+      {!hiddenColumns.has("publishedAt") && <TableCell custom role="body" sizeSmall type="text" width={150}>
+        <p className="text-sm leading-5 tracking-[0.17px]">
+          {formatPublishedAt(listing.publishedAt)}
+        </p>
+      </TableCell>}
 
-      <TableCell custom role="body" sizeSmall type="text" width={236}>
-        <Chip appearance="muted" className="self-start" color="neutral" icon={false} propDelete={false} size="sm" thumbnail={false}>
+      {!hiddenColumns.has("status") && <TableCell custom role="body" sizeSmall type="text" width={236}>
+        <Chip
+          appearance="muted"
+          className="self-start"
+          color="neutral"
+          icon={false}
+          propDelete={false}
+          size="sm"
+          thumbnail={false}
+        >
           {listing.userStatus ? "В работе" : "Еще не звонили из Rhood"}
         </Chip>
-      </TableCell>
+      </TableCell>}
     </div>
-  )
+  );
 }
 
-function ListingsTable({ onSort, sort }: { onSort: (column: SortColumn) => void; sort: SortState }) {
-  const [selectedIds, setSelectedIds] = React.useState<string[]>([])
+function ListingsTable({
+  hiddenColumns,
+  onSort,
+  sort,
+}: {
+  hiddenColumns: ReadonlySet<ColumnKey>;
+  onSort: (column: SortColumn) => void;
+  sort: SortState;
+}) {
+  const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
   const sortedListings = [...listings]
     .sort((first, second) => {
-      if (!sort) return 0
+      if (!sort) return 0;
 
-      const firstValue = sort.column === "price"
-        ? getPrice(first)
-        : sort.column === "publishedAt"
-          ? new Date(first.publishedAt).getTime()
-          : first.buyerDemandAvailableCount
-      const secondValue = sort.column === "price"
-        ? getPrice(second)
-        : sort.column === "publishedAt"
-          ? new Date(second.publishedAt).getTime()
-          : second.buyerDemandAvailableCount
-      const comparison = firstValue - secondValue
+      const firstValue =
+        sort.column === "price"
+          ? getPrice(first)
+          : sort.column === "publishedAt"
+            ? new Date(first.publishedAt).getTime()
+            : first.buyerDemandAvailableCount;
+      const secondValue =
+        sort.column === "price"
+          ? getPrice(second)
+          : sort.column === "publishedAt"
+            ? new Date(second.publishedAt).getTime()
+            : second.buyerDemandAvailableCount;
+      const comparison = firstValue - secondValue;
 
-      return sort.direction === "asc" ? comparison : -comparison
+      return sort.direction === "asc" ? comparison : -comparison;
     })
-    .slice(0, 20)
+    .slice(0, 20);
 
   return (
-    <Table className="rounded-none" selection={{ onSelectedIdsChange: setSelectedIds, rowIds: sortedListings.map(listing => listing.id), selectedIds }}>
-      <ResultHeader onSort={onSort} sort={sort} />
-      {sortedListings.map((listing) => <ResultRow key={listing.id} listing={listing} />)}
+    <Table
+      bordered
+      selection={{
+        onSelectedIdsChange: setSelectedIds,
+        rowIds: sortedListings.map((listing) => listing.id),
+        selectedIds,
+      }}
+    >
+      <ResultHeader hiddenColumns={hiddenColumns} onSort={onSort} sort={sort} />
+      {sortedListings.map((listing) => (
+        <ResultRow hiddenColumns={hiddenColumns} key={listing.id} listing={listing} />
+      ))}
     </Table>
-  )
+  );
 }
 
 export function ApartmentListingsScreen() {
-  const [sort, setSort] = React.useState<SortState>(null)
+  const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(new Set());
+  const [sort, setSort] = React.useState<SortState>(null);
 
   function handleSort(column: SortColumn) {
-    setSort((current) => current?.column === column
-      ? { column, direction: current.direction === "asc" ? "desc" : "asc" }
-      : { column, direction: "asc" })
+    setSort((current) =>
+      current?.column === column
+        ? { column, direction: current.direction === "asc" ? "desc" : "asc" }
+        : { column, direction: "asc" },
+    );
   }
 
   return (
@@ -163,15 +473,24 @@ export function ApartmentListingsScreen() {
       <MainHeader logoHref="/Rhood/" navItems={navItems} />
       <ToolbarFilter empty resp="desk" />
 
-      <main className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
-        <ListingsTable onSort={handleSort} sort={sort} />
+      <main className="grid gap-6 p-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
+        <h1 className="rh-typography-headline-1">15 208 квартир в Тюмени</h1>
+        <TableToolbar hiddenColumns={hiddenColumns} onHiddenColumnsChange={setHiddenColumns} onSortChange={setSort} sort={sort} />
+        <ListingsTable hiddenColumns={hiddenColumns} onSort={handleSort} sort={sort} />
       </main>
 
-      <button className="fixed bottom-4 right-4 inline-flex rounded-full" type="button">
+      <button
+        className="fixed bottom-4 right-4 inline-flex rounded-full"
+        type="button"
+      >
         <div className="rounded-full bg-[var(--parser-fill-neutral-dark)]">
-          <CircleHelp aria-hidden="true" className="size-10 p-2 text-[var(--parser-text-primary-contrast)]" strokeWidth={2} />
+          <CircleHelp
+            aria-hidden="true"
+            className="size-10 p-2 text-[var(--parser-text-primary-contrast)]"
+            strokeWidth={2}
+          />
         </div>
       </button>
     </div>
-  )
+  );
 }
