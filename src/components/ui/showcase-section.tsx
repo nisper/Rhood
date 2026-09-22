@@ -3,6 +3,7 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
+  codeSnippet?: React.ReactNode
   description: React.ReactNode
   showcase: React.ReactNode
   title: React.ReactNode
@@ -10,6 +11,7 @@ type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
 
 function ShowcaseSection({
   className,
+  codeSnippet,
   description,
   showcase,
   title,
@@ -22,6 +24,11 @@ function ShowcaseSection({
         <p className="rh-typography-body-1">{description}</p>
       </div>
       {showcase}
+      {codeSnippet && (
+        <pre className="overflow-x-auto rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-neutral)] p-4">
+          {codeSnippet}
+        </pre>
+      )}
     </section>
   )
 }

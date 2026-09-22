@@ -21,6 +21,7 @@ import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
 import { TypographyExamples } from "./typography-examples";
 import { ModalExamples } from "./modal-examples";
+import { DrawerExamples } from "./drawer-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import "./component-docs.css";
 import * as React from "react";
@@ -230,6 +231,12 @@ const componentDocs: ComponentDoc[] = [
         values: "ReactNode",
         defaultValue: "—",
         description: "ShowcaseSurface с демонстрацией компонента.",
+      },
+      {
+        name: "codeSnippet",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Необязательный блок кода под Showcase.",
       },
     ],
     source: "src/components/ui/showcase-section.tsx",
@@ -964,7 +971,7 @@ const componentDocs: ComponentDoc[] = [
         values: "viewport · embedded",
         defaultValue: "viewport",
         description:
-          "Растягивает backdrop на весь viewport; embedded используй внутри Showcase.",
+          "Растягивает backdrop на весь viewport; клик по backdrop закрывает Modal. embedded используй внутри Showcase.",
       },
       {
         name: "ModalContainer.alignment",
@@ -976,6 +983,15 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/modal.tsx",
     render: () => <ModalExamples />,
+  },
+  {
+    id: "drawer",
+    title: "Drawer",
+    description:
+      "Боковая панель для работы с деталями без перехода с текущего экрана.",
+    group: "Feedback",
+    source: "src/components/ui/drawer.tsx",
+    render: () => <DrawerExamples />,
   },
   {
     id: "tooltip",
@@ -1079,10 +1095,16 @@ function setActiveComponentId(id: string) {
 }
 
 function groupDocs(items: ComponentDoc[]) {
-  return items.reduce<Record<string, ComponentDoc[]>>((groups, item) => {
-    groups[item.group] = [...(groups[item.group] ?? []), item];
-    return groups;
+  const groups = items.reduce<Record<string, ComponentDoc[]>>((result, item) => {
+    result[item.group] = [...(result[item.group] ?? []), item];
+    return result;
   }, {});
+
+  Object.values(groups).forEach((group) =>
+    group.sort((first, second) => first.title.localeCompare(second.title)),
+  );
+
+  return groups;
 }
 
 function ComponentPage({
@@ -1367,6 +1389,7 @@ const ComponentNavigation = React.forwardRef<
 >(function ComponentNavigation({ activeId, groups }, ref) {
   const [focusedId, setFocusedId] = React.useState<string | undefined>();
   const celebratoryComponentIds = new Set([
+    "adaptive",
     "colors",
     "sizing",
     "button",
@@ -1388,6 +1411,7 @@ const ComponentNavigation = React.forwardRef<
     "input-number-range",
     "textarea",
     "modal",
+    "drawer",
   ]);
 
   const handleItemKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {

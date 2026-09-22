@@ -30,8 +30,8 @@ const prototypeViews: PrototypeView[] = [
   },
   {
     id: "simple-table",
-    title: "Таблица",
-    homeLabel: "Таблица",
+    title: "Sandbox",
+    homeLabel: "Sandbox",
     icon: LayoutDashboard,
     View: SimpleTableScreen,
   },

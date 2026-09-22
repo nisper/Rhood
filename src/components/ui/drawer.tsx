@@ -4,11 +4,11 @@ import { X } from "lucide-react";
 import { IconButton } from "@/components/ui/icon-button";
 import { cn } from "@/lib/utils";
 
-const ModalDismissContext = React.createContext<
+const DrawerDismissContext = React.createContext<
   ((requestClose?: () => void) => void) | null
 >(null);
 
-type ModalProps = Omit<React.ComponentProps<"div">, "title"> & {
+type DrawerProps = Omit<React.ComponentProps<"div">, "title"> & {
   closeButton?: boolean;
   defaultOpen?: boolean;
   description?: React.ReactNode;
@@ -17,17 +17,17 @@ type ModalProps = Omit<React.ComponentProps<"div">, "title"> & {
   maxWidth?: React.CSSProperties["maxWidth"];
   onOpenChange?: (open: boolean) => void;
   open?: boolean;
-  presentation?: ModalPresentation;
+  presentation?: DrawerPresentation;
   title: React.ReactNode;
 };
 
-type ModalContainerAlignment = "center" | "top" | "bottom";
-type ModalContainerDisplay = "viewport" | "embedded";
-type ModalPresentation = "dialog" | "bottom-sheet";
+type DrawerContainerAlignment = "right" | "bottom";
+type DrawerContainerDisplay = "viewport" | "embedded";
+type DrawerPresentation = "drawer" | "bottom-sheet";
 
-type ModalContainerProps = React.ComponentProps<"div"> & {
-  alignment?: ModalContainerAlignment;
-  display?: ModalContainerDisplay;
+type DrawerContainerProps = React.ComponentProps<"div"> & {
+  alignment?: DrawerContainerAlignment;
+  display?: DrawerContainerDisplay;
 };
 
 function useIsMobileViewport() {
@@ -49,32 +49,32 @@ function useIsMobileViewport() {
   return isMobileViewport;
 }
 
-function ModalContainer({
-  alignment = "center",
+function DrawerContainer({
+  alignment = "right",
   children,
   className,
   display = "viewport",
   onClick,
   ...props
-}: ModalContainerProps) {
+}: DrawerContainerProps) {
   const requestCloseRef = React.useRef<(() => void) | undefined>(undefined);
   const registerClose = React.useCallback((requestClose?: () => void) => {
     requestCloseRef.current = requestClose;
   }, []);
 
   return (
-    <ModalDismissContext.Provider value={registerClose}>
+    <DrawerDismissContext.Provider value={registerClose}>
       <div
         className={cn(
           "grid min-h-[360px] w-full overflow-hidden bg-[var(--rh-theme-surface-backdrop)] p-2",
           display === "viewport" && "fixed inset-0 z-50",
           display === "embedded" && "relative",
-          alignment === "center" && "place-items-center max-md:items-end",
-          alignment === "top" && "items-start justify-items-center",
+          alignment === "right" &&
+            "items-stretch justify-items-end max-md:items-end max-md:justify-items-center",
           alignment === "bottom" && "items-end justify-items-center",
           className,
         )}
-        data-slot="modal-container"
+        data-slot="drawer-container"
         onClick={(event) => {
           onClick?.(event);
           if (!event.defaultPrevented && event.target === event.currentTarget) {
@@ -85,28 +85,28 @@ function ModalContainer({
       >
         {children}
       </div>
-    </ModalDismissContext.Provider>
+    </DrawerDismissContext.Provider>
   );
 }
 
-function Modal({
+function Drawer({
   children,
   className,
-  closeButton,
+  closeButton = true,
   defaultOpen = true,
   description,
   footer,
   hasFooter = Boolean(footer),
-  maxWidth = 480,
+  maxWidth = "var(--rh-sizing-drawer-comment-width)",
   onOpenChange,
   onTransitionEnd,
   open,
-  presentation = "dialog",
+  presentation = "drawer",
   style,
   title,
   ...props
-}: ModalProps) {
-  const registerClose = React.useContext(ModalDismissContext);
+}: DrawerProps) {
+  const registerClose = React.useContext(DrawerDismissContext);
   const isMobileViewport = useIsMobileViewport();
   const resolvedPresentation = isMobileViewport ? "bottom-sheet" : presentation;
   const titleId = React.useId();
@@ -116,23 +116,23 @@ function Modal({
   const resolvedOpen = isControlled ? open : uncontrolledOpen;
   const [isRendered, setIsRendered] = React.useState(resolvedOpen);
   const [isClosing, setIsClosing] = React.useState(false);
-  const showCloseButton =
-    resolvedPresentation === "dialog" && closeButton !== false;
+  const [isOpening, setIsOpening] = React.useState(resolvedOpen);
 
   React.useEffect(() => {
     if (resolvedOpen) {
-      setIsRendered(true);
+      if (!isRendered) {
+        setIsRendered(true);
+        setIsOpening(true);
+        return;
+      }
+
       setIsClosing(false);
-      return;
+      const frameId = window.requestAnimationFrame(() => setIsOpening(false));
+      return () => window.cancelAnimationFrame(frameId);
     }
 
-    if (resolvedPresentation === "bottom-sheet" && isRendered) {
-      setIsClosing(true);
-      return;
-    }
-
-    setIsRendered(false);
-  }, [isRendered, resolvedPresentation, resolvedOpen]);
+    if (isRendered) setIsClosing(true);
+  }, [isRendered, resolvedOpen]);
 
   const changeOpen = React.useCallback(
     (nextOpen: boolean) => {
@@ -151,6 +151,15 @@ function Modal({
     registerClose?.(requestClose);
     return () => registerClose?.();
   }, [registerClose, requestClose]);
+
+  const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+    if (isClosing && event.target === event.currentTarget) {
+      setIsClosing(false);
+      setIsRendered(false);
+    }
+
+    onTransitionEnd?.(event);
+  };
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (resolvedPresentation === "bottom-sheet") {
@@ -171,15 +180,6 @@ function Modal({
     }
   };
 
-  const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
-    if (isClosing && event.target === event.currentTarget) {
-      setIsClosing(false);
-      setIsRendered(false);
-    }
-
-    onTransitionEnd?.(event);
-  };
-
   if (!isRendered) return null;
 
   return (
@@ -187,11 +187,15 @@ function Modal({
       aria-labelledby={titleId}
       aria-modal="true"
       className={cn(
-        "grid w-full gap-6 rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] p-6 shadow-lg",
+        "grid w-full gap-6 rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg transition-transform duration-200 ease-in-out",
+        resolvedPresentation === "drawer" && "h-full grid-rows-[auto_1fr_auto] p-6",
         resolvedPresentation === "bottom-sheet" && "p-4",
+        resolvedPresentation === "drawer" &&
+          (isOpening || isClosing) &&
+          "translate-x-full",
         resolvedPresentation === "bottom-sheet" &&
-          "transition-transform duration-200 ease-in-out",
-        resolvedPresentation === "bottom-sheet" && isClosing && "translate-y-full",
+          isClosing &&
+          "translate-y-full",
         className,
       )}
       onPointerCancel={() => {
@@ -217,13 +221,13 @@ function Modal({
               {description}
             </p>
           )}
-          {children}
+          {resolvedPresentation === "bottom-sheet" && children}
         </div>
 
-        {showCloseButton && (
+        {resolvedPresentation === "drawer" && closeButton !== false && (
           <IconButton
             appearance="ghost"
-            aria-label="Закрыть modal"
+            aria-label="Закрыть drawer"
             className="-m-2"
             icon={<X aria-hidden="true" />}
             onClick={requestClose}
@@ -231,6 +235,10 @@ function Modal({
           />
         )}
       </div>
+
+      {resolvedPresentation === "drawer" && children && (
+        <div className="min-h-0 overflow-y-auto">{children}</div>
+      )}
 
       {hasFooter && footer && (
         <div
@@ -247,11 +255,11 @@ function Modal({
   );
 }
 
-export { Modal, ModalContainer };
+export { Drawer, DrawerContainer };
 export type {
-  ModalContainerAlignment,
-  ModalContainerDisplay,
-  ModalContainerProps,
-  ModalPresentation,
-  ModalProps,
+  DrawerContainerAlignment,
+  DrawerContainerDisplay,
+  DrawerContainerProps,
+  DrawerPresentation,
+  DrawerProps,
 };

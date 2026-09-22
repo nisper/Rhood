@@ -12,7 +12,6 @@ type SelectState = "default" | "hovered" | "focused"
 type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
   content?: SelectContent
   disabled?: boolean
-  empty?: boolean
   error?: boolean
   expanded?: boolean
   fullWidth?: boolean
@@ -120,7 +119,6 @@ function Select({
   className,
   content = "text",
   disabled = false,
-  empty = false,
   error = false,
   expanded = false,
   fullWidth = false,

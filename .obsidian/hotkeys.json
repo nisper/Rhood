@@ -1,0 +1,10 @@
+{
+  "workspace:copy-path": [
+    {
+      "modifiers": [
+        "Ctrl"
+      ],
+      "key": "L"
+    }
+  ]
+}
