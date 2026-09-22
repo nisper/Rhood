@@ -101,8 +101,8 @@ export function TableExamples() {
   return <div className="grid min-w-0 gap-10">
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Выбор</h2>
-        <p>Настройка Table.selection управляет строками текущей страницы пагинации. Если выбрана часть строк, Checkbox в шапке показывает промежуточное состояние. Нажатие в этом состоянии выбирает все строки страницы.</p>
+        <h2 className="rh-typography-headline-4">Выбор</h2>
+        <p className="rh-typography-body-1">Настройка Table.selection управляет строками текущей страницы пагинации. Если выбрана часть строк, Checkbox в шапке показывает промежуточное состояние. Нажатие в этом состоянии выбирает все строки страницы.</p>
       </div>
       <Table className="border border-[var(--parser-border-light)] bg-white" selection={{ onSelectedIdsChange: setSelectedIds, rowIds: currentIds, selectedIds }}>
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
@@ -128,8 +128,8 @@ export function TableExamples() {
 
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Контент</h2>
-        <p>Шапка объясняет, что означают значения в колонке. Повторяющиеся единицы измерения и валюта остаются в шапке: «Стоимость, ₽», «Площадь, м²». В строках остаются только значения.</p>
+        <h2 className="rh-typography-headline-4">Контент</h2>
+        <p className="rh-typography-body-1">Шапка объясняет, что означают значения в колонке. Повторяющиеся единицы измерения и валюта остаются в шапке: «Стоимость, ₽», «Площадь, м²». В строках остаются только значения.</p>
       </div>
       <div className="grid gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2">
         <div className="grid gap-2"><p className="text-xs text-[var(--parser-text-neutral-secondary)]">Шапка</p><div className="flex bg-white"><TableCell role="head" type="text">Название</TableCell><TableCell helpIcon={false} role="head" sort={false} type="number">Стоимость, ₽</TableCell></div></div>
@@ -141,8 +141,8 @@ export function TableExamples() {
 
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Размер</h2>
-        <p>Ширину задают одинаково для всех ячеек одной колонки. По умолчанию — по самому широкому содержимому. Для колонок, которые должны занять свободное место, используй <code>width=&quot;fill&quot;</code>; они делят его поровну. Для известной ширины передай число в пикселях, например <code>width={'{160}'}</code>.</p>
+        <h2 className="rh-typography-headline-4">Размер</h2>
+        <p className="rh-typography-body-1">Ширину задают одинаково для всех ячеек одной колонки. По умолчанию — по самому широкому содержимому. Для колонок, которые должны занять свободное место, используй <code>width=&quot;fill&quot;</code>; они делят его поровну. Для известной ширины передай число в пикселях, например <code>width={'{160}'}</code>.</p>
       </div>
       <Table className="border border-[var(--parser-border-light)] bg-white">
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
@@ -161,8 +161,8 @@ export function TableExamples() {
 
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Сортировка</h2>
-        <p>Стрелка есть только у колонки, по которой таблица отсортирована. Нажми на «Объект» или «Стоимость»: первое нажатие сортирует по возрастанию, повторное меняет направление.</p>
+        <h2 className="rh-typography-headline-4">Сортировка</h2>
+        <p className="rh-typography-body-1">Стрелка есть только у колонки, по которой таблица отсортирована. Нажми на «Объект» или «Стоимость»: первое нажатие сортирует по возрастанию, повторное меняет направление.</p>
       </div>
       <Table className="border border-[var(--parser-border-light)] bg-white">
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
@@ -181,8 +181,8 @@ export function TableExamples() {
 
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Горизонтальные отступы</h2>
-        <p><code>paddingX</code> включён по умолчанию. Он добавляет внутренние горизонтальные отступы ячейки. Передай <code>paddingX={'{false}'}</code>, только если отступы уже задаёт родитель.</p>
+        <h2 className="rh-typography-headline-4">Горизонтальные отступы</h2>
+        <p className="rh-typography-body-1"><code>paddingX</code> включён по умолчанию. Он добавляет внутренние горизонтальные отступы ячейки. Передай <code>paddingX={'{false}'}</code>, только если отступы уже задаёт родитель.</p>
       </div>
       <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
@@ -198,16 +198,16 @@ export function TableExamples() {
 
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Help icon</h2>
-        <p>Иконка справки относится к заголовку колонки и находится сразу после его текста.</p>
+        <h2 className="rh-typography-headline-4">Help icon</h2>
+        <p className="rh-typography-body-1">Иконка справки относится к заголовку колонки и находится сразу после его текста.</p>
       </div>
       <div className="w-fit rounded-xl border border-[var(--parser-border-light)] bg-white"><TableCell role="head" sort={false} type="text" width="content">Средняя стоимость</TableCell></div>
     </section>
 
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Обводка</h2>
-        <p>У таблицы всегда есть скругление <code>rounded-lg</code>. Обводку добавляют, когда она нужна в конкретном контексте: это <code>1px solid border-light</code>. Если обводка не нужна, свойство <code>border</code> не задают.</p>
+        <h2 className="rh-typography-headline-4">Обводка</h2>
+        <p className="rh-typography-body-1">У таблицы всегда есть скругление <code>rounded-lg</code>. Обводку добавляют, когда она нужна в конкретном контексте: это <code>1px solid border-light</code>. Если обводка не нужна, свойство <code>border</code> не задают.</p>
       </div>
       <div className="grid gap-4">
         <div className="grid gap-2"><p className="text-xs text-[var(--parser-text-neutral-secondary)]">Без обводки</p><BorderExample bordered={false} /></div>
@@ -216,15 +216,15 @@ export function TableExamples() {
     </section>
 
     <section className="grid min-w-0 gap-4">
-      <h2 className="text-xl font-semibold">Свойства в коде</h2>
-      <p>Ниже — интерфейс TableCell для реализации. Правила применения описаны в разделах выше.</p>
+      <h2 className="rh-typography-headline-4">Свойства в коде</h2>
+      <p className="rh-typography-body-1">Ниже — интерфейс TableCell для реализации. Правила применения описаны в разделах выше.</p>
       <Properties />
     </section>
 
     <section className="grid gap-4">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold">Экспериментальная таблица</h2>
-        <p>Все ячейки используют <code>paddingX={'{false}'}</code>. Нажми на любой заголовок, чтобы отсортировать данные.</p>
+        <h2 className="rh-typography-headline-4">Экспериментальная таблица</h2>
+        <p className="rh-typography-body-1">Все ячейки используют <code>paddingX={'{false}'}</code>. Нажми на любой заголовок, чтобы отсортировать данные.</p>
       </div>
       <Table className="bg-white">
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">

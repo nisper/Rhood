@@ -8,7 +8,7 @@
 
 - Ориентируйся на `src/components/prototype/button-examples.tsx` как на эталон структуры и визуального ритма.
 - Подключай страницу через `src/components/prototype/component-docs.tsx`.
-- Используй `Section`, `ShowcaseSurface`, `ShowcasePanel`, `Table` и `TableCell` по существующему паттерну.
+- Используй `ShowcaseSection` для секций с примером: он объединяет заголовок, описание и Showcase. Внутри него используй `ShowcaseSurface`, `ShowcasePanel`, `Table` и `TableCell` по существующему паттерну.
 - Сохраняй порядок секций:
   1. Стиль
   2. Размер

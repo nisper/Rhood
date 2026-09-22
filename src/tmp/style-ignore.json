@@ -1,0 +1,44 @@
+{
+  "tokens": [
+    {
+      "collection": "sizing",
+      "name": "modal/margin-top",
+      "reason": "Нужен только для адаптивного макета в Figma."
+    },
+    {
+      "collection": "sizing",
+      "name": "modal/margin-x",
+      "reason": "Нужен только для адаптивного макета в Figma."
+    },
+    {
+      "collection": "sizing",
+      "name": "modal/margin-bottom",
+      "reason": "Нужен только для адаптивного макета в Figma."
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/resp",
+      "reason": "Режим responsive-макета в Figma."
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-width-min",
+      "reason": "Граница viewport для responsive-макета в Figma."
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-width-max",
+      "reason": "Граница viewport для responsive-макета в Figma."
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-height-min",
+      "reason": "Граница viewport для responsive-макета в Figma."
+    },
+    {
+      "collection": "sizing",
+      "name": "resp/vp-height-max",
+      "reason": "Граница viewport для responsive-макета в Figma."
+    }
+  ]
+}

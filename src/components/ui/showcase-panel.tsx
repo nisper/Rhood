@@ -13,7 +13,7 @@ function ShowcasePanel({ children, className, tone = "white", ...props }: Showca
   return <div
     {...props}
     className={cn(
-      "flex min-h-[136px] items-center justify-center rounded-xl px-6 py-4",
+      "flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4",
       tone === "white" && "bg-white",
       className,
     )}

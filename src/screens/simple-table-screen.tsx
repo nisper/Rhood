@@ -1,5 +1,7 @@
 import * as React from "react"
 
+import { Button } from "@/components/ui/button"
+import { Modal, ModalContainer } from "@/components/ui/modal"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -18,11 +20,16 @@ const rows = [
 
 export function SimpleTableScreen() {
   const [selectedIds, setSelectedIds] = React.useState<string[]>([])
+  const [isModalOpen, setIsModalOpen] = React.useState(false)
 
   return (
     <main className="min-h-svh bg-white p-5 text-[var(--parser-text-neutral-primary)] sm:p-8">
+      <Button endIcon={false} onClick={() => setIsModalOpen(true)} startIcon={false}>
+        Открыть modal
+      </Button>
+
       <Table
-        className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white"
+        className="mt-5 w-full !min-w-0 border border-[var(--parser-border-light)] bg-white"
         selection={{ onSelectedIdsChange: setSelectedIds, rowIds: rows.map((row) => row.id), selectedIds }}
       >
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
@@ -38,6 +45,27 @@ export function SimpleTableScreen() {
           </div>
         ))}
       </Table>
+
+      {isModalOpen && (
+        <ModalContainer className="min-h-0">
+          <Modal
+            description="Это тестовое содержимое модального окна."
+            footer={
+              <Button
+                appearance="default"
+                endIcon={false}
+                onClick={() => setIsModalOpen(false)}
+                startIcon={false}
+              >
+                Закрыть
+              </Button>
+            }
+            onOpenChange={setIsModalOpen}
+            open={isModalOpen}
+            title="Тестовая modal"
+          />
+        </ModalContainer>
+      )}
     </main>
   )
 }

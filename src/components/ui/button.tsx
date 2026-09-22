@@ -247,7 +247,7 @@ function Button({
   return (
     <Comp
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] border border-transparent font-semibold transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "rh-typography-body-1-medium inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] border border-transparent transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
         sizeClasses[resolvedSize],
         gapClasses[resolvedSize],
         appearanceClasses[resolvedAppearance][stateKey],
@@ -274,7 +274,7 @@ function Button({
       {!iconOnly && counter && (
         <span
           className={cn(
-            "flex h-[calc(var(--spacing)*6)] shrink-0 items-center justify-center rounded-full font-semibold tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+            "flex h-[calc(var(--spacing)*6)] shrink-0 items-center justify-center rounded-full tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
             counterClasses[resolvedSize],
             counterToneClasses[resolvedAppearance],
             disabled && "bg-transparent text-current",

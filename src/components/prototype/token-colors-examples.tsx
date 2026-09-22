@@ -48,7 +48,7 @@ export function TokenColorsExamples() {
       <section className="grid gap-4">
         <div>
           <div>
-            <h2 className="text-xl font-semibold leading-7">Цветовые токены</h2>
+            <h2 className="rh-typography-headline-4">Цветовые токены</h2>
             <p className="text-sm leading-5 text-[color:var(--rh-theme-text-neutral-secondary)]">{tokens.length} токенов в выбранной коллекции</p>
           </div>
         </div>

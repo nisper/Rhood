@@ -35,7 +35,7 @@ function SelectProperties() {
 }
 
 function Section({ title, children, description, settings }: { title: string; description: string; children: React.ReactNode; settings: string[] }) {
-  return <section className="grid w-full gap-4"><div className="grid gap-1"><h2 className="text-xl font-semibold">{title}</h2><p>{description}</p></div>{children}<div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div></section>
+  return <section className="grid w-full gap-4"><div className="grid gap-1"><h2 className="rh-typography-headline-4">{title}</h2><p className="rh-typography-body-1">{description}</p></div>{children}<div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div></section>
 }
 
 function SelectWithMenu({ align = "left", showMenu = false, ...props }: React.ComponentProps<typeof Select> & { align?: "left" | "right"; showMenu?: boolean }) {

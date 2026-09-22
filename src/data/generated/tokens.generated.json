@@ -1,12 +1,12 @@
 {
   "summary": {
-    "total": 415,
+    "total": 407,
     "byCollection": {
       "palette": 161,
       "theme": 113,
-      "sizing": 141
+      "sizing": 133
     },
-    "aliases": 206,
+    "aliases": 203,
     "warnings": []
   },
   "tokens": [
@@ -3316,56 +3316,6 @@
     },
     {
       "collection": "sizing",
-      "name": "resp/resp",
-      "cssVariable": "--rh-sizing-resp-resp",
-      "type": "string",
-      "cssValue": "desk",
-      "resolvedValue": "desk",
-      "alias": null,
-      "figmaVariableId": "VariableID:2912:8054"
-    },
-    {
-      "collection": "sizing",
-      "name": "resp/vp-width-min",
-      "cssVariable": "--rh-sizing-resp-vp-width-min",
-      "type": "number",
-      "cssValue": "1367px",
-      "resolvedValue": "1367px",
-      "alias": null,
-      "figmaVariableId": "VariableID:8632:19077"
-    },
-    {
-      "collection": "sizing",
-      "name": "resp/vp-width-max",
-      "cssVariable": "--rh-sizing-resp-vp-width-max",
-      "type": "number",
-      "cssValue": "1920px",
-      "resolvedValue": "1920px",
-      "alias": null,
-      "figmaVariableId": "VariableID:8632:19076"
-    },
-    {
-      "collection": "sizing",
-      "name": "resp/vp-height-min",
-      "cssVariable": "--rh-sizing-resp-vp-height-min",
-      "type": "number",
-      "cssValue": "668px",
-      "resolvedValue": "668px",
-      "alias": null,
-      "figmaVariableId": "VariableID:8632:19073"
-    },
-    {
-      "collection": "sizing",
-      "name": "resp/vp-height-max",
-      "cssVariable": "--rh-sizing-resp-vp-height-max",
-      "type": "number",
-      "cssValue": "980px",
-      "resolvedValue": "980px",
-      "alias": null,
-      "figmaVariableId": "VariableID:8632:19072"
-    },
-    {
-      "collection": "sizing",
       "name": "accordion/px",
       "cssVariable": "--rh-sizing-accordion-px",
       "type": "number",
@@ -4354,6 +4304,20 @@
     },
     {
       "collection": "sizing",
+      "name": "menu/border_radius",
+      "cssVariable": "--rh-sizing-menu-border-radius",
+      "type": "number",
+      "cssValue": "var(--rh-sizing-border-radius-md)",
+      "resolvedValue": "8px",
+      "alias": {
+        "collection": "sizing",
+        "name": "border-radius/border-radius-md",
+        "source": "dtcg"
+      },
+      "figmaVariableId": "VariableID:8755:2317"
+    },
+    {
+      "collection": "sizing",
       "name": "menu/padding/px-sm",
       "cssVariable": "--rh-sizing-menu-padding-px-sm",
       "type": "number",
@@ -4421,48 +4385,6 @@
         "source": "dtcg"
       },
       "figmaVariableId": "VariableID:8764:9825"
-    },
-    {
-      "collection": "sizing",
-      "name": "modal/margin-top",
-      "cssVariable": "--rh-sizing-modal-margin-top",
-      "type": "number",
-      "cssValue": "calc(var(--spacing) * 2)",
-      "resolvedValue": "8px",
-      "alias": {
-        "collection": "sizing",
-        "name": "base module/1",
-        "source": "dtcg"
-      },
-      "figmaVariableId": "VariableID:598:6936"
-    },
-    {
-      "collection": "sizing",
-      "name": "modal/margin-x",
-      "cssVariable": "--rh-sizing-modal-margin-x",
-      "type": "number",
-      "cssValue": "calc(var(--spacing) * 2)",
-      "resolvedValue": "8px",
-      "alias": {
-        "collection": "sizing",
-        "name": "base module/1",
-        "source": "dtcg"
-      },
-      "figmaVariableId": "VariableID:10926:4113"
-    },
-    {
-      "collection": "sizing",
-      "name": "modal/margin-bottom",
-      "cssVariable": "--rh-sizing-modal-margin-bottom",
-      "type": "number",
-      "cssValue": "calc(var(--spacing) * 2)",
-      "resolvedValue": "8px",
-      "alias": {
-        "collection": "sizing",
-        "name": "base module/1",
-        "source": "dtcg"
-      },
-      "figmaVariableId": "VariableID:10926:4114"
     },
     {
       "collection": "sizing",

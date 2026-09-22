@@ -289,11 +289,6 @@
   --rh-sizing-base-module-1-5: 12px;
   --rh-sizing-base-module-2-5: 20px;
   --rh-sizing-base-module-4-5: 36px;
-  --rh-sizing-resp-resp: desk;
-  --rh-sizing-resp-vp-width-min: 1367px;
-  --rh-sizing-resp-vp-width-max: 1920px;
-  --rh-sizing-resp-vp-height-min: 668px;
-  --rh-sizing-resp-vp-height-max: 980px;
   --rh-sizing-accordion-px: calc(var(--spacing) * 4);
   --rh-sizing-accordion-py: calc(var(--spacing) * 3);
   --rh-sizing-accordion-gap: calc(var(--spacing) * 2);
@@ -368,14 +363,12 @@
   --rh-sizing-layout-edge-to-edge-wrapper: calc(var(--spacing) * 6);
   --rh-sizing-layout-edge-to-edge-content: 0px;
   --rh-sizing-map-container-pxy: calc(var(--spacing) * 4);
+  --rh-sizing-menu-border-radius: var(--rh-sizing-border-radius-md);
   --rh-sizing-menu-padding-px-sm: calc(var(--spacing) * 3);
   --rh-sizing-menu-padding-py-sm: calc(var(--spacing) * 2);
   --rh-sizing-menu-padding-gap-sm: calc(var(--spacing) * 2);
   --rh-sizing-menu-padding-menu-py: calc(var(--spacing) * 1);
   --rh-sizing-menu-padding-menu-px: calc(var(--spacing) * 1);
-  --rh-sizing-modal-margin-top: calc(var(--spacing) * 2);
-  --rh-sizing-modal-margin-x: calc(var(--spacing) * 2);
-  --rh-sizing-modal-margin-bottom: calc(var(--spacing) * 2);
   --rh-sizing-modal-py: calc(var(--spacing) * 4);
   --rh-sizing-modal-grabber-bottom-margin: calc(var(--spacing) * 1);
   --rh-sizing-object-page-gutter: calc(var(--spacing) * 4);

@@ -86,8 +86,8 @@ function Section({
   return (
     <section className="grid gap-3">
       <div className="grid gap-1">
-        <h2 className="text-xl font-semibold leading-7">{title}</h2>
-        <p className="text-base leading-6 tracking-[0.15px]">{description}</p>
+        <h2 className="rh-typography-headline-4">{title}</h2>
+        <p className="rh-typography-body-1">{description}</p>
       </div>
       {children}
     </section>

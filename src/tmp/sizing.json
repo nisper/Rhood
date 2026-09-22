@@ -1074,39 +1074,6 @@
     }
   },
   "modal": {
-    "margin-top": {
-      "$type": "number",
-      "$value": "{base module.1}",
-      "$description": "Отступ вокруг модалок и дроверов",
-      "$extensions": {
-        "com.figma.variableId": "VariableID:598:6936",
-        "com.figma.scopes": [
-          "GAP"
-        ]
-      }
-    },
-    "margin-x": {
-      "$type": "number",
-      "$value": "{base module.1}",
-      "$description": "Отступ вокруг модалок и дроверов",
-      "$extensions": {
-        "com.figma.variableId": "VariableID:10926:4113",
-        "com.figma.scopes": [
-          "GAP"
-        ]
-      }
-    },
-    "margin-bottom": {
-      "$type": "number",
-      "$value": "{base module.1}",
-      "$description": "Отступ вокруг модалок и дроверов",
-      "$extensions": {
-        "com.figma.variableId": "VariableID:10926:4114",
-        "com.figma.scopes": [
-          "GAP"
-        ]
-      }
-    },
     "py": {
       "$type": "number",
       "$value": "{base module.2}",

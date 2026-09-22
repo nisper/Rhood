@@ -11,6 +11,7 @@ import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
 import { LikeButtonExamples } from "./like-button-examples";
 import { ShowcaseExamples } from "./showcase-examples";
+import { ShowcaseSectionExamples } from "./showcase-section-examples";
 import { CheckboxExamples } from "./checkbox-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
@@ -19,6 +20,8 @@ import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
 import { TypographyExamples } from "./typography-examples";
+import { ModalExamples } from "./modal-examples";
+import { AdaptiveExamples } from "./adaptive-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Copy, PartyPopper } from "lucide-react";
@@ -117,18 +120,27 @@ const componentDocs: ComponentDoc[] = [
     id: "sizing",
     title: "Sizing",
     group: "Foundations",
-    source: "src/tmp/sizing.json",
+    source: "src/tmp/sizing.json · src/tmp/style-ignore.json",
     render: () => <TokenSizingExamples />,
   },
   {
     id: "typography",
     title: "Typography",
-    description: "Текстовые стили из Figma, доступные в коде как семантические CSS-классы.",
+    description:
+      "Текстовые стили из Figma, доступные в коде как семантические CSS-классы.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=0-1&p=f&t=fFqfPGDMPXDzmfVo-11",
     group: "Foundations",
     source: "src/styles/typography.css · docs/tokens.md#Typography",
     render: () => <TypographyExamples />,
+  },
+  {
+    id: "adaptive",
+    title: "Adaptive",
+    description: "Диапазоны ширины viewport для адаптивных интерфейсов.",
+    group: "Foundations",
+    source: "src/components/prototype/adaptive-examples.tsx",
+    render: () => <AdaptiveExamples />,
   },
   {
     id: "showcase-surface",
@@ -193,6 +205,35 @@ const componentDocs: ComponentDoc[] = [
     source:
       "src/components/ui/showcase-surface.tsx · src/components/ui/showcase-panel.tsx",
     render: () => <ShowcaseExamples />,
+  },
+  {
+    id: "showcase-section",
+    title: "Showcase section",
+    description:
+      "Секция Витрины, которая объединяет заголовок, описание и пример компонента.",
+    group: "Showcase",
+    properties: [
+      {
+        name: "title",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Заголовок секции.",
+      },
+      {
+        name: "description",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Текст, который поясняет назначение примера.",
+      },
+      {
+        name: "showcase",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "ShowcaseSurface с демонстрацией компонента.",
+      },
+    ],
+    source: "src/components/ui/showcase-section.tsx",
+    render: () => <ShowcaseSectionExamples />,
   },
   {
     id: "button",
@@ -343,11 +384,36 @@ const componentDocs: ComponentDoc[] = [
     description: "Кнопка очистки значения в однострочных текстовых полях.",
     group: "Forms",
     properties: [
-      { name: "size", values: "md · sm", defaultValue: "md", description: "Размер области нажатия и иконки." },
-      { name: "state", values: "default · hovered", defaultValue: "default", description: "Визуальное состояние для витрины." },
-      { name: "disabled", values: "boolean", defaultValue: "false", description: "Блокирует действие." },
-      { name: "onClick", values: "MouseEventHandler", defaultValue: "—", description: "Вызывается при очистке значения." },
-      { name: "aria-label", values: "string", defaultValue: "Очистить поле", description: "Доступное имя кнопки." },
+      {
+        name: "size",
+        values: "md · sm",
+        defaultValue: "md",
+        description: "Размер области нажатия и иконки.",
+      },
+      {
+        name: "state",
+        values: "default · hovered",
+        defaultValue: "default",
+        description: "Визуальное состояние для витрины.",
+      },
+      {
+        name: "disabled",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Блокирует действие.",
+      },
+      {
+        name: "onClick",
+        values: "MouseEventHandler",
+        defaultValue: "—",
+        description: "Вызывается при очистке значения.",
+      },
+      {
+        name: "aria-label",
+        values: "string",
+        defaultValue: "Очистить поле",
+        description: "Доступное имя кнопки.",
+      },
     ],
     source: "src/components/ui/clear-button.tsx",
     render: () => <ClearButtonExamples />,
@@ -360,16 +426,69 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=505-4164",
     group: "Forms",
     properties: [
-      { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и отступы поля." },
-      { name: "placeholder", values: "string", defaultValue: "Placeholder", description: "Подсказка внутри пустого поля." },
-      { name: "value", values: "string · number", defaultValue: "—", description: "Текущее значение в контролируемом режиме." },
-      { name: "defaultValue", values: "string · number", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
-      { name: "state", values: "default · hovered · focused", defaultValue: "default", description: "Визуальное состояние для витрины; hover и focus работают нативно." },
-      { name: "error", values: "boolean", defaultValue: "false", description: "Красная граница и focus-обводка ошибки." },
-      { name: "disabled", values: "boolean", defaultValue: "false", description: "Блокирует ввод и отключает интерактивные состояния." },
-      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию и красную звёздочку в поле." },
-      { name: "clearButton", values: "boolean", defaultValue: "false", description: "Показывает кнопку очистки только для заполненного поля в состоянии focused." },
-      { name: "onClear", values: "() => void", defaultValue: "—", description: "Вызывается после нажатия на кнопку очистки; для контролируемого поля обнови value в обработчике." },
+      {
+        name: "size",
+        values: "md · sm",
+        defaultValue: "md",
+        description: "Высота, типографика и отступы поля.",
+      },
+      {
+        name: "placeholder",
+        values: "string",
+        defaultValue: "Placeholder",
+        description: "Подсказка внутри пустого поля.",
+      },
+      {
+        name: "value",
+        values: "string · number",
+        defaultValue: "—",
+        description: "Текущее значение в контролируемом режиме.",
+      },
+      {
+        name: "defaultValue",
+        values: "string · number",
+        defaultValue: "—",
+        description: "Начальное значение в неконтролируемом режиме.",
+      },
+      {
+        name: "state",
+        values: "default · hovered · focused",
+        defaultValue: "default",
+        description:
+          "Визуальное состояние для витрины; hover и focus работают нативно.",
+      },
+      {
+        name: "error",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Красная граница и focus-обводка ошибки.",
+      },
+      {
+        name: "disabled",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Блокирует ввод и отключает интерактивные состояния.",
+      },
+      {
+        name: "required",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Добавляет HTML-валидацию и красную звёздочку в поле.",
+      },
+      {
+        name: "clearButton",
+        values: "boolean",
+        defaultValue: "false",
+        description:
+          "Показывает кнопку очистки только для заполненного поля в состоянии focused.",
+      },
+      {
+        name: "onClear",
+        values: "() => void",
+        defaultValue: "—",
+        description:
+          "Вызывается после нажатия на кнопку очистки; для контролируемого поля обнови value в обработчике.",
+      },
     ],
     source: "src/components/ui/text-field.tsx",
     render: () => <InputExamples />,
@@ -382,15 +501,62 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11269-12380",
     group: "Forms",
     properties: [
-      { name: "size", values: "md · sm", defaultValue: "md", description: "Высота, типографика и размер кнопки очистки." },
-      { name: "value", values: "string · number", defaultValue: "—", description: "Текущее числовое значение в контролируемом режиме." },
-      { name: "defaultValue", values: "string · number", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
-      { name: "inputMode", values: "numeric", defaultValue: "numeric", description: "Показывает цифровую клавиатуру на мобильных устройствах." },
-      { name: "Ввод", values: "0–9", defaultValue: "—", description: "Буквы, пробелы и специальные символы блокируются; вставленный текст очищается до цифр." },
-      { name: "groupThousands", values: "boolean", defaultValue: "false", description: "Отделяет группы разрядов в целой части значения пробелами." },
-      { name: "startText / endText", values: "ReactNode", defaultValue: "—", description: "Префикс и суффикс: например, «с» и «м²»." },
-      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию и красную звёздочку." },
-      { name: "clearButton", values: "boolean", defaultValue: "false", description: "Показывает очистку заполненного focused-поля." },
+      {
+        name: "size",
+        values: "md · sm",
+        defaultValue: "md",
+        description: "Высота, типографика и размер кнопки очистки.",
+      },
+      {
+        name: "value",
+        values: "string · number",
+        defaultValue: "—",
+        description: "Текущее числовое значение в контролируемом режиме.",
+      },
+      {
+        name: "defaultValue",
+        values: "string · number",
+        defaultValue: "—",
+        description: "Начальное значение в неконтролируемом режиме.",
+      },
+      {
+        name: "inputMode",
+        values: "numeric",
+        defaultValue: "numeric",
+        description: "Показывает цифровую клавиатуру на мобильных устройствах.",
+      },
+      {
+        name: "Ввод",
+        values: "0–9",
+        defaultValue: "—",
+        description:
+          "Буквы, пробелы и специальные символы блокируются; вставленный текст очищается до цифр.",
+      },
+      {
+        name: "groupThousands",
+        values: "boolean",
+        defaultValue: "false",
+        description:
+          "Отделяет группы разрядов в целой части значения пробелами.",
+      },
+      {
+        name: "startText / endText",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Префикс и суффикс: например, «с» и «м²».",
+      },
+      {
+        name: "required",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Добавляет HTML-валидацию и красную звёздочку.",
+      },
+      {
+        name: "clearButton",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Показывает очистку заполненного focused-поля.",
+      },
     ],
     source: "src/components/ui/input-number.tsx",
     render: () => <InputNumberExamples />,
@@ -398,17 +564,50 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "input-number-range",
     title: "InputNumberRange",
-    description: "Диапазон из двух InputNumber с единой внешней обводкой группы.",
+    description:
+      "Диапазон из двух InputNumber с единой внешней обводкой группы.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11270-13059",
     group: "Forms",
     properties: [
-      { name: "startInputProps / endInputProps", values: "InputNumberProps", defaultValue: "—", description: "Props для начального и конечного значений; стили border и state управляются группой." },
-      { name: "state", values: "default · hovered · focused", defaultValue: "native", description: "Preview-состояние группы; без него hover и focus определяются по взаимодействию." },
-      { name: "error", values: "boolean", defaultValue: "false", description: "Показывает error-обводку на группе." },
-      { name: "disabled", values: "boolean", defaultValue: "false", description: "Одновременно отключает оба числовых поля." },
-      { name: "separator", values: "ReactNode", defaultValue: "–", description: "Разделитель между начальным и конечным значениями." },
-      { name: "size", values: "md · sm", defaultValue: "md", description: "Единый размер двух вложенных InputNumber." },
+      {
+        name: "startInputProps / endInputProps",
+        values: "InputNumberProps",
+        defaultValue: "—",
+        description:
+          "Props для начального и конечного значений; стили border и state управляются группой.",
+      },
+      {
+        name: "state",
+        values: "default · hovered · focused",
+        defaultValue: "native",
+        description:
+          "Preview-состояние группы; без него hover и focus определяются по взаимодействию.",
+      },
+      {
+        name: "error",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Показывает error-обводку на группе.",
+      },
+      {
+        name: "disabled",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Одновременно отключает оба числовых поля.",
+      },
+      {
+        name: "separator",
+        values: "ReactNode",
+        defaultValue: "–",
+        description: "Разделитель между начальным и конечным значениями.",
+      },
+      {
+        name: "size",
+        values: "md · sm",
+        defaultValue: "md",
+        description: "Единый размер двух вложенных InputNumber.",
+      },
     ],
     source: "src/components/ui/input-number-range.tsx",
     render: () => <InputNumberRangeExamples />,
@@ -417,19 +616,71 @@ const componentDocs: ComponentDoc[] = [
     id: "textarea",
     title: "Textarea",
     description: "Многострочное текстовое поле.",
-    figmaUrl: "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=734-6530&t=Z265nVfuUs3IusXh-11",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=734-6530&t=Z265nVfuUs3IusXh-11",
     group: "Forms",
     properties: [
-      { name: "size", values: "md · sm", defaultValue: "md", description: "Минимальная высота, типографика и отступы поля." },
-      { name: "placeholder", values: "string", defaultValue: "Placeholder", description: "Подсказка внутри пустого поля." },
-      { name: "value", values: "string", defaultValue: "—", description: "Текущее значение в контролируемом режиме." },
-      { name: "defaultValue", values: "string", defaultValue: "—", description: "Начальное значение в неконтролируемом режиме." },
-      { name: "rows", values: "1 · 2", defaultValue: "1", description: "Высота поля для одного или двух рядов текста." },
-      { name: "state", values: "default · hovered · focused", defaultValue: "default", description: "Визуальное состояние для витрины; hover и focus работают нативно." },
-      { name: "error", values: "boolean", defaultValue: "false", description: "Красная граница и focus-обводка ошибки." },
-      { name: "disabled", values: "boolean", defaultValue: "false", description: "Блокирует ввод и отключает интерактивные состояния." },
-      { name: "required", values: "boolean", defaultValue: "false", description: "Добавляет HTML-валидацию поля." },
-      { name: "onChange", values: "ChangeEventHandler<HTMLTextAreaElement>", defaultValue: "—", description: "Вызывается при изменении текста." },
+      {
+        name: "size",
+        values: "md · sm",
+        defaultValue: "md",
+        description: "Минимальная высота, типографика и отступы поля.",
+      },
+      {
+        name: "placeholder",
+        values: "string",
+        defaultValue: "Placeholder",
+        description: "Подсказка внутри пустого поля.",
+      },
+      {
+        name: "value",
+        values: "string",
+        defaultValue: "—",
+        description: "Текущее значение в контролируемом режиме.",
+      },
+      {
+        name: "defaultValue",
+        values: "string",
+        defaultValue: "—",
+        description: "Начальное значение в неконтролируемом режиме.",
+      },
+      {
+        name: "rows",
+        values: "1 · 2",
+        defaultValue: "1",
+        description: "Высота поля для одного или двух рядов текста.",
+      },
+      {
+        name: "state",
+        values: "default · hovered · focused",
+        defaultValue: "default",
+        description:
+          "Визуальное состояние для витрины; hover и focus работают нативно.",
+      },
+      {
+        name: "error",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Красная граница и focus-обводка ошибки.",
+      },
+      {
+        name: "disabled",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Блокирует ввод и отключает интерактивные состояния.",
+      },
+      {
+        name: "required",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Добавляет HTML-валидацию поля.",
+      },
+      {
+        name: "onChange",
+        values: "ChangeEventHandler<HTMLTextAreaElement>",
+        defaultValue: "—",
+        description: "Вызывается при изменении текста.",
+      },
     ],
     source: "src/components/ui/textarea.tsx",
     render: () => <TextareaExamples />,
@@ -482,7 +733,8 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "tab",
     title: "Tab",
-    description: "Вкладка и группа вкладок с горизонтальной или вертикальной активной границей.",
+    description:
+      "Вкладка и группа вкладок с горизонтальной или вертикальной активной границей.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=464-3585",
     group: "Navigation",
@@ -638,6 +890,94 @@ const componentDocs: ComponentDoc[] = [
     ),
   },
   {
+    id: "modal",
+    title: "Modal",
+    description: "Диалог для действий, которые требуют решения пользователя.",
+    group: "Feedback",
+    properties: [
+      {
+        name: "title",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Заголовок диалога.",
+      },
+      {
+        name: "description",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Поясняющий текст под заголовком.",
+      },
+      {
+        name: "footer",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Набор действий в нижней части modal.",
+      },
+      {
+        name: "hasFooter",
+        values: "boolean",
+        defaultValue: "true, если передан footer",
+        description: "Показывает или скрывает область footer.",
+      },
+      {
+        name: "maxWidth",
+        values: "number · CSS length",
+        defaultValue: "480",
+        description: "Максимальная ширина; modal сохраняет width: 100%.",
+      },
+      {
+        name: "presentation",
+        values: "dialog · bottom-sheet",
+        defaultValue: "dialog",
+        description:
+          "Вид на desktop; на мобильном viewport modal всегда становится bottom sheet.",
+      },
+      {
+        name: "open",
+        values: "boolean",
+        defaultValue: "true",
+        description:
+          "Управляет видимостью Modal; bottom-sheet скрывается слайдом вниз за 200 мс, ease-in-out.",
+      },
+      {
+        name: "defaultOpen",
+        values: "boolean",
+        defaultValue: "true",
+        description: "Начальная видимость для неконтролируемого Modal.",
+      },
+      {
+        name: "closeButton",
+        values: "boolean",
+        defaultValue: "true для dialog",
+        description:
+          "Показывает кнопку закрытия; у bottom-sheet по умолчанию скрыта.",
+      },
+      {
+        name: "onOpenChange",
+        values: "(open: boolean) => void",
+        defaultValue: "—",
+        description:
+          "Вызывается при закрытии крестиком или свайпом вниз; передай её в действия footer.",
+      },
+      {
+        name: "ModalContainer.display",
+        values: "viewport · embedded",
+        defaultValue: "viewport",
+        description:
+          "Растягивает backdrop на весь viewport; embedded используй внутри Showcase.",
+      },
+      {
+        name: "ModalContainer.alignment",
+        values: "center · top · bottom",
+        defaultValue: "center",
+        description:
+          "Положение на desktop; center автоматически становится нижним на мобильном viewport.",
+      },
+    ],
+    source: "src/components/ui/modal.tsx",
+    render: () => <ModalExamples />,
+  },
+  {
     id: "tooltip",
     title: "Tooltip",
     description: "Тултип.",
@@ -760,12 +1100,14 @@ function ComponentPage({
       <header className="bg-[var(--parser-surface-under-islands)] px-6 py-10">
         <div className="mx-auto grid max-w-[980px] gap-5">
           <div className="grid gap-2">
-            <h1 className="break-words font-['Unbounded',sans-serif] text-3xl font-bold leading-[1.16] sm:text-4xl">
+            <h1 className="rh-typography-headline-1 break-words">
               {doc.title}
             </h1>
-            {doc.description && <p className="font-['Rhood_Inter',sans-serif] text-base leading-6 tracking-[0.15px] text-[var(--parser-text-neutral-secondary)]">
-              {doc.description}
-            </p>}
+            {doc.description && (
+              <p className="rh-typography-body-1 text-[var(--parser-text-neutral-secondary)]">
+                {doc.description}
+              </p>
+            )}
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-base leading-6">
             {doc.figmaUrl && (
@@ -797,28 +1139,26 @@ function ComponentPage({
 
         {doc.properties && (
           <section className="grid gap-4">
-            <h2 className="text-xl font-semibold leading-7 tracking-normal">
-              Свойства
-            </h2>
+            <h2 className="rh-typography-headline-4">Свойства</h2>
             <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
-              <div className="flex border-b border-[var(--parser-border-light)]" role="row">
-                {[
-                  "Свойство",
-                  "Значения",
-                  "По умолчанию",
-                  "Назначение",
-                ].map((title, index) => (
-                  <TableCell
-                    helpIcon={false}
-                    key={title}
-                    role="head"
-                    sort={false}
-                    type="text"
-                    width={index === 0 ? 160 : index === 2 ? 140 : "fill"}
-                  >
-                    {title}
-                  </TableCell>
-                ))}
+              <div
+                className="flex border-b border-[var(--parser-border-light)]"
+                role="row"
+              >
+                {["Свойство", "Значения", "По умолчанию", "Назначение"].map(
+                  (title, index) => (
+                    <TableCell
+                      helpIcon={false}
+                      key={title}
+                      role="head"
+                      sort={false}
+                      type="text"
+                      width={index === 0 ? 160 : index === 2 ? 140 : "fill"}
+                    >
+                      {title}
+                    </TableCell>
+                  ),
+                )}
               </div>
               {doc.properties.map((property) => (
                 <div
@@ -916,14 +1256,18 @@ export function ComponentDocs() {
     document.title = `Design system — ${activeDoc.title}`;
   }, [activeDoc.title]);
 
-  const focusFirstNavigationItem = (event: React.KeyboardEvent<HTMLInputElement>) => {
+  const focusFirstNavigationItem = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
     if (event.key !== "Tab" || event.shiftKey) return;
 
     const isMobileNavigation = window.matchMedia("(max-width: 767px)").matches;
     const navigation = isMobileNavigation
       ? mobileNavigationRef.current
       : desktopNavigationRef.current;
-    const firstItem = navigation?.querySelector<HTMLButtonElement>("button:not(:disabled)");
+    const firstItem = navigation?.querySelector<HTMLButtonElement>(
+      "button:not(:disabled)",
+    );
 
     if (!firstItem) return;
 
@@ -965,16 +1309,26 @@ export function ComponentDocs() {
           </div>
           <details
             className="group md:hidden"
-            onToggle={(event) => setMobileNavigationOpen(event.currentTarget.open)}
+            onToggle={(event) =>
+              setMobileNavigationOpen(event.currentTarget.open)
+            }
             open={mobileNavigationOpen || Boolean(normalizedQuery)}
           >
             <summary className="cursor-pointer px-6 py-3 text-sm">
               Компоненты — {activeDoc.title}
             </summary>
-            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} ref={mobileNavigationRef} />
+            <ComponentNavigation
+              activeId={activeDoc.id}
+              groups={groupedDocs}
+              ref={mobileNavigationRef}
+            />
           </details>
           <div className="hidden md:block">
-            <ComponentNavigation activeId={activeDoc.id} groups={groupedDocs} ref={desktopNavigationRef} />
+            <ComponentNavigation
+              activeId={activeDoc.id}
+              groups={groupedDocs}
+              ref={desktopNavigationRef}
+            />
           </div>
         </aside>
         <main className="min-w-0">
@@ -1004,10 +1358,13 @@ export function ComponentDocs() {
   );
 }
 
-const ComponentNavigation = React.forwardRef<HTMLElement, {
-  activeId: string;
-  groups: Record<string, ComponentDoc[]>;
-}>(function ComponentNavigation({ activeId, groups }, ref) {
+const ComponentNavigation = React.forwardRef<
+  HTMLElement,
+  {
+    activeId: string;
+    groups: Record<string, ComponentDoc[]>;
+  }
+>(function ComponentNavigation({ activeId, groups }, ref) {
   const [focusedId, setFocusedId] = React.useState<string | undefined>();
   const celebratoryComponentIds = new Set([
     "colors",
@@ -1030,30 +1387,40 @@ const ComponentNavigation = React.forwardRef<HTMLElement, {
     "input-number",
     "input-number-range",
     "textarea",
+    "modal",
   ]);
 
   const handleItemKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
     const navigation = event.currentTarget.closest("nav");
     const items = navigation
-      ? Array.from(navigation.querySelectorAll<HTMLButtonElement>("button:not(:disabled)"))
+      ? Array.from(
+          navigation.querySelectorAll<HTMLButtonElement>(
+            "button:not(:disabled)",
+          ),
+        )
       : [];
     const currentIndex = items.indexOf(event.currentTarget);
 
     if (currentIndex === -1) return;
 
-    const nextIndex = event.key === "ArrowDown"
-      ? Math.min(currentIndex + 1, items.length - 1)
-      : event.key === "ArrowUp"
-        ? Math.max(currentIndex - 1, 0)
-        : event.key === "Home"
-          ? 0
-          : event.key === "End"
-            ? items.length - 1
-            : event.key === "Tab"
-              ? currentIndex + (event.shiftKey ? -1 : 1)
-              : currentIndex;
+    const nextIndex =
+      event.key === "ArrowDown"
+        ? Math.min(currentIndex + 1, items.length - 1)
+        : event.key === "ArrowUp"
+          ? Math.max(currentIndex - 1, 0)
+          : event.key === "Home"
+            ? 0
+            : event.key === "End"
+              ? items.length - 1
+              : event.key === "Tab"
+                ? currentIndex + (event.shiftKey ? -1 : 1)
+                : currentIndex;
 
-    if (nextIndex < 0 || nextIndex >= items.length || nextIndex === currentIndex) {
+    if (
+      nextIndex < 0 ||
+      nextIndex >= items.length ||
+      nextIndex === currentIndex
+    ) {
       if (["ArrowDown", "ArrowUp", "Home", "End"].includes(event.key)) {
         event.preventDefault();
       }

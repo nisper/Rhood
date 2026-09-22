@@ -5,7 +5,7 @@ import { ShowcasePanel } from "@/components/ui/showcase-panel"
 import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 
 function Section({ children, description, settings, title }: { children: React.ReactNode; description: string; settings: string[]; title: string }) {
-  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="text-xl font-semibold leading-7">{title}</h2><p className="text-base leading-6 tracking-[0.15px]">{description}</p></div>{children}<div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div></section>
+  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-headline-4">{title}</h2><p className="rh-typography-body-1">{description}</p></div>{children}<div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div></section>
 }
 
 function Cell({ children, label }: { children: React.ReactNode; label: string }) {

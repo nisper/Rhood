@@ -10,6 +10,7 @@ const sources = [
 ]
 const cssOutput = "src/styles/design-tokens.css"
 const dataOutput = "src/data/generated/tokens.generated.json"
+const styleIgnoreFile = "src/tmp/style-ignore.json"
 
 function toKebabCase(value) {
   return value
@@ -69,7 +70,13 @@ function flattenTokens(node, collection, pathParts = []) {
 }
 
 function cssVariableName(collection, tokenPath) {
-  return `--rh-${toKebabCase(collection)}-${tokenPath.map(toKebabCase).join("-")}`
+  const parts = tokenPath.map(toKebabCase)
+
+  if (parts[0] === "border-radius" && parts[1]?.startsWith("border-radius-")) {
+    parts[1] = parts[1].slice("border-radius-".length)
+  }
+
+  return `--rh-${toKebabCase(collection)}-${parts.join("-")}`
 }
 
 async function readSource({ collection, file }) {
@@ -83,6 +90,32 @@ async function readSource({ collection, file }) {
   }
 }
 
+async function readStyleIgnore() {
+  try {
+    const json = JSON.parse(await readFile(path.join(projectRoot, styleIgnoreFile), "utf8"))
+    const rules = json.tokens ?? []
+
+    if (!Array.isArray(rules)) throw new Error('"tokens" must be an array')
+
+    return new Set(rules.map((rule, index) => {
+      if (
+        !rule ||
+        typeof rule.collection !== "string" ||
+        typeof rule.name !== "string" ||
+        !rule.collection ||
+        !rule.name
+      ) {
+        throw new Error(`Invalid ignore rule at index ${index}`)
+      }
+
+      return `${rule.collection}/${rule.name}`
+    }))
+  } catch (error) {
+    if (error.code === "ENOENT") return new Set()
+    throw new Error(`Could not read ${styleIgnoreFile}: ${error.message}`)
+  }
+}
+
 async function readPreviousTokens() {
   try {
     const json = JSON.parse(await readFile(path.join(projectRoot, dataOutput), "utf8"))
@@ -93,14 +126,18 @@ async function readPreviousTokens() {
   }
 }
 
+const ignoredTokenNames = await readStyleIgnore()
+const isIgnored = (collection, name) => ignoredTokenNames.has(`${collection}/${name}`)
 const sourceResults = await Promise.all(sources.map(readSource))
 const previousTokens = await readPreviousTokens()
 const presentCollections = new Set(sourceResults.filter((source) => source.tokens !== null).map((source) => source.collection))
 const missingCollections = sources.filter((source) => !presentCollections.has(source.collection)).map((source) => source.collection)
 const preservedTokens = previousTokens
-  .filter((token) => missingCollections.includes(token.collection))
+  .filter((token) => missingCollections.includes(token.collection) && !isIgnored(token.collection, token.name))
   .map(({ scopes: _scopes, ...token }) => token)
-const sourceTokens = sourceResults.flatMap((source) => source.tokens ?? [])
+const sourceTokens = sourceResults
+  .flatMap((source) => source.tokens ?? [])
+  .filter(({ collection, path: tokenPath }) => !isIgnored(collection, tokenPath.join("/")))
 const warnings = []
 
 for (const collection of missingCollections) {
