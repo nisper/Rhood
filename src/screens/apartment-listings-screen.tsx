@@ -1,12 +1,14 @@
-import { ArrowDownUp, CircleHelp, Columns3, Map } from "lucide-react";
+import { CircleHelp, Columns3, Map, Settings2 } from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
+import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
@@ -20,7 +22,7 @@ const navItems = [
   { label: "Статистика" },
 ];
 
-type SortColumn = "buyer" | "price" | "publishedAt";
+type SortColumn = "buyer" | "price" | "pricePerM2" | "publishedAt";
 type SortState = { column: SortColumn; direction: "asc" | "desc" } | null;
 type ColumnKey =
   | "buyer"
@@ -41,20 +43,28 @@ const tableColumns: { key: ColumnKey; label: string }[] = [
 
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
   {
-    label: "По цене: сначала дешевле",
-    value: { column: "price", direction: "asc" },
-  },
-  {
-    label: "По цене: сначала дороже",
+    label: "По цене — дороже",
     value: { column: "price", direction: "desc" },
   },
   {
-    label: "По спросу: по возрастанию",
-    value: { column: "buyer", direction: "asc" },
+    label: "По цене — дешевле",
+    value: { column: "price", direction: "asc" },
   },
   {
-    label: "По дате: сначала новые",
+    label: "По цене за м² — дороже",
+    value: { column: "pricePerM2", direction: "desc" },
+  },
+  {
+    label: "По цене за м² — дешевле",
+    value: { column: "pricePerM2", direction: "asc" },
+  },
+  {
+    label: "По дате — новые",
     value: { column: "publishedAt", direction: "desc" },
+  },
+  {
+    label: "По дате — старые",
+    value: { column: "publishedAt", direction: "asc" },
   },
 ];
 
@@ -106,6 +116,7 @@ function TableToolbar({
 }) {
   const [columnsOpen, setColumnsOpen] = React.useState(false);
   const [sortOpen, setSortOpen] = React.useState(false);
+  const selectedSortOption = sortOptions.find((option) => isSelected(option.value));
 
   function isSelected(option: Exclude<SortState, null>) {
     return sort?.column === option.column && sort.direction === option.direction;
@@ -120,22 +131,13 @@ function TableToolbar({
 
   return (
     <section aria-label="Управление выдачей" className="flex flex-wrap items-center gap-2">
-      <div className="relative">
-        <Button
-          appearance="default"
-          aria-expanded={sortOpen}
-          aria-haspopup="menu"
-          endIcon={false}
-          onClick={() => {
-            setSortOpen((open) => !open);
-            setColumnsOpen(false);
-          }}
-          size="sm"
-          startIcon={<ArrowDownUp aria-hidden="true" strokeWidth={2} />}
-        >
-          Сортировка
-        </Button>
-        {sortOpen && (
+      <Select
+        aria-expanded={sortOpen}
+        aria-haspopup="menu"
+        expanded={sortOpen}
+        label={false}
+        onExpandedChange={setSortOpen}
+        menu={sortOpen && (
           <Menu className="absolute left-0 top-full z-20 mt-1 min-w-[280px]" role="menu">
             {sortOptions.map((option) => (
               <MenuItemSingleSelect
@@ -155,7 +157,13 @@ function TableToolbar({
             ))}
           </Menu>
         )}
-      </div>
+        onClick={() => {
+          setSortOpen((open) => !open);
+          setColumnsOpen(false);
+        }}
+        size="sm"
+        value={selectedSortOption?.label ?? "Сортировка"}
+      />
 
       <Button
         appearance="default"
@@ -178,7 +186,7 @@ function TableToolbar({
             setSortOpen(false);
           }}
           size="sm"
-          startIcon={<Columns3 aria-hidden="true" strokeWidth={2} />}
+          startIcon={<span aria-hidden="true" className="relative flex size-5 items-center justify-center"><Columns3 className="size-5" strokeWidth={2} /><Settings2 className="absolute -bottom-0.5 -right-0.5 size-2.5 bg-[var(--rh-theme-fill-neutral)]" strokeWidth={2.5} /></span>}
         >
           Столбцы
         </Button>
@@ -197,6 +205,18 @@ function TableToolbar({
                 {column.label}
               </MenuItemMultiselect>
             ))}
+            <MenuDivider />
+            <Button
+              appearance="ghost"
+              className="w-full justify-start"
+              disabled={hiddenColumns.size === 0}
+              endIcon={false}
+              onClick={() => onHiddenColumnsChange(new Set())}
+              size="sm"
+              startIcon={false}
+            >
+              Сбросить все
+            </Button>
           </Menu>
         )}
       </div>
@@ -424,12 +444,16 @@ function ListingsTable({
       const firstValue =
         sort.column === "price"
           ? getPrice(first)
+          : sort.column === "pricePerM2"
+            ? Math.round(getPrice(first) / first.area)
           : sort.column === "publishedAt"
             ? new Date(first.publishedAt).getTime()
             : first.buyerDemandAvailableCount;
       const secondValue =
         sort.column === "price"
           ? getPrice(second)
+          : sort.column === "pricePerM2"
+            ? Math.round(getPrice(second) / second.area)
           : sort.column === "publishedAt"
             ? new Date(second.publishedAt).getTime()
             : second.buyerDemandAvailableCount;

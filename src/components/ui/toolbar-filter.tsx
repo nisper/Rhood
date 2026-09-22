@@ -32,26 +32,15 @@ function FilterSelect({
 }) {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState(label)
-  const containerRef = React.useRef<HTMLDivElement>(null)
-
-  React.useEffect(() => {
-    if (!open) return
-
-    const handlePointerDown = (event: PointerEvent) => {
-      if (!containerRef.current?.contains(event.target as Node)) setOpen(false)
-    }
-
-    document.addEventListener("pointerdown", handlePointerDown)
-    return () => document.removeEventListener("pointerdown", handlePointerDown)
-  }, [open])
 
   return (
-    <div ref={containerRef}>
+    <div>
       <Select
         className={widthClass}
         expanded={open}
         fullWidth={Boolean(widthClass)}
         label={false}
+        onExpandedChange={setOpen}
         menu={open && (
           <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full" role="listbox">
             {options.map((option) => (

@@ -42,23 +42,9 @@ function SelectWithMenu({ align = "left", showMenu = false, ...props }: React.Co
   const selectedValue = typeof props.value === "string" ? props.value : options[0]
   const [open, setOpen] = React.useState(showMenu)
   const [value, setValue] = React.useState(selectedValue)
-  const containerRef = React.useRef<HTMLDivElement>(null)
 
-  React.useEffect(() => {
-    if (!open) return
-
-    const handlePointerDown = (event: PointerEvent) => {
-      if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
-        setOpen(false)
-      }
-    }
-
-    document.addEventListener("pointerdown", handlePointerDown)
-    return () => document.removeEventListener("pointerdown", handlePointerDown)
-  }, [open])
-
-  return <div className={cn("flex w-fit max-w-full flex-col gap-1", align === "right" && "self-end")} ref={containerRef}>
-    <Select {...props} expanded={open} onClick={() => { if (!props.disabled) setOpen(isOpen => !isOpen) }} value={value} menu={open && <Menu className={cn("absolute top-full z-50 mt-0.5", align === "left" ? "left-0" : "right-0")} align={align}>
+  return <div className={cn("flex w-fit max-w-full flex-col gap-1", align === "right" && "self-end")}>
+    <Select {...props} expanded={open} onExpandedChange={setOpen} onClick={() => { if (!props.disabled) setOpen(isOpen => !isOpen) }} value={value} menu={open && <Menu className={cn("absolute top-full z-50 mt-0.5", align === "left" ? "left-0" : "right-0")} align={align}>
       {options.map(option => <MenuItemSingleSelect icon={false} key={option} onClick={event => { event.stopPropagation(); setValue(option); setOpen(false) }} rightSlot={false} secondaryText={false} selected={option === value}>{option}</MenuItemSingleSelect>)}
     </Menu>} />
   </div>

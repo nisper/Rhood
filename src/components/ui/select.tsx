@@ -14,6 +14,8 @@ type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
   disabled?: boolean
   error?: boolean
   expanded?: boolean
+  /** Called when an open menu should be dismissed, for example after an outside click. */
+  onExpandedChange?: (expanded: boolean) => void
   fullWidth?: boolean
   helperText?: React.ReactNode
   label?: React.ReactNode
@@ -121,6 +123,7 @@ function Select({
   disabled = false,
   error = false,
   expanded = false,
+  onExpandedChange,
   fullWidth = false,
   helperText,
   label = "Label",
@@ -132,12 +135,26 @@ function Select({
   value,
   ...props
 }: SelectProps) {
+  const selectRef = React.useRef<HTMLDivElement>(null)
   const resolvedState: SelectState = disabled ? "default" : state
   const hasIcon = icon || startIcon
   const resolvedValue = resolveValue(value, "Value")
 
+  React.useEffect(() => {
+    if (!expanded) return
+
+    const handlePointerDown = (event: PointerEvent) => {
+      if (!selectRef.current?.contains(event.target as Node)) {
+        onExpandedChange?.(false)
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown)
+    return () => document.removeEventListener("pointerdown", handlePointerDown)
+  }, [expanded, onExpandedChange])
+
   return (
-    <div className={cn("w-fit max-w-full", fullWidth && "w-full", className)} {...props}>
+    <div className={cn("w-fit max-w-full", fullWidth && "w-full", className)} ref={selectRef} {...props}>
       {label !== false && (
         <label
           className={cn(

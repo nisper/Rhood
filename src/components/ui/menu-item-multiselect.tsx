@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Star } from "lucide-react";
+import { Check, Minus, Star } from "lucide-react";
 
-import { Checkbox } from "@/components/ui/checkbox";
 import { Chip } from "@/components/ui/chip";
 import { cn } from "@/lib/utils";
 
@@ -59,8 +58,11 @@ function MenuItemMultiselect({
   selected = false,
   startIcon = true,
   state = "default",
+  onMouseEnter,
+  onMouseLeave,
   ...props
 }: MenuItemMultiselectProps) {
+  const [isHovered, setIsHovered] = React.useState(false);
   const resolvedChecked: MenuItemMultiselectChecked =
     typeof checked === "boolean"
       ? checked
@@ -72,6 +74,12 @@ function MenuItemMultiselect({
     rightSlot && (resolvedRightSlotText || rightSlotChip);
   const disabledOpacityClass =
     "opacity-[calc(var(--rh-theme-opacity-disabled)/100)]";
+  const checkboxState =
+    resolvedChecked === "indeterminate"
+      ? "indeterminate"
+      : resolvedChecked === "true"
+        ? "checked"
+        : "unchecked";
 
   return (
     <div
@@ -84,20 +92,46 @@ function MenuItemMultiselect({
       )}
       {...props}
       aria-disabled={disabled || undefined}
+      aria-checked={
+        !props.role || props.role === "checkbox"
+          ? checkboxState === "checked"
+            ? true
+            : checkboxState === "indeterminate"
+              ? "mixed"
+              : false
+          : undefined
+      }
+      role={props.role ?? "checkbox"}
       onClick={disabled ? undefined : props.onClick}
       onKeyDown={disabled ? undefined : props.onKeyDown}
+      onMouseEnter={(event) => {
+        setIsHovered(true);
+        onMouseEnter?.(event);
+      }}
+      onMouseLeave={(event) => {
+        setIsHovered(false);
+        onMouseLeave?.(event);
+      }}
     >
-      <Checkbox
-        aria-label={
-          typeof children === "string" ? children : "Выбрать пункт меню"
-        }
-        checked={resolvedChecked === "true"}
-        className="min-h-0 gap-0 py-0"
-        disabled={disabled}
-        indeterminate={resolvedChecked === "indeterminate"}
-        label={false}
-        size="sm"
-      />
+      <span
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none m-0.5 flex size-4 shrink-0 items-center justify-center rounded-[3px] border-2",
+          disabled
+            ? "border-[var(--parser-border-light)] bg-transparent text-transparent"
+            : checkboxState === "checked" || checkboxState === "indeterminate"
+              ? "border-[var(--parser-fill-brand)] bg-[var(--parser-fill-brand)] text-[var(--parser-text-primary-contrast)]"
+              : isHovered || state === "hovered"
+                ? "border-[var(--parser-fill-checkbox-neutral-hover)] bg-transparent text-transparent"
+                : "border-[var(--parser-border-light)] bg-transparent text-transparent",
+        )}
+      >
+        {checkboxState === "indeterminate" ? (
+          <Minus className="size-3.5" strokeWidth={2} />
+        ) : checkboxState === "checked" ? (
+          <Check className="size-3.5" strokeWidth={2.5} />
+        ) : null}
+      </span>
 
       {(icon ?? startIcon) && (
         <span
