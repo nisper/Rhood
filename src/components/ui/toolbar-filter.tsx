@@ -153,12 +153,12 @@ function ToolbarFilter({
   return (
     <section
       className={cn(
-        "rhood-page-gutter relative flex items-center gap-4 overflow-visible bg-[var(--parser-fill-neutral)] py-3",
+        "rhood-page-gutter relative flex flex-wrap items-center gap-4 overflow-visible bg-[var(--parser-fill-neutral)] py-3",
         className,
       )}
       {...props}
     >
-      <div className="flex items-start gap-2 overflow-visible">
+      <div className="flex flex-wrap items-start gap-2 overflow-visible">
         <FilterSelect label="Квартиры" options={propertyTypeOptions} widthClass="w-[150px]" />
         <RoominessGroup empty={empty} />
         <FilterRange suffix="м²" widthClass="w-[152px]" />

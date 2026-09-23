@@ -493,14 +493,16 @@ export function ApartmentListingsScreen() {
   }
 
   return (
-    <div className="min-h-screen bg-white text-[var(--parser-text-neutral-primary)]">
+    <div className="min-h-screen overflow-x-hidden bg-white text-[var(--parser-text-neutral-primary)]">
       <MainHeader logoHref="/Rhood/" navItems={navItems} />
       <ToolbarFilter empty resp="desk" />
 
-      <main className="grid gap-6 p-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
+      <main className="grid min-w-0 gap-6 p-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
         <h1 className="rh-typography-headline-1">15 208 квартир в Тюмени</h1>
         <TableToolbar hiddenColumns={hiddenColumns} onHiddenColumnsChange={setHiddenColumns} onSortChange={setSort} sort={sort} />
-        <ListingsTable hiddenColumns={hiddenColumns} onSort={handleSort} sort={sort} />
+        <div className="w-[calc(100%+var(--rh-sizing-layout-edge-to-edge-wrapper))] min-w-0">
+          <ListingsTable hiddenColumns={hiddenColumns} onSort={handleSort} sort={sort} />
+        </div>
       </main>
 
       <button

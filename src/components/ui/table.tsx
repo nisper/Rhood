@@ -28,7 +28,7 @@ function useTableSelection() {
 function Table({ bordered = false, className, children, selection, ...props }: TableProps) {
   return (
     <TableSelectionContext.Provider value={selection ?? null}>
-      <div className="w-full overflow-visible">
+      <div className="w-full overflow-x-auto">
         <div
           {...props}
           className={cn("flex min-w-max flex-col items-stretch overflow-hidden rounded-[var(--rh-sizing-border-radius-md)]", bordered && "border border-[var(--parser-border-light)]", className)}
