@@ -172,7 +172,7 @@ function ToolbarFilter({
           size="sm"
           startIcon={empty ? <Settings2 aria-hidden="true" strokeWidth={2} /> : false}
         >
-          Все фильтры
+          Фильтры
         </Button>
       </div>
 

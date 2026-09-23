@@ -130,7 +130,7 @@ function TableToolbar({
   }
 
   return (
-    <section aria-label="Управление выдачей" className="flex flex-wrap items-center gap-2">
+    <div className="flex flex-wrap items-center gap-2">
       <Select
         aria-expanded={sortOpen}
         aria-haspopup="menu"
@@ -220,7 +220,7 @@ function TableToolbar({
           </Menu>
         )}
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -228,10 +228,12 @@ function ResultHeader({
   hiddenColumns,
   onSort,
   sort,
+  sortable = true,
 }: {
   hiddenColumns: ReadonlySet<ColumnKey>;
   onSort: (column: SortColumn) => void;
   sort: SortState;
+  sortable?: boolean;
 }) {
   return (
     <div
@@ -258,11 +260,11 @@ function ResultHeader({
         Адрес
       </TableCell>
       {!hiddenColumns.has("buyer") && <TableCell
-        onClick={() => onSort("buyer")}
+        onClick={sortable ? () => onSort("buyer") : undefined}
         role="head"
         sizeSmall
-        sort
-        sortDirection={sort?.column === "buyer" ? sort.direction : undefined}
+        sort={sortable}
+        sortDirection={sortable && sort?.column === "buyer" ? sort.direction : undefined}
         type="number"
         width={130}
       >
@@ -270,11 +272,11 @@ function ResultHeader({
       </TableCell>}
       {!hiddenColumns.has("price") && <TableCell
         helpIcon={false}
-        onClick={() => onSort("price")}
+        onClick={sortable ? () => onSort("price") : undefined}
         role="head"
         sizeSmall
-        sort
-        sortDirection={sort?.column === "price" ? sort.direction : undefined}
+        sort={sortable}
+        sortDirection={sortable && sort?.column === "price" ? sort.direction : undefined}
         type="number"
         width={175}
       >
@@ -302,12 +304,12 @@ function ResultHeader({
       </TableCell>}
       {!hiddenColumns.has("publishedAt") && <TableCell
         helpIcon={false}
-        onClick={() => onSort("publishedAt")}
+        onClick={sortable ? () => onSort("publishedAt") : undefined}
         role="head"
         sizeSmall
-        sort
+        sort={sortable}
         sortDirection={
-          sort?.column === "publishedAt" ? sort.direction : undefined
+          sortable && sort?.column === "publishedAt" ? sort.direction : undefined
         }
         type="text"
         width={150}
@@ -428,13 +430,18 @@ function ResultRow({ hiddenColumns, listing }: { hiddenColumns: ReadonlySet<Colu
 }
 
 function ListingsTable({
+  className,
   hiddenColumns,
   onSort,
   sort,
+  sortable = true,
 }: {
+  className?: string;
   hiddenColumns: ReadonlySet<ColumnKey>;
   onSort: (column: SortColumn) => void;
   sort: SortState;
+  /** Enables sorting by clicking a column header. */
+  sortable?: boolean;
 }) {
   const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
   const sortedListings = [...listings]
@@ -466,13 +473,19 @@ function ListingsTable({
   return (
     <Table
       bordered
+      className={className}
       selection={{
         onSelectedIdsChange: setSelectedIds,
         rowIds: sortedListings.map((listing) => listing.id),
         selectedIds,
       }}
     >
-      <ResultHeader hiddenColumns={hiddenColumns} onSort={onSort} sort={sort} />
+      <ResultHeader
+        hiddenColumns={hiddenColumns}
+        onSort={onSort}
+        sort={sort}
+        sortable={sortable}
+      />
       {sortedListings.map((listing) => (
         <ResultRow hiddenColumns={hiddenColumns} key={listing.id} listing={listing} />
       ))}
@@ -497,25 +510,46 @@ export function ApartmentListingsScreen() {
       <MainHeader logoHref="/Rhood/" navItems={navItems} />
       <ToolbarFilter empty resp="desk" />
 
-      <main className="grid min-w-0 gap-6 p-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
-        <h1 className="rh-typography-headline-1">15 208 квартир в Тюмени</h1>
-        <TableToolbar hiddenColumns={hiddenColumns} onHiddenColumnsChange={setHiddenColumns} onSortChange={setSort} sort={sort} />
-        <div className="w-[calc(100%+var(--rh-sizing-layout-edge-to-edge-wrapper))] min-w-0">
-          <ListingsTable hiddenColumns={hiddenColumns} onSort={handleSort} sort={sort} />
-        </div>
+      <main className="grid min-w-0 gap-6">
+        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
+          <h1 className="rh-typography-headline-1">15 208 квартир в Тюмени</h1>
+        </section>
+        <section
+          aria-label="Управление выдачей"
+          className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+        >
+          <TableToolbar
+            hiddenColumns={hiddenColumns}
+            onHiddenColumnsChange={setHiddenColumns}
+            onSortChange={setSort}
+            sort={sort}
+          />
+        </section>
+        <section aria-label="Список квартир" className="overflow-x-scroll">
+          <ListingsTable
+            className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+            hiddenColumns={hiddenColumns}
+            onSort={handleSort}
+            sort={sort}
+            sortable={false}
+          />
+        </section>
+        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
+          <Button
+            appearance="default"
+            endIcon={false}
+            size="md"
+            startIcon={false}
+          >
+            Показать еще 50 объектов
+          </Button>
+        </section>
       </main>
 
       <button
         className="fixed bottom-4 right-4 inline-flex rounded-full"
         type="button"
       >
-        <div className="rounded-full bg-[var(--parser-fill-neutral-dark)]">
-          <CircleHelp
-            aria-hidden="true"
-            className="size-10 p-2 text-[var(--parser-text-primary-contrast)]"
-            strokeWidth={2}
-          />
-        </div>
       </button>
     </div>
   );

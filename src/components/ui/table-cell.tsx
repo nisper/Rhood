@@ -27,6 +27,7 @@ type TableCellProps = React.ComponentProps<"div"> & {
   /** Row identifier used by Table selection. */
   rowId?: string
   sizeSmall?: boolean
+  /** Enables sorting affordances for a header cell. Disabled by default. */
   sort?: boolean
   /** The active sorting direction. The arrow is visible only when this is set. */
   sortDirection?: "asc" | "desc"
@@ -51,7 +52,7 @@ function TableCell({
   role = "head",
   rowId,
   sizeSmall = false,
-  sort = true,
+  sort = false,
   sortDirection,
   type = "checkbox",
   width = "content",
