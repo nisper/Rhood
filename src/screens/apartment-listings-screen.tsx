@@ -510,13 +510,13 @@ export function ApartmentListingsScreen() {
       <MainHeader logoHref="/Rhood/" navItems={navItems} />
       <ToolbarFilter empty resp="desk" />
 
-      <main className="grid min-w-0 gap-6">
+      <main className="grid min-w-0 gap-0">
         <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]">
-          <h1 className="rh-typography-headline-1">15 208 квартир в Тюмени</h1>
+          <h1 className="rh-typography-headline-1 py-4">15 208 квартир в Тюмени</h1>
         </section>
         <section
           aria-label="Управление выдачей"
-          className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+          className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-3"
         >
           <TableToolbar
             hiddenColumns={hiddenColumns}
