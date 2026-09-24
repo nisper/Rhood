@@ -15,7 +15,7 @@ const properties = [
 ] as const
 
 function Section({ children, description, settings, title }: { children: React.ReactNode; description: string; settings?: string[]; title: string }) {
-  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-headline-4">{title}</h2><p className="rh-typography-body-1">{description}</p></div>{children}{settings && <div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div>}</section>
+  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}{settings && <div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div>}</section>
 }
 
 function FieldCell({ children, label }: { children: React.ReactNode; label: string }) {

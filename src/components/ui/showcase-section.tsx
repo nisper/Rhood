@@ -20,8 +20,8 @@ function ShowcaseSection({
   return (
     <section className={cn("mb-10 grid gap-3", className)} {...props}>
       <div className="grid gap-1">
-        <h2 className="rh-typography-headline-4">{title}</h2>
-        <p className="rh-typography-body-1">{description}</p>
+        <h2 className="rh-typography-h4">{title}</h2>
+        <p className="rh-typography-b1">{description}</p>
       </div>
       {showcase}
       {codeSnippet && (

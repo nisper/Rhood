@@ -21,6 +21,8 @@ import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
 import { TypographyExamples } from "./typography-examples";
 import { ModalExamples } from "./modal-examples";
+import { ModalHeaderExamples } from "./modal-header-examples";
+import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import "./component-docs.css";
@@ -1003,8 +1005,64 @@ const componentDocs: ComponentDoc[] = [
           "Положение на desktop; center автоматически становится нижним на мобильном viewport.",
       },
     ],
-    source: "src/components/ui/modal.tsx",
+    source: "src/components/ui/modal.tsx · src/components/ui/modal-header.tsx",
     render: () => <ModalExamples />,
+  },
+  {
+    id: "modal-header",
+    title: "ModalHeader",
+    description: "Шапка modal или drawer с заголовком и кнопкой закрытия.",
+    group: "Feedback",
+    properties: [
+      {
+        name: "title",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Заголовок панели.",
+      },
+      {
+        name: "closeButton",
+        values: "boolean",
+        defaultValue: "true",
+        description: "Показывает кнопку закрытия.",
+      },
+      {
+        name: "onClose",
+        values: "() => void",
+        defaultValue: "—",
+        description: "Вызывается по нажатию на кнопку закрытия.",
+      },
+      {
+        name: "description",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Поясняющий текст под заголовком.",
+      },
+    ],
+    source: "src/components/ui/modal-header.tsx",
+    render: () => <ModalHeaderExamples />,
+  },
+  {
+    id: "modal-footer",
+    title: "ModalFooter",
+    description: "Нижняя панель действий modal или drawer.",
+    group: "Feedback",
+    properties: [
+      {
+        name: "children",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Кнопки и другие действия в footer.",
+      },
+      {
+        name: "className",
+        values: "string",
+        defaultValue: "—",
+        description: "Дополнительная компоновка, например mobile-раскладка действий.",
+      },
+    ],
+    source: "src/components/ui/modal-footer.tsx",
+    render: () => <ModalFooterExamples />,
   },
   {
     id: "drawer",
@@ -1144,11 +1202,11 @@ function ComponentPage({
       <header className="bg-[var(--parser-surface-under-islands)] px-6 py-10">
         <div className="mx-auto grid max-w-[980px] gap-5">
           <div className="grid gap-2">
-            <h1 className="rh-typography-headline-1 break-words">
+            <h1 className="rh-typography-h1 break-words">
               {doc.title}
             </h1>
             {doc.description && (
-              <p className="rh-typography-body-1 text-[var(--parser-text-neutral-secondary)]">
+              <p className="rh-typography-b1 text-[var(--parser-text-neutral-secondary)]">
                 {doc.description}
               </p>
             )}
@@ -1183,7 +1241,7 @@ function ComponentPage({
 
         {doc.properties && (
           <section className="grid gap-4">
-            <h2 className="rh-typography-headline-4">Свойства</h2>
+            <h2 className="rh-typography-h4">Свойства</h2>
             <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
               <div
                 className="flex border-b border-[var(--parser-border-light)]"
@@ -1434,6 +1492,7 @@ const ComponentNavigation = React.forwardRef<
     "input-number-range",
     "textarea",
     "modal",
+    "modal-header",
     "drawer",
   ]);
 

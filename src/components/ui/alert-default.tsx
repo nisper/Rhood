@@ -223,7 +223,7 @@ function AlertDefault({
           <div className={textBlockClasses}>
             {title && (
               <p
-                className="rh-typography-body-1-medium"
+                className="rh-typography-b1-med"
                 style={{ fontVariationSettings: "'wdth' 100" }}
               >
                 Title
@@ -231,7 +231,7 @@ function AlertDefault({
             )}
             {description && (
               <p
-                className="rh-typography-body-1"
+                className="rh-typography-b1"
                 style={{ fontVariationSettings: "'wdth' 100" }}
               >
                 Description

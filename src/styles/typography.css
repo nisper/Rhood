@@ -37,7 +37,7 @@
   --rh-typography-font-family-display: "Unbounded", ui-sans-serif, sans-serif;
 }
 
-.rh-typography-headline-1 {
+.rh-typography-h1 {
   font-family: var(--rh-typography-font-family-display);
   font-size: 40px;
   font-weight: 700;
@@ -45,7 +45,7 @@
   line-height: 48px;
 }
 
-.rh-typography-headline-2 {
+.rh-typography-h2 {
   font-family: var(--rh-typography-font-family-display);
   font-size: 32px;
   font-weight: 700;
@@ -53,16 +53,16 @@
   line-height: 40px;
 }
 
-.rh-typography-headline-3 {
+.rh-typography-h3 {
   font-family: var(--rh-typography-font-family-display);
   font-size: 24px;
   letter-spacing: 0;
   line-height: 32px;
 }
 
-.rh-typography-headline-3 { font-weight: 700; }
+.rh-typography-h3 { font-weight: 700; }
 
-.rh-typography-headline-4 {
+.rh-typography-h4 {
   font-family: var(--rh-typography-font-family-display);
   font-size: 20px;
   font-weight: 700;
@@ -70,46 +70,46 @@
   line-height: 28px;
 }
 
-.rh-typography-body-1,
-.rh-typography-body-1-medium {
+.rh-typography-b1,
+.rh-typography-b1-med {
   font-family: var(--rh-typography-font-family-sans);
   font-size: 16px;
   letter-spacing: 0.15px;
   line-height: 24px;
 }
 
-.rh-typography-body-1 { font-weight: 400; }
-.rh-typography-body-1-medium { font-weight: 480; }
+.rh-typography-b1 { font-weight: 400; }
+.rh-typography-b1-med { font-weight: 480; }
 
-.rh-typography-body-2,
-.rh-typography-body-2-medium {
+.rh-typography-b2,
+.rh-typography-b2-med {
   font-family: var(--rh-typography-font-family-sans);
   font-size: 14px;
   letter-spacing: 0.17px;
   line-height: 20px;
 }
 
-.rh-typography-body-2 { font-weight: 400; }
-.rh-typography-body-2-medium { font-weight: 480; }
+.rh-typography-b2 { font-weight: 400; }
+.rh-typography-b2-med { font-weight: 480; }
 
-.rh-typography-body-1-mono,
-.rh-typography-body-1-mono-medium {
+.rh-typography-b1-mono,
+.rh-typography-b1-mono-med {
   font-family: var(--rh-typography-font-family-mono);
   font-size: 16px;
   letter-spacing: 0.15px;
   line-height: 24px;
 }
 
-.rh-typography-body-1-mono { font-weight: 400; }
-.rh-typography-body-1-mono-medium { font-weight: 480; }
+.rh-typography-b1-mono { font-weight: 400; }
+.rh-typography-b1-mono-med { font-weight: 480; }
 
-.rh-typography-body-2-mono,
-.rh-typography-body-2-mono-medium {
+.rh-typography-b2-mono,
+.rh-typography-b2-mono-med {
   font-family: var(--rh-typography-font-family-mono);
   font-size: 14px;
   letter-spacing: 0.17px;
   line-height: 20px;
 }
 
-.rh-typography-body-2-mono { font-weight: 400; }
-.rh-typography-body-2-mono-medium { font-weight: 480; }
+.rh-typography-b2-mono { font-weight: 400; }
+.rh-typography-b2-mono-med { font-weight: 480; }

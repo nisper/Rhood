@@ -1,7 +1,7 @@
 import * as React from "react";
-import { X } from "lucide-react";
 
-import { IconButton } from "@/components/ui/icon-button";
+import { ModalFooter } from "@/components/ui/modal-footer";
+import { ModalHeader } from "@/components/ui/modal-header";
 import { cn } from "@/lib/utils";
 
 const DrawerDismissContext = React.createContext<
@@ -142,17 +142,16 @@ function Drawer({
     [isControlled, onOpenChange],
   );
 
-  const requestClose = React.useCallback(
-    () => changeOpen(false),
-    [changeOpen],
-  );
+  const requestClose = React.useCallback(() => changeOpen(false), [changeOpen]);
 
   React.useEffect(() => {
     registerClose?.(requestClose);
     return () => registerClose?.();
   }, [registerClose, requestClose]);
 
-  const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+  const handleTransitionEnd = (
+    event: React.TransitionEvent<HTMLDivElement>,
+  ) => {
     if (isClosing && event.target === event.currentTarget) {
       setIsClosing(false);
       setIsRendered(false);
@@ -187,8 +186,8 @@ function Drawer({
       aria-labelledby={titleId}
       aria-modal="true"
       className={cn(
-        "grid w-full gap-6 rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg transition-transform duration-200 ease-in-out",
-        resolvedPresentation === "drawer" && "h-full grid-rows-[auto_1fr_auto] p-6",
+        "grid w-full rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg transition-transform duration-200 ease-in-out",
+        resolvedPresentation === "drawer" && "h-full grid-rows-[auto_1fr_auto]",
         resolvedPresentation === "bottom-sheet" && "p-4",
         resolvedPresentation === "drawer" &&
           (isOpening || isClosing) &&
@@ -208,48 +207,29 @@ function Drawer({
       onTransitionEnd={handleTransitionEnd}
       {...props}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="grid gap-2">
-          <h2
-            className="rh-typography-headline-4 text-[var(--rh-theme-text-neutral-primary)]"
-            id={titleId}
-          >
-            {title}
-          </h2>
-          {description && (
-            <p className="rh-typography-body-1 text-[var(--rh-theme-text-neutral-primary)]">
-              {description}
-            </p>
-          )}
-          {resolvedPresentation === "bottom-sheet" && children}
-        </div>
+      <ModalHeader
+        closeButton={resolvedPresentation === "drawer" && closeButton !== false}
+        description={description}
+        onClose={requestClose}
+        title={title}
+        titleId={titleId}
+      />
 
-        {resolvedPresentation === "drawer" && closeButton !== false && (
-          <IconButton
-            appearance="ghost"
-            aria-label="Закрыть drawer"
-            className="-m-2"
-            icon={<X aria-hidden="true" />}
-            onClick={requestClose}
-            size="md"
-          />
-        )}
-      </div>
+      {resolvedPresentation === "bottom-sheet" && children}
 
       {resolvedPresentation === "drawer" && children && (
-        <div className="min-h-0 overflow-y-auto">{children}</div>
+        <div className="min-h-0 overflow-y-auto px-6">{children}</div>
       )}
 
       {hasFooter && footer && (
-        <div
+        <ModalFooter
           className={cn(
-            "flex flex-wrap justify-end gap-2",
             resolvedPresentation === "bottom-sheet" &&
               "flex-col-reverse [&>button]:w-full",
           )}
         >
           {footer}
-        </div>
+        </ModalFooter>
       )}
     </div>
   );

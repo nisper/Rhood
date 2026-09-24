@@ -55,7 +55,7 @@ export function ButtonExamples() {
     <ShowcaseSection codeSnippet={compositionSnippet} description="Иконки поясняют действие, а счётчик показывает количество связанного контента. Отключай элементы состава только при необходимости." showcase={<ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><ButtonSet appearance="default" endIcon={false} startIcon={false} /><ButtonSet appearance="default" endIcon={false} /><ButtonSet appearance="default" startIcon={false} /><ButtonSet appearance="default" counter endIcon={false} startIcon={false} /></div></ShowcasePanel></ShowcaseSurface>} title="Состав" />
 
     <section className="mb-10 grid gap-3">
-      <div className="grid gap-1"><h2 className="rh-typography-headline-4">Свойства</h2><p className="rh-typography-body-1">Основные настройки Button для реализации.</p></div>
+      <div className="grid gap-1"><h2 className="rh-typography-h4">Свойства</h2><p className="rh-typography-b1">Основные настройки Button для реализации.</p></div>
       <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
           {["Свойство", "Значения", "По умолчанию", "Назначение"].map((title, index) => <TableCell helpIcon={false} key={title} role="head" sort={false} type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{title}</TableCell>)}

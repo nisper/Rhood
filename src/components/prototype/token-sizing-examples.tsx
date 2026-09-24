@@ -93,7 +93,7 @@ export function TokenSizingExamples() {
   return (
     <section className="grid min-w-0 gap-4">
       <div>
-        <h2 className="rh-typography-headline-4">Токены размеров</h2>
+        <h2 className="rh-typography-h4">Токены размеров</h2>
       </div>
 
       <div className="flex items-center gap-3">
@@ -293,7 +293,7 @@ export function TokenSizingExamples() {
           ))}
         </Table>
       )}
-      <p className="rh-typography-body-1">
+      <p className="rh-typography-b1">
         {group === "tailwind" &&
           "Базовая шкала, на которую позже будут ссылаться компоненты RHOOD."}
         {group === "component" && `${allTokens.length} токенов из sizing.json`}

@@ -88,7 +88,6 @@ function ObjectDrawer({
   return (
     <Drawer
       closeButton={closeButton}
-      description="Все детали объекта собраны в одной панели, не прерывая работу с выдачей."
       footer={
         <>
           <Button
@@ -110,7 +109,7 @@ function ObjectDrawer({
       title="Информация об объекте"
     >
       <div className="grid gap-4">
-        <p className="rh-typography-body-1 text-[var(--rh-theme-text-neutral-primary)]">
+        <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
           Пространство между шапкой и действиями прокручивается, поэтому drawer
           всегда занимает всю высоту экрана.
         </p>
@@ -120,10 +119,10 @@ function ObjectDrawer({
               className="rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-neutral)] p-4"
               key={label}
             >
-              <p className="rh-typography-body-2 text-[var(--rh-theme-text-neutral-secondary)]">
+              <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
                 {label}
               </p>
-              <p className="rh-typography-body-1 text-[var(--rh-theme-text-neutral-primary)]">
+              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
                 Значение поля
               </p>
             </div>
@@ -208,7 +207,10 @@ export function DrawerExamples() {
         description="Публичные свойства Drawer и DrawerContainer для реализации."
         showcase={
           <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
-            <div className="flex border-b border-[var(--parser-border-light)]" role="row">
+            <div
+              className="flex border-b border-[var(--parser-border-light)]"
+              role="row"
+            >
               {["Свойство", "Значения", "По умолчанию", "Назначение"].map(
                 (title, index) => (
                   <TableCell

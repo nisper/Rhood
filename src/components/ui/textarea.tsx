@@ -19,8 +19,8 @@ type TextareaProps = Omit<React.ComponentProps<"textarea">, "rows" | "size"> & {
 }
 
 const sizeClasses: Record<TextareaSize, string> = {
-  md: "rh-typography-body-1 px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)]",
-  sm: "rh-typography-body-2 px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+  md: "rh-typography-b1 px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)]",
+  sm: "rh-typography-b2 px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
 }
 
 function stateClasses({ error, state }: { error: boolean; state: TextareaState }) {

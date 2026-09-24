@@ -5,7 +5,7 @@ import { ShowcasePanel } from "@/components/ui/showcase-panel"
 import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 
 function Section({ children, description, title }: { children: React.ReactNode; description: string; title: string }) {
-  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-headline-4">{title}</h2><p className="rh-typography-body-1">{description}</p></div>{children}</section>
+  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}</section>
 }
 
 export function ClearButtonExamples() {

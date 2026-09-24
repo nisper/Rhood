@@ -18,9 +18,9 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "rh-typography-body-1-medium h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-md)] px-[calc(var(--spacing)*4)] py-[calc(var(--spacing)*3)]",
-  md: "rh-typography-body-1-medium h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)]",
-  sm: "rh-typography-body-2-medium h-[calc(calc(var(--spacing)*6)+calc(var(--spacing)*1))] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)]",
+  lg: "rh-typography-b1-med h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-md)] px-[calc(var(--spacing)*4)] py-[calc(var(--spacing)*3)]",
+  md: "rh-typography-b1-med h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)]",
+  sm: "rh-typography-b2-med h-[calc(calc(var(--spacing)*6)+calc(var(--spacing)*1))] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[var(--rh-sizing-border-radius-sm)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1)]",
 }
 
 const iconClasses: Record<SegmentSize, string> = {

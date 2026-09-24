@@ -157,7 +157,7 @@ function MenuItemMultiselect({
       >
         <span
           className={cn(
-            "rh-typography-body-2 w-full",
+            "rh-typography-b2 w-full",
             getTitleTone(),
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}

@@ -95,7 +95,7 @@ export function SimpleTableScreen() {
             open={isDrawerOpen}
             title="Тестовый Drawer"
           >
-            <p className="rh-typography-body-1">Drawer открывается справа на десктопе и снизу на мобильном устройстве.</p>
+            <p className="rh-typography-b1">Drawer открывается справа на десктопе и снизу на мобильном устройстве.</p>
           </Drawer>
         </DrawerContainer>
       )}

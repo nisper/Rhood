@@ -28,7 +28,7 @@ const sizeTokens: Record<
   lg: {
     container: "min-h-11",
     iconSize: "size-6",
-    label: "rh-typography-body-1",
+    label: "rh-typography-b1",
     paddingX: "px-2",
     paddingY: "py-2",
     thumbSize: "24px",
@@ -37,7 +37,7 @@ const sizeTokens: Record<
   md: {
     container: "min-h-10",
     iconSize: "size-6",
-    label: "rh-typography-body-1",
+    label: "rh-typography-b1",
     paddingX: "px-1",
     paddingY: "py-1",
     thumbSize: "24px",
@@ -46,7 +46,7 @@ const sizeTokens: Record<
   sm: {
     container: "min-h-8",
     iconSize: "size-5",
-    label: "rh-typography-body-2",
+    label: "rh-typography-b2",
     paddingX: "px-[3px]",
     paddingY: "py-[3px]",
     thumbSize: "20px",

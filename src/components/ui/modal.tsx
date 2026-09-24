@@ -1,7 +1,9 @@
 import * as React from "react";
-import { X } from "lucide-react";
 
-import { IconButton } from "@/components/ui/icon-button";
+import { ModalHeader } from "@/components/ui/modal-header";
+import { ModalBody } from "@/components/ui/modal-body";
+import { ModalFooter } from "@/components/ui/modal-footer";
+
 import { cn } from "@/lib/utils";
 
 const ModalDismissContext = React.createContext<
@@ -9,6 +11,7 @@ const ModalDismissContext = React.createContext<
 >(null);
 
 type ModalProps = Omit<React.ComponentProps<"div">, "title"> & {
+  bodyClassName?: string;
   closeButton?: boolean;
   defaultOpen?: boolean;
   description?: React.ReactNode;
@@ -19,6 +22,7 @@ type ModalProps = Omit<React.ComponentProps<"div">, "title"> & {
   open?: boolean;
   presentation?: ModalPresentation;
   title: React.ReactNode;
+  titleAs?: "h1" | "h2";
 };
 
 type ModalContainerAlignment = "center" | "top" | "bottom";
@@ -90,6 +94,7 @@ function ModalContainer({
 }
 
 function Modal({
+  bodyClassName,
   children,
   className,
   closeButton,
@@ -104,6 +109,7 @@ function Modal({
   presentation = "dialog",
   style,
   title,
+  titleAs,
   ...props
 }: ModalProps) {
   const registerClose = React.useContext(ModalDismissContext);
@@ -142,10 +148,7 @@ function Modal({
     [isControlled, onOpenChange],
   );
 
-  const requestClose = React.useCallback(
-    () => changeOpen(false),
-    [changeOpen],
-  );
+  const requestClose = React.useCallback(() => changeOpen(false), [changeOpen]);
 
   React.useEffect(() => {
     registerClose?.(requestClose);
@@ -171,7 +174,9 @@ function Modal({
     }
   };
 
-  const handleTransitionEnd = (event: React.TransitionEvent<HTMLDivElement>) => {
+  const handleTransitionEnd = (
+    event: React.TransitionEvent<HTMLDivElement>,
+  ) => {
     if (isClosing && event.target === event.currentTarget) {
       setIsClosing(false);
       setIsRendered(false);
@@ -187,11 +192,12 @@ function Modal({
       aria-labelledby={titleId}
       aria-modal="true"
       className={cn(
-        "grid w-full gap-6 rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] p-6 shadow-lg",
-        resolvedPresentation === "bottom-sheet" && "p-4",
+        "grid w-full gap-6 rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg",
         resolvedPresentation === "bottom-sheet" &&
           "transition-transform duration-200 ease-in-out",
-        resolvedPresentation === "bottom-sheet" && isClosing && "translate-y-full",
+        resolvedPresentation === "bottom-sheet" &&
+          isClosing &&
+          "translate-y-full",
         className,
       )}
       onPointerCancel={() => {
@@ -204,44 +210,26 @@ function Modal({
       onTransitionEnd={handleTransitionEnd}
       {...props}
     >
-      <div className="flex items-start justify-between gap-4">
-        <div className="grid gap-2">
-          <h2
-            className="rh-typography-headline-4 text-[var(--rh-theme-text-neutral-primary)]"
-            id={titleId}
-          >
-            {title}
-          </h2>
-          {description && (
-            <p className="rh-typography-body-1 text-[var(--rh-theme-text-neutral-primary)]">
-              {description}
-            </p>
-          )}
-          {children}
-        </div>
+      <ModalHeader
+        closeButton={showCloseButton}
+        description={description}
+        onClose={requestClose}
+        title={title}
+        titleAs={titleAs}
+        titleId={titleId}
+      />
 
-        {showCloseButton && (
-          <IconButton
-            appearance="ghost"
-            aria-label="Закрыть modal"
-            className="-m-2"
-            icon={<X aria-hidden="true" />}
-            onClick={requestClose}
-            size="md"
-          />
-        )}
-      </div>
+      {children && <ModalBody className={bodyClassName}>{children}</ModalBody>}
 
       {hasFooter && footer && (
-        <div
+        <ModalFooter
           className={cn(
-            "flex flex-wrap justify-end gap-2",
             resolvedPresentation === "bottom-sheet" &&
               "flex-col-reverse [&>button]:w-full",
           )}
         >
           {footer}
-        </div>
+        </ModalFooter>
       )}
     </div>
   );

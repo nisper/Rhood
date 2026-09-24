@@ -13,62 +13,62 @@ type TextStyle = {
 
 const styles: TextStyle[] = [
   {
-    className: "rh-typography-headline-1",
+    className: "rh-typography-h1",
     name: "headline/headline1",
     settings: "Unbounded Bold · 40 / 48 · 0",
   },
   {
-    className: "rh-typography-headline-2",
+    className: "rh-typography-h2",
     name: "headline/headline2",
     settings: "Unbounded Bold · 32 / 40 · 0",
   },
   {
-    className: "rh-typography-headline-3",
+    className: "rh-typography-h3",
     name: "headline/headline3",
     settings: "Unbounded Bold · 24 / 32 · 0",
   },
   {
-    className: "rh-typography-headline-4",
+    className: "rh-typography-h4",
     name: "headline/headline4",
     settings: "Unbounded Bold · 20 / 28 · 0",
   },
   {
-    className: "rh-typography-body-1",
+    className: "rh-typography-b1",
     name: "body/body1",
     settings: "Roboto Regular · 16 / 24 · 0.15",
   },
   {
-    className: "rh-typography-body-1-medium",
+    className: "rh-typography-b1-med",
     name: "body/body1 medium",
     settings: "Roboto SemiBold · 16 / 24 · 0.15",
   },
   {
-    className: "rh-typography-body-2",
+    className: "rh-typography-b2",
     name: "body/body2",
     settings: "Roboto Regular · 14 / 20 · 0.17",
   },
   {
-    className: "rh-typography-body-2-medium",
+    className: "rh-typography-b2-med",
     name: "body/body2 medium",
     settings: "Roboto SemiBold · 14 / 20 · 0.17",
   },
   {
-    className: "rh-typography-body-1-mono",
+    className: "rh-typography-b1-mono",
     name: "body/body1 mono",
     settings: "Roboto Mono Regular · 16 / 24 · 0.15",
   },
   {
-    className: "rh-typography-body-1-mono-medium",
+    className: "rh-typography-b1-mono-med",
     name: "body/body1 mono medium",
     settings: "Roboto Mono Medium · 16 / 24 · 0.15",
   },
   {
-    className: "rh-typography-body-2-mono",
+    className: "rh-typography-b2-mono",
     name: "body/body2 mono",
     settings: "Roboto Mono Regular · 14 / 20 · 0.17",
   },
   {
-    className: "rh-typography-body-2-mono-medium",
+    className: "rh-typography-b2-mono-med",
     name: "body/body2 mono medium",
     settings: "Roboto Mono Medium · 14 / 20 · 0.17",
   },
@@ -86,8 +86,8 @@ function Section({
   return (
     <section className="grid gap-3">
       <div className="grid gap-1">
-        <h2 className="rh-typography-headline-4">{title}</h2>
-        <p className="rh-typography-body-1">{description}</p>
+        <h2 className="rh-typography-h4">{title}</h2>
+        <p className="rh-typography-b1">{description}</p>
       </div>
       {children}
     </section>
@@ -158,11 +158,11 @@ function ListSample({ ordered }: { ordered: boolean }) {
         {ordered ? "Нумерованный список" : "Маркированный список"}
       </p>
       {ordered ? (
-        <ol className="rh-typography-body-1 list-decimal space-y-1 pl-6">
+        <ol className="rh-typography-b1 list-decimal space-y-1 pl-6">
           {items}
         </ol>
       ) : (
-        <ul className="rh-typography-body-1 list-disc space-y-1 pl-6">{items}</ul>
+        <ul className="rh-typography-b1 list-disc space-y-1 pl-6">{items}</ul>
       )}
     </div>
   );

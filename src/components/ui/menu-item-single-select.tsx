@@ -98,7 +98,7 @@ function MenuItemSingleSelect({
         )}
       >
         <span
-          className="rh-typography-body-2 w-full text-[color:var(--rh-theme-text-neutral-primary)]"
+          className="rh-typography-b2 w-full text-[color:var(--rh-theme-text-neutral-primary)]"
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           {children}

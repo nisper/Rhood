@@ -47,7 +47,7 @@ function Snackbar({
 
       <div className="flex min-w-px flex-1 items-center self-stretch">
         <p
-          className="rh-typography-body-2 min-w-px flex-1 text-[color:var(--parser-text-primary-contrast)]"
+          className="rh-typography-b2 min-w-px flex-1 text-[color:var(--parser-text-primary-contrast)]"
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           {message}

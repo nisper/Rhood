@@ -18,8 +18,8 @@ type TextfieldProps = Omit<React.ComponentProps<"input">, "size"> & {
 }
 
 const sizeClasses: Record<TextfieldSize, string> = {
-  md: "rh-typography-body-1 h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)]",
-  sm: "rh-typography-body-2 h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)]",
+  md: "rh-typography-b1 h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)]",
+  sm: "rh-typography-b2 h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)]",
 }
 
 function stateClasses({ error, state }: { error: boolean; state: TextfieldState }) {

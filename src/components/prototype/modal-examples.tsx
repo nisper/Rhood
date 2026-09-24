@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Modal, ModalContainer } from "@/components/ui/modal";
+import { ModalHeader } from "@/components/ui/modal-header";
 import { ShowcasePanel } from "@/components/ui/showcase-panel";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
 import { ShowcaseSurface } from "@/components/ui/showcase-surface";
@@ -166,31 +167,12 @@ export function ModalExamples() {
         }
         title="Адаптив"
       />
-
-      <ShowcaseSection
-        description="В footer можно разместить одну или две кнопки: default или сочетание default и primary."
-        showcase={
-          <ShowcaseSurface
-            className="bg-[var(--rh-palette-neutral-600)] p-0"
-            direction="vertical"
-          >
-            <ShowcasePanel className="p-0" tone="transparent">
-              <FooterModalPreviews presentation="dialog" />
-            </ShowcasePanel>
-            <ShowcasePanel className="p-0" tone="transparent">
-              <FooterModalPreviews presentation="bottom-sheet" />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
-        title="Footer"
-      />
-
       <section className="grid gap-1">
-        <h2 className="rh-typography-headline-4">Размер</h2>
-        <p className="rh-typography-body-1">
+        <h2 className="rh-typography-h4">Размер</h2>
+        <p className="rh-typography-b1">
           Modal занимает 100% доступной ширины, но не превышает maxWidth.
         </p>
-        <p className="rh-typography-body-1">
+        <p className="rh-typography-b1">
           По умолчанию maxWidth равен 480px; для более широкого сценария задай
           значение вручную.
         </p>

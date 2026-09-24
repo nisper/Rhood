@@ -156,7 +156,7 @@ function Tag({
       {label && (
         <span
           className={cn(
-            "rh-typography-body-2 whitespace-nowrap px-1",
+            "rh-typography-b2 whitespace-nowrap px-1",
             textTone,
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}

@@ -53,8 +53,8 @@ const sizeClasses: Record<ButtonSize, string> = {
 }
 
 const typographyClasses: Record<ButtonSize, string> = {
-  md: "rh-typography-body-1-medium",
-  sm: "rh-typography-body-2-medium",
+  md: "rh-typography-b1-med",
+  sm: "rh-typography-b2-med",
   xsm: "font-[family-name:var(--rh-typography-font-family-sans)] font-[480]",
 }
 

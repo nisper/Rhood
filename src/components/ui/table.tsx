@@ -14,6 +14,8 @@ type TableSelection = {
 type TableProps = React.ComponentProps<"div"> & {
   /** Adds the standard table border. */
   bordered?: boolean
+  /** Minimum table width before horizontal scrolling is used. */
+  minWidth?: React.CSSProperties["minWidth"]
   /** Enables selection of rows and of all rows on the current page. */
   selection?: TableSelection
 }
@@ -25,7 +27,7 @@ function useTableSelection() {
 }
 
 /** Container for header and body rows composed from TableCell instances. */
-function Table({ bordered = false, className, children, selection, ...props }: TableProps) {
+function Table({ bordered = false, children, className, minWidth, selection, style, ...props }: TableProps) {
   return (
     <TableSelectionContext.Provider value={selection ?? null}>
       <div className="w-full overflow-x-auto">
@@ -33,6 +35,7 @@ function Table({ bordered = false, className, children, selection, ...props }: T
           {...props}
           className={cn("flex min-w-max flex-col items-stretch overflow-hidden rounded-[var(--rh-sizing-border-radius-md)]", bordered && "border border-[var(--parser-border-light)]", className)}
           role="table"
+          style={{ ...style, minWidth }}
         >
           {children}
         </div>

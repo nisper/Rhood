@@ -97,7 +97,7 @@ function Tab({
       >
         <p
           className={cn(
-            "rh-typography-body-2-medium relative shrink-0",
+            "rh-typography-b2-med relative shrink-0",
             isHorizontal && "whitespace-nowrap",
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
@@ -107,7 +107,7 @@ function Tab({
 
         {secondaryText && (
           <p
-            className="rh-typography-body-2 relative shrink-0"
+            className="rh-typography-b2 relative shrink-0"
             style={{ fontVariationSettings: "'wdth' 100" }}
           >
             {secondaryLabel}

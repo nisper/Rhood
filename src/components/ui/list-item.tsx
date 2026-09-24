@@ -93,14 +93,14 @@ function ListItem({
           className={cn(
             "break-words",
             fontWeight === "medium"
-              ? "rh-typography-body-1-medium"
-              : "rh-typography-body-1",
+              ? "rh-typography-b1-med"
+              : "rh-typography-b1",
           )}
         >
           {children}
         </span>
         {secondaryText && (
-          <span className="rh-typography-body-2 break-words text-[var(--rh-theme-text-neutral-secondary)]">
+          <span className="rh-typography-b2 break-words text-[var(--rh-theme-text-neutral-secondary)]">
             {secondaryLabel}
           </span>
         )}

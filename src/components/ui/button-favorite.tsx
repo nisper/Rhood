@@ -31,19 +31,19 @@ const sizeClasses: Record<
     button:
       "min-h-[calc(var(--spacing)*10)] gap-[var(--rh-sizing-common-input-padding-gap-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
     icon: "size-[calc(var(--spacing)*6)]",
-    label: "rh-typography-body-1-medium",
+    label: "rh-typography-b1-med",
   },
   sm: {
     button:
       "min-h-[calc(var(--spacing)*9)] gap-[var(--rh-sizing-common-input-padding-gap-sm)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
     icon: "size-[calc(var(--spacing)*5)]",
-    label: "rh-typography-body-1-medium",
+    label: "rh-typography-b1-med",
   },
   xsm: {
     button:
       "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] gap-[var(--rh-sizing-common-input-padding-gap-xsm)] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)]",
     icon: "size-[calc(var(--spacing)*4)]",
-    label: "rh-typography-body-1-medium",
+    label: "rh-typography-b1-med",
   },
 }
 
