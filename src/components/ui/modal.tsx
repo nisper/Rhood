@@ -192,7 +192,7 @@ function Modal({
       aria-labelledby={titleId}
       aria-modal="true"
       className={cn(
-        "grid w-full gap-6 rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg",
+        "grid w-full rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg",
         resolvedPresentation === "bottom-sheet" &&
           "transition-transform duration-200 ease-in-out",
         resolvedPresentation === "bottom-sheet" &&
