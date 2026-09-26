@@ -26,7 +26,7 @@ function ModalHeader({
   return (
     <header
       className={cn(
-        "flex items-start justify-between gap-4 p-6 pb-2",
+        "flex items-start justify-between gap-4 px-4 py-6 pb-2 md:px-6",
         className,
       )}
       {...props}

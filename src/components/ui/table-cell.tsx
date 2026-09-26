@@ -3,16 +3,19 @@ import { ArrowDown, ArrowUp } from "lucide-react"
 
 import { Checkbox } from "@/components/ui/checkbox"
 import { HelpIcon } from "@/components/ui/help-icon"
-import { useTableSelection } from "@/components/ui/table"
+import { useTableColumns, useTableSelection } from "@/components/ui/table"
 import { cn } from "@/lib/utils"
 
 type TableCellRole = "body" | "head"
 type TableCellType = "text" | "number" | "skeleton" | "checkbox" | "placeholder"
 type TableCellWidth = "content" | "fill" | number
+type TableCellAlignment = "left" | "center" | "right"
 
 type TableCellProps = React.ComponentProps<"div"> & {
   children?: React.ReactNode
   checked?: boolean
+  /** Key of the column configured on the parent Table. */
+  column?: string
   custom?: boolean
   /** Legacy alias; paddingX takes precedence when supplied. */
   disGutters?: boolean
@@ -36,11 +39,24 @@ type TableCellProps = React.ComponentProps<"div"> & {
   width?: TableCellWidth
 }
 
+const alignmentClasses: Record<TableCellAlignment, string> = {
+  left: "items-start text-left",
+  center: "items-center text-center",
+  right: "items-end text-right",
+}
+
+const contentAlignmentClasses: Record<TableCellAlignment, string> = {
+  left: "justify-start",
+  center: "justify-center",
+  right: "justify-end",
+}
+
 /** A table cell for a header or a body row. */
 function TableCell({
   children,
   checked,
   className,
+  column,
   custom = false,
   disGutters = false,
   helpIcon = true,
@@ -60,6 +76,7 @@ function TableCell({
   ...props
 }: TableCellProps) {
   const tableSelection = useTableSelection()
+  const tableColumns = useTableColumns()
   const hasPaddingX = paddingX ?? !disGutters
   const isHead = role === "head"
   const isNumber = type === "number"
@@ -81,6 +98,8 @@ function TableCell({
   const isSelectionCell = isCheckbox && tableSelection !== null && (isHead || rowId !== undefined)
   const resolvedChecked = isSelectionCell ? (isHead ? allOnPageSelected : selectedIdSet.has(rowId!)) : checked
   const resolvedIndeterminate = isSelectionCell && isHead ? someOnPageSelected : indeterminate
+  const columnAlignment = tableColumns.find((tableColumn) => tableColumn.key === column)?.alignment
+  const resolvedAlignment = columnAlignment ?? (isNumber ? "right" : "left")
 
   function handleCheckedChange(nextChecked: boolean) {
     if (!isSelectionCell || !tableSelection) {
@@ -107,7 +126,7 @@ function TableCell({
       className={cn(
         "relative flex min-w-0 shrink-0",
         isCheckbox ? "items-start" : "flex-col",
-        isNumber && "items-end text-right",
+        !isCheckbox && alignmentClasses[resolvedAlignment],
         sizeSmall ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
         hasPaddingX && (isCheckbox ? "px-[calc(var(--spacing)*2)]" : "px-[var(--rh-sizing-table-padding-px)]"),
         isContentWidth && "w-max",
@@ -126,9 +145,11 @@ function TableCell({
       {isSkeleton && <span aria-hidden="true" className="block h-[calc(var(--spacing)*1.5)] w-full rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-skeleton)]" />}
 
       {!isCheckbox && !isSkeleton && !isPlaceholder && (custom ? (
-        children
+        <div className={cn("flex min-h-5 w-full", contentAlignmentClasses[resolvedAlignment])}>
+          {children}
+        </div>
       ) : (
-        <div className={cn("flex min-h-5 w-full items-center gap-1", isNumber && "justify-end")}>
+        <div className={cn("flex min-h-5 w-full items-center gap-1", contentAlignmentClasses[resolvedAlignment])}>
           <span className={cn(
           "rh-typography-b2 min-w-0",
             isContentWidth ? "whitespace-nowrap" : "break-words",
@@ -146,4 +167,4 @@ function TableCell({
 }
 
 export { TableCell }
-export type { TableCellProps, TableCellRole, TableCellType, TableCellWidth }
+export type { TableCellAlignment, TableCellProps, TableCellRole, TableCellType, TableCellWidth }

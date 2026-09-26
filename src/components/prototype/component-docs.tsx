@@ -814,11 +814,11 @@ const componentDocs: ComponentDoc[] = [
     id: "table",
     title: "Table",
     description:
-      "Table показывает сопоставимые данные в строках и колонках. Контейнер Table и ячейки TableCell отвечают за вид, а данные, выбор, пагинация и сортировка принадлежат конкретному экрану.",
+      "Table показывает сопоставимые данные в строках и колонках. Контейнер Table, строки TableRow и ячейки TableCell отвечают за вид, а данные, выбор, пагинация и сортировка принадлежат конкретному экрану.",
     group: "Data display",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-Components?node-id=416-3328",
-    source: "src/components/ui/table.tsx · src/components/ui/table-cell.tsx",
+    source: "src/components/ui/table.tsx · src/components/ui/table-row.tsx · src/components/ui/table-cell.tsx",
     render: () => <TableExamples />,
   },
   {
@@ -1152,7 +1152,7 @@ function getActiveComponentId() {
     componentDocs[0].id;
   if (["list-small", "list-item", "list-item-small"].includes(id))
     return "list";
-  if (["table-cell", "table-cell-head"].includes(id)) return "table";
+  if (["table-cell", "table-row"].includes(id)) return "table";
   if (id === "segment-control") return "segmented-control";
   return [
     "menu-divider",
@@ -1347,7 +1347,7 @@ export function ComponentDocs() {
   const normalizedQuery = query.trim().toLowerCase();
   const filteredDocs = componentDocs.filter((doc) =>
     matchesSearchTerms(
-      `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""} ${doc.id === "table" ? "TableCell TableCellHead" : ""}`,
+      `${doc.title} ${doc.group} ${doc.source} ${doc.id === "list" ? "ListItem" : ""} ${doc.id === "menu" ? "MenuSingleSelect MenuMultiselect MenuItemSingleSelect MenuItemMultiselect MenuDivider" : ""} ${doc.id === "table" ? "TableRow TableCell" : ""}`,
       query,
     ),
   );

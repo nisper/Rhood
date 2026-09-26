@@ -5,6 +5,7 @@ import { ShowcaseSection } from "@/components/ui/showcase-section";
 import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
+import { TableRow } from "@/components/ui/table-row";
 
 type SortColumn = "object" | "city" | "price";
 type SortState = { column: SortColumn; direction: "asc" | "desc" } | null;
@@ -33,6 +34,12 @@ const cellProperties = [
     "TableSelection",
     "—",
     "Включает выбор строк и всех строк текущей страницы.",
+  ],
+  [
+    "hover",
+    "true / false",
+    "false",
+    "Меняет фон строки при наведении.",
   ],
   ["role", "head / body", "head", "Ячейка заголовка или данных."],
   [
@@ -200,6 +207,18 @@ const sortingSnippet = (
     <span className={syntax}>{`>`}</span>
   </Snippet>
 );
+const hoverSnippet = (
+  <Snippet>
+    <span className={syntax}>{`<`}</span>
+    <span className={component}>TableRow</span>{" "}
+    <CodeProp name="hover" />
+    <span className={syntax}>{`>`}</span>
+    {"\n  …\n"}
+    <span className={syntax}>{`</`}</span>
+    <span className={component}>TableRow</span>
+    <span className={syntax}>{`>`}</span>
+  </Snippet>
+);
 
 function ListingTable({
   bordered = true,
@@ -213,10 +232,7 @@ function ListingTable({
       bordered={bordered}
       className="w-full !min-w-0 bg-[var(--rh-theme-surface-bg)]"
     >
-      <div
-        className="flex border-b border-[var(--parser-border-light)]"
-        role="row"
-      >
+      <TableRow>
         <TableCell
           role="head"
           sizeSmall={compact}
@@ -243,13 +259,9 @@ function ListingTable({
         >
           Стоимость, ₽
         </TableCell>
-      </div>
+      </TableRow>
       {listings.slice(0, 2).map((row) => (
-        <div
-          className="flex border-b border-[var(--parser-border-light)] last:border-b-0"
-          key={row.id}
-          role="row"
-        >
+        <TableRow key={row.id}>
           <TableCell role="body" sizeSmall={compact} type="text" width="fill">
             {row.object}
           </TableCell>
@@ -259,7 +271,7 @@ function ListingTable({
           <TableCell role="body" sizeSmall={compact} type="number" width={150}>
             {row.price.toLocaleString("ru-RU")}
           </TableCell>
-        </div>
+        </TableRow>
       ))}
     </Table>
   );
@@ -288,7 +300,7 @@ function SortingTable() {
 
   return (
     <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-      <div className="flex border-b border-[var(--parser-border-light)]" role="row">
+      <TableRow>
         <TableCell
           helpIcon={false}
           onClick={() => toggleSort("object")}
@@ -322,17 +334,13 @@ function SortingTable() {
         >
           Стоимость, ₽
         </TableCell>
-      </div>
+      </TableRow>
       {sortedRows.map((row) => (
-        <div
-          className="flex border-b border-[var(--parser-border-light)] last:border-b-0"
-          key={row.id}
-          role="row"
-        >
+        <TableRow key={row.id}>
           <TableCell role="body" type="text" width="fill">{row.object}</TableCell>
           <TableCell role="body" type="text" width="fill">{row.city}</TableCell>
           <TableCell role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell>
-        </div>
+        </TableRow>
       ))}
     </Table>
   );
@@ -343,10 +351,7 @@ function Properties() {
 
   return (
     <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-      <div
-        className="flex border-b border-[var(--parser-border-light)]"
-        role="row"
-      >
+      <TableRow>
         {["Свойство", "Значения", "По умолчанию", "Назначение"].map(
           (title, index) => (
             <TableCell
@@ -360,13 +365,9 @@ function Properties() {
             </TableCell>
           ),
         )}
-      </div>
+      </TableRow>
       {cellProperties.map((row) => (
-        <div
-          className="flex border-b border-[var(--parser-border-light)] last:border-b-0"
-          key={row[0]}
-          role="row"
-        >
+        <TableRow key={row[0]}>
           {row.map((cell, index) => (
             <TableCell
               key={index}
@@ -377,7 +378,7 @@ function Properties() {
               {cell}
             </TableCell>
           ))}
-        </div>
+        </TableRow>
       ))}
     </Table>
   );
@@ -454,10 +455,7 @@ export function TableExamples() {
                   selectedIds,
                 }}
               >
-                <div
-                  className="flex border-b border-[var(--parser-border-light)]"
-                  role="row"
-                >
+                <TableRow>
                   <TableCell
                     role="head"
                     type="checkbox"
@@ -477,13 +475,9 @@ export function TableExamples() {
                   <TableCell helpIcon={false} role="head" type="number" width={150}>
                     Стоимость, ₽
                   </TableCell>
-                </div>
+                </TableRow>
                 {listings.map((row) => (
-                  <div
-                    className="flex border-b border-[var(--parser-border-light)] last:border-b-0"
-                    key={row.id}
-                    role="row"
-                  >
+                  <TableRow key={row.id}>
                     <TableCell
                       role="body"
                       rowId={row.id}
@@ -499,13 +493,39 @@ export function TableExamples() {
                     <TableCell role="body" type="number" width={150}>
                       {row.price.toLocaleString("ru-RU")}
                     </TableCell>
-                  </div>
+                  </TableRow>
                 ))}
               </Table>
             </ShowcasePanel>
           </ShowcaseSurface>
         }
         title="Выбор строк"
+      />
+
+      <ShowcaseSection
+        codeSnippet={hoverSnippet}
+        description="Используй hover только для строк, клик по которым запускает действие: открывает детали, меняет состояние или ведёт на другую страницу."
+        showcase={
+          <ShowcaseSurface>
+            <ShowcasePanel>
+              <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
+                <TableRow>
+                  <TableCell helpIcon={false} role="head" type="text" width="fill">Объект</TableCell>
+                  <TableCell helpIcon={false} role="head" type="text" width="fill">Город</TableCell>
+                  <TableCell helpIcon={false} role="head" type="number" width={150}>Стоимость, ₽</TableCell>
+                </TableRow>
+                {listings.map((row) => (
+                  <TableRow hover key={row.id}>
+                    <TableCell role="body" type="text" width="fill">{row.object}</TableCell>
+                    <TableCell role="body" type="text" width="fill">{row.city}</TableCell>
+                    <TableCell role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell>
+                  </TableRow>
+                ))}
+              </Table>
+            </ShowcasePanel>
+          </ShowcaseSurface>
+        }
+        title="Поведение при наведении"
       />
 
       <ShowcaseSection
@@ -533,10 +553,7 @@ export function TableExamples() {
                     Заголовок и данные
                   </span>
                   <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-                    <div
-                      className="flex border-b border-[var(--parser-border-light)]"
-                      role="row"
-                    >
+                    <TableRow>
                       <TableCell
                         role="head"
                         type="text"
@@ -552,15 +569,15 @@ export function TableExamples() {
                       >
                         Стоимость, ₽
                       </TableCell>
-                    </div>
-                    <div className="flex" role="row">
+                    </TableRow>
+                    <TableRow>
                       <TableCell role="body" type="text" width="fill">
                         Космос
                       </TableCell>
                       <TableCell role="body" type="number" width="fill">
                         12 500 000
                       </TableCell>
-                    </div>
+                    </TableRow>
                   </Table>
                 </div>
                 <div className="grid gap-2">
@@ -568,10 +585,10 @@ export function TableExamples() {
                     Загрузка
                   </span>
                   <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-                    <div className="flex" role="row">
+                    <TableRow>
                       <TableCell role="body" type="skeleton" width="fill" />
                       <TableCell role="body" type="skeleton" width="fill" />
-                    </div>
+                    </TableRow>
                   </Table>
                 </div>
               </div>
@@ -582,7 +599,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        description="Публичные свойства Table и TableCell. Пагинация, данные и обработчики сортировки принадлежат экрану, который использует таблицу."
+        description="Публичные свойства Table, TableCell и TableRow. Пагинация, данные и обработчики сортировки принадлежат экрану, который использует таблицу."
         showcase={<Properties />}
         title="Свойства"
       />

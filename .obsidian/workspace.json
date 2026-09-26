@@ -13,15 +13,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/instructions/formatting-code-snippets.md",
+                "file": "docs/instructions/product-design-reasoning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "formatting-code-snippets"
+              "title": "product-design-reasoning"
+            }
+          },
+          {
+            "id": "e765874dc90405c0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "AGENTS.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "AGENTS"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -188,21 +203,25 @@
       "bases:Create new base": false
     }
   },
-  "active": "b413f16690e5ff24",
+  "active": "e765874dc90405c0",
   "lastOpenFiles": [
+    "dist/assets/index-C4f-O10d.js",
+    "dist/assets/index-BfOUuHeJ.js",
+    "dist/assets/index-BJTYO7lF.js",
+    "src/components/ui/table-row.tsx",
+    "dist/assets/index-KJUjg4SH.css",
+    "dist/assets/index-Ct8562FA.js",
+    "dist/assets/index-ByET1yle.css",
+    "dist/assets/index-CibLIxMf.js",
+    "docs/instructions/Адаптив в проекте.md",
+    "docs/instructions/product-design-reasoning.md",
+    "docs/instructions/formatting-code-snippets.md",
+    "docs/instructions/formatting-component-showcase-page.md",
+    "docs/instructions/drawing-a-user-flow.md",
+    "AGENTS.md",
     "node_modules/lucide-react/dist/esm/createLucideIcon.mjs.map",
     "node_modules/lucide-react/dist/esm/context.mjs.map",
     "node_modules/lucide-react/dist/esm/icons/badge.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-x.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-turkish-lira.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-swiss-franc.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-russian-ruble.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-question-mark.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-pound-sterling.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-plus.mjs.map",
-    "node_modules/lucide-react/dist/esm/icons/badge-percent.mjs.map",
-    "docs/instructions/drawing-a-user-flow.md",
-    "docs/instructions/formatting-code-snippets.md",
     "docs/tokens.md",
     "docs/token-mapping.md",
     "docs/table.md",
@@ -222,10 +241,6 @@
     "docs/instructions/figma/anti-patterns.md",
     "docs/instructions/figma/README.md",
     "docs/component-checklist.md",
-    "docs/tokens-generator.md",
-    "docs/backlog.md",
-    "docs/instructions/product-design-reasoning.md",
-    "docs/instructions/formatting-component-showcase-page.md",
     "dist/assets/figma.svg",
     "dist/assets/circle-x.svg",
     "dist/assets/avatar-32.png"

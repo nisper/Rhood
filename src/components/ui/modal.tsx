@@ -10,6 +10,8 @@ const ModalDismissContext = React.createContext<
   ((requestClose?: () => void) => void) | null
 >(null);
 
+const mobileViewportQuery = "(max-width: 767px)";
+
 type ModalProps = Omit<React.ComponentProps<"div">, "title"> & {
   bodyClassName?: string;
   closeButton?: boolean;
@@ -38,11 +40,11 @@ function useIsMobileViewport() {
   const [isMobileViewport, setIsMobileViewport] = React.useState(
     () =>
       typeof window !== "undefined" &&
-      window.matchMedia("(max-width: 767px)").matches,
+      window.matchMedia(mobileViewportQuery).matches,
   );
 
   React.useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const mediaQuery = window.matchMedia(mobileViewportQuery);
     const updateViewport = () => setIsMobileViewport(mediaQuery.matches);
 
     updateViewport();
@@ -61,6 +63,8 @@ function ModalContainer({
   onClick,
   ...props
 }: ModalContainerProps) {
+  const isMobileViewport = useIsMobileViewport();
+  const resolvedAlignment = isMobileViewport ? "bottom" : alignment;
   const requestCloseRef = React.useRef<(() => void) | undefined>(undefined);
   const registerClose = React.useCallback((requestClose?: () => void) => {
     requestCloseRef.current = requestClose;
@@ -70,12 +74,12 @@ function ModalContainer({
     <ModalDismissContext.Provider value={registerClose}>
       <div
         className={cn(
-          "grid min-h-[360px] w-full overflow-hidden bg-[var(--rh-theme-surface-backdrop)] p-2",
+          "grid min-h-[360px] w-full grid-rows-[minmax(0,1fr)] overflow-hidden bg-[var(--rh-theme-surface-backdrop)] p-2",
           display === "viewport" && "fixed inset-0 z-50",
           display === "embedded" && "relative",
-          alignment === "center" && "place-items-center max-md:items-end",
-          alignment === "top" && "items-start justify-items-center",
-          alignment === "bottom" && "items-end justify-items-center",
+          resolvedAlignment === "center" && "place-items-center",
+          resolvedAlignment === "top" && "items-start justify-items-center",
+          resolvedAlignment === "bottom" && "items-end justify-items-center",
           className,
         )}
         data-slot="modal-container"
@@ -122,8 +126,7 @@ function Modal({
   const resolvedOpen = isControlled ? open : uncontrolledOpen;
   const [isRendered, setIsRendered] = React.useState(resolvedOpen);
   const [isClosing, setIsClosing] = React.useState(false);
-  const showCloseButton =
-    resolvedPresentation === "dialog" && closeButton !== false;
+  const showCloseButton = closeButton !== false;
 
   React.useEffect(() => {
     if (resolvedOpen) {
@@ -192,7 +195,7 @@ function Modal({
       aria-labelledby={titleId}
       aria-modal="true"
       className={cn(
-        "grid w-full rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg",
+        "grid max-h-full w-full grid-rows-[auto_minmax(0,1fr)_auto] overflow-hidden rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg",
         resolvedPresentation === "bottom-sheet" &&
           "transition-transform duration-200 ease-in-out",
         resolvedPresentation === "bottom-sheet" &&

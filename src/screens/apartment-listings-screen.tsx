@@ -1,8 +1,10 @@
-import { CircleHelp, Columns3Cog, Map } from "lucide-react";
+import { CircleHelp, Columns3Cog, Map, Phone } from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
+import { Drawer, DrawerContainer } from "@/components/ui/drawer";
+import { IconButton } from "@/components/ui/icon-button";
 import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
@@ -12,6 +14,7 @@ import { Modal, ModalContainer } from "@/components/ui/modal";
 import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
+import { TableRow } from "@/components/ui/table-row";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import listings from "@/data/mock/real-estate-listings.json";
 
@@ -41,6 +44,18 @@ const tableColumns: { key: ColumnKey; label: string }[] = [
   { key: "publishedAt", label: "Опубликован" },
   { key: "status", label: "Статус" },
 ];
+
+const resultTableColumns = [
+  { key: "selection", alignment: "left" },
+  { key: "address", alignment: "left" },
+  { key: "buyer", alignment: "right" },
+  { key: "call", alignment: "center" },
+  { key: "price", alignment: "right" },
+  { key: "liquidity", alignment: "left" },
+  { key: "source", alignment: "left" },
+  { key: "publishedAt", alignment: "left" },
+  { key: "status", alignment: "left" },
+] as const;
 
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
   {
@@ -91,6 +106,11 @@ const leaderboardRows = [
   ["Максим Никитин", 52],
   ["Светлана Баранова", 41],
 ] as const;
+
+const leaderboardColumnWidths = {
+  place: 67,
+  saved: 144,
+} as const;
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
@@ -311,7 +331,7 @@ function LeaderboardModal({
   return (
     <ModalContainer className="min-h-0">
       <Modal
-        className="w-full"
+        className="w-full pb-4"
         maxWidth={700}
         onOpenChange={onOpenChange}
         open={open}
@@ -328,7 +348,7 @@ function LeaderboardModal({
               role="head"
               sort={false}
               type="text"
-              width="content"
+              width={leaderboardColumnWidths.place}
             >
               Место
             </TableCell>
@@ -346,7 +366,7 @@ function LeaderboardModal({
               role="head"
               sort={false}
               type="number"
-              width="content"
+              width={leaderboardColumnWidths.saved}
             >
               Сохранено
             </TableCell>
@@ -357,13 +377,21 @@ function LeaderboardModal({
               key={participant}
               role="row"
             >
-              <TableCell role="body" type="number" width="content">
+              <TableCell
+                role="body"
+                type="number"
+                width={leaderboardColumnWidths.place}
+              >
                 {index + 1}
               </TableCell>
               <TableCell role="body" type="text" width="fill">
                 {participant}
               </TableCell>
-              <TableCell role="body" type="number" width="content">
+              <TableCell
+                role="body"
+                type="number"
+                width={leaderboardColumnWidths.saved}
+              >
                 {formatNumber(saved)}
               </TableCell>
             </div>
@@ -391,6 +419,7 @@ function ResultHeader({
       role="row"
     >
       <TableCell
+        column="selection"
         paddingX
         role="head"
         sizeSmall
@@ -400,6 +429,7 @@ function ResultHeader({
       />
       <TableCell
         className="min-w-[300px]"
+        column="address"
         helpIcon={false}
         role="head"
         sizeSmall
@@ -411,6 +441,7 @@ function ResultHeader({
       </TableCell>
       {!hiddenColumns.has("buyer") && (
         <TableCell
+          column="buyer"
           onClick={sortable ? () => onSort("buyer") : undefined}
           role="head"
           sizeSmall
@@ -424,8 +455,20 @@ function ResultHeader({
           Покупатель
         </TableCell>
       )}
+      <TableCell
+        column="call"
+        helpIcon={false}
+        role="head"
+        sizeSmall
+        sort={false}
+        type="text"
+        width="content"
+      >
+        Позвонить
+      </TableCell>
       {!hiddenColumns.has("price") && (
         <TableCell
+          column="price"
           helpIcon={false}
           onClick={sortable ? () => onSort("price") : undefined}
           role="head"
@@ -442,6 +485,7 @@ function ResultHeader({
       )}
       {!hiddenColumns.has("liquidity") && (
         <TableCell
+          column="liquidity"
           helpIcon={false}
           role="head"
           sizeSmall
@@ -454,6 +498,7 @@ function ResultHeader({
       )}
       {!hiddenColumns.has("source") && (
         <TableCell
+          column="source"
           helpIcon={false}
           role="head"
           sizeSmall
@@ -466,6 +511,7 @@ function ResultHeader({
       )}
       {!hiddenColumns.has("publishedAt") && (
         <TableCell
+          column="publishedAt"
           helpIcon={false}
           onClick={sortable ? () => onSort("publishedAt") : undefined}
           role="head"
@@ -484,6 +530,7 @@ function ResultHeader({
       )}
       {!hiddenColumns.has("status") && (
         <TableCell
+          column="status"
           helpIcon={false}
           role="head"
           sizeSmall
@@ -501,19 +548,20 @@ function ResultHeader({
 function ResultRow({
   hiddenColumns,
   listing,
+  onOpen,
 }: {
   hiddenColumns: ReadonlySet<ColumnKey>;
   listing: (typeof listings)[number];
+  onOpen: () => void;
 }) {
   const price = getPrice(listing);
   const pricePerM2 = Math.round(price / listing.area);
 
   return (
-    <div
-      className="flex border-b border-[var(--parser-border-light)] last:border-b-0"
-      role="row"
-    >
+    <TableRow hover onClick={onOpen}>
       <TableCell
+        column="selection"
+        onClick={(event) => event.stopPropagation()}
         paddingX
         role="body"
         rowId={listing.id}
@@ -524,6 +572,7 @@ function ResultRow({
 
       <TableCell
         className="min-w-[300px]"
+        column="address"
         custom
         role="body"
         sizeSmall
@@ -539,15 +588,33 @@ function ResultRow({
       </TableCell>
 
       {!hiddenColumns.has("buyer") && (
-        <TableCell custom role="body" sizeSmall type="number" width={130}>
+        <TableCell column="buyer" custom role="body" sizeSmall type="number" width={130}>
           <p className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
             {listing.buyerDemandAvailableCount}
           </p>
         </TableCell>
       )}
+      <TableCell column="call" custom role="body" sizeSmall type="text" width="content">
+        <div className="grid">
+          <span
+            aria-hidden="true"
+            className="invisible col-start-1 row-start-1 rh-typography-b2 whitespace-nowrap"
+          >
+            Позвонить
+          </span>
+          <IconButton
+            appearance="primary"
+            aria-label="Позвонить"
+            className="col-start-1 row-start-1 justify-self-center"
+            icon={<Phone aria-hidden="true" strokeWidth={2} />}
+            onClick={(event) => event.stopPropagation()}
+            size="xsm"
+          />
+        </div>
+      </TableCell>
 
       {!hiddenColumns.has("price") && (
-        <TableCell custom role="body" sizeSmall type="number" width={175}>
+        <TableCell column="price" custom role="body" sizeSmall type="number" width={175}>
           <div className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
             <p className="text-[var(--parser-text-neutral-primary)]">
               {formatNumber(price)}
@@ -560,7 +627,7 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("liquidity") && (
-        <TableCell custom role="body" sizeSmall type="text" width={152}>
+        <TableCell column="liquidity" custom role="body" sizeSmall type="text" width={152}>
           <Chip
             appearance="muted"
             className="self-start"
@@ -576,7 +643,7 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("source") && (
-        <TableCell custom role="body" sizeSmall type="text" width={190}>
+        <TableCell column="source" custom role="body" sizeSmall type="text" width={190}>
           <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
             <p className="text-[var(--parser-text-brand)]">
               {formatSource(listing.domain)}
@@ -589,7 +656,7 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("publishedAt") && (
-        <TableCell custom role="body" sizeSmall type="text" width={150}>
+        <TableCell column="publishedAt" custom role="body" sizeSmall type="text" width={150}>
           <p className="text-sm leading-5 tracking-[0.17px]">
             {formatPublishedAt(listing.publishedAt)}
           </p>
@@ -597,7 +664,7 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("status") && (
-        <TableCell custom role="body" sizeSmall type="text" width={236}>
+        <TableCell column="status" custom role="body" sizeSmall type="text" width={236}>
           <Chip
             appearance="muted"
             className="self-start"
@@ -611,19 +678,21 @@ function ResultRow({
           </Chip>
         </TableCell>
       )}
-    </div>
+    </TableRow>
   );
 }
 
 function ListingsTable({
   className,
   hiddenColumns,
+  onOpenDrawer,
   onSort,
   sort,
   sortable = true,
 }: {
   className?: string;
   hiddenColumns: ReadonlySet<ColumnKey>;
+  onOpenDrawer: () => void;
   onSort: (column: SortColumn) => void;
   sort: SortState;
   /** Enables sorting by clicking a column header. */
@@ -660,6 +729,7 @@ function ListingsTable({
     <Table
       bordered
       className={className}
+      columns={resultTableColumns}
       selection={{
         onSelectedIdsChange: setSelectedIds,
         rowIds: sortedListings.map((listing) => listing.id),
@@ -677,6 +747,7 @@ function ListingsTable({
           hiddenColumns={hiddenColumns}
           key={listing.id}
           listing={listing}
+          onOpen={onOpenDrawer}
         />
       ))}
     </Table>
@@ -689,6 +760,7 @@ export function ApartmentListingsScreen() {
   );
   const [sort, setSort] = React.useState<SortState>(null);
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
+  const [drawerOpen, setDrawerOpen] = React.useState(false);
 
   function handleSort(column: SortColumn) {
     setSort((current) =>
@@ -727,6 +799,7 @@ export function ApartmentListingsScreen() {
           <ListingsTable
             className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
             hiddenColumns={hiddenColumns}
+            onOpenDrawer={() => setDrawerOpen(true)}
             onSort={handleSort}
             sort={sort}
             sortable={false}
@@ -747,6 +820,15 @@ export function ApartmentListingsScreen() {
             onOpenChange={setLeaderboardOpen}
             open={leaderboardOpen}
           />
+        )}
+        {drawerOpen && (
+          <DrawerContainer>
+            <Drawer
+              onOpenChange={setDrawerOpen}
+              open={drawerOpen}
+              title={<span className="sr-only">Детали объекта</span>}
+            />
+          </DrawerContainer>
         )}
       </main>
     </div>

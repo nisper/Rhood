@@ -7,7 +7,10 @@ type ModalFooterProps = React.ComponentProps<"footer">;
 function ModalFooter({ className, ...props }: ModalFooterProps) {
   return (
     <footer
-      className={cn("flex flex-wrap justify-end gap-2 px-6 py-4", className)}
+      className={cn(
+        "flex flex-wrap justify-end gap-2 px-4 py-4 md:px-6",
+        className,
+      )}
       {...props}
     />
   );

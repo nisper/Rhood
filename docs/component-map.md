@@ -48,6 +48,6 @@ MenuSingleSelect и MenuMultiselect сохранены как совместим
 
 List и ListItem представлены на общей странице List. Актуальный источник: `Rhood creative production/docs/components/list-item.md` (Figma `654:8330`). ListItemSmall сохранён как обёртка над ListItem с `dense=true`; ListSmall — совместимая сборка компактных строк, без отдельной страницы витрины. `paddingX` заменяет обратный по смыслу `disGutters`, старое свойство поддерживается.
 
-TableCellHead сохранён как совместимая обёртка над TableCell с `role="head"`. Для новых таблиц используй Table и TableCell с `role="head"` или `role="body"`; на витрине это одна страница Table.
+Table состоит из `Table`, `TableRow` и `TableCell`. Для заголовков и данных используй `TableCell` с `role="head"` или `role="body"`; на витрине это одна страница Table.
 
 Правила выбора строк, сортировки и размеров колонок описаны в [Table](table.md).
