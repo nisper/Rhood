@@ -15,6 +15,8 @@ type InputNumberProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
   /** Separates digit groups in the integer part with spaces. */
   groupThousands?: boolean
   onClear?: () => void
+  /** Controls the visual required marker without changing native validation. */
+  showRequiredIndicator?: boolean
   size?: InputNumberSize
   startText?: React.ReactNode
   state?: InputNumberState
@@ -68,6 +70,7 @@ function InputNumber({
   onKeyDown,
   placeholder = "Введите значение",
   required = false,
+  showRequiredIndicator = true,
   size = "md",
   startText,
   state = "default",
@@ -110,7 +113,7 @@ function InputNumber({
           interactiveClasses,
           bare && bareInputClasses,
           startText && "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-md))]",
-          (endText || required || showClearButton) && "pr-[calc(var(--spacing)*8)]",
+          (endText || (required && showRequiredIndicator) || showClearButton) && "pr-[calc(var(--spacing)*8)]",
         )}
         disabled={disabled}
         inputMode={inputMode}
@@ -148,7 +151,7 @@ function InputNumber({
           className={cn(
             "absolute top-1/2 flex -translate-y-1/2 items-center justify-center",
             size === "md" ? "size-[calc(var(--spacing)*6)]" : "size-[calc(var(--spacing)*5)]",
-            endText || required ? "right-[calc(var(--spacing)*8)]" : "right-[calc(var(--spacing)*2)]",
+            endText || (required && showRequiredIndicator) ? "right-[calc(var(--spacing)*8)]" : "right-[calc(var(--spacing)*2)]",
           )}
         >
           <ClearButton
@@ -176,7 +179,7 @@ function InputNumber({
           {endText}
         </span>
       )}
-      {required && (
+      {required && showRequiredIndicator && (
         <span
           aria-hidden="true"
           className={cn(

@@ -1,11 +1,21 @@
-import { CircleHelp, Columns3Cog, Map, Phone } from "lucide-react";
+import {
+  Building2,
+  CalendarClock,
+  Columns3Cog,
+  ExternalLink,
+  Map,
+  MapPin,
+  Phone,
+  Save,
+  UserRound,
+} from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { IconButton } from "@/components/ui/icon-button";
-import { MainHeader } from "@/components/ui/main-header";
+import { MainHeader, type ListingFilters } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
@@ -15,7 +25,6 @@ import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
-import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import listings from "@/data/mock/real-estate-listings.json";
 
 const navItems = [
@@ -144,6 +153,209 @@ function getPrice(listing: (typeof listings)[number]) {
 function getSpecs(listing: (typeof listings)[number]) {
   const rooms = listing.roomCount === 0 ? "Ст." : `${listing.roomCount} ком.`;
   return `${rooms}, ${listing.area.toLocaleString("ru-RU")} м², этаж ${listing.floor}/${listing.floorCount}`;
+}
+
+function getListingUrl(listing: (typeof listings)[number]) {
+  const sourceHosts: Record<string, string> = {
+    AVITO: "https://www.avito.ru",
+    CIAN: "https://www.cian.ru",
+    DOMCLICK: "https://domclick.ru",
+    YANDEX: "https://realty.yandex.ru",
+  };
+
+  return `${sourceHosts[listing.domain] ?? ""}${listing.url}`;
+}
+
+const initialListingFilters: ListingFilters = {
+  area: { from: "", to: "" },
+  price: { from: "", to: "" },
+  propertyType: "Квартиры",
+  rooms: [],
+};
+
+function getNumberFilterValue(value: string) {
+  return value ? Number(value) : null;
+}
+
+function matchesListingFilters(
+  listing: (typeof listings)[number],
+  filters: ListingFilters,
+) {
+  const areaFrom = getNumberFilterValue(filters.area.from);
+  const areaTo = getNumberFilterValue(filters.area.to);
+  const priceFrom = getNumberFilterValue(filters.price.from);
+  const priceTo = getNumberFilterValue(filters.price.to);
+  const matchesPropertyType = filters.propertyType === "Квартиры" && listing.type === "FLAT";
+  const matchesRooms =
+    filters.rooms.length === 0 ||
+    filters.rooms.some((room) =>
+      room === "4+" ? listing.roomCount >= 4 : listing.roomCount === Number(room),
+    );
+
+  return (
+    matchesPropertyType &&
+    matchesRooms &&
+    (areaFrom === null || listing.area >= areaFrom) &&
+    (areaTo === null || listing.area <= areaTo) &&
+    (priceFrom === null || getPrice(listing) >= priceFrom) &&
+    (priceTo === null || getPrice(listing) <= priceTo)
+  );
+}
+
+function ListingDetailDrawer({
+  listing,
+  onCloseComplete,
+  onOpenChange,
+  open,
+}: {
+  listing: (typeof listings)[number];
+  onCloseComplete: () => void;
+  onOpenChange: (open: boolean) => void;
+  open: boolean;
+}) {
+  const [savedToCrm, setSavedToCrm] = React.useState(false);
+  const price = getPrice(listing);
+  const pricePerM2 = Math.round(price / listing.area);
+
+  React.useEffect(() => {
+    setSavedToCrm(false);
+  }, [listing.id]);
+
+  return (
+    <DrawerContainer>
+      <Drawer
+        description={listing.address}
+        footer={
+          <>
+            <Button
+              appearance="default"
+              disabled={!listing.phone}
+              endIcon={false}
+              onClick={() => {
+                if (listing.phone) window.location.href = `tel:${listing.phone}`;
+              }}
+              size="md"
+              startIcon={<Phone aria-hidden="true" strokeWidth={2} />}
+            >
+              Позвонить
+            </Button>
+            <Button
+              appearance="primary"
+              disabled={savedToCrm}
+              endIcon={false}
+              onClick={() => setSavedToCrm(true)}
+              size="md"
+              startIcon={<Save aria-hidden="true" strokeWidth={2} />}
+            >
+              {savedToCrm ? "Сохранено в CRM" : "Сохранить в CRM"}
+            </Button>
+          </>
+        }
+        onOpenChange={onOpenChange}
+        onTransitionEnd={() => {
+          if (!open) onCloseComplete();
+        }}
+        open={open}
+        title={getSpecs(listing)}
+      >
+        <article className="grid gap-6 py-4 pb-6">
+          <section className="grid gap-3" aria-labelledby="listing-summary">
+            <h3 className="rh-typography-h4" id="listing-summary">
+              Объявление
+            </h3>
+            <dl className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[var(--rh-sizing-common-input-shape-border-radius)] bg-[var(--rh-theme-fill-neutral)] p-4">
+              <div className="grid gap-1">
+                <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                  Цена
+                </dt>
+                <dd className="rh-typography-h4 font-mono">
+                  {formatNumber(price)} ₽
+                </dd>
+              </div>
+              <div className="grid gap-1">
+                <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                  Цена за м²
+                </dt>
+                <dd className="rh-typography-b1 font-mono">
+                  {formatNumber(pricePerM2)} ₽
+                </dd>
+              </div>
+              <div className="col-span-2 flex gap-2">
+                <MapPin aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <div className="grid gap-1">
+                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                    Адрес
+                  </dt>
+                  <dd className="rh-typography-b1">{listing.address}</dd>
+                </div>
+              </div>
+              <div className="col-span-2 flex gap-2">
+                <CalendarClock aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <div className="grid gap-1">
+                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                    Опубликовано
+                  </dt>
+                  <dd className="rh-typography-b1">
+                    {formatPublishedAt(listing.publishedAt)}
+                  </dd>
+                </div>
+              </div>
+            </dl>
+          </section>
+
+          <section className="grid gap-3" aria-labelledby="listing-contact">
+            <h3 className="rh-typography-h4" id="listing-contact">
+              Контакт и источник
+            </h3>
+            <dl className="grid gap-4">
+              <div className="flex gap-2">
+                <UserRound aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <div className="grid gap-1">
+                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                    Продавец
+                  </dt>
+                  <dd className="rh-typography-b1">
+                    {listing.clientName ?? "Частное лицо"}
+                    {listing.phone
+                      ? ` · ${listing.phone}`
+                      : " · Номер в объявлении не указан"}
+                  </dd>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <Building2 aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <div className="grid gap-1">
+                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                    Источник
+                  </dt>
+                  <dd>
+                    <a
+                      className="inline-flex cursor-pointer items-center gap-1 rh-typography-b1 text-[var(--rh-theme-text-brand)] underline underline-offset-2"
+                      href={getListingUrl(listing)}
+                      rel="noreferrer"
+                      target="_blank"
+                    >
+                      {formatSource(listing.domain)} · объявление №{listing.advertId}
+                      <ExternalLink aria-hidden="true" className="size-4" />
+                    </a>
+                  </dd>
+                </div>
+              </div>
+            </dl>
+          </section>
+
+          <section className="grid gap-3" aria-labelledby="listing-description">
+            <h3 className="rh-typography-h4" id="listing-description">
+              Описание
+            </h3>
+            <p className="rh-typography-b1 whitespace-pre-line text-[var(--rh-theme-text-neutral-primary)]">
+              {listing.description}
+            </p>
+          </section>
+        </article>
+      </Drawer>
+    </DrawerContainer>
+  );
 }
 
 function TableToolbar({
@@ -479,7 +691,11 @@ function ResultHeader({
           type="number"
           width={175}
         >
-          Цена, ₽
+          <>
+            Цена, ₽
+            <br />
+            Цена за м², ₽
+          </>
         </TableCell>
       )}
       {!hiddenColumns.has("liquidity") && (
@@ -684,6 +900,7 @@ function ResultRow({
 function ListingsTable({
   className,
   hiddenColumns,
+  listings: tableListings,
   onOpenDrawer,
   onSort,
   sort,
@@ -691,14 +908,15 @@ function ListingsTable({
 }: {
   className?: string;
   hiddenColumns: ReadonlySet<ColumnKey>;
-  onOpenDrawer: () => void;
+  listings: readonly (typeof listings)[number][];
+  onOpenDrawer: (listing: (typeof listings)[number]) => void;
   onSort: (column: SortColumn) => void;
   sort: SortState;
   /** Enables sorting by clicking a column header. */
   sortable?: boolean;
 }) {
   const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
-  const sortedListings = [...listings]
+  const sortedListings = [...tableListings]
     .sort((first, second) => {
       if (!sort) return 0;
 
@@ -724,6 +942,24 @@ function ListingsTable({
     })
     .slice(0, 20);
 
+  React.useEffect(() => {
+    const availableIds = new Set(tableListings.map((listing) => listing.id));
+    setSelectedIds((current) => current.filter((id) => availableIds.has(id)));
+  }, [tableListings]);
+
+  if (sortedListings.length === 0) {
+    return (
+      <div className="grid min-h-52 place-items-center rounded-[var(--rh-sizing-border-radius-md)] border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)] p-6 text-center">
+        <div className="grid gap-1">
+          <p className="rh-typography-h4">Ничего не найдено</p>
+          <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">
+            Попробуй изменить или сбросить фильтры.
+          </p>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <Table
       bordered
@@ -746,7 +982,7 @@ function ListingsTable({
           hiddenColumns={hiddenColumns}
           key={listing.id}
           listing={listing}
-          onOpen={onOpenDrawer}
+          onOpen={() => onOpenDrawer(listing)}
         />
       ))}
     </Table>
@@ -758,8 +994,13 @@ export function ApartmentListingsScreen() {
     new Set(),
   );
   const [sort, setSort] = React.useState<SortState>(null);
+  const [listingFilters, setListingFilters] =
+    React.useState<ListingFilters>(initialListingFilters);
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
+  const [selectedListing, setSelectedListing] = React.useState<
+    (typeof listings)[number] | null
+  >(null);
 
   function handleSort(column: SortColumn) {
     setSort((current) =>
@@ -769,14 +1010,26 @@ export function ApartmentListingsScreen() {
     );
   }
 
+  const filteredListings = React.useMemo(
+    () => listings.filter((listing) => matchesListingFilters(listing, listingFilters)),
+    [listingFilters],
+  );
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-[var(--parser-text-neutral-primary)]">
-      <MainHeader logoHref="/Rhood/" navItems={navItems} />
-      <ToolbarFilter empty resp="desk" />
+      <MainHeader
+        listingFilters={listingFilters}
+        logoHref="/Rhood/"
+        navItems={navItems}
+        onListingFiltersChange={setListingFilters}
+        showFilter
+      />
 
       <main className="grid min-w-0 gap-0">
         <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-4">
-          <h1 className="rh-typography-h1 mb-1">15 208 квартир в Тюмени</h1>
+          <h1 className="rh-typography-h1 mb-1">
+            {formatNumber(filteredListings.length)} {filteredListings.length === 1 ? "квартира" : "квартир"} в Тюмени
+          </h1>
           <p className="text-[var(--rh-theme-text-neutral-secondary)]">
             Но вообще, сегодня-то мы проверили 19 880 объектов. Мы просто дубли
             не показываем
@@ -798,7 +1051,11 @@ export function ApartmentListingsScreen() {
           <ListingsTable
             className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
             hiddenColumns={hiddenColumns}
-            onOpenDrawer={() => setDrawerOpen(true)}
+            listings={filteredListings}
+            onOpenDrawer={(listing) => {
+              setSelectedListing(listing);
+              setDrawerOpen(true);
+            }}
             onSort={handleSort}
             sort={sort}
             sortable={false}
@@ -820,14 +1077,13 @@ export function ApartmentListingsScreen() {
             open={leaderboardOpen}
           />
         )}
-        {drawerOpen && (
-          <DrawerContainer>
-            <Drawer
-              onOpenChange={setDrawerOpen}
-              open={drawerOpen}
-              title={<span className="sr-only">Детали объекта</span>}
-            />
-          </DrawerContainer>
+        {selectedListing && (
+          <ListingDetailDrawer
+            listing={selectedListing}
+            onCloseComplete={() => setSelectedListing(null)}
+            onOpenChange={setDrawerOpen}
+            open={drawerOpen}
+          />
         )}
       </main>
     </div>

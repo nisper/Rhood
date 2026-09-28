@@ -81,9 +81,10 @@ function FilterRange({
     <InputNumberRange
       aria-label={`Диапазон ${suffix}`}
       className={widthClass}
-      endInputProps={{ endText: suffix, placeholder: "до" }}
       size="sm"
       startInputProps={{ placeholder: "от" }}
+      endInputProps={{ placeholder: "до" }}
+      unit={suffix}
     />
   )
 }

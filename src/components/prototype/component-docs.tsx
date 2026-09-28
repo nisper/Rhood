@@ -586,7 +586,7 @@ const componentDocs: ComponentDoc[] = [
     properties: [
       {
         name: "startInputProps / endInputProps",
-        values: "InputNumberProps",
+        values: "InputNumberProps без startText / endText",
         defaultValue: "—",
         description:
           "Props для начального и конечного значений; стили border и state управляются группой.",
@@ -615,6 +615,12 @@ const componentDocs: ComponentDoc[] = [
         values: "ReactNode",
         defaultValue: "–",
         description: "Разделитель между начальным и конечным значениями.",
+      },
+      {
+        name: "unit",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Необязательная секция единицы измерения после конечного поля.",
       },
       {
         name: "size",
@@ -766,6 +772,7 @@ const componentDocs: ComponentDoc[] = [
       <Canvas>
         <div className="grid gap-6">
           <MainHeader />
+          <MainHeader showFilter />
           <MainHeader resp="mob" />
         </div>
       </Canvas>

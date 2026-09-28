@@ -3,7 +3,7 @@ import * as React from "react"
 import { InputNumber, type InputNumberProps, type InputNumberSize, type InputNumberState } from "@/components/ui/input-number"
 import { cn } from "@/lib/utils"
 
-type RangeInputProps = Omit<InputNumberProps, "className" | "disabled" | "error" | "size" | "state">
+type RangeInputProps = Omit<InputNumberProps, "className" | "disabled" | "endText" | "error" | "size" | "startText" | "state">
 
 type InputNumberRangeProps = Omit<React.ComponentProps<"div">, "onChange"> & {
   /** Makes both values unavailable. */
@@ -19,6 +19,8 @@ type InputNumberRangeProps = Omit<React.ComponentProps<"div">, "onChange"> & {
   /** The separator between values. */
   separator?: React.ReactNode
   size?: InputNumberSize
+  /** Optional unit displayed in a dedicated section after the second field. */
+  unit?: React.ReactNode
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
@@ -51,6 +53,7 @@ function InputNumberRange({
   size = "md",
   startInputProps,
   state,
+  unit,
   ...props
 }: InputNumberRangeProps) {
   const [isFocused, setIsFocused] = React.useState(false)
@@ -59,6 +62,7 @@ function InputNumberRange({
 
   const startProps = startInputProps ?? {}
   const endProps = endInputProps ?? {}
+  const required = Boolean(startProps.required || endProps.required)
 
   return (
     <div
@@ -94,8 +98,12 @@ function InputNumberRange({
         aria-label={startProps["aria-label"] ?? "Начальное значение"}
         bare
         disabled={disabled}
+        endText={undefined}
         error={false}
         size={size}
+        required={required}
+        showRequiredIndicator={false}
+        startText={undefined}
         state="default"
       />
       <span aria-hidden="true" className="shrink-0 self-center text-base leading-6 text-[color:var(--parser-text-neutral-secondary)]">
@@ -106,10 +114,28 @@ function InputNumberRange({
         aria-label={endProps["aria-label"] ?? "Конечное значение"}
         bare
         disabled={disabled}
+        endText={undefined}
         error={false}
         size={size}
+        required={required}
+        showRequiredIndicator={false}
+        startText={undefined}
         state="default"
       />
+      {(unit || required) && (
+        <span
+          aria-hidden="true"
+          className={cn(
+            "flex shrink-0 items-center pr-[var(--rh-sizing-common-input-padding-px-md)] text-[color:var(--rh-theme-text-neutral-primary)]",
+            size === "md"
+              ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]"
+              : "pr-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
+          )}
+        >
+          {unit}
+          {required && <span className={cn(unit && "ml-1", "text-[var(--rh-theme-text-error)]")}>*</span>}
+        </span>
+      )}
     </div>
   )
 }

@@ -70,7 +70,7 @@ function DrawerContainer({
           display === "viewport" && "fixed inset-0 z-50",
           display === "embedded" && "relative",
           alignment === "right" &&
-            "items-stretch justify-items-end max-md:items-end max-md:justify-items-center",
+            "items-stretch justify-items-end",
           alignment === "bottom" && "items-end justify-items-center",
           className,
         )}
