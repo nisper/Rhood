@@ -22,8 +22,7 @@ const navItems = [
   { label: "Набор базы", active: true },
   { label: "Мои объекты" },
   { label: "Подборки" },
-  { label: "Подключение городов" },
-  { label: "Статистика" },
+  { label: "Избранное" },
 ];
 
 type SortColumn = "buyer" | "price" | "pricePerM2" | "publishedAt";
