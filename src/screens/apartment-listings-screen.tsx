@@ -1027,11 +1027,11 @@ export function ApartmentListingsScreen({
   layout = "edge-to-edge",
   view = "base",
 }: {
-  layout?: "edge-to-edge" | "islands";
+  layout?: "constrained" | "edge-to-edge";
   view?: "base" | "my";
 }) {
   const isMyListings = view === "my";
-  const isIslandLayout = layout === "islands";
+  const isConstrainedLayout = layout === "constrained";
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
@@ -1050,27 +1050,29 @@ export function ApartmentListingsScreen({
     );
   }
 
-  if (isIslandLayout) {
+  if (isConstrainedLayout) {
     return (
       <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-under-islands)] text-[var(--parser-text-neutral-primary)]">
-        <main className="rhood-page-gutter grid min-w-0 gap-[var(--rh-sizing-island-gap)] py-[var(--rh-sizing-island-gap)]">
-          <section
-            aria-label="Основная навигация"
-            className="overflow-hidden rounded-[var(--rh-sizing-island-border-radius)] border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]"
-          >
+        <div className="rhood-page-gutter">
+          <div className="mx-auto w-full max-w-[1200px]">
             <MainHeader
               logoHref="/Rhood/"
               navItems={getNavItems(isMyListings ? "my" : "base")}
             />
-          </section>
+          </div>
+        </div>
 
-          {!isMyListings && <ToolbarFilter island />}
+        {!isMyListings && (
+          <div className="rhood-page-gutter">
+            <div className="mx-auto w-full max-w-[1200px]">
+              <ToolbarFilter />
+            </div>
+          </div>
+        )}
 
-          <section
-            aria-label="Результаты поиска"
-            className="min-w-0"
-          >
-            <header>
+        <main className="grid min-w-0 gap-0">
+          <div className="rhood-page-gutter">
+            <header className="mx-auto w-full max-w-[1200px] py-4 pt-8">
               <h1 className="rh-typography-h1 mb-1">
                 {formatNumber(listings.length)}{" "}
                 {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
@@ -1080,9 +1082,9 @@ export function ApartmentListingsScreen({
                 не показываем
               </p>
             </header>
-            <section
-              aria-label="Управление выдачей"
-            >
+          </div>
+          <div className="rhood-page-gutter">
+            <section aria-label="Управление выдачей" className="mx-auto w-full max-w-[1200px] py-3">
               <TableToolbar
                 hiddenColumns={hiddenColumns}
                 onHiddenColumnsChange={setHiddenColumns}
@@ -1093,25 +1095,27 @@ export function ApartmentListingsScreen({
                 sort={sort}
               />
             </section>
-            <section aria-label="Список квартир" className="overflow-x-auto">
-              <ListingsTable
-                hiddenColumns={hiddenColumns}
-                listings={listings}
-                onOpenDrawer={(listing) => {
-                  setSelectedListing(listing);
-                  setDrawerOpen(true);
-                }}
-                onSort={handleSort}
-                sort={sort}
-                sortable={false}
-              />
-            </section>
-            <footer>
+          </div>
+          <section aria-label="Список квартир" className="overflow-x-auto">
+            <ListingsTable
+              hiddenColumns={hiddenColumns}
+              listings={listings}
+              onOpenDrawer={(listing) => {
+                setSelectedListing(listing);
+                setDrawerOpen(true);
+              }}
+              onSort={handleSort}
+              sort={sort}
+              sortable={false}
+            />
+          </section>
+          <div className="rhood-page-gutter">
+            <footer className="mx-auto my-5 w-full max-w-[1200px]">
               <Button appearance="default" endIcon={false} size="md" startIcon={false}>
                 Показать еще 50 объектов
               </Button>
             </footer>
-          </section>
+          </div>
 
           {leaderboardOpen && (
             <LeaderboardModal onOpenChange={setLeaderboardOpen} open={leaderboardOpen} />
@@ -1209,6 +1213,6 @@ export function MyListingsScreen() {
   return <ApartmentListingsScreen view="my" />;
 }
 
-export function ApartmentListingsIslandsScreen() {
-  return <ApartmentListingsScreen layout="islands" />;
+export function ApartmentListingsConstrainedScreen() {
+  return <ApartmentListingsScreen layout="constrained" />;
 }

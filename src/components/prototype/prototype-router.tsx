@@ -4,7 +4,7 @@ import { Component, LayoutDashboard } from "lucide-react";
 import { ComponentDocs } from "@/components/prototype/component-docs";
 import {
   ApartmentListingsScreen,
-  ApartmentListingsIslandsScreen,
+  ApartmentListingsConstrainedScreen,
   MyListingsScreen,
 } from "@/screens/apartment-listings-screen";
 import { SimpleTableScreen } from "@/screens/simple-table-screen";
@@ -33,11 +33,11 @@ const prototypeViews: PrototypeView[] = [
     View: ApartmentListingsScreen,
   },
   {
-    id: "apartment-listings-islands",
-    title: "Набор базы — острова",
-    homeLabel: "Набор базы — острова",
+    id: "apartment-listings-constrained",
+    title: "Набор базы — 1200",
+    homeLabel: "Набор базы — 1200",
     icon: LayoutDashboard,
-    View: ApartmentListingsIslandsScreen,
+    View: ApartmentListingsConstrainedScreen,
   },
   {
     id: "my-listings",
