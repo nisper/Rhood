@@ -732,12 +732,6 @@ const componentDocs: ComponentDoc[] = [
         description: "Показывает обязательность поля звёздочкой.",
       },
       {
-        name: "size",
-        values: "md · sm",
-        defaultValue: "md",
-        description: "Размер и типографика текста лейбла.",
-      },
-      {
         name: "startIcon",
         values: "boolean",
         defaultValue: "false",
@@ -781,6 +775,12 @@ const componentDocs: ComponentDoc[] = [
         description: "Содержимое FormLabel.",
       },
       {
+        name: "FormBlock.labelWidth",
+        values: "CSS width value",
+        defaultValue: "—",
+        description: "Ширина лейбла; переопределяет значение FormSet.labelWidth.",
+      },
+      {
         name: "FormBlock.labelProps",
         values: "FormLabelProps",
         defaultValue: "—",
@@ -797,6 +797,12 @@ const componentDocs: ComponentDoc[] = [
         values: "CSS gap value",
         defaultValue: "16 px",
         description: "Расстояние между FormBlock.",
+      },
+      {
+        name: "FormSet.labelWidth",
+        values: "CSS width value",
+        defaultValue: "—",
+        description: "Общая ширина лейблов для всех вложенных FormBlock.",
       },
     ],
     source: "src/components/ui/form-block.tsx · src/components/ui/form-set.tsx",

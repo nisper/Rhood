@@ -5,29 +5,18 @@ import { cn } from "@/lib/utils"
 
 type FormLabelColor = "default" | "error" | "disabled"
 type FormLabelFontWeight = "regular" | "medium"
-type FormLabelSize = "md" | "sm"
 
 type FormLabelProps = React.ComponentProps<"div"> & {
   children?: React.ReactNode
   color?: FormLabelColor
   fontWeight?: FormLabelFontWeight
   required?: boolean
-  size?: FormLabelSize
   startIcon?: boolean
 }
 
-const textClasses: Record<
-  FormLabelSize,
-  Record<FormLabelFontWeight, string>
-> = {
-  md: {
-    regular: "rh-typography-b1",
-    medium: "rh-typography-b1-med",
-  },
-  sm: {
-    regular: "rh-typography-b2",
-    medium: "rh-typography-b2-med",
-  },
+const textClasses: Record<FormLabelFontWeight, string> = {
+  regular: "rh-typography-b1",
+  medium: "rh-typography-b1-med",
 }
 
 const colorClasses: Record<FormLabelColor, string> = {
@@ -42,7 +31,6 @@ function FormLabel({
   color = "default",
   fontWeight = "regular",
   required = false,
-  size = "md",
   startIcon = false,
   ...props
 }: FormLabelProps) {
@@ -60,9 +48,9 @@ function FormLabel({
 
       <span
         className={cn(
-          "whitespace-nowrap",
+          "min-w-0 break-words",
           colorClasses[color],
-          textClasses[size][fontWeight],
+          textClasses[fontWeight],
         )}
         style={{ fontVariationSettings: "'wdth' 100" }}
       >
@@ -74,9 +62,7 @@ function FormLabel({
           aria-hidden="true"
           className={cn(
             "shrink-0 pl-1 text-[color:var(--parser-text-error)]",
-            size === "md"
-              ? "text-base leading-6 tracking-[0.15px]"
-              : "text-sm leading-[1.43] tracking-[0.0238px]",
+            "text-base leading-6 tracking-[0.15px]",
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
@@ -92,5 +78,4 @@ export type {
   FormLabelColor,
   FormLabelFontWeight,
   FormLabelProps,
-  FormLabelSize,
 }

@@ -2,6 +2,8 @@ import * as React from "react";
 import { Search, Settings2, SlidersHorizontal, X } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { FormBlock } from "@/components/ui/form-block";
+import { FormSet } from "@/components/ui/form-set";
 import { IconButton } from "@/components/ui/icon-button";
 import { InputNumberRange } from "@/components/ui/input-number-range";
 import { Menu } from "@/components/ui/menu";
@@ -25,23 +27,6 @@ type ToolbarFilterProps = React.ComponentProps<"section"> & {
 
 const roominessOptions = ["Студия", "1", "2", "3", "4+"];
 const propertyTypeOptions = ["Квартиры", "Дома", "Участки"];
-
-function ModalField({
-  children,
-  label,
-}: {
-  children: React.ReactNode;
-  label: string;
-}) {
-  return (
-    <div className="grid grid-cols-2 items-center gap-4">
-      <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-primary)]">
-        {label}
-      </p>
-      <div className="min-w-0">{children}</div>
-    </div>
-  );
-}
 
 function FilterSelect({
   label,
@@ -202,7 +187,7 @@ function ModalSelect({
   const [value, setValue] = React.useState("Не выбрано");
 
   return (
-    <ModalField label={label}>
+    <FormBlock direction="row" label={label}>
       <Select
         expanded={expanded}
         fullWidth
@@ -234,34 +219,35 @@ function ModalSelect({
         onExpandedChange={setExpanded}
         value={value}
       />
-    </ModalField>
+    </FormBlock>
   );
 }
 
 function ModalRangeField({ label, unit }: { label: string; unit?: string }) {
   return (
-    <ModalField label={label}>
+    <FormBlock direction="row" label={label}>
       <InputNumberRange
         endInputProps={{ placeholder: "до" }}
         size="md"
         startInputProps={{ placeholder: "от" }}
         unit={unit}
       />
-    </ModalField>
+    </FormBlock>
   );
 }
 
 function ModalFilters() {
   return (
-    <div className="grid gap-4">
-      <ModalField label="Расположение">
+    <form>
+      <FormSet labelWidth="200px">
+        <FormBlock direction="row" label="Расположение">
         <Textfield id="filter-location" placeholder="Введите расположение" />
-      </ModalField>
-      <ModalSelect
-        label="Подтип недвижимости"
-        options={["Студия", "Свободная планировка", "Апартаменты", "Гостинка"]}
-      />
-      <ModalField label="Комнатность">
+        </FormBlock>
+        <ModalSelect
+          label="Подтип недвижимости"
+          options={["Студия", "Свободная планировка", "Апартаменты", "Гостинка"]}
+        />
+        <FormBlock direction="row" label="Комнатность">
         <SegmentedControl
           className="w-full"
           color="contrast"
@@ -272,48 +258,49 @@ function ModalFilters() {
             <Segment className="flex-1" key={room} value={room}>{room}</Segment>
           ))}
         </SegmentedControl>
-      </ModalField>
-      <ModalRangeField label="Площадь" unit="м²" />
-      <ModalRangeField label="Цена" unit="₽" />
-      <ModalRangeField label="Этаж" />
-      <ModalSelect
-        label="Источники"
-        options={["Авито", "Циан", "Юла", "Яндекс.Недвижимость", "ДомКлик"]}
-      />
-      <ModalSelect label="Автор" options={["Частное лицо", "Агентство"]} />
-      <ModalRangeField label="Опубликован" />
-      <ModalSelect
-        label="Статус"
-        options={["Не выбранОтказ", "Не отвечает", "Думает", "Другое АН"]}
-      />
-      <ModalSelect
-        label="Тип сделки"
-        options={["Продажа", "Аренда долгосрочная"]}
-      />
-      <ModalSelect label="Объекты в выдаче" options={["Уникальные", "Все"]} />
-      <ModalSelect label="Есть клиент" options={["Есть", "Все"]} />
-      <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} />
-      <ModalField label="Содержит слова в объявлении">
+        </FormBlock>
+        <ModalRangeField label="Площадь" unit="м²" />
+        <ModalRangeField label="Цена" unit="₽" />
+        <ModalRangeField label="Этаж" />
+        <ModalSelect
+          label="Источники"
+          options={["Авито", "Циан", "Юла", "Яндекс.Недвижимость", "ДомКлик"]}
+        />
+        <ModalSelect label="Автор" options={["Частное лицо", "Агентство"]} />
+        <ModalRangeField label="Опубликован" />
+        <ModalSelect
+          label="Статус"
+          options={["Не выбранОтказ", "Не отвечает", "Думает", "Другое АН"]}
+        />
+        <ModalSelect
+          label="Тип сделки"
+          options={["Продажа", "Аренда долгосрочная"]}
+        />
+        <ModalSelect label="Объекты в выдаче" options={["Уникальные", "Все"]} />
+        <ModalSelect label="Есть клиент" options={["Есть", "Все"]} />
+        <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} />
+        <FormBlock direction="row" label="Содержит слова в объявлении">
         <Textarea id="filter-contains-words" placeholder="Введите слова" />
-      </ModalField>
-      <ModalField label="Исключить слова в объявлении">
+        </FormBlock>
+        <FormBlock direction="row" label="Исключить слова в объявлении">
         <Textarea id="filter-exclude-words" placeholder="Введите слова" />
-      </ModalField>
-      <ModalRangeField label="Год постройки" />
-      <ModalSelect
-        label="Тип ремонта"
-        options={[
-          "Косметический",
-          "Требуется",
-          "Дизайнерский",
-          "Чистовая отделка",
-          "Черновая отделка",
-          "Без ремонта",
-          "Предчистовая отделка",
-          "Евроремонт",
-        ]}
-      />
-    </div>
+        </FormBlock>
+        <ModalRangeField label="Год постройки" />
+        <ModalSelect
+          label="Тип ремонта"
+          options={[
+            "Косметический",
+            "Требуется",
+            "Дизайнерский",
+            "Чистовая отделка",
+            "Черновая отделка",
+            "Без ремонта",
+            "Предчистовая отделка",
+            "Евроремонт",
+          ]}
+        />
+      </FormSet>
+    </form>
   );
 }
 

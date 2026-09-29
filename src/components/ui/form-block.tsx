@@ -12,6 +12,8 @@ type FormBlockProps = React.ComponentProps<"div"> & {
   gap?: React.CSSProperties["gap"]
   /** Visible label for the control. */
   label?: React.ReactNode
+  /** Width of the label. Overrides FormSet.labelWidth. */
+  labelWidth?: React.CSSProperties["width"]
   /** Props forwarded to FormLabel. */
   labelProps?: Omit<FormLabelProps, "children">
 }
@@ -24,11 +26,13 @@ function FormBlock({
   gap,
   label = "Label",
   labelProps,
+  labelWidth,
   style,
   ...props
 }: FormBlockProps) {
   const resolvedGap = gap ?? (direction === "row" ? "calc(var(--spacing) * 4)" : "calc(var(--spacing) * 1)")
-  const { className: labelClassName, ...restLabelProps } = labelProps ?? {}
+  const { className: labelClassName, style: labelStyle, ...restLabelProps } = labelProps ?? {}
+  const resolvedLabelWidth = labelWidth ?? labelStyle?.width ?? "var(--rhood-form-set-label-width)"
 
   return (
     <div
@@ -43,6 +47,7 @@ function FormBlock({
       <FormLabel
         {...restLabelProps}
         className={cn(labelClassName, direction === "row" && "pt-2")}
+        style={{ ...labelStyle, width: resolvedLabelWidth }}
       >
         {label}
       </FormLabel>
