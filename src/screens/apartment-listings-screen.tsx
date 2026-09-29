@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { IconButton } from "@/components/ui/icon-button";
-import { MainHeader, type ListingFilters } from "@/components/ui/main-header";
+import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
@@ -166,42 +166,6 @@ function getListingUrl(listing: (typeof listings)[number]) {
   return `${sourceHosts[listing.domain] ?? ""}${listing.url}`;
 }
 
-const initialListingFilters: ListingFilters = {
-  area: { from: "", to: "" },
-  price: { from: "", to: "" },
-  propertyType: "Квартиры",
-  rooms: [],
-};
-
-function getNumberFilterValue(value: string) {
-  return value ? Number(value) : null;
-}
-
-function matchesListingFilters(
-  listing: (typeof listings)[number],
-  filters: ListingFilters,
-) {
-  const areaFrom = getNumberFilterValue(filters.area.from);
-  const areaTo = getNumberFilterValue(filters.area.to);
-  const priceFrom = getNumberFilterValue(filters.price.from);
-  const priceTo = getNumberFilterValue(filters.price.to);
-  const matchesPropertyType = filters.propertyType === "Квартиры" && listing.type === "FLAT";
-  const matchesRooms =
-    filters.rooms.length === 0 ||
-    filters.rooms.some((room) =>
-      room === "4+" ? listing.roomCount >= 4 : listing.roomCount === Number(room),
-    );
-
-  return (
-    matchesPropertyType &&
-    matchesRooms &&
-    (areaFrom === null || listing.area >= areaFrom) &&
-    (areaTo === null || listing.area <= areaTo) &&
-    (priceFrom === null || getPrice(listing) >= priceFrom) &&
-    (priceTo === null || getPrice(listing) <= priceTo)
-  );
-}
-
 function ListingDetailDrawer({
   listing,
   onCloseComplete,
@@ -232,7 +196,8 @@ function ListingDetailDrawer({
               disabled={!listing.phone}
               endIcon={false}
               onClick={() => {
-                if (listing.phone) window.location.href = `tel:${listing.phone}`;
+                if (listing.phone)
+                  window.location.href = `tel:${listing.phone}`;
               }}
               size="md"
               startIcon={<Phone aria-hidden="true" strokeWidth={2} />}
@@ -281,7 +246,10 @@ function ListingDetailDrawer({
                 </dd>
               </div>
               <div className="col-span-2 flex gap-2">
-                <MapPin aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <MapPin
+                  aria-hidden="true"
+                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
+                />
                 <div className="grid gap-1">
                   <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
                     Адрес
@@ -290,7 +258,10 @@ function ListingDetailDrawer({
                 </div>
               </div>
               <div className="col-span-2 flex gap-2">
-                <CalendarClock aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <CalendarClock
+                  aria-hidden="true"
+                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
+                />
                 <div className="grid gap-1">
                   <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
                     Опубликовано
@@ -309,7 +280,10 @@ function ListingDetailDrawer({
             </h3>
             <dl className="grid gap-4">
               <div className="flex gap-2">
-                <UserRound aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <UserRound
+                  aria-hidden="true"
+                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
+                />
                 <div className="grid gap-1">
                   <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
                     Продавец
@@ -323,7 +297,10 @@ function ListingDetailDrawer({
                 </div>
               </div>
               <div className="flex gap-2">
-                <Building2 aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]" />
+                <Building2
+                  aria-hidden="true"
+                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
+                />
                 <div className="grid gap-1">
                   <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
                     Источник
@@ -335,7 +312,8 @@ function ListingDetailDrawer({
                       rel="noreferrer"
                       target="_blank"
                     >
-                      {formatSource(listing.domain)} · объявление №{listing.advertId}
+                      {formatSource(listing.domain)} · объявление №
+                      {listing.advertId}
                       <ExternalLink aria-hidden="true" className="size-4" />
                     </a>
                   </dd>
@@ -803,13 +781,27 @@ function ResultRow({
       </TableCell>
 
       {!hiddenColumns.has("buyer") && (
-        <TableCell column="buyer" custom role="body" sizeSmall type="number" width={130}>
+        <TableCell
+          column="buyer"
+          custom
+          role="body"
+          sizeSmall
+          type="number"
+          width={130}
+        >
           <p className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
             {listing.buyerDemandAvailableCount}
           </p>
         </TableCell>
       )}
-      <TableCell column="call" custom role="body" sizeSmall type="text" width="content">
+      <TableCell
+        column="call"
+        custom
+        role="body"
+        sizeSmall
+        type="text"
+        width="content"
+      >
         <div className="grid">
           <span
             aria-hidden="true"
@@ -829,7 +821,14 @@ function ResultRow({
       </TableCell>
 
       {!hiddenColumns.has("price") && (
-        <TableCell column="price" custom role="body" sizeSmall type="number" width={175}>
+        <TableCell
+          column="price"
+          custom
+          role="body"
+          sizeSmall
+          type="number"
+          width={175}
+        >
           <div className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
             <p className="text-[var(--parser-text-neutral-primary)]">
               {formatNumber(price)}
@@ -842,7 +841,14 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("liquidity") && (
-        <TableCell column="liquidity" custom role="body" sizeSmall type="text" width={152}>
+        <TableCell
+          column="liquidity"
+          custom
+          role="body"
+          sizeSmall
+          type="text"
+          width={152}
+        >
           <Chip
             appearance="muted"
             className="self-start"
@@ -858,7 +864,14 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("source") && (
-        <TableCell column="source" custom role="body" sizeSmall type="text" width={190}>
+        <TableCell
+          column="source"
+          custom
+          role="body"
+          sizeSmall
+          type="text"
+          width={190}
+        >
           <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
             <p className="text-[var(--parser-text-brand)]">
               {formatSource(listing.domain)}
@@ -871,7 +884,14 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("publishedAt") && (
-        <TableCell column="publishedAt" custom role="body" sizeSmall type="text" width={150}>
+        <TableCell
+          column="publishedAt"
+          custom
+          role="body"
+          sizeSmall
+          type="text"
+          width={150}
+        >
           <p className="text-sm leading-5 tracking-[0.17px]">
             {formatPublishedAt(listing.publishedAt)}
           </p>
@@ -879,7 +899,14 @@ function ResultRow({
       )}
 
       {!hiddenColumns.has("status") && (
-        <TableCell column="status" custom role="body" sizeSmall type="text" width={236}>
+        <TableCell
+          column="status"
+          custom
+          role="body"
+          sizeSmall
+          type="text"
+          width={236}
+        >
           <Chip
             appearance="muted"
             className="self-start"
@@ -994,8 +1021,6 @@ export function ApartmentListingsScreen() {
     new Set(),
   );
   const [sort, setSort] = React.useState<SortState>(null);
-  const [listingFilters, setListingFilters] =
-    React.useState<ListingFilters>(initialListingFilters);
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [selectedListing, setSelectedListing] = React.useState<
@@ -1010,25 +1035,15 @@ export function ApartmentListingsScreen() {
     );
   }
 
-  const filteredListings = React.useMemo(
-    () => listings.filter((listing) => matchesListingFilters(listing, listingFilters)),
-    [listingFilters],
-  );
-
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-[var(--parser-text-neutral-primary)]">
-      <MainHeader
-        listingFilters={listingFilters}
-        logoHref="/Rhood/"
-        navItems={navItems}
-        onListingFiltersChange={setListingFilters}
-        showFilter
-      />
+      <MainHeader logoHref="/Rhood/" navItems={navItems} showFilter />
 
       <main className="grid min-w-0 gap-0">
-        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-4">
+        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-4 pt-8">
           <h1 className="rh-typography-h1 mb-1">
-            {formatNumber(filteredListings.length)} {filteredListings.length === 1 ? "квартира" : "квартир"} в Тюмени
+            {formatNumber(listings.length)}{" "}
+            {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
           </h1>
           <p className="text-[var(--rh-theme-text-neutral-secondary)]">
             Но вообще, сегодня-то мы проверили 19 880 объектов. Мы просто дубли
@@ -1051,7 +1066,7 @@ export function ApartmentListingsScreen() {
           <ListingsTable
             className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
             hiddenColumns={hiddenColumns}
-            listings={filteredListings}
+            listings={listings}
             onOpenDrawer={(listing) => {
               setSelectedListing(listing);
               setDrawerOpen(true);

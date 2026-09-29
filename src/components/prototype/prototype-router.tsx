@@ -1,17 +1,17 @@
-import * as React from "react"
-import { Component, LayoutDashboard } from "lucide-react"
+import * as React from "react";
+import { Component, LayoutDashboard } from "lucide-react";
 
-import { ComponentDocs } from "@/components/prototype/component-docs"
-import { ApartmentListingsScreen } from "@/screens/apartment-listings-screen"
-import { SimpleTableScreen } from "@/screens/simple-table-screen"
+import { ComponentDocs } from "@/components/prototype/component-docs";
+import { ApartmentListingsScreen } from "@/screens/apartment-listings-screen";
+import { SimpleTableScreen } from "@/screens/simple-table-screen";
 
 type PrototypeView = {
-  id: string
-  title: string
-  homeLabel: string
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  View: React.ComponentType
-}
+  id: string;
+  title: string;
+  homeLabel: string;
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  View: React.ComponentType;
+};
 
 const prototypeViews: PrototypeView[] = [
   {
@@ -35,17 +35,19 @@ const prototypeViews: PrototypeView[] = [
     icon: LayoutDashboard,
     View: SimpleTableScreen,
   },
-]
+];
 
 function getActiveViewId() {
-  return new URLSearchParams(window.location.search).get("view") ?? ""
+  return new URLSearchParams(window.location.search).get("view") ?? "";
 }
 
 function setActiveViewId(id: string) {
-  const nextUrl = id ? `?view=${encodeURIComponent(id)}` : window.location.pathname
+  const nextUrl = id
+    ? `?view=${encodeURIComponent(id)}`
+    : window.location.pathname;
 
-  window.history.pushState(null, "", nextUrl)
-  window.dispatchEvent(new PopStateEvent("popstate"))
+  window.history.pushState(null, "", nextUrl);
+  window.dispatchEvent(new PopStateEvent("popstate"));
 }
 
 function PrototypeHome() {
@@ -74,42 +76,42 @@ function PrototypeHome() {
         </nav>
       </div>
     </main>
-  )
+  );
 }
 
 export function PrototypeRouter() {
-  const [activeViewId, setActiveViewIdState] = React.useState(getActiveViewId)
-  const activeView = prototypeViews.find((view) => view.id === activeViewId)
+  const [activeViewId, setActiveViewIdState] = React.useState(getActiveViewId);
+  const activeView = prototypeViews.find((view) => view.id === activeViewId);
 
   React.useEffect(() => {
-    const handlePopState = () => setActiveViewIdState(getActiveViewId())
+    const handlePopState = () => setActiveViewIdState(getActiveViewId());
 
-    window.addEventListener("popstate", handlePopState)
-    return () => window.removeEventListener("popstate", handlePopState)
-  }, [])
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, []);
 
   React.useEffect(() => {
     if (!activeView) {
-      document.title = "RHOOD"
-      return
+      document.title = "RHOOD";
+      return;
     }
 
     if (activeView.id !== "components") {
-      document.title = activeView.title
+      document.title = activeView.title;
     }
-  }, [activeView])
+  }, [activeView]);
 
   if (!activeView) {
-    return <PrototypeHome />
+    return <PrototypeHome />;
   }
 
-  const View = activeView.View
+  const View = activeView.View;
 
   if (activeView.id === "components") {
-    return <ComponentDocs />
+    return <ComponentDocs />;
   }
 
   // The listings screen is a product surface, not a component-preview page.
   // Keep its viewport free of the prototype frame so it can be checked as-is.
-  return <View />
+  return <View />;
 }

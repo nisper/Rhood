@@ -1,18 +1,13 @@
 import * as React from "react"
-import { CircleHelp, Settings2, Menu as MenuIcon, X } from "lucide-react"
+import { CircleHelp, Menu as MenuIcon } from "lucide-react"
 
 import { Avatar } from "@/components/ui/avatar"
-import { Button } from "@/components/ui/button"
 import { HelpCenter } from "@/components/ui/help-center"
 import { IconButton } from "@/components/ui/icon-button"
-import { InputNumberRange } from "@/components/ui/input-number-range"
 import { Menu } from "@/components/ui/menu"
 import { MenuDivider } from "@/components/ui/menu-divider"
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { Modal, ModalContainer } from "@/components/ui/modal"
-import { Segment } from "@/components/ui/segment"
-import { SegmentedControl } from "@/components/ui/segmented-control"
-import { Select } from "@/components/ui/select"
+import { ToolbarFilter } from "@/components/ui/toolbar-filter"
 import { cn } from "@/lib/utils"
 
 const logoSrc = "/Rhood/assets/rhood-logo.svg"
@@ -24,19 +19,10 @@ type MainHeaderNavItem = {
   state?: "default" | "hovered"
 }
 
-type ListingFilters = {
-  area: { from: string; to: string }
-  price: { from: string; to: string }
-  propertyType: string
-  rooms: string[]
-}
-
 type MainHeaderProps = React.ComponentProps<"header"> & {
   button?: boolean
   logoHref?: string
   navItems?: MainHeaderNavItem[]
-  listingFilters?: ListingFilters
-  onListingFiltersChange?: (filters: ListingFilters) => void
   resp?: "mob" | "desk"
   showFilter?: boolean
 }
@@ -48,154 +34,11 @@ const defaultNavItems: MainHeaderNavItem[] = [
   { label: "Избранное" },
 ]
 
-const propertyTypeOptions = ["Квартиры", "Дома", "Участки"]
-const roominessOptions = ["1", "2", "3", "4+"]
-
-function MainHeaderFilter({ filters, onFiltersChange }: {
-  filters: ListingFilters
-  onFiltersChange: (filters: ListingFilters) => void
-}) {
-  const { area, price, propertyType, rooms } = filters
-  const [isPropertyTypeOpen, setIsPropertyTypeOpen] = React.useState(false)
-  const [isFiltersModalOpen, setIsFiltersModalOpen] = React.useState(false)
-  const hasActiveFilters =
-    propertyType !== propertyTypeOptions[0] ||
-    rooms.length > 0 ||
-    Boolean(area.from || area.to || price.from || price.to)
-
-  return (
-    <section
-      aria-label="Фильтры объектов"
-      className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-2"
-    >
-      <div className="relative z-10 flex min-h-14 flex-wrap items-center gap-2 bg-[var(--rh-theme-fill-neutral)] p-2 rounded-[var(--rh-sizing-island-border-radius)]">
-        <div className="flex flex-wrap items-center gap-1.5">
-          <Button
-            appearance="contrast"
-            endIcon={false}
-            onClick={() => setIsFiltersModalOpen(true)}
-            size="sm"
-            startIcon={<Settings2 aria-hidden="true" strokeWidth={2} />}
-          >
-            Фильтры
-          </Button>
-          <Select
-            className="w-[140px]"
-            expanded={isPropertyTypeOpen}
-            fullWidth
-            label={false}
-            menu={
-              isPropertyTypeOpen && (
-                <Menu className="absolute left-0 top-full z-30 mt-1 min-w-full" role="listbox">
-                  {propertyTypeOptions.map((option) => (
-                    <MenuItemSingleSelect
-                      icon={false}
-                      key={option}
-                      onClick={(event) => {
-                        event.stopPropagation()
-                        onFiltersChange({ ...filters, propertyType: option })
-                        setIsPropertyTypeOpen(false)
-                      }}
-                      rightSlot={false}
-                      role="option"
-                      secondaryText={false}
-                      selected={propertyType === option}
-                    >
-                      {option}
-                    </MenuItemSingleSelect>
-                  ))}
-                </Menu>
-              )
-            }
-            onClick={() => setIsPropertyTypeOpen((current) => !current)}
-            onExpandedChange={setIsPropertyTypeOpen}
-            size="sm"
-            value={propertyType}
-          />
-          <SegmentedControl
-            color="contrast"
-            onValueChange={(value) => onFiltersChange({ ...filters, rooms: Array.isArray(value) ? value : [value] })}
-            selectionMode="multiple"
-            size="sm"
-            value={rooms}
-          >
-            {roominessOptions.map((roominess) => (
-              <Segment key={roominess} value={roominess}>{roominess}</Segment>
-            ))}
-          </SegmentedControl>
-          <InputNumberRange
-            aria-label="Площадь"
-            className="w-[180px]"
-            endInputProps={{
-              "aria-label": "Площадь до",
-              onChange: (event) => onFiltersChange({ ...filters, area: { ...area, to: event.target.value } }),
-              placeholder: "до",
-              value: area.to,
-            }}
-            size="sm"
-            startInputProps={{
-              "aria-label": "Площадь от",
-              onChange: (event) => onFiltersChange({ ...filters, area: { ...area, from: event.target.value } }),
-              placeholder: "от",
-              value: area.from,
-            }}
-            unit="м²"
-          />
-          <InputNumberRange
-            aria-label="Цена"
-            className="w-[224px]"
-            endInputProps={{
-              "aria-label": "Цена до",
-              groupThousands: true,
-              onChange: (event) => onFiltersChange({ ...filters, price: { ...price, to: event.target.value } }),
-              placeholder: "до",
-              value: price.to,
-            }}
-            size="sm"
-            startInputProps={{
-              "aria-label": "Цена от",
-              groupThousands: true,
-              onChange: (event) => onFiltersChange({ ...filters, price: { ...price, from: event.target.value } }),
-              placeholder: "от",
-              value: price.from,
-            }}
-            unit="₽"
-          />
-          {hasActiveFilters && (
-            <IconButton
-              appearance="ghost"
-              aria-label="Сбросить фильтры"
-              icon={<X aria-hidden="true" strokeWidth={2} />}
-              onClick={() => {
-                setIsPropertyTypeOpen(false)
-                onFiltersChange({ area: { from: "", to: "" }, price: { from: "", to: "" }, propertyType: propertyTypeOptions[0], rooms: [] })
-              }}
-              size="sm"
-            />
-          )}
-        </div>
-      </div>
-
-      {isFiltersModalOpen && (
-        <ModalContainer>
-          <Modal
-            onOpenChange={setIsFiltersModalOpen}
-            open={isFiltersModalOpen}
-            title="Фильтры"
-          />
-        </ModalContainer>
-      )}
-    </section>
-  )
-}
-
 function MainHeader({
   button = true,
   className,
   logoHref,
   navItems = defaultNavItems,
-  listingFilters,
-  onListingFiltersChange,
   resp = "desk",
   showFilter = false,
   ...props
@@ -392,12 +235,10 @@ function MainHeader({
         )}
         </div>
       </div>
-      {showFilter && listingFilters && onListingFiltersChange && (
-        <MainHeaderFilter filters={listingFilters} onFiltersChange={onListingFiltersChange} />
-      )}
+      {showFilter && <ToolbarFilter />}
     </header>
   )
 }
 
 export { MainHeader }
-export type { ListingFilters, MainHeaderNavItem, MainHeaderProps }
+export type { MainHeaderNavItem, MainHeaderProps }

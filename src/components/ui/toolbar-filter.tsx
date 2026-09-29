@@ -1,37 +1,64 @@
-import * as React from "react"
-import { Search, Settings2, SlidersHorizontal, X } from "lucide-react"
+import * as React from "react";
+import { Search, Settings2, SlidersHorizontal, X } from "lucide-react";
 
-import { Button } from "@/components/ui/button"
-import { InputNumberRange } from "@/components/ui/input-number-range"
-import { Menu } from "@/components/ui/menu"
-import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { Segment } from "@/components/ui/segment"
-import { SegmentedControl } from "@/components/ui/segmented-control"
-import { Select } from "@/components/ui/select"
-import { cn } from "@/lib/utils"
+import { Button } from "@/components/ui/button";
+import { IconButton } from "@/components/ui/icon-button";
+import { InputNumberRange } from "@/components/ui/input-number-range";
+import { Menu } from "@/components/ui/menu";
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { Modal, ModalContainer } from "@/components/ui/modal";
+import { Segment } from "@/components/ui/segment";
+import { SegmentedControl } from "@/components/ui/segmented-control";
+import { Select } from "@/components/ui/select";
+import { Textarea } from "@/components/ui/textarea";
+import { Textfield } from "@/components/ui/text-field";
+import { cn } from "@/lib/utils";
 
-type ToolbarFilterResp = "desk" | "mob"
+type ToolbarFilterResp = "desk" | "mob";
 
 type ToolbarFilterProps = React.ComponentProps<"section"> & {
-  empty?: boolean
-  progressLinear?: boolean
-  resp?: ToolbarFilterResp
-}
+  empty?: boolean;
+  progressLinear?: boolean;
+  resultCount?: number;
+  resp?: ToolbarFilterResp;
+};
 
-const roominessOptions = ["Студия", "1", "2", "3", "4+"]
-const propertyTypeOptions = ["Квартиры", "Дома", "Участки"]
+const roominessOptions = ["Студия", "1", "2", "3", "4+"];
+const propertyTypeOptions = ["Квартиры", "Дома", "Участки"];
+
+function ModalField({
+  children,
+  label,
+}: {
+  children: React.ReactNode;
+  label: string;
+}) {
+  return (
+    <div className="grid grid-cols-2 items-center gap-4">
+      <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-primary)]">
+        {label}
+      </p>
+      <div className="min-w-0">{children}</div>
+    </div>
+  );
+}
 
 function FilterSelect({
   label,
+  onValueChange,
   options = [label],
+  value: controlledValue,
   widthClass,
 }: {
-  label: string
-  options?: readonly string[]
-  widthClass?: string
+  label: string;
+  onValueChange?: (value: string) => void;
+  options?: readonly string[];
+  value?: string;
+  widthClass?: string;
 }) {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState(label)
+  const [open, setOpen] = React.useState(false);
+  const [uncontrolledValue, setUncontrolledValue] = React.useState(label);
+  const value = controlledValue ?? uncontrolledValue;
 
   return (
     <div>
@@ -41,68 +68,111 @@ function FilterSelect({
         fullWidth={Boolean(widthClass)}
         label={false}
         onExpandedChange={setOpen}
-        menu={open && (
-          <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full" role="listbox">
-            {options.map((option) => (
-              <MenuItemSingleSelect
-                icon={false}
-                key={option}
-                onClick={(event) => {
-                  event.stopPropagation()
-                  setValue(option)
-                  setOpen(false)
-                }}
-                rightSlot={false}
-                role="option"
-                secondaryText={false}
-                selected={option === value}
-              >
-                {option}
-              </MenuItemSingleSelect>
-            ))}
-          </Menu>
-        )}
+        menu={
+          open && (
+            <Menu
+              className="absolute left-0 top-full z-20 mt-1 min-w-full"
+              role="listbox"
+            >
+              {options.map((option) => (
+                <MenuItemSingleSelect
+                  icon={false}
+                  key={option}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    if (controlledValue === undefined) setUncontrolledValue(option);
+                    onValueChange?.(option);
+                    setOpen(false);
+                  }}
+                  rightSlot={false}
+                  role="option"
+                  secondaryText={false}
+                  selected={option === value}
+                >
+                  {option}
+                </MenuItemSingleSelect>
+              ))}
+            </Menu>
+          )
+        }
         onClick={() => setOpen((current) => !current)}
         size="sm"
         value={value}
       />
     </div>
-  )
+  );
 }
 
 function FilterRange({
+  endValue,
+  groupThousands = false,
+  onEndChange,
+  onStartChange,
   suffix,
+  startValue,
   widthClass,
 }: {
-  suffix: string
-  widthClass: string
+  endValue: string;
+  groupThousands?: boolean;
+  onEndChange: (value: string) => void;
+  onStartChange: (value: string) => void;
+  suffix: string;
+  startValue: string;
+  widthClass: string;
 }) {
   return (
     <InputNumberRange
       aria-label={`Диапазон ${suffix}`}
       className={widthClass}
       size="sm"
-      startInputProps={{ placeholder: "от" }}
-      endInputProps={{ placeholder: "до" }}
+      startInputProps={{
+        groupThousands,
+        onChange: (event) => onStartChange(event.target.value),
+        placeholder: "от",
+        value: startValue,
+      }}
+      endInputProps={{
+        groupThousands,
+        onChange: (event) => onEndChange(event.target.value),
+        placeholder: "до",
+        value: endValue,
+      }}
       unit={suffix}
     />
-  )
+  );
 }
 
-function RoominessGroup({ empty }: { empty: boolean }) {
+function RoominessGroup({
+  onValueChange,
+  value,
+}: {
+  onValueChange: (value: string[]) => void;
+  value: string[];
+}) {
   return (
     <SegmentedControl
       color="contrast"
-      defaultValue={empty ? undefined : roominessOptions[0]}
+      onValueChange={(nextValue) => onValueChange(Array.isArray(nextValue) ? nextValue : [nextValue])}
       selectionMode="multiple"
       size="sm"
+      value={value}
     >
-      {roominessOptions.map((item) => <Segment key={item} value={item}>{item}</Segment>)}
+      {roominessOptions.map((item) => (
+        <Segment key={item} value={item}>
+          {item}
+        </Segment>
+      ))}
     </SegmentedControl>
-  )
+  );
 }
 
-function MobileFilterButton({ empty }: { empty: boolean }) {
+function MobileFilterButton({
+  empty,
+  onClick,
+}: {
+  empty: boolean;
+  onClick: () => void;
+}) {
   return (
     <Button
       appearance="contrast"
@@ -110,34 +180,249 @@ function MobileFilterButton({ empty }: { empty: boolean }) {
       counter={!empty}
       counterValue={1}
       endIcon={false}
+      onClick={onClick}
       size="sm"
-      startIcon={empty ? <SlidersHorizontal aria-hidden="true" strokeWidth={2} /> : false}
+      startIcon={
+        empty ? <SlidersHorizontal aria-hidden="true" strokeWidth={2} /> : false
+      }
     >
       Фильтры
     </Button>
-  )
+  );
+}
+
+function ModalSelect({
+  label,
+  options,
+}: {
+  label: string;
+  options: readonly string[];
+}) {
+  const [expanded, setExpanded] = React.useState(false);
+  const [value, setValue] = React.useState("Не выбрано");
+
+  return (
+    <ModalField label={label}>
+      <Select
+        expanded={expanded}
+        fullWidth
+        label={false}
+        menu={
+          expanded && (
+            <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full" role="listbox">
+              {options.map((option) => (
+                <MenuItemSingleSelect
+                  icon={false}
+                  key={option}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setValue(option);
+                    setExpanded(false);
+                  }}
+                  rightSlot={false}
+                  role="option"
+                  secondaryText={false}
+                  selected={option === value}
+                >
+                  {option}
+                </MenuItemSingleSelect>
+              ))}
+            </Menu>
+          )
+        }
+        onClick={() => setExpanded((current) => !current)}
+        onExpandedChange={setExpanded}
+        value={value}
+      />
+    </ModalField>
+  );
+}
+
+function ModalRangeField({ label, unit }: { label: string; unit?: string }) {
+  return (
+    <ModalField label={label}>
+      <InputNumberRange
+        endInputProps={{ placeholder: "до" }}
+        size="md"
+        startInputProps={{ placeholder: "от" }}
+        unit={unit}
+      />
+    </ModalField>
+  );
+}
+
+function ModalFilters() {
+  return (
+    <div className="grid gap-4">
+      <ModalField label="Расположение">
+        <Textfield id="filter-location" placeholder="Введите расположение" />
+      </ModalField>
+      <ModalSelect
+        label="Подтип недвижимости"
+        options={["Студия", "Свободная планировка", "Апартаменты", "Гостинка"]}
+      />
+      <ModalField label="Комнатность">
+        <SegmentedControl
+          className="w-full"
+          color="contrast"
+          selectionMode="multiple"
+          size="md"
+        >
+          {roominessOptions.map((room) => (
+            <Segment className="flex-1" key={room} value={room}>{room}</Segment>
+          ))}
+        </SegmentedControl>
+      </ModalField>
+      <ModalRangeField label="Площадь" unit="м²" />
+      <ModalRangeField label="Цена" unit="₽" />
+      <ModalRangeField label="Этаж" />
+      <ModalSelect
+        label="Источники"
+        options={["Авито", "Циан", "Юла", "Яндекс.Недвижимость", "ДомКлик"]}
+      />
+      <ModalSelect label="Автор" options={["Частное лицо", "Агентство"]} />
+      <ModalRangeField label="Опубликован" />
+      <ModalSelect
+        label="Статус"
+        options={["Не выбранОтказ", "Не отвечает", "Думает", "Другое АН"]}
+      />
+      <ModalSelect
+        label="Тип сделки"
+        options={["Продажа", "Аренда долгосрочная"]}
+      />
+      <ModalSelect label="Объекты в выдаче" options={["Уникальные", "Все"]} />
+      <ModalSelect label="Есть клиент" options={["Есть", "Все"]} />
+      <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} />
+      <ModalField label="Содержит слова в объявлении">
+        <Textarea id="filter-contains-words" placeholder="Введите слова" />
+      </ModalField>
+      <ModalField label="Исключить слова в объявлении">
+        <Textarea id="filter-exclude-words" placeholder="Введите слова" />
+      </ModalField>
+      <ModalRangeField label="Год постройки" />
+      <ModalSelect
+        label="Тип ремонта"
+        options={[
+          "Косметический",
+          "Требуется",
+          "Дизайнерский",
+          "Чистовая отделка",
+          "Черновая отделка",
+          "Без ремонта",
+          "Предчистовая отделка",
+          "Евроремонт",
+        ]}
+      />
+    </div>
+  );
 }
 
 function ToolbarFilter({
   className,
   empty = true,
   progressLinear = true,
+  resultCount = 50,
   resp = "desk",
   ...props
 }: ToolbarFilterProps) {
-  const isMobile = resp === "mob"
+  const isMobile = resp === "mob";
+  const [filterVersion, setFilterVersion] = React.useState(0);
+  const [isFiltersModalOpen, setIsFiltersModalOpen] = React.useState(false);
+  const [modalFiltersKey, setModalFiltersKey] = React.useState(0);
+  const initialRooms = empty ? [] : [roominessOptions[0]];
+  const [area, setArea] = React.useState({ from: "", to: "" });
+  const [price, setPrice] = React.useState({ from: "", to: "" });
+  const [propertyType, setPropertyType] = React.useState(propertyTypeOptions[0]);
+  const [rooms, setRooms] = React.useState<string[]>(initialRooms);
+  const [wasReset, setWasReset] = React.useState(false);
+  const hasChangedFilters =
+    propertyType !== propertyTypeOptions[0] ||
+    rooms.length !== initialRooms.length ||
+    rooms.some((room) => !initialRooms.includes(room)) ||
+    Boolean(area.from || area.to || price.from || price.to);
+  const showClearButton = (!empty && !wasReset) || hasChangedFilters;
+
+  function clearModalFilters() {
+    setModalFiltersKey((key) => key + 1);
+  }
+
+  const filtersModal = isFiltersModalOpen && (
+    <ModalContainer>
+      <Modal
+        footer={
+          <>
+            <Button
+              appearance="default"
+              endIcon={false}
+              onClick={clearModalFilters}
+              size="md"
+              startIcon={false}
+            >
+              Очистить
+            </Button>
+            <Button
+              appearance="primary"
+              endIcon={false}
+              onClick={() => setIsFiltersModalOpen(false)}
+              size="md"
+              startIcon={false}
+            >
+              Показать {new Intl.NumberFormat("ru-RU").format(resultCount)} объектов
+            </Button>
+          </>
+        }
+        maxWidth={720}
+        onOpenChange={setIsFiltersModalOpen}
+        open={isFiltersModalOpen}
+        title="Фильтры"
+      >
+        <ModalFilters key={modalFiltersKey} />
+      </Modal>
+    </ModalContainer>
+  );
+
+  function resetFilters() {
+    setFilterVersion((version) => version + 1);
+    setArea({ from: "", to: "" });
+    setPrice({ from: "", to: "" });
+    setPropertyType(propertyTypeOptions[0]);
+    setRooms(initialRooms);
+    setWasReset(true);
+  }
 
   if (isMobile) {
     return (
-      <section
-        className={cn(
-          "rhood-page-gutter relative flex items-center gap-1 bg-[var(--parser-fill-neutral)] py-2",
-          className,
+      <>
+        <section
+          key={filterVersion}
+          className={cn(
+            "rhood-page-gutter relative flex items-center gap-1 border-y border-[color:var(--rh-theme-border-light)] py-2",
+            className,
+          )}
+          {...props}
+        >
+        <MobileFilterButton
+          empty={empty}
+          onClick={() => setIsFiltersModalOpen(true)}
+        />
+        {showClearButton && (
+          <IconButton
+            appearance="ghost"
+            aria-label="Сбросить фильтры"
+            icon={<X aria-hidden="true" strokeWidth={2} />}
+            onClick={resetFilters}
+            size="sm"
+          />
         )}
-        {...props}
-      >
-        <MobileFilterButton empty={empty} />
-        <FilterSelect label="Квартиры" options={propertyTypeOptions} />
+        <FilterSelect
+          label="Квартиры"
+          onValueChange={(value) => {
+            setPropertyType(value);
+            setWasReset(false);
+          }}
+          options={propertyTypeOptions}
+          value={propertyType}
+        />
         <FilterSelect label={empty ? "Комнаты" : "1 ком."} />
         <FilterSelect label={empty ? "Площадь" : "50–70 м²"} />
         <FilterSelect label={empty ? "Цена" : "8–12,5 млн. ₽"} />
@@ -147,34 +432,94 @@ function ToolbarFilter({
             <div className="h-full w-1/2 bg-[var(--parser-fill-brand)]" />
           </div>
         )}
-      </section>
-    )
+        </section>
+        {filtersModal}
+      </>
+    );
   }
 
   return (
-    <section
-      className={cn(
-        "rhood-page-gutter relative flex flex-wrap items-center gap-4 overflow-visible bg-[var(--parser-fill-neutral)] py-3",
-        className,
-      )}
-      {...props}
-    >
-      <div className="flex flex-wrap items-start gap-2 overflow-visible">
-        <FilterSelect label="Квартиры" options={propertyTypeOptions} widthClass="w-[150px]" />
-        <RoominessGroup empty={empty} />
-        <FilterRange suffix="м²" widthClass="w-[152px]" />
-        <FilterRange suffix="₽" widthClass="w-[240px]" />
+    <>
+      <section
+        className={cn(
+          "rhood-page-gutter relative flex flex-wrap items-center gap-4 overflow-visible border-y border-[color:var(--rh-theme-border-light)] py-3",
+          className,
+        )}
+        {...props}
+      >
+      <div
+        key={filterVersion}
+        className="flex flex-wrap items-start gap-2 overflow-visible"
+      >
+        <FilterSelect
+          label="Квартиры"
+          onValueChange={(value) => {
+            setPropertyType(value);
+            setWasReset(false);
+          }}
+          options={propertyTypeOptions}
+          value={propertyType}
+          widthClass="w-[150px]"
+        />
+        <RoominessGroup
+          onValueChange={(value) => {
+            setRooms(value);
+            setWasReset(false);
+          }}
+          value={rooms}
+        />
+        <FilterRange
+          endValue={area.to}
+          onEndChange={(value) => {
+            setArea((current) => ({ ...current, to: value }));
+            setWasReset(false);
+          }}
+          onStartChange={(value) => {
+            setArea((current) => ({ ...current, from: value }));
+            setWasReset(false);
+          }}
+          suffix="м²"
+          startValue={area.from}
+          widthClass="w-[152px]"
+        />
+        <FilterRange
+          groupThousands
+          endValue={price.to}
+          onEndChange={(value) => {
+            setPrice((current) => ({ ...current, to: value }));
+            setWasReset(false);
+          }}
+          onStartChange={(value) => {
+            setPrice((current) => ({ ...current, from: value }));
+            setWasReset(false);
+          }}
+          suffix="₽"
+          startValue={price.from}
+          widthClass="w-[240px]"
+        />
 
         <Button
-          appearance="contrast"
+          appearance="default"
           counter={!empty}
           counterValue={8}
           endIcon={false}
+          onClick={() => setIsFiltersModalOpen(true)}
           size="sm"
-          startIcon={empty ? <Settings2 aria-hidden="true" strokeWidth={2} /> : false}
+          startIcon={
+            empty ? <Settings2 aria-hidden="true" strokeWidth={2} /> : false
+          }
         >
           Фильтры
         </Button>
+        {showClearButton && (
+          <IconButton
+            appearance="ghost"
+            aria-label="Сбросить фильтры"
+            icon={<X aria-hidden="true" strokeWidth={2} />}
+            onClick={resetFilters}
+            size="sm"
+          />
+        )}
       </div>
 
       {!empty && (
@@ -187,15 +532,6 @@ function ToolbarFilter({
           >
             Сохранить фильтры
           </Button>
-          <Button
-            appearance="ghost"
-            aria-label="Clear filters"
-            className="px-2"
-            endIcon={false}
-            iconOnly
-            size="sm"
-            startIcon={<X aria-hidden="true" strokeWidth={2} />}
-          />
         </div>
       )}
 
@@ -204,9 +540,11 @@ function ToolbarFilter({
           <div className="h-full w-1/2 bg-[var(--parser-fill-brand)]" />
         </div>
       )}
-    </section>
-  )
+      </section>
+      {filtersModal}
+    </>
+  );
 }
 
-export { ToolbarFilter }
-export type { ToolbarFilterProps, ToolbarFilterResp }
+export { ToolbarFilter };
+export type { ToolbarFilterProps, ToolbarFilterResp };
