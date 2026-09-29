@@ -25,14 +25,17 @@ import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
+import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import listings from "@/data/mock/real-estate-listings.json";
 
-const navItems = [
-  { label: "Набор базы", active: true },
-  { label: "Мои объекты" },
+function getNavItems(activeItem: "base" | "my") {
+  return [
+  { label: "Набор базы", active: activeItem === "base", href: "?view=apartment-listings" },
+  { label: "Мои объекты", active: activeItem === "my", href: "?view=my-listings" },
   { label: "Подборки" },
   { label: "Избранное" },
-];
+  ];
+}
 
 type SortColumn = "buyer" | "price" | "pricePerM2" | "publishedAt";
 type SortState = { column: SortColumn; direction: "asc" | "desc" } | null;
@@ -341,12 +344,16 @@ function TableToolbar({
   onHiddenColumnsChange,
   onLeaderboardOpen,
   onSortChange,
+  showLeaderboard = true,
+  showMap = true,
   sort,
 }: {
   hiddenColumns: ReadonlySet<ColumnKey>;
   onHiddenColumnsChange: (columns: Set<ColumnKey>) => void;
   onLeaderboardOpen: () => void;
   onSortChange: (sort: SortState) => void;
+  showLeaderboard?: boolean;
+  showMap?: boolean;
   sort: SortState;
 }) {
   const [columnsOpen, setColumnsOpen] = React.useState(false);
@@ -423,7 +430,7 @@ function TableToolbar({
         value={selectedSortOption?.label ?? "Сортировка"}
       />
 
-      <Button
+      {showMap && <Button
         appearance="default"
         endIcon={false}
         onClick={() =>
@@ -437,7 +444,7 @@ function TableToolbar({
         startIcon={<Map aria-hidden="true" strokeWidth={2} />}
       >
         На карте
-      </Button>
+      </Button>}
 
       <div className="relative" ref={columnsMenuRef}>
         <Button
@@ -491,7 +498,7 @@ function TableToolbar({
           </Menu>
         )}
       </div>
-      <Button
+      {showLeaderboard && <Button
         appearance="default"
         endIcon={false}
         onClick={onLeaderboardOpen}
@@ -505,7 +512,7 @@ function TableToolbar({
         }
       >
         Таблица лидеров
-      </Button>
+      </Button>}
     </div>
   );
 }
@@ -1016,7 +1023,15 @@ function ListingsTable({
   );
 }
 
-export function ApartmentListingsScreen() {
+export function ApartmentListingsScreen({
+  layout = "edge-to-edge",
+  view = "base",
+}: {
+  layout?: "edge-to-edge" | "islands";
+  view?: "base" | "my";
+}) {
+  const isMyListings = view === "my";
+  const isIslandLayout = layout === "islands";
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
@@ -1035,9 +1050,92 @@ export function ApartmentListingsScreen() {
     );
   }
 
+  if (isIslandLayout) {
+    return (
+      <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-under-islands)] text-[var(--parser-text-neutral-primary)]">
+        <main className="rhood-page-gutter grid min-w-0 gap-[var(--rh-sizing-island-gap)] py-[var(--rh-sizing-island-gap)]">
+          <section
+            aria-label="Основная навигация"
+            className="overflow-hidden rounded-[var(--rh-sizing-island-border-radius)] border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]"
+          >
+            <MainHeader
+              logoHref="/Rhood/"
+              navItems={getNavItems(isMyListings ? "my" : "base")}
+            />
+          </section>
+
+          {!isMyListings && <ToolbarFilter island />}
+
+          <section
+            aria-label="Результаты поиска"
+            className="min-w-0"
+          >
+            <header>
+              <h1 className="rh-typography-h1 mb-1">
+                {formatNumber(listings.length)}{" "}
+                {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
+              </h1>
+              <p className="text-[var(--rh-theme-text-neutral-secondary)]">
+                Но вообще, сегодня-то мы проверили 19 880 объектов. Мы просто дубли
+                не показываем
+              </p>
+            </header>
+            <section
+              aria-label="Управление выдачей"
+            >
+              <TableToolbar
+                hiddenColumns={hiddenColumns}
+                onHiddenColumnsChange={setHiddenColumns}
+                onLeaderboardOpen={() => setLeaderboardOpen(true)}
+                onSortChange={setSort}
+                showLeaderboard={!isMyListings}
+                showMap={!isMyListings}
+                sort={sort}
+              />
+            </section>
+            <section aria-label="Список квартир" className="overflow-x-auto">
+              <ListingsTable
+                hiddenColumns={hiddenColumns}
+                listings={listings}
+                onOpenDrawer={(listing) => {
+                  setSelectedListing(listing);
+                  setDrawerOpen(true);
+                }}
+                onSort={handleSort}
+                sort={sort}
+                sortable={false}
+              />
+            </section>
+            <footer>
+              <Button appearance="default" endIcon={false} size="md" startIcon={false}>
+                Показать еще 50 объектов
+              </Button>
+            </footer>
+          </section>
+
+          {leaderboardOpen && (
+            <LeaderboardModal onOpenChange={setLeaderboardOpen} open={leaderboardOpen} />
+          )}
+          {selectedListing && (
+            <ListingDetailDrawer
+              listing={selectedListing}
+              onCloseComplete={() => setSelectedListing(null)}
+              onOpenChange={setDrawerOpen}
+              open={drawerOpen}
+            />
+          )}
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen overflow-x-hidden bg-white text-[var(--parser-text-neutral-primary)]">
-      <MainHeader logoHref="/Rhood/" navItems={navItems} showFilter />
+      <MainHeader
+        logoHref="/Rhood/"
+        navItems={getNavItems(isMyListings ? "my" : "base")}
+      />
+      {!isMyListings && <ToolbarFilter />}
 
       <main className="grid min-w-0 gap-0">
         <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-4 pt-8">
@@ -1059,6 +1157,8 @@ export function ApartmentListingsScreen() {
             onHiddenColumnsChange={setHiddenColumns}
             onLeaderboardOpen={() => setLeaderboardOpen(true)}
             onSortChange={setSort}
+            showLeaderboard={!isMyListings}
+            showMap={!isMyListings}
             sort={sort}
           />
         </section>
@@ -1103,4 +1203,12 @@ export function ApartmentListingsScreen() {
       </main>
     </div>
   );
+}
+
+export function MyListingsScreen() {
+  return <ApartmentListingsScreen view="my" />;
+}
+
+export function ApartmentListingsIslandsScreen() {
+  return <ApartmentListingsScreen layout="islands" />;
 }

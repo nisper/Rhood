@@ -858,7 +858,6 @@ const componentDocs: ComponentDoc[] = [
       <Canvas>
         <div className="grid gap-6">
           <MainHeader />
-          <MainHeader showFilter />
           <MainHeader resp="mob" />
         </div>
       </Canvas>

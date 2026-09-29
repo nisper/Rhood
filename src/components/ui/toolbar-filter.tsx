@@ -20,6 +20,8 @@ type ToolbarFilterResp = "desk" | "mob";
 
 type ToolbarFilterProps = React.ComponentProps<"section"> & {
   empty?: boolean;
+  /** Renders the toolbar as a self-contained surface on the island layout. */
+  island?: boolean;
   progressLinear?: boolean;
   resultCount?: number;
   resp?: ToolbarFilterResp;
@@ -307,6 +309,7 @@ function ModalFilters() {
 function ToolbarFilter({
   className,
   empty = true,
+  island = false,
   progressLinear = true,
   resultCount = 50,
   resp = "desk",
@@ -383,7 +386,10 @@ function ToolbarFilter({
         <section
           key={filterVersion}
           className={cn(
-            "rhood-page-gutter relative flex items-center gap-1 border-y border-[color:var(--rh-theme-border-light)] py-2",
+            "rhood-page-gutter relative flex items-center gap-1",
+            island
+              ? "rounded-[var(--rh-sizing-island-border-radius)] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)] py-2"
+              : "border-y border-[color:var(--rh-theme-border-light)] py-2",
             className,
           )}
           {...props}
@@ -429,7 +435,10 @@ function ToolbarFilter({
     <>
       <section
         className={cn(
-          "rhood-page-gutter relative flex flex-wrap items-center gap-4 overflow-visible border-y border-[color:var(--rh-theme-border-light)] py-3",
+          "rhood-page-gutter relative flex flex-wrap items-center gap-4 overflow-visible",
+          island
+            ? "rounded-[var(--rh-sizing-island-border-radius)] border border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)] py-3"
+            : "border-y border-[color:var(--rh-theme-border-light)] py-3",
           className,
         )}
         {...props}

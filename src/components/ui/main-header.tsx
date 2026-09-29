@@ -7,13 +7,13 @@ import { IconButton } from "@/components/ui/icon-button"
 import { Menu } from "@/components/ui/menu"
 import { MenuDivider } from "@/components/ui/menu-divider"
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { ToolbarFilter } from "@/components/ui/toolbar-filter"
 import { cn } from "@/lib/utils"
 
 const logoSrc = "/Rhood/assets/rhood-logo.svg"
 
 type MainHeaderNavItem = {
   active?: boolean
+  href?: string
   label: string
   propNew?: boolean
   state?: "default" | "hovered"
@@ -24,7 +24,6 @@ type MainHeaderProps = React.ComponentProps<"header"> & {
   logoHref?: string
   navItems?: MainHeaderNavItem[]
   resp?: "mob" | "desk"
-  showFilter?: boolean
 }
 
 const defaultNavItems: MainHeaderNavItem[] = [
@@ -40,7 +39,6 @@ function MainHeader({
   logoHref,
   navItems = defaultNavItems,
   resp = "desk",
-  showFilter = false,
   ...props
 }: MainHeaderProps) {
   const isMobile = resp === "mob"
@@ -114,41 +112,59 @@ function MainHeader({
         )}
         </div>
 
-        <nav className="absolute left-1/2 flex -translate-x-1/2 items-center gap-1">
-        {navItems.map((item) => (
-          <button
-            className={cn(
-              "group inline-flex cursor-pointer items-center justify-center rounded-full px-3 py-2",
-              item.active || item.state === "hovered"
-                ? "gap-2 bg-[var(--rh-theme-fill-neutral)] hover:bg-[var(--rh-theme-fill-neutral-hover)]"
-                : "gap-1 hover:gap-2 hover:bg-[var(--rh-theme-fill-neutral-hover)]",
-            )}
-            key={item.label}
-            type="button"
-          >
-            <span
-              className={cn(
-                "rh-typography-b2-med whitespace-nowrap",
-                item.active || item.state === "hovered"
-                  ? "text-[var(--rh-theme-text-neutral-primary)]"
-                  : "text-[var(--rh-theme-text-neutral-secondary)] group-hover:text-[var(--rh-theme-text-neutral-primary)]",
-              )}
-              style={{ fontVariationSettings: "'wdth' 100" }}
-            >
-              {item.label}
-            </span>
-            {item.propNew && (
-              <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
-                <span
-                  className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
-                  style={{ fontVariationSettings: "'wdth' 100" }}
-                >
-                  НОВОЕ
-                </span>
+        <nav className="flex items-center gap-0">
+        {navItems.map((item) => {
+          const className = cn(
+            "group inline-flex cursor-pointer items-center justify-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] px-2 py-2",
+            item.active || item.state === "hovered"
+              ? "gap-2"
+              : "gap-1 hover:gap-2",
+          )
+          const content = (
+            <>
+              <span
+                className={cn(
+                  "rh-typography-b2 whitespace-nowrap",
+                  item.active || item.state === "hovered"
+                    ? "text-[var(--rh-theme-text-neutral-primary)]"
+                    : "text-[var(--rh-theme-text-neutral-secondary)] group-hover:text-[var(--rh-theme-text-neutral-primary)]",
+                )}
+                style={{ fontVariationSettings: "'wdth' 100" }}
+              >
+                {item.label}
               </span>
-            )}
-          </button>
-        ))}
+              {item.propNew && (
+                <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
+                  <span
+                    className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
+                    style={{ fontVariationSettings: "'wdth' 100" }}
+                  >
+                    НОВОЕ
+                  </span>
+                </span>
+              )}
+            </>
+          )
+
+          return item.href ? (
+            <a
+              aria-current={item.active ? "page" : undefined}
+              className={className}
+              href={item.href}
+              key={item.label}
+            >
+              {content}
+            </a>
+          ) : (
+            <button
+              className={className}
+              key={item.label}
+              type="button"
+            >
+              {content}
+            </button>
+          )
+        })}
         </nav>
 
         <div className="ml-auto flex h-[34px] shrink-0 items-center">
@@ -235,7 +251,6 @@ function MainHeader({
         )}
         </div>
       </div>
-      {showFilter && <ToolbarFilter />}
     </header>
   )
 }
