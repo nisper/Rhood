@@ -3,25 +3,22 @@ import { Star } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-type FormControlLabelColor = "default" | "error" | "disabled"
-type FormControlLabelFontWeight = "regular" | "medium"
-type FormControlLabelPaddingTop = "none" | "sm"
-type FormControlLabelSize = "md" | "sm"
+type FormLabelColor = "default" | "error" | "disabled"
+type FormLabelFontWeight = "regular" | "medium"
+type FormLabelSize = "md" | "sm"
 
-type FormControlLabelProps = React.ComponentProps<"div"> & {
+type FormLabelProps = React.ComponentProps<"div"> & {
   children?: React.ReactNode
-  color?: FormControlLabelColor
-  fontWeight?: FormControlLabelFontWeight
-  gutterBottom?: boolean
-  paddingTop?: FormControlLabelPaddingTop
+  color?: FormLabelColor
+  fontWeight?: FormLabelFontWeight
   required?: boolean
-  size?: FormControlLabelSize
+  size?: FormLabelSize
   startIcon?: boolean
 }
 
 const textClasses: Record<
-  FormControlLabelSize,
-  Record<FormControlLabelFontWeight, string>
+  FormLabelSize,
+  Record<FormLabelFontWeight, string>
 > = {
   md: {
     regular: "rh-typography-b1",
@@ -33,36 +30,25 @@ const textClasses: Record<
   },
 }
 
-const colorClasses: Record<FormControlLabelColor, string> = {
+const colorClasses: Record<FormLabelColor, string> = {
   default: "text-[color:var(--parser-text-neutral-primary)]",
   error: "text-[color:var(--parser-text-error)]",
   disabled: "text-[color:var(--parser-text-disabled)]",
 }
 
-function FormControlLabel({
+function FormLabel({
   children = "Label",
   className,
   color = "default",
   fontWeight = "regular",
-  gutterBottom = false,
-  paddingTop = "none",
   required = false,
   size = "md",
   startIcon = false,
   ...props
-}: FormControlLabelProps) {
-  const isTight = paddingTop === "none"
-  const isBottomGap = gutterBottom && paddingTop === "sm"
-  const padClass =
-    isBottomGap
-      ? "pt-2"
-      : isTight
-        ? "pb-2"
-        : ""
-
+}: FormLabelProps) {
   return (
     <div
-      className={cn("flex items-start", padClass, className)}
+      className={cn("flex items-start", className)}
       {...props}
     >
       {(color === "default" || color === "disabled" || color === "error") &&
@@ -101,11 +87,10 @@ function FormControlLabel({
   )
 }
 
-export { FormControlLabel }
+export { FormLabel }
 export type {
-  FormControlLabelColor,
-  FormControlLabelFontWeight,
-  FormControlLabelPaddingTop,
-  FormControlLabelProps,
-  FormControlLabelSize,
+  FormLabelColor,
+  FormLabelFontWeight,
+  FormLabelProps,
+  FormLabelSize,
 }

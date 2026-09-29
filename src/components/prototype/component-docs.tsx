@@ -25,6 +25,7 @@ import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
+import { FormExamples } from "./form-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { Copy, PartyPopper } from "lucide-react";
@@ -32,7 +33,7 @@ import { Copy, PartyPopper } from "lucide-react";
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
 import { Chip } from "@/components/ui/chip";
-import { FormControlLabel } from "@/components/ui/form-control-label";
+import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
@@ -701,21 +702,105 @@ const componentDocs: ComponentDoc[] = [
     render: () => <TextareaExamples />,
   },
   {
-    id: "form-control-label",
-    title: "FormControlLabel",
+    id: "form-label",
+    title: "FormLabel",
     description: "Лейбл контрола формы.",
     group: "Forms",
-    source: "src/components/ui/form-control-label.tsx",
+    properties: [
+      {
+        name: "children",
+        values: "ReactNode",
+        defaultValue: "Label",
+        description: "Текст или другое содержимое лейбла.",
+      },
+      {
+        name: "color",
+        values: "default · error · disabled",
+        defaultValue: "default",
+        description: "Цвет текста лейбла по его состоянию.",
+      },
+      {
+        name: "fontWeight",
+        values: "regular · medium",
+        defaultValue: "regular",
+        description: "Начертание текста лейбла.",
+      },
+      {
+        name: "required",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Показывает обязательность поля звёздочкой.",
+      },
+      {
+        name: "size",
+        values: "md · sm",
+        defaultValue: "md",
+        description: "Размер и типографика текста лейбла.",
+      },
+      {
+        name: "startIcon",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Показывает иконку перед текстом лейбла.",
+      },
+    ],
+    source: "src/components/ui/form-label.tsx",
     render: () => (
       <Canvas>
         <Matrix>
-          <FormControlLabel>Label</FormControlLabel>
-          <FormControlLabel color="error">Label</FormControlLabel>
-          <FormControlLabel color="disabled">Label</FormControlLabel>
-          <FormControlLabel fontWeight="medium">Label</FormControlLabel>
+          <FormLabel>Label</FormLabel>
+          <FormLabel color="error">Label</FormLabel>
+          <FormLabel color="disabled">Label</FormLabel>
+          <FormLabel fontWeight="medium">Label</FormLabel>
         </Matrix>
       </Canvas>
     ),
+  },
+  {
+    id: "form",
+    title: "Form",
+    description: "FormBlock объединяет лейбл с контролом, а FormSet собирает блоки формы в общий layout.",
+    group: "Forms",
+    properties: [
+      {
+        name: "FormBlock.direction",
+        values: "column · row",
+        defaultValue: "column",
+        description: "Располагает лейбл и контрол в столбец или строку.",
+      },
+      {
+        name: "FormBlock.gap",
+        values: "CSS gap value",
+        defaultValue: "4 px (column) · 16 px (row)",
+        description: "Расстояние между лейблом и контролом.",
+      },
+      {
+        name: "FormBlock.label",
+        values: "ReactNode",
+        defaultValue: "Label",
+        description: "Содержимое FormLabel.",
+      },
+      {
+        name: "FormBlock.labelProps",
+        values: "FormLabelProps",
+        defaultValue: "—",
+        description: "Настройки FormLabel, кроме children.",
+      },
+      {
+        name: "FormSet.direction",
+        values: "column · row",
+        defaultValue: "column",
+        description: "Располагает вложенные FormBlock в столбец или строку.",
+      },
+      {
+        name: "FormSet.gap",
+        values: "CSS gap value",
+        defaultValue: "16 px",
+        description: "Расстояние между FormBlock.",
+      },
+    ],
+    source: "src/components/ui/form-block.tsx · src/components/ui/form-set.tsx",
+    render: () => <FormExamples />,
   },
   {
     id: "form-helper-text",

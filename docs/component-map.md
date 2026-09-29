@@ -41,7 +41,7 @@
 | `11269:12380` | `InputNumber` | `src/components/ui/input-number.tsx` / `InputNumber` |
 | `11270:13059` | `InputNumberRange` | `src/components/ui/input-number-range.tsx` / `InputNumberRange` |
 | `734:6530` | `Textarea` | `src/components/ui/textarea.tsx` / `Textarea` |
-| `399:2325` | `formControlLabel` | `src/components/ui/form-control-label.tsx` / `FormControlLabel` |
+| `399:2325` | `formControlLabel` | `src/components/ui/form-label.tsx` / `FormLabel` |
 | `351:2706` | `formHelperText` | `src/components/ui/form-helper-text.tsx` / `FormHelperText` |
 
 MenuSingleSelect и MenuMultiselect сохранены как совместимые обёртки над Menu. На витрине контейнер, оба типа пунктов и разделитель представлены на общей странице Menu.
