@@ -1024,14 +1024,11 @@ function ListingsTable({
 }
 
 export function ApartmentListingsScreen({
-  layout = "edge-to-edge",
   view = "base",
 }: {
-  layout?: "constrained" | "edge-to-edge";
   view?: "base" | "my";
 }) {
   const isMyListings = view === "my";
-  const isConstrainedLayout = layout === "constrained";
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
@@ -1050,91 +1047,8 @@ export function ApartmentListingsScreen({
     );
   }
 
-  if (isConstrainedLayout) {
-    return (
-      <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-under-islands)] text-[var(--parser-text-neutral-primary)]">
-        <div className="rhood-page-gutter">
-          <div className="mx-auto w-full max-w-[1200px]">
-            <MainHeader
-              logoHref="/Rhood/"
-              navItems={getNavItems(isMyListings ? "my" : "base")}
-            />
-          </div>
-        </div>
-
-        {!isMyListings && (
-          <div className="rhood-page-gutter">
-            <div className="mx-auto w-full max-w-[1200px]">
-              <ToolbarFilter />
-            </div>
-          </div>
-        )}
-
-        <main className="grid min-w-0 gap-0">
-          <div className="rhood-page-gutter">
-            <header className="mx-auto w-full max-w-[1200px] py-4 pt-8">
-              <h1 className="rh-typography-h1 mb-1">
-                {formatNumber(listings.length)}{" "}
-                {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
-              </h1>
-              <p className="text-[var(--rh-theme-text-neutral-secondary)]">
-                Но вообще, сегодня-то мы проверили 19 880 объектов. Мы просто дубли
-                не показываем
-              </p>
-            </header>
-          </div>
-          <div className="rhood-page-gutter">
-            <section aria-label="Управление выдачей" className="mx-auto w-full max-w-[1200px] py-3">
-              <TableToolbar
-                hiddenColumns={hiddenColumns}
-                onHiddenColumnsChange={setHiddenColumns}
-                onLeaderboardOpen={() => setLeaderboardOpen(true)}
-                onSortChange={setSort}
-                showLeaderboard={!isMyListings}
-                showMap={!isMyListings}
-                sort={sort}
-              />
-            </section>
-          </div>
-          <section aria-label="Список квартир" className="overflow-x-auto">
-            <ListingsTable
-              hiddenColumns={hiddenColumns}
-              listings={listings}
-              onOpenDrawer={(listing) => {
-                setSelectedListing(listing);
-                setDrawerOpen(true);
-              }}
-              onSort={handleSort}
-              sort={sort}
-              sortable={false}
-            />
-          </section>
-          <div className="rhood-page-gutter">
-            <footer className="mx-auto my-5 w-full max-w-[1200px]">
-              <Button appearance="default" endIcon={false} size="md" startIcon={false}>
-                Показать еще 50 объектов
-              </Button>
-            </footer>
-          </div>
-
-          {leaderboardOpen && (
-            <LeaderboardModal onOpenChange={setLeaderboardOpen} open={leaderboardOpen} />
-          )}
-          {selectedListing && (
-            <ListingDetailDrawer
-              listing={selectedListing}
-              onCloseComplete={() => setSelectedListing(null)}
-              onOpenChange={setDrawerOpen}
-              open={drawerOpen}
-            />
-          )}
-        </main>
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen overflow-x-hidden bg-white text-[var(--parser-text-neutral-primary)]">
+    <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-under-islands)] text-[var(--parser-text-neutral-primary)]">
       <MainHeader
         logoHref="/Rhood/"
         navItems={getNavItems(isMyListings ? "my" : "base")}
@@ -1211,8 +1125,4 @@ export function ApartmentListingsScreen({
 
 export function MyListingsScreen() {
   return <ApartmentListingsScreen view="my" />;
-}
-
-export function ApartmentListingsConstrainedScreen() {
-  return <ApartmentListingsScreen layout="constrained" />;
 }

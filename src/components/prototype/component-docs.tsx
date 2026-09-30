@@ -39,6 +39,7 @@ import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
 import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
+import { Island } from "@/components/ui/island";
 import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip";
@@ -847,6 +848,48 @@ const componentDocs: ComponentDoc[] = [
     group: "Navigation",
     source: "src/components/ui/tab.tsx · src/components/ui/tab-bar.tsx",
     render: () => <TabExamples />,
+  },
+  {
+    id: "island",
+    title: "Island",
+    description: "Белая поверхность со скруглением для размещения над фоном страницы.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11636-153",
+    group: "Layout",
+    properties: [
+      {
+        name: "children",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Содержимое поверхности.",
+      },
+      {
+        name: "className",
+        values: "string",
+        defaultValue: "—",
+        description: "Дополнительные классы для размера и компоновки.",
+      },
+      {
+        name: "maxWidth",
+        values: "CSSProperties[\"maxWidth\"]",
+        defaultValue: "—",
+        description: "Ограничивает максимальную ширину поверхности.",
+      },
+      {
+        name: "…props",
+        values: "ComponentProps&lt;\"div\"&gt;",
+        defaultValue: "—",
+        description: "Нативные свойства div-элемента.",
+      },
+    ],
+    source: "src/components/ui/island.tsx",
+    render: () => (
+      <Canvas>
+        <div className="bg-[var(--rh-theme-surface-under-islands)] p-6">
+          <Island className="h-[300px]" maxWidth={300} />
+        </div>
+      </Canvas>
+    ),
   },
   {
     id: "main-header",

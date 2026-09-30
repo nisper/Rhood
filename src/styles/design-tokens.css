@@ -183,7 +183,7 @@
   --rh-theme-surface-under-islands: var(--rh-palette-neutral-50);
   --rh-theme-surface-under-islands-alt: var(--rh-palette-blue-grey-100);
   --rh-theme-surface-neutral-ultra-dark: var(--rh-palette-neutral-900);
-  --rh-theme-surface-backdrop: rgb(0 0 0 / 0.4);
+  --rh-theme-surface-backdrop: rgb(0 0 0 / 0.6);
   --rh-theme-fill-neutral: var(--rh-palette-neutral-50);
   --rh-theme-fill-neutral-hover: rgb(43 43 43 / 0.04);
   --rh-theme-fill-neutral-selected: var(--rh-palette-neutral-100);
