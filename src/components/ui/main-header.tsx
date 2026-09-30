@@ -170,7 +170,7 @@ function MainHeader({
           })}
         </nav>
 
-        <div className="ml-auto flex h-[34px] shrink-0 items-center">
+        <div className="ml-auto flex h-[34px] shrink-0 items-center gap-2">
           <div ref={helpMenuRef} className="relative">
             <IconButton
               appearance="inherit"
@@ -190,8 +190,7 @@ function MainHeader({
               <HelpCenter className="absolute right-0 top-full z-20 mt-2" />
             )}
           </div>
-        </div>
-        <div ref={avatarMenuRef} className="relative shrink-0">
+          <div ref={avatarMenuRef} className="relative shrink-0">
           <button
             aria-expanded={isAvatarMenuOpen}
             aria-haspopup="menu"
@@ -252,6 +251,7 @@ function MainHeader({
               </MenuItemSingleSelect>
             </Menu>
           )}
+          </div>
         </div>
       </div>
     </header>

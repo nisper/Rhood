@@ -852,7 +852,7 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "island",
     title: "Island",
-    description: "Белая поверхность со скруглением для размещения над фоном страницы.",
+    description: "Белая поверхность со скруглением и внешним отступом 24 px для размещения над фоном страницы.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11636-153",
     group: "Layout",
@@ -885,7 +885,7 @@ const componentDocs: ComponentDoc[] = [
     source: "src/components/ui/island.tsx",
     render: () => (
       <Canvas>
-        <div className="bg-[var(--rh-theme-surface-under-islands)] p-6">
+        <div className="bg-[var(--rh-theme-surface-under-islands)]">
           <Island className="h-[300px]" maxWidth={300} />
         </div>
       </Canvas>

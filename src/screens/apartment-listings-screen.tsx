@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { IconButton } from "@/components/ui/icon-button";
+import { Island } from "@/components/ui/island";
 import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
@@ -1066,43 +1067,43 @@ export function ApartmentListingsScreen({
             не показываем
           </p>
         </section>
-        <section
-          aria-label="Управление выдачей"
-          className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-3"
-        >
-          <TableToolbar
-            hiddenColumns={hiddenColumns}
-            onHiddenColumnsChange={setHiddenColumns}
-            onLeaderboardOpen={() => setLeaderboardOpen(true)}
-            onSortChange={setSort}
-            showLeaderboard={!isMyListings}
-            showMap={!isMyListings}
-            sort={sort}
-          />
-        </section>
-        <section aria-label="Список квартир" className="overflow-x-scroll">
-          <ListingsTable
-            className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
-            hiddenColumns={hiddenColumns}
-            listings={listings}
-            onOpenDrawer={(listing) => {
-              setSelectedListing(listing);
-              setDrawerOpen(true);
-            }}
-            onSort={handleSort}
-            sort={sort}
-            sortable={false}
-          />
-        </section>
-        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] my-5">
-          <Button
-            appearance="default"
-            endIcon={false}
-            size="md"
-            startIcon={false}
-          >
-            Показать еще 50 объектов
-          </Button>
+        <section>
+          <Island>
+            <section aria-label="Управление выдачей">
+              <TableToolbar
+                hiddenColumns={hiddenColumns}
+                onHiddenColumnsChange={setHiddenColumns}
+                onLeaderboardOpen={() => setLeaderboardOpen(true)}
+                onSortChange={setSort}
+                showLeaderboard={!isMyListings}
+                showMap={!isMyListings}
+                sort={sort}
+              />
+            </section>
+            <section aria-label="Список квартир" className="overflow-x-scroll">
+              <ListingsTable
+                hiddenColumns={hiddenColumns}
+                listings={listings}
+                onOpenDrawer={(listing) => {
+                  setSelectedListing(listing);
+                  setDrawerOpen(true);
+                }}
+                onSort={handleSort}
+                sort={sort}
+                sortable={false}
+              />
+            </section>
+            <footer>
+              <Button
+                appearance="default"
+                endIcon={false}
+                size="md"
+                startIcon={false}
+              >
+                Показать еще 50 объектов
+              </Button>
+            </footer>
+          </Island>
         </section>
         {leaderboardOpen && (
           <LeaderboardModal

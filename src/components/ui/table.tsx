@@ -48,7 +48,7 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
         <div className="w-full overflow-x-auto">
           <div
             {...props}
-            className={cn("flex min-w-max flex-col items-stretch overflow-hidden rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-surface-bg)]", bordered && "border border-[var(--parser-border-light)]", className)}
+            className={cn("flex min-w-max flex-col items-stretch overflow-hidden rounded-[var(--rh-sizing-border-radius-md)]", bordered && "border border-[var(--parser-border-light)]", className)}
             role="table"
             style={{ ...style, minWidth }}
           >
