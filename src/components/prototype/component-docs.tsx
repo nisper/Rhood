@@ -24,11 +24,13 @@ import { ModalExamples } from "./modal-examples";
 import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
+import { ClientDemandStatusExamples } from "./client-demand-status-examples";
+import { ObjectInfoExamples } from "./object-info-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
 import "./component-docs.css";
 import * as React from "react";
-import { Copy, PartyPopper } from "lucide-react";
+import { Copy, Dot } from "lucide-react";
 
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
@@ -68,6 +70,27 @@ type ComponentDoc = {
   source: string;
   render: () => React.ReactNode;
 };
+
+type ComponentNavigationGroup =
+  | "Foundations"
+  | "Components"
+  | "Layout"
+  | "Features";
+
+const componentNavigationGroups: ComponentNavigationGroup[] = [
+  "Foundations",
+  "Components",
+  "Layout",
+  "Features",
+];
+
+function getComponentNavigationGroup(
+  group: string,
+): ComponentNavigationGroup {
+  if (group === "Foundations" || group === "Layout") return group;
+  if (group === "Выдача объектов") return "Features";
+  return "Components";
+}
 
 function Canvas({
   children,
@@ -357,6 +380,62 @@ const componentDocs: ComponentDoc[] = [
         </Matrix>
       </Canvas>
     ),
+  },
+  {
+    id: "client-demand-status",
+    title: "ClientDemandStatus",
+    description:
+      "Статус подбора покупателей для объекта с возможностью обновить проверку.",
+    figmaUrl:
+      "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24353-23766",
+    group: "Data display",
+    properties: [
+      {
+        name: "status",
+        values: "empty · found",
+        defaultValue: "empty",
+        description: "Результат проверки спроса на объект.",
+      },
+      {
+        name: "count",
+        values: "number",
+        defaultValue: "0",
+        description: "Количество покупателей для состояния found.",
+      },
+      {
+        name: "checkedAt",
+        values: "ReactNode",
+        defaultValue: "Проверили только что",
+        description: "Время последней проверки под основной строкой.",
+      },
+      {
+        name: "onRefresh",
+        values: "() => void",
+        defaultValue: "—",
+        description: "Вызывается при нажатии на кнопку обновления.",
+      },
+    ],
+    source: "src/components/ui/client-demand-status.tsx",
+    render: () => <ClientDemandStatusExamples />,
+  },
+  {
+    id: "object-info",
+    title: "ObjectInfo",
+    description:
+      "Композиция информации об объекте для страницы объекта или Drawer.",
+    figmaUrl:
+      "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24335-23012",
+    group: "Выдача объектов",
+    properties: [
+      {
+        name: "onClose",
+        values: "() => void",
+        defaultValue: "—",
+        description: "Обработчик кнопки закрытия в header компонента.",
+      },
+    ],
+    source: "src/components/ui/object-info.tsx",
+    render: () => <ObjectInfoExamples />,
   },
   {
     id: "select",
@@ -855,7 +934,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Белая поверхность со скруглением и внешним отступом 24 px для размещения над фоном страницы.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11636-153",
-    group: "Layout",
+    group: "Surfaces",
     properties: [
       {
         name: "children",
@@ -910,7 +989,7 @@ const componentDocs: ComponentDoc[] = [
     id: "toolbar-filter",
     title: "ToolbarFilter",
     description: "Панель фильтров.",
-    group: "Layout",
+    group: "Выдача объектов",
     source: "src/components/ui/toolbar-filter.tsx",
     render: () => (
       <Canvas>
@@ -1470,9 +1549,24 @@ export function ComponentDocs() {
       query,
     ),
   );
-  const groupedDocs = groupDocs(filteredDocs);
   const activeDoc =
     componentDocs.find((doc) => doc.id === activeId) ?? componentDocs[0];
+  const activeNavigationGroup = getComponentNavigationGroup(activeDoc.group);
+  const visibleDocs = normalizedQuery
+    ? filteredDocs
+    : componentDocs.filter(
+        (doc) => getComponentNavigationGroup(doc.group) === activeNavigationGroup,
+      );
+  const groupedDocs = groupDocs(visibleDocs);
+
+  const handleNavigationGroupChange = (
+    nextGroup: ComponentNavigationGroup,
+  ) => {
+    const firstDoc = componentDocs.find(
+      (doc) => getComponentNavigationGroup(doc.group) === nextGroup,
+    );
+    if (firstDoc) setActiveComponentId(firstDoc.id);
+  };
 
   React.useEffect(() => {
     document.title = `Design system — ${activeDoc.title}`;
@@ -1500,28 +1594,21 @@ export function ComponentDocs() {
 
   return (
     <div className="min-h-svh bg-[var(--parser-surface-bg)] text-[var(--parser-text-neutral-primary)]">
+      <MainHeader
+        controls={false}
+        logoHref={window.location.pathname}
+        navAlign="end"
+        navItems={componentNavigationGroups.map((group) => ({
+          active: group === activeNavigationGroup,
+          label: group,
+          onClick: () => handleNavigationGroupChange(group),
+        }))}
+      />
       <div className="grid md:grid-cols-[300px_minmax(0,1fr)]">
         <aside className="border-b border-[var(--parser-border-light)] md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
           <div className="px-6 pt-4">
-            <a
-              aria-label="RHOOD — все разделы"
-              className="block w-fit rounded focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
-              href={window.location.pathname}
-            >
-              <img
-                alt="RHOOD"
-                className="h-[30px] w-[118px]"
-                height="30"
-                src="/Rhood/assets/rhood-logo.svg"
-                width="118"
-              />
-            </a>
-            <span className="pl-[29px] text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
-              Design system
-            </span>
             <Search
               aria-label="Найти компонент"
-              className="mt-5"
               onChange={(event) => setQuery(event.target.value)}
               onKeyDown={focusFirstNavigationItem}
               placeholder="Найти компонент"
@@ -1537,12 +1624,17 @@ export function ComponentDocs() {
             open={mobileNavigationOpen || Boolean(normalizedQuery)}
           >
             <summary className="cursor-pointer px-6 py-3 text-sm">
-              Компоненты — {activeDoc.title}
+              {activeNavigationGroup} — {activeDoc.title}
             </summary>
             <ComponentNavigation
               activeId={activeDoc.id}
               groups={groupedDocs}
               ref={mobileNavigationRef}
+              showGroupHeadings={
+                Boolean(normalizedQuery) ||
+                activeNavigationGroup === "Components" ||
+                activeNavigationGroup === "Features"
+              }
             />
           </details>
           <div className="hidden md:block">
@@ -1550,6 +1642,11 @@ export function ComponentDocs() {
               activeId={activeDoc.id}
               groups={groupedDocs}
               ref={desktopNavigationRef}
+              showGroupHeadings={
+                Boolean(normalizedQuery) ||
+                activeNavigationGroup === "Components" ||
+                activeNavigationGroup === "Features"
+              }
             />
           </div>
         </aside>
@@ -1585,8 +1682,9 @@ const ComponentNavigation = React.forwardRef<
   {
     activeId: string;
     groups: Record<string, ComponentDoc[]>;
+    showGroupHeadings: boolean;
   }
->(function ComponentNavigation({ activeId, groups }, ref) {
+>(function ComponentNavigation({ activeId, groups, showGroupHeadings }, ref) {
   const [focusedId, setFocusedId] = React.useState<string | undefined>();
   const celebratoryComponentIds = new Set([
     "adaptive",
@@ -1660,9 +1758,11 @@ const ComponentNavigation = React.forwardRef<
     <nav aria-label="Компоненты" className="grid gap-5 px-6 py-4" ref={ref}>
       {Object.entries(groups).map(([group, items]) => (
         <section key={group}>
-          <h2 className="text-xs font-normal uppercase leading-8 tracking-[0.83px] text-[var(--parser-text-neutral-secondary)]">
-            {group}
-          </h2>
+          {showGroupHeadings && (
+            <h2 className="text-xs font-normal uppercase leading-8 tracking-[0.83px] text-[var(--parser-text-neutral-secondary)]">
+              {group}
+            </h2>
+          )}
           <ul>
             {items.map((doc) => (
               <li key={doc.id}>
@@ -1684,15 +1784,11 @@ const ComponentNavigation = React.forwardRef<
                     startIcon={false}
                     state={doc.id === focusedId ? "focused" : "default"}
                     endIcon={
-                      celebratoryComponentIds.has(doc.id) ? (
-                        <PartyPopper
-                          aria-hidden="true"
-                          className="size-5"
-                          strokeWidth={2}
-                        />
-                      ) : (
-                        false
-                      )
+                      doc.group !== "Showcase" &&
+                      getComponentNavigationGroup(doc.group) === "Components" &&
+                      !celebratoryComponentIds.has(doc.id) ? (
+                        <Dot aria-hidden="true" className="size-5" strokeWidth={2} />
+                      ) : false
                     }
                   >
                     {doc.title}

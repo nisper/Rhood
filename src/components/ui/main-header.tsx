@@ -15,13 +15,16 @@ type MainHeaderNavItem = {
   active?: boolean;
   href?: string;
   label: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   propNew?: boolean;
   state?: "default" | "hovered";
 };
 
 type MainHeaderProps = React.ComponentProps<"header"> & {
   button?: boolean;
+  controls?: boolean;
   logoHref?: string;
+  navAlign?: "start" | "end";
   navItems?: MainHeaderNavItem[];
   resp?: "mob" | "desk";
 };
@@ -36,7 +39,9 @@ const defaultNavItems: MainHeaderNavItem[] = [
 function MainHeader({
   button = true,
   className,
+  controls = true,
   logoHref,
+  navAlign = "start",
   navItems = defaultNavItems,
   resp = "desk",
   ...props
@@ -73,7 +78,7 @@ function MainHeader({
     return (
       <header
         className={cn(
-          "rhood-page-gutter flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--rh-theme-surface-bg)] py-2",
+          "rhood-page-gutter flex h-14 w-full items-center justify-between overflow-hidden border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)] py-2",
           className,
         )}
         {...props}
@@ -101,7 +106,10 @@ function MainHeader({
 
   return (
     <header
-      className={cn("w-full bg-[var(--rh-theme-surface-bg)]", className)}
+      className={cn(
+        "w-full border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]",
+        className,
+      )}
       {...props}
     >
       <div className="rhood-page-gutter relative flex w-full items-center gap-4 py-1.5">
@@ -119,7 +127,9 @@ function MainHeader({
           )}
         </div>
 
-        <nav className="flex items-center gap-0">
+        <nav
+          className={cn("flex items-center gap-0", navAlign === "end" && "ml-auto")}
+        >
           {navItems.map((item) => {
             const className = cn(
               "group inline-flex cursor-pointer items-center justify-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] px-2 py-2",
@@ -163,14 +173,20 @@ function MainHeader({
                 {content}
               </a>
             ) : (
-              <button className={className} key={item.label} type="button">
+              <button
+                className={className}
+                key={item.label}
+                onClick={item.onClick}
+                type="button"
+              >
                 {content}
               </button>
             );
           })}
         </nav>
 
-        <div className="ml-auto flex h-[34px] shrink-0 items-center gap-2">
+        {controls && (
+          <div className="ml-auto flex h-[34px] shrink-0 items-center gap-2">
           <div ref={helpMenuRef} className="relative">
             <IconButton
               appearance="inherit"
@@ -252,7 +268,8 @@ function MainHeader({
             </Menu>
           )}
           </div>
-        </div>
+          </div>
+        )}
       </div>
     </header>
   );

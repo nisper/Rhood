@@ -389,7 +389,7 @@ function ToolbarFilter({
             "rhood-page-gutter relative flex items-center gap-1 bg-[var(--rh-theme-surface-bg)]",
             island
               ? "rounded-[var(--rh-sizing-island-border-radius)] border border-[color:var(--rh-theme-border-light)] py-2"
-              : "border-y border-[color:var(--rh-theme-border-light)] py-2",
+              : "border-b border-[color:var(--rh-theme-border-light)] py-2",
             className,
           )}
           {...props}
@@ -438,7 +438,7 @@ function ToolbarFilter({
           "rhood-page-gutter relative flex flex-wrap items-center gap-4 overflow-visible bg-[var(--rh-theme-surface-bg)]",
           island
             ? "rounded-[var(--rh-sizing-island-border-radius)] border border-[color:var(--rh-theme-border-light)] py-3"
-            : "border-y border-[color:var(--rh-theme-border-light)] py-3",
+            : "border-b border-[color:var(--rh-theme-border-light)] py-3",
           className,
         )}
         {...props}
