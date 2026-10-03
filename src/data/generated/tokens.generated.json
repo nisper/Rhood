@@ -3696,8 +3696,8 @@
     },
     {
       "collection": "sizing",
-      "name": "common-input/padding/text_btn-px-lg",
-      "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-lg",
+      "name": "common-input/padding/ghost-px-lg",
+      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-lg",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3766,8 +3766,8 @@
     },
     {
       "collection": "sizing",
-      "name": "common-input/padding/text_btn-px-md",
-      "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-md",
+      "name": "common-input/padding/ghost-px-md",
+      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-md",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3836,8 +3836,8 @@
     },
     {
       "collection": "sizing",
-      "name": "common-input/padding/text_btn-px-sm",
-      "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-sm",
+      "name": "common-input/padding/ghost-px-sm",
+      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-sm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3902,8 +3902,8 @@
     },
     {
       "collection": "sizing",
-      "name": "common-input/padding/text_btn-px-xsm",
-      "cssVariable": "--rh-sizing-common-input-padding-text-btn-px-xsm",
+      "name": "common-input/padding/ghost-px-xsm",
+      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-xsm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",

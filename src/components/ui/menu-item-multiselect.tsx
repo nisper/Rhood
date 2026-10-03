@@ -204,7 +204,6 @@ function MenuItemMultiselect({
               icon={false}
               propDelete={false}
               size="sm"
-              thumbnail={false}
             >
               Chip
             </Chip>

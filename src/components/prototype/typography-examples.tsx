@@ -250,14 +250,14 @@ export function TypographyExamples() {
             className="flex border-b border-[var(--parser-border-light)]"
             role="row"
           >
-            {["Стиль", "Параметры"].map((title, index) => (
+            {["Стиль", "Параметры"].map((title) => (
               <TableCell
                 helpIcon={false}
                 key={title}
                 role="head"
                 sort={false}
                 type="text"
-                width={index === 0 ? 220 : "fill"}
+                width="fill"
               >
                 {title}
               </TableCell>
@@ -269,7 +269,7 @@ export function TypographyExamples() {
               key={style.name}
               role="row"
             >
-              <TableCell role="body" type="text" width={220}>
+              <TableCell role="body" type="text" width="fill">
                 <code className="font-mono text-sm leading-5">
                   .{style.className}
                 </code>

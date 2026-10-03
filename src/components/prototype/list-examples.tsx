@@ -24,7 +24,7 @@ const properties = [
   [
     "fontWeight",
     "medium · regular",
-    "medium",
+    "regular",
     "Насыщенность основного текста.",
   ],
   [

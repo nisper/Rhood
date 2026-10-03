@@ -2,7 +2,6 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Modal, ModalContainer } from "@/components/ui/modal";
-import { ModalHeader } from "@/components/ui/modal-header";
 import { ShowcasePanel } from "@/components/ui/showcase-panel";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
 import { ShowcaseSurface } from "@/components/ui/showcase-surface";
@@ -11,76 +10,6 @@ type SaveChangesModalProps = Pick<
   React.ComponentProps<typeof Modal>,
   "closeButton" | "onOpenChange" | "open" | "presentation"
 >;
-
-type FooterVariant = "one-default" | "two-default" | "default-primary";
-
-const footerVariants: FooterVariant[] = [
-  "one-default",
-  "two-default",
-  "default-primary",
-];
-
-function ModalFooter({ variant }: { variant: FooterVariant }) {
-  if (variant === "one-default") {
-    return (
-      <Button appearance="default" endIcon={false} startIcon={false}>
-        Закрыть
-      </Button>
-    );
-  }
-
-  if (variant === "two-default") {
-    return (
-      <>
-        <Button appearance="default" endIcon={false} startIcon={false}>
-          Отмена
-        </Button>
-        <Button appearance="default" endIcon={false} startIcon={false}>
-          Продолжить
-        </Button>
-      </>
-    );
-  }
-
-  return (
-    <>
-      <Button appearance="default" endIcon={false} startIcon={false}>
-        Отмена
-      </Button>
-      <Button endIcon={false} startIcon={false}>
-        Продолжить
-      </Button>
-    </>
-  );
-}
-
-function FooterModalPreviews({
-  presentation,
-}: {
-  presentation: "dialog" | "bottom-sheet";
-}) {
-  return (
-    <div className="grid h-full w-full grid-cols-3 gap-1">
-      {footerVariants.map((variant) => (
-        <ModalContainer
-          alignment={presentation === "bottom-sheet" ? "bottom" : "center"}
-          className="min-h-[300px]"
-          display="embedded"
-          key={variant}
-        >
-          <Modal
-            closeButton={presentation === "dialog"}
-            description="Краткое пояснение действия."
-            footer={<ModalFooter variant={variant} />}
-            maxWidth="none"
-            presentation={presentation}
-            title="Заголовок modal"
-          />
-        </ModalContainer>
-      ))}
-    </div>
-  );
-}
 
 function SaveChangesModal({
   closeButton,

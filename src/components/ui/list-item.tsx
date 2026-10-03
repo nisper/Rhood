@@ -34,7 +34,7 @@ function ListItem({
   disGutters = false,
   paddingX,
   endIcon = true,
-  fontWeight = "medium",
+  fontWeight = "regular",
   iconButton = true,
   secondaryText = true,
   secondaryLabel = "Secondary",

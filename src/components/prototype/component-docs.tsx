@@ -6,6 +6,8 @@ import { InputNumberRangeExamples } from "./input-number-range-examples";
 import { ClearButtonExamples } from "./clear-button-examples";
 import { IconButtonExamples } from "./icon-button-examples";
 import { ButtonFavoriteExamples } from "./button-favorite-examples";
+import { ChipExamples } from "./chip-examples";
+import { ToggleChipExamples } from "./toggle-chip-examples";
 import { TokenColorsExamples } from "./token-colors-examples";
 import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
@@ -34,7 +36,6 @@ import { Copy, Dot } from "lucide-react";
 
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
-import { Chip } from "@/components/ui/chip";
 import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
@@ -50,7 +51,6 @@ import { Snackbar } from "@/components/ui/snackbar";
 import { Tag } from "@/components/ui/tag";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
-import { ToggleChip } from "@/components/ui/toggle-chip";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
 import { cn, matchesSearchTerms } from "@/lib/utils";
@@ -371,15 +371,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Переключаемый чип.",
     group: "Actions",
     source: "src/components/ui/toggle-chip.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <ToggleChip size="lg" />
-          <ToggleChip checked size="md" />
-          <ToggleChip size="sm" />
-        </Matrix>
-      </Canvas>
-    ),
+    render: () => <ToggleChipExamples />,
   },
   {
     id: "client-demand-status",
@@ -1024,18 +1016,10 @@ const componentDocs: ComponentDoc[] = [
     title: "Chip",
     description: "Чип значения или статуса.",
     group: "Data display",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=1653-28207",
     source: "src/components/ui/chip.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <Chip color="neutral" />
-          <Chip color="brand" />
-          <Chip color="warning" />
-          <Chip color="success" />
-          <Chip color="error" />
-        </Matrix>
-      </Canvas>
-    ),
+    render: () => <ChipExamples />,
   },
   {
     id: "tag",

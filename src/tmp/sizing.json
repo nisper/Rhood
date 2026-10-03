@@ -516,7 +516,7 @@
       }
     },
     "padding": {
-      "text_btn-px-lg": {
+      "ghost-px-lg": {
         "$type": "number",
         "$value": "{base module.1}",
         "$extensions": {
@@ -567,7 +567,7 @@
           ]
         }
       },
-      "text_btn-px-md": {
+      "ghost-px-md": {
         "$type": "number",
         "$value": "{base module.1}",
         "$extensions": {
@@ -618,7 +618,7 @@
           ]
         }
       },
-      "text_btn-px-sm": {
+      "ghost-px-sm": {
         "$type": "number",
         "$value": "{base module.1}",
         "$extensions": {
@@ -669,7 +669,7 @@
           ]
         }
       },
-      "text_btn-px-xsm": {
+      "ghost-px-xsm": {
         "$type": "number",
         "$value": "{base module.1}",
         "$extensions": {

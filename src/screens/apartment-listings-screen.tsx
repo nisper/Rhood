@@ -864,7 +864,6 @@ function ResultRow({
             icon={false}
             propDelete={false}
             size="sm"
-            thumbnail={false}
           >
             Оцениваем
           </Chip>
@@ -922,7 +921,6 @@ function ResultRow({
             icon={false}
             propDelete={false}
             size="sm"
-            thumbnail={false}
           >
             {listing.userStatus ? "В работе" : "Еще не звонили из Rhood"}
           </Chip>

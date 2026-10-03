@@ -193,7 +193,6 @@ function Select({
               label
               propDelete
               size="md"
-              thumbnail={false}
             >
               Microsoft
             </Chip>
@@ -204,7 +203,6 @@ function Select({
               label
               propDelete
               size="md"
-              thumbnail={false}
             >
               Apple
             </Chip>

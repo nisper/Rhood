@@ -47,9 +47,24 @@ type ButtonProps = React.ComponentProps<"button"> & {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  md: "min-h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "min-h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
-  xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] px-[var(--rh-sizing-common-input-padding-px-xsm)] py-[var(--rh-sizing-common-input-padding-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  md: "min-h-[calc(var(--spacing)*10)] py-[var(--rh-sizing-common-input-padding-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "min-h-[calc(var(--spacing)*9)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] py-[var(--rh-sizing-common-input-padding-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+}
+
+const horizontalPaddingClasses: Record<ButtonSize, { default: string; ghost: string }> = {
+  md: {
+    default: "px-[var(--rh-sizing-common-input-padding-px-md)]",
+    ghost: "px-[var(--rh-sizing-common-input-padding-ghost-px-md)]",
+  },
+  sm: {
+    default: "px-[var(--rh-sizing-common-input-padding-px-sm)]",
+    ghost: "px-[var(--rh-sizing-common-input-padding-ghost-px-sm)]",
+  },
+  xsm: {
+    default: "px-[var(--rh-sizing-common-input-padding-px-xsm)]",
+    ghost: "px-[var(--rh-sizing-common-input-padding-ghost-px-xsm)]",
+  },
 }
 
 const typographyClasses: Record<ButtonSize, string> = {
@@ -251,6 +266,7 @@ function Button({
         "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
         typographyClasses[resolvedSize],
         sizeClasses[resolvedSize],
+        horizontalPaddingClasses[resolvedSize][resolvedAppearance === "ghost" ? "ghost" : "default"],
         gapClasses[resolvedSize],
         appearanceClasses[resolvedAppearance][stateKey],
         !disabled && appearanceHoverClasses[resolvedAppearance],
