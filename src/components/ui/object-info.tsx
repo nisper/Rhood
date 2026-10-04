@@ -1,7 +1,7 @@
 import * as React from "react";
 import {
   BookmarkPlus,
-  TrendingUp,
+  ChevronUp,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -95,15 +95,15 @@ function ObjectInfoSidebar({ callStatus, onCallStatusChange }: { callStatus: str
         <Chip appearance="muted" color="neutral" icon={false} remove={false} size="sm">Предчистовая отделка</Chip>
       </div>
 
-      <section className="grid gap-1" aria-labelledby="object-summary">
-        <h2 className="rh-typography-b1" id="object-summary">41,9 м², 1к квартира, этаж 15/16, 2015 год</h2>
+      <section className="grid gap-2" aria-labelledby="object-summary">
+        <h2 className="rh-typography-b2" id="object-summary">41,9 м², 1к квартира, этаж 15/16, 2015 год</h2>
         <div className="flex flex-wrap items-start gap-2">
           <div>
             <p className="text-[24px] font-semibold leading-8 tracking-[-0.24px] text-[var(--rh-theme-text-neutral-primary)]">5 700 000 ₽</p>
             <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">136 038 ₽/м²</p>
           </div>
-          <span className="mt-1 rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-error-light)] p-1 text-[var(--rh-theme-text-error)]" title="Цена выросла">
-            <TrendingUp aria-hidden="true" className="size-6" strokeWidth={2} />
+          <span className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-error-light)] text-[var(--rh-theme-text-error)]" title="Цена выросла">
+            <ChevronUp aria-hidden="true" className="size-5" strokeWidth={2} />
           </span>
         </div>
       </section>
