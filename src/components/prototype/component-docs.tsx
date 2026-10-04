@@ -210,6 +210,13 @@ const componentDocs: ComponentDoc[] = [
           "Один или несколько ShowcasePanel; число панелей задаётся их количеством.",
       },
       {
+        name: "ShowcaseSurface.usedComponents",
+        values: "{ title, href }[]",
+        defaultValue: "—",
+        description:
+          "Опциональный список ссылок на компоненты, использованные в примере.",
+      },
+      {
         name: "ShowcasePanel.tone",
         values: "white · transparent",
         defaultValue: "white",

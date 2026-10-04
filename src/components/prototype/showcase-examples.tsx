@@ -31,6 +31,23 @@ const horizontalCompositionSnippet = (
   </code>
 );
 
+const usedComponentsSnippet = (
+  <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
+    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`<`}</span>
+    <span className="text-[var(--rh-palette-purple-700)]">ShowcaseSurface</span>
+    {"\n  "}
+    <span className="text-[var(--rh-theme-text-info)]">usedComponents</span>
+    <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
+    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`{[`}</span>
+    {"\n    "}
+    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`{ `}</span><span className="text-[var(--rh-theme-text-info)]">title</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">"Button"</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">{`, `}</span><span className="text-[var(--rh-theme-text-info)]">href</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">"…"</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">{` }`}</span>
+    {"\n  "}
+    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`]}`}</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">{`}`}</span>
+    {"\n"}
+    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`/>`}</span>
+  </code>
+);
+
 export function ShowcaseExamples() {
   return (
     <>
@@ -63,6 +80,19 @@ export function ShowcaseExamples() {
           </ShowcaseSurface>
         }
         title="Вертикальная композиция"
+      />
+
+      <ShowcaseSection
+        codeSnippet={usedComponentsSnippet}
+        description="usedComponents выводит под примером ссылки на компоненты, из которых собрана композиция. Передавай prop только когда такая связь нужна читателю витрины."
+        showcase={
+          <ShowcaseSurface usedComponents={[{ href: "/Rhood/?view=components&component=button", title: "Button" }, { href: "/Rhood/?view=components&component=icon-button", title: "IconButton" }]}>
+            <ShowcasePanel>
+              <Button>Primary</Button>
+            </ShowcasePanel>
+          </ShowcaseSurface>
+        }
+        title="Состав"
       />
     </>
   );
