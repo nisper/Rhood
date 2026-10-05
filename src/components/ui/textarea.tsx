@@ -4,9 +4,12 @@ import { cn } from "@/lib/utils"
 
 type TextareaSize = "md" | "sm"
 type TextareaState = "default" | "hovered" | "focused"
+type TextareaAppearance = "default" | "neutral"
 type TextareaRows = number
 
 type TextareaProps = Omit<React.ComponentProps<"textarea">, "rows" | "size"> & {
+  /** Controls the field background. */
+  appearance?: TextareaAppearance
   /** Visual state for component previews. Native hover and focus work by default. */
   state?: TextareaState
   size?: TextareaSize
@@ -23,7 +26,17 @@ const sizeClasses: Record<TextareaSize, string> = {
   sm: "rh-typography-b2 px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
 }
 
-function stateClasses({ error, state }: { error: boolean; state: TextareaState }) {
+function stateClasses({
+  appearance,
+  disabled,
+  error,
+  state,
+}: {
+  appearance: TextareaAppearance
+  disabled: boolean
+  error: boolean
+  state: TextareaState
+}) {
   if (error) {
     return state === "focused"
       ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
@@ -35,11 +48,13 @@ function stateClasses({ error, state }: { error: boolean; state: TextareaState }
   }
 
   if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
+  if (appearance === "neutral" && !disabled) return "border-transparent"
   return "border-[color:var(--rh-theme-border-light)]"
 }
 
 /** A native multiline text input styled like Textfield, without adornments or a clear button. */
 function Textarea({
+  appearance = "default",
   className,
   autoResize = false,
   disabled = false,
@@ -84,6 +99,9 @@ function Textarea({
   }, [resizeToContent, props.value])
 
   const isFocusedPreview = state === "focused"
+  const backgroundClasses = appearance === "neutral"
+    ? "bg-[var(--rh-theme-fill-input-neutral)]"
+    : "bg-[var(--rh-theme-surface-bg)]"
   const interactiveClasses = !disabled && !error && !isFocusedPreview
     ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-focus)]"
     : !disabled && error
@@ -94,9 +112,10 @@ function Textarea({
     <textarea
       aria-invalid={error || undefined}
       className={cn(
-        "box-border block w-full resize-none appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        "box-border block w-full resize-none appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        backgroundClasses,
         sizeClasses[size],
-        stateClasses({ error, state }),
+        stateClasses({ appearance, disabled, error, state }),
         interactiveClasses,
         required && "pr-[calc(var(--spacing)*8)]",
         className,
@@ -130,4 +149,4 @@ function Textarea({
 }
 
 export { Textarea }
-export type { TextareaProps, TextareaRows, TextareaSize, TextareaState }
+export type { TextareaAppearance, TextareaProps, TextareaRows, TextareaSize, TextareaState }

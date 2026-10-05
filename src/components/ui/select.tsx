@@ -51,7 +51,7 @@ const sizeTokens: Record<
   },
 }
 
-function getBorderClasses({
+function getSurfaceClasses({
   disabled,
   error,
   state,
@@ -61,24 +61,24 @@ function getBorderClasses({
   state: SelectState
 }) {
   if (disabled) {
-    return "border-[color:var(--rh-theme-border-disabled)]"
+    return "bg-[var(--rh-theme-fill-disabled)] text-[var(--rh-theme-text-neutral-disabled)]"
   }
 
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-[color:var(--rh-theme-border-error)]"
-      : "border-[color:var(--rh-theme-border-error)]"
+      ? "border border-[color:var(--rh-theme-border-error)] bg-[var(--rh-theme-fill-error-light-hover)] text-[var(--rh-theme-text-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      : "bg-[var(--rh-theme-fill-error-light)] text-[var(--rh-theme-text-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--rh-theme-border-focus)] ring-1 ring-[color:var(--rh-theme-border-focus)]"
+    return "border border-[color:var(--rh-theme-border-focus)] bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-primary)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
   }
 
   if (state === "hovered") {
-    return "border-[color:var(--rh-theme-border-hover)]"
+    return "bg-[var(--rh-theme-fill-neutral-hover)] text-[var(--rh-theme-text-neutral-primary)]"
   }
 
-  return "border-[color:var(--rh-theme-border-light)]"
+  return "bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-primary)]"
 }
 
 function getLabelTone({
@@ -139,6 +139,16 @@ function Select({
   const resolvedState: SelectState = disabled ? "default" : state
   const hasIcon = icon || startIcon
   const resolvedValue = resolveValue(value, "Value")
+  const valueTone = error
+    ? "text-[color:var(--rh-theme-text-error)]"
+    : disabled
+      ? "text-[color:var(--rh-theme-text-neutral-disabled)]"
+      : "text-[color:var(--rh-theme-text-neutral-primary)]"
+  const iconTone = error
+    ? "text-[var(--rh-theme-icon-error)]"
+    : disabled
+      ? "text-[var(--rh-theme-icon-neutral-disabled)]"
+      : "text-[var(--rh-theme-icon-neutral-primary)]"
 
   React.useEffect(() => {
     if (!expanded) return
@@ -171,11 +181,12 @@ function Select({
       <div className={cn("relative w-fit max-w-full", fullWidth && "w-full")}>
         <div
           className={cn(
-            "relative flex w-fit max-w-full cursor-pointer items-center gap-[var(--rh-sizing-common-input-padding-gap-md)] rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] transition-colors duration-150",
+            "relative flex w-fit max-w-full items-center gap-[var(--rh-sizing-common-input-padding-gap-md)] rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150",
             fullWidth && "w-full",
             sizeTokens[size].container,
-            getBorderClasses({ disabled, error, state: resolvedState }),
-            !disabled && !error && resolvedState === "default" && "hover:border-[color:var(--rh-theme-border-hover)]",
+            getSurfaceClasses({ disabled, error, state: resolvedState }),
+            disabled ? "cursor-not-allowed" : "cursor-pointer",
+            !disabled && !error && resolvedState === "default" && "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
           )}
         >
         {hasIcon && (
@@ -208,7 +219,8 @@ function Select({
             </Chip>
             <span
               className={cn(
-            "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[calc(var(--spacing)*1)] text-[color:var(--rh-theme-text-neutral-primary)]",
+            "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[calc(var(--spacing)*1)]",
+                valueTone,
                 sizeTokens[size].valueText,
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}
@@ -219,7 +231,8 @@ function Select({
         ) : (
           <div
             className={cn(
-              "flex min-w-0 flex-1 items-center overflow-hidden text-[color:var(--rh-theme-text-neutral-primary)]",
+              "flex min-w-0 flex-1 items-center overflow-hidden",
+              valueTone,
               disabled && "opacity-60",
               sizeTokens[size].valueText,
             )}
@@ -231,7 +244,7 @@ function Select({
 
         <span className={cn("mx-[-2px] flex w-5 shrink-0 items-center justify-center", disabled && "opacity-60")}>
           <ChevronDown
-            className={cn("size-5 shrink-0 transition-transform duration-150", expanded && "rotate-180")}
+            className={cn("size-5 shrink-0 transition-transform duration-150", iconTone, expanded && "rotate-180")}
             strokeWidth={2}
           />
         </span>

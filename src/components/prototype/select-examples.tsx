@@ -1,93 +1,215 @@
-import * as React from "react"
+import * as React from "react";
 
-import { Select } from "@/components/ui/select"
-import { Menu } from "@/components/ui/menu"
-import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { Table } from "@/components/ui/table"
-import { TableCell } from "@/components/ui/table-cell"
-import { cn } from "@/lib/utils"
+import { Menu } from "@/components/ui/menu";
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { Select } from "@/components/ui/select";
+import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcaseSection } from "@/components/ui/showcase-section";
+import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { Table } from "@/components/ui/table";
+import { TableCell } from "@/components/ui/table-cell";
+import { cn } from "@/lib/utils";
+
+const options = ["Квартиры", "Дома", "Участки"];
 
 const properties = [
-  ["size", "md / sm", "md", "Размер поля."],
-  ["content", "text / chips", "text", "Одно значение или несколько выбранных значений."],
-  ["disabled", "boolean", "false", "Недоступность поля."],
-  ["error", "boolean", "false", "Ошибочное состояние."],
-  ["state", "default / hovered / focused", "default", "Состояние взаимодействия."],
-  ["expanded", "boolean", "false", "Раскрытое состояние и стрелка вверх."],
-  ["helperText", "ReactNode", "—", "Вспомогательный текст под полем."],
-  ["icon", "ReactNode / boolean", "false", "Иконка слева от значения."],
-]
-const options = ["Квартиры", "Дома", "Участки"]
+  ["size", "md · sm", "md", "Размер поля и типографики значения."],
+  ["content", "text · chips", "text", "Одно или несколько выбранных значений."],
+  ["value", "ReactNode", "Value", "Отображаемое выбранное значение."],
+  ["label", "ReactNode · false", "Label", "Подпись над полем; false скрывает её."],
+  ["icon", "boolean", "false", "Показывает иконку слева от значения."],
+  ["helperText", "ReactNode", "—", "Пояснение или текст ошибки под полем."],
+  ["state", "default · hovered · focused", "default", "Статичное состояние для демонстрации и тестирования."],
+  ["expanded", "boolean", "false", "Открывает меню и поворачивает индикатор."],
+  ["onExpandedChange", "(expanded) => void", "—", "Вызывается при закрытии меню вне компонента."],
+  ["disabled", "boolean", "false", "Блокирует взаимодействие."],
+  ["error", "boolean", "false", "Показывает ошибочное состояние."],
+  ["menu", "ReactNode", "—", "Контент выпадающего меню."],
+  ["fullWidth", "boolean", "false", "Растягивает поле на ширину контейнера."],
+];
 
-function SelectProperties() {
-  const widths = [160, "fill", 140, "fill"] as const
+function CodeProp({ name, value }: { name: string; value?: string }) {
+  return (
+    <>
+      <span className="text-[var(--rh-theme-text-info)]">{name}</span>
+      {value && (
+        <>
+          <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
+          <span className="text-[var(--rh-theme-text-success)]">{value}</span>
+        </>
+      )}
+    </>
+  );
+}
+
+function SelectSnippet({ children }: { children: React.ReactNode }) {
+  return (
+    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
+      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`<`}</span>
+      <span className="text-[var(--rh-palette-purple-700)]">Select</span>{" "}
+      {children}
+      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{` />`}</span>
+    </code>
+  );
+}
+
+const sizeSnippet = <SelectSnippet><CodeProp name="size" value={'"sm"'} /></SelectSnippet>;
+const stateSnippet = <SelectSnippet><CodeProp name="state" value={'"focused"'} /></SelectSnippet>;
+const compositionSnippet = <SelectSnippet><CodeProp name="content" value={'"chips"'} />{" "}<CodeProp name="icon" /></SelectSnippet>;
+
+function SelectWithMenu({
+  align = "left",
+  defaultOpen = false,
+  ...props
+}: React.ComponentProps<typeof Select> & {
+  align?: "left" | "right";
+  defaultOpen?: boolean;
+}) {
+  const initialValue = typeof props.value === "string" ? props.value : options[0];
+  const [expanded, setExpanded] = React.useState(defaultOpen);
+  const [value, setValue] = React.useState(initialValue);
 
   return (
-    <Table className="w-full !min-w-0 rounded-lg border border-[var(--parser-border-light)] bg-white">
+    <Select
+      {...props}
+      expanded={expanded}
+      menu={
+        expanded && (
+          <Menu
+            align={align}
+            className={cn(
+              "absolute top-full z-50 mt-1",
+              align === "left" ? "left-0" : "right-0",
+            )}
+          >
+            {options.map((option) => (
+              <MenuItemSingleSelect
+                icon={false}
+                key={option}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setValue(option);
+                  setExpanded(false);
+                }}
+                rightSlot={false}
+                secondaryText={false}
+                selected={option === value}
+              >
+                {option}
+              </MenuItemSingleSelect>
+            ))}
+          </Menu>
+        )
+      }
+      onClick={() => {
+        if (!props.disabled) setExpanded((current) => !current);
+      }}
+      onExpandedChange={setExpanded}
+      value={value}
+    />
+  );
+}
+
+function PropertiesTable() {
+  return (
+    <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
       <div className="flex border-b border-[var(--parser-border-light)]" role="row">
-        {["Свойство", "Значения", "По умолчанию", "Назначение"].map((title, index) => <TableCell helpIcon={false} key={title} role="head" sort={false} type="text" width={widths[index]}>{title}</TableCell>)}
+        {["Свойство", "Значения", "По умолчанию", "Назначение"].map((title, index) => (
+          <TableCell
+            helpIcon={false}
+            key={title}
+            role="head"
+            sort={false}
+            type="text"
+            width={index === 3 ? "fill" : index === 0 ? 160 : 140}
+          >
+            {title}
+          </TableCell>
+        ))}
       </div>
-      {properties.map(row => <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" key={row[0]} role="row">
-        {row.map((cell, index) => <TableCell key={cell} role="body" type="text" width={widths[index]}>{cell}</TableCell>)}
-      </div>)}
+      {properties.map((row) => (
+        <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" key={row[0]} role="row">
+          {row.map((cell, index) => (
+            <TableCell
+              key={index}
+              role="body"
+              type="text"
+              width={index === 3 ? "fill" : index === 0 ? 160 : 140}
+            >
+              {cell}
+            </TableCell>
+          ))}
+        </div>
+      ))}
     </Table>
-  )
-}
-
-function Section({ title, children, description, settings }: { title: string; description: string; children: React.ReactNode; settings: string[] }) {
-  return <section className="grid w-full gap-4"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}<div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div></section>
-}
-
-function SelectWithMenu({ align = "left", showMenu = false, ...props }: React.ComponentProps<typeof Select> & { align?: "left" | "right"; showMenu?: boolean }) {
-  const selectedValue = typeof props.value === "string" ? props.value : options[0]
-  const [open, setOpen] = React.useState(showMenu)
-  const [value, setValue] = React.useState(selectedValue)
-
-  return <div className={cn("flex w-fit max-w-full flex-col gap-1", align === "right" && "self-end")}>
-    <Select {...props} expanded={open} onExpandedChange={setOpen} onClick={() => { if (!props.disabled) setOpen(isOpen => !isOpen) }} value={value} menu={open && <Menu className={cn("absolute top-full z-50 mt-0.5", align === "left" ? "left-0" : "right-0")} align={align}>
-      {options.map(option => <MenuItemSingleSelect icon={false} key={option} onClick={event => { event.stopPropagation(); setValue(option); setOpen(false) }} rightSlot={false} secondaryText={false} selected={option === value}>{option}</MenuItemSingleSelect>)}
-    </Menu>} />
-  </div>
+  );
 }
 
 export function SelectExamples() {
-  return <div className="grid min-w-0 gap-10">
-    <Section description="content=text показывает одно выбранное значение. Для нескольких значений используй content=chips: выбранные значения отображаются как Chip." settings={["content: text · chips"]} title="Контент">
-      <div className="grid gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2">
-        <div className="grid gap-2"><p className="text-xs text-[var(--parser-text-neutral-secondary)]">Одно значение</p><SelectWithMenu label="Тип объекта" /></div>
-        <div className="grid gap-2"><p className="text-xs text-[var(--parser-text-neutral-secondary)]">Несколько значений</p><SelectWithMenu content="chips" label="Тип объекта" /></div>
-      </div>
-    </Section>
+  return (
+    <div className="grid min-w-0">
+      <ShowcaseSection
+        codeSnippet={sizeSnippet}
+        description="Select использует единый визуальный стиль. Размер md — основной, sm подходит для плотных панелей и фильтров."
+        showcase={
+          <ShowcaseSurface>
+            <ShowcasePanel>
+              <div className="flex flex-wrap items-end justify-center gap-6">
+                <SelectWithMenu label="md" size="md" />
+                <SelectWithMenu label="sm" size="sm" />
+              </div>
+            </ShowcasePanel>
+          </ShowcaseSurface>
+        }
+        title="Размер"
+      />
 
-    <Section description="Состояние focused обозначает активное поле, expanded — открытое меню. Ошибка и disabled имеют приоритет над состоянием взаимодействия." settings={["state: default · hovered · focused", "expanded: boolean", "error: boolean", "disabled: boolean"]} title="Состояния">
-      <div className="grid gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2">
-        <SelectWithMenu label="По умолчанию" />
-        <SelectWithMenu label="Наведение" />
-        <SelectWithMenu expanded label="Раскрыто" state="focused" />
-        <SelectWithMenu disabled label="Недоступно" />
-        <SelectWithMenu error helperText="Проверь значение" label="Ошибка" />
-      </div>
-    </Section>
+      <ShowcaseSection
+        codeSnippet={stateSnippet}
+        description="Нативный hover работает при наведении. Focused, error и disabled помогают показать статичные состояния в макетах."
+        showcase={
+          <ShowcaseSurface>
+            <ShowcasePanel>
+              <div className="grid w-full max-w-[760px] grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
+                <SelectWithMenu label="default" />
+                <SelectWithMenu label="hovered" state="hovered" />
+                <SelectWithMenu defaultOpen label="focused" state="focused" />
+                <SelectWithMenu disabled label="disabled" />
+                <SelectWithMenu error helperText="Проверь значение" label="error" />
+              </div>
+            </ShowcasePanel>
+          </ShowcaseSurface>
+        }
+        title="Состояния"
+      />
 
-    <Section description={'При раскрытии Select открывает компонент Menu на расстоянии 4px от поля. По умолчанию Menu выравнивается по левому краю Select; для выравнивания по правому краю передай align="right". Menu содержит пункты MenuItemSingleSelect, а выбранный пункт отмечается selected=true.'} settings={["menu: ReactNode", "align: left · right"]} title="Выпадающее меню">
-      <div className="grid w-full gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2">
-        {["left", "right"].map((align) => (
-          <div className="flex w-full flex-col" key={align}>
-            <p className="text-xs text-[var(--parser-text-neutral-secondary)]">Выравнивание: {align === "left" ? "слева" : "справа"}</p>
-            <SelectWithMenu align={align as "left" | "right"} label="Тип объекта" showMenu state="focused" />
-          </div>
-        ))}
-      </div>
-    </Section>
+      <ShowcaseSection
+        codeSnippet={compositionSnippet}
+        description="Select может показывать подпись, иконку, пояснение и одно либо несколько выбранных значений. Нажми на поле, чтобы открыть меню."
+        showcase={
+          <ShowcaseSurface
+            usedComponents={[
+              { href: "/Rhood/?view=components&component=menu", title: "Menu" },
+              { href: "/Rhood/?view=components&component=chip", title: "Chip" },
+            ]}
+          >
+            <ShowcasePanel>
+              <div className="flex flex-wrap items-end justify-center gap-6">
+                <SelectWithMenu icon label="С иконкой" />
+                <SelectWithMenu content="chips" label="Несколько значений" />
+                <SelectWithMenu helperText="Выбери тип объекта" label={false} />
+              </div>
+            </ShowcasePanel>
+          </ShowcaseSurface>
+        }
+        title="Состав"
+      />
 
-    <Section description="md — основной размер поля, sm — компактный вариант для плотных форм и панелей." settings={["size: md · sm"]} title="Размер">
-      <div className="grid w-full gap-4 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2"><SelectWithMenu label="md" size="md" /><SelectWithMenu label="sm" size="sm" /></div>
-    </Section>
-
-    <Section description="helperText поясняет поле или сообщает об ошибке. icon добавляет иконку слева от значения." settings={["helperText: ReactNode", "icon: ReactNode · boolean"]} title="Дополнительные элементы">
-      <div className="grid w-full gap-6 rounded-xl bg-[var(--parser-surface-under-islands)] p-4 sm:grid-cols-2"><SelectWithMenu helperText="Выбери один вариант" icon label="С иконкой" /><SelectWithMenu helperText="Helper text" label="С пояснением" /></div>
-    </Section>
-
-    <SelectProperties />
-  </div>
+      <ShowcaseSection
+        description="Публичные свойства Select для реализации."
+        showcase={<PropertiesTable />}
+        title="Свойства"
+      />
+    </div>
+  );
 }

@@ -7,22 +7,49 @@ import {
 import { Button } from "@/components/ui/button";
 import { ButtonFavorite } from "@/components/ui/button-favorite";
 import { Chip } from "@/components/ui/chip";
+import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { IconButton } from "@/components/ui/icon-button";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { cn } from "@/lib/utils";
 
 type ObjectInfoProps = React.ComponentProps<"article"> & {
   onClose?: () => void;
+  presentation?: "inline" | "drawer";
 };
 
 const galleryImage = "/Rhood/assets/object-gallery-1.png";
 
 /**
- * Составная информация об объекте. Может быть помещена как в Drawer, так и на страницу объекта.
+ * Составная информация об объекте. В presentation="drawer" самостоятельно открывается в боковой панели.
  * Figma: https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24335-23012
  */
-function ObjectInfo({ className, onClose, ...props }: ObjectInfoProps) {
+function ObjectInfo({ className, onClose, presentation = "inline", ...props }: ObjectInfoProps) {
   const [callStatus, setCallStatus] = React.useState("Не выбрано");
+  const [drawerOpen, setDrawerOpen] = React.useState(true);
+
+  if (presentation === "drawer") {
+    return (
+      <DrawerContainer>
+        <Drawer
+          closeButton={false}
+          header={false}
+          maxWidth={884}
+          onOpenChange={setDrawerOpen}
+          onTransitionEnd={() => {
+            if (!drawerOpen) onClose?.();
+          }}
+          open={drawerOpen}
+          title="Информация об объекте"
+        >
+          <ObjectInfo
+            {...props}
+            className={cn("h-full w-full rounded-none", className)}
+            onClose={() => setDrawerOpen(false)}
+          />
+        </Drawer>
+      </DrawerContainer>
+    );
+  }
 
   return (
     <article

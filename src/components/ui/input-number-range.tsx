@@ -3,9 +3,12 @@ import * as React from "react"
 import { InputNumber, type InputNumberProps, type InputNumberSize, type InputNumberState } from "@/components/ui/input-number"
 import { cn } from "@/lib/utils"
 
-type RangeInputProps = Omit<InputNumberProps, "className" | "disabled" | "endText" | "error" | "size" | "startText" | "state">
+type InputNumberRangeAppearance = "default" | "neutral"
+type RangeInputProps = Omit<InputNumberProps, "appearance" | "className" | "disabled" | "endText" | "error" | "size" | "startText" | "state">
 
 type InputNumberRangeProps = Omit<React.ComponentProps<"div">, "onChange"> & {
+  /** Controls the shared field background. */
+  appearance?: InputNumberRangeAppearance
   /** Makes both values unavailable. */
   disabled?: boolean
   /** Shows the error treatment on the shared field outline. */
@@ -28,23 +31,25 @@ const sizeClasses: Record<InputNumberSize, string> = {
   sm: "h-[calc(var(--spacing)*9)]",
 }
 
-function groupStateClasses({ error, state }: { error: boolean; state: InputNumberState }) {
+function groupStateClasses({ appearance, disabled, error, state }: { appearance: InputNumberRangeAppearance; disabled: boolean; error: boolean; state: InputNumberState }) {
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--parser-border-error)] ring-1 ring-inset ring-[color:var(--parser-border-error)]"
-      : "border-[color:var(--parser-border-error)]"
+      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      : "border-[color:var(--rh-theme-border-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--parser-border-focus)] ring-1 ring-inset ring-[color:var(--parser-border-focus)]"
+    return "border-[color:var(--rh-theme-border-focus)] bg-[var(--rh-theme-surface-bg)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
   }
 
-  if (state === "hovered") return "border-[color:var(--parser-border-hover)] bg-[var(--input-hover,white)]"
-  return "border-[color:var(--parser-border-light)]"
+  if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
+  if (appearance === "neutral" && !disabled) return "border-transparent"
+  return "border-[color:var(--rh-theme-border-light)]"
 }
 
 /** Two numeric values in one shared field outline, for example a minimum and maximum area. */
 function InputNumberRange({
+  appearance = "default",
   className,
   disabled = false,
   endInputProps,
@@ -69,10 +74,11 @@ function InputNumberRange({
       {...props}
       aria-disabled={disabled || undefined}
       className={cn(
-        "flex w-full items-stretch overflow-hidden rounded-lg border bg-white transition-colors duration-150",
+        "flex w-full items-stretch overflow-hidden rounded-lg border transition-colors duration-150",
+        appearance === "neutral" ? "bg-[var(--rh-theme-fill-input-neutral)]" : "bg-[var(--rh-theme-surface-bg)]",
         sizeClasses[size],
-        groupStateClasses({ error, state: resolvedState }),
-        disabled && "cursor-not-allowed bg-white text-[color:var(--parser-text-disabled)]",
+        groupStateClasses({ appearance, disabled, error, state: resolvedState }),
+        disabled && "cursor-not-allowed bg-[var(--rh-theme-surface-bg)] text-[color:var(--rh-theme-text-neutral-disabled)]",
         className,
       )}
       onBlurCapture={(event) => {
@@ -141,4 +147,4 @@ function InputNumberRange({
 }
 
 export { InputNumberRange }
-export type { InputNumberRangeProps }
+export type { InputNumberRangeAppearance, InputNumberRangeProps }

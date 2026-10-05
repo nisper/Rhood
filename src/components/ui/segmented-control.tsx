@@ -4,7 +4,7 @@ import { Segment, type SegmentColor, type SegmentProps, type SegmentSize } from 
 import { cn } from "@/lib/utils"
 
 type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
-  color?: SegmentColor
+  appearance?: SegmentColor
   defaultValue?: string | readonly string[]
   onValueChange?: (value: string | string[]) => void
   selectionMode?: "single" | "multiple"
@@ -13,9 +13,9 @@ type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[calc(var(--spacing)*14)] rounded-[var(--rh-sizing-border-radius-lg)]",
-  md: "h-[calc(var(--spacing)*10)] rounded-[var(--rh-sizing-border-radius-md)]",
-  sm: "h-[calc(var(--spacing)*9)] rounded-[var(--rh-sizing-border-radius-md)]",
+  lg: "h-[calc(var(--spacing)*14)] rounded-[12px]",
+  md: "h-[calc(var(--spacing)*10)] rounded-[8px]",
+  sm: "h-[calc(var(--spacing)*9)] rounded-[8px]",
 }
 
 const colorClasses: Record<SegmentColor, string> = {
@@ -27,7 +27,7 @@ const colorClasses: Record<SegmentColor, string> = {
 function SegmentedControl({
   children,
   className,
-  color = "neutral",
+  appearance = "neutral",
   defaultValue,
   onValueChange,
   selectionMode = "single",
@@ -71,7 +71,7 @@ function SegmentedControl({
     const segment = child as React.ReactElement<React.ComponentProps<typeof Segment>>
     const segmentValue = getSegmentValue(segment, index)
     return React.cloneElement(segment, {
-      color: segment.props.color ?? color,
+      color: segment.props.color ?? appearance,
       onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
         segment.props.onClick?.(event)
         if (!event.defaultPrevented && !segment.props.disabled) selectValue(segmentValue)
@@ -87,9 +87,9 @@ function SegmentedControl({
     <div
       aria-label="Segmented control"
       className={cn(
-        "inline-flex w-fit items-center gap-[calc(var(--spacing)*0.5)] overflow-clip p-[calc(var(--spacing)*1)]",
+        "inline-flex w-fit items-center gap-[calc(var(--spacing)*0.5)] overflow-clip p-[2px]",
         sizeClasses[size],
-        colorClasses[color],
+        colorClasses[appearance],
         className,
       )}
       role={selectionMode === "single" ? "radiogroup" : "group"}

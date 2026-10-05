@@ -99,6 +99,25 @@ export function TextareaExamples() {
       </Section>
 
       <Section
+        description="Neutral использует нейтральную заливку для размещения поля на цветных или разделённых поверхностях."
+        settings={["appearance: default · neutral"]}
+        title="Внешний вид"
+      >
+        <ShowcaseSurface>
+          <ShowcasePanel>
+            <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
+              <FieldCell label="default">
+                <Textarea aria-label="Default appearance textarea" placeholder="Комментарий" />
+              </FieldCell>
+              <FieldCell label="neutral">
+                <Textarea appearance="neutral" aria-label="Neutral appearance textarea" placeholder="Комментарий" />
+              </FieldCell>
+            </div>
+          </ShowcasePanel>
+        </ShowcaseSurface>
+      </Section>
+
+      <Section
         description="Hover и focus работают у нативного textarea. Error и disabled имеют приоритет над обычными состояниями."
         settings={[
           "state: default · hovered · focused",

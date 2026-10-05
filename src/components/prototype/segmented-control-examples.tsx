@@ -20,16 +20,16 @@ function SplitSurface({ children, className }: { children: React.ReactNode; clas
 
 function Options({ color, icon = false, selected = [0], size = "lg" }: { color: "neutral" | "contrast"; icon?: boolean; selected?: readonly number[]; size?: "lg" | "md" | "sm" }) {
   const selectionMode = selected.length > 1 ? "multiple" : "single"
-  return <SegmentedControl color={color} defaultValue={selected.map(String)} selectionMode={selectionMode} size={size}>{labels.map((label, index) => <Segment icon={icon && index === 0} key={index} value={String(index)}>{label}</Segment>)}</SegmentedControl>
+  return <SegmentedControl appearance={color} defaultValue={selected.map(String)} selectionMode={selectionMode} size={size}>{labels.map((label, index) => <Segment icon={icon && index === 0} key={index} value={String(index)}>{label}</Segment>)}</SegmentedControl>
 }
 
 function StateOptions({ color, size = "lg" }: { color: "neutral" | "contrast"; size?: "lg" | "md" | "sm" }) {
-  return <SegmentedControl color={color} defaultValue="selected" size={size}><Segment value="selected">Selected</Segment><Segment state="hover" value="hovered">Hovered</Segment><Segment value="default">Default</Segment></SegmentedControl>
+  return <SegmentedControl appearance={color} defaultValue="selected" size={size}><Segment value="selected">Selected</Segment><Segment state="hover" value="hovered">Hovered</Segment><Segment value="default">Default</Segment></SegmentedControl>
 }
 
 export function SegmentedControlExamples() {
   return <div className="grid min-w-0 gap-10">
-    <Section description="Segmented control объединяет два или больше взаимоисключающих вариантов. Каждый вариант — отдельный Segment." settings={["color: neutral · contrast"]} title="Цвет">
+    <Section description="Segmented control объединяет два или больше взаимоисключающих вариантов. Каждый вариант — отдельный Segment." settings={["appearance: neutral · contrast"]} title="Оформление">
       <SplitSurface><Surface tone="white"><Options color="neutral" selected={[0]} size="md" /></Surface><Surface tone="gray"><Options color="contrast" selected={[0]} size="md" /></Surface></SplitSurface>
     </Section>
 

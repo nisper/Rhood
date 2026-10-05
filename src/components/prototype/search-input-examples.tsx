@@ -7,6 +7,7 @@ import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
 const properties = [
+  ["appearance", "neutral · default", "neutral", "Нейтральный фон по умолчанию или белое поле с рамкой."],
   ["size", "md · sm", "md", "Размер поля и иконки поиска."],
   ["state", "default · hovered · focused", "default", "Состояние для витрины и визуальных тестов."],
   ["disabled", "true · false", "false", "Недоступное для ввода поле."],
@@ -26,6 +27,10 @@ export function SearchExamples() {
   return <div className="grid min-w-0 gap-10">
     <Section description="md — основной размер поля; sm — компактный вариант для плотных панелей и фильтров." settings={["size: md · sm"]} title="Размер">
       <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="md"><Search placeholder="Поиск" size="md" /></FieldCell><FieldCell label="sm"><Search placeholder="Поиск" size="sm" /></FieldCell></div></ShowcasePanel></ShowcaseSurface>
+    </Section>
+
+    <Section description="Search использует neutral appearance по умолчанию. Передай default, чтобы показать белое поле с рамкой." settings={["appearance: neutral · default"]} title="Внешний вид">
+      <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="neutral"><Search placeholder="Поиск" /></FieldCell><FieldCell label="default"><Search appearance="default" placeholder="Поиск" /></FieldCell></div></ShowcasePanel></ShowcaseSurface>
     </Section>
 
     <Section description="Hover и focus относятся к состояниям интерактивного поля. Disabled имеет приоритет и блокирует ввод." settings={["state: default · hovered · focused", "disabled: boolean"]} title="Состояния">

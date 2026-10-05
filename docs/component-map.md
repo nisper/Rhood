@@ -28,7 +28,6 @@
 | `416:3328` | `Table` | `src/components/ui/table.tsx` / `Table` |
 
 | `8555:1158` | `LikeButton` | `src/components/ui/like-button.tsx` / `LikeButton` |
-| `10252:5944` | `Tag` | `src/components/ui/tag.tsx` / `Tag` |
 | `8827:1349` | `ToggleButtonGroup` | `src/components/ui/toggle-button-group.tsx` / `ToggleButtonGroup` |
 | `10742:281` | `IconButton` | `src/components/ui/icon-button.tsx` / `IconButton` |
 | `712:480` | `HelpIcon` | `src/components/ui/help-icon.tsx` / `HelpIcon` |

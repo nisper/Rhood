@@ -5,8 +5,11 @@ import { cn } from "@/lib/utils"
 
 type TextfieldSize = "md" | "sm"
 type TextfieldState = "default" | "hovered" | "focused"
+type TextfieldAppearance = "default" | "neutral"
 
 type TextfieldProps = Omit<React.ComponentProps<"input">, "size"> & {
+  /** Controls the field background. */
+  appearance?: TextfieldAppearance
   /** Visual state for component previews. Native hover and focus work by default. */
   clearButton?: boolean
   /** Non-interactive element fixed at the start of the field. */
@@ -22,7 +25,7 @@ const sizeClasses: Record<TextfieldSize, string> = {
   sm: "rh-typography-b2 h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)]",
 }
 
-function stateClasses({ error, state }: { error: boolean; state: TextfieldState }) {
+function stateClasses({ appearance, disabled, error, state }: { appearance: TextfieldAppearance; disabled: boolean; error: boolean; state: TextfieldState }) {
   if (error) {
     return state === "focused"
       ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
@@ -34,11 +37,13 @@ function stateClasses({ error, state }: { error: boolean; state: TextfieldState 
   }
 
   if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
+  if (appearance === "neutral" && !disabled) return "border-transparent"
   return "border-[color:var(--rh-theme-border-light)]"
 }
 
 /** A native, single-line text input styled with Parser tokens. */
 function Textfield({
+  appearance = "default",
   className,
   clearButton = false,
   defaultValue,
@@ -65,6 +70,9 @@ function Textfield({
   const hasValue = `${currentValue ?? ""}`.length > 0
   const showClearButton = clearButton && hasValue && !disabled && (isFocused || isFocusedPreview)
   const hasStartAdornment = Boolean(startAdornment)
+  const backgroundClasses = appearance === "neutral"
+    ? "bg-[var(--rh-theme-fill-input-neutral)]"
+    : "bg-[var(--rh-theme-surface-bg)]"
   const interactiveClasses = !disabled && !error && !isFocusedPreview
     ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-focus)]"
     : !disabled && error
@@ -75,9 +83,10 @@ function Textfield({
     <input
       aria-invalid={error || undefined}
       className={cn(
-        "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        backgroundClasses,
         sizeClasses[size],
-        stateClasses({ error, state }),
+        stateClasses({ appearance, disabled, error, state }),
         interactiveClasses,
         hasStartAdornment && (size === "md" ? "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*6)+var(--rh-sizing-common-input-padding-gap-md))]" : "pl-[calc(var(--rh-sizing-common-input-padding-px-sm)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-sm))]"),
         (required || showClearButton) && "pr-[calc(var(--spacing)*8)]",
@@ -152,4 +161,4 @@ function Textfield({
 }
 
 export { Textfield }
-export type { TextfieldProps, TextfieldSize, TextfieldState }
+export type { TextfieldAppearance, TextfieldProps, TextfieldSize, TextfieldState }

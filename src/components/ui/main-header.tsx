@@ -78,7 +78,7 @@ function MainHeader({
     return (
       <header
         className={cn(
-          "rhood-page-gutter flex h-14 w-full items-center justify-between overflow-hidden border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)] py-2",
+          "rhood-page-gutter flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--rh-theme-surface-bg)] py-2",
           className,
         )}
         {...props}
@@ -107,16 +107,16 @@ function MainHeader({
   return (
     <header
       className={cn(
-        "w-full border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]",
+        "w-full bg-[var(--rh-theme-surface-bg)]",
         className,
       )}
       {...props}
     >
-      <div className="rhood-page-gutter relative flex w-full items-center gap-4 py-1.5">
+      <div className="rhood-page-gutter relative flex w-full items-center gap-6 pb-2 pt-4">
         <div className="flex shrink-0 items-center justify-start">
           {logoHref ? (
             <a aria-label="На главную" href={logoHref}>
-              <img alt="Rhood" className="h-[30px] w-auto" src={logoSrc} />
+              <img alt="Rhood" className="h-[32px] w-auto" src={logoSrc} />
             </a>
           ) : (
             <img
@@ -128,7 +128,7 @@ function MainHeader({
         </div>
 
         <nav
-          className={cn("flex items-center gap-0", navAlign === "end" && "ml-auto")}
+          className={cn("flex items-center gap-1", navAlign === "end" && "ml-auto")}
         >
           {navItems.map((item) => {
             const className = cn(
@@ -141,7 +141,7 @@ function MainHeader({
               <>
                 <span
                   className={cn(
-                    "rh-typography-b2 whitespace-nowrap",
+                    "rh-typography-b1 whitespace-nowrap font-[500]",
                     item.active || item.state === "hovered"
                       ? "text-[var(--rh-theme-text-neutral-primary)]"
                       : "text-[var(--rh-theme-text-neutral-secondary)] group-hover:text-[var(--rh-theme-text-neutral-primary)]",

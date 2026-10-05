@@ -29,6 +29,9 @@ export function InputNumberExamples() {
     <Section description="md — основной размер, sm — компактный. Значение набирается моноширинным шрифтом." settings={["size: md · sm"]} title="Размер">
       <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><InputNumber placeholder="Введите значение" /></Cell><Cell label="sm"><InputNumber placeholder="Введите значение" size="sm" /></Cell></div></ShowcasePanel></ShowcaseSurface>
     </Section>
+    <Section description="Neutral использует нейтральную заливку без рамки в default-состоянии. Остальные состояния совпадают с default appearance." settings={["appearance: default · neutral"]} title="Внешний вид">
+      <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="default"><InputNumber placeholder="Введите значение" /></Cell><Cell label="neutral"><InputNumber appearance="neutral" placeholder="Введите значение" /></Cell></div></ShowcasePanel></ShowcaseSurface>
+    </Section>
     <Section description="Состояния совпадают с текстовым Input: default, hovered, focused, error и disabled." settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]} title="Состояния">
       <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3"><Cell label="default"><InputNumber placeholder="Введите значение" /></Cell><Cell label="hovered"><InputNumber placeholder="Введите значение" state="hovered" /></Cell><Cell label="focused"><InputNumber placeholder="Введите значение" state="focused" /></Cell><Cell label="error"><InputNumber error placeholder="Введите значение" /></Cell><Cell label="error focused"><InputNumber error placeholder="Введите значение" state="focused" /></Cell><Cell label="disabled"><InputNumber disabled placeholder="Введите значение" /></Cell></div></ShowcasePanel></ShowcaseSurface>
     </Section>

@@ -5,8 +5,11 @@ import { cn } from "@/lib/utils"
 
 type InputNumberSize = "md" | "sm"
 type InputNumberState = "default" | "hovered" | "focused"
+type InputNumberAppearance = "default" | "neutral"
 
 type InputNumberProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
+  /** Controls the field background. */
+  appearance?: InputNumberAppearance
   /** Removes the field chrome when the input is embedded in another control. */
   bare?: boolean
   clearButton?: boolean
@@ -37,7 +40,7 @@ const sizeClasses: Record<InputNumberSize, string> = {
 
 const bareInputClasses = "h-full rounded-none border-0 bg-transparent hover:border-0 hover:bg-transparent focus:border-0 focus:bg-transparent focus:ring-0 disabled:border-0 disabled:bg-transparent"
 
-function stateClasses({ error, state }: { error: boolean; state: InputNumberState }) {
+function stateClasses({ appearance, disabled, error, state }: { appearance: InputNumberAppearance; disabled: boolean; error: boolean; state: InputNumberState }) {
   if (error) {
     return state === "focused"
       ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
@@ -49,11 +52,13 @@ function stateClasses({ error, state }: { error: boolean; state: InputNumberStat
   }
 
   if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
+  if (appearance === "neutral" && !disabled) return "border-transparent"
   return "border-[color:var(--rh-theme-border-light)]"
 }
 
 /** A single-line numeric field with monospaced values and optional units. */
 function InputNumber({
+  appearance = "default",
   bare = false,
   className,
   clearButton = false,
@@ -85,6 +90,9 @@ function InputNumber({
   const displayValue = groupThousands ? formatThousands(currentValue) : currentValue
   const hasValue = currentValue.length > 0
   const showClearButton = clearButton && hasValue && !disabled && (isFocused || isFocusedPreview)
+  const backgroundClasses = appearance === "neutral"
+    ? "bg-[var(--rh-theme-fill-input-neutral)]"
+    : "bg-[var(--rh-theme-surface-bg)]"
   const interactiveClasses = !disabled && !error && !isFocusedPreview
     ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-focus)]"
     : !disabled && error
@@ -107,9 +115,10 @@ function InputNumber({
       <input
         aria-invalid={error || undefined}
         className={cn(
-          "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border bg-[var(--rh-theme-surface-bg)] font-mono font-normal text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+          "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border font-mono font-normal text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+          backgroundClasses,
           sizeClasses[size],
-          stateClasses({ error, state }),
+          stateClasses({ appearance, disabled, error, state }),
           interactiveClasses,
           bare && bareInputClasses,
           startText && "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-md))]",
@@ -196,4 +205,4 @@ function InputNumber({
 }
 
 export { InputNumber }
-export type { InputNumberProps, InputNumberSize, InputNumberState }
+export type { InputNumberAppearance, InputNumberProps, InputNumberSize, InputNumberState }

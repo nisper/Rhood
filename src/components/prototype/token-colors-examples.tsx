@@ -53,7 +53,7 @@ export function TokenColorsExamples() {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <SegmentedControl aria-label="Коллекция токенов" color="neutral" onValueChange={(value) => setCollection(value as TokenCollection)} size="sm" value={collection}>
+          <SegmentedControl appearance="neutral" aria-label="Коллекция токенов" onValueChange={(value) => setCollection(value as TokenCollection)} size="sm" value={collection}>
             {(Object.keys(collectionLabels) as TokenCollection[]).map((item) => <Segment key={item} value={item}>{collectionLabels[item]}</Segment>)}
           </SegmentedControl>
           <Search aria-label="Поиск цветового токена" className="min-w-0 flex-1" onChange={(event) => setQuery(event.target.value)} placeholder="Поиск токена" size="sm" value={query} />

@@ -34,6 +34,9 @@ export function InputNumberRangeExamples() {
       <Section description="md — основной размер, sm — компактный. Размер применяется к обоим числовым полям диапазона." settings={["size: md · sm"]} title="Размер">
         <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="sm"><InputNumberRange endInputProps={inputProps} size="sm" startInputProps={inputProps} /></Cell></div></ShowcasePanel></ShowcaseSurface>
       </Section>
+      <Section description="Neutral использует нейтральную заливку без рамки в default-состоянии. Остальные состояния совпадают с default appearance." settings={["appearance: default · neutral"]} title="Внешний вид">
+        <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="default"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="neutral"><InputNumberRange appearance="neutral" endInputProps={inputProps} startInputProps={inputProps} /></Cell></div></ShowcasePanel></ShowcaseSurface>
+      </Section>
       <Section description="Состояние применяется сразу ко всей группе — оба поля остаются без собственных рамок." settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]} title="Состояния">
         <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <Cell label="default"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell>

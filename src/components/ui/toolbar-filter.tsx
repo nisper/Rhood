@@ -110,6 +110,7 @@ function FilterRange({
   return (
     <InputNumberRange
       aria-label={`Диапазон ${suffix}`}
+      appearance="neutral"
       className={widthClass}
       size="sm"
       startInputProps={{
@@ -138,7 +139,7 @@ function RoominessGroup({
 }) {
   return (
     <SegmentedControl
-      color="contrast"
+      appearance="neutral"
       onValueChange={(nextValue) => onValueChange(Array.isArray(nextValue) ? nextValue : [nextValue])}
       selectionMode="multiple"
       size="sm"
@@ -252,7 +253,7 @@ function ModalFilters() {
         <FormBlock direction="row" label="Комнатность">
         <SegmentedControl
           className="w-full"
-          color="contrast"
+          appearance="contrast"
           selectionMode="multiple"
           size="md"
         >

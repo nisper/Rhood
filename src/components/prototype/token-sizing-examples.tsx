@@ -99,7 +99,7 @@ export function TokenSizingExamples() {
       <div className="flex items-center gap-3">
         <SegmentedControl
           aria-label="Группа токенов размеров"
-          color="neutral"
+          appearance="neutral"
           onValueChange={(value) => setGroup(value as SizingGroup)}
           size="sm"
           value={group}

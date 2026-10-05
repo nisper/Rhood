@@ -158,6 +158,21 @@ export function InputExamples() {
       </Section>
 
       <Section
+        description="Neutral использует нейтральную заливку без рамки в default-состоянии. Hover, focus, error и disabled совпадают с default appearance."
+        settings={["appearance: default · neutral"]}
+        title="Внешний вид"
+      >
+        <ShowcaseSurface>
+          <ShowcasePanel>
+            <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
+              <FieldCell label="default"><Textfield aria-label="Default appearance input" placeholder="Placeholder" /></FieldCell>
+              <FieldCell label="neutral"><Textfield appearance="neutral" aria-label="Neutral appearance input" placeholder="Placeholder" /></FieldCell>
+            </div>
+          </ShowcasePanel>
+        </ShowcaseSurface>
+      </Section>
+
+      <Section
         description="Hover и focus работают у нативного input. Error и disabled имеют приоритет над обычными состояниями."
         settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]}
         title="Состояния"

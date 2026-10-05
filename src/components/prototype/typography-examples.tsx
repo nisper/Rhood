@@ -55,22 +55,22 @@ const styles: TextStyle[] = [
   {
     className: "rh-typography-b1-mono",
     name: "body/body1 mono",
-    settings: "Roboto Mono Regular · 16 / 24 · 0.15",
+    settings: "Roboto Regular · tabular nums · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b1-mono-med",
     name: "body/body1 mono medium",
-    settings: "Roboto Mono Medium · 16 / 24 · 0.15",
+    settings: "Roboto Medium · tabular nums · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b2-mono",
     name: "body/body2 mono",
-    settings: "Roboto Mono Regular · 14 / 20 · 0.17",
+    settings: "Roboto Regular · tabular nums · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b2-mono-med",
     name: "body/body2 mono medium",
-    settings: "Roboto Mono Medium · 14 / 20 · 0.17",
+    settings: "Roboto Medium · tabular nums · 14 / 20 · 0.17",
   },
 ];
 

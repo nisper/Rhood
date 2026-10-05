@@ -13,6 +13,7 @@ type DrawerProps = Omit<React.ComponentProps<"div">, "title"> & {
   defaultOpen?: boolean;
   description?: React.ReactNode;
   footer?: React.ReactNode;
+  header?: boolean;
   hasFooter?: boolean;
   maxWidth?: React.CSSProperties["maxWidth"];
   onOpenChange?: (open: boolean) => void;
@@ -97,6 +98,7 @@ function Drawer({
   description,
   footer,
   hasFooter = Boolean(footer),
+  header = true,
   maxWidth = "var(--rh-sizing-drawer-comment-width)",
   onOpenChange,
   onTransitionEnd,
@@ -183,10 +185,11 @@ function Drawer({
 
   return (
     <div
-      aria-labelledby={titleId}
+      aria-label={!header && typeof title === "string" ? title : undefined}
+      aria-labelledby={header ? titleId : undefined}
       aria-modal="true"
       className={cn(
-        "grid w-full rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg transition-transform duration-200 ease-in-out",
+        "grid w-full overflow-hidden rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg transition-transform duration-200 ease-in-out",
         resolvedPresentation === "drawer" && "h-full grid-rows-[auto_1fr_auto]",
         resolvedPresentation === "bottom-sheet" && "p-4",
         resolvedPresentation === "drawer" &&
@@ -207,18 +210,22 @@ function Drawer({
       onTransitionEnd={handleTransitionEnd}
       {...props}
     >
-      <ModalHeader
-        closeButton={resolvedPresentation === "drawer" && closeButton !== false}
-        description={description}
-        onClose={requestClose}
-        title={title}
-        titleId={titleId}
-      />
+      {header && (
+        <ModalHeader
+          closeButton={resolvedPresentation === "drawer" && closeButton !== false}
+          description={description}
+          onClose={requestClose}
+          title={title}
+          titleId={titleId}
+        />
+      )}
 
       {resolvedPresentation === "bottom-sheet" && children}
 
       {resolvedPresentation === "drawer" && children && (
-        <div className="min-h-0 overflow-y-auto px-6">{children}</div>
+        <div className={cn("min-h-0 overflow-y-auto", header && "px-6")}>
+          {children}
+        </div>
       )}
 
       {hasFooter && footer && (

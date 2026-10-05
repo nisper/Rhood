@@ -1,27 +1,20 @@
 import {
-  Building2,
-  CalendarClock,
   Columns3Cog,
-  ExternalLink,
   Map,
-  MapPin,
   Phone,
-  Save,
-  UserRound,
 } from "lucide-react";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Chip } from "@/components/ui/chip";
-import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { IconButton } from "@/components/ui/icon-button";
-import { Island } from "@/components/ui/island";
 import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { Modal, ModalContainer } from "@/components/ui/modal";
+import { ObjectInfo } from "@/components/ui/object-info";
 import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
@@ -157,187 +150,6 @@ function getPrice(listing: (typeof listings)[number]) {
 function getSpecs(listing: (typeof listings)[number]) {
   const rooms = listing.roomCount === 0 ? "Ст." : `${listing.roomCount} ком.`;
   return `${rooms}, ${listing.area.toLocaleString("ru-RU")} м², этаж ${listing.floor}/${listing.floorCount}`;
-}
-
-function getListingUrl(listing: (typeof listings)[number]) {
-  const sourceHosts: Record<string, string> = {
-    AVITO: "https://www.avito.ru",
-    CIAN: "https://www.cian.ru",
-    DOMCLICK: "https://domclick.ru",
-    YANDEX: "https://realty.yandex.ru",
-  };
-
-  return `${sourceHosts[listing.domain] ?? ""}${listing.url}`;
-}
-
-function ListingDetailDrawer({
-  listing,
-  onCloseComplete,
-  onOpenChange,
-  open,
-}: {
-  listing: (typeof listings)[number];
-  onCloseComplete: () => void;
-  onOpenChange: (open: boolean) => void;
-  open: boolean;
-}) {
-  const [savedToCrm, setSavedToCrm] = React.useState(false);
-  const price = getPrice(listing);
-  const pricePerM2 = Math.round(price / listing.area);
-
-  React.useEffect(() => {
-    setSavedToCrm(false);
-  }, [listing.id]);
-
-  return (
-    <DrawerContainer>
-      <Drawer
-        description={listing.address}
-        footer={
-          <>
-            <Button
-              appearance="default"
-              disabled={!listing.phone}
-              endIcon={false}
-              onClick={() => {
-                if (listing.phone)
-                  window.location.href = `tel:${listing.phone}`;
-              }}
-              size="md"
-              startIcon={<Phone aria-hidden="true" strokeWidth={2} />}
-            >
-              Позвонить
-            </Button>
-            <Button
-              appearance="primary"
-              disabled={savedToCrm}
-              endIcon={false}
-              onClick={() => setSavedToCrm(true)}
-              size="md"
-              startIcon={<Save aria-hidden="true" strokeWidth={2} />}
-            >
-              {savedToCrm ? "Сохранено в CRM" : "Сохранить в CRM"}
-            </Button>
-          </>
-        }
-        onOpenChange={onOpenChange}
-        onTransitionEnd={() => {
-          if (!open) onCloseComplete();
-        }}
-        open={open}
-        title={getSpecs(listing)}
-      >
-        <article className="grid gap-6 py-4 pb-6">
-          <section className="grid gap-3" aria-labelledby="listing-summary">
-            <h3 className="rh-typography-h4" id="listing-summary">
-              Объявление
-            </h3>
-            <dl className="grid grid-cols-2 gap-x-4 gap-y-3 rounded-[var(--rh-sizing-common-input-shape-border-radius)] bg-[var(--rh-theme-fill-neutral)] p-4">
-              <div className="grid gap-1">
-                <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                  Цена
-                </dt>
-                <dd className="rh-typography-h4 font-mono">
-                  {formatNumber(price)} ₽
-                </dd>
-              </div>
-              <div className="grid gap-1">
-                <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                  Цена за м²
-                </dt>
-                <dd className="rh-typography-b1 font-mono">
-                  {formatNumber(pricePerM2)} ₽
-                </dd>
-              </div>
-              <div className="col-span-2 flex gap-2">
-                <MapPin
-                  aria-hidden="true"
-                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
-                />
-                <div className="grid gap-1">
-                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Адрес
-                  </dt>
-                  <dd className="rh-typography-b1">{listing.address}</dd>
-                </div>
-              </div>
-              <div className="col-span-2 flex gap-2">
-                <CalendarClock
-                  aria-hidden="true"
-                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
-                />
-                <div className="grid gap-1">
-                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Опубликовано
-                  </dt>
-                  <dd className="rh-typography-b1">
-                    {formatPublishedAt(listing.publishedAt)}
-                  </dd>
-                </div>
-              </div>
-            </dl>
-          </section>
-
-          <section className="grid gap-3" aria-labelledby="listing-contact">
-            <h3 className="rh-typography-h4" id="listing-contact">
-              Контакт и источник
-            </h3>
-            <dl className="grid gap-4">
-              <div className="flex gap-2">
-                <UserRound
-                  aria-hidden="true"
-                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
-                />
-                <div className="grid gap-1">
-                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Продавец
-                  </dt>
-                  <dd className="rh-typography-b1">
-                    {listing.clientName ?? "Частное лицо"}
-                    {listing.phone
-                      ? ` · ${listing.phone}`
-                      : " · Номер в объявлении не указан"}
-                  </dd>
-                </div>
-              </div>
-              <div className="flex gap-2">
-                <Building2
-                  aria-hidden="true"
-                  className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-neutral-secondary)]"
-                />
-                <div className="grid gap-1">
-                  <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Источник
-                  </dt>
-                  <dd>
-                    <a
-                      className="inline-flex cursor-pointer items-center gap-1 rh-typography-b1 text-[var(--rh-theme-text-brand)] underline underline-offset-2"
-                      href={getListingUrl(listing)}
-                      rel="noreferrer"
-                      target="_blank"
-                    >
-                      {formatSource(listing.domain)} · объявление №
-                      {listing.advertId}
-                      <ExternalLink aria-hidden="true" className="size-4" />
-                    </a>
-                  </dd>
-                </div>
-              </div>
-            </dl>
-          </section>
-
-          <section className="grid gap-3" aria-labelledby="listing-description">
-            <h3 className="rh-typography-h4" id="listing-description">
-              Описание
-            </h3>
-            <p className="rh-typography-b1 whitespace-pre-line text-[var(--rh-theme-text-neutral-primary)]">
-              {listing.description}
-            </p>
-          </section>
-        </article>
-      </Drawer>
-    </DrawerContainer>
-  );
 }
 
 function TableToolbar({
@@ -934,7 +746,7 @@ function ListingsTable({
   className,
   hiddenColumns,
   listings: tableListings,
-  onOpenDrawer,
+  onOpenObjectInfo,
   onSort,
   sort,
   sortable = true,
@@ -942,7 +754,7 @@ function ListingsTable({
   className?: string;
   hiddenColumns: ReadonlySet<ColumnKey>;
   listings: readonly (typeof listings)[number][];
-  onOpenDrawer: (listing: (typeof listings)[number]) => void;
+  onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
   onSort: (column: SortColumn) => void;
   sort: SortState;
   /** Enables sorting by clicking a column header. */
@@ -998,6 +810,7 @@ function ListingsTable({
       bordered
       className={className}
       columns={resultTableColumns}
+      minWidth={1600}
       selection={{
         onSelectedIdsChange: setSelectedIds,
         rowIds: sortedListings.map((listing) => listing.id),
@@ -1015,7 +828,7 @@ function ListingsTable({
           hiddenColumns={hiddenColumns}
           key={listing.id}
           listing={listing}
-          onOpen={() => onOpenDrawer(listing)}
+          onOpen={() => onOpenObjectInfo(listing)}
         />
       ))}
     </Table>
@@ -1033,7 +846,6 @@ export function ApartmentListingsScreen({
   );
   const [sort, setSort] = React.useState<SortState>(null);
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
-  const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [selectedListing, setSelectedListing] = React.useState<
     (typeof listings)[number] | null
   >(null);
@@ -1047,16 +859,17 @@ export function ApartmentListingsScreen({
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-under-islands-alt)] text-[var(--parser-text-neutral-primary)]">
+    <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]">
       <MainHeader
+        className="border-b-0"
         logoHref="/Rhood/"
         navItems={getNavItems(isMyListings ? "my" : "base")}
       />
-      {!isMyListings && <ToolbarFilter />}
+      {!isMyListings && <ToolbarFilter className="border-b-0" />}
 
       <main className="grid min-w-0 gap-0">
-        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] py-4 pt-8">
-          <h1 className="rh-typography-h1 mb-1">
+        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] p-8">
+          <h1 className="rh-typography-h2 mb-1 font-[500]">
             {formatNumber(listings.length)}{" "}
             {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
           </h1>
@@ -1065,9 +878,12 @@ export function ApartmentListingsScreen({
             не показываем
           </p>
         </section>
-        <section>
-          <Island>
-            <section aria-label="Управление выдачей">
+        <section className="min-w-0">
+          <div className="flex min-w-0 flex-col gap-4">
+            <section
+              aria-label="Управление выдачей"
+              className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+            >
               <TableToolbar
                 hiddenColumns={hiddenColumns}
                 onHiddenColumnsChange={setHiddenColumns}
@@ -1078,30 +894,33 @@ export function ApartmentListingsScreen({
                 sort={sort}
               />
             </section>
-            <section aria-label="Список квартир" className="overflow-x-scroll">
+            <section
+              aria-label="Список квартир"
+              className="min-w-0 overflow-x-auto"
+            >
               <ListingsTable
+                className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
                 hiddenColumns={hiddenColumns}
                 listings={listings}
-                onOpenDrawer={(listing) => {
+                onOpenObjectInfo={(listing) => {
                   setSelectedListing(listing);
-                  setDrawerOpen(true);
                 }}
                 onSort={handleSort}
                 sort={sort}
                 sortable={false}
               />
+              <footer className="pt-4">
+                <Button
+                  appearance="default"
+                  endIcon={false}
+                  size="md"
+                  startIcon={false}
+                >
+                  Показать еще 50 объектов
+                </Button>
+              </footer>
             </section>
-            <footer>
-              <Button
-                appearance="default"
-                endIcon={false}
-                size="md"
-                startIcon={false}
-              >
-                Показать еще 50 объектов
-              </Button>
-            </footer>
-          </Island>
+          </div>
         </section>
         {leaderboardOpen && (
           <LeaderboardModal
@@ -1110,11 +929,9 @@ export function ApartmentListingsScreen({
           />
         )}
         {selectedListing && (
-          <ListingDetailDrawer
-            listing={selectedListing}
-            onCloseComplete={() => setSelectedListing(null)}
-            onOpenChange={setDrawerOpen}
-            open={drawerOpen}
+          <ObjectInfo
+            onClose={() => setSelectedListing(null)}
+            presentation="drawer"
           />
         )}
       </main>

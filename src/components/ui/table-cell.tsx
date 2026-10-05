@@ -151,9 +151,9 @@ function TableCell({
       ) : (
         <div className={cn("flex min-h-5 w-full items-center gap-1", contentAlignmentClasses[resolvedAlignment])}>
           <span className={cn(
-          "rh-typography-b2 min-w-0",
+          isHead ? "rh-typography-b2-med min-w-0 text-[var(--rh-theme-text-neutral-primary)]" : "rh-typography-b2 min-w-0",
             isContentWidth ? "whitespace-nowrap" : "break-words",
-            isHead ? "text-[var(--rh-theme-text-neutral-secondary)]" : isNumber ? "rh-typography-b2-mono" : "",
+            !isHead && isNumber ? "rh-typography-b2-mono" : "",
           )}>
             {children ?? (instance1 && <>{isHead ? "Head" : "Cell"}{instance2 && " secondary instance"}</>)}
           </span>

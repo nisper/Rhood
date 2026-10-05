@@ -50,7 +50,6 @@ import { MainHeader } from "@/components/ui/main-header";
 import { OnboardingTooltip } from "@/components/ui/onboarding-tooltip";
 import { Search } from "@/components/ui/search";
 import { Snackbar } from "@/components/ui/snackbar";
-import { Tag } from "@/components/ui/tag";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
@@ -336,10 +335,10 @@ const componentDocs: ComponentDoc[] = [
     group: "Actions",
     properties: [
       {
-        name: "color",
+        name: "appearance",
         values: "neutral · contrast",
         defaultValue: "neutral",
-        description: "Цвет поверхности и сегментов.",
+        description: "Оформление поверхности и сегментов.",
       },
       {
         name: "size",
@@ -464,6 +463,14 @@ const componentDocs: ComponentDoc[] = [
     group: "Forms",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11269-12350",
+    properties: [
+      {
+        name: "appearance",
+        values: "neutral · default",
+        defaultValue: "neutral",
+        description: "Нейтральный фон по умолчанию или белое поле с рамкой.",
+      },
+    ],
     source: "src/components/ui/search.tsx",
     render: () => <SearchExamples />,
   },
@@ -525,6 +532,12 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=505-4164",
     group: "Forms",
     properties: [
+      {
+        name: "appearance",
+        values: "default · neutral",
+        defaultValue: "default",
+        description: "Белый фон с рамкой или нейтральный фон без рамки в default-состоянии.",
+      },
       {
         name: "size",
         values: "md · sm",
@@ -601,6 +614,12 @@ const componentDocs: ComponentDoc[] = [
     group: "Forms",
     properties: [
       {
+        name: "appearance",
+        values: "default · neutral",
+        defaultValue: "default",
+        description: "Белый фон с рамкой или нейтральный фон без рамки в default-состоянии.",
+      },
+      {
         name: "size",
         values: "md · sm",
         defaultValue: "md",
@@ -670,6 +689,12 @@ const componentDocs: ComponentDoc[] = [
     group: "Forms",
     properties: [
       {
+        name: "appearance",
+        values: "default · neutral",
+        defaultValue: "default",
+        description: "Белый фон с рамкой или нейтральный фон без рамки в default-состоянии.",
+      },
+      {
         name: "startInputProps / endInputProps",
         values: "InputNumberProps без startText / endText",
         defaultValue: "—",
@@ -725,6 +750,12 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=734-6530&t=Z265nVfuUs3IusXh-11",
     group: "Forms",
     properties: [
+      {
+        name: "appearance",
+        values: "default · neutral",
+        defaultValue: "default",
+        description: "Белый фон с рамкой или нейтральный фон без рамки в default-состоянии.",
+      },
       {
         name: "size",
         values: "md · sm",
@@ -1037,24 +1068,6 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=1653-28207",
     source: "src/components/ui/chip.tsx",
     render: () => <ChipExamples />,
-  },
-  {
-    id: "tag",
-    title: "Tag",
-    description: "Метка.",
-    group: "Data display",
-    source: "src/components/ui/tag.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <Tag color="neutral" />
-          <Tag color="brand" />
-          <Tag color="warning" />
-          <Tag color="success" />
-          <Tag color="error" />
-        </Matrix>
-      </Canvas>
-    ),
   },
   {
     id: "avatar",
@@ -1407,7 +1420,7 @@ function ComponentPage({
               </p>
             )}
           </div>
-          <div className="flex shrink-0 flex-wrap items-center gap-2 text-base leading-6">
+          <div className="flex shrink-0 flex-wrap items-center gap-[var(--rh-sizing-base-module-0-25)] text-base leading-6">
             {doc.figmaUrl && (
               <Button
                 appearance="inherit"
@@ -1428,7 +1441,7 @@ function ComponentPage({
               appearance="inherit"
               aria-label={`Скопировать адрес компонента ${doc.source}`}
               endIcon={false}
-              onClick={() => onCopy?.(doc.source)}
+              onClick={() => onCopy?.(`\`${doc.source}\``)}
               size="sm"
               startIcon={<CodeXml aria-hidden="true" />}
             >
