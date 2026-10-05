@@ -1047,7 +1047,7 @@ export function ApartmentListingsScreen({
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-under-islands)] text-[var(--parser-text-neutral-primary)]">
+    <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-under-islands-alt)] text-[var(--parser-text-neutral-primary)]">
       <MainHeader
         logoHref="/Rhood/"
         navItems={getNavItems(isMyListings ? "my" : "base")}

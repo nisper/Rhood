@@ -136,7 +136,7 @@ function IconButton({
   return (
     <button
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-full border-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] border-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
         sizeClasses[resolvedSize],
         toneClasses[resolvedAppearance][resolvedState],
         !disabled && resolvedState === "default" && hoverClasses[resolvedAppearance],

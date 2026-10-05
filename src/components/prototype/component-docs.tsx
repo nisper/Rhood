@@ -12,6 +12,7 @@ import { TokenColorsExamples } from "./token-colors-examples";
 import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
 import { LikeButtonExamples } from "./like-button-examples";
+import { LinkExamples } from "./link-examples";
 import { ShowcaseExamples } from "./showcase-examples";
 import { ShowcaseSectionExamples } from "./showcase-section-examples";
 import { CheckboxExamples } from "./checkbox-examples";
@@ -32,10 +33,11 @@ import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
 import "./component-docs.css";
 import * as React from "react";
-import { Copy, Dot } from "lucide-react";
+import { CodeXml, Copy, Dot } from "lucide-react";
 
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Avatar } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
 import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
@@ -305,6 +307,14 @@ const componentDocs: ComponentDoc[] = [
     group: "Actions",
     source: "src/components/ui/like-button.tsx",
     render: () => <LikeButtonExamples />,
+  },
+  {
+    id: "link",
+    title: "Link",
+    description: "Текстовая ссылка для перехода к связанному контенту.",
+    group: "Navigation",
+    source: "src/components/ui/link.tsx",
+    render: () => <LinkExamples />,
   },
   {
     id: "icon-button",
@@ -1378,19 +1388,16 @@ function groupDocs(items: ComponentDoc[]) {
 
 function ComponentPage({
   doc,
-  onFigmaClick,
+  onCopy,
 }: {
   doc: ComponentDoc;
-  onFigmaClick?: (
-    event: React.MouseEvent<HTMLAnchorElement>,
-    url: string,
-  ) => void;
+  onCopy?: (value: string) => void;
 }) {
   return (
     <article className="min-w-0">
       <header className="bg-[var(--parser-surface-under-islands)] px-6 py-10">
-        <div className="mx-auto grid max-w-[980px] gap-5">
-          <div className="grid gap-2">
+        <div className="mx-auto flex max-w-[1028px] items-start justify-between gap-5">
+          <div className="grid min-w-0 gap-2">
             <h1 className="rh-typography-h1 break-words">
               {doc.title}
             </h1>
@@ -1400,25 +1407,33 @@ function ComponentPage({
               </p>
             )}
           </div>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-base leading-6">
+          <div className="flex shrink-0 flex-wrap items-center gap-2 text-base leading-6">
             {doc.figmaUrl && (
-              <a
-                className="group flex w-fit items-center gap-1 rounded text-base leading-6 hover:text-[var(--parser-text-link-hovered)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
-                href={doc.figmaUrl}
-                onClick={(event) => onFigmaClick?.(event, doc.figmaUrl!)}
-                rel="noreferrer"
-                target="_blank"
+              <Button
+                appearance="inherit"
+                endIcon={false}
+                onClick={() => onCopy?.(doc.figmaUrl!)}
+                size="sm"
+                startIcon={
+                  <span
+                    aria-hidden="true"
+                    className="figma-link-icon size-5 shrink-0"
+                  />
+                }
               >
-                <span
-                  aria-hidden="true"
-                  className="figma-link-icon size-6 shrink-0"
-                />
-                {doc.title} в Figma
-              </a>
+                Figma
+              </Button>
             )}
-            <p className="break-words text-base leading-6 text-[var(--parser-text-neutral-secondary)]">
-              Source: <code>{doc.source}</code>
-            </p>
+            <Button
+              appearance="inherit"
+              aria-label={`Скопировать адрес компонента ${doc.source}`}
+              endIcon={false}
+              onClick={() => onCopy?.(doc.source)}
+              size="sm"
+              startIcon={<CodeXml aria-hidden="true" />}
+            >
+              Source
+            </Button>
           </div>
         </div>
       </header>
@@ -1496,15 +1511,13 @@ export function ComponentDocs() {
     };
   }, []);
 
-  const handleFigmaClick = React.useCallback(
-    async (event: React.MouseEvent<HTMLAnchorElement>, url: string) => {
-      event.preventDefault();
-
+  const handleCopy = React.useCallback(
+    async (value: string) => {
       try {
-        await navigator.clipboard.writeText(url);
+        await navigator.clipboard.writeText(value);
       } catch {
         const textarea = document.createElement("textarea");
-        textarea.value = url;
+        textarea.value = value;
         textarea.setAttribute("readonly", "");
         textarea.style.position = "fixed";
         textarea.style.opacity = "0";
@@ -1645,7 +1658,7 @@ export function ComponentDocs() {
           <ComponentPage
             doc={activeDoc}
             key={activeDoc.id}
-            onFigmaClick={handleFigmaClick}
+            onCopy={handleCopy}
           />
         </main>
       </div>
@@ -1660,7 +1673,7 @@ export function ComponentDocs() {
                 strokeWidth={2}
               />
             }
-            message="Ссылка скопирована"
+            message="Скопировано в буфер обмена"
           />
         </div>
       )}

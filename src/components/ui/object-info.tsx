@@ -111,7 +111,7 @@ function ObjectInfoSidebar({ callStatus, onCallStatusChange }: { callStatus: str
       <section className="grid gap-3" aria-label="Контакт продавца">
         <div className="grid gap-0.5">
           <p className="rh-typography-b1"><a className="cursor-pointer text-[var(--rh-theme-text-brand)] underline" href="https://domclick.ru" rel="noreferrer" target="_blank">Домклик</a>, Частное лицо</p>
-          <p className="text-xs leading-4 tracking-[0.3px] text-[var(--rh-theme-text-neutral-secondary)]">Последний звонок 15 ч 20 мин назад</p>
+          <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Последний звонок 15 ч 20 мин назад</p>
         </div>
         <Button className="w-full" endIcon={false} startIcon={false}>+7 922 007 6761</Button>
       </section>
