@@ -27,7 +27,6 @@ import { ModalExamples } from "./modal-examples";
 import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
-import { ClientDemandStatusExamples } from "./client-demand-status-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
@@ -437,43 +436,6 @@ const componentDocs: ComponentDoc[] = [
     group: "Actions",
     source: "src/components/ui/toggle-chip.tsx",
     render: () => <ToggleChipExamples />,
-  },
-  {
-    id: "client-demand-status",
-    title: "ClientDemandStatus",
-    description:
-      "Статус подбора покупателей для объекта с возможностью обновить проверку.",
-    figmaUrl:
-      "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24353-23766",
-    group: "Data display",
-    properties: [
-      {
-        name: "status",
-        values: "empty · found",
-        defaultValue: "empty",
-        description: "Результат проверки спроса на объект.",
-      },
-      {
-        name: "count",
-        values: "number",
-        defaultValue: "0",
-        description: "Количество покупателей для состояния found.",
-      },
-      {
-        name: "checkedAt",
-        values: "ReactNode",
-        defaultValue: "Проверили только что",
-        description: "Время последней проверки под основной строкой.",
-      },
-      {
-        name: "onRefresh",
-        values: "() => void",
-        defaultValue: "—",
-        description: "Вызывается при нажатии на кнопку обновления.",
-      },
-    ],
-    source: "src/components/ui/client-demand-status.tsx",
-    render: () => <ClientDemandStatusExamples />,
   },
   {
     id: "object-info",
