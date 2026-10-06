@@ -47,6 +47,13 @@ const prototypeViews: PrototypeView[] = [
   },
 ];
 
+const showcaseNavigation = [
+  { label: "Foundations", componentId: "colors" },
+  { label: "Components", componentId: "showcase-surface" },
+  { label: "Layout", componentId: "main-header" },
+  { label: "Features", componentId: "toolbar-filter" },
+];
+
 function getActiveViewId() {
   return new URLSearchParams(window.location.search).get("view") ?? "";
 }
@@ -60,7 +67,18 @@ function setActiveViewId(id: string) {
   window.dispatchEvent(new PopStateEvent("popstate"));
 }
 
+function setActiveComponentId(id: string) {
+  const params = new URLSearchParams();
+  params.set("view", "components");
+  params.set("component", id);
+
+  window.history.pushState(null, "", `?${params.toString()}`);
+  window.dispatchEvent(new PopStateEvent("popstate"));
+}
+
 function PrototypeHome() {
+  const scenes = prototypeViews.filter((view) => view.id !== "components");
+
   return (
     <main className="flex min-h-svh items-center justify-center bg-white p-5 text-[var(--parser-text-neutral-primary)]">
       <div className="flex flex-col items-start gap-[60px]">
@@ -72,17 +90,44 @@ function PrototypeHome() {
           width="134"
         />
 
-        <nav className="flex flex-col items-start gap-2.5 whitespace-nowrap text-base font-normal leading-6 tracking-[0.15px]">
-          {prototypeViews.map((view) => (
-            <button
-              className="cursor-pointer border-0 bg-transparent p-0 text-left text-[var(--parser-text-neutral-primary)] transition-colors hover:text-[var(--parser-text-brand)] focus-visible:text-[var(--parser-text-brand)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
-              key={view.id}
-              onClick={() => setActiveViewId(view.id)}
-              type="button"
-            >
-              {view.homeLabel}
-            </button>
-          ))}
+        <nav aria-label="Разделы прототипа" className="grid grid-cols-2 gap-x-16">
+          <section className="grid content-start gap-4">
+            <h2 className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">
+              Витрина компонентов
+            </h2>
+            <ul className="grid gap-1.5">
+              {showcaseNavigation.map((item) => (
+                <li key={item.componentId}>
+                  <button
+                    className="rh-typography-b1 cursor-pointer border-0 bg-transparent p-0 text-left text-[var(--parser-text-neutral-primary)] transition-colors hover:text-[var(--parser-text-brand)] focus-visible:text-[var(--parser-text-brand)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+                    onClick={() => setActiveComponentId(item.componentId)}
+                    type="button"
+                  >
+                    {item.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="grid content-start gap-4">
+            <h2 className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">
+              Сцены
+            </h2>
+            <ul className="grid gap-1.5">
+              {scenes.map((view) => (
+                <li key={view.id}>
+                  <button
+                    className="rh-typography-b1 cursor-pointer border-0 bg-transparent p-0 text-left text-[var(--parser-text-neutral-primary)] transition-colors hover:text-[var(--parser-text-brand)] focus-visible:text-[var(--parser-text-brand)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
+                    onClick={() => setActiveViewId(view.id)}
+                    type="button"
+                  >
+                    {view.homeLabel}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
         </nav>
       </div>
     </main>

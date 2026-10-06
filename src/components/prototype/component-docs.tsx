@@ -31,6 +31,7 @@ import { ClientDemandStatusExamples } from "./client-demand-status-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
+import { ExpandableContentExamples } from "./expandable-content-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
@@ -314,6 +315,54 @@ const componentDocs: ComponentDoc[] = [
     group: "Navigation",
     source: "src/components/ui/link.tsx",
     render: () => <LinkExamples />,
+  },
+  {
+    id: "expandable-content",
+    title: "ExpandableContent",
+    description: "Контейнер, который скрывает часть содержимого и раскрывает его по нажатию.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10389-17934",
+    group: "Data display",
+    properties: [
+      {
+        name: "collapsedHeight",
+        values: "number",
+        defaultValue: "—",
+        description: "Обязательная высота свёрнутого содержимого в пикселях.",
+      },
+      {
+        name: "defaultExpanded",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Начальное состояние в неконтролируемом режиме.",
+      },
+      {
+        name: "expanded",
+        values: "boolean",
+        defaultValue: "—",
+        description: "Текущее состояние в контролируемом режиме.",
+      },
+      {
+        name: "onExpandedChange",
+        values: "(expanded: boolean) => void",
+        defaultValue: "—",
+        description: "Вызывается после переключения состояния.",
+      },
+      {
+        name: "expandLabel / collapseLabel",
+        values: "ReactNode",
+        defaultValue: "Читать полностью / Свернуть",
+        description: "Подписи кнопки в свёрнутом и раскрытом состояниях.",
+      },
+      {
+        name: "children",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Содержимое, для которого проверяется переполнение.",
+      },
+    ],
+    source: "src/components/ui/expandable-content.tsx",
+    render: () => <ExpandableContentExamples />,
   },
   {
     id: "icon-button",
@@ -1728,6 +1777,7 @@ const ComponentNavigation = React.forwardRef<
     "modal",
     "modal-header",
     "drawer",
+    "expandable-content",
   ]);
 
   const handleItemKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {
