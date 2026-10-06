@@ -50,7 +50,7 @@ function ShowcaseSurface({
         <ul className="flex flex-wrap gap-2">
           {usedComponents.map(({ href, title }) => (
             <li key={href}>
-              <a className="cursor-pointer rh-typography-b2 text-[var(--rh-theme-text-brand)] underline" href={href}>{title}</a>
+              <a className="cursor-pointer rh-typography-b1 text-[var(--rh-theme-text-brand)] underline" href={href}>{title}</a>
             </li>
           ))}
         </ul>

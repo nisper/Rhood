@@ -7,6 +7,7 @@ const usedComponents = [
   { href: "/Rhood/?view=components&component=button-favorite", title: "ButtonFavorite" },
   { href: "/Rhood/?view=components&component=chip", title: "Chip" },
   { href: "/Rhood/?view=components&component=icon-button", title: "IconButton" },
+  { href: "/Rhood/?view=components&component=object-buyers", title: "ObjectBuyers" },
   { href: "/Rhood/?view=components&component=toggle-chip", title: "ToggleChip" },
 ];
 

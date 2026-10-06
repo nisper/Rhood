@@ -10,6 +10,7 @@ import { Chip } from "@/components/ui/chip";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { ExpandableContent } from "@/components/ui/expandable-content";
 import { IconButton } from "@/components/ui/icon-button";
+import { ObjectBuyers } from "@/components/ui/object-buyers";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { cn } from "@/lib/utils";
 
@@ -62,7 +63,7 @@ function ObjectInfo({ className, onClose, presentation = "inline", ...props }: O
         >
           <ObjectInfo
             {...props}
-            className={cn("h-full w-full rounded-none", className)}
+            className={cn("min-h-full w-full rounded-none", className)}
             onClose={() => setDrawerOpen(false)}
           />
         </Drawer>
@@ -83,6 +84,7 @@ function ObjectInfo({ className, onClose, presentation = "inline", ...props }: O
       <div className="grid grid-cols-[minmax(0,564px)_320px] items-start">
         <main className="grid min-w-0 gap-6 px-4 pb-6 pt-3">
           <ObjectGallery />
+          <ObjectBuyers />
           <section className="grid gap-2" aria-labelledby="object-description">
             <h2 className="rh-typography-h4" id="object-description">Описание</h2>
             <ExpandableContent collapsedHeight={100}>
@@ -168,14 +170,14 @@ function ObjectInfoSidebar({ callStatus, onCallStatusChange }: { callStatus: str
         <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]" id="call-status">Статус последнего звонка</p>
         <div className="flex flex-wrap gap-2">
           {statuses.map((status) => (
-            <ToggleChip checked={callStatus === status} icon={false} key={status} onClick={() => onCallStatusChange(status)} size="sm">{status}</ToggleChip>
+            <ToggleChip checked={callStatus === status} icon={false} key={status} onClick={() => onCallStatusChange(status)} size="md">{status}</ToggleChip>
           ))}
         </div>
       </section>
 
       <div className="grid gap-1 rounded-[var(--rh-sizing-border-radius-lg)] bg-[var(--rh-theme-surface-under-islands)] p-1">
         <Button appearance="contrast" className="w-full" endIcon={false} startIcon={<BookmarkPlus aria-hidden="true" strokeWidth={2} />}>Сохранить в космос</Button>
-        <p className="text-center text-xs leading-4 tracking-[0.3px] text-[var(--rh-theme-text-neutral-secondary)]">Мы сразу создадим заявку и объект</p>
+        <p className="text-center rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Мы сразу создадим заявку и объект</p>
       </div>
     </aside>
   );

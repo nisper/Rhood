@@ -28,6 +28,7 @@ import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
+import { ObjectBuyersExamples } from "./object-buyers-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
 import { ExpandableContentExamples } from "./expandable-content-examples";
@@ -436,6 +437,30 @@ const componentDocs: ComponentDoc[] = [
     group: "Actions",
     source: "src/components/ui/toggle-chip.tsx",
     render: () => <ToggleChipExamples />,
+  },
+  {
+    id: "object-buyers",
+    title: "ObjectBuyers",
+    description: "Покупатели с точным совпадением для объекта и их потребности.",
+    figmaUrl:
+      "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=26647-8829",
+    group: "Выдача объектов",
+    properties: [
+      {
+        name: "defaultExpanded",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Открывает список потребностей при первом рендере.",
+      },
+      {
+        name: "isLoading",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Показывает состояние проверки покупателей.",
+      },
+    ],
+    source: "src/components/ui/object-buyers.tsx",
+    render: () => <ObjectBuyersExamples />,
   },
   {
     id: "object-info",
@@ -1044,7 +1069,7 @@ const componentDocs: ComponentDoc[] = [
     source: "src/components/ui/toolbar-filter.tsx",
     render: () => (
       <Canvas>
-        <ToolbarFilter className="min-w-[960px]" />
+        <ToolbarFilter className="min-w-[960px] border-b-0" />
       </Canvas>
     ),
   },

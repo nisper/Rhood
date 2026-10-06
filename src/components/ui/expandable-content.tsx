@@ -32,6 +32,7 @@ function ExpandableContent({
   const contentId = React.useId()
   const contentRef = React.useRef<HTMLDivElement>(null)
   const [hasOverflow, setHasOverflow] = React.useState(false)
+  const [contentHeight, setContentHeight] = React.useState(collapsedHeight)
   const [uncontrolledExpanded, setUncontrolledExpanded] = React.useState(defaultExpanded)
   const expanded = expandedProp ?? uncontrolledExpanded
 
@@ -39,6 +40,7 @@ function ExpandableContent({
     const content = contentRef.current
     if (!content) return
 
+    setContentHeight(content.scrollHeight)
     setHasOverflow(content.scrollHeight > collapsedHeight + 1)
   }, [collapsedHeight])
 
@@ -67,9 +69,8 @@ function ExpandableContent({
         ref={contentRef}
         className={cn(
           "min-w-0 overflow-hidden transition-[max-height] duration-200 motion-reduce:transition-none",
-          expanded && "max-h-none",
         )}
-        style={expanded ? undefined : { maxHeight: collapsedHeight }}
+        style={{ maxHeight: expanded ? contentHeight : collapsedHeight }}
       >
         {children}
       </div>
