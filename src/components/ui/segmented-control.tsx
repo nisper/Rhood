@@ -70,15 +70,16 @@ function SegmentedControl({
     if (!React.isValidElement(child) || child.type !== Segment) return child
     const segment = child as React.ReactElement<React.ComponentProps<typeof Segment>>
     const segmentValue = getSegmentValue(segment, index)
+    const isSelected = selectedValues.includes(segmentValue)
     return React.cloneElement(segment, {
-      color: segment.props.color ?? appearance,
+      color: segment.props.color ?? (isSelected ? "contrast" : appearance),
       onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
         segment.props.onClick?.(event)
         if (!event.defaultPrevented && !segment.props.disabled) selectValue(segmentValue)
       },
       role: selectionMode === "single" ? "radio" : "checkbox",
-      "aria-checked": selectedValues.includes(segmentValue),
-      selected: selectedValues.includes(segmentValue),
+      "aria-checked": isSelected,
+      selected: isSelected,
       size: segment.props.size ?? size,
     })
   })

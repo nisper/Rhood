@@ -7,12 +7,12 @@ import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
-const appearances = ["outlined", "muted", "contrast"] as const
+const appearances = ["muted", "default"] as const
 const colors = ["neutral", "brand", "warning", "success", "error", "contrast"] as const
 const sizes = ["lg", "md", "sm"] as const
 
 const properties = [
-  ["appearance", "outlined · muted · contrast", "outlined", "Визуальный стиль. В Figma соответствует свойству style."],
+  ["appearance", "muted · default", "muted", "Визуальный стиль. В Figma соответствует свойству style."],
   ["color", "neutral · brand · warning · success · error · contrast", "neutral", "Цветовая тема чипа; warning — жёлтый вариант из Figma."],
   ["size", "lg · md · sm", "lg", "Размер чипа, иконок и типографики."],
   ["icon", "boolean", "true", "Показывает иконку Star."],
@@ -39,7 +39,7 @@ function AppearanceRow({ appearance }: { appearance: React.ComponentProps<typeof
 
 export function ChipExamples() {
   return <div className="grid min-w-0">
-    <ShowcaseSection codeSnippet={appearanceSnippet} description="Три стиля из Figma работают с каждой цветовой темой: outlined, muted и contrast." showcase={<ShowcaseSurface direction="vertical">{appearances.map((appearance) => <ShowcasePanel key={appearance}><div className="grid gap-2"><p className="text-center text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">{appearance}</p><AppearanceRow appearance={appearance} /></div></ShowcasePanel>)}</ShowcaseSurface>} title="Стиль" />
+    <ShowcaseSection codeSnippet={appearanceSnippet} description="Два стиля из Figma работают с каждой цветовой темой: muted и default." showcase={<ShowcaseSurface direction="vertical">{appearances.map((appearance) => <ShowcasePanel key={appearance}><div className="grid gap-2"><p className="text-center text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">{appearance}</p><AppearanceRow appearance={appearance} /></div></ShowcasePanel>)}</ShowcaseSurface>} title="Стиль" />
 
     <ShowcaseSection codeSnippet={sizeSnippet} description="Размер управляет отступами, типографикой и габаритами иконок." showcase={<ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3">{sizes.map((size) => <Chip appearance="muted" color="neutral" key={size} remove={false} size={size}>{size}</Chip>)}</div></ShowcasePanel></ShowcaseSurface>} title="Размер" />
 

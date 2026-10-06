@@ -199,7 +199,7 @@ function MenuItemMultiselect({
 
           {rightSlotChip && (
             <Chip
-              appearance="outlined"
+              appearance="muted"
               color="brand"
               icon={false}
               propDelete={false}

@@ -18,7 +18,7 @@ type ToggleChipProps = Omit<React.ComponentProps<"button">, "children" | "onChan
 }
 
 /**
- * Интерактивный Chip. Нажатие переключает его между muted и contrast.
+ * Интерактивный Chip. Нажатие переключает его между muted и default.
  */
 function ToggleChip({
   checked,
@@ -64,7 +64,7 @@ function ToggleChip({
       {...props}
     >
       <Chip
-        appearance={isChecked ? "contrast" : "muted"}
+        appearance={isChecked ? "default" : "muted"}
         className={className}
         color={color}
         icon={icon}

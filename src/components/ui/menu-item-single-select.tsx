@@ -132,7 +132,7 @@ function MenuItemSingleSelect({
 
           {resolvedRightSlotChip && (
             <Chip
-              appearance="outlined"
+              appearance="muted"
               color="brand"
               icon={false}
               propDelete={false}

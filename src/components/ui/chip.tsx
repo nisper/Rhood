@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils"
 
 type ChipSize = "lg" | "md" | "sm"
 type ChipColor = "neutral" | "brand" | "error" | "warning" | "success" | "contrast"
-type ChipAppearance = "outlined" | "muted" | "contrast"
+type ChipAppearance = "muted" | "default"
 
 type ChipProps = React.ComponentProps<"div"> & {
   appearance?: ChipAppearance
@@ -55,7 +55,6 @@ const toneTokens: Record<
   Exclude<ChipColor, "contrast">,
   {
     mutedBg: string
-    outlinedBorder: string
     text: string
     icon: string
     contrastBg: string
@@ -63,35 +62,30 @@ const toneTokens: Record<
 > = {
   neutral: {
     mutedBg: "bg-[color:var(--parser-fill-neutral)]",
-    outlinedBorder: "border-[color:var(--parser-border-light)]",
     text: "text-[color:var(--parser-text-neutral-primary)]",
     icon: "text-[color:var(--parser-text-neutral-primary)]",
     contrastBg: "bg-[color:var(--parser-fill-neutral-dark)]",
   },
   brand: {
     mutedBg: "bg-[color:var(--parser-fill-brand-light)]",
-    outlinedBorder: "border-[color:var(--parser-border-brand-light)]",
     text: "text-[color:var(--parser-text-brand)]",
     icon: "text-[color:var(--parser-text-brand)]",
     contrastBg: "bg-[color:var(--parser-fill-brand)]",
   },
   error: {
     mutedBg: "bg-[color:var(--parser-fill-error-light)]",
-    outlinedBorder: "border-[color:var(--parser-border-error-light)]",
     text: "text-[color:var(--parser-text-error)]",
     icon: "text-[color:var(--parser-text-error)]",
     contrastBg: "bg-[color:var(--parser-fill-error)]",
   },
   warning: {
     mutedBg: "bg-[color:var(--parser-fill-warning-light)]",
-    outlinedBorder: "border-[color:var(--parser-border-warning-light)]",
     text: "text-[color:var(--parser-text-warning)]",
     icon: "text-[color:var(--parser-text-warning)]",
     contrastBg: "bg-[color:var(--parser-fill-warning)]",
   },
   success: {
     mutedBg: "bg-[color:var(--parser-fill-success-light)]",
-    outlinedBorder: "border-[color:var(--parser-border-success-light)]",
     text: "text-[color:var(--parser-text-success)]",
     icon: "text-[color:var(--parser-text-success)]",
     contrastBg: "bg-[color:var(--parser-fill-success)]",
@@ -99,7 +93,7 @@ const toneTokens: Record<
 }
 
 function resolveTextTone(color: ChipColor, appearance: ChipAppearance) {
-  if (appearance === "contrast") {
+  if (appearance === "default" && color !== "contrast") {
     return "text-[color:var(--parser-text-primary-contrast)]"
   }
 
@@ -111,11 +105,7 @@ function resolveTextTone(color: ChipColor, appearance: ChipAppearance) {
 }
 
 function resolveBackground(color: ChipColor, appearance: ChipAppearance) {
-  if (appearance === "outlined") {
-    return "bg-white"
-  }
-
-  if (appearance === "contrast") {
+  if (appearance === "default") {
     if (color === "neutral") {
       return "bg-[color:var(--parser-fill-neutral-dark)]"
     }
@@ -134,20 +124,8 @@ function resolveBackground(color: ChipColor, appearance: ChipAppearance) {
   return toneTokens[color].mutedBg
 }
 
-function resolveBorder(color: ChipColor, appearance: ChipAppearance) {
-  if (appearance !== "outlined") {
-    return "border-transparent"
-  }
-
-  if (color === "contrast") {
-    return "border-[color:var(--parser-border-contrast)]"
-  }
-
-  return toneTokens[color].outlinedBorder
-}
-
 function resolveIconTone(color: ChipColor, appearance: ChipAppearance) {
-  if (appearance === "contrast") {
+  if (appearance === "default" && color !== "contrast") {
     return "text-[color:var(--parser-text-primary-contrast)]"
   }
 
@@ -162,7 +140,7 @@ function resolveIconTone(color: ChipColor, appearance: ChipAppearance) {
  * Parser chip matching the Figma `Chip` component set.
  */
 function Chip({
-  appearance = "outlined",
+  appearance = "muted",
   children = "Chip",
   className,
   color = "neutral",
@@ -174,7 +152,6 @@ function Chip({
   ...props
 }: ChipProps) {
   const background = resolveBackground(color, appearance)
-  const border = resolveBorder(color, appearance)
   const textTone = resolveTextTone(color, appearance)
   const iconTone = resolveIconTone(color, appearance)
   const isRemovable = remove ?? propDelete ?? true
@@ -185,7 +162,7 @@ function Chip({
         "inline-flex min-w-8 items-center justify-center overflow-hidden rounded-full border",
         sizeTokens[size].chipPadding,
         background,
-        border,
+        "border-transparent",
         textTone,
         className,
       )}
