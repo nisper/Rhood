@@ -22,6 +22,8 @@ type MainHeaderNavItem = {
 
 type MainHeaderProps = React.ComponentProps<"header"> & {
   button?: boolean;
+  /** Controls the horizontal width of the header content. */
+  contentWidth?: "full" | "container";
   controls?: boolean;
   logoHref?: string;
   navAlign?: "start" | "end";
@@ -39,6 +41,7 @@ const defaultNavItems: MainHeaderNavItem[] = [
 function MainHeader({
   button = true,
   className,
+  contentWidth = "full",
   controls = true,
   logoHref,
   navAlign = "start",
@@ -47,6 +50,10 @@ function MainHeader({
   ...props
 }: MainHeaderProps) {
   const isMobile = resp === "mob";
+  const contentWidthClass =
+    contentWidth === "container"
+      ? "rhood-layout-container"
+      : "rhood-page-gutter";
   const [isHelpMenuOpen, setIsHelpMenuOpen] = React.useState(false);
   const [isAvatarMenuOpen, setIsAvatarMenuOpen] = React.useState(false);
   const helpMenuRef = React.useRef<HTMLDivElement | null>(null);
@@ -78,28 +85,35 @@ function MainHeader({
     return (
       <header
         className={cn(
-          "rhood-page-gutter flex h-14 w-full items-center justify-between overflow-hidden bg-[var(--rh-theme-surface-bg)] py-2",
+          "w-full overflow-hidden bg-[var(--rh-theme-surface-bg)]",
           className,
         )}
         {...props}
       >
-        {logoHref ? (
-          <a aria-label="На главную" className="shrink-0" href={logoHref}>
-            <img alt="Rhood" className="h-6 w-auto" src={logoSrc} />
-          </a>
-        ) : (
-          <img alt="Rhood" className="h-6 w-auto shrink-0" src={logoSrc} />
-        )}
+        <div
+          className={cn(
+            contentWidthClass,
+            "flex h-14 items-center justify-between py-2",
+          )}
+        >
+          {logoHref ? (
+            <a aria-label="На главную" className="shrink-0" href={logoHref}>
+              <img alt="Rhood" className="h-6 w-auto" src={logoSrc} />
+            </a>
+          ) : (
+            <img alt="Rhood" className="h-6 w-auto shrink-0" src={logoSrc} />
+          )}
 
-        {button && (
-          <IconButton
-            appearance="inherit"
-            aria-label="Open menu"
-            className="text-[var(--rh-theme-icon-neutral-primary)]"
-            icon={<MenuIcon aria-hidden="true" strokeWidth={2} />}
-            size="md"
-          />
-        )}
+          {button && (
+            <IconButton
+              appearance="inherit"
+              aria-label="Open menu"
+              className="text-[var(--rh-theme-icon-neutral-primary)]"
+              icon={<MenuIcon aria-hidden="true" strokeWidth={2} />}
+              size="md"
+            />
+          )}
+        </div>
       </header>
     );
   }
@@ -112,7 +126,12 @@ function MainHeader({
       )}
       {...props}
     >
-      <div className="rhood-page-gutter relative flex w-full items-center gap-6 pb-2 pt-4">
+      <div
+        className={cn(
+          contentWidthClass,
+          "relative flex items-center gap-6 pb-2 pt-4",
+        )}
+      >
         <div className="flex shrink-0 items-center justify-start">
           {logoHref ? (
             <a aria-label="На главную" href={logoHref}>
@@ -218,7 +237,7 @@ function MainHeader({
             }}
             type="button"
           >
-            <Avatar content="image" size="32px" />
+            <Avatar size="32px" type="image" />
           </button>
 
           {isAvatarMenuOpen && (

@@ -862,13 +862,18 @@ export function ApartmentListingsScreen({
     <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]">
       <MainHeader
         className="border-b-0"
+        contentWidth="container"
         logoHref="/Rhood/"
         navItems={getNavItems(isMyListings ? "my" : "base")}
       />
-      {!isMyListings && <ToolbarFilter className="border-b-0" />}
+      {!isMyListings && (
+        <div className="border-b border-[color:var(--rh-theme-border-light)]">
+          <ToolbarFilter className="rhood-layout-container border-b-0" />
+        </div>
+      )}
 
       <main className="grid min-w-0 gap-0">
-        <section className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)] p-8">
+        <section className="rhood-layout-container py-8">
           <h1 className="rh-typography-h2 mb-1 font-[500]">
             {formatNumber(listings.length)}{" "}
             {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
@@ -878,11 +883,10 @@ export function ApartmentListingsScreen({
             не показываем
           </p>
         </section>
-        <section className="min-w-0">
+        <section className="rhood-layout-container min-w-0">
           <div className="flex min-w-0 flex-col gap-4">
             <section
               aria-label="Управление выдачей"
-              className="px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
             >
               <TableToolbar
                 hiddenColumns={hiddenColumns}
@@ -899,7 +903,6 @@ export function ApartmentListingsScreen({
               className="min-w-0 overflow-x-auto"
             >
               <ListingsTable
-                className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
                 hiddenColumns={hiddenColumns}
                 listings={listings}
                 onOpenObjectInfo={(listing) => {

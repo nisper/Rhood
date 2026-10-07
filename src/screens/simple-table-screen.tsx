@@ -26,13 +26,15 @@ export function SimpleTableScreen() {
 
   return (
     <div className="min-h-svh bg-white text-[var(--parser-text-neutral-primary)]">
-      <header className="flex h-14 items-center border-b border-[var(--parser-border-light)] px-5 sm:px-8">
-        <a aria-label="На разводящую" href="/Rhood/">
-          <img alt="RHOOD" className="h-6 w-auto" height="24" src="/Rhood/assets/rhood-logo.svg" width="101" />
-        </a>
+      <header className="border-b border-[var(--parser-border-light)]">
+        <div className="rhood-layout-container flex h-14 items-center">
+          <a aria-label="На разводящую" href="/Rhood/">
+            <img alt="RHOOD" className="h-6 w-auto" height="24" src="/Rhood/assets/rhood-logo.svg" width="101" />
+          </a>
+        </div>
       </header>
 
-      <main className="p-5 sm:p-8">
+      <main className="rhood-layout-container py-5 sm:py-8">
         <div className="flex flex-wrap gap-2">
           <Button endIcon={false} onClick={() => setIsModalOpen(true)} startIcon={false}>
             Открыть modal

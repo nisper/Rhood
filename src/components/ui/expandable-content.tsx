@@ -80,7 +80,7 @@ function ExpandableContent({
           appearance="ghost"
           aria-controls={contentId}
           aria-expanded={expanded}
-          className="mt-4 justify-self-start"
+          className="mt-2 justify-self-start"
           endIcon={<ChevronDown aria-hidden="true" className={cn("transition-transform duration-150", expanded && "rotate-180")} />}
           onClick={handleExpandedChange}
           size="sm"

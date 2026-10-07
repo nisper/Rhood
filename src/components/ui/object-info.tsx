@@ -10,7 +10,7 @@ import { Chip } from "@/components/ui/chip";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { ExpandableContent } from "@/components/ui/expandable-content";
 import { IconButton } from "@/components/ui/icon-button";
-import { ObjectBuyers } from "@/components/ui/object-buyers";
+import { ObjectBuyersV2 } from "@/components/ui/object-buyers";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { cn } from "@/lib/utils";
 
@@ -84,8 +84,8 @@ function ObjectInfo({ className, onClose, presentation = "inline", ...props }: O
       <div className="grid grid-cols-[minmax(0,564px)_320px] items-start">
         <main className="grid min-w-0 gap-6 px-4 pb-6 pt-3">
           <ObjectGallery />
-          <ObjectBuyers />
-          <section className="grid gap-2" aria-labelledby="object-description">
+          <ObjectBuyersV2 />
+          <section className="grid gap-4" aria-labelledby="object-description">
             <h2 className="rh-typography-h4" id="object-description">Описание</h2>
             <ExpandableContent collapsedHeight={100}>
               <p className="rh-typography-b1 whitespace-pre-wrap text-[var(--rh-theme-text-neutral-primary)]">

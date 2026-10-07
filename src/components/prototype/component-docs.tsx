@@ -32,12 +32,13 @@ import { ObjectBuyersExamples } from "./object-buyers-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
 import { ExpandableContentExamples } from "./expandable-content-examples";
+import { AvatarExamples } from "./avatar-examples";
+import { MainHeaderExamples } from "./main-header-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
 
 import { AlertDefault } from "@/components/ui/alert-default";
-import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
@@ -1051,15 +1052,58 @@ const componentDocs: ComponentDoc[] = [
     title: "MainHeader",
     description: "Главный хедер продукта.",
     group: "Layout",
+    properties: [
+      {
+        name: "button",
+        values: "boolean",
+        defaultValue: "true",
+        description: "Показывает кнопку меню в mobile-варианте.",
+      },
+      {
+        name: "contentWidth",
+        values: "full · container",
+        defaultValue: "full",
+        description: "Ширина внутреннего содержимого хедера.",
+      },
+      {
+        name: "controls",
+        values: "boolean",
+        defaultValue: "true",
+        description: "Показывает help и меню профиля.",
+      },
+      {
+        name: "logoHref",
+        values: "string",
+        defaultValue: "—",
+        description: "Адрес перехода по логотипу.",
+      },
+      {
+        name: "navAlign",
+        values: "start · end",
+        defaultValue: "start",
+        description: "Выравнивание навигации внутри хедера.",
+      },
+      {
+        name: "navItems",
+        values: "MainHeaderNavItem[]",
+        defaultValue: "Стандартная навигация",
+        description: "Пункты навигации и их состояния.",
+      },
+      {
+        name: "resp",
+        values: "desk · mob",
+        defaultValue: "desk",
+        description: "Вариант хедера для desktop или mobile.",
+      },
+      {
+        name: "…props",
+        values: "ComponentProps&lt;\"header\"&gt;",
+        defaultValue: "—",
+        description: "Нативные свойства header-элемента.",
+      },
+    ],
     source: "src/components/ui/main-header.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid gap-6">
-          <MainHeader />
-          <MainHeader resp="mob" />
-        </div>
-      </Canvas>
-    ),
+    render: () => <MainHeaderExamples />,
   },
   {
     id: "toolbar-filter",
@@ -1108,19 +1152,17 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "avatar",
     title: "Avatar",
-    description: "Аватар.",
     group: "Data display",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=351-8845",
     source: "src/components/ui/avatar.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <Avatar content="text" />
-          <Avatar content="icon" />
-          <Avatar content="image" />
-          <Avatar content="image" skeleton />
-        </Matrix>
-      </Canvas>
-    ),
+    properties: [
+      { name: "type", values: "image · text · icon · skeleton", defaultValue: "image", description: "Содержимое аватара." },
+      { name: "size", values: "20px · 24px · 32px · 40px", defaultValue: "40px", description: "Диаметр аватара." },
+      { name: "badge", values: "boolean", defaultValue: "false", description: "Показывает индикатор статуса." },
+      { name: "children", values: "ReactNode", defaultValue: "EB", description: "Инициалы для типа text." },
+    ],
+    render: () => <AvatarExamples />,
   },
   {
     id: "indicator",
@@ -1444,8 +1486,8 @@ function ComponentPage({
 }) {
   return (
     <article className="min-w-0">
-      <header className="bg-[var(--parser-surface-under-islands)] px-6 py-10">
-        <div className="mx-auto flex max-w-[1028px] items-start justify-between gap-5">
+      <header className="bg-[var(--parser-surface-under-islands)] py-10">
+        <div className="rhood-layout-container flex items-start justify-between gap-5">
           <div className="grid min-w-0 gap-2">
             <h1 className="rh-typography-h1 break-words">
               {doc.title}
@@ -1487,7 +1529,7 @@ function ComponentPage({
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-[1028px] gap-8 px-6 py-5">
+      <div className="rhood-layout-container grid gap-8 py-5">
         <section className="grid min-w-0 gap-4">
           <div className="min-w-0 overflow-x-auto">{doc.render()}</div>
         </section>
@@ -1649,6 +1691,7 @@ export function ComponentDocs() {
     <div className="min-h-svh bg-[var(--parser-surface-bg)] text-[var(--parser-text-neutral-primary)]">
       <MainHeader
         controls={false}
+        contentWidth="container"
         logoHref={window.location.pathname}
         navAlign="end"
         navItems={componentNavigationGroups.map((group) => ({
@@ -1657,8 +1700,8 @@ export function ComponentDocs() {
           onClick: () => handleNavigationGroupChange(group),
         }))}
       />
-      <div className="grid md:grid-cols-[300px_minmax(0,1fr)]">
-        <aside className="border-b border-[var(--parser-border-light)] md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
+      <div className="grid border-t border-[var(--parser-border-light)] md:grid-cols-[minmax(300px,1fr)_minmax(0,var(--rh-sizing-layout-column-container-lg))_minmax(0,1fr)]">
+        <aside className="border-b border-[var(--parser-border-light)] md:col-start-1 md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
           <div className="px-6 pt-4">
             <Search
               aria-label="Найти компонент"
@@ -1703,7 +1746,7 @@ export function ComponentDocs() {
             />
           </div>
         </aside>
-        <main className="min-w-0">
+        <main className="min-w-0 md:col-start-2">
           <ComponentPage
             doc={activeDoc}
             key={activeDoc.id}
@@ -1741,6 +1784,7 @@ const ComponentNavigation = React.forwardRef<
   const [focusedId, setFocusedId] = React.useState<string | undefined>();
   const celebratoryComponentIds = new Set([
     "adaptive",
+    "avatar",
     "colors",
     "sizing",
     "button",
@@ -1748,6 +1792,7 @@ const ComponentNavigation = React.forwardRef<
     "chip",
     "icon-button",
     "like-button",
+    "link",
     "select",
     "segmented-control",
     "toggle-chip",

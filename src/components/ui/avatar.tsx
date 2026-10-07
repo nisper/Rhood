@@ -1,21 +1,23 @@
 import * as React from "react"
-import { User } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
 const imageContent = "/Rhood/assets/avatar-32.png"
+const iconContent: Record<AvatarSize, string> = {
+  "20px": "/Rhood/assets/avatar-user-20.svg",
+  "24px": "/Rhood/assets/avatar-user-24.svg",
+  "32px": "/Rhood/assets/avatar-user-32.svg",
+  "40px": "/Rhood/assets/avatar-user-32.svg",
+}
 
 type AvatarSize = "20px" | "24px" | "32px" | "40px"
-type AvatarVariant = "Circular" | "Rounded"
-type AvatarContent = "text" | "icon" | "image"
+type AvatarType = "text" | "icon" | "image" | "skeleton"
 
 type AvatarProps = React.ComponentProps<"div"> & {
   badge?: boolean
   children?: React.ReactNode
-  content?: AvatarContent
-  skeleton?: boolean
   size?: AvatarSize
-  variant?: AvatarVariant
+  type?: AvatarType
 }
 
 const sizeClasses: Record<
@@ -24,32 +26,27 @@ const sizeClasses: Record<
     root: string
     text: string
     icon: string
-    image: string
   }
 > = {
   "20px": {
-    root: "size-5",
+    root: "size-[var(--rh-sizing-avatar-20)]",
     text: "text-[10px] leading-[20px] tracking-[0.4px]",
-    icon: "size-4",
-    image: "size-[132.5%]",
+    icon: "size-[14px]",
   },
   "24px": {
-    root: "size-6",
+    root: "size-[var(--rh-sizing-avatar-24)]",
     text: "text-xs leading-[20px] tracking-[0.4px]",
-    icon: "size-5",
-    image: "size-[132.5%]",
+    icon: "size-4",
   },
   "32px": {
-    root: "size-8",
-    text: "text-lg leading-[20px] tracking-[0.14px]",
-    icon: "size-6",
-    image: "size-[132.5%]",
+    root: "size-[var(--rh-sizing-avatar-32)]",
+    text: "text-base leading-6 tracking-[0.024px]",
+    icon: "size-5",
   },
   "40px": {
-    root: "size-10",
+    root: "size-[var(--rh-sizing-avatar-40)]",
     text: "text-xl leading-[20px] tracking-[0.14px]",
     icon: "size-6",
-    image: "size-[132.5%]",
   },
 }
 
@@ -57,82 +54,70 @@ const badgeClasses: Record<
   AvatarSize,
   {
     root: string
-    border: string
   }
 > = {
   "20px": {
     root: "bottom-[-2px] right-[-2px]",
-    border: "",
   },
   "24px": {
     root: "bottom-[-2px] right-[-2px]",
-    border: "",
   },
   "32px": {
-    root: "bottom-0 right-0 border-2 border-white",
-    border: "border-2 border-white",
+    root: "bottom-0 right-0 border-2 border-[var(--rh-theme-surface-bg)]",
   },
   "40px": {
-    root: "bottom-0 right-0 border-2 border-white",
-    border: "border-2 border-white",
+    root: "bottom-0 right-0 border-2 border-[var(--rh-theme-surface-bg)]",
   },
 }
 
 /**
- * Parser avatar matching the Figma `avatar` component set.
+ * Avatar matching the Figma `avatar` component set.
  */
 function Avatar({
   badge = false,
   children = "EB",
   className,
-  content = "text",
-  skeleton = false,
   size = "40px",
-  variant = "Circular",
+  type = "image",
   ...props
 }: AvatarProps) {
-  const isRounded = variant === "Rounded"
-  const hasImage = content === "image"
-  const hasText = content === "text"
-  const hasIcon = content === "icon"
-  const rootRadius = isRounded ? "rounded-[8px]" : "rounded-full"
+  const isSkeleton = type === "skeleton"
+  const hasImage = type === "image"
+  const hasText = type === "text"
+  const hasIcon = type === "icon"
   const baseFill =
-    skeleton || hasImage
-      ? "bg-[var(--parser-fill-neutral)]"
-      : "bg-[var(--parser-fill-neutral-dark)]"
+    isSkeleton
+      ? "bg-[var(--rh-theme-fill-skeleton)]"
+      : !hasImage && "bg-[var(--rh-theme-fill-neutral-dark)]"
 
   return (
     <div
       className={cn(
         "relative flex shrink-0 items-center justify-center overflow-hidden",
         sizeClasses[size].root,
-        rootRadius,
+        "rounded-full",
         baseFill,
         className,
       )}
       {...props}
     >
-      {!skeleton && (hasImage || hasText) && (
+      {!isSkeleton && (hasImage || hasText) && (
         <div
           className={cn(
-            "absolute inset-0 overflow-hidden pointer-events-none",
-            rootRadius,
+            "absolute inset-0 overflow-hidden pointer-events-none rounded-full",
           )}
         >
           {hasImage && (
             <img
               alt=""
-              className={cn(
-                "absolute left-[-16.25%] top-0 block max-w-none",
-                sizeClasses[size].image,
-              )}
+              className="absolute inset-0 block size-full object-cover"
               src={imageContent}
             />
           )}
           {hasText && (
             <div
               className={cn(
-                "flex h-full w-full items-center justify-center overflow-hidden font-medium text-[color:var(--parser-text-primary-contrast)]",
+                "flex h-full w-full items-center justify-center overflow-hidden font-normal text-[var(--rh-theme-text-neutral-primary-contrast)]",
                 sizeClasses[size].text,
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}
@@ -143,32 +128,19 @@ function Avatar({
         </div>
       )}
 
-      {!skeleton && hasIcon && (
+      {!isSkeleton && hasIcon && (
         <div
-          className={cn(
-            "absolute flex items-center justify-center",
-            size === "20px"
-              ? "relative size-4 shrink-0"
-              : size === "24px"
-                ? "left-[2px] top-[2px] size-5"
-                : size === "32px"
-                  ? "left-1 top-1 size-6"
-                  : "left-2 top-2 size-6",
-          )}
+          className={cn("relative shrink-0", sizeClasses[size].icon)}
         >
-          <User
-            className="size-full text-[color:var(--parser-text-primary-contrast)]"
-            strokeWidth={2}
-          />
+          <img alt="" className="absolute inset-0 size-full" src={iconContent[size]} />
         </div>
       )}
 
       {badge && (
         <div
           className={cn(
-            "absolute size-2 rounded-full bg-[var(--parser-fill-brand)]",
+            "absolute size-2 rounded-full bg-[var(--rh-theme-fill-success)]",
             badgeClasses[size].root,
-            badgeClasses[size].border,
           )}
           data-name="indicator"
         />
@@ -178,4 +150,4 @@ function Avatar({
 }
 
 export { Avatar }
-export type { AvatarContent, AvatarProps, AvatarSize, AvatarVariant }
+export type { AvatarProps, AvatarSize, AvatarType }

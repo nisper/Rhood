@@ -161,6 +161,13 @@
 }
 
 @layer components {
+  .rhood-layout-container {
+    width: 100%;
+    max-width: var(--rh-sizing-layout-column-container-lg);
+    margin-inline: auto;
+    padding-inline: var(--rh-sizing-layout-edge-to-edge-wrapper);
+  }
+
   .rhood-page-gutter {
     padding-inline: var(--rh-sizing-layout-edge-to-edge-wrapper);
   }

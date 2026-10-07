@@ -3,10 +3,17 @@ import { ChevronDown, ChevronUp, RefreshCw, CircleUser } from "lucide-react";
 
 import { Avatar } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Table } from "@/components/ui/table";
+import { TableCell } from "@/components/ui/table-cell";
+import { TableRow } from "@/components/ui/table-row";
 import { cn } from "@/lib/utils";
 
 type ObjectBuyersProps = React.ComponentProps<"section"> & {
   defaultExpanded?: boolean;
+  isLoading?: boolean;
+};
+
+type ObjectBuyersV2Props = React.ComponentProps<"section"> & {
   isLoading?: boolean;
 };
 
@@ -110,20 +117,97 @@ function ObjectBuyers({ className, defaultExpanded = false, isLoading = false, .
   );
 }
 
-function BuyerNeedItem({ need }: { need: BuyerNeed }) {
+function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyersV2Props) {
+  const [isRefreshing, setIsRefreshing] = React.useState(false);
+  const [visibleCount, setVisibleCount] = React.useState(5);
+  const loading = isLoading || isRefreshing;
+  const visibleNeeds = buyerNeeds.slice(0, visibleCount);
+
+  React.useEffect(() => {
+    if (!isRefreshing) return;
+
+    const timeoutId = window.setTimeout(() => setIsRefreshing(false), 5_000);
+    return () => window.clearTimeout(timeoutId);
+  }, [isRefreshing]);
+
   return (
-    <li className="flex items-center gap-6 rounded-[var(--rh-sizing-border-radius-lg)] bg-[var(--rh-theme-fill-contrast-static)] py-3 pl-3 pr-5">
+    <section
+      aria-labelledby="object-buyers"
+      className={cn("grid gap-4", className)}
+      {...props}
+    >
+      <h2 className="rh-typography-h4" id="object-buyers">
+        {loading ? "Проверяем покупателей" : "87 покупателей с точным совпадением"}
+      </h2>
+      <div className="grid gap-2" aria-label="Покупатели на этот объект">
+        <div className="flex items-center gap-2">
+          <Button appearance="ghost" disabled={loading} endIcon={false} onClick={() => setIsRefreshing(true)} size="sm" startIcon={<RefreshCw aria-hidden="true" />}>
+            Проверить заново
+          </Button>
+          <p className="ml-auto rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Проверили в 15:20</p>
+        </div>
+        <Table
+          aria-label="Потребности покупателей"
+          bordered
+          columns={[
+            { key: "need" },
+            { alignment: "right", key: "buyer" },
+          ]}
+          minWidth="100%"
+        >
+          <TableRow>
+            <TableCell column="need" helpIcon={false} role="head" type="text" width="fill">
+              Потребность
+            </TableCell>
+            <TableCell column="buyer" helpIcon={false} role="head" type="text">
+              СПН
+            </TableCell>
+          </TableRow>
+          {visibleNeeds.map((need) => (
+            <TableRow key={need.text}>
+              <TableCell column="need" role="body" type="text" width="fill">
+                {need.text}{need.hasMap && ", Выделенная область на карте"}
+              </TableCell>
+              <TableCell column="buyer" custom role="body" type="text">
+                <BuyerAvatar need={need} />
+              </TableCell>
+            </TableRow>
+          ))}
+        </Table>
+        {visibleCount < buyerNeeds.length && (
+          <Button appearance="ghost" className="justify-self-start" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
+            Показать еще
+          </Button>
+        )}
+        {visibleCount === buyerNeeds.length && (
+          <p className="mx-3 my-2 rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+            Всех покупателей можно посмотреть, если сохранить объект в Космос
+          </p>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function BuyerNeedItem({ appearance = "card", need }: { appearance?: "card" | "section"; need: BuyerNeed }) {
+  return (
+    <li className={cn("flex items-center gap-6 rounded-[var(--rh-sizing-border-radius-lg)] py-3 pl-3 pr-5", appearance === "section" ? "bg-[var(--rh-theme-fill-neutral)]" : "bg-[var(--rh-theme-fill-contrast-static)]")}>
       <p className="min-w-0 flex-1 rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
         {need.text}{need.hasMap && ", Выделенная область на карте"}
       </p>
-      {need.avatar ? (
-        <img alt="Аватар покупателя" className="size-8 shrink-0 rounded-full object-cover" src={need.avatar} />
-      ) : (
-        <Avatar size="32px">{need.initials}</Avatar>
-      )}
+      <BuyerAvatar need={need} />
     </li>
   );
 }
 
+function BuyerAvatar({ need }: { need: BuyerNeed }) {
+  return need.avatar ? (
+    <img alt="Аватар покупателя" className="size-8 shrink-0 rounded-full object-cover" src={need.avatar} />
+  ) : (
+    <Avatar size="32px" type="text">{need.initials}</Avatar>
+  );
+}
+
 export { ObjectBuyers };
-export type { ObjectBuyersProps };
+export { ObjectBuyersV2 };
+export type { ObjectBuyersProps, ObjectBuyersV2Props };
