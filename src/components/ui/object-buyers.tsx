@@ -37,6 +37,8 @@ const buyerNeeds: BuyerNeed[] = [
   { text: "3 ком., 100–150 м², до 20 млн ₽", avatar: "/Rhood/assets/object-buyer-5.jpeg" },
 ];
 
+const buyerColumnWidth = 56;
+
 function ObjectBuyers({ className, defaultExpanded = false, isLoading = false, ...props }: ObjectBuyersProps) {
   const [expanded, setExpanded] = React.useState(defaultExpanded);
   const [isRefreshing, setIsRefreshing] = React.useState(false);
@@ -49,7 +51,7 @@ function ObjectBuyers({ className, defaultExpanded = false, isLoading = false, .
   React.useEffect(() => {
     if (!isRefreshing) return;
 
-    const timeoutId = window.setTimeout(() => setIsRefreshing(false), 5_000);
+    const timeoutId = window.setTimeout(() => setIsRefreshing(false), 3_000);
     return () => window.clearTimeout(timeoutId);
   }, [isRefreshing]);
 
@@ -126,7 +128,7 @@ function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyers
   React.useEffect(() => {
     if (!isRefreshing) return;
 
-    const timeoutId = window.setTimeout(() => setIsRefreshing(false), 5_000);
+    const timeoutId = window.setTimeout(() => setIsRefreshing(false), 3_000);
     return () => window.clearTimeout(timeoutId);
   }, [isRefreshing]);
 
@@ -137,21 +139,15 @@ function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyers
       {...props}
     >
       <h2 className="rh-typography-h4" id="object-buyers">
-        {loading ? "Проверяем покупателей" : "87 покупателей с точным совпадением"}
+        {loading ? "Покупатели на этот объект" : "87 покупателей с точным совпадением"}
       </h2>
       <div className="grid gap-2" aria-label="Покупатели на этот объект">
-        <div className="flex items-center gap-2">
-          <Button appearance="ghost" disabled={loading} endIcon={false} onClick={() => setIsRefreshing(true)} size="sm" startIcon={<RefreshCw aria-hidden="true" />}>
-            Проверить заново
-          </Button>
-          <p className="ml-auto rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Проверили в 15:20</p>
-        </div>
         <Table
           aria-label="Потребности покупателей"
           bordered
           columns={[
             { key: "need" },
-            { alignment: "right", key: "buyer" },
+            { alignment: "center", key: "buyer" },
           ]}
           minWidth="100%"
         >
@@ -159,31 +155,50 @@ function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyers
             <TableCell column="need" helpIcon={false} role="head" type="text" width="fill">
               Потребность
             </TableCell>
-            <TableCell column="buyer" helpIcon={false} role="head" type="text">
+            <TableCell column="buyer" helpIcon={false} role="head" type="text" width={buyerColumnWidth}>
               СПН
             </TableCell>
           </TableRow>
           {visibleNeeds.map((need) => (
             <TableRow key={need.text}>
-              <TableCell column="need" role="body" type="text" width="fill">
+              <TableCell column="need" role="body" textSize="b1" type="text" verticalAlign="center" width="fill">
                 {need.text}{need.hasMap && ", Выделенная область на карте"}
               </TableCell>
-              <TableCell column="buyer" custom role="body" type="text">
+              <TableCell column="buyer" custom role="body" type="text" verticalAlign="center" width={buyerColumnWidth}>
                 <BuyerAvatar need={need} />
               </TableCell>
             </TableRow>
           ))}
         </Table>
-        {visibleCount < buyerNeeds.length && (
-          <Button appearance="ghost" className="justify-self-start" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
-            Показать еще
-          </Button>
-        )}
         {visibleCount === buyerNeeds.length && (
           <p className="mx-3 my-2 rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
             Всех покупателей можно посмотреть, если сохранить объект в Космос
           </p>
         )}
+        <div className="flex items-center gap-2">
+          {visibleCount < buyerNeeds.length && (
+            <Button appearance="ghost" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
+              Показать еще
+            </Button>
+          )}
+          <div className="ml-auto flex items-center gap-2">
+            <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Проверили в 15:20</p>
+            {loading ? (
+              <p className="inline-flex min-h-[calc(var(--spacing)*9)] shrink-0 items-center gap-[var(--rh-sizing-common-input-padding-gap-sm)] px-[var(--rh-sizing-common-input-padding-ghost-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)] rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                Проверяем покупателей
+                <RefreshCw
+                  aria-hidden="true"
+                  className="size-5 shrink-0 animate-spin text-[var(--rh-theme-icon-neutral-secondary)]"
+                  strokeWidth={2}
+                />
+              </p>
+            ) : (
+              <Button appearance="ghost" endIcon={<RefreshCw aria-hidden="true" />} onClick={() => setIsRefreshing(true)} size="sm" startIcon={false}>
+                Проверить заново
+              </Button>
+            )}
+          </div>
+        </div>
       </div>
     </section>
   );

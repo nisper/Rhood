@@ -1691,7 +1691,7 @@ export function ComponentDocs() {
     <div className="min-h-svh bg-[var(--parser-surface-bg)] text-[var(--parser-text-neutral-primary)]">
       <MainHeader
         controls={false}
-        contentWidth="container"
+        contentWidth="full"
         logoHref={window.location.pathname}
         navAlign="end"
         navItems={componentNavigationGroups.map((group) => ({
@@ -1700,7 +1700,7 @@ export function ComponentDocs() {
           onClick: () => handleNavigationGroupChange(group),
         }))}
       />
-      <div className="grid border-t border-[var(--parser-border-light)] md:grid-cols-[minmax(300px,1fr)_minmax(0,var(--rh-sizing-layout-column-container-lg))_minmax(0,1fr)]">
+      <div className="grid border-t border-[var(--parser-border-light)] md:grid-cols-[minmax(0,1fr)_minmax(0,var(--rh-sizing-layout-column-container-lg))_minmax(0,1fr)]">
         <aside className="border-b border-[var(--parser-border-light)] md:col-start-1 md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
           <div className="px-6 pt-4">
             <Search

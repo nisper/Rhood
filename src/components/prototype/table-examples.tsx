@@ -61,10 +61,22 @@ const cellProperties = [
     "Стандартные горизонтальные отступы ячейки.",
   ],
   [
-    "sizeSmall",
+    "compact",
     "true / false",
     "false",
     "Компактная высота для плотных таблиц.",
+  ],
+  [
+    "verticalAlign",
+    "top / center / bottom",
+    "top",
+    "Выравнивает содержимое ячейки по вертикали.",
+  ],
+  [
+    "textSize",
+    "b2 / b1",
+    "b2",
+    "Размер текста body-ячейки; заголовки таблицы не меняются.",
   ],
   ["sort", "true / false", "false", "Делает заголовок сортируемым."],
   [
@@ -130,9 +142,14 @@ const sizeSnippet = (
   <Snippet>
     <span className={syntax}>{`<`}</span>
     <span className={component}>TableCell</span>{" "}
-    <CodeProp name="sizeSmall" value="{true}" />{" "}
+    {"\n  "}
+    <CodeProp name="compact" value="{true}" />
+    {"\n  "}
+    <CodeProp name="textSize" value={'"b1"'} />
+    {"\n  "}
     <CodeProp name="width" value={'"fill"'} />
-    <span className={syntax}>{`>`}</span>Космос
+    <span className={syntax}>{`>`}</span>
+    {"\n  "}Космос{"\n"}
     <span className={syntax}>{`</`}</span>
     <span className={component}>TableCell</span>
     <span className={syntax}>{`>`}</span>
@@ -223,9 +240,11 @@ const hoverSnippet = (
 function ListingTable({
   bordered = true,
   compact = false,
+  textSize = "b2",
 }: {
   bordered?: boolean;
   compact?: boolean;
+  textSize?: "b2" | "b1";
 }) {
   return (
     <Table
@@ -235,7 +254,7 @@ function ListingTable({
       <TableRow>
         <TableCell
           role="head"
-          sizeSmall={compact}
+          compact={compact}
           type="text"
           width="fill"
         >
@@ -244,7 +263,7 @@ function ListingTable({
         <TableCell
           helpIcon={false}
           role="head"
-          sizeSmall={compact}
+          compact={compact}
           type="text"
           width="fill"
         >
@@ -253,7 +272,7 @@ function ListingTable({
         <TableCell
           helpIcon={false}
           role="head"
-          sizeSmall={compact}
+          compact={compact}
           type="number"
           width={150}
         >
@@ -262,13 +281,13 @@ function ListingTable({
       </TableRow>
       {listings.slice(0, 2).map((row) => (
         <TableRow key={row.id}>
-          <TableCell role="body" sizeSmall={compact} type="text" width="fill">
+          <TableCell compact={compact} role="body" textSize={textSize} type="text" width="fill">
             {row.object}
           </TableCell>
-          <TableCell role="body" sizeSmall={compact} type="text" width="fill">
+          <TableCell compact={compact} role="body" textSize={textSize} type="text" width="fill">
             {row.city}
           </TableCell>
-          <TableCell role="body" sizeSmall={compact} type="number" width={150}>
+          <TableCell compact={compact} role="body" textSize={textSize} type="number" width={150}>
             {row.price.toLocaleString("ru-RU")}
           </TableCell>
         </TableRow>
@@ -417,9 +436,9 @@ export function TableExamples() {
 
       <ShowcaseSection
         codeSnippet={sizeSnippet}
-        description='sizeSmall уменьшает высоту всех ячеек таблицы. Для колонок используй width="fill" для равного распределения, число — для фиксированной ширины.'
+        description='compact уменьшает отступы ячейки, а textSize меняет размер текста body-строк. Для колонок используй width="fill" для равного распределения, число — для фиксированной ширины.'
         showcase={
-          <ShowcaseSurface>
+          <ShowcaseSurface direction="vertical">
             <ShowcasePanel>
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
@@ -434,6 +453,14 @@ export function TableExamples() {
                   Компактный
                 </span>
                 <ListingTable compact />
+              </div>
+            </ShowcasePanel>
+            <ShowcasePanel>
+              <div className="grid w-full gap-2">
+                <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
+                  textSize=&quot;b1&quot;
+                </span>
+                <ListingTable textSize="b1" />
               </div>
             </ShowcasePanel>
           </ShowcaseSurface>

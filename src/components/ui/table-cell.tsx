@@ -10,6 +10,8 @@ type TableCellRole = "body" | "head"
 type TableCellType = "text" | "number" | "skeleton" | "checkbox" | "placeholder"
 type TableCellWidth = "content" | "fill" | number
 type TableCellAlignment = "left" | "center" | "right"
+type TableCellVerticalAlignment = "top" | "center" | "bottom"
+type TableCellTextSize = "b2" | "b1"
 
 type TableCellProps = React.ComponentProps<"div"> & {
   children?: React.ReactNode
@@ -29,12 +31,16 @@ type TableCellProps = React.ComponentProps<"div"> & {
   role?: TableCellRole
   /** Row identifier used by Table selection. */
   rowId?: string
-  sizeSmall?: boolean
+  compact?: boolean
   /** Enables sorting affordances for a header cell. Disabled by default. */
   sort?: boolean
   /** The active sorting direction. The arrow is visible only when this is set. */
   sortDirection?: "asc" | "desc"
+  /** Text size for standard body cells. Header cells keep their own typography. */
+  textSize?: TableCellTextSize
   type?: TableCellType
+  /** Vertical alignment of content inside a cell. */
+  verticalAlign?: TableCellVerticalAlignment
   /** Column width: content (default), equal share of the table, or pixels. */
   width?: TableCellWidth
 }
@@ -49,6 +55,18 @@ const contentAlignmentClasses: Record<TableCellAlignment, string> = {
   left: "justify-start",
   center: "justify-center",
   right: "justify-end",
+}
+
+const verticalAlignmentClasses: Record<TableCellVerticalAlignment, string> = {
+  top: "justify-start",
+  center: "justify-center",
+  bottom: "justify-end",
+}
+
+const checkboxVerticalAlignmentClasses: Record<TableCellVerticalAlignment, string> = {
+  top: "items-start",
+  center: "items-center",
+  bottom: "items-end",
 }
 
 /** A table cell for a header or a body row. */
@@ -67,10 +85,12 @@ function TableCell({
   paddingX,
   role = "head",
   rowId,
-  sizeSmall = false,
+  compact = false,
   sort = false,
   sortDirection,
+  textSize = "b2",
   type = "checkbox",
+  verticalAlign = "top",
   width = "content",
   style,
   ...props
@@ -100,6 +120,13 @@ function TableCell({
   const resolvedIndeterminate = isSelectionCell && isHead ? someOnPageSelected : indeterminate
   const columnAlignment = tableColumns.find((tableColumn) => tableColumn.key === column)?.alignment
   const resolvedAlignment = columnAlignment ?? (isNumber ? "right" : "left")
+  const bodyTextClass = isNumber
+    ? textSize === "b1"
+      ? "rh-typography-b1-mono"
+      : "rh-typography-b2-mono"
+    : textSize === "b1"
+      ? "rh-typography-b1"
+      : "rh-typography-b2"
 
   function handleCheckedChange(nextChecked: boolean) {
     if (!isSelectionCell || !tableSelection) {
@@ -125,14 +152,16 @@ function TableCell({
       {...props}
       className={cn(
         "relative flex min-w-0 shrink-0",
-        isCheckbox ? "items-start" : "flex-col",
+        isCheckbox
+          ? checkboxVerticalAlignmentClasses[verticalAlign]
+          : cn("flex-col", verticalAlignmentClasses[verticalAlign]),
         !isCheckbox && alignmentClasses[resolvedAlignment],
-        sizeSmall ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
+        compact ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
         hasPaddingX && (isCheckbox ? "px-[calc(var(--spacing)*2)]" : "px-[var(--rh-sizing-table-padding-px)]"),
         isContentWidth && "w-max",
         isFillWidth && "flex-1 basis-0",
         fixedWidth && "shrink-0",
-        isPlaceholder && (sizeSmall ? "h-[calc(var(--spacing)*9)]" : "h-[calc(calc(var(--spacing)*10)+calc(var(--spacing)*1))]"),
+        isPlaceholder && (compact ? "h-[calc(var(--spacing)*9)]" : "h-[calc(calc(var(--spacing)*10)+calc(var(--spacing)*1))]"),
         isSortable && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         hasSortPadding && "pr-[var(--rh-sizing-table-padding-px)]",
         className,
@@ -151,9 +180,10 @@ function TableCell({
       ) : (
         <div className={cn("flex min-h-5 w-full items-center gap-1", contentAlignmentClasses[resolvedAlignment])}>
           <span className={cn(
-          isHead ? "rh-typography-b2-med min-w-0 text-[var(--rh-theme-text-neutral-primary)]" : "rh-typography-b2 min-w-0",
+          isHead
+            ? "rh-typography-b2-med min-w-0 text-[var(--rh-theme-text-neutral-primary)]"
+            : cn(bodyTextClass, "min-w-0"),
             isContentWidth ? "whitespace-nowrap" : "break-words",
-            !isHead && isNumber ? "rh-typography-b2-mono" : "",
           )}>
             {children ?? (instance1 && <>{isHead ? "Head" : "Cell"}{instance2 && " secondary instance"}</>)}
           </span>
@@ -167,4 +197,4 @@ function TableCell({
 }
 
 export { TableCell }
-export type { TableCellAlignment, TableCellProps, TableCellRole, TableCellType, TableCellWidth }
+export type { TableCellAlignment, TableCellProps, TableCellRole, TableCellTextSize, TableCellType, TableCellVerticalAlignment, TableCellWidth }

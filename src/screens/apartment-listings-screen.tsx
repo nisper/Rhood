@@ -431,7 +431,7 @@ function ResultHeader({
         column="selection"
         paddingX
         role="head"
-        sizeSmall
+        compact
         sort={false}
         type="checkbox"
         width={28}
@@ -441,7 +441,7 @@ function ResultHeader({
         column="address"
         helpIcon={false}
         role="head"
-        sizeSmall
+        compact
         sort={false}
         type="text"
         width="fill"
@@ -453,7 +453,7 @@ function ResultHeader({
           column="buyer"
           onClick={sortable ? () => onSort("buyer") : undefined}
           role="head"
-          sizeSmall
+          compact
           sort={sortable}
           sortDirection={
             sortable && sort?.column === "buyer" ? sort.direction : undefined
@@ -468,7 +468,7 @@ function ResultHeader({
         column="call"
         helpIcon={false}
         role="head"
-        sizeSmall
+        compact
         sort={false}
         type="text"
         width="content"
@@ -481,7 +481,7 @@ function ResultHeader({
           helpIcon={false}
           onClick={sortable ? () => onSort("price") : undefined}
           role="head"
-          sizeSmall
+          compact
           sort={sortable}
           sortDirection={
             sortable && sort?.column === "price" ? sort.direction : undefined
@@ -501,7 +501,7 @@ function ResultHeader({
           column="liquidity"
           helpIcon={false}
           role="head"
-          sizeSmall
+          compact
           sort={false}
           type="text"
           width={152}
@@ -514,7 +514,7 @@ function ResultHeader({
           column="source"
           helpIcon={false}
           role="head"
-          sizeSmall
+          compact
           sort={false}
           type="text"
           width={190}
@@ -528,7 +528,7 @@ function ResultHeader({
           helpIcon={false}
           onClick={sortable ? () => onSort("publishedAt") : undefined}
           role="head"
-          sizeSmall
+          compact
           sort={sortable}
           sortDirection={
             sortable && sort?.column === "publishedAt"
@@ -546,7 +546,7 @@ function ResultHeader({
           column="status"
           helpIcon={false}
           role="head"
-          sizeSmall
+          compact
           sort={false}
           type="text"
           width={236}
@@ -578,7 +578,7 @@ function ResultRow({
         paddingX
         role="body"
         rowId={listing.id}
-        sizeSmall
+        compact
         type="checkbox"
         width={28}
       />
@@ -588,7 +588,7 @@ function ResultRow({
         column="address"
         custom
         role="body"
-        sizeSmall
+        compact
         type="text"
         width="fill"
       >
@@ -605,7 +605,7 @@ function ResultRow({
           column="buyer"
           custom
           role="body"
-          sizeSmall
+          compact
           type="number"
           width={130}
         >
@@ -618,7 +618,7 @@ function ResultRow({
         column="call"
         custom
         role="body"
-        sizeSmall
+        compact
         type="text"
         width="content"
       >
@@ -645,7 +645,7 @@ function ResultRow({
           column="price"
           custom
           role="body"
-          sizeSmall
+          compact
           type="number"
           width={175}
         >
@@ -665,7 +665,7 @@ function ResultRow({
           column="liquidity"
           custom
           role="body"
-          sizeSmall
+          compact
           type="text"
           width={152}
         >
@@ -687,7 +687,7 @@ function ResultRow({
           column="source"
           custom
           role="body"
-          sizeSmall
+          compact
           type="text"
           width={190}
         >
@@ -707,7 +707,7 @@ function ResultRow({
           column="publishedAt"
           custom
           role="body"
-          sizeSmall
+          compact
           type="text"
           width={150}
         >
@@ -722,7 +722,7 @@ function ResultRow({
           column="status"
           custom
           role="body"
-          sizeSmall
+          compact
           type="text"
           width={236}
         >
