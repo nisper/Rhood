@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-type LinkSize = "md" | "sm"
+type LinkSize = "b1" | "b2"
 
 type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
   endIcon?: React.ReactNode
@@ -11,13 +11,13 @@ type LinkProps = React.ComponentPropsWithoutRef<"a"> & {
 }
 
 const sizeClasses: Record<LinkSize, string> = {
-  md: "rh-typography-b1",
-  sm: "rh-typography-b2",
+  b1: "rh-typography-b1",
+  b2: "rh-typography-b2",
 }
 
 /** Text link with optional leading and trailing icons. */
 const Link = React.forwardRef<HTMLAnchorElement, LinkProps>(function Link(
-  { children, className, endIcon, size = "md", startIcon, ...props },
+  { children, className, endIcon, size = "b1", startIcon, ...props },
   ref,
 ) {
   return (

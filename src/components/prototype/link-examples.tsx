@@ -10,7 +10,7 @@ import { TableCell } from "@/components/ui/table-cell"
 
 const properties = [
   ["href", "string", "—", "Адрес, на который ведёт ссылка."],
-  ["size", "md · sm", "md", "Размер текста и иконок."],
+  ["size", "b1 · b2", "b1", "Текстовый стиль и размер иконок."],
   ["children", "ReactNode", "—", "Текст или другое содержимое ссылки."],
   ["startIcon", "ReactNode", "—", "Иконка слева от содержимого."],
   ["endIcon", "ReactNode", "—", "Иконка справа от содержимого."],
@@ -43,7 +43,7 @@ function LinkSnippet({ children }: { children: React.ReactNode }) {
 
 const sizeSnippet = (
   <LinkSnippet>
-    <CodeProp name="size" value={'"sm"'} />
+    <CodeProp name="size" value={'"b2"'} />
   </LinkSnippet>
 )
 
@@ -77,13 +77,13 @@ export function LinkExamples() {
     <div className="grid min-w-0">
       <ShowcaseSection
         codeSnippet={sizeSnippet}
-        description="md — размер по умолчанию; sm подходит для плотных интерфейсов. Наведи курсор, чтобы увидеть hover-состояние."
+        description="b1 — размер по умолчанию; b2 подходит для плотных интерфейсов. Наведи курсор, чтобы увидеть hover-состояние."
         showcase={
           <ShowcaseSurface>
             <ShowcasePanel>
               <div className="flex flex-wrap items-center justify-center gap-4">
-                <ExampleLink size="md">Medium</ExampleLink>
-                <ExampleLink size="sm">Small</ExampleLink>
+                <ExampleLink size="b1">Ссылка размером b1</ExampleLink>
+                <ExampleLink size="b2">Ссылка размером b2</ExampleLink>
               </div>
             </ShowcasePanel>
           </ShowcaseSurface>
