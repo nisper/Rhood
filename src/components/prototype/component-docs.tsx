@@ -33,6 +33,7 @@ import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
 import { ExpandableContentExamples } from "./expandable-content-examples";
 import { AvatarExamples } from "./avatar-examples";
+import { CommentsExamples } from "./comments-examples";
 import { MainHeaderExamples } from "./main-header-examples";
 import "./component-docs.css";
 import * as React from "react";
@@ -44,7 +45,6 @@ import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
-import { Indicator } from "@/components/ui/indicator";
 import { InfoIcon } from "@/components/ui/info-icon";
 import { Island } from "@/components/ui/island";
 import { ListItem } from "@/components/ui/list-item";
@@ -91,7 +91,11 @@ function getComponentNavigationGroup(
   group: string,
 ): ComponentNavigationGroup {
   if (group === "Foundations" || group === "Layout") return group;
-  if (group === "Выдача объектов") return "Features";
+  if (
+    group === "Features" ||
+    group === "Выдача объектов" ||
+    group === "Коммуникации"
+  ) return "Features";
   return "Components";
 }
 
@@ -1154,6 +1158,7 @@ const componentDocs: ComponentDoc[] = [
     source: "src/components/ui/avatar.tsx",
     properties: [
       { name: "type", values: "image · text · icon · skeleton", defaultValue: "image", description: "Содержимое аватара." },
+      { name: "imageSrc", values: "string", defaultValue: "демо-изображение", description: "Источник изображения для типа image." },
       { name: "size", values: "20px · 24px · 32px · 40px", defaultValue: "40px", description: "Диаметр аватара." },
       { name: "badge", values: "boolean", defaultValue: "false", description: "Показывает индикатор статуса." },
       { name: "children", values: "ReactNode", defaultValue: "EB", description: "Инициалы для типа text." },
@@ -1161,22 +1166,20 @@ const componentDocs: ComponentDoc[] = [
     render: () => <AvatarExamples />,
   },
   {
-    id: "indicator",
-    title: "Indicator",
-    description: "Цветовой индикатор.",
-    group: "Data display",
-    source: "src/components/ui/indicator.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <Indicator color="primary" />
-          <Indicator color="success" />
-          <Indicator color="warning" />
-          <Indicator color="error" />
-          <Indicator color="info" />
-        </Matrix>
-      </Canvas>
-    ),
+    id: "comments",
+    title: "Comments",
+    description: "Статичный список комментариев с полем для нового сообщения.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=11162-3561",
+    group: "Коммуникации",
+    properties: [
+      { name: "title", values: "string", defaultValue: "Комментарии", description: "Заголовок блока." },
+      { name: "placeholder", values: "string", defaultValue: "Ваш комментарий", description: "Текст в статичном поле." },
+      { name: "comments", values: "Comment[]", defaultValue: "демо-список", description: "Сообщения, отображаемые в ленте." },
+      { name: "userAvatarSrc", values: "string", defaultValue: "демо-аватар", description: "Источник аватара рядом с полем." },
+    ],
+    source: "src/components/ui/comments.tsx",
+    render: () => <CommentsExamples />,
   },
   {
     id: "alert-default",
@@ -1808,6 +1811,9 @@ const ComponentNavigation = React.forwardRef<
     "modal-header",
     "drawer",
     "expandable-content",
+    "form",
+    "form-helper-text",
+    "form-label",
   ]);
 
   const handleItemKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>) => {

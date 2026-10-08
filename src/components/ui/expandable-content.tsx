@@ -77,7 +77,7 @@ function ExpandableContent({
 
       {hasOverflow && (
         <Button
-          appearance="ghost"
+          appearance="default"
           aria-controls={contentId}
           aria-expanded={expanded}
           className="mt-2 justify-self-start"

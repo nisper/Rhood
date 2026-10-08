@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Menu } from "@/components/ui/menu";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { useMenuOpen } from "@/hooks/use-menu-open";
 import { Select } from "@/components/ui/select";
 import { ShowcasePanel } from "@/components/ui/showcase-panel";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
@@ -66,10 +67,12 @@ function SelectWithMenu({
   defaultOpen?: boolean;
 }) {
   const initialValue = typeof props.value === "string" ? props.value : options[0];
-  const [expanded, setExpanded] = React.useState(defaultOpen);
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useMenuOpen(menuRef, defaultOpen);
   const [value, setValue] = React.useState(initialValue);
 
   return (
+    <div ref={menuRef}>
     <Select
       {...props}
       expanded={expanded}
@@ -107,6 +110,7 @@ function SelectWithMenu({
       onExpandedChange={setExpanded}
       value={value}
     />
+    </div>
   );
 }
 

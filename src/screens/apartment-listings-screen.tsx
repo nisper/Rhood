@@ -13,6 +13,7 @@ import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { useMenuOpen } from "@/hooks/use-menu-open";
 import { Modal, ModalContainer } from "@/components/ui/modal";
 import { ObjectInfo } from "@/components/ui/object-info";
 import { Select } from "@/components/ui/select";
@@ -22,12 +23,21 @@ import { TableRow } from "@/components/ui/table-row";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import listings from "@/data/mock/real-estate-listings.json";
 
-function getNavItems(activeItem: "base" | "my") {
+function getNavItems(activeItem: "base" | "my" | "archive") {
   return [
-  { label: "Набор базы", active: activeItem === "base", href: "?view=apartment-listings" },
-  { label: "Мои объекты", active: activeItem === "my", href: "?view=my-listings" },
-  { label: "Подборки" },
-  { label: "Избранное" },
+    {
+      label: "Набор базы",
+      active: activeItem === "base",
+      href: "?view=apartment-listings",
+    },
+    {
+      label: "Мои объекты",
+      active: activeItem === "my",
+      href: "?view=my-listings",
+    },
+    { label: "Подборки" },
+    { label: "Избранное" },
+    { label: "Архив", active: activeItem === "archive", href: "?view=archive" },
   ];
 }
 
@@ -60,6 +70,18 @@ const resultTableColumns = [
   { key: "source", alignment: "left" },
   { key: "publishedAt", alignment: "left" },
   { key: "status", alignment: "left" },
+] as const;
+
+const archiveTableColumns = [
+  { key: "address", alignment: "left" },
+  { key: "rooms", alignment: "right" },
+  { key: "area", alignment: "right" },
+  { key: "floor", alignment: "right" },
+  { key: "price", alignment: "right" },
+  { key: "pricePerM2", alignment: "right" },
+  { key: "source", alignment: "left" },
+  { key: "author", alignment: "left" },
+  { key: "publishedAt", alignment: "left" },
 ] as const;
 
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
@@ -144,7 +166,7 @@ function formatSource(domain: string) {
 }
 
 function getPrice(listing: (typeof listings)[number]) {
-  return Number(listing.price) * 1_000;
+  return Number(listing.price);
 }
 
 function getSpecs(listing: (typeof listings)[number]) {
@@ -169,9 +191,10 @@ function TableToolbar({
   showMap?: boolean;
   sort: SortState;
 }) {
-  const [columnsOpen, setColumnsOpen] = React.useState(false);
-  const [sortOpen, setSortOpen] = React.useState(false);
   const columnsMenuRef = React.useRef<HTMLDivElement>(null);
+  const sortMenuRef = React.useRef<HTMLDivElement>(null);
+  const [columnsOpen, setColumnsOpen] = useMenuOpen(columnsMenuRef);
+  const [sortOpen, setSortOpen] = useMenuOpen(sortMenuRef);
   const selectedSortOption = sortOptions.find((option) =>
     isSelected(option.value),
   );
@@ -187,7 +210,7 @@ function TableToolbar({
 
     document.addEventListener("pointerdown", closeColumnsMenu);
     return () => document.removeEventListener("pointerdown", closeColumnsMenu);
-  }, [columnsOpen]);
+  }, [columnsOpen, setColumnsOpen]);
 
   function isSelected(option: Exclude<SortState, null>) {
     return (
@@ -204,6 +227,7 @@ function TableToolbar({
 
   return (
     <div className="flex flex-wrap items-center gap-2">
+      <div ref={sortMenuRef}>
       <Select
         aria-expanded={sortOpen}
         aria-haspopup="menu"
@@ -242,6 +266,7 @@ function TableToolbar({
         size="sm"
         value={selectedSortOption?.label ?? "Сортировка"}
       />
+      </div>
 
       {showMap && <Button
         appearance="default"
@@ -424,7 +449,7 @@ function ResultHeader({
 }) {
   return (
     <div
-      className="flex border-b border-[var(--parser-border-light)]"
+      className="sticky top-0 z-10 flex border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
       role="row"
     >
       <TableCell
@@ -742,6 +767,144 @@ function ResultRow({
   );
 }
 
+function ArchiveResultHeader() {
+  return (
+    <div
+      className="sticky top-0 z-10 flex border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
+      role="row"
+    >
+      <TableCell column="address" helpIcon={false} role="head" sort={false} type="text" width="fill">
+        Адрес
+      </TableCell>
+      <TableCell column="rooms" helpIcon={false} role="head" sort={false} type="number" width={80}>
+        Комнат
+      </TableCell>
+      <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={90}>
+        Площадь
+      </TableCell>
+      <TableCell column="floor" helpIcon={false} role="head" sort={false} type="number" width={70}>
+        Этаж
+      </TableCell>
+      <TableCell column="price" helpIcon={false} role="head" sort={false} type="number" width={140}>
+        Цена, ₽
+      </TableCell>
+      <TableCell column="pricePerM2" helpIcon={false} role="head" sort={false} type="number" width={140}>
+        Цена, ₽/м²
+      </TableCell>
+      <TableCell column="source" helpIcon={false} role="head" sort={false} type="text" width={110}>
+        Источник
+      </TableCell>
+      <TableCell column="author" helpIcon={false} role="head" sort={false} type="text" width={120}>
+        Автор
+      </TableCell>
+      <TableCell column="publishedAt" helpIcon={false} role="head" sort={false} type="text" width={150}>
+        Опубликован
+      </TableCell>
+    </div>
+  );
+}
+
+function ArchiveResultRow({
+  listing,
+  onOpen,
+}: {
+  listing: (typeof listings)[number];
+  onOpen: () => void;
+}) {
+  const price = getPrice(listing);
+  const pricePerM2 = Math.round(price / listing.area);
+
+  return (
+    <TableRow hover onClick={onOpen}>
+      <TableCell column="address" role="body" type="text" width="fill">
+        {listing.address}
+      </TableCell>
+      <TableCell column="rooms" role="body" type="number" width={80}>
+        {listing.roomCount === 0 ? "Студия" : listing.roomCount}
+      </TableCell>
+      <TableCell column="area" role="body" type="number" width={90}>
+        {listing.area.toLocaleString("ru-RU")} м²
+      </TableCell>
+      <TableCell column="floor" role="body" type="number" width={70}>
+        {listing.floor}/{listing.floorCount}
+      </TableCell>
+      <TableCell column="price" role="body" type="number" width={140}>
+        {formatNumber(price)}
+      </TableCell>
+      <TableCell column="pricePerM2" role="body" type="number" width={140}>
+        {formatNumber(pricePerM2)}
+      </TableCell>
+      <TableCell column="source" role="body" type="text" width={110}>
+        {formatSource(listing.domain)}
+      </TableCell>
+      <TableCell column="author" role="body" type="text" width={120}>
+        {listing.clientName ?? "Частное лицо"}
+      </TableCell>
+      <TableCell column="publishedAt" role="body" type="text" width={150}>
+        {formatPublishedAt(listing.publishedAt)}
+      </TableCell>
+    </TableRow>
+  );
+}
+
+function ArchiveListingsTable({
+  className,
+  listings: tableListings,
+  onOpenObjectInfo,
+  sort,
+}: {
+  className?: string;
+  listings: readonly (typeof listings)[number][];
+  onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
+  sort: SortState;
+}) {
+  const sortedListings = [...tableListings]
+    .sort((first, second) => {
+      if (!sort) return 0;
+
+      const firstValue =
+        sort.column === "price"
+          ? getPrice(first)
+          : sort.column === "pricePerM2"
+            ? Math.round(getPrice(first) / first.area)
+            : sort.column === "publishedAt"
+              ? new Date(first.publishedAt).getTime()
+              : first.buyerDemandAvailableCount;
+      const secondValue =
+        sort.column === "price"
+          ? getPrice(second)
+          : sort.column === "pricePerM2"
+            ? Math.round(getPrice(second) / second.area)
+            : sort.column === "publishedAt"
+              ? new Date(second.publishedAt).getTime()
+              : second.buyerDemandAvailableCount;
+
+      return sort.direction === "asc"
+        ? firstValue - secondValue
+        : secondValue - firstValue;
+    })
+    .slice(0, 20);
+
+  return (
+    <Table
+      bordered
+      className={className}
+      columns={archiveTableColumns}
+      minWidth={1200}
+      stickyHeader
+    >
+      <ArchiveResultHeader />
+      {sortedListings.map((listing) => (
+        <ArchiveResultRow
+          key={listing.id}
+          listing={listing}
+          onOpen={() => onOpenObjectInfo(listing)}
+        />
+      ))}
+    </Table>
+  );
+}
+
 function ListingsTable({
   className,
   hiddenColumns,
@@ -811,6 +974,7 @@ function ListingsTable({
       className={className}
       columns={resultTableColumns}
       minWidth={1600}
+      stickyHeader
       selection={{
         onSelectedIdsChange: setSelectedIds,
         rowIds: sortedListings.map((listing) => listing.id),
@@ -838,9 +1002,10 @@ function ListingsTable({
 export function ApartmentListingsScreen({
   view = "base",
 }: {
-  view?: "base" | "my";
+  view?: "base" | "my" | "archive";
 }) {
   const isMyListings = view === "my";
+  const isArchive = view === "archive";
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
@@ -859,71 +1024,79 @@ export function ApartmentListingsScreen({
   }
 
   return (
-    <div className="min-h-screen overflow-x-hidden bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]">
+    <div className="min-h-screen overflow-x-clip bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]">
       <MainHeader
-        className="border-b-0"
         contentWidth="container"
         logoHref="/Rhood/"
-        navItems={getNavItems(isMyListings ? "my" : "base")}
+        navItems={getNavItems(view)}
       />
       {!isMyListings && (
-        <div className="border-b border-[color:var(--rh-theme-border-light)]">
-          <ToolbarFilter contentWidth="container" className="border-b-0" />
-        </div>
+        <ToolbarFilter archive={isArchive} contentWidth="container" />
       )}
 
       <main className="grid min-w-0 gap-0">
         <section className="rhood-layout-container py-8">
           <h1 className="rh-typography-h2 mb-1 font-[500]">
-            {formatNumber(listings.length)}{" "}
-            {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
+            {isArchive ? (
+              "Архив квартир в Тюмени"
+            ) : (
+              <>
+                {formatNumber(listings.length)}{" "}
+                {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
+              </>
+            )}
           </h1>
           <p className="text-[var(--rh-theme-text-neutral-secondary)]">
             Но вообще, сегодня-то мы проверили 19 880 объектов. Мы просто дубли
             не показываем
           </p>
         </section>
-        <section className="rhood-layout-container min-w-0">
-          <div className="flex min-w-0 flex-col gap-4">
-            <section
-              aria-label="Управление выдачей"
+        <section
+          aria-label="Управление выдачей"
+          className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+        >
+          <TableToolbar
+            hiddenColumns={hiddenColumns}
+            onHiddenColumnsChange={setHiddenColumns}
+            onLeaderboardOpen={() => setLeaderboardOpen(true)}
+            onSortChange={setSort}
+            showLeaderboard={!isMyListings && !isArchive}
+            showMap={!isMyListings && !isArchive}
+            sort={sort}
+          />
+        </section>
+        <section
+          aria-label="Список квартир"
+          className="mt-4 min-w-0"
+        >
+          {isArchive ? (
+            <ArchiveListingsTable
+              className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+              listings={listings}
+              onOpenObjectInfo={setSelectedListing}
+              sort={sort}
+            />
+          ) : (
+            <ListingsTable
+              className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+              hiddenColumns={hiddenColumns}
+              listings={listings}
+              onOpenObjectInfo={setSelectedListing}
+              onSort={handleSort}
+              sort={sort}
+              sortable={false}
+            />
+          )}
+          <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] pt-4">
+            <Button
+              appearance="default"
+              endIcon={false}
+              size="md"
+              startIcon={false}
             >
-              <TableToolbar
-                hiddenColumns={hiddenColumns}
-                onHiddenColumnsChange={setHiddenColumns}
-                onLeaderboardOpen={() => setLeaderboardOpen(true)}
-                onSortChange={setSort}
-                showLeaderboard={!isMyListings}
-                showMap={!isMyListings}
-                sort={sort}
-              />
-            </section>
-            <section
-              aria-label="Список квартир"
-              className="min-w-0 overflow-x-auto"
-            >
-              <ListingsTable
-                hiddenColumns={hiddenColumns}
-                listings={listings}
-                onOpenObjectInfo={(listing) => {
-                  setSelectedListing(listing);
-                }}
-                onSort={handleSort}
-                sort={sort}
-                sortable={false}
-              />
-              <footer className="pt-4">
-                <Button
-                  appearance="default"
-                  endIcon={false}
-                  size="md"
-                  startIcon={false}
-                >
-                  Показать еще 50 объектов
-                </Button>
-              </footer>
-            </section>
-          </div>
+              Показать еще 50 объектов
+            </Button>
+          </footer>
         </section>
         {leaderboardOpen && (
           <LeaderboardModal
@@ -944,4 +1117,8 @@ export function ApartmentListingsScreen({
 
 export function MyListingsScreen() {
   return <ApartmentListingsScreen view="my" />;
+}
+
+export function ArchiveScreen() {
+  return <ApartmentListingsScreen view="archive" />;
 }

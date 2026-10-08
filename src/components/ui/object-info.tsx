@@ -7,6 +7,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { ButtonFavorite } from "@/components/ui/button-favorite";
 import { Chip } from "@/components/ui/chip";
+import { Comments } from "@/components/ui/comments";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { ExpandableContent } from "@/components/ui/expandable-content";
 import { IconButton } from "@/components/ui/icon-button";
@@ -82,7 +83,7 @@ function ObjectInfo({ className, onClose, presentation = "inline", ...props }: O
       <ObjectInfoHeader onClose={onClose} />
 
       <div className="grid grid-cols-[minmax(0,564px)_320px] items-start">
-        <main className="grid min-w-0 gap-6 px-4 pb-6 pt-3">
+        <main className="grid min-w-0 gap-8 px-4 pb-6 pt-3">
           <ObjectGallery />
           <ObjectBuyersV2 />
           <section className="grid gap-4" aria-labelledby="object-description">
@@ -93,6 +94,7 @@ function ObjectInfo({ className, onClose, presentation = "inline", ...props }: O
               </p>
             </ExpandableContent>
           </section>
+          <Comments />
         </main>
 
         <ObjectInfoSidebar
@@ -146,7 +148,7 @@ function ObjectInfoSidebar({ callStatus, onCallStatusChange }: { callStatus: str
       </div>
 
       <section className="grid gap-2" aria-labelledby="object-summary">
-        <h2 className="rh-typography-b2" id="object-summary">41,9 м², 1к квартира, этаж 15/16, 2015 год</h2>
+        <h2 className="rh-typography-b1" id="object-summary">41,9 м², 1к квартира, этаж 15/16, 2015&nbsp;год</h2>
         <div className="flex flex-wrap items-start gap-2">
           <div>
             <p className="text-[24px] font-semibold leading-8 tracking-[-0.24px] text-[var(--rh-theme-text-neutral-primary)]">5 700 000 ₽</p>
@@ -170,7 +172,7 @@ function ObjectInfoSidebar({ callStatus, onCallStatusChange }: { callStatus: str
         <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]" id="call-status">Статус последнего звонка</p>
         <div className="flex flex-wrap gap-2">
           {statuses.map((status) => (
-            <ToggleChip checked={callStatus === status} icon={false} key={status} onClick={() => onCallStatusChange(status)} size="md">{status}</ToggleChip>
+            <ToggleChip checked={callStatus === status} icon={false} key={status} onClick={() => onCallStatusChange(status)} size="lg">{status}</ToggleChip>
           ))}
         </div>
       </section>

@@ -4,6 +4,7 @@ import { Component, LayoutDashboard } from "lucide-react";
 import { ComponentDocs } from "@/components/prototype/component-docs";
 import {
   ApartmentListingsScreen,
+  ArchiveScreen,
   MyListingsScreen,
 } from "@/screens/apartment-listings-screen";
 import { SimpleTableScreen } from "@/screens/simple-table-screen";
@@ -37,6 +38,13 @@ const prototypeViews: PrototypeView[] = [
     homeLabel: "Мои объекты",
     icon: LayoutDashboard,
     View: MyListingsScreen,
+  },
+  {
+    id: "archive",
+    title: "Архив",
+    homeLabel: "Архив",
+    icon: LayoutDashboard,
+    View: ArchiveScreen,
   },
   {
     id: "simple-table",

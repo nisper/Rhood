@@ -4,7 +4,6 @@
 | --- | --- | --- |
 | `10647:1326` | `Button` | `src/components/ui/button.tsx` / `Button` |
 | `10103:2350` | `buttonFavorite` | `src/components/ui/button-favorite.tsx` / `ButtonFavorite` |
-| `8701:15073` | `Indicator` | `src/components/ui/indicator.tsx` / `Indicator` |
 | `1171:18402` | `List` | `src/components/ui/list.tsx` / `List` |
 | `9929:5668` | `ListSmall` | `src/components/ui/list-small.tsx` / `ListSmall` |
 | `654:8330` | `ListItem` | `src/components/ui/list-item.tsx` / `ListItem` |
@@ -36,6 +35,8 @@
 | `1653:28207` | `Chip` | `src/components/ui/chip.tsx` / `Chip` |
 | `1336:8438` | `toggleChip` | `src/components/ui/toggle-chip.tsx` / `ToggleChip` |
 | `351:8845` | `avatar` | `src/components/ui/avatar.tsx` / `Avatar` |
+| `11162:3561` | `comments / page` | `src/components/ui/comments.tsx` / `Comments` |
+| `11162:3857` | `message` | `src/components/ui/comment-message.tsx` / `CommentMessage` |
 | `505:4164` | `textfield` | `src/components/ui/text-field.tsx` / `Textfield` |
 | `11269:12380` | `InputNumber` | `src/components/ui/input-number.tsx` / `InputNumber` |
 | `11270:13059` | `InputNumberRange` | `src/components/ui/input-number-range.tsx` / `InputNumberRange` |

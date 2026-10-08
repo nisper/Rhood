@@ -8,6 +8,7 @@ import { IconButton } from "@/components/ui/icon-button";
 import { InputNumberRange } from "@/components/ui/input-number-range";
 import { Menu } from "@/components/ui/menu";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { useMenuOpen } from "@/hooks/use-menu-open";
 import { Modal, ModalContainer } from "@/components/ui/modal";
 import { Segment } from "@/components/ui/segment";
 import { SegmentedControl } from "@/components/ui/segmented-control";
@@ -20,6 +21,8 @@ type ToolbarFilterResp = "desk" | "mob";
 type ToolbarFilterContentWidth = "full" | "container";
 
 type ToolbarFilterProps = React.ComponentProps<"section"> & {
+  /** Displays the compact archive filter set. */
+  archive?: boolean;
   /** Controls the horizontal width of the filter content. */
   contentWidth?: ToolbarFilterContentWidth;
   empty?: boolean;
@@ -44,12 +47,13 @@ function FilterSelect({
   value?: string;
   widthClass?: string;
 }) {
-  const [open, setOpen] = React.useState(false);
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const [open, setOpen] = useMenuOpen(menuRef);
   const [uncontrolledValue, setUncontrolledValue] = React.useState(label);
   const value = controlledValue ?? uncontrolledValue;
 
   return (
-    <div>
+    <div ref={menuRef}>
       <Select
         className={widthClass}
         expanded={open}
@@ -187,10 +191,12 @@ function ModalSelect({
   label: string;
   options: readonly string[];
 }) {
-  const [expanded, setExpanded] = React.useState(false);
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useMenuOpen(menuRef);
   const [value, setValue] = React.useState("Не выбрано");
 
   return (
+    <div ref={menuRef}>
     <FormBlock direction="row" label={label}>
       <Select
         expanded={expanded}
@@ -224,6 +230,7 @@ function ModalSelect({
         value={value}
       />
     </FormBlock>
+    </div>
   );
 }
 
@@ -309,6 +316,7 @@ function ModalFilters() {
 }
 
 function ToolbarFilter({
+  archive = false,
   className,
   contentWidth = "full",
   empty = true,
@@ -390,46 +398,49 @@ function ToolbarFilter({
     return (
       <>
         <section
-          key={filterVersion}
           className={cn(
-            contentWidthClass,
-            "relative flex items-center gap-1 bg-[var(--rh-theme-surface-bg)]",
-            "border-b border-[color:var(--rh-theme-border-light)] py-2",
+            "relative w-full bg-[var(--rh-theme-surface-bg)]",
+            "py-2",
             className,
           )}
           {...props}
         >
-        <MobileFilterButton
-          empty={empty}
-          onClick={() => setIsFiltersModalOpen(true)}
-        />
-        {showClearButton && (
-          <IconButton
-            appearance="ghost"
-            aria-label="Сбросить фильтры"
-            icon={<X aria-hidden="true" strokeWidth={2} />}
-            onClick={resetFilters}
-            size="sm"
-          />
-        )}
-        <FilterSelect
-          label="Квартиры"
-          onValueChange={(value) => {
-            setPropertyType(value);
-            setWasReset(false);
-          }}
-          options={propertyTypeOptions}
-          value={propertyType}
-        />
-        <FilterSelect label={empty ? "Комнаты" : "1 ком."} />
-        <FilterSelect label={empty ? "Площадь" : "50–70 м²"} />
-        <FilterSelect label={empty ? "Цена" : "8–12,5 млн. ₽"} />
-
-        {!empty && progressLinear && (
-          <div className="absolute inset-x-0 bottom-0 h-0.5 overflow-hidden">
-            <div className="h-full w-1/2 bg-[var(--parser-fill-brand)]" />
+          <div
+            key={filterVersion}
+            className={cn(contentWidthClass, "flex items-center gap-1")}
+          >
+            <MobileFilterButton
+              empty={empty}
+              onClick={() => setIsFiltersModalOpen(true)}
+            />
+            {showClearButton && (
+              <IconButton
+                appearance="ghost"
+                aria-label="Сбросить фильтры"
+                icon={<X aria-hidden="true" strokeWidth={2} />}
+                onClick={resetFilters}
+                size="sm"
+              />
+            )}
+            <FilterSelect
+              label="Квартиры"
+              onValueChange={(value) => {
+                setPropertyType(value);
+                setWasReset(false);
+              }}
+              options={propertyTypeOptions}
+              value={propertyType}
+            />
+            <FilterSelect label={empty ? "Комнаты" : "1 ком."} />
+            <FilterSelect label={empty ? "Площадь" : "50–70 м²"} />
+            <FilterSelect label={empty ? "Цена" : "8–12,5 млн. ₽"} />
           </div>
-        )}
+
+          {!empty && progressLinear && (
+            <div className="absolute inset-x-0 bottom-0 h-0.5 overflow-hidden">
+              <div className="h-full w-1/2 bg-[var(--parser-fill-brand)]" />
+            </div>
+          )}
         </section>
         {filtersModal}
       </>
@@ -440,96 +451,111 @@ function ToolbarFilter({
     <>
       <section
         className={cn(
-          contentWidthClass,
-          "relative flex flex-wrap items-center gap-4 overflow-visible bg-[var(--rh-theme-surface-bg)]",
-          "border-b border-[color:var(--rh-theme-border-light)] py-3",
+          "relative w-full overflow-visible bg-[var(--rh-theme-surface-bg)]",
+          "py-3",
           className,
         )}
         {...props}
       >
-      <div
-        key={filterVersion}
-        className="flex flex-wrap items-start gap-2 overflow-visible"
-      >
-        <FilterSelect
-          label="Квартиры"
-          onValueChange={(value) => {
-            setPropertyType(value);
-            setWasReset(false);
-          }}
-          options={propertyTypeOptions}
-          value={propertyType}
-          widthClass="w-[150px]"
-        />
-        <RoominessGroup
-          onValueChange={(value) => {
-            setRooms(value);
-            setWasReset(false);
-          }}
-          value={rooms}
-        />
-        <FilterRange
-          endValue={area.to}
-          onEndChange={(value) => {
-            setArea((current) => ({ ...current, to: value }));
-            setWasReset(false);
-          }}
-          onStartChange={(value) => {
-            setArea((current) => ({ ...current, from: value }));
-            setWasReset(false);
-          }}
-          suffix="м²"
-          startValue={area.from}
-          widthClass="w-[152px]"
-        />
-        <FilterRange
-          groupThousands
-          endValue={price.to}
-          onEndChange={(value) => {
-            setPrice((current) => ({ ...current, to: value }));
-            setWasReset(false);
-          }}
-          onStartChange={(value) => {
-            setPrice((current) => ({ ...current, from: value }));
-            setWasReset(false);
-          }}
-          suffix="₽"
-          startValue={price.from}
-          widthClass="w-[240px]"
-        />
-
-        <Button
-          appearance="default"
-          counter={!empty}
-          counterValue={8}
-          endIcon={false}
-          onClick={() => setIsFiltersModalOpen(true)}
-          size="sm"
-          startIcon={
-            empty ? <Settings2 aria-hidden="true" strokeWidth={2} /> : false
-          }
+      <div className={cn(contentWidthClass, "overflow-visible")}>
+        <div
+          key={filterVersion}
+          className="flex flex-wrap items-start gap-2 overflow-visible"
         >
-          Фильтры
-        </Button>
-        {showClearButton && (
-          <IconButton
-            appearance="ghost"
-            aria-label="Сбросить фильтры"
-            icon={<X aria-hidden="true" strokeWidth={2} />}
-            onClick={resetFilters}
-            size="sm"
-          />
+        {archive ? (
+          <>
+            <FilterSelect label="Квартиры" options={propertyTypeOptions} />
+            <FilterSelect label="Комнат" options={["Комнат", ...roominessOptions]} />
+            <FilterSelect label="Площадь" options={["Площадь", "до 50 м²", "50–100 м²", "от 100 м²"]} />
+            <FilterSelect label="Цена" options={["Цена", "до 5 млн ₽", "5–10 млн ₽", "от 10 млн ₽"]} />
+            <FilterSelect label="Этаж" options={["Этаж", "1", "2–5", "6–10", "от 11"]} />
+            <FilterSelect label="Источник" options={["Источник", "Авито", "Циан", "Домклик", "Яндекс Недвижимость"]} />
+            <FilterSelect label="Автор" options={["Автор", "Частное лицо", "Агентство"]} />
+          </>
+        ) : (
+          <>
+            <FilterSelect
+              label="Квартиры"
+              onValueChange={(value) => {
+                setPropertyType(value);
+                setWasReset(false);
+              }}
+              options={propertyTypeOptions}
+              value={propertyType}
+              widthClass="w-[150px]"
+            />
+            <RoominessGroup
+              onValueChange={(value) => {
+                setRooms(value);
+                setWasReset(false);
+              }}
+              value={rooms}
+            />
+            <FilterRange
+              endValue={area.to}
+              onEndChange={(value) => {
+                setArea((current) => ({ ...current, to: value }));
+                setWasReset(false);
+              }}
+              onStartChange={(value) => {
+                setArea((current) => ({ ...current, from: value }));
+                setWasReset(false);
+              }}
+              suffix="м²"
+              startValue={area.from}
+              widthClass="w-[152px]"
+            />
+            <FilterRange
+              groupThousands
+              endValue={price.to}
+              onEndChange={(value) => {
+                setPrice((current) => ({ ...current, to: value }));
+                setWasReset(false);
+              }}
+              onStartChange={(value) => {
+                setPrice((current) => ({ ...current, from: value }));
+                setWasReset(false);
+              }}
+              suffix="₽"
+              startValue={price.from}
+              widthClass="w-[240px]"
+            />
+
+            <Button
+              appearance="default"
+              counter={!empty}
+              counterValue={8}
+              endIcon={false}
+              onClick={() => setIsFiltersModalOpen(true)}
+              size="sm"
+              startIcon={
+                empty ? <Settings2 aria-hidden="true" strokeWidth={2} /> : false
+              }
+            >
+              Фильтры
+            </Button>
+            {showClearButton && (
+              <IconButton
+                appearance="ghost"
+                aria-label="Сбросить фильтры"
+                icon={<X aria-hidden="true" strokeWidth={2} />}
+                onClick={resetFilters}
+                size="sm"
+              />
+            )}
+            {showClearButton && (
+              <Button
+                appearance="ghost"
+                endIcon={false}
+                size="sm"
+                startIcon={<Search aria-hidden="true" strokeWidth={2} />}
+              >
+                Сохранить фильтры
+              </Button>
+            )}
+          </>
         )}
-        {showClearButton && (
-          <Button
-            appearance="ghost"
-            endIcon={false}
-            size="sm"
-            startIcon={<Search aria-hidden="true" strokeWidth={2} />}
-          >
-            Сохранить фильтры
-          </Button>
-        )}
+        </div>
       </div>
 
       {!empty && progressLinear && (

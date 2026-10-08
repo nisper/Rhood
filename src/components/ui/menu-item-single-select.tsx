@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 type MenuItemSingleSelectState = "default" | "hovered";
 
 type MenuItemSingleSelectProps = React.ComponentProps<"div"> & {
-  icon?: boolean;
+  icon?: React.ReactNode | boolean;
   chip?: boolean;
   disabled?: boolean;
   rightSlot?: boolean;
@@ -82,11 +82,11 @@ function MenuItemSingleSelect({
             disabled && disabledOpacityClass,
           )}
         >
-          <Star
-            aria-hidden="true"
-            className="size-[calc(var(--spacing)*5)]"
-            strokeWidth={2}
-          />
+          {typeof icon === "object" ? icon : <Star
+              aria-hidden="true"
+              className="size-[calc(var(--spacing)*5)]"
+              strokeWidth={2}
+            />}
         </span>
       )}
 

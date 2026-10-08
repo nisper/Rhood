@@ -103,7 +103,7 @@ function ObjectBuyers({ className, defaultExpanded = false, isLoading = false, .
             {visibleNeeds.map((need) => <BuyerNeedItem key={need.text} need={need} />)}
           </ul>
           {visibleCount < buyerNeeds.length && (
-            <Button appearance="ghost" className="justify-self-start" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
+            <Button appearance="default" className="justify-self-start" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
               Показать еще
             </Button>
           )}
@@ -177,7 +177,7 @@ function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyers
         )}
         <div className="flex items-center gap-2">
           {visibleCount < buyerNeeds.length && (
-            <Button appearance="ghost" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
+            <Button appearance="default" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
               Показать еще
             </Button>
           )}

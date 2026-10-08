@@ -16,6 +16,8 @@ type AvatarType = "text" | "icon" | "image" | "skeleton"
 type AvatarProps = React.ComponentProps<"div"> & {
   badge?: boolean
   children?: React.ReactNode
+  /** Source for the image avatar. Falls back to the RHOOD demo image. */
+  imageSrc?: string
   size?: AvatarSize
   type?: AvatarType
 }
@@ -77,6 +79,7 @@ function Avatar({
   badge = false,
   children = "EB",
   className,
+  imageSrc = imageContent,
   size = "40px",
   type = "image",
   ...props
@@ -111,7 +114,7 @@ function Avatar({
             <img
               alt=""
               className="absolute inset-0 block size-full object-cover"
-              src={imageContent}
+              src={imageSrc}
             />
           )}
           {hasText && (

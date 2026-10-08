@@ -7,6 +7,7 @@ import { IconButton } from "@/components/ui/icon-button";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { useMenuOpen } from "@/hooks/use-menu-open";
 import { cn } from "@/lib/utils";
 
 const logoSrc = "/Rhood/assets/rhood-logo.svg";
@@ -54,10 +55,10 @@ function MainHeader({
     contentWidth === "container"
       ? "rhood-layout-container"
       : "rhood-page-gutter";
-  const [isHelpMenuOpen, setIsHelpMenuOpen] = React.useState(false);
-  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = React.useState(false);
   const helpMenuRef = React.useRef<HTMLDivElement | null>(null);
   const avatarMenuRef = React.useRef<HTMLDivElement | null>(null);
+  const [isHelpMenuOpen, setIsHelpMenuOpen] = useMenuOpen(helpMenuRef);
+  const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useMenuOpen(avatarMenuRef);
 
   React.useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
@@ -79,13 +80,13 @@ function MainHeader({
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
     };
-  }, [isAvatarMenuOpen, isHelpMenuOpen]);
+  }, [isAvatarMenuOpen, isHelpMenuOpen, setIsAvatarMenuOpen, setIsHelpMenuOpen]);
 
   if (isMobile) {
     return (
       <header
         className={cn(
-          "w-full overflow-hidden bg-[var(--rh-theme-surface-bg)]",
+          "w-full overflow-hidden border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]",
           className,
         )}
         {...props}
@@ -121,7 +122,7 @@ function MainHeader({
   return (
     <header
       className={cn(
-        "w-full bg-[var(--rh-theme-surface-bg)]",
+        "w-full border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]",
         className,
       )}
       {...props}
@@ -129,7 +130,7 @@ function MainHeader({
       <div
         className={cn(
           contentWidthClass,
-          "relative flex items-center gap-6 pb-2 pt-4",
+          "relative flex items-center gap-6 py-4",
         )}
       >
         <div className="flex shrink-0 items-center justify-start">

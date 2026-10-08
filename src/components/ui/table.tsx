@@ -27,6 +27,8 @@ type TableProps = React.ComponentProps<"div"> & {
   minWidth?: React.CSSProperties["minWidth"]
   /** Enables selection of rows and of all rows on the current page. */
   selection?: TableSelection
+  /** Allows a sticky header to remain visible while the page scrolls. */
+  stickyHeader?: boolean
 }
 
 const TableSelectionContext = React.createContext<TableSelection | null>(null)
@@ -41,14 +43,21 @@ function useTableColumns() {
 }
 
 /** Container for header and body rows composed from TableCell instances. */
-function Table({ bordered = false, children, className, columns = [], minWidth, selection, style, ...props }: TableProps) {
+function Table({ bordered = false, children, className, columns = [], minWidth, selection, stickyHeader = false, style, ...props }: TableProps) {
   return (
     <TableSelectionContext.Provider value={selection ?? null}>
       <TableColumnsContext.Provider value={columns}>
-        <div className="w-full overflow-x-auto">
+        <div className={cn("w-full", stickyHeader ? "overflow-visible" : "overflow-x-auto")}>
           <div
             {...props}
-            className={cn("flex min-w-max flex-col items-stretch overflow-hidden rounded-[var(--rh-sizing-border-radius-md)]", bordered && "border border-[var(--parser-border-light)]", className)}
+            className={cn(
+              "flex min-w-max flex-col items-stretch rounded-[var(--rh-sizing-border-radius-md)]",
+              stickyHeader
+                ? "overflow-visible [&>[role=row]:first-child]:overflow-hidden [&>[role=row]:first-child]:rounded-t-[var(--rh-sizing-border-radius-md)] [&>[role=row]:last-child]:overflow-hidden [&>[role=row]:last-child]:rounded-b-[var(--rh-sizing-border-radius-md)]"
+                : "overflow-hidden",
+              bordered && "border border-[var(--parser-border-light)]",
+              className,
+            )}
             role="table"
             style={{ ...style, minWidth }}
           >
