@@ -868,7 +868,7 @@ export function ApartmentListingsScreen({
       />
       {!isMyListings && (
         <div className="border-b border-[color:var(--rh-theme-border-light)]">
-          <ToolbarFilter className="rhood-layout-container border-b-0" />
+          <ToolbarFilter contentWidth="container" className="border-b-0" />
         </div>
       )}
 

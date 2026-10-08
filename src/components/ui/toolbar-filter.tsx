@@ -17,11 +17,12 @@ import { Textfield } from "@/components/ui/text-field";
 import { cn } from "@/lib/utils";
 
 type ToolbarFilterResp = "desk" | "mob";
+type ToolbarFilterContentWidth = "full" | "container";
 
 type ToolbarFilterProps = React.ComponentProps<"section"> & {
+  /** Controls the horizontal width of the filter content. */
+  contentWidth?: ToolbarFilterContentWidth;
   empty?: boolean;
-  /** Renders the toolbar as a self-contained surface on the island layout. */
-  island?: boolean;
   progressLinear?: boolean;
   resultCount?: number;
   resp?: ToolbarFilterResp;
@@ -163,7 +164,7 @@ function MobileFilterButton({
 }) {
   return (
     <Button
-      appearance="contrast"
+      appearance="default"
       className="shrink-0"
       counter={!empty}
       counterValue={1}
@@ -309,14 +310,18 @@ function ModalFilters() {
 
 function ToolbarFilter({
   className,
+  contentWidth = "full",
   empty = true,
-  island = false,
   progressLinear = true,
   resultCount = 50,
   resp = "desk",
   ...props
 }: ToolbarFilterProps) {
   const isMobile = resp === "mob";
+  const contentWidthClass =
+    contentWidth === "container"
+      ? "rhood-layout-container"
+      : "rhood-page-gutter";
   const [filterVersion, setFilterVersion] = React.useState(0);
   const [isFiltersModalOpen, setIsFiltersModalOpen] = React.useState(false);
   const [modalFiltersKey, setModalFiltersKey] = React.useState(0);
@@ -387,10 +392,9 @@ function ToolbarFilter({
         <section
           key={filterVersion}
           className={cn(
-            "rhood-page-gutter relative flex items-center gap-1 bg-[var(--rh-theme-surface-bg)]",
-            island
-              ? "rounded-[var(--rh-sizing-island-border-radius)] border border-[color:var(--rh-theme-border-light)] py-2"
-              : "border-b border-[color:var(--rh-theme-border-light)] py-2",
+            contentWidthClass,
+            "relative flex items-center gap-1 bg-[var(--rh-theme-surface-bg)]",
+            "border-b border-[color:var(--rh-theme-border-light)] py-2",
             className,
           )}
           {...props}
@@ -436,10 +440,9 @@ function ToolbarFilter({
     <>
       <section
         className={cn(
-          "rhood-page-gutter relative flex flex-wrap items-center gap-4 overflow-visible bg-[var(--rh-theme-surface-bg)]",
-          island
-            ? "rounded-[var(--rh-sizing-island-border-radius)] border border-[color:var(--rh-theme-border-light)] py-3"
-            : "border-b border-[color:var(--rh-theme-border-light)] py-3",
+          contentWidthClass,
+          "relative flex flex-wrap items-center gap-4 overflow-visible bg-[var(--rh-theme-surface-bg)]",
+          "border-b border-[color:var(--rh-theme-border-light)] py-3",
           className,
         )}
         {...props}
@@ -517,10 +520,7 @@ function ToolbarFilter({
             size="sm"
           />
         )}
-      </div>
-
-      {!empty && (
-        <div className="flex items-center gap-1">
+        {showClearButton && (
           <Button
             appearance="ghost"
             endIcon={false}
@@ -529,8 +529,8 @@ function ToolbarFilter({
           >
             Сохранить фильтры
           </Button>
-        </div>
-      )}
+        )}
+      </div>
 
       {!empty && progressLinear && (
         <div className="absolute inset-x-0 bottom-0 h-0.5 overflow-hidden">
@@ -544,4 +544,8 @@ function ToolbarFilter({
 }
 
 export { ToolbarFilter };
-export type { ToolbarFilterProps, ToolbarFilterResp };
+export type {
+  ToolbarFilterContentWidth,
+  ToolbarFilterProps,
+  ToolbarFilterResp,
+};

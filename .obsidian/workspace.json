@@ -98,7 +98,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "24fbdb0caa4bd22e",
@@ -133,7 +134,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docs/instructions/formatting-code-snippets.md",
+                "file": "AGENTS.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -142,36 +143,7 @@
             }
           },
           {
-            "id": "5d0656347526fbb8",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true,
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "Tags"
-            }
-          },
-          {
-            "id": "a1e0c83021da8e62",
-            "type": "leaf",
-            "state": {
-              "type": "all-properties",
-              "state": {
-                "sortOrder": "frequency",
-                "showSearch": false,
-                "searchQuery": ""
-              },
-              "icon": "lucide-archive",
-              "title": "All properties"
-            }
-          },
-          {
-            "id": "c69f57c83d062004",
+            "id": "987223a94ccab723",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -186,7 +158,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -205,6 +177,9 @@
   },
   "active": "c6739f684b8e1ff4",
   "lastOpenFiles": [
+    "docs/instructions/formatting-component-showcase-page.md",
+    "docs/instructions/showcase-page.md",
+    "AGENTS.md",
     "dist/assets/index-DcQILWzV.js",
     "dist/assets/index-Cc26kPlW.js",
     "dist/assets/index-qz2c6eL8.js",
@@ -215,7 +190,6 @@
     "dist/assets/index-CsgQh50Z.js",
     "dist/assets/index-BSs5b8H3.css",
     "dist/assets/index-Qx5ArpUj.js",
-    "dist/assets/index-CB0XUz6t.js",
     "public/assets/avatar-user-32.svg",
     "public/assets/avatar-user-24.svg",
     "public/assets/avatar-user-20.svg",
@@ -223,12 +197,10 @@
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "docs/instructions/Работа с компонентами.md",
     "docs/instructions/drawing-a-user-flow.md",
-    "docs/instructions/formatting-component-showcase-page.md",
     "docs/instructions/product-design-reasoning.md",
     "dist/assets/avatar-user-32.svg",
     "dist/assets/avatar-user-24.svg",
     "dist/assets/avatar-user-20.svg",
-    "AGENTS.md",
     "docs/instructions/formatting-code-snippets.md",
     "docs/tokens.md",
     "docs/token-mapping.md",

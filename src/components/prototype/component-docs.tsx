@@ -54,8 +54,8 @@ import { Search } from "@/components/ui/search";
 import { Snackbar } from "@/components/ui/snackbar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
-import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import { Tooltip } from "@/components/ui/tooltip";
+import { ToolbarFilterExamples } from "./toolbar-filter-examples";
 import { cn, matchesSearchTerms } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -1111,11 +1111,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Панель фильтров.",
     group: "Выдача объектов",
     source: "src/components/ui/toolbar-filter.tsx",
-    render: () => (
-      <Canvas>
-        <ToolbarFilter className="min-w-[960px] border-b-0" />
-      </Canvas>
-    ),
+    render: () => <ToolbarFilterExamples />,
   },
   {
     id: "list",
@@ -1700,8 +1696,8 @@ export function ComponentDocs() {
           onClick: () => handleNavigationGroupChange(group),
         }))}
       />
-      <div className="grid border-t border-[var(--parser-border-light)] md:grid-cols-[minmax(0,1fr)_minmax(0,var(--rh-sizing-layout-column-container-lg))_minmax(0,1fr)]">
-        <aside className="border-b border-[var(--parser-border-light)] md:col-start-1 md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
+      <div className="grid w-full border-t border-[var(--parser-border-light)] md:grid-cols-[minmax(150px,300px)_minmax(0,1fr)]">
+        <aside className="w-full border-b border-[var(--parser-border-light)] md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
           <div className="px-6 pt-4">
             <Search
               aria-label="Найти компонент"
@@ -1746,7 +1742,7 @@ export function ComponentDocs() {
             />
           </div>
         </aside>
-        <main className="min-w-0 md:col-start-2">
+        <main className="min-w-0 w-full">
           <ComponentPage
             doc={activeDoc}
             key={activeDoc.id}
