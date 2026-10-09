@@ -9,7 +9,7 @@ const usedComponents = [
   { href: "/Rhood/?view=components&component=comments", title: "Comments" },
   { href: "/Rhood/?view=components&component=expandable-content", title: "ExpandableContent" },
   { href: "/Rhood/?view=components&component=icon-button", title: "IconButton" },
-  { href: "/Rhood/?view=components&component=object-buyers", title: "ObjectBuyers" },
+  { href: "/Rhood/?view=components&component=object-buyers-v2", title: "ObjectBuyers v2" },
   { href: "/Rhood/?view=components&component=toggle-chip", title: "ToggleChip" },
 ];
 

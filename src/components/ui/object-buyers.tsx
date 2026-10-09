@@ -121,9 +121,11 @@ function ObjectBuyers({ className, defaultExpanded = false, isLoading = false, .
 
 function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyersV2Props) {
   const [isRefreshing, setIsRefreshing] = React.useState(false);
-  const [visibleCount, setVisibleCount] = React.useState(5);
+  const [visibleCount, setVisibleCount] = React.useState(3);
+  const [isListExpanded, setIsListExpanded] = React.useState(false);
   const loading = isLoading || isRefreshing;
-  const visibleNeeds = buyerNeeds.slice(0, visibleCount);
+  const visibleNeeds = buyerNeeds.slice(0, 3);
+  const extraNeeds = buyerNeeds.slice(3, visibleCount);
 
   React.useEffect(() => {
     if (!isRefreshing) return;
@@ -169,6 +171,28 @@ function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyers
               </TableCell>
             </TableRow>
           ))}
+          <div
+            aria-hidden={!isListExpanded}
+            className={cn(
+              "grid overflow-hidden transition-[grid-template-rows] duration-200 ease-out motion-reduce:transition-none",
+              isListExpanded ? "grid-rows-[1fr]" : "grid-rows-[0fr]",
+            )}
+            inert={!isListExpanded}
+            role="rowgroup"
+          >
+            <div className="min-h-0">
+              {extraNeeds.map((need) => (
+                <TableRow key={need.text}>
+                  <TableCell column="need" role="body" textSize="b1" type="text" verticalAlign="center" width="fill">
+                    {need.text}{need.hasMap && ", Выделенная область на карте"}
+                  </TableCell>
+                  <TableCell column="buyer" custom role="body" type="text" verticalAlign="center" width={buyerColumnWidth}>
+                    <BuyerAvatar need={need} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </div>
+          </div>
         </Table>
         {visibleCount === buyerNeeds.length && (
           <p className="mx-3 my-2 rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
@@ -177,7 +201,17 @@ function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyers
         )}
         <div className="flex items-center gap-2">
           {visibleCount < buyerNeeds.length && (
-            <Button appearance="default" endIcon={<ChevronDown aria-hidden="true" />} onClick={() => setVisibleCount(buyerNeeds.length)} size="sm" startIcon={false}>
+            <Button
+              appearance="default"
+              aria-expanded={isListExpanded}
+              endIcon={<ChevronDown aria-hidden="true" />}
+              onClick={() => {
+                setVisibleCount(buyerNeeds.length);
+                setIsListExpanded(true);
+              }}
+              size="sm"
+              startIcon={false}
+            >
               Показать еще
             </Button>
           )}

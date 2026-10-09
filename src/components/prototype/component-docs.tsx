@@ -28,7 +28,7 @@ import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
-import { ObjectBuyersExamples } from "./object-buyers-examples";
+import { ObjectBuyersExamples, ObjectBuyersV2Examples } from "./object-buyers-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
 import { ExpandableContentExamples } from "./expandable-content-examples";
@@ -445,7 +445,7 @@ const componentDocs: ComponentDoc[] = [
   },
   {
     id: "object-buyers",
-    title: "ObjectBuyers",
+    title: "ObjectBuyers v1",
     description: "Покупатели с точным совпадением для объекта и их потребности.",
     figmaUrl:
       "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=26647-8829",
@@ -466,6 +466,24 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/object-buyers.tsx",
     render: () => <ObjectBuyersExamples />,
+  },
+  {
+    id: "object-buyers-v2",
+    title: "ObjectBuyers v2",
+    description: "Покупатели с точным совпадением в секционном представлении.",
+    figmaUrl:
+      "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=26647-8829",
+    group: "Выдача объектов",
+    properties: [
+      {
+        name: "isLoading",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Показывает состояние проверки покупателей.",
+      },
+    ],
+    source: "src/components/ui/object-buyers.tsx",
+    render: () => <ObjectBuyersV2Examples />,
   },
   {
     id: "object-info",
@@ -1699,7 +1717,7 @@ export function ComponentDocs() {
           onClick: () => handleNavigationGroupChange(group),
         }))}
       />
-      <div className="grid w-full border-t border-[var(--parser-border-light)] md:grid-cols-[minmax(150px,300px)_minmax(0,1fr)]">
+      <div className="grid w-full md:grid-cols-[minmax(150px,300px)_minmax(0,1fr)]">
         <aside className="w-full border-b border-[var(--parser-border-light)] md:sticky md:top-0 md:h-screen md:overflow-y-auto md:border-b-0 md:border-r">
           <div className="px-6 pt-4">
             <Search

@@ -452,7 +452,7 @@ function ToolbarFilter({
       <section
         className={cn(
           "relative w-full overflow-visible bg-[var(--rh-theme-surface-bg)]",
-          "py-3",
+          "pt-6",
           className,
         )}
         {...props}
@@ -482,7 +482,7 @@ function ToolbarFilter({
               }}
               options={propertyTypeOptions}
               value={propertyType}
-              widthClass="w-[150px]"
+              widthClass="w-[120px]"
             />
             <RoominessGroup
               onValueChange={(value) => {
@@ -503,7 +503,7 @@ function ToolbarFilter({
               }}
               suffix="м²"
               startValue={area.from}
-              widthClass="w-[152px]"
+              widthClass="w-[150px]"
             />
             <FilterRange
               groupThousands
@@ -518,7 +518,7 @@ function ToolbarFilter({
               }}
               suffix="₽"
               startValue={price.from}
-              widthClass="w-[240px]"
+              widthClass="w-[260px]"
             />
 
             <Button

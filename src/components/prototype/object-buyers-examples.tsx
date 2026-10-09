@@ -1,8 +1,4 @@
-import * as React from "react";
-
 import { ObjectBuyers, ObjectBuyersV2 } from "@/components/ui/object-buyers";
-import { Segment } from "@/components/ui/segment";
-import { SegmentedControl } from "@/components/ui/segmented-control";
 import { ShowcasePanel } from "@/components/ui/showcase-panel";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
 import { ShowcaseSurface } from "@/components/ui/showcase-surface";
@@ -31,14 +27,12 @@ const v1Snippet = (
 );
 
 function ObjectBuyersExamples() {
-  const [version, setVersion] = React.useState<"v1" | "v2">("v1");
-
   return (
     <>
       <ShowcaseSection
-        codeSnippet={version === "v1" ? v1Snippet : v2Snippet}
-        description="Переключай версии, чтобы сравнить карточку V1 с секционным представлением V2."
-        showcase={<ShowcaseSurface usedComponents={usedComponents}><ShowcasePanel className="items-start"><div className="grid w-full gap-4"><SegmentedControl aria-label="Версия ObjectBuyers" onValueChange={(value) => setVersion(value as "v1" | "v2")} size="sm" value={version}><Segment value="v1">V1</Segment><Segment value="v2">V2</Segment></SegmentedControl><div id="object-buyers-preview">{version === "v1" ? <ObjectBuyers className="w-full" defaultExpanded /> : <ObjectBuyersV2 />}</div></div></ShowcasePanel></ShowcaseSurface>}
+        codeSnippet={v1Snippet}
+        description="Компактная карточка для показа покупателей с точным совпадением по объекту."
+        showcase={<ShowcaseSurface usedComponents={usedComponents}><ShowcasePanel className="items-start"><ObjectBuyers className="w-full" defaultExpanded /></ShowcasePanel></ShowcaseSurface>}
         title="Стиль"
       />
       <ShowcaseSection
@@ -55,4 +49,23 @@ function ObjectBuyersExamples() {
   );
 }
 
-export { ObjectBuyersExamples };
+function ObjectBuyersV2Examples() {
+  return (
+    <>
+      <ShowcaseSection
+        codeSnippet={v2Snippet}
+        description="Секционное представление покупателей с таблицей потребностей и действиями для обновления списка."
+        showcase={<ShowcaseSurface usedComponents={usedComponents}><ShowcasePanel className="items-start"><ObjectBuyersV2 className="w-full" /></ShowcasePanel></ShowcaseSurface>}
+        title="Стиль"
+      />
+      <ShowcaseSection
+        codeSnippet={v2Snippet}
+        description="Нажми «Показать еще» или «Проверить заново», чтобы увидеть интерактивное поведение компонента."
+        showcase={<ShowcaseSurface usedComponents={usedComponents}><ShowcasePanel className="items-start"><ObjectBuyersV2 className="w-full" /></ShowcasePanel></ShowcaseSurface>}
+        title="Состав"
+      />
+    </>
+  );
+}
+
+export { ObjectBuyersExamples, ObjectBuyersV2Examples };

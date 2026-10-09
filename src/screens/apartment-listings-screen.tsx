@@ -284,7 +284,22 @@ function TableToolbar({
         На карте
       </Button>}
 
-      <div className="relative" ref={columnsMenuRef}>
+      {showLeaderboard && <Button
+        appearance="default"
+        endIcon={false}
+        onClick={onLeaderboardOpen}
+        size="sm"
+        startIcon={
+          <img
+            alt=""
+            className="size-5 object-contain"
+            src="/Rhood/assets/medal-gold.png"
+          />
+        }
+      >
+        Таблица лидеров
+      </Button>}
+      <div className="relative ml-auto" ref={columnsMenuRef}>
         <Button
           appearance="default"
           aria-expanded={columnsOpen}
@@ -302,7 +317,7 @@ function TableToolbar({
         {columnsOpen && (
           <Menu
             align="right"
-            className="absolute right-0 top-full z-20 mt-1"
+            className="absolute right-0 top-full z-30 mt-1"
             role="menu"
           >
             {tableColumns.map((column) => (
@@ -336,21 +351,6 @@ function TableToolbar({
           </Menu>
         )}
       </div>
-      {showLeaderboard && <Button
-        appearance="default"
-        endIcon={false}
-        onClick={onLeaderboardOpen}
-        size="sm"
-        startIcon={
-          <img
-            alt=""
-            className="size-5 object-contain"
-            src="/Rhood/assets/medal-gold.png"
-          />
-        }
-      >
-        Таблица лидеров
-      </Button>}
     </div>
   );
 }
@@ -449,7 +449,7 @@ function ResultHeader({
 }) {
   return (
     <div
-      className="sticky top-0 z-10 flex border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
+      className="flex rounded-t-[var(--rh-sizing-border-radius-md)] border-x border-t border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
       role="row"
     >
       <TableCell
@@ -770,7 +770,7 @@ function ResultRow({
 function ArchiveResultHeader() {
   return (
     <div
-      className="sticky top-0 z-10 flex border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
+      className="flex rounded-t-[var(--rh-sizing-border-radius-md)] border-x border-t border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
       role="row"
     >
       <TableCell column="address" helpIcon={false} role="head" sort={false} type="text" width="fill">
@@ -1067,7 +1067,7 @@ export function ApartmentListingsScreen({
         </section>
         <section
           aria-label="Список квартир"
-          className="mt-4 min-w-0"
+          className="mt-3 min-w-0"
         >
           {isArchive ? (
             <ArchiveListingsTable
