@@ -280,7 +280,8 @@ function TableToolbar({
                 <MenuItemSingleSelect
                   icon={false}
                   key={option.label}
-                  onClick={() => {
+                  onClick={(event) => {
+                    event.stopPropagation();
                     onSortChange(option.value);
                     setSortOpen(false);
                   }}
@@ -1050,7 +1051,10 @@ export function ApartmentListingsScreen({
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
-  const [sort, setSort] = React.useState<SortState>(null);
+  const [sort, setSort] = React.useState<SortState>({
+    column: "publishedAt",
+    direction: "desc",
+  });
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
   const [selectedListing, setSelectedListing] = React.useState<
     (typeof listings)[number] | null
@@ -1157,8 +1161,12 @@ export function ApartmentListingsScreen({
                 headline: `${formatNumber(getPrice(selectedListing))} ₽`,
                 supportingText: `${formatNumber(Math.round(getPrice(selectedListing) / selectedListing.area))} ₽/м²`,
                 metadata: [
-                  `${formatSource(selectedListing.domain)} · ${selectedListing.clientName ?? "Частное лицо"}`,
-                  `${formatDate(selectedListing.publishedAt)}–${formatDate(selectedListing.actualizedAt)}`,
+                  { label: "Где", value: formatSource(selectedListing.domain) },
+                  { label: "Автор", value: selectedListing.clientName ?? "Частное лицо" },
+                  {
+                    label: "Когда размещался",
+                    value: `${formatDate(selectedListing.publishedAt)}–${formatDate(selectedListing.actualizedAt)}`,
+                  },
                 ],
                 fields: [
                   {

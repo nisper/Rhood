@@ -32,7 +32,11 @@ function PhotoGalleryDemo() {
     title: "Тюмень, улица Раушана Абдуллина, 6",
     headline: "7 900 000 ₽",
     supportingText: "224 432 ₽/м²",
-    metadata: ["Авито · Частное лицо", "08.01.2024–08.01.2026"],
+    metadata: [
+      { label: "Где", value: "Авито" },
+      { label: "Автор", value: "Частное лицо" },
+      { label: "Когда размещался", value: "08.01.2024–08.01.2026" },
+    ],
     fields: [
       { label: "Комнаты", value: "1 комната" },
       { label: "Площадь", value: "35,2 м²" },
@@ -50,7 +54,13 @@ function PhotoGalleryDemo() {
       sidebar={details}
     />
   ) : (
-    <Button appearance="default" onClick={() => setOpen(true)} size="sm">
+    <Button
+      appearance="default"
+      endIcon={false}
+      onClick={() => setOpen(true)}
+      size="sm"
+      startIcon={false}
+    >
       Открыть просмотр фото
     </Button>
   );
@@ -71,7 +81,7 @@ function PhotoGalleryExamples() {
               { href: "/Rhood/?view=components&component=expandable-content", title: "ExpandableContent" },
             ]}
           >
-            <ShowcasePanel className="w-full items-start overflow-x-auto p-0" tone="transparent">
+            <ShowcasePanel className="w-full items-center overflow-x-auto p-0" tone="transparent">
               <PhotoGalleryDemo />
             </ShowcasePanel>
           </ShowcaseSurface>

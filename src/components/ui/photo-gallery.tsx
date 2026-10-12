@@ -19,7 +19,7 @@ type PhotoGallerySidebar = {
   title?: string;
   headline?: string;
   supportingText?: string;
-  metadata?: readonly string[];
+  metadata?: readonly PhotoGallerySidebarField[];
   fields?: readonly PhotoGallerySidebarField[];
   description?: string;
 };
@@ -54,6 +54,27 @@ function isPointOnContainedImage(
     clientX <= left + renderedWidth &&
     clientY >= top &&
     clientY <= top + renderedHeight
+  );
+}
+
+function PhotoGallerySidebarRows({
+  rows,
+}: {
+  rows: readonly PhotoGallerySidebarField[];
+}) {
+  return (
+    <dl className="grid divide-y divide-[var(--parser-border-light)] border-b border-[var(--parser-border-light)]">
+      {rows.map(({ label, value }) => (
+        <div className="flex items-center justify-between gap-4 py-2" key={label}>
+          <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+            {label}
+          </dt>
+          <dd className="rh-typography-b2 text-right text-[var(--rh-theme-text-neutral-primary)]">
+            {value}
+          </dd>
+        </div>
+      ))}
+    </dl>
   );
 }
 
@@ -98,16 +119,20 @@ function PhotoGallery({
 
   const activePhoto = photos[activePhotoIndex];
   const showControls = photos.length > 1;
+  const sidebarRows = [...(sidebar?.fields ?? []), ...(sidebar?.metadata ?? [])];
 
   return (
     <ModalContainer
       alignment="center"
+      aria-label="Просмотр фотографий"
+      aria-modal={containerDisplay === "viewport" ? true : undefined}
       className={`!min-h-0 !grid-rows-[minmax(0,1fr)] !overflow-hidden bg-[var(--rh-theme-surface-bg)] ${
         containerDisplay === "embedded"
           ? "!h-[min(680px,calc(100dvh-32px))]"
           : ""
       }`}
       display={containerDisplay}
+      role={containerDisplay === "viewport" ? "dialog" : "group"}
       onClick={(event) => {
         const target = event.target;
         if (!(target instanceof Element)) return;
@@ -125,7 +150,7 @@ function PhotoGallery({
       <div
         className={`relative grid h-full min-h-0 w-full min-w-0 overflow-hidden ${
           sidebar
-            ? "grid-cols-[minmax(240px,320px)_minmax(0,1fr)] max-md:grid-cols-1 max-md:grid-rows-[minmax(220px,1fr)_minmax(0,auto)]"
+            ? "grid-cols-[minmax(240px,380px)_minmax(0,1fr)] max-md:grid-cols-1 max-md:grid-rows-[minmax(220px,1fr)_minmax(0,auto)]"
             : "grid-cols-1"
         }`}
       >
@@ -142,52 +167,30 @@ function PhotoGallery({
             className="relative flex min-h-0 flex-col gap-6 overflow-y-auto p-6 max-md:row-start-2 max-md:border-t max-md:p-4"
           >
             {(sidebar.title || sidebar.headline || sidebar.supportingText) && (
-              <div className="grid gap-3">
+              <div className="grid gap-4">
                 {sidebar.title && (
                   <h2 className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
                     {sidebar.title}
                   </h2>
                 )}
-                {sidebar.headline && (
-                  <p className="rh-typography-h3 text-[var(--rh-theme-text-neutral-primary)]">
-                    {sidebar.headline}
-                  </p>
-                )}
-                {sidebar.supportingText && (
-                  <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                    {sidebar.supportingText}
-                  </p>
-                )}
-              </div>
-            )}
-
-            {sidebar.metadata && sidebar.metadata.length > 0 && (
-              <div className="grid border-y border-[var(--parser-border-light)] py-3">
-                {sidebar.metadata.map((item) => (
-                  <p
-                    className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]"
-                    key={item}
-                  >
-                    {item}
-                  </p>
-                ))}
-              </div>
-            )}
-
-            {sidebar.fields && sidebar.fields.length > 0 && (
-              <dl className="grid gap-3 border-b border-[var(--parser-border-light)] pb-4">
-                {sidebar.fields.map(({ label, value }) => (
-                  <div className="flex justify-between gap-4" key={label}>
-                    <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                      {label}
-                    </dt>
-                    <dd className="rh-typography-b2-med text-right text-[var(--rh-theme-text-neutral-primary)]">
-                      {value}
-                    </dd>
+                {(sidebar.headline || sidebar.supportingText) && (
+                  <div className="grid gap-1">
+                    {sidebar.headline && (
+                      <p className="rh-typography-h3 text-[var(--rh-theme-text-neutral-primary)]">
+                        {sidebar.headline}
+                      </p>
+                    )}
+                    {sidebar.supportingText && (
+                      <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                        {sidebar.supportingText}
+                      </p>
+                    )}
                   </div>
-                ))}
-              </dl>
+                )}
+              </div>
             )}
+
+            {sidebarRows.length > 0 && <PhotoGallerySidebarRows rows={sidebarRows} />}
 
             {sidebar.description && (
               <div className="grid gap-2">
@@ -210,11 +213,11 @@ function PhotoGallery({
 
         <section
           aria-label="Фотографии объекта"
-          className={`grid h-full min-h-0 min-w-0 grid-cols-[48px_minmax(0,1fr)_48px] grid-rows-[minmax(0,1fr)_52px] gap-x-2 gap-y-4 p-4 max-md:p-2 ${
+          className={`group relative grid h-full min-h-0 min-w-0 grid-cols-1 grid-rows-[minmax(0,1fr)_52px] gap-y-4 p-4 max-md:p-2 ${
             sidebar ? "max-md:col-start-1 max-md:row-start-1" : ""
           }`}
         >
-          <div className="col-start-2 row-start-1 grid min-h-0 min-w-0 place-items-center overflow-hidden">
+          <div className="col-start-1 row-start-1 grid min-h-0 min-w-0 place-items-center overflow-hidden">
             <img
               alt={activePhoto.alt}
               className="h-full w-full min-h-0 min-w-0 object-contain"
@@ -224,7 +227,7 @@ function PhotoGallery({
           </div>
           {showControls && (
             <>
-              <div className="col-start-1 row-start-1 grid place-items-center">
+              <div className="pointer-events-none col-start-1 row-start-1 z-10 flex min-h-0 min-w-0 items-center justify-between px-2 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100 max-md:pointer-events-auto max-md:opacity-100">
                 <IconButton
                   appearance="contrast"
                   aria-label="Предыдущее фото"
@@ -235,8 +238,6 @@ function PhotoGallery({
                     )
                   }
                 />
-              </div>
-              <div className="col-start-3 row-start-1 grid place-items-center">
                 <IconButton
                   appearance="contrast"
                   aria-label="Следующее фото"
@@ -248,7 +249,7 @@ function PhotoGallery({
               </div>
               <div
                 aria-label="Фотографии"
-                className="col-start-2 row-start-2 flex w-full min-w-0 justify-center gap-2 overflow-x-auto"
+                className="col-start-1 row-start-2 flex w-full min-w-0 justify-center gap-2 overflow-x-auto"
               >
                 {photos.map((photo, index) => (
                   <button

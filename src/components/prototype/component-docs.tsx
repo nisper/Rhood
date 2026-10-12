@@ -515,7 +515,7 @@ const componentDocs: ComponentDoc[] = [
     id: "photo-gallery",
     title: "PhotoGallery",
     description: "Переиспользуемая галерея фотографий с миниатюрами, клавиатурной навигацией и необязательной боковой панелью данных.",
-    group: "Выдача объектов",
+    group: "Медиа",
     properties: [
       {
         name: "photos",
@@ -1490,7 +1490,7 @@ const componentDocs: ComponentDoc[] = [
     id: "help-center",
     title: "HelpCenter",
     description: "Блок ссылок помощи.",
-    group: "Feedback",
+    group: "Layout",
     source: "src/components/ui/help-center.tsx",
     render: () => (
       <Canvas>
