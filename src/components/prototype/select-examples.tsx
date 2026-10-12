@@ -2,6 +2,7 @@ import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react";
 
 import { Menu } from "@/components/ui/menu";
+import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { FormLabel } from "@/components/ui/form-label";
 import { useMenuOpen } from "@/hooks/use-menu-open";
@@ -94,29 +95,45 @@ function SelectWithMenu({
               "absolute top-full z-50 mt-1",
               align === "left" ? "left-0" : "right-0",
             )}
+            aria-label="Типы недвижимости"
+            aria-multiselectable={multiSelect || undefined}
+            role="listbox"
           >
             {options.map((option) => {
               const selected = selectedValues.includes(option);
 
-              return (
+              return multiSelect ? (
+                <MenuItemMultiselect
+                  aria-selected={selected}
+                  checked={selected}
+                  icon={false}
+                  key={option}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    setSelectedValues((current) =>
+                      selected
+                        ? current.filter((value) => value !== option)
+                        : [...current, option],
+                    );
+                  }}
+                  rightSlot={false}
+                  role="option"
+                  secondaryText={false}
+                  tabIndex={0}
+                >
+                  {option}
+                </MenuItemMultiselect>
+              ) : (
                 <MenuItemSingleSelect
                   icon={false}
                   key={option}
                   onClick={(event) => {
                     event.stopPropagation();
-                    if (multiSelect) {
-                      setSelectedValues((current) =>
-                        selected
-                          ? current.filter((value) => value !== option)
-                          : [...current, option],
-                      );
-                      return;
-                    }
-
                     setSelectedValues([option]);
                     setExpanded(false);
                   }}
                   rightSlot={false}
+                  role="option"
                   secondaryText={false}
                   selected={selected}
                 >

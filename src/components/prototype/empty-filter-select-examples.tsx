@@ -10,10 +10,12 @@ type EmptyFilterSelectComponent = React.ComponentType<AreaSelectProps>
 function EmptyFilterSelectExamples({
   component: Component,
   componentName,
+  description,
   fieldName,
 }: {
   component: EmptyFilterSelectComponent
   componentName: string
+  description?: string
   fieldName: string
 }) {
   return (
@@ -28,7 +30,7 @@ function EmptyFilterSelectExamples({
             <span className="text-[var(--rh-theme-text-neutral-secondary)]">{` />`}</span>
           </code>
         }
-        description={`${fieldName}: поле открывает пустое меню. Нажми на селект, чтобы открыть или закрыть его.`}
+        description={description ?? `${fieldName}: поле открывает пустое меню. Нажми на селект, чтобы открыть или закрыть его.`}
         panelCount={2}
         panels={[
           <div className="flex min-h-[180px] items-start justify-center overflow-visible rounded-xl bg-white px-6 py-4">
@@ -59,6 +61,7 @@ function PriceSelectExamples() {
     <EmptyFilterSelectExamples
       component={PriceSelect}
       componentName="PriceSelect"
+      description="Для крупных сумм сокращай разряды: 500 тыс. – 12,5 млн ₽. Небольшие значения показывай полностью, разделяя тысячи пробелами: 50 000–250 000 ₽."
       fieldName="Цена"
     />
   )

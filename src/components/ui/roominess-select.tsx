@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { Button } from "@/components/ui/button"
 import { Menu } from "@/components/ui/menu"
 import { Select, type SelectProps } from "@/components/ui/select"
 import { ToggleChip } from "@/components/ui/toggle-chip"
@@ -108,6 +109,22 @@ function RoominessSelect({
                 </ToggleChip>
               ))}
             </div>
+            {values.length > 0 && (
+              <div className="mt-2 flex">
+                <Button
+                  appearance="ghost"
+                  endIcon={false}
+                  onClick={() => {
+                    if (selectedValues === undefined) setUncontrolledSelectedValues([])
+                    onSelectedValuesChange?.([])
+                  }}
+                  size="sm"
+                  startIcon={false}
+                >
+                  Сбросить
+                </Button>
+              </div>
+            )}
           </Menu>
         )
       }
