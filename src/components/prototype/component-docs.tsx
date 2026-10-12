@@ -18,6 +18,7 @@ import { CheckboxExamples } from "./checkbox-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
+import { RoominessSelectExamples } from "./roominess-select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
@@ -507,6 +508,14 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=348-8648",
     source: "src/components/ui/select.tsx",
     render: () => <SelectExamples />,
+  },
+  {
+    id: "roominess",
+    title: "Комнатность",
+    description: "Мультиселект для выбора количества комнат.",
+    group: "Forms",
+    source: "src/components/ui/roominess-select.tsx",
+    render: () => <RoominessSelectExamples />,
   },
   {
     id: "search",
