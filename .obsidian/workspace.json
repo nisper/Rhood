@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Tests/Компоненты.md",
+                "file": "docs/instructions/product-design-reasoning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Компоненты"
+              "title": "product-design-reasoning"
             }
           }
         ]
@@ -132,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Tests/Компоненты.md",
+                "file": "docs/instructions/product-design-reasoning.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,8 +190,13 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
-    "docs/Tests/Выдача объектов.md",
+    "dist/assets/index-CBmgLh_8.js",
+    "dist/assets/index-qKmSFd4p.css",
+    "dist/assets/index-ejfYrklj.js",
+    "dist/assets/index-o2B_5KXZ.css",
+    "dist/assets/index-5SRdU1SK.js",
     "docs/Tests/Компоненты.md",
+    "docs/Tests/Выдача объектов.md",
     "docs/instructions/product-design-reasoning.md",
     "docs/instructions/showcase-page.md",
     "src/components/ui/archive-object-info.tsx",
@@ -202,10 +207,6 @@
     "docs/Tests",
     "dist/assets/index-DCpRQ5Om.js",
     "dist/assets/index-CxYokshS.css",
-    "dist/assets/index-CwPEofSV.js",
-    "dist/assets/index-95SKZy0a.css",
-    "dist/assets/index-CXWG5PuV.js",
-    "dist/assets/index-C9WPvTXK.css",
     "docs/backlog.md",
     "docs/component-map.md",
     "docs/tokens-generator.md",
@@ -234,7 +235,6 @@
     "docs/instructions/implementing-a-component.md",
     "docs/instructions/figma/entities/table.md",
     "docs/instructions/figma/entities/page.md",
-    "docs/instructions/figma/entities/modal.md",
-    "docs/instructions/figma/entities/form.md"
+    "docs/instructions/figma/entities/modal.md"
   ]
 }

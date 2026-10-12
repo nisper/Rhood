@@ -1,7 +1,7 @@
 import * as React from "react"
 
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
+import { ShowcasePanel } from "@/components/ui/showcase-section"
+import { ShowcaseSurface } from "@/components/ui/showcase-section"
 import { InputNumber } from "@/components/ui/input-number"
 
 function Section({ children, description, settings, title }: { children: React.ReactNode; description: string; settings: string[]; title: string }) {

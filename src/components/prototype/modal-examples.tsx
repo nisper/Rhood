@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Modal, ModalContainer } from "@/components/ui/modal";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 
 type SaveChangesModalProps = Pick<
   React.ComponentProps<typeof Modal>,

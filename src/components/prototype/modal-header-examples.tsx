@@ -1,7 +1,7 @@
 import { ModalHeader } from "@/components/ui/modal-header";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 
 export function ModalHeaderExamples() {
   return (

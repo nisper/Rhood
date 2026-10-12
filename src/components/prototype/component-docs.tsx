@@ -179,77 +179,6 @@ const componentDocs: ComponentDoc[] = [
     render: () => <AdaptiveExamples />,
   },
   {
-    id: "showcase-surface",
-    title: "Showcase surface",
-    description: "Поверхность для композиции примеров в Витрине компонентов.",
-    group: "Showcase",
-    properties: [
-      {
-        name: "ShowcaseSurface.background",
-        values: "muted · white",
-        defaultValue: "muted",
-        description:
-          "Фон общей поверхности; transparent-панели показывают его.",
-      },
-      {
-        name: "ShowcaseSurface radius",
-        values: "16 px",
-        defaultValue: "16 px",
-        description:
-          "Скругление общей поверхности, как у парных блоков Button.",
-      },
-      {
-        name: "ShowcaseSurface padding",
-        values: "4 px",
-        defaultValue: "4 px",
-        description: "Внутренний отступ и зазор между панелями.",
-      },
-      {
-        name: "ShowcaseSurface.direction",
-        values: "horizontal · vertical",
-        defaultValue: "horizontal",
-        description: "Расположение вложенных панелей в строку или столбец.",
-      },
-      {
-        name: "ShowcaseSurface.children",
-        values: "ReactNode",
-        defaultValue: "—",
-        description:
-          "Один или несколько ShowcasePanel; число панелей задаётся их количеством.",
-      },
-      {
-        name: "ShowcaseSurface.usedComponents",
-        values: "{ title, href }[]",
-        defaultValue: "—",
-        description:
-          "Опциональный список ссылок на компоненты, использованные в примере.",
-      },
-      {
-        name: "ShowcasePanel.tone",
-        values: "white · transparent",
-        defaultValue: "white",
-        description:
-          "Белая карточка или прозрачная панель на фоне ShowcaseSurface.",
-      },
-      {
-        name: "ShowcasePanel padding",
-        values: "24 px по горизонтали",
-        defaultValue: "24 px",
-        description:
-          "Внутренние горизонтальные отступы панели; вертикальные — 16 px.",
-      },
-      {
-        name: "ShowcasePanel radius",
-        values: "12 px",
-        defaultValue: "12 px",
-        description: "Скругление панели, как в демонстрационных блоках Button.",
-      },
-    ],
-    source:
-      "src/components/ui/showcase-surface.tsx · src/components/ui/showcase-panel.tsx",
-    render: () => <ShowcaseExamples />,
-  },
-  {
     id: "showcase-section",
     title: "Showcase section",
     description:
@@ -272,7 +201,19 @@ const componentDocs: ComponentDoc[] = [
         name: "showcase",
         values: "ReactNode",
         defaultValue: "—",
-        description: "ShowcaseSurface с демонстрацией компонента.",
+        description: "Композиция панелей для демонстрации компонента.",
+      },
+      {
+        name: "direction",
+        values: "horizontal · vertical",
+        defaultValue: "horizontal",
+        description: "Расположение панелей в строку или столбец.",
+      },
+      {
+        name: "panelCount",
+        values: "number",
+        defaultValue: "авто",
+        description: "Количество колонок или строк в композиции панелей.",
       },
       {
         name: "codeSnippet",
@@ -1865,6 +1806,7 @@ const ComponentNavigation = React.forwardRef<
     "list",
     "typography",
     "table",
+    "photo-gallery",
     "checkbox",
     "clear-button",
     "text-field",

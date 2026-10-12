@@ -157,6 +157,11 @@ function MainHeader({
           {navItems.map((item) => {
             const className = cn(
               "group inline-flex cursor-pointer items-center justify-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] px-2 py-2",
+              "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+              item.active &&
+                "relative after:absolute after:bottom-1 after:left-2 after:right-2 after:h-px after:bg-[color:var(--rh-theme-border-neutral)] after:content-['']",
+              item.state === "hovered" &&
+                "bg-[var(--rh-theme-fill-neutral-hover)]",
               item.active || item.state === "hovered"
                 ? "gap-2"
                 : "gap-1 hover:gap-2",
@@ -166,11 +171,11 @@ function MainHeader({
                 <span
                   className={cn(
                     item.active
-                      ? "rh-typography-b1-med"
-                      : "rh-typography-b1",
-                    "group-hover:text-[var(--rh-theme-text-neutral-secondary)] whitespace-nowrap text-[var(--rh-theme-text-neutral-primary)]",
+                      ? "rh-typography-b2 text-[var(--rh-theme-text-neutral-primary)]"
+                      : "rh-typography-b2 text-[var(--rh-theme-text-neutral-primary)]",
+                    "group-hover:text-[var(--rh-theme-text-neutral-primary)] whitespace-nowrap",
                     item.state === "hovered" &&
-                      "text-[var(--rh-theme-text-neutral-secondary)]",
+                      "text-[var(--rh-theme-text-neutral-primary)]",
                   )}
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >

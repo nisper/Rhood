@@ -1,9 +1,9 @@
 import * as React from "react"
 
 import { Chip } from "@/components/ui/chip"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
+import { ShowcasePanel } from "@/components/ui/showcase-section"
 import { ShowcaseSection } from "@/components/ui/showcase-section"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
+import { ShowcaseSurface } from "@/components/ui/showcase-section"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 

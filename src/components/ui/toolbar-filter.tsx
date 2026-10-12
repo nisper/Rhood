@@ -53,7 +53,7 @@ function FilterSelect({
   const value = controlledValue ?? uncontrolledValue;
 
   return (
-    <div ref={menuRef}>
+    <div className={open ? "relative z-40" : "relative"} ref={menuRef}>
       <Select
         className={widthClass}
         expanded={open}
@@ -452,7 +452,7 @@ function ToolbarFilter({
       <section
         className={cn(
           "relative w-full overflow-visible bg-[var(--rh-theme-surface-bg)]",
-          "pt-6",
+          "pt-4",
           className,
         )}
         {...props}

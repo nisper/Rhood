@@ -1,6 +1,6 @@
 import { ObjectInfo } from "@/components/ui/object-info";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 
 const usedComponents = [
   { href: "/Rhood/?view=components&component=button", title: "Button" },

@@ -1,9 +1,9 @@
 import * as React from "react"
 
 import { ExpandableContent } from "@/components/ui/expandable-content"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
+import { ShowcasePanel } from "@/components/ui/showcase-section"
 import { ShowcaseSection } from "@/components/ui/showcase-section"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
+import { ShowcaseSurface } from "@/components/ui/showcase-section"
 
 const description = "Квартира в тихом районе с готовым ремонтом, просторной кухней-гостиной и видом на парк. В пешей доступности школа, детский сад, магазины и остановка общественного транспорта. Во дворе — закрытая территория, детская площадка и гостевая парковка."
 

@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { List } from "@/components/ui/list";
 import { ListItem, type ListItemProps } from "@/components/ui/list-item";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 

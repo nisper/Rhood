@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcasePanel } from "@/components/ui/showcase-section";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 

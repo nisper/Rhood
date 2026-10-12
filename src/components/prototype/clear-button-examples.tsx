@@ -1,8 +1,8 @@
 import * as React from "react"
 
 import { ClearButton } from "@/components/ui/clear-button"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
+import { ShowcasePanel } from "@/components/ui/showcase-section"
+import { ShowcaseSurface } from "@/components/ui/showcase-section"
 
 function Section({ children, description, title }: { children: React.ReactNode; description: string; title: string }) {
   return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}</section>

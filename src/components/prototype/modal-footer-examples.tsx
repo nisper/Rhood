@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { ModalFooter } from "@/components/ui/modal-footer";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 
 export function ModalFooterExamples() {
   return (

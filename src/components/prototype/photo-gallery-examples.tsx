@@ -2,9 +2,9 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 
 const photos = [
   { alt: "Гостиная объекта", src: "/Rhood/assets/obj-livingroom.jpg" },

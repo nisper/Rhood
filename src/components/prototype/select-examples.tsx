@@ -4,9 +4,9 @@ import { Menu } from "@/components/ui/menu";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 import { Select } from "@/components/ui/select";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
+import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { cn } from "@/lib/utils";
@@ -56,7 +56,7 @@ function SelectSnippet({ children }: { children: React.ReactNode }) {
 
 const sizeSnippet = <SelectSnippet><CodeProp name="size" value={'"sm"'} /></SelectSnippet>;
 const stateSnippet = <SelectSnippet><CodeProp name="state" value={'"focused"'} /></SelectSnippet>;
-const compositionSnippet = <SelectSnippet><CodeProp name="content" value={'"chips"'} />{" "}<CodeProp name="icon" /></SelectSnippet>;
+const compositionSnippet = <SelectSnippet><CodeProp name="icon" /></SelectSnippet>;
 
 function SelectWithMenu({
   align = "left",
@@ -189,7 +189,7 @@ export function SelectExamples() {
 
       <ShowcaseSection
         codeSnippet={compositionSnippet}
-        description="Select может показывать подпись, иконку, пояснение и одно либо несколько выбранных значений. Нажми на поле, чтобы открыть меню."
+        description="Select может показывать подпись, иконку и пояснение. Нажми на поле, чтобы открыть меню."
         showcase={
           <ShowcaseSurface
             usedComponents={[
@@ -198,10 +198,9 @@ export function SelectExamples() {
             ]}
           >
             <ShowcasePanel>
-              <div className="flex flex-wrap items-end justify-center gap-6">
+              <div className="flex flex-wrap items-start justify-center gap-6">
                 <SelectWithMenu icon label="С иконкой" />
-                <SelectWithMenu content="chips" label="Несколько значений" />
-                <SelectWithMenu helperText="Выбери тип объекта" label={false} />
+                <SelectWithMenu helperText="Выбери тип объекта" label="С пояснением" />
               </div>
             </ShowcasePanel>
           </ShowcaseSurface>
