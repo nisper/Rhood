@@ -27,7 +27,7 @@ type MainHeaderProps = React.ComponentProps<"header"> & {
   contentWidth?: "full" | "container";
   controls?: boolean;
   logoHref?: string;
-  navAlign?: "start" | "end";
+  navAlign?: "start" | "center" | "end";
   navItems?: MainHeaderNavItem[];
   resp?: "mob" | "desk";
 };
@@ -45,7 +45,7 @@ function MainHeader({
   contentWidth = "full",
   controls = true,
   logoHref,
-  navAlign = "start",
+  navAlign = "center",
   navItems = defaultNavItems,
   resp = "desk",
   ...props
@@ -148,7 +148,11 @@ function MainHeader({
         </div>
 
         <nav
-          className={cn("flex items-center gap-1", navAlign === "end" && "ml-auto")}
+          className={cn(
+            "flex items-center gap-1",
+            navAlign === "center" && "absolute left-1/2 -translate-x-1/2",
+            navAlign === "end" && "ml-auto",
+          )}
         >
           {navItems.map((item) => {
             const className = cn(
@@ -161,10 +165,12 @@ function MainHeader({
               <>
                 <span
                   className={cn(
-                    "rh-typography-b1 whitespace-nowrap font-[500]",
-                    item.active || item.state === "hovered"
-                      ? "text-[var(--rh-theme-text-neutral-primary)]"
-                      : "text-[var(--rh-theme-text-neutral-secondary)] group-hover:text-[var(--rh-theme-text-neutral-primary)]",
+                    item.active
+                      ? "rh-typography-b1-med"
+                      : "rh-typography-b1",
+                    "group-hover:text-[var(--rh-theme-text-neutral-secondary)] whitespace-nowrap text-[var(--rh-theme-text-neutral-primary)]",
+                    item.state === "hovered" &&
+                      "text-[var(--rh-theme-text-neutral-secondary)]",
                   )}
                   style={{ fontVariationSettings: "'wdth' 100" }}
                 >

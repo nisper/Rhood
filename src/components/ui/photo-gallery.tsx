@@ -167,7 +167,7 @@ function PhotoGallery({
             className="relative flex min-h-0 flex-col gap-6 overflow-y-auto p-6 max-md:row-start-2 max-md:border-t max-md:p-4"
           >
             {(sidebar.title || sidebar.headline || sidebar.supportingText) && (
-              <div className="grid gap-4">
+              <div className="grid gap-3">
                 {sidebar.title && (
                   <h2 className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
                     {sidebar.title}
