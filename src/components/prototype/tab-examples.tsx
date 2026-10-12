@@ -2,8 +2,6 @@ import * as React from "react";
 
 import { Tab } from "@/components/ui/tab";
 import { TabBar } from "@/components/ui/tab-bar";
-import { ShowcasePanel } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 
@@ -178,8 +176,8 @@ export function TabExamples() {
         settings={["state: default · hovered"]}
         title="Состояния"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid grid-cols-3 items-start gap-3">
               <div className="grid justify-items-center gap-2">
                 <span className="text-xs text-[var(--rh-theme-text-neutral-secondary)]">
@@ -200,8 +198,8 @@ export function TabExamples() {
                 <Tab selected />
               </div>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -209,24 +207,24 @@ export function TabExamples() {
         settings={["direction: horizontal · vertical"]}
         title="Ориентация"
       >
-        <ShowcaseSurface direction="vertical">
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-row auto-rows-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full gap-2">
               <p className="text-xs text-[var(--rh-theme-text-neutral-secondary)]">
                 Горизонтально
               </p>
               <InteractiveTabBar />
             </div>
-          </ShowcasePanel>
-          <ShowcasePanel>
+          </div>
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full gap-2">
               <p className="text-xs text-[var(--rh-theme-text-neutral-secondary)]">
                 Вертикально
               </p>
               <InteractiveTabBar direction="vertical" />
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -234,8 +232,8 @@ export function TabExamples() {
         settings={["startIcon: boolean", "secondaryText: boolean"]}
         title="Состав"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Tab label="С иконкой" startIcon />
               <Tab
@@ -244,8 +242,8 @@ export function TabExamples() {
                 secondaryText
               />
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section

@@ -13,7 +13,6 @@ import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
 import { LikeButtonExamples } from "./like-button-examples";
 import { LinkExamples } from "./link-examples";
-import { ShowcaseExamples } from "./showcase-examples";
 import { ShowcaseSectionExamples } from "./showcase-section-examples";
 import { CheckboxExamples } from "./checkbox-examples";
 import { MenuExamples } from "./menu-examples";
@@ -198,16 +197,22 @@ const componentDocs: ComponentDoc[] = [
         description: "Текст, который поясняет назначение примера.",
       },
       {
-        name: "showcase",
-        values: "ReactNode",
+        name: "panels",
+        values: "ReactNode[]",
         defaultValue: "—",
-        description: "Композиция панелей для демонстрации компонента.",
+        description: "Содержимое панелей для демонстрации компонента.",
       },
       {
         name: "direction",
         values: "horizontal · vertical",
         defaultValue: "horizontal",
         description: "Расположение панелей в строку или столбец.",
+      },
+      {
+        name: "usedComponents",
+        values: "{ href, title }[]",
+        defaultValue: "—",
+        description: "Ссылки на компоненты, использованные в примере.",
       },
       {
         name: "panelCount",

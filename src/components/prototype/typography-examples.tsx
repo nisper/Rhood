@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { ShowcasePanel } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 
@@ -181,52 +179,52 @@ export function TypographyExamples() {
         description="Заголовки выстраивают иерархию экрана. Используй один уровень заголовка для одной смысловой глубины."
         title="Заголовки"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full gap-6">
               {headlines.map((style) => (
                 <TypeSample compactLabel key={style.name} style={style} />
               ))}
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
         description="Списки помогают объединять связанные пункты и показывать их порядок, когда он важен."
         title="Списки"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full gap-8 md:grid-cols-2">
               <ListSample ordered={false} />
               <ListSample ordered />
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
         description="Body задаёт ритм основного и вторичного текста интерфейса."
         title="Основной текст"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full gap-5">
               {bodyStyles.map((style) => (
                 <TypeSample compactLabel key={style.name} style={style} />
               ))}
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
         description="Моноширинные стили подходят для кода и технических значений."
         title="Моноширинный текст"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full gap-5">
               {monoStyles.map((style) => (
                 <TypeSample
@@ -237,8 +235,8 @@ export function TypographyExamples() {
                 />
               ))}
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section

@@ -1,10 +1,8 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Modal, ModalContainer } from "@/components/ui/modal";
-import { ShowcasePanel } from "@/components/ui/showcase-section";
-import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 
 type SaveChangesModalProps = Pick<
   React.ComponentProps<typeof Modal>,
@@ -79,21 +77,13 @@ export function ModalExamples() {
     <section className="grid gap-3">
       <ShowcaseSection
         description="До 767px включительно Modal отображается как bottom sheet; от 768px — как диалог по центру экрана."
-        showcase={
-          <ShowcaseSurface
-            className="bg-[var(--rh-palette-neutral-600)] p-0"
-            direction="vertical"
-          >
-            <ShowcasePanel className="p-0" tone="transparent">
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 p-0">
               <ModalContainer className="h-full" display="embedded">
                 <SaveChangesModal />
               </ModalContainer>
-            </ShowcasePanel>
-            <ShowcasePanel className="p-0" tone="transparent">
+            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 p-0">
               <MobileModalPreview />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Адаптив"
       />
       <section className="grid gap-1">

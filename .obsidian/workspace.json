@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/instructions/product-design-reasoning.md",
+                "file": "docs/Tests/Компоненты.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "product-design-reasoning"
+              "title": "Компоненты"
             }
           }
         ]
@@ -132,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/instructions/product-design-reasoning.md",
+                "file": "docs/Tests/Компоненты.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,23 +190,22 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "docs/instructions/showcase-page.md",
+    "dist/assets/index-BLWZmlzC.css",
+    "dist/assets/index-C8y2uChE.js",
+    "dist/assets/index-BSgBoMj_.js",
+    "docs/instructions/product-design-reasoning.md",
+    "dist/assets/index-Bc2FSyIE.css",
+    "dist/assets/index-_dMgbNLY.js",
+    "dist/assets/index-CGm3TyBS.js",
+    "dist/assets/index-kZHwR4Jh.js",
     "dist/assets/index-CBmgLh_8.js",
     "dist/assets/index-qKmSFd4p.css",
     "dist/assets/index-ejfYrklj.js",
-    "dist/assets/index-o2B_5KXZ.css",
-    "dist/assets/index-5SRdU1SK.js",
     "docs/Tests/Компоненты.md",
     "docs/Tests/Выдача объектов.md",
-    "docs/instructions/product-design-reasoning.md",
-    "docs/instructions/showcase-page.md",
-    "src/components/ui/archive-object-info.tsx",
-    "src/components/prototype/archive-object-info-examples.tsx",
-    "src/components/prototype/list-examples.tsx",
     "docs/instructions/drawing-a-user-flow.md",
     "docs/Tests/_route.md",
-    "docs/Tests",
-    "dist/assets/index-DCpRQ5Om.js",
-    "dist/assets/index-CxYokshS.css",
     "docs/backlog.md",
     "docs/component-map.md",
     "docs/tokens-generator.md",

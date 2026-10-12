@@ -1,8 +1,6 @@
 import * as React from "react"
 
 import { ButtonFavorite } from "@/components/ui/button-favorite"
-import { ShowcasePanel } from "@/components/ui/showcase-section"
-import { ShowcaseSurface } from "@/components/ui/showcase-section"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -28,19 +26,19 @@ function StateRow({ appearance }: { appearance: "neutral" | "ghost" }) {
 export function ButtonFavoriteExamples() {
   return <div className="grid min-w-0 gap-10">
     <Section description="Визуальный стиль повторяет второстепенные Button: neutral использует нейтральную поверхность, ghost — прозрачную." settings={["appearance: neutral · ghost"]} title="Стиль">
-      <ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="ghost" iconOnly={false} /></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="ghost" iconOnly={false} /></div></div></div>
     </Section>
 
     <Section description="Размер управляет областью нажатия, иконкой и подписью." settings={["size: md · sm · xsm"]} title="Размер">
-      <ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <ButtonFavorite appearance="neutral" iconOnly={false} key={size} size={size} />)}</div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <ButtonFavorite appearance="neutral" iconOnly={false} key={size} size={size} />)}</div></div></div>
     </Section>
 
     <Section description="Hover показывает реакцию на наведение. Disabled блокирует переключение и использует нейтральное состояние." settings={["state: default · hover", "disabled: boolean"]} title="Состояния">
-      <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[520px] gap-2"><div className="grid grid-cols-3 gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hover</span><span>disabled</span></div><StateRow appearance="neutral" /><StateRow appearance="ghost" /></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[520px] gap-2"><div className="grid grid-cols-3 gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hover</span><span>disabled</span></div><StateRow appearance="neutral" /><StateRow appearance="ghost" /></div></div></div>
     </Section>
 
     <Section description="Сердце — обязательная иконка действия. iconOnly показывает компактный круглый тоггл, а текстовая версия меняет подпись после нажатия." settings={["iconOnly: boolean", "checked / defaultChecked: boolean", "label / selectedLabel: ReactNode"]} title="Состав">
-      <ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite /><ButtonFavorite defaultChecked /><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="neutral" defaultChecked iconOnly={false} /></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite /><ButtonFavorite defaultChecked /><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="neutral" defaultChecked iconOnly={false} /></div></div></div>
     </Section>
 
     <Section description="Основные настройки ButtonFavorite для реализации." title="Свойства">

@@ -1,10 +1,8 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react";
 
 import { List } from "@/components/ui/list";
 import { ListItem, type ListItemProps } from "@/components/ui/list-item";
-import { ShowcasePanel } from "@/components/ui/showcase-section";
-import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 
@@ -65,9 +63,7 @@ export function ListExamples() {
     <div className="grid min-w-0">
       <ShowcaseSection
         description="List — контейнер для строк ListItem. У него нет собственных размеров: плотность строки задаёт свойство dense."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
                 <div className="grid gap-2">
                   <p className="text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">Обычная</p>
@@ -78,17 +74,13 @@ export function ListExamples() {
                   <List><ListItem button={false} dense iconButton={false} endIcon={false}>Раздел</ListItem></List>
                 </div>
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Размер"
       />
 
       <ShowcaseSection
         description="Нативный hover работает при наведении. Свойства state и selected нужны для статичной демонстрации состояний; disabled блокирует взаимодействие."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
                 <StateRow label="default" props={{}} />
                 <StateRow label="hovered" props={{ state: "hovered" }} />
@@ -96,18 +88,14 @@ export function ListExamples() {
                 <StateRow label="selected" props={{ selected: true }} />
                 <StateRow label="disabled" props={{ disabled: true }} />
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состояния"
       />
 
       <ShowcaseSection
         description="paddingX управляет горизонтальными отступами строки: true оставляет их, false убирает."
         codeSnippet={<><ListItemSnippet paddingX /><br /><ListItemSnippet paddingX={false} /></>}
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[480px] gap-4">
                 <div className="grid gap-2">
                   <p className="text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">paddingX: true</p>
@@ -118,17 +106,13 @@ export function ListExamples() {
                   <List><ListItem button={false} endIcon={false} iconButton={false} paddingX={false}>Раздел</ListItem></List>
                 </div>
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Горизонтальные отступы"
       />
 
       <ShowcaseSection
         description="Строка поддерживает основной и вторичный текст, стартовую и конечную иконки, а также встроенные действия. В навигации выбранный раздел меняется по клику."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <nav aria-label="Пример навигационного списка" className="w-full max-w-[480px]">
                 <List>
                   {["Объекты", "Профиль", "Настройки"].map((label) => (
@@ -146,8 +130,7 @@ export function ListExamples() {
                   ))}
                 </List>
               </nav>
-            </ShowcasePanel>
-            <ShowcasePanel>
+            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <List className="w-full max-w-[480px]">
                 <ListItem button={false} endIcon={false} iconButton={false} secondaryText={false}>Только текст</ListItem>
                 <ListItem button={false} endIcon={false} iconButton={false} secondaryLabel="Дополнительная информация">Две строки</ListItem>
@@ -155,9 +138,7 @@ export function ListExamples() {
                 <ListItem button={false} endIcon={false} startIcon={false} secondaryText={false}>С иконкой-действием</ListItem>
                 <ListItem endIcon={false} iconButton={false} startIcon={false} secondaryText={false}>С кнопкой</ListItem>
               </List>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
 

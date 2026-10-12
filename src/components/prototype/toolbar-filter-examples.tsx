@@ -1,6 +1,4 @@
-import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
@@ -42,9 +40,9 @@ function ToolbarFilterSnippet({ children }: { children?: React.ReactNode }) {
 
 function WidePanel({ children }: { children: React.ReactNode }) {
   return (
-    <ShowcasePanel className="items-start justify-start overflow-x-auto p-0">
+    <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start justify-start overflow-x-auto p-0">
       {children}
-    </ShowcasePanel>
+    </div>
   );
 }
 
@@ -99,16 +97,11 @@ function ToolbarFilterExamples() {
           </ToolbarFilterSnippet>
         }
         description="ToolbarFilter использует единый стиль. desk показывает все основные фильтры в строке, а mob оставляет компактные управляющие элементы и открывает параметры в модальном окне."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <WidePanel>
+        panels={[<WidePanel>
               <ToolbarFilter className="min-w-[960px]" />
-            </WidePanel>
-            <ShowcasePanel className="min-h-0 w-[480px] max-w-none justify-start p-0">
+            </WidePanel>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white min-h-0 w-[480px] max-w-none justify-start p-0">
               <ToolbarFilter className="w-full" resp="mob" />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Размер"
       />
 
@@ -119,16 +112,11 @@ function ToolbarFilterExamples() {
           </ToolbarFilterSnippet>
         }
         description="В пустом состоянии поля показывают подсказки. После выбора фильтров появляются значения и действие для сброса; элементы остаются интерактивными."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <WidePanel>
+        panels={[<WidePanel>
               <ToolbarFilter className="min-w-[960px]" />
-            </WidePanel>
-            <WidePanel>
+            </WidePanel>, <WidePanel>
               <ToolbarFilter className="min-w-[960px]" empty={false} />
-            </WidePanel>
-          </ShowcaseSurface>
-        }
+            </WidePanel>]}
         title="Состояния"
       />
 
@@ -140,9 +128,7 @@ function ToolbarFilterExamples() {
           </ToolbarFilterSnippet>
         }
         description="contentWidth ограничивает содержимое контейнером страницы. В mobile-варианте кнопка «Фильтры» открывает форму, а resultCount отражается в действии применения."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel className="min-h-0 w-[480px] max-w-none justify-start p-0">
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white min-h-0 w-[480px] max-w-none justify-start p-0">
               <ToolbarFilter
                 className="w-full"
                 contentWidth="container"
@@ -150,9 +136,7 @@ function ToolbarFilterExamples() {
                 resp="mob"
                 resultCount={120}
               />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
 

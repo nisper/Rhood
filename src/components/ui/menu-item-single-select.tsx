@@ -28,8 +28,8 @@ function getBackground({
     return "bg-transparent";
   }
 
-  if (selected && state === "default") {
-    return "bg-[var(--rh-theme-fill-neutral-selected)]";
+  if (selected) {
+    return "bg-[var(--rh-theme-fill-brand-selected)]";
   }
 
   if (!selected && state === "hovered") {
@@ -65,6 +65,7 @@ function MenuItemSingleSelect({
       className={cn(
         "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
         getBackground({ disabled, selected, state }),
+        selected && !disabled && "text-[var(--rh-theme-text-brand)]",
         !disabled &&
           !selected &&
           "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
@@ -78,7 +79,8 @@ function MenuItemSingleSelect({
       {(icon ?? startIcon) && (
         <span
           className={cn(
-            "flex size-[calc(var(--spacing)*5)] shrink-0 items-center justify-center text-[var(--rh-theme-text-neutral-primary)]",
+            "flex size-[calc(var(--spacing)*5)] shrink-0 items-center justify-center",
+            selected && !disabled ? "text-[var(--rh-theme-text-brand)]" : "text-[var(--rh-theme-text-neutral-primary)]",
             disabled && disabledOpacityClass,
           )}
         >
@@ -98,7 +100,12 @@ function MenuItemSingleSelect({
         )}
       >
         <span
-          className="rh-typography-b2 w-full text-[color:var(--rh-theme-text-neutral-primary)]"
+          className={cn(
+            "rh-typography-b2 w-full",
+            selected && !disabled
+              ? "text-[color:var(--rh-theme-text-brand)]"
+              : "text-[color:var(--rh-theme-text-neutral-primary)]",
+          )}
           style={{ fontVariationSettings: "'wdth' 100" }}
         >
           {children}

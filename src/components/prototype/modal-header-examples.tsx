@@ -1,20 +1,14 @@
-import { ModalHeader } from "@/components/ui/modal-header";
-import { ShowcasePanel } from "@/components/ui/showcase-section";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
+import { ModalHeader } from "@/components/ui/modal-header";
 
 export function ModalHeaderExamples() {
   return (
     <section className="grid gap-3">
       <ShowcaseSection
         description="Базовый состав: заголовок и кнопка закрытия."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <ShowcasePanel className="p-0">
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white p-0">
               <ModalHeader title="Заголовок modal" />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
     </section>

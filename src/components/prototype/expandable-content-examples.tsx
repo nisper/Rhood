@@ -1,9 +1,7 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react"
 
 import { ExpandableContent } from "@/components/ui/expandable-content"
-import { ShowcasePanel } from "@/components/ui/showcase-section"
-import { ShowcaseSection } from "@/components/ui/showcase-section"
-import { ShowcaseSurface } from "@/components/ui/showcase-section"
 
 const description = "Квартира в тихом районе с готовым ремонтом, просторной кухней-гостиной и видом на парк. В пешей доступности школа, детский сад, магазины и остановка общественного транспорта. Во дворе — закрытая территория, детская площадка и гостевая парковка."
 
@@ -28,21 +26,21 @@ export function ExpandableContentExamples() {
     <ShowcaseSection
       codeSnippet={heightSnippet}
       description="У компонента нет визуальных вариантов: размер раскрытой области задаёт collapsedHeight. Значение выбирай по содержанию и контексту экрана."
-      showcase={<ShowcaseSurface className="auto-rows-auto" direction="vertical"><ShowcasePanel className="items-start"><div className="grid w-full max-w-[480px] gap-2"><p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">collapsedHeight = 48</p><Example collapsedHeight={48} /></div></ShowcasePanel><ShowcasePanel className="items-start"><div className="grid w-full max-w-[480px] gap-2"><p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">collapsedHeight = 96</p><Example collapsedHeight={96} /></div></ShowcasePanel></ShowcaseSurface>}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><div className="grid w-full max-w-[480px] gap-2"><p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">collapsedHeight = 48</p><Example collapsedHeight={48} /></div></div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><div className="grid w-full max-w-[480px] gap-2"><p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">collapsedHeight = 96</p><Example collapsedHeight={96} /></div></div>]}
       title="Размер"
     />
 
     <ShowcaseSection
       codeSnippet={stateSnippet}
       description="По умолчанию контент свёрнут. Нажми на кнопку, чтобы переключить состояние; defaultExpanded задаёт начальное раскрытое состояние."
-      showcase={<ShowcaseSurface><ShowcasePanel className="items-start"><div className="w-full max-w-[480px]"><Example defaultExpanded /></div></ShowcasePanel></ShowcaseSurface>}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><div className="w-full max-w-[480px]"><Example defaultExpanded /></div></div>]}
       title="Состояния"
     />
 
     <ShowcaseSection
       codeSnippet={compositionSnippet}
       description="Внутрь можно передать любой React-контент. Подписи кнопки настраиваются отдельно для раскрытого и свёрнутого состояния."
-      showcase={<ShowcaseSurface><ShowcasePanel className="items-start"><div className="w-full max-w-[480px]"><ExpandableContent collapseLabel="Скрыть детали" collapsedHeight={72} expandLabel="Показать детали"><div className="grid gap-2"><p className="rh-typography-b1">{description}</p><p className="rh-typography-b1-med">Один собственник, документы готовы к сделке.</p></div></ExpandableContent></div></ShowcasePanel></ShowcaseSurface>}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><div className="w-full max-w-[480px]"><ExpandableContent collapseLabel="Скрыть детали" collapsedHeight={72} expandLabel="Показать детали"><div className="grid gap-2"><p className="rh-typography-b1">{description}</p><p className="rh-typography-b1-med">Один собственник, документы готовы к сделке.</p></div></ExpandableContent></div></div>]}
       title="Состав"
     />
   </div>

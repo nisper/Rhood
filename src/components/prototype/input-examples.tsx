@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { ShowcasePanel } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Textfield } from "@/components/ui/text-field";
 import { cn } from "@/lib/utils";
 
@@ -135,8 +133,8 @@ export function InputExamples() {
         settings={["size: md · sm"]}
         title="Размер"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
               <FieldCell label="md">
                 <Textfield
@@ -153,8 +151,8 @@ export function InputExamples() {
                 />
               </FieldCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -162,14 +160,14 @@ export function InputExamples() {
         settings={["appearance: default · neutral"]}
         title="Внешний вид"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
               <FieldCell label="default"><Textfield aria-label="Default appearance input" placeholder="Placeholder" /></FieldCell>
               <FieldCell label="neutral"><Textfield appearance="neutral" aria-label="Neutral appearance input" placeholder="Placeholder" /></FieldCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -177,8 +175,8 @@ export function InputExamples() {
         settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]}
         title="Состояния"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <FieldCell label="default">
                 <Textfield
@@ -223,8 +221,8 @@ export function InputExamples() {
                 />
               </FieldCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -232,8 +230,8 @@ export function InputExamples() {
         settings={["placeholder: string", "startText: ReactNode", "endText: ReactNode", "required: boolean", "helperText: ReactNode"]}
         title="Наполнение"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full gap-5 sm:grid-cols-2">
               <ContentCell label="Пустой">
                 <ContentInput />
@@ -254,8 +252,8 @@ export function InputExamples() {
                 <ContentInput helperText />
               </ContentCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -263,13 +261,13 @@ export function InputExamples() {
         settings={["required: boolean"]}
         title="Обязательное поле"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="w-full max-w-[298px]">
               <ContentInput required />
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -277,8 +275,8 @@ export function InputExamples() {
         settings={["clearButton: boolean", "onClear: () => void"]}
         title="Очистка ввода"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
               <FieldCell label="md">
                 <ClearableInput />
@@ -287,8 +285,8 @@ export function InputExamples() {
                 <ClearableInput size="sm" />
               </FieldCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
     </div>
   );

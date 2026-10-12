@@ -1,8 +1,6 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react";
 
-import { ShowcasePanel } from "@/components/ui/showcase-section";
-import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
@@ -411,69 +409,56 @@ export function TableExamples() {
       <ShowcaseSection
         codeSnippet={borderSnippet}
         description="bordered добавляет стандартную обводку Table. По умолчанию prop выключен; включай его, когда таблицу нужно отделить от фона."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
                   bordered=false
                 </span>
                 <ListingTable bordered={false} />
               </div>
-            </ShowcasePanel>
-            <ShowcasePanel>
+            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
                   bordered=true
                 </span>
                 <ListingTable />
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Стиль"
       />
 
       <ShowcaseSection
         codeSnippet={sizeSnippet}
         description='compact уменьшает отступы ячейки, а textSize меняет размер текста body-строк. Для колонок используй width="fill" для равного распределения, число — для фиксированной ширины.'
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
                   Стандартный
                 </span>
                 <ListingTable />
               </div>
-            </ShowcasePanel>
-            <ShowcasePanel>
+            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
                   Компактный
                 </span>
                 <ListingTable compact />
               </div>
-            </ShowcasePanel>
-            <ShowcasePanel>
+            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
                   textSize=&quot;b1&quot;
                 </span>
                 <ListingTable textSize="b1" />
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Размер"
       />
 
       <ShowcaseSection
         codeSnippet={stateSnippet}
         description="Выбор работает через Table.selection: передай ID всех строк, выбранные ID и обработчик изменения. Для checkbox в строке обязательно укажи соответствующий rowId; checkbox в шапке выберет все строки."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <Table
                 className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
                 selection={{
@@ -523,18 +508,14 @@ export function TableExamples() {
                   </TableRow>
                 ))}
               </Table>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Выбор строк"
       />
 
       <ShowcaseSection
         codeSnippet={hoverSnippet}
         description="Используй hover только для строк, клик по которым запускает действие: открывает детали, меняет состояние или ведёт на другую страницу."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
                 <TableRow>
                   <TableCell helpIcon={false} role="head" type="text" width="fill">Объект</TableCell>
@@ -549,31 +530,23 @@ export function TableExamples() {
                   </TableRow>
                 ))}
               </Table>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Поведение при наведении"
       />
 
       <ShowcaseSection
         codeSnippet={sortingSnippet}
         description="Передай sort и обработчик клика каждому сортируемому заголовку. sortDirection показывает направление активной сортировки; состояние и сортировку данных хранит экран."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <SortingTable />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Сортировка"
       />
 
       <ShowcaseSection
         codeSnippet={compositionSnippet}
         description="Table собирается из строк и TableCell. Заголовки описывают колонку, числовые ячейки выравниваются по правому краю, а skeleton показывает загрузку данных."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-5 sm:grid-cols-2">
                 <div className="grid gap-2">
                   <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
@@ -619,15 +592,13 @@ export function TableExamples() {
                   </Table>
                 </div>
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
 
       <ShowcaseSection
         description="Публичные свойства Table, TableCell и TableRow. Пагинация, данные и обработчики сортировки принадлежат экрану, который использует таблицу."
-        showcase={<Properties />}
+        panels={[<Properties />]}
         title="Свойства"
       />
     </div>

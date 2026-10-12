@@ -1,7 +1,5 @@
 import * as React from "react";
 
-import { ShowcasePanel } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-section";
 import { Textarea } from "@/components/ui/textarea";
 
 function Section({
@@ -72,8 +70,8 @@ export function TextareaExamples() {
         ]}
         title="Размер"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
               <FieldCell label="md">
                 <Textarea
@@ -94,8 +92,8 @@ export function TextareaExamples() {
                 />
               </FieldCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -103,8 +101,8 @@ export function TextareaExamples() {
         settings={["appearance: default · neutral"]}
         title="Внешний вид"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
               <FieldCell label="default">
                 <Textarea aria-label="Default appearance textarea" placeholder="Комментарий" />
@@ -113,8 +111,8 @@ export function TextareaExamples() {
                 <Textarea appearance="neutral" aria-label="Neutral appearance textarea" placeholder="Комментарий" />
               </FieldCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -126,8 +124,8 @@ export function TextareaExamples() {
         ]}
         title="Состояния"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
               <FieldCell label="default">
                 <Textarea
@@ -172,8 +170,8 @@ export function TextareaExamples() {
                 />
               </FieldCell>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
     </div>
   );
