@@ -12,6 +12,7 @@ type ExpandableContentProps = React.ComponentProps<"div"> & {
   expandLabel?: React.ReactNode
   expanded?: boolean
   onExpandedChange?: (expanded: boolean) => void
+  buttonSize?: React.ComponentProps<typeof Button>["size"]
 }
 
 /**
@@ -27,6 +28,7 @@ function ExpandableContent({
   expandLabel = "Читать полностью",
   expanded: expandedProp,
   onExpandedChange,
+  buttonSize = "sm",
   ...props
 }: ExpandableContentProps) {
   const contentId = React.useId()
@@ -80,10 +82,10 @@ function ExpandableContent({
           appearance="default"
           aria-controls={contentId}
           aria-expanded={expanded}
-          className="mt-2 justify-self-start"
+          className="mt-3 justify-self-start"
           endIcon={<ChevronDown aria-hidden="true" className={cn("transition-transform duration-150", expanded && "rotate-180")} />}
           onClick={handleExpandedChange}
-          size="sm"
+          size={buttonSize}
           startIcon={false}
         >
           {expanded ? collapseLabel : expandLabel}

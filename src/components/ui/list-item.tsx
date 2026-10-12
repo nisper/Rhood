@@ -55,9 +55,10 @@ function ListItem({
       {...props}
       className={cn(
         "flex w-full items-center rounded-[var(--rh-sizing-border-radius-md)] text-[var(--rh-theme-text-neutral-primary)]",
+        isSelected && "text-[var(--rh-theme-text-brand)]",
         dense ? "py-[calc(var(--spacing)*1)]" : "py-[calc(var(--spacing)*2)]",
-        hasPaddingX && "px-[calc(var(--spacing)*2)]",
-        isSelected && "bg-[var(--rh-theme-fill-neutral-selected)]",
+        hasPaddingX && "px-[calc(var(--spacing)*3)]",
+        isSelected && "bg-[var(--rh-theme-fill-brand-selected)]",
         isHighlighted && "bg-[var(--rh-theme-fill-neutral-hover)]",
         !disabled &&
           !isSelected &&

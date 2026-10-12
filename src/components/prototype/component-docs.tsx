@@ -28,6 +28,7 @@ import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
+import { PhotoGalleryExamples } from "./photo-gallery-examples";
 import { ObjectBuyersExamples, ObjectBuyersV2Examples } from "./object-buyers-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
@@ -360,6 +361,12 @@ const componentDocs: ComponentDoc[] = [
         description: "Подписи кнопки в свёрнутом и раскрытом состояниях.",
       },
       {
+        name: "buttonSize",
+        values: '"md" · "sm" · "xsm"',
+        defaultValue: '"sm"',
+        description: "Размер кнопки раскрытия и сворачивания.",
+      },
+      {
         name: "children",
         values: "ReactNode",
         defaultValue: "—",
@@ -503,6 +510,46 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/object-info.tsx",
     render: () => <ObjectInfoExamples />,
+  },
+  {
+    id: "photo-gallery",
+    title: "PhotoGallery",
+    description: "Переиспользуемая галерея фотографий с миниатюрами, клавиатурной навигацией и необязательной боковой панелью данных.",
+    group: "Выдача объектов",
+    properties: [
+      {
+        name: "photos",
+        values: "readonly PhotoGalleryPhoto[]",
+        defaultValue: "—",
+        description: "Фотографии с адресом src и альтернативным текстом alt.",
+      },
+      {
+        name: "sidebar",
+        values: "PhotoGallerySidebar",
+        defaultValue: "—",
+        description: "Необязательные заголовок, данные, поля и описание рядом с фотографиями.",
+      },
+      {
+        name: "initialPhotoIndex",
+        values: "number",
+        defaultValue: "0",
+        description: "Индекс фотографии, выбранной при открытии.",
+      },
+      {
+        name: "containerDisplay",
+        values: '"viewport" · "embedded"',
+        defaultValue: '"viewport"',
+        description: "Размещает backdrop на странице или внутри витрины.",
+      },
+      {
+        name: "onClose",
+        values: "() => void",
+        defaultValue: "—",
+        description: "Вызывается при закрытии просмотрщика.",
+      },
+    ],
+    source: "src/components/ui/photo-gallery.tsx",
+    render: () => <PhotoGalleryExamples />,
   },
   {
     id: "select",
@@ -1900,6 +1947,7 @@ const ComponentNavigation = React.forwardRef<
                     button={false}
                     dense
                     iconButton={false}
+                    paddingX={true}
                     secondaryText={false}
                     selected={doc.id === activeId}
                     startIcon={false}
