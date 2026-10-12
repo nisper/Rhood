@@ -6,6 +6,7 @@ import {
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { ArchiveToolbarFilter } from "@/components/ui/archive-toolbar-filter";
 import { Chip } from "@/components/ui/chip";
 import { IconButton } from "@/components/ui/icon-button";
 import { MainHeader } from "@/components/ui/main-header";
@@ -16,6 +17,7 @@ import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 import { Modal, ModalContainer } from "@/components/ui/modal";
 import { ObjectInfo } from "@/components/ui/object-info";
+import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
 import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
@@ -23,6 +25,8 @@ import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
 import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import listings from "@/data/mock/real-estate-listings.json";
+
+const LISTINGS_PER_PAGE = 20;
 
 function getNavItems(activeItem: "base" | "my" | "archive") {
   return [
@@ -888,12 +892,14 @@ function ArchiveResultRow({
 
 function ArchiveListingsTable({
   className,
+  currentPage,
   hiddenColumns,
   listings: tableListings,
   onOpenObjectInfo,
   sort,
 }: {
   className?: string;
+  currentPage: number;
   hiddenColumns: ReadonlySet<ColumnKey>;
   listings: readonly (typeof listings)[number][];
   onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
@@ -924,7 +930,7 @@ function ArchiveListingsTable({
         ? firstValue - secondValue
         : secondValue - firstValue;
     })
-    .slice(0, 20);
+    .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
 
   return (
     <Table
@@ -949,6 +955,7 @@ function ArchiveListingsTable({
 
 function ListingsTable({
   className,
+  currentPage,
   hiddenColumns,
   listings: tableListings,
   onOpenObjectInfo,
@@ -957,6 +964,7 @@ function ListingsTable({
   sortable = true,
 }: {
   className?: string;
+  currentPage: number;
   hiddenColumns: ReadonlySet<ColumnKey>;
   listings: readonly (typeof listings)[number][];
   onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
@@ -990,7 +998,7 @@ function ListingsTable({
 
       return sort.direction === "asc" ? comparison : -comparison;
     })
-    .slice(0, 20);
+    .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
 
   React.useEffect(() => {
     const availableIds = new Set(tableListings.map((listing) => listing.id));
@@ -1055,6 +1063,7 @@ export function ApartmentListingsScreen({
     column: "publishedAt",
     direction: "desc",
   });
+  const [currentPage, setCurrentPage] = React.useState(1);
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
   const [selectedListing, setSelectedListing] = React.useState<
     (typeof listings)[number] | null
@@ -1076,7 +1085,11 @@ export function ApartmentListingsScreen({
         navItems={getNavItems(view)}
       />
       {!isMyListings && (
-        <ToolbarFilter archive={isArchive} contentWidth="container" />
+        isArchive ? (
+          <ArchiveToolbarFilter contentWidth="container" />
+        ) : (
+          <ToolbarFilter contentWidth="container" />
+        )
       )}
 
       <main className="grid min-w-0 gap-0">
@@ -1118,6 +1131,7 @@ export function ApartmentListingsScreen({
           {isArchive ? (
             <ArchiveListingsTable
               className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+              currentPage={currentPage}
               hiddenColumns={hiddenColumns}
               listings={listings}
               onOpenObjectInfo={setSelectedListing}
@@ -1126,6 +1140,7 @@ export function ApartmentListingsScreen({
           ) : (
             <ListingsTable
               className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+              currentPage={currentPage}
               hiddenColumns={hiddenColumns}
               listings={listings}
               onOpenObjectInfo={setSelectedListing}
@@ -1134,15 +1149,12 @@ export function ApartmentListingsScreen({
               sortable={false}
             />
           )}
-          <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] pt-4">
-            <Button
-              appearance="default"
-              endIcon={false}
-              size="md"
-              startIcon={false}
-            >
-              Показать еще 50 объектов
-            </Button>
+          <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] flex justify-center pt-4">
+            <Pagination
+              currentPage={currentPage}
+              onPageChange={setCurrentPage}
+              totalPages={Math.ceil(listings.length / LISTINGS_PER_PAGE)}
+            />
           </footer>
         </section>
         {leaderboardOpen && (

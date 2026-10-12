@@ -7,6 +7,8 @@ import { IconButton } from "@/components/ui/icon-button";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { Tab } from "@/components/ui/tab";
+import { TabBar } from "@/components/ui/tab-bar";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 import { cn } from "@/lib/utils";
 
@@ -149,71 +151,54 @@ function MainHeader({
 
         <nav
           className={cn(
-            "flex items-center gap-1",
+            "flex items-center",
             navAlign === "center" && "absolute left-1/2 -translate-x-1/2",
             navAlign === "end" && "ml-auto",
           )}
         >
-          {navItems.map((item) => {
-            const className = cn(
-              "group inline-flex cursor-pointer items-center justify-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] px-2 py-2",
-              "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
-              item.active &&
-                "relative after:absolute after:bottom-1 after:left-2 after:right-2 after:h-px after:bg-[color:var(--rh-theme-border-neutral)] after:content-['']",
-              item.state === "hovered" &&
-                "bg-[var(--rh-theme-fill-neutral-hover)]",
-              item.active || item.state === "hovered"
-                ? "gap-2"
-                : "gap-1 hover:gap-2",
-            );
-            const content = (
-              <>
-                <span
-                  className={cn(
-                    item.active
-                      ? "rh-typography-b2 text-[var(--rh-theme-text-neutral-primary)]"
-                      : "rh-typography-b2 text-[var(--rh-theme-text-neutral-primary)]",
-                    "group-hover:text-[var(--rh-theme-text-neutral-primary)] whitespace-nowrap",
-                    item.state === "hovered" &&
-                      "text-[var(--rh-theme-text-neutral-primary)]",
-                  )}
-                  style={{ fontVariationSettings: "'wdth' 100" }}
-                >
+          <TabBar className="border-b-0">
+            {navItems.map((item) => {
+              const label = (
+                <span className="inline-flex items-center gap-2">
                   {item.label}
-                </span>
-                {item.propNew && (
-                  <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
-                    <span
-                      className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
-                      style={{ fontVariationSettings: "'wdth' 100" }}
-                    >
-                      НОВОЕ
+                  {item.propNew && (
+                    <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
+                      <span
+                        className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
+                        style={{ fontVariationSettings: "'wdth' 100" }}
+                      >
+                        НОВОЕ
+                      </span>
                     </span>
-                  </span>
-                )}
-              </>
-            );
+                  )}
+                </span>
+              );
+              const tab = (
+                <Tab label={label} selected={item.active} state={item.state} />
+              );
 
-            return item.href ? (
-              <a
-                aria-current={item.active ? "page" : undefined}
-                className={className}
-                href={item.href}
-                key={item.label}
-              >
-                {content}
-              </a>
-            ) : (
-              <button
-                className={className}
-                key={item.label}
-                onClick={item.onClick}
-                type="button"
-              >
-                {content}
-              </button>
-            );
-          })}
+              return item.href ? (
+                <a
+                  aria-current={item.active ? "page" : undefined}
+                  className="cursor-pointer"
+                  href={item.href}
+                  key={item.label}
+                >
+                  {tab}
+                </a>
+              ) : (
+                <button
+                  aria-current={item.active ? "page" : undefined}
+                  className="cursor-pointer border-0 bg-transparent p-0"
+                  key={item.label}
+                  onClick={item.onClick}
+                  type="button"
+                >
+                  {tab}
+                </button>
+              );
+            })}
+          </TabBar>
         </nav>
 
         {controls && (

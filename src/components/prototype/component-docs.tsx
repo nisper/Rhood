@@ -19,6 +19,11 @@ import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
 import { RoominessSelectExamples } from "./roominess-select-examples";
+import {
+  AreaSelectExamples,
+  FloorSelectExamples,
+  PriceSelectExamples,
+} from "./empty-filter-select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
@@ -29,6 +34,7 @@ import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
 import { PhotoGalleryExamples } from "./photo-gallery-examples";
+import { PaginationExamples } from "./pagination-examples";
 import { ObjectBuyersExamples, ObjectBuyersV2Examples } from "./object-buyers-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
@@ -36,6 +42,7 @@ import { ExpandableContentExamples } from "./expandable-content-examples";
 import { AvatarExamples } from "./avatar-examples";
 import { CommentsExamples } from "./comments-examples";
 import { MainHeaderExamples } from "./main-header-examples";
+import { ArchiveToolbarFilterExamples } from "./archive-toolbar-filter-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
@@ -100,6 +107,60 @@ function getComponentNavigationGroup(
   ) return "Features";
   return "Components";
 }
+
+const emptyFilterSelectProperties = [
+  {
+    name: "defaultExpanded",
+    values: "boolean",
+    defaultValue: "false",
+    description: "Начальное состояние меню при неконтролируемом использовании.",
+  },
+  {
+    name: "expanded",
+    values: "boolean",
+    defaultValue: "—",
+    description: "Управляет открытым состоянием меню извне.",
+  },
+  {
+    name: "onExpandedChange",
+    values: "(expanded) => void",
+    defaultValue: "—",
+    description: "Вызывается при изменении или закрытии меню вне компонента.",
+  },
+  {
+    name: "size",
+    values: "md · sm",
+    defaultValue: "md",
+    description: "Размер поля и типографики значения.",
+  },
+  {
+    name: "disabled",
+    values: "boolean",
+    defaultValue: "false",
+    description: "Блокирует взаимодействие с полем.",
+  },
+  {
+    name: "label",
+    values: "ReactNode · false",
+    defaultValue: "false",
+    description: "Подпись над полем; false скрывает её.",
+  },
+];
+
+const archiveToolbarFilterProperties = [
+  {
+    name: "contentWidth",
+    values: "full · container",
+    defaultValue: "full",
+    description: "Ширина содержимого: по всей области или в контейнере страницы.",
+  },
+  {
+    name: "…props",
+    values: "ComponentProps&lt;\"section\"&gt;",
+    defaultValue: "—",
+    description: "Нативные свойства корневого section-элемента.",
+  },
+];
 
 function Canvas({
   children,
@@ -517,6 +578,33 @@ const componentDocs: ComponentDoc[] = [
     group: "Фильтр объектов",
     source: "src/components/ui/roominess-select.tsx",
     render: () => <RoominessSelectExamples />,
+  },
+  {
+    id: "area-select",
+    title: "Площадь",
+    description: "Селект площади с пустым выпадающим меню.",
+    group: "Фильтр объектов",
+    properties: emptyFilterSelectProperties,
+    source: "src/components/ui/area-select.tsx",
+    render: () => <AreaSelectExamples />,
+  },
+  {
+    id: "price-select",
+    title: "Цена",
+    description: "Селект цены с пустым выпадающим меню.",
+    group: "Фильтр объектов",
+    properties: emptyFilterSelectProperties,
+    source: "src/components/ui/price-select.tsx",
+    render: () => <PriceSelectExamples />,
+  },
+  {
+    id: "floor-select",
+    title: "Этаж",
+    description: "Селект этажа с пустым выпадающим меню.",
+    group: "Фильтр объектов",
+    properties: emptyFilterSelectProperties,
+    source: "src/components/ui/floor-select.tsx",
+    render: () => <FloorSelectExamples />,
   },
   {
     id: "search",
@@ -1031,6 +1119,14 @@ const componentDocs: ComponentDoc[] = [
     render: () => <TabExamples />,
   },
   {
+    id: "pagination",
+    title: "Pagination",
+    description: "Навигация по страницам с текущим номером и компактным отображением диапазонов.",
+    group: "Navigation",
+    source: "src/components/ui/pagination.tsx",
+    render: () => <PaginationExamples />,
+  },
+  {
     id: "island",
     title: "Island",
     description: "Белая поверхность со скруглением и внешним отступом 24 px для размещения над фоном страницы.",
@@ -1137,6 +1233,15 @@ const componentDocs: ComponentDoc[] = [
     group: "Фильтр объектов",
     source: "src/components/ui/toolbar-filter.tsx",
     render: () => <ToolbarFilterExamples />,
+  },
+  {
+    id: "archive-toolbar-filter",
+    title: "ArchiveToolbarFilter",
+    description: "Панель фильтров страницы «Архив».",
+    group: "Фильтр объектов",
+    properties: archiveToolbarFilterProperties,
+    source: "src/components/ui/archive-toolbar-filter.tsx",
+    render: () => <ArchiveToolbarFilterExamples />,
   },
   {
     id: "list",

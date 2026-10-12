@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Tests/Компоненты.md",
+                "file": "docs/instructions/showcase-page.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Компоненты"
+              "title": "showcase-page"
             }
           }
         ]
@@ -132,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Tests/Компоненты.md",
+                "file": "docs/instructions/showcase-page.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,20 +190,20 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "src/components/prototype/tab-examples.tsx",
+    "docs/Tests/Компоненты.md",
+    "src/components/prototype/archive-toolbar-filter-examples.tsx",
+    "src/components/ui/archive-toolbar-filter.tsx",
+    "src/components/prototype/empty-filter-select-examples.tsx",
+    "src/components/prototype/pagination-examples.tsx",
+    "src/components/ui/pagination.tsx",
+    "src/components/ui/floor-select.tsx",
+    "src/components/ui/price-select.tsx",
+    "src/components/ui/area-select.tsx",
     "dist/assets/index-XdRMgKhu.css",
     "dist/assets/index-C5wzQjQv.js",
-    "dist/assets/index-D3uZnV7g.css",
-    "dist/assets/index-jxZT794o.js",
-    "src/components/prototype/roominess-select-examples.tsx",
-    "src/components/ui/roominess-select.tsx",
     "docs/instructions/showcase-page.md",
-    "dist/assets/index-BLWZmlzC.css",
-    "dist/assets/index-C8y2uChE.js",
-    "dist/assets/index-BSgBoMj_.js",
     "docs/instructions/product-design-reasoning.md",
-    "dist/assets/index-Bc2FSyIE.css",
-    "dist/assets/index-_dMgbNLY.js",
-    "docs/Tests/Компоненты.md",
     "docs/Tests/Выдача объектов.md",
     "docs/instructions/drawing-a-user-flow.md",
     "docs/Tests/_route.md",

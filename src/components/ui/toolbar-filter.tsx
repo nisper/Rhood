@@ -10,7 +10,6 @@ import { Menu } from "@/components/ui/menu";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 import { Modal, ModalContainer } from "@/components/ui/modal";
-import { RoominessSelect } from "@/components/ui/roominess-select";
 import { Segment } from "@/components/ui/segment";
 import { SegmentedControl } from "@/components/ui/segmented-control";
 import { Select } from "@/components/ui/select";
@@ -22,8 +21,6 @@ type ToolbarFilterResp = "desk" | "mob";
 type ToolbarFilterContentWidth = "full" | "container";
 
 type ToolbarFilterProps = React.ComponentProps<"section"> & {
-  /** Displays the compact archive filter set. */
-  archive?: boolean;
   /** Controls the horizontal width of the filter content. */
   contentWidth?: ToolbarFilterContentWidth;
   empty?: boolean;
@@ -317,7 +314,6 @@ function ModalFilters() {
 }
 
 function ToolbarFilter({
-  archive = false,
   className,
   contentWidth = "full",
   empty = true,
@@ -463,27 +459,6 @@ function ToolbarFilter({
           key={filterVersion}
           className="flex flex-wrap items-start gap-2 overflow-visible"
         >
-        {archive ? (
-          <>
-            <FilterSelect label="Квартиры" options={propertyTypeOptions} />
-            <RoominessSelect
-              aria-label="Количество комнат"
-              label={false}
-              onSelectedValuesChange={(value) => {
-                setRooms(value);
-                setWasReset(false);
-              }}
-              selectedValues={rooms}
-              size="sm"
-            />
-            <FilterSelect label="Площадь" options={["Площадь", "до 50 м²", "50–100 м²", "от 100 м²"]} />
-            <FilterSelect label="Цена" options={["Цена", "до 5 млн ₽", "5–10 млн ₽", "от 10 млн ₽"]} />
-            <FilterSelect label="Этаж" options={["Этаж", "1", "2–5", "6–10", "от 11"]} />
-            <FilterSelect label="Источник" options={["Источник", "Авито", "Циан", "Домклик", "Яндекс Недвижимость"]} />
-            <FilterSelect label="Автор" options={["Автор", "Частное лицо", "Агентство"]} />
-          </>
-        ) : (
-          <>
             <FilterSelect
               label="Квартиры"
               onValueChange={(value) => {
@@ -563,8 +538,6 @@ function ToolbarFilter({
                 Сохранить фильтры
               </Button>
             )}
-          </>
-        )}
         </div>
       </div>
 
