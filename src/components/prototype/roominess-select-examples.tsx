@@ -1,14 +1,20 @@
 import { RoominessSelect } from "@/components/ui/roominess-select"
 import { ShowcaseSection } from "@/components/ui/showcase-section"
 
-function RoominessPanel({ expanded = false }: { expanded?: boolean }) {
+function RoominessPanel({
+  expanded = false,
+  selectedValues = [],
+}: {
+  expanded?: boolean
+  selectedValues?: string[]
+}) {
   return (
     <div className="flex min-h-[320px] items-start justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
       <RoominessSelect
         aria-label="Количество комнат"
-        expanded={expanded}
+        defaultExpanded={expanded}
+        defaultSelectedValues={selectedValues}
         label={false}
-        value="Комнат"
       />
     </div>
   )
@@ -22,7 +28,7 @@ export function RoominessSelectExamples() {
         panelCount={2}
         panels={[
           <RoominessPanel key="closed" />,
-          <RoominessPanel expanded key="open" />,
+          <RoominessPanel expanded key="open" selectedValues={["Студия", "1", "2"]} />,
         ]}
         title="Состав"
       />
