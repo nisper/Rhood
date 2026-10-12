@@ -91,7 +91,7 @@ function RoominessSelect({
       menu={
         expanded && (
           <Menu
-            className="absolute left-0 top-full z-20 mt-1 px-[var(--rh-sizing-menu-padding-px-sm)] py-[var(--rh-sizing-menu-padding-py-sm)]"
+            className="absolute left-0 top-full z-20 mt-1 px-[var(--rh-sizing-menu-padding-px-md)] py-[var(--rh-sizing-menu-padding-py-md)]"
           >
             <div className="flex flex-nowrap items-center gap-1">
               {roominessOptions.map((option) => (
@@ -102,7 +102,7 @@ function RoominessSelect({
                   key={option}
                   onCheckedChange={(selected) => toggleOption(option, selected)}
                   onClick={(event) => event.stopPropagation()}
-                  size="md"
+                  size="lg"
                 >
                   {option}
                 </ToggleChip>

@@ -94,6 +94,7 @@ function getComponentNavigationGroup(
   if (group === "Foundations" || group === "Layout") return group;
   if (
     group === "Features" ||
+    group === "Фильтр объектов" ||
     group === "Выдача объектов" ||
     group === "Коммуникации"
   ) return "Features";
@@ -513,7 +514,7 @@ const componentDocs: ComponentDoc[] = [
     id: "roominess",
     title: "Комнатность",
     description: "Мультиселект для выбора количества комнат.",
-    group: "Forms",
+    group: "Фильтр объектов",
     source: "src/components/ui/roominess-select.tsx",
     render: () => <RoominessSelectExamples />,
   },
@@ -1133,7 +1134,7 @@ const componentDocs: ComponentDoc[] = [
     id: "toolbar-filter",
     title: "ToolbarFilter",
     description: "Панель фильтров.",
-    group: "Выдача объектов",
+    group: "Фильтр объектов",
     source: "src/components/ui/toolbar-filter.tsx",
     render: () => <ToolbarFilterExamples />,
   },

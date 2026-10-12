@@ -364,6 +364,8 @@
   --rh-sizing-layout-edge-to-edge-content: 0px;
   --rh-sizing-map-container-pxy: calc(var(--spacing) * 4);
   --rh-sizing-menu-border-radius: var(--rh-sizing-border-radius-md);
+  --rh-sizing-menu-padding-px-md: calc(var(--spacing) * 4);
+  --rh-sizing-menu-padding-py-md: calc(var(--spacing) * 4);
   --rh-sizing-menu-padding-px-sm: calc(var(--spacing) * 3);
   --rh-sizing-menu-padding-py-sm: calc(var(--spacing) * 2);
   --rh-sizing-menu-padding-gap-sm: calc(var(--spacing) * 2);
