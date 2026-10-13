@@ -142,8 +142,8 @@ function ButtonFavorite({
               size === "md" && "size-[calc(var(--spacing)*10)]",
               size === "sm" && "size-[calc(var(--spacing)*9)]",
               size === "xsm" && "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))]",
-              !disabled && "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
-              isHovered && !disabled && "bg-[var(--rh-theme-fill-neutral-hover)]",
+              !disabled && "hover:[background-image:linear-gradient(var(--rh-theme-fill-neutral-hover),var(--rh-theme-fill-neutral-hover))]",
+              isHovered && !disabled && "[background-image:linear-gradient(var(--rh-theme-fill-neutral-hover),var(--rh-theme-fill-neutral-hover))]",
             )
           : cn(
               "rounded-[var(--rh-sizing-common-input-shape-border-radius)]",

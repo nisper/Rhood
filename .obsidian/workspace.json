@@ -190,6 +190,8 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "src/components/ui/object-card.tsx",
+    "src/components/prototype/object-card-examples.tsx",
     "docs/instructions/Адаптив в проекте.md",
     "docs/instructions/showcase-page.md",
     "docs/instructions/Работа с компонентами.md",
@@ -204,7 +206,6 @@
     "dist/assets/index-Dm6wxRgh.css",
     "dist/assets/index-Di2ZwbIS.js",
     "dist/assets/index-DEVeglJe.js",
-    "dist/assets/index-jQ8uEaUd.js",
     "public/assets/obj-outside.jpg",
     "public/assets/obj-livingroom.jpg",
     "public/assets/obj-badroom.jpg",
