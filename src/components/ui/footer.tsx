@@ -60,34 +60,25 @@ function Footer({
       {...props}
     >
       <div className="rhood-layout-container py-10">
-        <div className="grid gap-10 md:grid-cols-3 md:gap-6">
+        <div className="flex flex-col items-center gap-10 text-center">
+          <section>
+            <p className="rh-typography-h4 text-[var(--rh-theme-text-neutral-primary-contrast)]">
+              Parser RHOOD
+            </p>
+          </section>
           {sections.map((section) => (
-            <section className="grid content-start gap-5" key={section.title}>
-              <h2 className="rh-typography-b2 text-[var(--rh-theme-text-neutral-primary-contrast)] opacity-60">
+            <section className="grid w-full grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-x-4" key={section.title}>
+              <h2 className="rh-typography-b2 w-full text-right text-[var(--rh-theme-text-neutral-primary-contrast)] opacity-60">
                 {section.title}
               </h2>
-              <nav aria-label={section.title} className="grid justify-items-start gap-2">
+              <nav aria-label={section.title} className="flex w-full flex-col items-start gap-2 text-left whitespace-nowrap">
                 {section.items.map((item) => (
                   <FooterLinkItem key={item.label} {...item} />
                 ))}
               </nav>
             </section>
           ))}
-          <section className="grid content-start gap-5">
-            <h2 className="rh-typography-b2 text-[var(--rh-theme-text-neutral-primary-contrast)] opacity-60">
-              О сервисе
-            </h2>
-            <p className="rh-typography-h4 text-[var(--rh-theme-text-neutral-primary-contrast)]">
-              Работа с недвижимостью — в одном месте
-            </p>
-          </section>
         </div>
-
-        <img
-          alt="RHOOD"
-          className="mt-14 block h-auto w-full opacity-20"
-          src="/Rhood/assets/rhood-logo-header.svg"
-        />
 
       </div>
     </footer>
