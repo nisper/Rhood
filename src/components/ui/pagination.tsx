@@ -2,7 +2,6 @@ import * as React from "react"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
 import { IconButton } from "@/components/ui/icon-button"
-import { ToggleChip } from "@/components/ui/toggle-chip"
 import { cn } from "@/lib/utils"
 
 type PaginationProps = Omit<React.ComponentProps<"nav">, "onChange"> & {
@@ -10,6 +9,38 @@ type PaginationProps = Omit<React.ComponentProps<"nav">, "onChange"> & {
   totalPages: number
   onPageChange?: (page: number) => void
   size?: "md" | "sm"
+}
+
+type PaginationPageButtonProps = {
+  active: boolean
+  children: React.ReactNode
+  onClick: () => void
+  size: "md" | "sm"
+}
+
+function PaginationPageButton({ active, children, onClick, size }: PaginationPageButtonProps) {
+  return (
+    <button
+      aria-current={active ? "page" : undefined}
+      aria-label={`Страница ${children}`}
+      className={cn(
+        "inline-flex min-w-8 cursor-pointer items-center justify-center rounded-full border border-transparent focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
+        size === "sm" ? "px-[3px] py-[3px]" : "px-1 py-1",
+        active
+          ? "text-[var(--rh-theme-text-neutral-primary)]"
+          : "text-[var(--rh-theme-text-neutral-secondary)] hover:bg-[var(--rh-theme-fill-neutral-hover)] hover:text-[var(--rh-theme-text-neutral-primary)]",
+      )}
+      onClick={onClick}
+      type="button"
+    >
+      <span
+        className={cn("whitespace-nowrap px-2", size === "sm" ? "rh-typography-b2 px-1" : "rh-typography-b1")}
+        style={{ fontVariationSettings: "'wdth' 100" }}
+      >
+        {children}
+      </span>
+    </button>
+  )
 }
 
 function getVisiblePages(currentPage: number, totalPages: number) {
@@ -51,18 +82,12 @@ function Pagination({
       {getVisiblePages(page, totalPages).map((item, index) => item === "ellipsis" ? (
         <span aria-hidden="true" className="flex items-center justify-center rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]" key={`ellipsis-${index}`}>…</span>
       ) : (
-        <ToggleChip
-          aria-current={item === page ? "page" : undefined}
-          checked={item === page}
-          color="neutral"
-          icon={false}
+        <PaginationPageButton
+          active={item === page}
           key={item}
-          onClick={event => {
-            event.preventDefault()
-            onPageChange?.(item)
-          }}
+          onClick={() => onPageChange?.(item)}
           size={buttonSize}
-        >{item}</ToggleChip>
+        >{item}</PaginationPageButton>
       ))}
       <IconButton
         aria-label="Следующая страница"

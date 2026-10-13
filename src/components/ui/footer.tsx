@@ -35,7 +35,7 @@ const defaultSections: readonly FooterSection[] = [
 ];
 
 function FooterLinkItem({ href, label }: FooterLink) {
-  const className = "rh-typography-b1 text-[var(--rh-theme-text-neutral-primary-contrast)]";
+  const className = "rh-typography-b2 text-[var(--rh-theme-text-neutral-primary-contrast)]";
 
   return href ? (
     <a className={cn(className, "cursor-pointer hover:underline")} href={href}>
