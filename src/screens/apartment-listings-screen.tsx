@@ -2,6 +2,7 @@ import {
   Columns3Cog,
   Map,
   Phone,
+  Table2,
 } from "lucide-react";
 import * as React from "react";
 
@@ -18,6 +19,7 @@ import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 import { Modal, ModalContainer } from "@/components/ui/modal";
 import { ObjectInfo } from "@/components/ui/object-info";
+import { ObjectCard } from "@/components/ui/object-card";
 import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
 import { Select } from "@/components/ui/select";
@@ -217,7 +219,9 @@ function TableToolbar({
   hiddenColumns,
   onHiddenColumnsChange,
   onLeaderboardOpen,
+  onCardsViewChange,
   onSortChange,
+  cardsView = false,
   showLeaderboard = true,
   showMap = true,
   sort,
@@ -226,7 +230,9 @@ function TableToolbar({
   hiddenColumns: ReadonlySet<ColumnKey>;
   onHiddenColumnsChange: (columns: Set<ColumnKey>) => void;
   onLeaderboardOpen: () => void;
+  onCardsViewChange: (cardsView: boolean) => void;
   onSortChange: (sort: SortState) => void;
+  cardsView?: boolean;
   showLeaderboard?: boolean;
   showMap?: boolean;
   sort: SortState;
@@ -312,17 +318,11 @@ function TableToolbar({
       {showMap && <Button
         appearance="default"
         endIcon={false}
-        onClick={() =>
-          window.open(
-            "https://yandex.ru/maps/55/tyumen/",
-            "_blank",
-            "noopener,noreferrer",
-          )
-        }
+        onClick={() => onCardsViewChange(!cardsView)}
         size="sm"
-        startIcon={<Map aria-hidden="true" strokeWidth={2} />}
+        startIcon={cardsView ? <Table2 aria-hidden="true" strokeWidth={2} /> : <Map aria-hidden="true" strokeWidth={2} />}
       >
-        На карте
+        {cardsView ? "Таблица" : "На карте"}
       </Button>}
 
       {showLeaderboard && <Button
@@ -340,7 +340,7 @@ function TableToolbar({
       >
         Таблица лидеров
       </Button>}
-      <div className="relative ml-auto" ref={columnsMenuRef}>
+      {!cardsView && <div className="relative ml-auto" ref={columnsMenuRef}>
         <Button
           appearance="default"
           aria-expanded={columnsOpen}
@@ -391,7 +391,7 @@ function TableToolbar({
             )}
           </Menu>
         )}
-      </div>
+      </div>}
     </div>
   );
 }
@@ -1049,6 +1049,82 @@ function ListingsTable({
   );
 }
 
+const listingCardPhotos = [
+  "/Rhood/assets/object-gallery-2.png",
+  "/Rhood/assets/object-gallery-3.png",
+  "/Rhood/assets/object-gallery-4.png",
+  "/Rhood/assets/obj-livingroom.jpg",
+];
+
+function sourceHref(domain: string, path: string) {
+  const host = {
+    AVITO: "https://www.avito.ru",
+    CIAN: "https://www.cian.ru",
+    DOMCLICK: "https://domclick.ru",
+    YANDEX: "https://realty.yandex.ru",
+  }[domain] ?? "#";
+  return `${host}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
+function ListingsCardGrid({
+  currentPage,
+  listings: tableListings,
+  onOpenObjectInfo,
+  sort,
+}: {
+  currentPage: number;
+  listings: readonly (typeof listings)[number][];
+  onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
+  sort: SortState;
+}) {
+  const sortedListings = [...tableListings]
+    .sort((first, second) => {
+      if (!sort) return 0;
+      const firstValue = sort.column === "price"
+        ? getPrice(first)
+        : sort.column === "pricePerM2"
+          ? Math.round(getPrice(first) / first.area)
+          : sort.column === "publishedAt"
+            ? new Date(first.publishedAt).getTime()
+            : first.buyerDemandAvailableCount;
+      const secondValue = sort.column === "price"
+        ? getPrice(second)
+        : sort.column === "pricePerM2"
+          ? Math.round(getPrice(second) / second.area)
+          : sort.column === "publishedAt"
+            ? new Date(second.publishedAt).getTime()
+            : second.buyerDemandAvailableCount;
+      return sort.direction === "asc" ? firstValue - secondValue : secondValue - firstValue;
+    })
+    .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
+
+  if (!sortedListings.length) {
+    return <div className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] grid min-h-52 place-items-center text-center rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">Ничего не найдено</div>;
+  }
+
+  return (
+    <div className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] flex flex-wrap items-start gap-3">
+      {sortedListings.map((listing, index) => (
+        <ObjectCard
+          address={listing.address}
+          author={listing.clientName ?? "Частное лицо"}
+          details={getSpecs(listing)}
+          image={listingCardPhotos[(currentPage * LISTINGS_PER_PAGE + index) % listingCardPhotos.length]}
+          imageAlt={`Объект недвижимости: ${listing.address}`}
+          key={listing.id}
+          onDetailsClick={() => onOpenObjectInfo(listing)}
+          price={`${formatNumber(getPrice(listing))} ₽`}
+          pricePerM2={`${formatNumber(Math.round(getPrice(listing) / listing.area))} ₽ / м²`}
+          publishedAt={`Опубликован: ${formatPublishedAt(listing.publishedAt)}`}
+          source={formatSource(listing.domain)}
+          sourceHref={sourceHref(listing.domain, listing.url)}
+          subway={false}
+        />
+      ))}
+    </div>
+  );
+}
+
 export function ApartmentListingsScreen({
   view = "base",
 }: {
@@ -1065,6 +1141,7 @@ export function ApartmentListingsScreen({
   });
   const [currentPage, setCurrentPage] = React.useState(1);
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
+  const [cardsView, setCardsView] = React.useState(false);
   const [selectedListing, setSelectedListing] = React.useState<
     (typeof listings)[number] | null
   >(null);
@@ -1121,7 +1198,9 @@ export function ApartmentListingsScreen({
             hiddenColumns={hiddenColumns}
             onHiddenColumnsChange={setHiddenColumns}
             onLeaderboardOpen={() => setLeaderboardOpen(true)}
+            onCardsViewChange={setCardsView}
             onSortChange={setSort}
+            cardsView={cardsView}
             showLeaderboard={!isMyListings && !isArchive}
             showMap={!isMyListings && !isArchive}
             sort={sort}
@@ -1131,7 +1210,14 @@ export function ApartmentListingsScreen({
           aria-label="Список квартир"
           className="mt-3 min-w-0"
         >
-          {isArchive ? (
+          {cardsView && !isArchive ? (
+            <ListingsCardGrid
+              currentPage={currentPage}
+              listings={listings}
+              onOpenObjectInfo={setSelectedListing}
+              sort={sort}
+            />
+          ) : isArchive ? (
             <ArchiveListingsTable
               className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
               currentPage={currentPage}

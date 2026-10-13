@@ -34,6 +34,7 @@ import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
+import { ObjectCardExamples } from "./object-card-examples";
 import { PhotoGalleryExamples } from "./photo-gallery-examples";
 import { PaginationExamples } from "./pagination-examples";
 import { ObjectBuyersExamples, ObjectBuyersV2Examples } from "./object-buyers-examples";
@@ -327,7 +328,7 @@ const componentDocs: ComponentDoc[] = [
     title: "ButtonFavorite",
     description: "Кнопка добавления в избранное — компактная или с подписью.",
     figmaUrl:
-      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10103-2350",
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=968-779&t=M2jhFQebPoFetpnd-11",
     group: "Actions",
     source: "src/components/ui/button-favorite.tsx",
     render: () => <ButtonFavoriteExamples />,
@@ -519,6 +520,30 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/object-buyers.tsx",
     render: () => <ObjectBuyersV2Examples />,
+  },
+  {
+    id: "object-card",
+    title: "ObjectCard",
+    description: "Карточка объекта недвижимости для списка или выдачи.",
+    figmaUrl:
+      "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24003-64638",
+    group: "Выдача объектов",
+    properties: [
+      { name: "image", values: "string", defaultValue: "демо-изображение", description: "URL фотографии объекта." },
+      { name: "imageAlt", values: "string", defaultValue: "Интерьер квартиры", description: "Альтернативный текст фотографии." },
+      { name: "favorite", values: "boolean", defaultValue: "true", description: "Показывает кнопку избранного." },
+      { name: "notForClient", values: "boolean", defaultValue: "true", description: "Показывает внутренние статусы, источник и дату." },
+      { name: "pictures", values: "boolean", defaultValue: "true", description: "Показывает фотографию объекта." },
+      { name: "state", values: "default · hovered", defaultValue: "default", description: "Статичное состояние для демонстрации; реальный hover работает при наведении." },
+      { name: "subway", values: "boolean", defaultValue: "true", description: "Показывает станцию метро." },
+      { name: "footer", values: "ReactNode", defaultValue: "действия карточки", description: "Заменяет нижний блок действий." },
+      { name: "onDetailsClick · onCommentsClick · onReportClick", values: "() => void", defaultValue: "—", description: "Обработчики нижних действий карточки." },
+      { name: "price · pricePerM2 · details · address", values: "string", defaultValue: "данные демо-объекта", description: "Цена и основные характеристики объекта." },
+      { name: "source · author · publishedAt · sourceHref", values: "string", defaultValue: "данные демо-объекта", description: "Источник объявления, автор, дата и ссылка." },
+      { name: "…props", values: "ComponentProps<article>", defaultValue: "—", description: "Нативные свойства article." },
+    ],
+    source: "src/components/ui/object-card.tsx",
+    render: () => <ObjectCardExamples />,
   },
   {
     id: "object-info",

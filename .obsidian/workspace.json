@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/instructions/product-design-reasoning.md",
+                "file": "docs/instructions/Работа с библиотекой компонентов в Figma.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "product-design-reasoning"
+              "title": "Работа с библиотекой компонентов в Figma"
             }
           }
         ]
@@ -132,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/instructions/product-design-reasoning.md",
+                "file": "docs/instructions/Работа с библиотекой компонентов в Figma.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,7 +190,11 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "docs/instructions/Адаптив в проекте.md",
     "docs/instructions/showcase-page.md",
+    "docs/instructions/Работа с компонентами.md",
+    "docs/instructions/Работа с библиотекой компонентов в Figma.md",
+    "docs/instructions/product-design-reasoning.md",
     "dist/assets/index-CY-61XeK.css",
     "dist/assets/index-BzCxGvG2.js",
     "src/components/prototype/object-filter-examples.tsx",
@@ -214,13 +218,9 @@
     "dist/assets/comments/avatar-sergey.jpeg",
     "public/assets/comments/avatar-sergey.jpeg",
     "public/assets/comments/avatar-sergey.png",
-    "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "AGENTS.md",
     "docs/instructions/formatting-component-showcase-page.md",
-    "docs/instructions/Адаптив в проекте.md",
-    "docs/instructions/Работа с компонентами.md",
     "docs/instructions/drawing-a-user-flow.md",
-    "docs/instructions/product-design-reasoning.md",
     "docs/instructions/formatting-code-snippets.md",
     "docs/tokens.md",
     "docs/token-mapping.md",

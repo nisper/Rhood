@@ -150,7 +150,7 @@ function PhotoGallery({
       <div
         className={`relative grid h-full min-h-0 w-full min-w-0 overflow-hidden ${
           sidebar
-            ? "grid-cols-[minmax(240px,380px)_minmax(0,1fr)] max-md:grid-cols-1 max-md:grid-rows-[minmax(220px,1fr)_minmax(0,auto)]"
+            ? "grid-cols-[minmax(0,1fr)_minmax(240px,380px)] max-md:grid-cols-1 max-md:grid-rows-[minmax(220px,1fr)_minmax(0,auto)]"
             : "grid-cols-1"
         }`}
       >
@@ -164,7 +164,7 @@ function PhotoGallery({
         {sidebar && (
           <aside
             aria-label="Дополнительная информация"
-            className="relative flex min-h-0 flex-col gap-6 overflow-y-auto p-6 max-md:row-start-2 max-md:border-t max-md:p-4"
+            className="relative col-start-2 row-start-1 flex min-h-0 flex-col gap-6 overflow-y-auto p-6 max-md:col-start-1 max-md:row-start-2 max-md:border-t max-md:p-4"
           >
             {(sidebar.title || sidebar.headline || sidebar.supportingText) && (
               <div className="grid gap-3">
@@ -213,7 +213,7 @@ function PhotoGallery({
 
         <section
           aria-label="Фотографии объекта"
-          className={`group relative grid h-full min-h-0 min-w-0 grid-cols-1 grid-rows-[minmax(0,1fr)_52px] gap-y-4 p-4 max-md:p-2 ${
+          className={`group relative col-start-1 row-start-1 grid h-full min-h-0 min-w-0 grid-cols-1 grid-rows-[minmax(0,1fr)_52px] gap-y-4 p-4 max-md:p-2 ${
             sidebar ? "max-md:col-start-1 max-md:row-start-1" : ""
           }`}
         >

@@ -1,6 +1,7 @@
 import * as React from "react"
 
 import { ButtonFavorite } from "@/components/ui/button-favorite"
+import { ShowcaseSection } from "@/components/ui/showcase-section"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -15,39 +16,28 @@ const properties = [
   ["selectedLabel", "ReactNode", "В избранном", "Подпись для выбранного состояния."],
 ]
 
-function Section({ children, description, settings, title }: { children: React.ReactNode; description: string; settings?: string[]; title: string }) {
-  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}{settings && <div className="grid gap-0.5">{settings.map(setting => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div>}</section>
-}
-
 function StateRow({ appearance }: { appearance: "neutral" | "ghost" }) {
   return <div className="grid grid-cols-3 items-center justify-items-center gap-2"><ButtonFavorite appearance={appearance} iconOnly={false} /><ButtonFavorite appearance={appearance} iconOnly={false} state="hover" /><ButtonFavorite appearance={appearance} disabled iconOnly={false} /></div>
 }
 
 export function ButtonFavoriteExamples() {
-  return <div className="grid min-w-0 gap-10">
-    <Section description="Визуальный стиль повторяет второстепенные Button: neutral использует нейтральную поверхность, ghost — прозрачную." settings={["appearance: neutral · ghost"]} title="Стиль">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="ghost" iconOnly={false} /></div></div></div>
-    </Section>
+  return <div className="grid min-w-0">
+    <ShowcaseSection description="Визуальный стиль повторяет второстепенные Button: neutral использует нейтральную поверхность, ghost — прозрачную." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="ghost" iconOnly={false} /></div></div>]} title="Стиль" />
 
-    <Section description="Размер управляет областью нажатия, иконкой и подписью." settings={["size: md · sm · xsm"]} title="Размер">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <ButtonFavorite appearance="neutral" iconOnly={false} key={size} size={size} />)}</div></div></div>
-    </Section>
+    <ShowcaseSection description="Размеры md и sm соответствуют Figma. xsm оставлен для компактных контекстов прототипа." panels={[<div className="grid min-h-[136px] content-center justify-items-center gap-4 overflow-hidden rounded-xl bg-white px-6 py-4"><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <ButtonFavorite appearance="neutral" iconOnly={false} key={size} size={size} />)}</div><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <ButtonFavorite key={`icon-${size}`} size={size} />)}</div></div>]} title="Размер" />
 
-    <Section description="Hover показывает реакцию на наведение. Disabled блокирует переключение и использует нейтральное состояние." settings={["state: default · hover", "disabled: boolean"]} title="Состояния">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[520px] gap-2"><div className="grid grid-cols-3 gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hover</span><span>disabled</span></div><StateRow appearance="neutral" /><StateRow appearance="ghost" /></div></div></div>
-    </Section>
+    <ShowcaseSection description="Hover показывает реакцию на наведение. Disabled блокирует переключение и использует нейтральное состояние." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-[var(--rh-theme-fill-neutral-dark)] px-6 py-4"><div className="grid w-full max-w-[520px] gap-2"><div className="grid grid-cols-3 gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hover</span><span>disabled</span></div><StateRow appearance="neutral" /><StateRow appearance="ghost" /><div className="grid grid-cols-3 items-center justify-items-center gap-2"><ButtonFavorite /><ButtonFavorite state="hover" /><ButtonFavorite disabled /></div></div></div>]} title="Состояния" />
 
-    <Section description="Сердце — обязательная иконка действия. iconOnly показывает компактный круглый тоггл, а текстовая версия меняет подпись после нажатия." settings={["iconOnly: boolean", "checked / defaultChecked: boolean", "label / selectedLabel: ReactNode"]} title="Состав">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite /><ButtonFavorite defaultChecked /><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="neutral" defaultChecked iconOnly={false} /></div></div></div>
-    </Section>
+    <ShowcaseSection description="Сердце — обязательная иконка действия. Круглый тоггл переключается по нажатию и меняет подпись в текстовом режиме." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="flex flex-wrap items-center justify-center gap-3"><ButtonFavorite /><ButtonFavorite defaultChecked /><ButtonFavorite appearance="neutral" iconOnly={false} /><ButtonFavorite appearance="neutral" defaultChecked iconOnly={false} /></div></div>]} title="Состав" />
 
-    <Section description="Основные настройки ButtonFavorite для реализации." title="Свойства">
+    <section className="mb-10 grid gap-3">
+      <div className="grid gap-1"><h2 className="rh-typography-h4">Свойства</h2><p className="rh-typography-b1">Основные настройки ButtonFavorite для реализации.</p></div>
       <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
         <div className="flex border-b border-[var(--parser-border-light)]" role="row">
           {["Свойство", "Значения", "По умолчанию", "Назначение"].map((title, index) => <TableCell helpIcon={false} key={title} role="head" sort={false} type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{title}</TableCell>)}
         </div>
         {properties.map(row => <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" key={row[0]} role="row">{row.map((cell, index) => <TableCell key={index} role="body" type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{cell}</TableCell>)}</div>)}
       </Table>
-    </Section>
+    </section>
   </div>
 }

@@ -138,12 +138,12 @@ function ButtonFavorite({
         "group inline-flex shrink-0 cursor-pointer items-center justify-center border-0 text-[var(--rh-theme-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--rh-theme-fill-disabled)] disabled:text-[var(--rh-theme-text-neutral-disabled)]",
         isIconOnly
           ? cn(
-              "rounded-full p-0",
+              "rounded-full bg-[var(--rh-theme-surface-bg)] p-0",
               size === "md" && "size-[calc(var(--spacing)*10)]",
               size === "sm" && "size-[calc(var(--spacing)*9)]",
               size === "xsm" && "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))]",
-              !disabled && "hover:bg-[var(--rh-theme-fill-error-light-hover)]",
-              isHovered && !disabled && "bg-[var(--rh-theme-fill-error-light-hover)]",
+              !disabled && "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+              isHovered && !disabled && "bg-[var(--rh-theme-fill-neutral-hover)]",
             )
           : cn(
               "rounded-[var(--rh-sizing-common-input-shape-border-radius)]",
@@ -161,7 +161,7 @@ function ButtonFavorite({
       type={type}
       {...props}
     >
-      <span className={cn("flex shrink-0 items-center justify-end", iconSlotClasses[size])}>
+      <span className={cn("flex shrink-0 items-center", isIconOnly ? "justify-center" : "justify-end", iconSlotClasses[size])}>
         <Heart
           aria-hidden="true"
           className={cn(
@@ -170,10 +170,7 @@ function ButtonFavorite({
               ? "text-[var(--rh-theme-icon-neutral-disabled)]"
               : isChecked
                 ? "fill-current text-[var(--rh-theme-icon-error)]"
-                : isHovered
-                  ? "text-[var(--rh-theme-icon-error)]"
-                  : "text-[var(--rh-theme-icon-neutral-secondary)]",
-            !disabled && !isChecked && "group-hover:text-[var(--rh-theme-icon-error)]",
+                : "text-[var(--rh-theme-icon-neutral-secondary)]",
           )}
           strokeWidth={2}
         />
