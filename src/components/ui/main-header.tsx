@@ -1,8 +1,7 @@
 import * as React from "react";
-import { CircleHelp, Menu as MenuIcon } from "lucide-react";
+import { Menu as MenuIcon } from "lucide-react";
 
 import { Avatar } from "@/components/ui/avatar";
-import { HelpCenter } from "@/components/ui/help-center";
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
@@ -57,32 +56,26 @@ function MainHeader({
     contentWidth === "container"
       ? "rhood-layout-container"
       : "rhood-page-gutter";
-  const helpMenuRef = React.useRef<HTMLDivElement | null>(null);
   const avatarMenuRef = React.useRef<HTMLDivElement | null>(null);
-  const [isHelpMenuOpen, setIsHelpMenuOpen] = useMenuOpen(helpMenuRef);
   const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useMenuOpen(avatarMenuRef);
 
   React.useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
       const target = event.target as Node;
 
-      if (!helpMenuRef.current?.contains(target)) {
-        setIsHelpMenuOpen(false);
-      }
-
       if (!avatarMenuRef.current?.contains(target)) {
         setIsAvatarMenuOpen(false);
       }
     }
 
-    if (isHelpMenuOpen || isAvatarMenuOpen) {
+    if (isAvatarMenuOpen) {
       document.addEventListener("mousedown", handlePointerDown);
     }
 
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
     };
-  }, [isAvatarMenuOpen, isHelpMenuOpen, setIsAvatarMenuOpen, setIsHelpMenuOpen]);
+  }, [isAvatarMenuOpen, setIsAvatarMenuOpen]);
 
   if (isMobile) {
     return (
@@ -203,35 +196,13 @@ function MainHeader({
 
         {controls && (
           <div className="ml-auto flex h-[34px] shrink-0 items-center gap-2">
-          <div ref={helpMenuRef} className="relative">
-            <IconButton
-              appearance="inherit"
-              aria-expanded={isHelpMenuOpen}
-              aria-haspopup="menu"
-              aria-label="Help"
-              className="text-[var(--rh-theme-icon-neutral-primary)]"
-              icon={<CircleHelp aria-hidden="true" strokeWidth={2} />}
-              onClick={() => {
-                setIsHelpMenuOpen((open) => !open);
-                setIsAvatarMenuOpen(false);
-              }}
-              size="sm"
-            />
-
-            {isHelpMenuOpen && (
-              <HelpCenter className="absolute right-0 top-full z-20 mt-2" />
-            )}
-          </div>
           <div ref={avatarMenuRef} className="relative shrink-0">
           <button
             aria-expanded={isAvatarMenuOpen}
             aria-haspopup="menu"
             aria-label="Профиль"
             className="cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-text-brand)]"
-            onClick={() => {
-              setIsAvatarMenuOpen((open) => !open);
-              setIsHelpMenuOpen(false);
-            }}
+            onClick={() => setIsAvatarMenuOpen((open) => !open)}
             type="button"
           >
             <Avatar size="32px" type="image" />

@@ -92,7 +92,7 @@ function MainHeaderExamples() {
             <CodeProp name="contentWidth" value='"container"' />
           </MainHeaderSnippet>
         }
-        description="Состав включает логотип, навигацию и управляющие элементы. controls скрывает help и профиль, а contentWidth ограничивает содержимое контейнером страницы."
+        description="Состав включает логотип, навигацию и меню профиля. controls скрывает меню профиля, а contentWidth ограничивает содержимое контейнером страницы."
         panels={[<HeaderPanel>
               <MainHeader controls={false} contentWidth="container" navAlign="end" navItems={defaultNavigation} />
             </HeaderPanel>, <HeaderPanel>

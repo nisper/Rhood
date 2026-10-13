@@ -8,6 +8,7 @@ import * as React from "react";
 import { Button } from "@/components/ui/button";
 import { ArchiveToolbarFilter } from "@/components/ui/archive-toolbar-filter";
 import { Chip } from "@/components/ui/chip";
+import { Footer } from "@/components/ui/footer";
 import { IconButton } from "@/components/ui/icon-button";
 import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
@@ -1149,7 +1150,7 @@ export function ApartmentListingsScreen({
               sortable={false}
             />
           )}
-          <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] flex justify-center pt-4">
+          <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] flex justify-center pt-4 pb-4">
             <Pagination
               currentPage={currentPage}
               onPageChange={setCurrentPage}
@@ -1200,6 +1201,7 @@ export function ApartmentListingsScreen({
           )
         )}
       </main>
+      <Footer className="mt-8" />
     </div>
   );
 }

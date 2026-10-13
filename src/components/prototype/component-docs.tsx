@@ -42,6 +42,7 @@ import { ExpandableContentExamples } from "./expandable-content-examples";
 import { AvatarExamples } from "./avatar-examples";
 import { CommentsExamples } from "./comments-examples";
 import { MainHeaderExamples } from "./main-header-examples";
+import { FooterExamples } from "./footer-examples";
 import { ArchiveToolbarFilterExamples } from "./archive-toolbar-filter-examples";
 import "./component-docs.css";
 import * as React from "react";
@@ -1190,7 +1191,7 @@ const componentDocs: ComponentDoc[] = [
         name: "controls",
         values: "boolean",
         defaultValue: "true",
-        description: "Показывает help и меню профиля.",
+        description: "Показывает меню профиля.",
       },
       {
         name: "logoHref",
@@ -1225,6 +1226,34 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/main-header.tsx",
     render: () => <MainHeaderExamples />,
+  },
+  {
+    id: "footer",
+    title: "Footer",
+    description: "Футер страницы.",
+    group: "Layout",
+    properties: [
+      {
+        name: "sections",
+        values: "FooterSection[]",
+        defaultValue: "Разделы и Помощь",
+        description: "Группы ссылок, отображаемые в колонках футера.",
+      },
+      {
+        name: "className",
+        values: "string",
+        defaultValue: "—",
+        description: "Дополнительные классы для оформления и компоновки.",
+      },
+      {
+        name: "…props",
+        values: "ComponentProps&lt;\"footer\"&gt;",
+        defaultValue: "—",
+        description: "Нативные свойства footer-элемента.",
+      },
+    ],
+    source: "src/components/ui/footer.tsx",
+    render: () => <FooterExamples />,
   },
   {
     id: "toolbar-filter",
