@@ -21,8 +21,6 @@ type ToolbarFilterResp = "desk" | "mob";
 type ToolbarFilterContentWidth = "full" | "container";
 
 type ToolbarFilterProps = React.ComponentProps<"section"> & {
-  /** Displays the compact archive filter set. */
-  archive?: boolean;
   /** Controls the horizontal width of the filter content. */
   contentWidth?: ToolbarFilterContentWidth;
   empty?: boolean;
@@ -53,7 +51,7 @@ function FilterSelect({
   const value = controlledValue ?? uncontrolledValue;
 
   return (
-    <div ref={menuRef}>
+    <div className={open ? "relative z-40" : "relative"} ref={menuRef}>
       <Select
         className={widthClass}
         expanded={open}
@@ -316,7 +314,6 @@ function ModalFilters() {
 }
 
 function ToolbarFilter({
-  archive = false,
   className,
   contentWidth = "full",
   empty = true,
@@ -452,7 +449,7 @@ function ToolbarFilter({
       <section
         className={cn(
           "relative w-full overflow-visible bg-[var(--rh-theme-surface-bg)]",
-          "pt-6",
+          "pt-4",
           className,
         )}
         {...props}
@@ -462,18 +459,6 @@ function ToolbarFilter({
           key={filterVersion}
           className="flex flex-wrap items-start gap-2 overflow-visible"
         >
-        {archive ? (
-          <>
-            <FilterSelect label="Квартиры" options={propertyTypeOptions} />
-            <FilterSelect label="Комнат" options={["Комнат", ...roominessOptions]} />
-            <FilterSelect label="Площадь" options={["Площадь", "до 50 м²", "50–100 м²", "от 100 м²"]} />
-            <FilterSelect label="Цена" options={["Цена", "до 5 млн ₽", "5–10 млн ₽", "от 10 млн ₽"]} />
-            <FilterSelect label="Этаж" options={["Этаж", "1", "2–5", "6–10", "от 11"]} />
-            <FilterSelect label="Источник" options={["Источник", "Авито", "Циан", "Домклик", "Яндекс Недвижимость"]} />
-            <FilterSelect label="Автор" options={["Автор", "Частное лицо", "Агентство"]} />
-          </>
-        ) : (
-          <>
             <FilterSelect
               label="Квартиры"
               onValueChange={(value) => {
@@ -553,8 +538,6 @@ function ToolbarFilter({
                 Сохранить фильтры
               </Button>
             )}
-          </>
-        )}
         </div>
       </div>
 

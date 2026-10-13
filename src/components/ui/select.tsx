@@ -1,4 +1,5 @@
 import * as React from "react"
+import { createPortal } from "react-dom"
 import { ChevronDown, Star } from "lucide-react"
 
 import { Chip } from "@/components/ui/chip"
@@ -136,6 +137,13 @@ function Select({
   ...props
 }: SelectProps) {
   const selectRef = React.useRef<HTMLDivElement>(null)
+  const menuAnchorRef = React.useRef<HTMLDivElement>(null)
+  const menuLayerRef = React.useRef<HTMLDivElement>(null)
+  const [menuPosition, setMenuPosition] = React.useState<{
+    left: number
+    top: number
+    width: number
+  } | null>(null)
   const resolvedState: SelectState = disabled ? "default" : state
   const hasIcon = icon || startIcon
   const resolvedValue = resolveValue(value, "Value")
@@ -154,7 +162,11 @@ function Select({
     if (!expanded) return
 
     const handlePointerDown = (event: PointerEvent) => {
-      if (!selectRef.current?.contains(event.target as Node)) {
+      const target = event.target as Node
+      if (
+        !selectRef.current?.contains(target) &&
+        !menuLayerRef.current?.contains(target)
+      ) {
         onExpandedChange?.(false)
       }
     }
@@ -163,7 +175,38 @@ function Select({
     return () => document.removeEventListener("pointerdown", handlePointerDown)
   }, [expanded, onExpandedChange])
 
+  React.useLayoutEffect(() => {
+    if (!expanded || !menu) {
+      setMenuPosition(null)
+      return
+    }
+
+    const updateMenuPosition = () => {
+      const anchor = menuAnchorRef.current
+      if (!anchor) return
+
+      const rect = anchor.getBoundingClientRect()
+      setMenuPosition({ left: rect.left, top: rect.bottom, width: rect.width })
+    }
+
+    updateMenuPosition()
+    window.addEventListener("resize", updateMenuPosition)
+    window.addEventListener("scroll", updateMenuPosition, true)
+
+    const resizeObserver = typeof ResizeObserver === "undefined"
+      ? null
+      : new ResizeObserver(updateMenuPosition)
+    if (menuAnchorRef.current) resizeObserver?.observe(menuAnchorRef.current)
+
+    return () => {
+      window.removeEventListener("resize", updateMenuPosition)
+      window.removeEventListener("scroll", updateMenuPosition, true)
+      resizeObserver?.disconnect()
+    }
+  }, [expanded, menu])
+
   return (
+    <>
     <div className={cn("w-fit max-w-full", fullWidth && "w-full", className)} ref={selectRef} {...props}>
       {label !== false && (
         <label
@@ -178,7 +221,7 @@ function Select({
         </label>
       )}
 
-      <div className={cn("relative w-fit max-w-full", fullWidth && "w-full")}>
+      <div className={cn("relative w-fit max-w-full", fullWidth && "w-full")} ref={menuAnchorRef}>
         <div
           className={cn(
             "relative flex w-fit max-w-full items-center gap-[var(--rh-sizing-common-input-padding-gap-md)] rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150",
@@ -250,7 +293,6 @@ function Select({
         </span>
 
         </div>
-        {menu}
       </div>
 
       {helperText && (
@@ -262,6 +304,26 @@ function Select({
         </FormHelperText>
       )}
     </div>
+    {expanded && menu && menuPosition && typeof document !== "undefined"
+      ? createPortal(
+          <div
+            data-menu-portal
+            ref={menuLayerRef}
+            style={{
+              height: 0,
+              left: menuPosition.left,
+              position: "fixed",
+              top: menuPosition.top,
+              width: menuPosition.width,
+              zIndex: 50,
+            }}
+          >
+            {menu}
+          </div>,
+          document.body,
+        )
+      : null}
+    </>
   )
 }
 

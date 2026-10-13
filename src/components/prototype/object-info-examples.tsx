@@ -1,6 +1,5 @@
-import { ObjectInfo } from "@/components/ui/object-info";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ObjectInfo } from "@/components/ui/object-info";
 
 const usedComponents = [
   { href: "/Rhood/?view=components&component=button", title: "Button" },
@@ -17,7 +16,8 @@ function ObjectInfoExamples() {
   return (
     <ShowcaseSection
       description="Готовая композиция информации об объекте: header действий, основной контент и правая колонка. Помещается в Drawer или в страницу объекта без изменения состава."
-      showcase={<ShowcaseSurface className="overflow-x-auto" usedComponents={usedComponents}><div className="flex justify-center"><ObjectInfo /></div></ShowcaseSurface>}
+      usedComponents={usedComponents}
+      panels={[<div className="flex justify-center"><ObjectInfo /></div>]}
       title="Состав"
     />
   );

@@ -1,8 +1,6 @@
 import * as React from "react"
 
 import { Search } from "@/components/ui/search"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -26,19 +24,19 @@ function FieldCell({ children, label }: { children: React.ReactNode; label: stri
 export function SearchExamples() {
   return <div className="grid min-w-0 gap-10">
     <Section description="md — основной размер поля; sm — компактный вариант для плотных панелей и фильтров." settings={["size: md · sm"]} title="Размер">
-      <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="md"><Search placeholder="Поиск" size="md" /></FieldCell><FieldCell label="sm"><Search placeholder="Поиск" size="sm" /></FieldCell></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="md"><Search placeholder="Поиск" size="md" /></FieldCell><FieldCell label="sm"><Search placeholder="Поиск" size="sm" /></FieldCell></div></div></div>
     </Section>
 
     <Section description="Search использует neutral appearance по умолчанию. Передай default, чтобы показать белое поле с рамкой." settings={["appearance: neutral · default"]} title="Внешний вид">
-      <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="neutral"><Search placeholder="Поиск" /></FieldCell><FieldCell label="default"><Search appearance="default" placeholder="Поиск" /></FieldCell></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="neutral"><Search placeholder="Поиск" /></FieldCell><FieldCell label="default"><Search appearance="default" placeholder="Поиск" /></FieldCell></div></div></div>
     </Section>
 
     <Section description="Hover и focus относятся к состояниям интерактивного поля. Disabled имеет приоритет и блокирует ввод." settings={["state: default · hovered · focused", "disabled: boolean"]} title="Состояния">
-      <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3"><FieldCell label="default"><Search placeholder="Поиск" /></FieldCell><FieldCell label="hovered"><Search placeholder="Поиск" state="hovered" /></FieldCell><FieldCell label="focused"><Search placeholder="Поиск" state="focused" /></FieldCell><FieldCell label="disabled, empty"><Search disabled placeholder="Поиск" /></FieldCell><FieldCell label="disabled, value"><Search defaultValue="Квартиры" disabled /></FieldCell></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3"><FieldCell label="default"><Search placeholder="Поиск" /></FieldCell><FieldCell label="hovered"><Search placeholder="Поиск" state="hovered" /></FieldCell><FieldCell label="focused"><Search placeholder="Поиск" state="focused" /></FieldCell><FieldCell label="disabled, empty"><Search disabled placeholder="Поиск" /></FieldCell><FieldCell label="disabled, value"><Search defaultValue="Квартиры" disabled /></FieldCell></div></div></div>
     </Section>
 
     <Section description="Иконка поиска зафиксирована слева. Содержание поля задаётся стандартными props Input: placeholder, value и defaultValue." settings={["placeholder: string", "value: string", "defaultValue: string"]} title="Наполнение">
-      <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="Пустой"><Search placeholder="Поиск" /></FieldCell><FieldCell label="С значением"><Search defaultValue="Квартиры" /></FieldCell></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="Пустой"><Search placeholder="Поиск" /></FieldCell><FieldCell label="С значением"><Search defaultValue="Квартиры" /></FieldCell></div></div></div>
     </Section>
 
     <Section description="Основные настройки Search для реализации." title="Свойства">

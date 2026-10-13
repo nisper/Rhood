@@ -57,7 +57,7 @@ const prototypeViews: PrototypeView[] = [
 
 const showcaseNavigation = [
   { label: "Foundations", componentId: "colors" },
-  { label: "Components", componentId: "showcase-surface" },
+  { label: "Components", componentId: "showcase-section" },
   { label: "Layout", componentId: "main-header" },
   { label: "Features", componentId: "toolbar-filter" },
 ];

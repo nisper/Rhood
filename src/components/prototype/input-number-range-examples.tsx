@@ -1,8 +1,6 @@
 import * as React from "react"
 
 import { InputNumberRange } from "@/components/ui/input-number-range"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 
 function Section({ children, description, settings, title }: { children: React.ReactNode; description: string; settings: string[]; title: string }) {
   return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}<div className="grid gap-0.5">{settings.map((setting) => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div></section>
@@ -32,26 +30,26 @@ export function InputNumberRangeExamples() {
   return (
     <div className="grid min-w-0 gap-10">
       <Section description="md — основной размер, sm — компактный. Размер применяется к обоим числовым полям диапазона." settings={["size: md · sm"]} title="Размер">
-        <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="sm"><InputNumberRange endInputProps={inputProps} size="sm" startInputProps={inputProps} /></Cell></div></ShowcasePanel></ShowcaseSurface>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="sm"><InputNumberRange endInputProps={inputProps} size="sm" startInputProps={inputProps} /></Cell></div></div></div>
       </Section>
       <Section description="Neutral использует нейтральную заливку без рамки в default-состоянии. Остальные состояния совпадают с default appearance." settings={["appearance: default · neutral"]} title="Внешний вид">
-        <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="default"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="neutral"><InputNumberRange appearance="neutral" endInputProps={inputProps} startInputProps={inputProps} /></Cell></div></ShowcasePanel></ShowcaseSurface>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="default"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="neutral"><InputNumberRange appearance="neutral" endInputProps={inputProps} startInputProps={inputProps} /></Cell></div></div></div>
       </Section>
       <Section description="Состояние применяется сразу ко всей группе — оба поля остаются без собственных рамок." settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]} title="Состояния">
-        <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-2 lg:grid-cols-3">
           <Cell label="default"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell>
           <Cell label="hovered"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} state="hovered" /></Cell>
           <Cell label="focused"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} state="focused" /></Cell>
           <Cell label="error"><InputNumberRange endInputProps={inputProps} error startInputProps={inputProps} /></Cell>
           <Cell label="error focused"><InputNumberRange endInputProps={inputProps} error startInputProps={inputProps} state="focused" /></Cell>
           <Cell label="disabled"><InputNumberRange disabled endInputProps={inputProps} startInputProps={inputProps} /></Cell>
-        </div></ShowcasePanel></ShowcaseSurface>
+        </div></div></div>
       </Section>
       <Section description="Вложенные поля остаются пустыми: единица измерения и признак обязательности выводятся в отдельной необязательной секции после второго поля." settings={["startInputProps: InputNumberProps", "endInputProps: InputNumberProps", "unit: ReactNode", "separator: ReactNode"]} title="Наполнение">
-        <ShowcaseSurface><ShowcasePanel><div className="grid w-full gap-5 sm:grid-cols-2"><Cell label="value"><EditableRange /></Cell><Cell label="unit"><InputNumberRange endInputProps={{ value: "120" }} startInputProps={{ value: "25" }} unit="м²" /></Cell><Cell label="required"><InputNumberRange endInputProps={{ required: true, value: "120" }} startInputProps={{ required: true, value: "25" }} /></Cell><Cell label="groupThousands"><InputNumberRange endInputProps={{ groupThousands: true, value: "1000000" }} startInputProps={{ groupThousands: true, value: "500000" }} unit="₽" /></Cell></div></ShowcasePanel></ShowcaseSurface>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full gap-5 sm:grid-cols-2"><Cell label="value"><EditableRange /></Cell><Cell label="unit"><InputNumberRange endInputProps={{ value: "120" }} startInputProps={{ value: "25" }} unit="м²" /></Cell><Cell label="required"><InputNumberRange endInputProps={{ required: true, value: "120" }} startInputProps={{ required: true, value: "25" }} /></Cell><Cell label="groupThousands"><InputNumberRange endInputProps={{ groupThousands: true, value: "1000000" }} startInputProps={{ groupThousands: true, value: "500000" }} unit="₽" /></Cell></div></div></div>
       </Section>
       <Section description="Опциональный крестик показывается для заполненного поля, которое находится в фокусе." settings={["startInputProps.clearButton: boolean", "endInputProps.clearButton: boolean"]} title="Очистка ввода">
-        <ShowcaseSurface><ShowcasePanel><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><ClearableRange /></Cell><Cell label="sm"><ClearableRange size="sm" /></Cell></div></ShowcasePanel></ShowcaseSurface>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><ClearableRange /></Cell><Cell label="sm"><ClearableRange size="sm" /></Cell></div></div></div>
       </Section>
     </div>
   )

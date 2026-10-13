@@ -2,6 +2,7 @@ import * as React from 'react'
 import { CircleHelp, FileText, Headset, Presentation } from 'lucide-react'
 
 import { MenuDivider } from '@/components/ui/menu-divider'
+import { helpCenterLinks } from '@/components/ui/help-center-links'
 import { cn } from '@/lib/utils'
 
 type HelpCenterItem = {
@@ -14,26 +15,17 @@ type HelpCenterProps = React.ComponentProps<'div'> & {
   items?: HelpCenterItem[]
 }
 
-const defaultItems: HelpCenterItem[] = [
-  {
-    icon: <Headset aria-hidden="true" className="size-4" strokeWidth={2} />,
-    label: 'Техническая поддержка',
-  },
-  {
-    icon: <CircleHelp aria-hidden="true" className="size-4" strokeWidth={2} />,
-    label: 'Инструкция к сервису',
-  },
-  {
-    icon: (
-      <Presentation aria-hidden="true" className="size-4" strokeWidth={2} />
-    ),
-    label: 'Обучающий курс',
-  },
-  {
-    icon: <FileText aria-hidden="true" className="size-4" strokeWidth={2} />,
-    label: 'Договор оферты',
-  },
+const itemIcons = [
+  <Headset aria-hidden="true" className="size-4" strokeWidth={2} />,
+  <CircleHelp aria-hidden="true" className="size-4" strokeWidth={2} />,
+  <Presentation aria-hidden="true" className="size-4" strokeWidth={2} />,
+  <FileText aria-hidden="true" className="size-4" strokeWidth={2} />,
 ]
+
+const defaultItems: HelpCenterItem[] = helpCenterLinks.map((item, index) => ({
+  ...item,
+  icon: itemIcons[index],
+}))
 
 function HelpCenterRow({ href, icon, label }: HelpCenterItem) {
   const Comp = href ? 'a' : 'button'

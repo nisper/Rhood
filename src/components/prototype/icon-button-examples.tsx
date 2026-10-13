@@ -2,8 +2,6 @@ import * as React from "react"
 import { Heart } from "lucide-react"
 
 import { IconButton } from "@/components/ui/icon-button"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -25,19 +23,19 @@ function StateRow({ appearance }: { appearance: NonNullable<React.ComponentProps
 export function IconButtonExamples() {
   return <div className="grid min-w-0 gap-10">
     <Section description="Стиль определяет роль икон-кнопки в интерфейсе: primary — для главного действия, secondary и ghost — для второстепенных." settings={["appearance: primary · secondary · ghost · contrast · inherit"]} title="Стиль">
-      <ShowcaseSurface direction="vertical"><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><IconButton appearance="primary" /><IconButton appearance="secondary" /><IconButton appearance="ghost" /><IconButton appearance="inherit" /></div></ShowcasePanel><ShowcasePanel tone="transparent"><IconButton appearance="contrast" /></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-row auto-rows-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><IconButton appearance="primary" /><IconButton appearance="secondary" /><IconButton appearance="ghost" /><IconButton appearance="inherit" /></div></div><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4"><IconButton appearance="contrast" /></div></div>
     </Section>
 
     <Section description="md — размер по умолчанию; sm и xsm подходят для более плотных интерфейсов." settings={["size: md · sm · xsm"]} title="Размер">
-      <ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <IconButton appearance="secondary" key={size} size={size} />)}</div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <IconButton appearance="secondary" key={size} size={size} />)}</div></div></div>
     </Section>
 
     <Section description="Hover показывает реакцию на наведение. Состояние применяется также при передаче state='hovered' в витрине." settings={["state: default · hovered"]} title="Состояния">
-      <ShowcaseSurface direction="vertical"><ShowcasePanel><div className="grid w-full max-w-[360px] gap-2"><div className="grid grid-cols-2 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span></div>{(["primary", "secondary", "ghost", "inherit"] as const).map(appearance => <StateRow appearance={appearance} key={appearance} />)}</div></ShowcasePanel><ShowcasePanel tone="transparent"><div className="grid w-full max-w-[360px] gap-2"><div className="grid grid-cols-2 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span></div><StateRow appearance="contrast" /></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-row auto-rows-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[360px] gap-2"><div className="grid grid-cols-2 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span></div>{(["primary", "secondary", "ghost", "inherit"] as const).map(appearance => <StateRow appearance={appearance} key={appearance} />)}</div></div><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4"><div className="grid w-full max-w-[360px] gap-2"><div className="grid grid-cols-2 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span></div><StateRow appearance="contrast" /></div></div></div>
     </Section>
 
     <Section description="Иконка определяет действие. По умолчанию используется Star; для конкретного сценария передай свою через prop icon." settings={["icon: ReactNode · boolean"]} title="Состав">
-      <ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><IconButton appearance="secondary" /><IconButton appearance="secondary" icon={<Heart aria-hidden="true" strokeWidth={2} />} /></div></ShowcasePanel></ShowcaseSurface>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><IconButton appearance="secondary" /><IconButton appearance="secondary" icon={<Heart aria-hidden="true" strokeWidth={2} />} /></div></div></div>
     </Section>
 
     <Section description="Основные настройки IconButton для реализации." title="Свойства">

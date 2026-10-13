@@ -1,10 +1,8 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
-import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 
@@ -187,26 +185,17 @@ export function DrawerExamples() {
     <div className="grid min-w-0 gap-10">
       <ShowcaseSection
         description="До 767px включительно Drawer отображается как bottom sheet, полностью повторяя мобильный Modal; от 768px — как боковая панель на всю высоту экрана."
-        showcase={
-          <ShowcaseSurface
-            className="bg-[var(--rh-palette-neutral-600)] p-0"
-            direction="vertical"
-          >
-            <ShowcasePanel className="h-[844px] p-0" tone="transparent">
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 h-[844px] p-0">
               <DesktopDrawerPreview />
-            </ShowcasePanel>
-            <ShowcasePanel className="p-0" tone="transparent">
+            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 p-0">
               <MobileDrawerPreview />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Стиль"
       />
 
       <ShowcaseSection
         description="Публичные свойства Drawer и DrawerContainer для реализации."
-        showcase={
-          <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
+        panels={[<Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white">
             <div
               className="flex border-b border-[var(--parser-border-light)]"
               role="row"
@@ -244,8 +233,7 @@ export function DrawerExamples() {
                 ))}
               </div>
             ))}
-          </Table>
-        }
+          </Table>]}
         title="Свойства"
       />
     </div>

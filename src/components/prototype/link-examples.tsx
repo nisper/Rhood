@@ -1,10 +1,8 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react"
 import { ArrowUpRight, CodeXml } from "lucide-react"
 
 import { Link } from "@/components/ui/link"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSection } from "@/components/ui/showcase-section"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -78,25 +76,19 @@ export function LinkExamples() {
       <ShowcaseSection
         codeSnippet={sizeSnippet}
         description="b1 — размер по умолчанию; b2 подходит для плотных интерфейсов. Наведи курсор, чтобы увидеть hover-состояние."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <ExampleLink size="b1">Ссылка размером b1</ExampleLink>
                 <ExampleLink size="b2">Ссылка размером b2</ExampleLink>
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Размер"
       />
 
       <ShowcaseSection
         codeSnippet={compositionSnippet}
         description="Иконки уточняют назначение ссылки: слева — тип контента, справа — переход во внешний ресурс."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-center justify-center gap-4">
                 <ExampleLink>Документация</ExampleLink>
                 <ExampleLink startIcon={<CodeXml aria-hidden="true" />}>
@@ -112,9 +104,7 @@ export function LinkExamples() {
                   Документация
                 </ExampleLink>
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
 

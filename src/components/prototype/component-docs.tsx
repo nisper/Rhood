@@ -13,12 +13,17 @@ import { TokenSizingExamples } from "./token-sizing-examples";
 import { ButtonExamples } from "./button-examples";
 import { LikeButtonExamples } from "./like-button-examples";
 import { LinkExamples } from "./link-examples";
-import { ShowcaseExamples } from "./showcase-examples";
 import { ShowcaseSectionExamples } from "./showcase-section-examples";
 import { CheckboxExamples } from "./checkbox-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
+import { RoominessSelectExamples } from "./roominess-select-examples";
+import {
+  AreaSelectExamples,
+  FloorSelectExamples,
+  PriceSelectExamples,
+} from "./empty-filter-select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
@@ -29,6 +34,7 @@ import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
 import { PhotoGalleryExamples } from "./photo-gallery-examples";
+import { PaginationExamples } from "./pagination-examples";
 import { ObjectBuyersExamples, ObjectBuyersV2Examples } from "./object-buyers-examples";
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
@@ -36,6 +42,8 @@ import { ExpandableContentExamples } from "./expandable-content-examples";
 import { AvatarExamples } from "./avatar-examples";
 import { CommentsExamples } from "./comments-examples";
 import { MainHeaderExamples } from "./main-header-examples";
+import { FooterExamples } from "./footer-examples";
+import { ArchiveToolbarFilterExamples } from "./archive-toolbar-filter-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
@@ -94,11 +102,66 @@ function getComponentNavigationGroup(
   if (group === "Foundations" || group === "Layout") return group;
   if (
     group === "Features" ||
+    group === "Фильтр объектов" ||
     group === "Выдача объектов" ||
     group === "Коммуникации"
   ) return "Features";
   return "Components";
 }
+
+const emptyFilterSelectProperties = [
+  {
+    name: "defaultExpanded",
+    values: "boolean",
+    defaultValue: "false",
+    description: "Начальное состояние меню при неконтролируемом использовании.",
+  },
+  {
+    name: "expanded",
+    values: "boolean",
+    defaultValue: "—",
+    description: "Управляет открытым состоянием меню извне.",
+  },
+  {
+    name: "onExpandedChange",
+    values: "(expanded) => void",
+    defaultValue: "—",
+    description: "Вызывается при изменении или закрытии меню вне компонента.",
+  },
+  {
+    name: "size",
+    values: "md · sm",
+    defaultValue: "md",
+    description: "Размер поля и типографики значения.",
+  },
+  {
+    name: "disabled",
+    values: "boolean",
+    defaultValue: "false",
+    description: "Блокирует взаимодействие с полем.",
+  },
+  {
+    name: "label",
+    values: "ReactNode · false",
+    defaultValue: "false",
+    description: "Подпись над полем; false скрывает её.",
+  },
+];
+
+const archiveToolbarFilterProperties = [
+  {
+    name: "contentWidth",
+    values: "full · container",
+    defaultValue: "full",
+    description: "Ширина содержимого: по всей области или в контейнере страницы.",
+  },
+  {
+    name: "…props",
+    values: "ComponentProps&lt;\"section\"&gt;",
+    defaultValue: "—",
+    description: "Нативные свойства корневого section-элемента.",
+  },
+];
 
 function Canvas({
   children,
@@ -179,77 +242,6 @@ const componentDocs: ComponentDoc[] = [
     render: () => <AdaptiveExamples />,
   },
   {
-    id: "showcase-surface",
-    title: "Showcase surface",
-    description: "Поверхность для композиции примеров в Витрине компонентов.",
-    group: "Showcase",
-    properties: [
-      {
-        name: "ShowcaseSurface.background",
-        values: "muted · white",
-        defaultValue: "muted",
-        description:
-          "Фон общей поверхности; transparent-панели показывают его.",
-      },
-      {
-        name: "ShowcaseSurface radius",
-        values: "16 px",
-        defaultValue: "16 px",
-        description:
-          "Скругление общей поверхности, как у парных блоков Button.",
-      },
-      {
-        name: "ShowcaseSurface padding",
-        values: "4 px",
-        defaultValue: "4 px",
-        description: "Внутренний отступ и зазор между панелями.",
-      },
-      {
-        name: "ShowcaseSurface.direction",
-        values: "horizontal · vertical",
-        defaultValue: "horizontal",
-        description: "Расположение вложенных панелей в строку или столбец.",
-      },
-      {
-        name: "ShowcaseSurface.children",
-        values: "ReactNode",
-        defaultValue: "—",
-        description:
-          "Один или несколько ShowcasePanel; число панелей задаётся их количеством.",
-      },
-      {
-        name: "ShowcaseSurface.usedComponents",
-        values: "{ title, href }[]",
-        defaultValue: "—",
-        description:
-          "Опциональный список ссылок на компоненты, использованные в примере.",
-      },
-      {
-        name: "ShowcasePanel.tone",
-        values: "white · transparent",
-        defaultValue: "white",
-        description:
-          "Белая карточка или прозрачная панель на фоне ShowcaseSurface.",
-      },
-      {
-        name: "ShowcasePanel padding",
-        values: "24 px по горизонтали",
-        defaultValue: "24 px",
-        description:
-          "Внутренние горизонтальные отступы панели; вертикальные — 16 px.",
-      },
-      {
-        name: "ShowcasePanel radius",
-        values: "12 px",
-        defaultValue: "12 px",
-        description: "Скругление панели, как в демонстрационных блоках Button.",
-      },
-    ],
-    source:
-      "src/components/ui/showcase-surface.tsx · src/components/ui/showcase-panel.tsx",
-    render: () => <ShowcaseExamples />,
-  },
-  {
     id: "showcase-section",
     title: "Showcase section",
     description:
@@ -269,10 +261,28 @@ const componentDocs: ComponentDoc[] = [
         description: "Текст, который поясняет назначение примера.",
       },
       {
-        name: "showcase",
-        values: "ReactNode",
+        name: "panels",
+        values: "ReactNode[]",
         defaultValue: "—",
-        description: "ShowcaseSurface с демонстрацией компонента.",
+        description: "Содержимое панелей для демонстрации компонента.",
+      },
+      {
+        name: "direction",
+        values: "horizontal · vertical",
+        defaultValue: "horizontal",
+        description: "Расположение панелей в строку или столбец.",
+      },
+      {
+        name: "usedComponents",
+        values: "{ href, title }[]",
+        defaultValue: "—",
+        description: "Ссылки на компоненты, использованные в примере.",
+      },
+      {
+        name: "panelCount",
+        values: "number",
+        defaultValue: "авто",
+        description: "Количество колонок или строк в композиции панелей.",
       },
       {
         name: "codeSnippet",
@@ -561,6 +571,41 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=348-8648",
     source: "src/components/ui/select.tsx",
     render: () => <SelectExamples />,
+  },
+  {
+    id: "roominess",
+    title: "Комнатность",
+    description: "Мультиселект для выбора количества комнат.",
+    group: "Фильтр объектов",
+    source: "src/components/ui/roominess-select.tsx",
+    render: () => <RoominessSelectExamples />,
+  },
+  {
+    id: "area-select",
+    title: "Площадь",
+    description: "Селект площади с пустым выпадающим меню.",
+    group: "Фильтр объектов",
+    properties: emptyFilterSelectProperties,
+    source: "src/components/ui/area-select.tsx",
+    render: () => <AreaSelectExamples />,
+  },
+  {
+    id: "price-select",
+    title: "Цена",
+    description: "Селект цены с пустым выпадающим меню.",
+    group: "Фильтр объектов",
+    properties: emptyFilterSelectProperties,
+    source: "src/components/ui/price-select.tsx",
+    render: () => <PriceSelectExamples />,
+  },
+  {
+    id: "floor-select",
+    title: "Этаж",
+    description: "Селект этажа с пустым выпадающим меню.",
+    group: "Фильтр объектов",
+    properties: emptyFilterSelectProperties,
+    source: "src/components/ui/floor-select.tsx",
+    render: () => <FloorSelectExamples />,
   },
   {
     id: "search",
@@ -1075,6 +1120,14 @@ const componentDocs: ComponentDoc[] = [
     render: () => <TabExamples />,
   },
   {
+    id: "pagination",
+    title: "Pagination",
+    description: "Навигация по страницам с текущим номером и компактным отображением диапазонов.",
+    group: "Navigation",
+    source: "src/components/ui/pagination.tsx",
+    render: () => <PaginationExamples />,
+  },
+  {
     id: "island",
     title: "Island",
     description: "Белая поверхность со скруглением и внешним отступом 24 px для размещения над фоном страницы.",
@@ -1138,7 +1191,7 @@ const componentDocs: ComponentDoc[] = [
         name: "controls",
         values: "boolean",
         defaultValue: "true",
-        description: "Показывает help и меню профиля.",
+        description: "Показывает меню профиля.",
       },
       {
         name: "logoHref",
@@ -1175,12 +1228,49 @@ const componentDocs: ComponentDoc[] = [
     render: () => <MainHeaderExamples />,
   },
   {
+    id: "footer",
+    title: "Footer",
+    description: "Футер страницы.",
+    group: "Layout",
+    properties: [
+      {
+        name: "sections",
+        values: "FooterSection[]",
+        defaultValue: "Разделы и Помощь",
+        description: "Группы ссылок, отображаемые в колонках футера.",
+      },
+      {
+        name: "className",
+        values: "string",
+        defaultValue: "—",
+        description: "Дополнительные классы для оформления и компоновки.",
+      },
+      {
+        name: "…props",
+        values: "ComponentProps&lt;\"footer\"&gt;",
+        defaultValue: "—",
+        description: "Нативные свойства footer-элемента.",
+      },
+    ],
+    source: "src/components/ui/footer.tsx",
+    render: () => <FooterExamples />,
+  },
+  {
     id: "toolbar-filter",
     title: "ToolbarFilter",
     description: "Панель фильтров.",
-    group: "Выдача объектов",
+    group: "Фильтр объектов",
     source: "src/components/ui/toolbar-filter.tsx",
     render: () => <ToolbarFilterExamples />,
+  },
+  {
+    id: "archive-toolbar-filter",
+    title: "ArchiveToolbarFilter",
+    description: "Панель фильтров страницы «Архив».",
+    group: "Фильтр объектов",
+    properties: archiveToolbarFilterProperties,
+    source: "src/components/ui/archive-toolbar-filter.tsx",
+    render: () => <ArchiveToolbarFilterExamples />,
   },
   {
     id: "list",
@@ -1865,6 +1955,7 @@ const ComponentNavigation = React.forwardRef<
     "list",
     "typography",
     "table",
+    "photo-gallery",
     "checkbox",
     "clear-button",
     "text-field",

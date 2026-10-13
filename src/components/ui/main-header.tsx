@@ -1,12 +1,13 @@
 import * as React from "react";
-import { CircleHelp, Menu as MenuIcon } from "lucide-react";
+import { Menu as MenuIcon } from "lucide-react";
 
 import { Avatar } from "@/components/ui/avatar";
-import { HelpCenter } from "@/components/ui/help-center";
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
+import { Tab } from "@/components/ui/tab";
+import { TabBar } from "@/components/ui/tab-bar";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +28,7 @@ type MainHeaderProps = React.ComponentProps<"header"> & {
   contentWidth?: "full" | "container";
   controls?: boolean;
   logoHref?: string;
-  navAlign?: "start" | "end";
+  navAlign?: "start" | "center" | "end";
   navItems?: MainHeaderNavItem[];
   resp?: "mob" | "desk";
 };
@@ -45,7 +46,7 @@ function MainHeader({
   contentWidth = "full",
   controls = true,
   logoHref,
-  navAlign = "start",
+  navAlign = "center",
   navItems = defaultNavItems,
   resp = "desk",
   ...props
@@ -55,32 +56,26 @@ function MainHeader({
     contentWidth === "container"
       ? "rhood-layout-container"
       : "rhood-page-gutter";
-  const helpMenuRef = React.useRef<HTMLDivElement | null>(null);
   const avatarMenuRef = React.useRef<HTMLDivElement | null>(null);
-  const [isHelpMenuOpen, setIsHelpMenuOpen] = useMenuOpen(helpMenuRef);
   const [isAvatarMenuOpen, setIsAvatarMenuOpen] = useMenuOpen(avatarMenuRef);
 
   React.useEffect(() => {
     function handlePointerDown(event: MouseEvent) {
       const target = event.target as Node;
 
-      if (!helpMenuRef.current?.contains(target)) {
-        setIsHelpMenuOpen(false);
-      }
-
       if (!avatarMenuRef.current?.contains(target)) {
         setIsAvatarMenuOpen(false);
       }
     }
 
-    if (isHelpMenuOpen || isAvatarMenuOpen) {
+    if (isAvatarMenuOpen) {
       document.addEventListener("mousedown", handlePointerDown);
     }
 
     return () => {
       document.removeEventListener("mousedown", handlePointerDown);
     };
-  }, [isAvatarMenuOpen, isHelpMenuOpen, setIsAvatarMenuOpen, setIsHelpMenuOpen]);
+  }, [isAvatarMenuOpen, setIsAvatarMenuOpen]);
 
   if (isMobile) {
     return (
@@ -148,94 +143,66 @@ function MainHeader({
         </div>
 
         <nav
-          className={cn("flex items-center gap-1", navAlign === "end" && "ml-auto")}
+          className={cn(
+            "flex items-center",
+            navAlign === "center" && "absolute left-1/2 -translate-x-1/2",
+            navAlign === "end" && "ml-auto",
+          )}
         >
-          {navItems.map((item) => {
-            const className = cn(
-              "group inline-flex cursor-pointer items-center justify-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] px-2 py-2",
-              item.active || item.state === "hovered"
-                ? "gap-2"
-                : "gap-1 hover:gap-2",
-            );
-            const content = (
-              <>
-                <span
-                  className={cn(
-                    "rh-typography-b1 whitespace-nowrap font-[500]",
-                    item.active || item.state === "hovered"
-                      ? "text-[var(--rh-theme-text-neutral-primary)]"
-                      : "text-[var(--rh-theme-text-neutral-secondary)] group-hover:text-[var(--rh-theme-text-neutral-primary)]",
-                  )}
-                  style={{ fontVariationSettings: "'wdth' 100" }}
-                >
+          <TabBar className="border-b-0">
+            {navItems.map((item) => {
+              const label = (
+                <span className="inline-flex items-center gap-2">
                   {item.label}
-                </span>
-                {item.propNew && (
-                  <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
-                    <span
-                      className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
-                      style={{ fontVariationSettings: "'wdth' 100" }}
-                    >
-                      НОВОЕ
+                  {item.propNew && (
+                    <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
+                      <span
+                        className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
+                        style={{ fontVariationSettings: "'wdth' 100" }}
+                      >
+                        НОВОЕ
+                      </span>
                     </span>
-                  </span>
-                )}
-              </>
-            );
+                  )}
+                </span>
+              );
+              const tab = (
+                <Tab label={label} selected={item.active} state={item.state} />
+              );
 
-            return item.href ? (
-              <a
-                aria-current={item.active ? "page" : undefined}
-                className={className}
-                href={item.href}
-                key={item.label}
-              >
-                {content}
-              </a>
-            ) : (
-              <button
-                className={className}
-                key={item.label}
-                onClick={item.onClick}
-                type="button"
-              >
-                {content}
-              </button>
-            );
-          })}
+              return item.href ? (
+                <a
+                  aria-current={item.active ? "page" : undefined}
+                  className="cursor-pointer"
+                  href={item.href}
+                  key={item.label}
+                >
+                  {tab}
+                </a>
+              ) : (
+                <button
+                  aria-current={item.active ? "page" : undefined}
+                  className="cursor-pointer border-0 bg-transparent p-0"
+                  key={item.label}
+                  onClick={item.onClick}
+                  type="button"
+                >
+                  {tab}
+                </button>
+              );
+            })}
+          </TabBar>
         </nav>
 
         {controls && (
           <div className="ml-auto flex h-[34px] shrink-0 items-center gap-2">
-          <div ref={helpMenuRef} className="relative">
-            <IconButton
-              appearance="inherit"
-              aria-expanded={isHelpMenuOpen}
-              aria-haspopup="menu"
-              aria-label="Help"
-              className="text-[var(--rh-theme-icon-neutral-primary)]"
-              icon={<CircleHelp aria-hidden="true" strokeWidth={2} />}
-              onClick={() => {
-                setIsHelpMenuOpen((open) => !open);
-                setIsAvatarMenuOpen(false);
-              }}
-              size="sm"
-            />
-
-            {isHelpMenuOpen && (
-              <HelpCenter className="absolute right-0 top-full z-20 mt-2" />
-            )}
-          </div>
           <div ref={avatarMenuRef} className="relative shrink-0">
           <button
             aria-expanded={isAvatarMenuOpen}
             aria-haspopup="menu"
             aria-label="Профиль"
             className="cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-text-brand)]"
-            onClick={() => {
-              setIsAvatarMenuOpen((open) => !open);
-              setIsHelpMenuOpen(false);
-            }}
+            onClick={() => setIsAvatarMenuOpen((open) => !open)}
             type="button"
           >
             <Avatar size="32px" type="image" />

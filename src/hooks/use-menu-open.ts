@@ -46,7 +46,14 @@ function useMenuOpen(
     if (!isOpen || !containerRef) return
 
     function handlePointerDown(event: PointerEvent) {
-      if (!containerRef?.current?.contains(event.target as Node)) {
+      const target = event.target
+      const isPortaledMenu =
+        target instanceof Element && target.closest("[data-menu-portal]")
+
+      if (
+        !containerRef?.current?.contains(target as Node) &&
+        !isPortaledMenu
+      ) {
         setOpen(false)
       }
     }

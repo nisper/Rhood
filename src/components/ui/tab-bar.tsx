@@ -1,21 +1,26 @@
 import * as React from "react"
 
-import { Tab } from "@/components/ui/tab"
+import { Tab, type TabDirection } from "@/components/ui/tab"
 import { cn } from "@/lib/utils"
 
 type TabBarProps = React.ComponentProps<"div"> & {
-  disGutters?: boolean
+  direction?: TabDirection
 }
 
 /**
  * Parser tab bar matching the Figma `TabBar` component.
  */
-function TabBar({ children, className, disGutters = false, ...props }: TabBarProps) {
+function TabBar({
+  children,
+  className,
+  direction = "horizontal",
+  ...props
+}: TabBarProps) {
   const defaultTabs = (
     <>
-      <Tab disGutters={disGutters} selected />
-      <Tab disGutters={disGutters} />
-      <Tab disGutters={disGutters} />
+      <Tab selected />
+      <Tab />
+      <Tab />
     </>
   )
 
@@ -23,7 +28,8 @@ function TabBar({ children, className, disGutters = false, ...props }: TabBarPro
     <div
       className={cn(
         "flex items-start border-b border-[color:var(--rh-theme-border-light)]",
-        disGutters && "gap-[var(--rh-sizing-tabs-padding-gap)]",
+        direction === "horizontal" && "gap-[var(--rh-sizing-base-module-2)]",
+        direction === "vertical" && "gap-0",
         className,
       )}
       {...props}

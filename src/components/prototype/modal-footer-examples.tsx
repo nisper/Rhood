@@ -1,17 +1,13 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import { Button } from "@/components/ui/button";
 import { ModalFooter } from "@/components/ui/modal-footer";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
-import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 
 export function ModalFooterExamples() {
   return (
     <section className="grid gap-3">
       <ShowcaseSection
         description="Базовый состав: одно или несколько действий, выровненных по правому краю."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <ShowcasePanel className="p-0">
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white p-0">
               <ModalFooter>
                 <Button appearance="default" endIcon={false} startIcon={false}>
                   Отмена
@@ -20,9 +16,7 @@ export function ModalFooterExamples() {
                   Сохранить
                 </Button>
               </ModalFooter>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
     </section>

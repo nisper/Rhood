@@ -1,10 +1,8 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
-import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 
 const photos = [
   { alt: "Гостиная объекта", src: "/Rhood/assets/obj-livingroom.jpg" },
@@ -72,20 +70,9 @@ function PhotoGalleryExamples() {
       <ShowcaseSection
         codeSnippet={codeSnippet}
         description="Передавай фотографии и, при необходимости, данные для боковой панели. Галерея не зависит от типа сущности. Переключай фотографии миниатюрами, кнопками или стрелками на клавиатуре."
-        showcase={
-          <ShowcaseSurface
-            className="overflow-x-auto"
-            usedComponents={[
-              { href: "/Rhood/?view=components&component=modal", title: "Modal" },
-              { href: "/Rhood/?view=components&component=icon-button", title: "IconButton" },
-              { href: "/Rhood/?view=components&component=expandable-content", title: "ExpandableContent" },
-            ]}
-          >
-            <ShowcasePanel className="w-full items-center overflow-x-auto p-0" tone="transparent">
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 w-full items-center overflow-x-auto p-0">
               <PhotoGalleryDemo />
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
 

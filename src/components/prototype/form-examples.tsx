@@ -1,9 +1,7 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import { Button } from "@/components/ui/button"
 import { FormBlock } from "@/components/ui/form-block"
 import { FormSet } from "@/components/ui/form-set"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSection } from "@/components/ui/showcase-section"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 import { Textfield } from "@/components/ui/text-field"
 
 function CodeSyntax({ children }: { children: React.ReactNode }) {
@@ -44,9 +42,7 @@ export function FormExamples() {
       <ShowcaseSection
         codeSnippet={<FormBlockSnippet />}
         description="FormBlock объединяет FormLabel и контрол. В column лейбл располагается сверху, а в row получает стандартный верхний отступ."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[640px] gap-6">
                 <FormBlock label="Имя">
                   <Textfield aria-label="Имя" placeholder="Введите имя" />
@@ -55,18 +51,14 @@ export function FormExamples() {
                   <Textfield aria-label="Электронная почта" placeholder="name@example.com" type="email" />
                 </FormBlock>
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="Состав"
       />
 
       <ShowcaseSection
         codeSnippet={<FormSetSnippet />}
         description="FormSet располагает FormBlock в столбец или строку и задаёт одинаковое расстояние между ними."
-        showcase={
-          <ShowcaseSurface>
-            <ShowcasePanel>
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[640px] gap-6">
                 <form onSubmit={(event) => event.preventDefault()}>
                   <FormSet>
@@ -90,9 +82,7 @@ export function FormExamples() {
                   </FormBlock>
                 </FormSet>
               </div>
-            </ShowcasePanel>
-          </ShowcaseSurface>
-        }
+            </div>]}
         title="FormSet"
       />
     </div>

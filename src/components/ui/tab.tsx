@@ -8,7 +8,7 @@ type TabDirection = "horizontal" | "vertical";
 
 type TabProps = React.ComponentProps<"div"> & {
   direction?: TabDirection;
-  disGutters?: boolean;
+  indicator?: boolean;
   label?: React.ReactNode;
   secondaryLabel?: React.ReactNode;
   secondaryText?: boolean;
@@ -19,29 +19,27 @@ type TabProps = React.ComponentProps<"div"> & {
 
 function getRootClasses({
   direction,
-  disGutters,
+  indicator,
   selected,
-}: Pick<TabProps, "direction" | "disGutters" | "selected">) {
+}: Pick<TabProps, "direction" | "indicator" | "selected">) {
   const isHorizontal = direction === "horizontal";
 
   if (isHorizontal) {
     return cn(
       "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
       selected &&
+        indicator &&
         "border-b-2 border-[color:var(--rh-theme-text-neutral-primary)]",
-      disGutters
-        ? "min-w-[38px] py-[var(--rh-sizing-tabs-padding-py)]"
-        : "px-[var(--rh-sizing-common-input-padding-px-lg)] py-[var(--rh-sizing-tabs-padding-py)]",
+      "py-[var(--rh-sizing-tabs-padding-py)]",
     );
   }
 
   return cn(
     "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
     selected &&
+      indicator &&
       "border-l-2 border-[color:var(--rh-theme-text-neutral-primary)]",
-    disGutters
-      ? "px-[var(--rh-sizing-tabs-padding-px)]"
-      : "px-[var(--rh-sizing-tabs-padding-px)] py-[var(--rh-sizing-tabs-padding-py)]",
+    "px-[var(--rh-sizing-tabs-padding-px)] py-[var(--rh-sizing-tabs-padding-py)]",
   );
 }
 
@@ -57,7 +55,7 @@ function getToneClass(selected: boolean) {
 function Tab({
   className,
   direction = "horizontal",
-  disGutters = false,
+  indicator = true,
   label = "Tab",
   secondaryLabel = "Tab",
   secondaryText = false,
@@ -72,7 +70,7 @@ function Tab({
   return (
     <div
       className={cn(
-        getRootClasses({ direction, disGutters, selected }),
+        getRootClasses({ direction, indicator, selected }),
         className,
       )}
       {...props}
@@ -97,7 +95,10 @@ function Tab({
       >
         <p
           className={cn(
-            "rh-typography-b2-med relative shrink-0",
+            cn(
+              selected ? "rh-typography-b2-med" : "rh-typography-b2",
+              "relative shrink-0",
+            ),
             isHorizontal && "whitespace-nowrap",
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}

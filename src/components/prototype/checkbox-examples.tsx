@@ -1,8 +1,6 @@
 import * as React from "react";
 
 import { Checkbox } from "@/components/ui/checkbox";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 
@@ -114,14 +112,14 @@ export function CheckboxExamples() {
         settings={["size: md · sm"]}
         title="Размер"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid gap-3">
               <StateRow size="md">Medium</StateRow>
               <StateRow size="sm">Small</StateRow>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -129,8 +127,8 @@ export function CheckboxExamples() {
         settings={["checked: boolean", "indeterminate: boolean"]}
         title="Значение"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
               <StateRow>Unchecked</StateRow>
               <StateRow checked>Checked</StateRow>
@@ -138,8 +136,8 @@ export function CheckboxExamples() {
                 Indeterminate
               </StateRow>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -147,8 +145,8 @@ export function CheckboxExamples() {
         settings={["checked: boolean", "onChange: (event) => void"]}
         title="Выбор"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid">
               <StateRow
                 checked={allOptionsSelected}
@@ -169,8 +167,8 @@ export function CheckboxExamples() {
                 </StateRow>
               ))}
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -178,8 +176,8 @@ export function CheckboxExamples() {
         settings={["state: default · hovered", "error: boolean", "disabled: boolean"]}
         title="Состояния"
       >
-        <ShowcaseSurface direction="vertical">
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-row auto-rows-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid w-full max-w-[640px] grid-cols-2 gap-x-8 gap-y-2">
               <StateRow state="hovered">Hovered</StateRow>
               <StateRow checked state="hovered">
@@ -188,8 +186,8 @@ export function CheckboxExamples() {
               <StateRow error>Error</StateRow>
               <StateRow disabled>Disabled</StateRow>
             </div>
-          </ShowcasePanel>
-          <ShowcasePanel tone="transparent">
+          </div>
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4">
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
               <StateRow checked disabled>
                 Checked disabled
@@ -198,8 +196,8 @@ export function CheckboxExamples() {
                 Indeterminate disabled
               </StateRow>
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -207,15 +205,15 @@ export function CheckboxExamples() {
         settings={["label: boolean", "skeleton: boolean"]}
         title="Состав"
       >
-        <ShowcaseSurface>
-          <ShowcasePanel>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2">
               <StateRow label={false} />
               <StateRow skeleton />
               <StateRow size="sm" skeleton />
             </div>
-          </ShowcasePanel>
-        </ShowcaseSurface>
+          </div>
+        </div>
       </Section>
 
       <Section

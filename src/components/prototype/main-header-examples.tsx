@@ -1,9 +1,7 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import type { MainHeaderNavItem } from "@/components/ui/main-header";
 import { MainHeader } from "@/components/ui/main-header";
 import type { ReactNode } from "react";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
-import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
 
 const defaultNavigation: MainHeaderNavItem[] = [
   { active: true, label: "Набор базы" },
@@ -42,7 +40,7 @@ function CodeProp({ name, value }: { name: string; value: string }) {
 }
 
 function HeaderPanel({ children }: { children: ReactNode }) {
-  return <ShowcasePanel className="min-h-0 p-0">{children}</ShowcasePanel>;
+  return <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white min-h-0 p-0">{children}</div>;
 }
 
 function MainHeaderExamples() {
@@ -51,13 +49,9 @@ function MainHeaderExamples() {
       <ShowcaseSection
         codeSnippet={<MainHeaderSnippet />}
         description="У MainHeader нет визуальных вариантов: он использует единый стиль для навигации и управляющих элементов продукта."
-        showcase={
-          <ShowcaseSurface>
-            <HeaderPanel>
+        panels={[<HeaderPanel>
               <MainHeader navItems={defaultNavigation} />
-            </HeaderPanel>
-          </ShowcaseSurface>
-        }
+            </HeaderPanel>]}
         title="Стиль"
       />
 
@@ -68,16 +62,11 @@ function MainHeaderExamples() {
           </MainHeaderSnippet>
         }
         description="Размер не настраивается отдельно. resp переключает desktop- и mobile-варианты хедера."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <HeaderPanel>
+        panels={[<HeaderPanel>
               <MainHeader navItems={defaultNavigation} />
-            </HeaderPanel>
-            <HeaderPanel>
+            </HeaderPanel>, <HeaderPanel>
               <MainHeader resp="mob" />
-            </HeaderPanel>
-          </ShowcaseSurface>
-        }
+            </HeaderPanel>]}
         title="Размер"
       />
 
@@ -88,16 +77,11 @@ function MainHeaderExamples() {
           </MainHeaderSnippet>
         }
         description="Активный пункт отмечает текущий раздел. Для демонстрации состояния наведения передай state: hovered в соответствующий элемент navItems; нативный hover работает при наведении."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <HeaderPanel>
+        panels={[<HeaderPanel>
               <MainHeader navItems={defaultNavigation} />
-            </HeaderPanel>
-            <HeaderPanel>
+            </HeaderPanel>, <HeaderPanel>
               <MainHeader navItems={hoveredNavigation} />
-            </HeaderPanel>
-          </ShowcaseSurface>
-        }
+            </HeaderPanel>]}
         title="Состояния"
       />
 
@@ -108,17 +92,12 @@ function MainHeaderExamples() {
             <CodeProp name="contentWidth" value='"container"' />
           </MainHeaderSnippet>
         }
-        description="Состав включает логотип, навигацию и управляющие элементы. controls скрывает help и профиль, а contentWidth ограничивает содержимое контейнером страницы."
-        showcase={
-          <ShowcaseSurface direction="vertical">
-            <HeaderPanel>
+        description="Состав включает логотип, навигацию и меню профиля. controls скрывает меню профиля, а contentWidth ограничивает содержимое контейнером страницы."
+        panels={[<HeaderPanel>
               <MainHeader controls={false} contentWidth="container" navAlign="end" navItems={defaultNavigation} />
-            </HeaderPanel>
-            <HeaderPanel>
+            </HeaderPanel>, <HeaderPanel>
               <MainHeader navItems={defaultNavigation} />
-            </HeaderPanel>
-          </ShowcaseSurface>
-        }
+            </HeaderPanel>]}
         title="Состав"
       />
     </div>

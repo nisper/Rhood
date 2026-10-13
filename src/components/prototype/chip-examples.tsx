@@ -1,9 +1,7 @@
+import { ShowcaseSection } from "@/components/ui/showcase-section";
 import * as React from "react"
 
 import { Chip } from "@/components/ui/chip"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSection } from "@/components/ui/showcase-section"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -39,12 +37,12 @@ function AppearanceRow({ appearance }: { appearance: React.ComponentProps<typeof
 
 export function ChipExamples() {
   return <div className="grid min-w-0">
-    <ShowcaseSection codeSnippet={appearanceSnippet} description="Два стиля из Figma работают с каждой цветовой темой: muted и default." showcase={<ShowcaseSurface direction="vertical">{appearances.map((appearance) => <ShowcasePanel key={appearance}><div className="grid gap-2"><p className="text-center text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">{appearance}</p><AppearanceRow appearance={appearance} /></div></ShowcasePanel>)}</ShowcaseSurface>} title="Стиль" />
+    <ShowcaseSection codeSnippet={appearanceSnippet} description="Два стиля из Figma работают с каждой цветовой темой: muted и default." panels={[appearances.map((appearance) => <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white" key={appearance}><div className="grid gap-2"><p className="text-center text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">{appearance}</p><AppearanceRow appearance={appearance} /></div></div>)]} title="Стиль" />
 
-    <ShowcaseSection codeSnippet={sizeSnippet} description="Размер управляет отступами, типографикой и габаритами иконок." showcase={<ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3">{sizes.map((size) => <Chip appearance="muted" color="neutral" key={size} remove={false} size={size}>{size}</Chip>)}</div></ShowcasePanel></ShowcaseSurface>} title="Размер" />
+    <ShowcaseSection codeSnippet={sizeSnippet} description="Размер управляет отступами, типографикой и габаритами иконок." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3">{sizes.map((size) => <Chip appearance="muted" color="neutral" key={size} remove={false} size={size}>{size}</Chip>)}</div></div>]} title="Размер" />
 
-    <ShowcaseSection codeSnippet={compositionSnippet} description="Состав чипа настраивается независимо: иконка, подпись и кнопка удаления." showcase={<ShowcaseSurface><ShowcasePanel><div className="flex flex-wrap items-center justify-center gap-3"><Chip appearance="muted" remove={false}>Только иконка и подпись</Chip><Chip appearance="muted" icon={false} remove={false}>Только подпись</Chip><Chip appearance="muted" label={false} remove={false} /><Chip appearance="muted" icon={false}>С удалением</Chip></div></ShowcasePanel></ShowcaseSurface>} title="Состав" />
+    <ShowcaseSection codeSnippet={compositionSnippet} description="Состав чипа настраивается независимо: иконка, подпись и кнопка удаления." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><Chip appearance="muted" remove={false}>Только иконка и подпись</Chip><Chip appearance="muted" icon={false} remove={false}>Только подпись</Chip><Chip appearance="muted" label={false} remove={false} /><Chip appearance="muted" icon={false}>С удалением</Chip></div></div>]} title="Состав" />
 
-    <ShowcaseSection description="Публичные свойства Chip для реализации." showcase={<Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white"><div className="flex border-b border-[var(--parser-border-light)]" role="row">{["Свойство", "Значения", "По умолчанию", "Назначение"].map((title, index) => <TableCell helpIcon={false} key={title} role="head" sort={false} type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{title}</TableCell>)}</div>{properties.map((row) => <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" key={row[0]} role="row">{row.map((cell, index) => <TableCell key={index} role="body" type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{cell}</TableCell>)}</div>)}</Table>} title="Свойства" />
+    <ShowcaseSection description="Публичные свойства Chip для реализации." panels={[<Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-white"><div className="flex border-b border-[var(--parser-border-light)]" role="row">{["Свойство", "Значения", "По умолчанию", "Назначение"].map((title, index) => <TableCell helpIcon={false} key={title} role="head" sort={false} type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{title}</TableCell>)}</div>{properties.map((row) => <div className="flex border-b border-[var(--parser-border-light)] last:border-b-0" key={row[0]} role="row">{row.map((cell, index) => <TableCell key={index} role="body" type="text" width={index === 3 ? "fill" : index === 0 ? 160 : 140}>{cell}</TableCell>)}</div>)}</Table>]} title="Свойства" />
   </div>
 }

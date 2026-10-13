@@ -1,8 +1,6 @@
 import * as React from "react"
 
 import { LikeButton } from "@/components/ui/like-button"
-import { ShowcasePanel } from "@/components/ui/showcase-panel"
-import { ShowcaseSurface } from "@/components/ui/showcase-surface"
 import { Table } from "@/components/ui/table"
 import { TableCell } from "@/components/ui/table-cell"
 
@@ -26,8 +24,8 @@ function InteractiveLikeButton({ defaultChecked = false }: { defaultChecked?: bo
 export function LikeButtonExamples() {
   return <div className="grid min-w-0 gap-10">
     <Section description="LikeButton не имеет вариантов стиля и размера: это круглая кнопка 40 × 40 px с иконкой thumbs-up." title="Состояния" settings={["state: default · hover", "disabled: boolean"]}>
-      <ShowcaseSurface>
-        <ShowcasePanel>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+        <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
           <div className="grid w-full max-w-[360px] grid-cols-3 justify-items-center gap-3">
             <span className="text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">default</span>
             <span className="text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">hover</span>
@@ -39,19 +37,19 @@ export function LikeButtonExamples() {
             <LikeButton aria-label="Убрать лайк" checked state="hover" />
             <LikeButton aria-label="Убрать лайк" checked disabled />
           </div>
-        </ShowcasePanel>
-      </ShowcaseSurface>
+        </div>
+      </div>
     </Section>
 
     <Section description="Thumbs-up — единственный элемент кнопки. Нажми на примеры, чтобы переключить выбранное состояние; нативный hover также работает при наведении." title="Состав" settings={["checked: boolean", "aria-pressed: boolean"]}>
-      <ShowcaseSurface>
-        <ShowcasePanel>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
+        <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <InteractiveLikeButton />
             <InteractiveLikeButton defaultChecked />
           </div>
-        </ShowcasePanel>
-      </ShowcaseSurface>
+        </div>
+      </div>
     </Section>
 
     <Section description="Основные настройки LikeButton для реализации." title="Свойства">

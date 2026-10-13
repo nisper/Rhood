@@ -1,7 +1,5 @@
-import { ObjectBuyers, ObjectBuyersV2 } from "@/components/ui/object-buyers";
-import { ShowcasePanel } from "@/components/ui/showcase-panel";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
-import { ShowcaseSurface } from "@/components/ui/showcase-surface";
+import { ObjectBuyers, ObjectBuyersV2 } from "@/components/ui/object-buyers";
 
 const usedComponents = [
   { href: "/Rhood/?view=components&component=avatar", title: "Avatar" },
@@ -32,17 +30,20 @@ function ObjectBuyersExamples() {
       <ShowcaseSection
         codeSnippet={v1Snippet}
         description="Компактная карточка для показа покупателей с точным совпадением по объекту."
-        showcase={<ShowcaseSurface usedComponents={usedComponents}><ShowcasePanel className="items-start"><ObjectBuyers className="w-full" defaultExpanded /></ShowcasePanel></ShowcaseSurface>}
+        usedComponents={usedComponents}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><ObjectBuyers className="w-full" defaultExpanded /></div>]}
         title="Стиль"
       />
       <ShowcaseSection
       description="Показывает покупателей с точным совпадением и их потребности. По умолчанию компактный, по нажатию раскрывает список."
-      showcase={<ShowcaseSurface className="auto-rows-auto grid-cols-1" direction="vertical" usedComponents={usedComponents}><ShowcasePanel><ObjectBuyers className="w-full" /></ShowcasePanel><ShowcasePanel><ObjectBuyers className="w-full" defaultExpanded /></ShowcasePanel></ShowcaseSurface>}
+      usedComponents={usedComponents}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><ObjectBuyers className="w-full" /></div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><ObjectBuyers className="w-full" defaultExpanded /></div>]}
       title="Поведение"
       />
       <ShowcaseSection
       description="Нажми «Проверить заново», чтобы увидеть состояние поиска покупателей."
-      showcase={<ShowcaseSurface><ShowcasePanel><ObjectBuyers className="w-full" defaultExpanded /></ShowcasePanel></ShowcaseSurface>}
+      usedComponents={usedComponents}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><ObjectBuyers className="w-full" defaultExpanded /></div>]}
       title="Поиск покупателей"
       />
     </>
@@ -55,13 +56,15 @@ function ObjectBuyersV2Examples() {
       <ShowcaseSection
         codeSnippet={v2Snippet}
         description="Секционное представление покупателей с таблицей потребностей и действиями для обновления списка."
-        showcase={<ShowcaseSurface usedComponents={usedComponents}><ShowcasePanel className="items-start"><ObjectBuyersV2 className="w-full" /></ShowcasePanel></ShowcaseSurface>}
+        usedComponents={usedComponents}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><ObjectBuyersV2 className="w-full" /></div>]}
         title="Стиль"
       />
       <ShowcaseSection
         codeSnippet={v2Snippet}
         description="Нажми «Показать еще» или «Проверить заново», чтобы увидеть интерактивное поведение компонента."
-        showcase={<ShowcaseSurface usedComponents={usedComponents}><ShowcasePanel className="items-start"><ObjectBuyersV2 className="w-full" /></ShowcasePanel></ShowcaseSurface>}
+        usedComponents={usedComponents}
+      panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><ObjectBuyersV2 className="w-full" /></div>]}
         title="Состав"
       />
     </>
