@@ -29,6 +29,7 @@ import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
 import { TypographyExamples } from "./typography-examples";
 import { ModalExamples } from "./modal-examples";
+import { FilterModalExamples } from "./filter-modal-examples";
 import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
@@ -43,7 +44,7 @@ import { AvatarExamples } from "./avatar-examples";
 import { CommentsExamples } from "./comments-examples";
 import { MainHeaderExamples } from "./main-header-examples";
 import { FooterExamples } from "./footer-examples";
-import { ArchiveToolbarFilterExamples } from "./archive-toolbar-filter-examples";
+import { ObjectFilterExamples } from "./object-filter-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
@@ -64,7 +65,6 @@ import { Snackbar } from "@/components/ui/snackbar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { Tooltip } from "@/components/ui/tooltip";
-import { ToolbarFilterExamples } from "./toolbar-filter-examples";
 import { cn, matchesSearchTerms } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -148,12 +148,30 @@ const emptyFilterSelectProperties = [
   },
 ];
 
-const archiveToolbarFilterProperties = [
+const objectFilterProperties = [
   {
     name: "contentWidth",
     values: "full · container",
     defaultValue: "full",
     description: "Ширина содержимого: по всей области или в контейнере страницы.",
+  },
+  {
+    name: "filters",
+    values: "city · propertyType · roominess · area · price · source · author",
+    defaultValue: "все фильтры",
+    description: "Набор быстрых фильтров, которые нужно показать. Кнопка «Фильтры» остаётся в начале строки.",
+  },
+  {
+    name: "showFiltersButton",
+    values: "boolean",
+    defaultValue: "true",
+    description: "Показывает кнопку дополнительных фильтров.",
+  },
+  {
+    name: "modalDisplay",
+    values: "viewport · embedded",
+    defaultValue: "viewport",
+    description: "Режим контейнера дополнительных фильтров.",
   },
   {
     name: "…props",
@@ -1256,21 +1274,29 @@ const componentDocs: ComponentDoc[] = [
     render: () => <FooterExamples />,
   },
   {
-    id: "toolbar-filter",
-    title: "ToolbarFilter",
-    description: "Панель фильтров.",
+    id: "filter-modal",
+    title: "Фильтр",
+    description: "Модальное окно с фильтрами объектов страницы «Набор базы».",
     group: "Фильтр объектов",
-    source: "src/components/ui/toolbar-filter.tsx",
-    render: () => <ToolbarFilterExamples />,
+    properties: [
+      { name: "open", values: "boolean", defaultValue: "—", description: "Управляет видимостью модального окна." },
+      { name: "onOpenChange", values: "(open: boolean) => void", defaultValue: "—", description: "Получает новое состояние при закрытии или применении." },
+      { name: "resultCount", values: "number", defaultValue: "50", description: "Число объектов в кнопке применения фильтров." },
+      { name: "onClear", values: "() => void", defaultValue: "—", description: "Вызывается при очистке фильтров." },
+      { name: "containerDisplay", values: "viewport · embedded", defaultValue: "viewport", description: "Режим контейнера модального окна; embedded используется в демонстрационной панели." },
+      { name: "containerClassName", values: "string", defaultValue: "—", description: "Дополнительный класс контейнера модального окна." },
+    ],
+    source: "src/components/ui/filter-modal.tsx",
+    render: () => <FilterModalExamples />,
   },
   {
-    id: "archive-toolbar-filter",
-    title: "ArchiveToolbarFilter",
-    description: "Панель фильтров страницы «Архив».",
+    id: "object-filter",
+    title: "ObjectFilter",
+    description: "Панель быстрых фильтров с кнопкой дополнительных параметров.",
     group: "Фильтр объектов",
-    properties: archiveToolbarFilterProperties,
-    source: "src/components/ui/archive-toolbar-filter.tsx",
-    render: () => <ArchiveToolbarFilterExamples />,
+    properties: objectFilterProperties,
+    source: "src/components/ui/object-filter.tsx",
+    render: () => <ObjectFilterExamples />,
   },
   {
     id: "list",

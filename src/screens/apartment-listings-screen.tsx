@@ -6,7 +6,7 @@ import {
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import { ArchiveToolbarFilter } from "@/components/ui/archive-toolbar-filter";
+import { ObjectFilter } from "@/components/ui/object-filter";
 import { Chip } from "@/components/ui/chip";
 import { Footer } from "@/components/ui/footer";
 import { IconButton } from "@/components/ui/icon-button";
@@ -24,7 +24,6 @@ import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
-import { ToolbarFilter } from "@/components/ui/toolbar-filter";
 import listings from "@/data/mock/real-estate-listings.json";
 
 const LISTINGS_PER_PAGE = 20;
@@ -1087,9 +1086,12 @@ export function ApartmentListingsScreen({
       />
       {!isMyListings && (
         isArchive ? (
-          <ArchiveToolbarFilter contentWidth="container" />
+          <ObjectFilter contentWidth="container" showFiltersButton={false} />
         ) : (
-          <ToolbarFilter contentWidth="container" />
+          <ObjectFilter
+            contentWidth="container"
+            filters={["propertyType", "roominess", "area", "price"]}
+          />
         )
       )}
 
@@ -1212,4 +1214,55 @@ export function MyListingsScreen() {
 
 export function ArchiveScreen() {
   return <ApartmentListingsScreen view="archive" />;
+}
+
+export function ArchiveNoSubscriptionScreen() {
+  return (
+    <div className="flex min-h-screen flex-col bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]">
+      <MainHeader
+        contentWidth="container"
+        logoHref="/Rhood/"
+        navItems={getNavItems("archive")}
+      />
+      <main className="rhood-layout-container flex flex-1 flex-col">
+        <section className="my-8 flex flex-1 flex-col justify-center py-8">
+          <div className="grid grid-cols-2 items-center gap-8">
+            <div aria-label="Заглушки карточек объектов архива" className="grid gap-4" role="group">
+              {Array.from({ length: 4 }, (_, index) => (
+                <div
+                  className="rh-typography-b2 flex h-[112px] w-[356px] shrink-0 items-center justify-center rounded-[var(--rh-sizing-border-radius-md)] border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-secondary)]"
+                  key={index}
+                >
+                  Снято с публикации
+                </div>
+              ))}
+            </div>
+            <div className="grid gap-2">
+              <h1 className="rh-typography-h2 mb-3 text-[var(--rh-theme-text-neutral-primary)]">
+                Архив объявлений
+              </h1>
+              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                Теперь в RHOOD можно смотреть объявления, снятые с публикации за последние 6 месяцев.
+              </p>
+              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                Изучайте динамику предложений и собирайте собственную статистику по рынку.
+              </p>
+              <div className="mt-3 grid justify-items-start gap-3">
+                <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                  Функционал доступен по подписке RHood Plus.
+                </p>
+                <Button
+                  appearance="primary"
+                  endIcon={false}
+                  label="Оформить подписку"
+                  startIcon={false}
+                />
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer className="mt-8" />
+    </div>
+  );
 }

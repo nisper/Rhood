@@ -5,11 +5,12 @@ import { ComponentDocs } from "@/components/prototype/component-docs";
 import {
   ApartmentListingsScreen,
   ArchiveScreen,
+  ArchiveNoSubscriptionScreen,
   MyListingsScreen,
 } from "@/screens/apartment-listings-screen";
-import { SimpleTableScreen } from "@/screens/simple-table-screen";
 
 type PrototypeView = {
+  category: "scene" | "state";
   id: string;
   title: string;
   homeLabel: string;
@@ -19,6 +20,7 @@ type PrototypeView = {
 
 const prototypeViews: PrototypeView[] = [
   {
+    category: "scene",
     id: "components",
     title: "Витрина компонентов",
     homeLabel: "Витрина компонентов",
@@ -26,6 +28,7 @@ const prototypeViews: PrototypeView[] = [
     View: ComponentDocs,
   },
   {
+    category: "scene",
     id: "apartment-listings",
     title: "Набор базы",
     homeLabel: "Набор базы",
@@ -33,6 +36,7 @@ const prototypeViews: PrototypeView[] = [
     View: ApartmentListingsScreen,
   },
   {
+    category: "scene",
     id: "my-listings",
     title: "Мои объекты",
     homeLabel: "Мои объекты",
@@ -40,6 +44,7 @@ const prototypeViews: PrototypeView[] = [
     View: MyListingsScreen,
   },
   {
+    category: "scene",
     id: "archive",
     title: "Архив",
     homeLabel: "Архив",
@@ -47,11 +52,12 @@ const prototypeViews: PrototypeView[] = [
     View: ArchiveScreen,
   },
   {
-    id: "simple-table",
-    title: "Sandbox",
-    homeLabel: "Sandbox",
+    category: "state",
+    id: "archive-no-subscription",
+    title: "Архив — нет подписки",
+    homeLabel: "Архив — нет подписки",
     icon: LayoutDashboard,
-    View: SimpleTableScreen,
+    View: ArchiveNoSubscriptionScreen,
   },
 ];
 
@@ -59,84 +65,72 @@ const showcaseNavigation = [
   { label: "Foundations", componentId: "colors" },
   { label: "Components", componentId: "showcase-section" },
   { label: "Layout", componentId: "main-header" },
-  { label: "Features", componentId: "toolbar-filter" },
+  { label: "Features", componentId: "object-filter" },
 ];
 
 function getActiveViewId() {
   return new URLSearchParams(window.location.search).get("view") ?? "";
 }
 
-function setActiveViewId(id: string) {
-  const nextUrl = id
-    ? `?view=${encodeURIComponent(id)}`
-    : window.location.pathname;
-
-  window.history.pushState(null, "", nextUrl);
-  window.dispatchEvent(new PopStateEvent("popstate"));
-}
-
-function setActiveComponentId(id: string) {
-  const params = new URLSearchParams();
-  params.set("view", "components");
-  params.set("component", id);
-
-  window.history.pushState(null, "", `?${params.toString()}`);
-  window.dispatchEvent(new PopStateEvent("popstate"));
-}
-
 function PrototypeHome() {
-  const scenes = prototypeViews.filter((view) => view.id !== "components");
+  const scenes = prototypeViews.filter((view) => view.category === "scene" && view.id !== "components");
+  const states = prototypeViews.filter((view) => view.category === "state");
+  const sections = [
+    {
+      title: "Витрина компонентов",
+      items: showcaseNavigation.map((item) => ({
+        href: `/Rhood/?view=components&component=${encodeURIComponent(item.componentId)}`,
+        label: item.label,
+      })),
+    },
+    {
+      title: "Сцены",
+      items: scenes.map((view) => ({
+        href: `/Rhood/?view=${encodeURIComponent(view.id)}`,
+        label: view.homeLabel,
+      })),
+    },
+    {
+      title: "Состояния",
+      items: states.map((view) => ({
+        href: `/Rhood/?view=${encodeURIComponent(view.id)}`,
+        label: view.homeLabel,
+      })),
+    },
+  ];
 
   return (
-    <main className="flex min-h-svh items-center justify-center bg-white p-5 text-[var(--parser-text-neutral-primary)]">
-      <div className="flex flex-col items-start gap-[60px]">
-        <img
-          alt="RHOOD"
-          className="h-8 w-auto"
-          height="32"
-          src="/Rhood/assets/rhood-logo.svg"
-          width="134"
-        />
-
-        <nav aria-label="Разделы прототипа" className="grid grid-cols-2 gap-x-16">
-          <section className="grid content-start gap-4">
-            <h2 className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">
-              Витрина компонентов
-            </h2>
-            <ul className="grid gap-1.5">
-              {showcaseNavigation.map((item) => (
-                <li key={item.componentId}>
-                  <button
-                    className="rh-typography-b1 cursor-pointer border-0 bg-transparent p-0 text-left text-[var(--parser-text-neutral-primary)] transition-colors hover:text-[var(--parser-text-brand)] focus-visible:text-[var(--parser-text-brand)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
-                    onClick={() => setActiveComponentId(item.componentId)}
-                    type="button"
-                  >
-                    {item.label}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          <section className="grid content-start gap-4">
-            <h2 className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">
-              Сцены
-            </h2>
-            <ul className="grid gap-1.5">
-              {scenes.map((view) => (
-                <li key={view.id}>
-                  <button
-                    className="rh-typography-b1 cursor-pointer border-0 bg-transparent p-0 text-left text-[var(--parser-text-neutral-primary)] transition-colors hover:text-[var(--parser-text-brand)] focus-visible:text-[var(--parser-text-brand)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--parser-focus-ring)]"
-                    onClick={() => setActiveViewId(view.id)}
-                    type="button"
-                  >
-                    {view.homeLabel}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </nav>
+    <main className="flex min-h-svh items-center justify-center bg-[var(--rh-theme-surface-neutral-ultra-dark)] text-[var(--rh-theme-text-neutral-primary-contrast)] uppercase">
+      <div className="rhood-layout-container">
+        <div className="flex flex-col items-center gap-10 text-center">
+          <header>
+            <h1 className="rh-typography-h3">Parser RHOOD</h1>
+          </header>
+          <nav aria-label="Разделы прототипа" className="flex w-full flex-col items-center gap-10">
+            {sections.map((section) => (
+              <section
+                className="grid w-full grid-cols-[minmax(0,1fr)_minmax(0,1fr)] items-start gap-x-4"
+                key={section.title}
+              >
+                <h2 className="rh-typography-b1-med w-full text-right text-[var(--rh-theme-text-neutral-primary-contrast)] opacity-60">
+                  {section.title}
+                </h2>
+                <ul aria-label={section.title} className="flex w-full flex-col items-start gap-2 text-left">
+                  {section.items.map((item) => (
+                    <li key={item.href}>
+                      <a
+                        className="rh-typography-b1-med cursor-pointer text-[var(--rh-theme-text-neutral-primary-contrast)] hover:underline"
+                        href={item.href}
+                      >
+                        {item.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            ))}
+          </nav>
+        </div>
       </div>
     </main>
   );

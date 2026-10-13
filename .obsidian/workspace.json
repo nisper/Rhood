@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/instructions/showcase-page.md",
+                "file": "docs/instructions/product-design-reasoning.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "showcase-page"
+              "title": "product-design-reasoning"
             }
           }
         ]
@@ -132,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/instructions/showcase-page.md",
+                "file": "docs/instructions/product-design-reasoning.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,17 +190,17 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "docs/instructions/showcase-page.md",
+    "dist/assets/index-CY-61XeK.css",
+    "dist/assets/index-BzCxGvG2.js",
+    "src/components/prototype/object-filter-examples.tsx",
+    "src/components/ui/object-filter.tsx",
     "src/components/ui/showcase-surface.tsx",
     "src/components/ui/showcase-panel.tsx",
     "dist/assets/index-Dm6wxRgh.css",
     "dist/assets/index-Di2ZwbIS.js",
     "dist/assets/index-DEVeglJe.js",
     "dist/assets/index-jQ8uEaUd.js",
-    "dist/assets/index-BR5vFzx9.css",
-    "dist/assets/index--j3WgqGn.js",
-    "dist/assets/index-DHLSb_0M.css",
-    "dist/assets/index-CKNeB56a.js",
-    "dist/assets/index-DuDa1-rt.css",
     "public/assets/obj-outside.jpg",
     "public/assets/obj-livingroom.jpg",
     "public/assets/obj-badroom.jpg",
@@ -217,7 +217,6 @@
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "AGENTS.md",
     "docs/instructions/formatting-component-showcase-page.md",
-    "docs/instructions/showcase-page.md",
     "docs/instructions/Адаптив в проекте.md",
     "docs/instructions/Работа с компонентами.md",
     "docs/instructions/drawing-a-user-flow.md",
