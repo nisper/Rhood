@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Tests/Компоненты.md",
+                "file": "docs/instructions/showcase-page.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Компоненты"
+              "title": "showcase-page"
             }
           }
         ]
@@ -132,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Tests/Компоненты.md",
+                "file": "docs/instructions/showcase-page.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,40 +190,38 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
-    "docs/Tests/Выдача объектов.md",
+    "src/components/ui/showcase-surface.tsx",
+    "src/components/ui/showcase-panel.tsx",
+    "dist/assets/index-Dm6wxRgh.css",
+    "dist/assets/index-Di2ZwbIS.js",
+    "dist/assets/index-DEVeglJe.js",
+    "dist/assets/index-jQ8uEaUd.js",
+    "dist/assets/index-BR5vFzx9.css",
+    "dist/assets/index--j3WgqGn.js",
+    "dist/assets/index-DHLSb_0M.css",
+    "dist/assets/index-CKNeB56a.js",
+    "dist/assets/index-DuDa1-rt.css",
+    "public/assets/obj-outside.jpg",
+    "public/assets/obj-livingroom.jpg",
+    "public/assets/obj-badroom.jpg",
     "docs/Tests/Компоненты.md",
-    "docs/instructions/product-design-reasoning.md",
-    "docs/instructions/showcase-page.md",
-    "src/components/ui/archive-object-info.tsx",
-    "src/components/prototype/archive-object-info-examples.tsx",
-    "src/components/prototype/list-examples.tsx",
-    "docs/instructions/drawing-a-user-flow.md",
+    "docs/Tests/Выдача объектов.md",
     "docs/Tests/_route.md",
-    "docs/Tests",
-    "dist/assets/index-DCpRQ5Om.js",
-    "dist/assets/index-CxYokshS.css",
-    "dist/assets/index-CwPEofSV.js",
-    "dist/assets/index-95SKZy0a.css",
-    "dist/assets/index-CXWG5PuV.js",
-    "dist/assets/index-C9WPvTXK.css",
-    "docs/backlog.md",
-    "docs/component-map.md",
-    "docs/tokens-generator.md",
+    "dist/assets/obj-outside.jpg",
+    "dist/assets/obj-livingroom.jpg",
+    "dist/assets/obj-badroom.jpg",
     "dist/assets/comments/avatar-user.jpeg",
     "dist/assets/comments/avatar-sergey.jpeg",
     "public/assets/comments/avatar-sergey.jpeg",
     "public/assets/comments/avatar-sergey.png",
-    "public/assets/comments/avatar-user.png",
-    "public/assets/comments/avatar-user.jpeg",
-    "public/assets/comments/avatar-author.jpeg",
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "AGENTS.md",
     "docs/instructions/formatting-component-showcase-page.md",
-    "public/assets/avatar-user-32.svg",
-    "public/assets/avatar-user-24.svg",
-    "public/assets/avatar-user-20.svg",
+    "docs/instructions/showcase-page.md",
     "docs/instructions/Адаптив в проекте.md",
     "docs/instructions/Работа с компонентами.md",
+    "docs/instructions/drawing-a-user-flow.md",
+    "docs/instructions/product-design-reasoning.md",
     "docs/instructions/formatting-code-snippets.md",
     "docs/tokens.md",
     "docs/token-mapping.md",
@@ -235,6 +233,8 @@
     "docs/instructions/figma/entities/table.md",
     "docs/instructions/figma/entities/page.md",
     "docs/instructions/figma/entities/modal.md",
-    "docs/instructions/figma/entities/form.md"
+    "docs/instructions/figma/entities/form.md",
+    "docs/instructions/figma/entities/filters.md",
+    "docs/instructions/figma/entities/empty-state.md"
   ]
 }
