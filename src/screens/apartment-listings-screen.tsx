@@ -115,6 +115,17 @@ const archivePhotos = [
   { alt: "Фасад дома", src: "/Rhood/assets/obj-outside.jpg" },
 ];
 
+const archiveFacts = [
+  { text: "6 месяцев истории объявлений — можно сравнить рынок во времени" },
+  { text: "1 248 квартир размещались в Тюмени за последние 6 месяцев" },
+  { text: "8,9 млн ₽ — медианная цена двушки в Центральном округе · 54–68 м²" },
+  { text: "5,1 млн ₽ — медианная цена однокомнатной в Восточном · 32–40 м²" },
+  { text: "7,4 млн ₽ — медианная цена двушки в Заречном · 50–62 м²" },
+  { text: "−6% — среднее снижение цены перед снятием объявления" },
+  { text: "42 дня — в среднем объявление оставалось активным" },
+  { text: "3 района — сравнивайте цены и состав предложения по локациям" },
+];
+
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
   {
     label: "По цене — дороже",
@@ -1310,45 +1321,62 @@ export function ArchiveNoSubscriptionScreen() {
         logoHref="/Rhood/"
         navItems={getNavItems("archive")}
       />
-      <main className="rhood-layout-container flex flex-1 flex-col">
-        <section className="my-8 flex flex-1 flex-col justify-center py-8">
-          <div className="grid grid-cols-2 items-center gap-8">
-            <div aria-label="Заглушки карточек объектов архива" className="grid gap-4" role="group">
-              {Array.from({ length: 4 }, (_, index) => (
-                <div
-                  className="rh-typography-b2 flex h-[112px] w-[356px] shrink-0 items-center justify-center rounded-[var(--rh-sizing-border-radius-md)] border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-secondary)]"
-                  key={index}
-                >
-                  Снято с публикации
-                </div>
-              ))}
-            </div>
-            <div className="grid gap-2">
-              <h1 className="rh-typography-h2 mb-3 text-[var(--rh-theme-text-neutral-primary)]">
-                Архив объявлений
-              </h1>
-              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                Теперь в RHOOD можно смотреть объявления, снятые с публикации за последние 6 месяцев.
+      <main className="relative flex min-h-[calc(100vh-65px)] flex-1 flex-col">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-[var(--rh-theme-fill-brand)]"
+        />
+        <section
+          aria-label="Примеры фактов из архива объявлений"
+          className="absolute inset-y-0 left-0 z-10 flex w-1/2 flex-col snap-y snap-mandatory overflow-y-auto overscroll-contain scroll-smooth"
+          role="region"
+          tabIndex={0}
+        >
+          {archiveFacts.map((fact) => (
+            <article
+              className="flex h-full min-h-full shrink-0 snap-start flex-col justify-center px-8 py-6"
+              key={fact.text}
+            >
+              <p className="rh-typography-b2-med text-[var(--rh-theme-text-neutral-secondary-contrast)]">
+                Пример данных архива · Тюмень
               </p>
-              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                Изучайте динамику предложений и собирайте собственную статистику по рынку.
+              <p className="mt-2 min-w-0 font-[family-name:var(--rh-typography-font-family-display)] font-bold text-[64px] leading-[100%] text-[var(--rh-theme-text-neutral-primary-contrast)]">
+                {fact.text}
               </p>
-              <div className="mt-3 grid justify-items-start gap-3">
+            </article>
+          ))}
+        </section>
+        <div className="rhood-layout-container flex flex-1 flex-col">
+          <section className="my-8 flex flex-1 flex-col justify-center py-8">
+            <div className="grid grid-cols-2 items-center gap-8">
+              <div aria-hidden="true" />
+              <div className="grid gap-2">
+                <h1 className="rh-typography-h2 mb-3 text-[var(--rh-theme-text-neutral-primary)]">
+                  Архив объявлений
+                </h1>
                 <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                  Функционал доступен по подписке RHood Plus.
+                  Теперь в RHOOD можно смотреть объявления, снятые с публикации за последние 6 месяцев.
                 </p>
-                <Button
-                  appearance="primary"
-                  endIcon={false}
-                  label="Оформить подписку"
-                  startIcon={false}
-                />
+                <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                  Изучайте динамику предложений и собирайте собственную статистику по рынку.
+                </p>
+                <div className="mt-3 grid justify-items-start gap-3">
+                  <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                    Функционал доступен по подписке RHood Plus.
+                  </p>
+                  <Button
+                    appearance="primary"
+                    endIcon={false}
+                    label="Оформить подписку"
+                    startIcon={false}
+                  />
+                </div>
               </div>
             </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </main>
-      <Footer className="mt-8" />
+      <Footer />
     </div>
   );
 }
