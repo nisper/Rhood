@@ -115,15 +115,19 @@ const archivePhotos = [
   { alt: "Фасад дома", src: "/Rhood/assets/obj-outside.jpg" },
 ];
 
-const archiveFacts = [
-  { text: "6 месяцев истории объявлений — можно сравнить рынок во времени" },
-  { text: "1 248 квартир размещались в Тюмени за последние 6 месяцев" },
-  { text: "8,9 млн ₽ — медианная цена двушки в Центральном округе · 54–68 м²" },
-  { text: "5,1 млн ₽ — медианная цена однокомнатной в Восточном · 32–40 м²" },
-  { text: "7,4 млн ₽ — медианная цена двушки в Заречном · 50–62 м²" },
-  { text: "−6% — среднее снижение цены перед снятием объявления" },
-  { text: "42 дня — в среднем объявление оставалось активным" },
-  { text: "3 района — сравнивайте цены и состав предложения по локациям" },
+const archiveMosaicPhotos = [
+  { alt: "Спальня квартиры", src: "/Rhood/assets/obj-badroom.jpg" },
+  {
+    alt: "Интерьер квартиры",
+    src: "/Rhood/assets/spacejoy-IH7wPsjwomc-unsplash.jpg",
+  },
+  {
+    alt: "Интерьер квартиры",
+    src: "/Rhood/assets/alexander-andrews-A3DPhhAL6Zg-unsplash.jpg",
+  },
+  { alt: "Гостиная квартиры", src: "/Rhood/assets/obj-livingroom.jpg" },
+  { alt: "Жилой комплекс", src: "/Rhood/assets/object-gallery-1.png" },
+  { alt: "Кухня квартиры", src: "/Rhood/assets/object-gallery-3.png" },
 ];
 
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
@@ -1321,60 +1325,106 @@ export function ArchiveNoSubscriptionScreen() {
         logoHref="/Rhood/"
         navItems={getNavItems("archive")}
       />
-      <main className="relative flex min-h-[calc(100vh-65px)] flex-1 flex-col">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-y-0 left-0 w-1/2 bg-[var(--rh-theme-fill-brand)]"
-        />
+      <main className="flex-1 bg-[var(--rh-theme-surface-bg)] text-[var(--rh-theme-text-neutral-primary)]">
         <section
-          aria-label="Примеры фактов из архива объявлений"
-          className="absolute inset-y-0 left-0 z-10 flex w-1/2 flex-col snap-y snap-mandatory overflow-y-auto overscroll-contain scroll-smooth"
-          role="region"
-          tabIndex={0}
+          aria-label="Фотография объекта и цветовой блок"
+          className="grid h-[calc(100vh-65px)] min-h-[calc(100vh-65px)] w-full shrink-0 grid-cols-2 grid-rows-1 overflow-hidden"
         >
-          {archiveFacts.map((fact) => (
-            <article
-              className="flex h-full min-h-full shrink-0 snap-start flex-col justify-center px-8 py-6"
-              key={fact.text}
-            >
-              <p className="rh-typography-b2-med text-[var(--rh-theme-text-neutral-secondary-contrast)]">
-                Пример данных архива · Тюмень
-              </p>
-              <p className="mt-2 min-w-0 font-[family-name:var(--rh-typography-font-family-display)] font-bold text-[64px] leading-[100%] text-[var(--rh-theme-text-neutral-primary-contrast)]">
-                {fact.text}
-              </p>
-            </article>
-          ))}
-        </section>
-        <div className="rhood-layout-container flex flex-1 flex-col">
-          <section className="my-8 flex flex-1 flex-col justify-center py-8">
-            <div className="grid grid-cols-2 items-center gap-8">
-              <div aria-hidden="true" />
-              <div className="grid gap-2">
-                <h1 className="rh-typography-h2 mb-3 text-[var(--rh-theme-text-neutral-primary)]">
-                  Архив объявлений
-                </h1>
-                <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                  Теперь в RHOOD можно смотреть объявления, снятые с публикации за последние 6 месяцев.
+          <img
+            alt="Интерьер квартиры"
+            className="size-full object-cover"
+            src="/Rhood/assets/obj-livingroom.jpg"
+          />
+          <div
+            className="grid h-full place-items-center px-8 py-10 lg:px-16"
+            style={{ backgroundColor: "#F2ECE4" }}
+          >
+            <div className="w-full max-w-[28rem] text-center">
+              <h1 className="rh-typography-h2 mb-4 text-[var(--rh-theme-text-neutral-primary)]">
+                6 месяцев истории объявлений
+              </h1>
+              <div className="grid gap-6">
+                <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]" style={{ fontSize: 20 }}>
+                  Сравнивайте цены и состав предложения по локациям
                 </p>
-                <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                  Изучайте динамику предложений и собирайте собственную статистику по рынку.
-                </p>
-                <div className="mt-3 grid justify-items-start gap-3">
-                  <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                    Функционал доступен по подписке RHood Plus.
+                <div className="mt-1 grid justify-items-center gap-3">
+                  <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+                    Доступно в подписке RHood Plus
                   </p>
                   <Button
                     appearance="primary"
                     endIcon={false}
                     label="Оформить подписку"
+                    size="lg"
                     startIcon={false}
                   />
                 </div>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
+        <section
+          aria-label="Фотографии объектов из архива объявлений"
+          className="relative flow-root min-h-[calc(100vh-65px)]"
+        >
+          <div
+            aria-label="Фотографии объектов"
+            className="relative mx-auto mt-[5vh] grid w-[68%] grid-cols-4"
+          >
+            {archiveMosaicPhotos.map((photo, index) => {
+              const positions = [
+                "col-start-1 row-start-1",
+                "col-start-2 col-span-2 row-start-2",
+                "col-start-1 row-start-3",
+                "col-start-4 row-start-3",
+                "col-start-3 row-start-4",
+                "col-start-1 col-span-2 row-start-6",
+              ];
+
+              return (
+                <img
+                  alt={photo.alt}
+                  className={`aspect-[4/3] w-full object-cover ${positions[index]}`}
+                  key={photo.src}
+                  src={photo.src}
+                />
+              );
+            })}
+            <div className="col-start-4 row-start-1 flex flex-col justify-start p-4 text-left">
+              <p className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
+                42 дня
+              </p>
+              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                в среднем объявление оставалось активным
+              </p>
+            </div>
+            <div className="col-start-1 row-start-2 flex flex-col justify-end p-4 text-left">
+              <p className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
+                −6%
+              </p>
+              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                среднее снижение цены перед снятием объявления
+              </p>
+            </div>
+            <div className="col-start-2 row-start-3 flex flex-col justify-end p-4 text-right">
+              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                Пока одни предложения исчезали, появлялись новые
+              </p>
+            </div>
+            <div className="col-start-3 col-span-2 row-start-6 flex flex-col items-center justify-center gap-6 p-6 text-center" style={{ backgroundColor: "#F2ECE4" }}>
+              <h2 className="rh-typography-h3 text-[var(--rh-theme-text-neutral-primary)]">
+                Сравнивайте, как менялось предложение с подпиской RHood Plus
+              </h2>
+              <Button
+                appearance="primary"
+                endIcon={false}
+                label="Оформить подписку"
+                size="lg"
+                startIcon={false}
+              />
+            </div>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>

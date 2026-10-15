@@ -15,7 +15,7 @@ type ButtonAppearance =
   | "contrast"
   | "inherit"
 
-type ButtonSize = "md" | "sm" | "xsm"
+type ButtonSize = "lg" | "md" | "sm" | "xsm"
 type ButtonState = "default" | "hover"
 
 type LegacyButtonVariant =
@@ -47,12 +47,17 @@ type ButtonProps = React.ComponentProps<"button"> & {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
+  lg: "min-h-[calc(var(--spacing)*10)] py-[calc(var(--rh-sizing-common-input-padding-py-md)+var(--spacing)*2)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   md: "min-h-[calc(var(--spacing)*10)] py-[var(--rh-sizing-common-input-padding-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   sm: "min-h-[calc(var(--spacing)*9)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] py-[var(--rh-sizing-common-input-padding-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 const horizontalPaddingClasses: Record<ButtonSize, { default: string; ghost: string }> = {
+  lg: {
+    default: "px-[calc(var(--rh-sizing-common-input-padding-px-md)+var(--spacing)*2)]",
+    ghost: "px-[calc(var(--rh-sizing-common-input-padding-ghost-px-md)+var(--spacing)*2)]",
+  },
   md: {
     default: "px-[var(--rh-sizing-common-input-padding-px-md)]",
     ghost: "px-[var(--rh-sizing-common-input-padding-ghost-px-md)]",
@@ -68,30 +73,35 @@ const horizontalPaddingClasses: Record<ButtonSize, { default: string; ghost: str
 }
 
 const typographyClasses: Record<ButtonSize, string> = {
+  lg: "rh-typography-b1-med",
   md: "rh-typography-b1-med",
   sm: "rh-typography-b2-med",
   xsm: "font-[family-name:var(--rh-typography-font-family-sans)] font-[480]",
 }
 
 const gapClasses: Record<ButtonSize, string> = {
+  lg: "gap-[var(--rh-sizing-common-input-padding-gap-md)]",
   md: "gap-[var(--rh-sizing-common-input-padding-gap-md)]",
   sm: "gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
   xsm: "gap-[var(--rh-sizing-common-input-padding-gap-xsm)]",
 }
 
 const iconOnlyClasses: Record<ButtonSize, string> = {
+  lg: "size-[calc(var(--spacing)*10)] p-0",
   md: "size-[calc(var(--spacing)*10)] p-0",
   sm: "size-[calc(var(--spacing)*9)] p-0",
   xsm: "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] p-0",
 }
 
 const iconSlotClasses: Record<ButtonSize, string> = {
+  lg: "w-[calc(var(--spacing)*5)] [&_svg]:size-[calc(var(--spacing)*6)]",
   md: "w-[calc(var(--spacing)*5)] [&_svg]:size-[calc(var(--spacing)*6)]",
   sm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*5)]",
   xsm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*4)]",
 }
 
 const counterClasses: Record<ButtonSize, string> = {
+  lg: "min-w-[var(--rh-sizing-button-counter-min-width-md)] px-[var(--rh-sizing-button-counter-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]",
   md: "min-w-[var(--rh-sizing-button-counter-min-width-md)] px-[var(--rh-sizing-button-counter-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]",
   sm: "min-w-[var(--rh-sizing-button-counter-min-width-sm)] px-[var(--rh-sizing-button-counter-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
   xsm: "min-w-[var(--rh-sizing-button-counter-min-width-sm)] px-[var(--rh-sizing-button-counter-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
@@ -210,7 +220,7 @@ function resolveAppearance(
 }
 
 function resolveSize(size: ButtonProps["size"]): ButtonSize {
-  if (size === "sm" || size === "md" || size === "xsm") {
+  if (size === "lg" || size === "sm" || size === "md" || size === "xsm") {
     return size
   }
 
