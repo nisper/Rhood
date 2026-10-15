@@ -1328,7 +1328,7 @@ export function ArchiveNoSubscriptionScreen() {
       <main className="flex-1 bg-[var(--rh-theme-surface-bg)] text-[var(--rh-theme-text-neutral-primary)]">
         <section
           aria-label="Фотография объекта и цветовой блок"
-          className="grid h-[calc(100vh-65px)] min-h-[calc(100vh-65px)] w-full shrink-0 grid-cols-2 grid-rows-1 overflow-hidden"
+          className="grid h-[calc(100vh-165px)] min-h-[calc(100vh-165px)] w-full shrink-0 grid-cols-2 grid-rows-1 overflow-hidden"
         >
           <img
             alt="Интерьер квартиры"
@@ -1391,22 +1391,6 @@ export function ArchiveNoSubscriptionScreen() {
               );
             })}
             <div className="col-start-4 row-start-1 flex flex-col justify-start p-4 text-left">
-              <p className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
-                42 дня
-              </p>
-              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                в среднем объявление оставалось активным
-              </p>
-            </div>
-            <div className="col-start-1 row-start-2 flex flex-col justify-end p-4 text-left">
-              <p className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
-                −6%
-              </p>
-              <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
-                среднее снижение цены перед снятием объявления
-              </p>
-            </div>
-            <div className="col-start-2 row-start-3 flex flex-col justify-end p-4 text-right">
               <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
                 Пока одни предложения исчезали, появлялись новые
               </p>

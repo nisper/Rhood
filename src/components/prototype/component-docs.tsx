@@ -46,6 +46,7 @@ import { CommentsExamples } from "./comments-examples";
 import { MainHeaderExamples } from "./main-header-examples";
 import { FooterExamples } from "./footer-examples";
 import { ObjectFilterExamples } from "./object-filter-examples";
+import { ListingStatusExamples } from "./listing-status-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
@@ -478,6 +479,14 @@ const componentDocs: ComponentDoc[] = [
     group: "Actions",
     source: "src/components/ui/toggle-chip.tsx",
     render: () => <ToggleChipExamples />,
+  },
+  {
+    id: "listing-statuses",
+    title: "Справочник статусов",
+    description: "Значения статусов звонка и объекта в выдаче и смысл каждого из них.",
+    group: "Выдача объектов",
+    source: "src/screens/apartment-listings-screen.tsx · docs/product/features/Режимы выдачи объектов.md",
+    render: () => <ListingStatusExamples />,
   },
   {
     id: "object-buyers",

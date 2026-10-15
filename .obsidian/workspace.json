@@ -190,6 +190,7 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "src/components/prototype/listing-status-examples.tsx",
     "docs/instructions/Адаптив в проекте.md",
     "docs/Tests/Адаптив.md",
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
@@ -234,7 +235,6 @@
     "docs/instructions/figma/entities/page.md",
     "docs/instructions/figma/entities/modal.md",
     "docs/instructions/figma/entities/form.md",
-    "docs/instructions/figma/entities/filters.md",
-    "docs/instructions/figma/entities/empty-state.md"
+    "docs/instructions/figma/entities/filters.md"
   ]
 }
