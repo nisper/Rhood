@@ -12,7 +12,7 @@ function FooterExamples() {
             <span className="text-[var(--rh-theme-text-neutral-secondary)]">{` />`}</span>
           </code>
         }
-        description="Тёмный футер с разделами сервиса, помощью, описанием и логотипом. Пункты HelpCenter показаны в отдельной колонке."
+        description="Тёмный футер с логотипом и помощью. Содержимое расположено в отдельных колонках."
         panels={[
           <div className="w-full" key="default">
             <Footer />

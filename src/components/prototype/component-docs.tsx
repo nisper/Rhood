@@ -1279,7 +1279,7 @@ const componentDocs: ComponentDoc[] = [
       {
         name: "sections",
         values: "FooterSection[]",
-        defaultValue: "Разделы и Помощь",
+        defaultValue: "Помощь",
         description: "Группы ссылок, отображаемые в колонках футера.",
       },
       {
