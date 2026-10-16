@@ -115,26 +115,36 @@ const archivePhotos = [
   { alt: "Фасад дома", src: "/Rhood/assets/obj-outside.jpg" },
 ];
 
-const archiveMosaicPhotos = [
-  { alt: "Спальня квартиры", src: "/Rhood/assets/obj-badroom.jpg" },
+const archiveMosaicItems = [
   {
+    type: "photo",
     alt: "Интерьер квартиры",
-    src: "/Rhood/assets/spacejoy-IH7wPsjwomc-unsplash.jpg",
+    src: "/Rhood/assets/archive-unsplash-living-1.jpg",
   },
   {
-    alt: "Интерьер квартиры",
-    src: "/Rhood/assets/alexander-andrews-A3DPhhAL6Zg-unsplash.jpg",
-  },
-  { alt: "Гостиная квартиры", src: "/Rhood/assets/obj-livingroom.jpg" },
-  {
-    alt: "Жилой комплекс",
-    src: "/Rhood/assets/inside-weather-Uxqlfigh6oE-unsplash.jpg",
+    type: "table",
   },
   {
-    alt: "Кухня квартиры",
-    src: "/Rhood/assets/spacejoy-umAXneH4GhA-unsplash.jpg",
+    type: "photo",
+    alt: "Современный жилой дом",
+    src: "/Rhood/assets/archive-unsplash-exterior-1.jpg",
   },
-];
+  {
+    type: "photo",
+    alt: "Современная гостиная",
+    src: "/Rhood/assets/archive-unsplash-interior-3.jpg",
+  },
+  {
+    type: "photo",
+    alt: "Спальня квартиры",
+    src: "/Rhood/assets/archive-unsplash-bedroom.jpg",
+  },
+  {
+    type: "photo",
+    alt: "Современный частный дом",
+    src: "/Rhood/assets/archive-unsplash-exterior-2.jpg",
+  },
+] as const;
 
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
   {
@@ -1339,32 +1349,28 @@ export function ArchiveNoSubscriptionScreen() {
           <img
             alt="Интерьер квартиры"
             className="size-full object-cover"
-            src="/Rhood/assets/obj-livingroom.jpg"
+            src="/Rhood/assets/archive-unsplash-hero.jpg"
           />
           <div
-            className="grid h-full place-items-center px-8 py-10 lg:px-16"
-            style={{ backgroundColor: "#F2ECE4" }}
+            className="grid h-full place-items-center bg-[var(--rh-palette-blue-grey-50)] px-8 py-10 lg:px-16"
           >
             <div className="w-full max-w-[28rem] text-center">
-              <h1 className="rh-typography-h2 mb-4 text-[var(--rh-theme-text-neutral-primary)]">
-                6 месяцев истории объявлений
-              </h1>
-              <div className="grid gap-6">
-                <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]" style={{ fontSize: 20 }}>
-                  Сравнивайте цены и состав предложения по локациям
+              <div className="grid justify-items-center gap-4">
+                <h1 className="rh-typography-h2 text-[var(--rh-theme-text-neutral-primary)]">
+                  Архив объявлений за последние 6 месяцев
+                </h1>
+                <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
+                  Доступен по подписке RHood Plus
                 </p>
-                <div className="mt-1 grid justify-items-center gap-3">
-                  <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Доступно в подписке RHood Plus
-                  </p>
-                  <Button
-                    appearance="primary"
-                    endIcon={false}
-                    label="Оформить подписку"
-                    size="lg"
-                    startIcon={false}
-                  />
-                </div>
+              </div>
+              <div className="mt-8 grid justify-items-center">
+                <Button
+                  appearance="primary"
+                  endIcon={false}
+                  label="Оформить подписку"
+                  size="lg"
+                  startIcon={false}
+                />
               </div>
             </div>
           </div>
@@ -1377,7 +1383,7 @@ export function ArchiveNoSubscriptionScreen() {
             aria-label="Фотографии объектов"
             className="relative mx-auto mt-[5vh] grid w-[68%] grid-cols-4"
           >
-            {archiveMosaicPhotos.map((photo, index) => {
+            {archiveMosaicItems.map((item, index) => {
               const positions = [
                 "col-start-1 row-start-1",
                 "col-start-2 col-span-2 row-start-2",
@@ -1387,12 +1393,25 @@ export function ArchiveNoSubscriptionScreen() {
                 "col-start-1 col-span-2 row-start-6",
               ];
 
+              if (item.type === "table") {
+                return (
+                  <img
+                    alt="Пример архивной выдачи: параметры, адреса, цены и даты публикации объявлений"
+                    className={`aspect-[4/3] w-full object-cover ${positions[index]}`}
+                    key="archive-table-preview"
+                    loading="lazy"
+                    src="/Rhood/assets/archive-table-preview-final.png"
+                  />
+                );
+              }
+
               return (
                 <img
-                  alt={photo.alt}
+                  alt={item.alt}
                   className={`aspect-[4/3] w-full object-cover ${positions[index]}`}
-                  key={photo.src}
-                  src={photo.src}
+                  key={item.src}
+                  loading="lazy"
+                  src={item.src}
                 />
               );
             })}
@@ -1401,9 +1420,9 @@ export function ArchiveNoSubscriptionScreen() {
                 Пока одни предложения исчезали, появлялись новые
               </p>
             </div>
-            <div className="col-start-3 col-span-2 row-start-6 flex flex-col items-center justify-center gap-6 p-6 text-center" style={{ backgroundColor: "#F2ECE4" }}>
+            <div className="col-start-3 col-span-2 row-start-6 flex flex-col items-center justify-center gap-6 bg-[var(--rh-palette-blue-grey-50)] p-6 text-center">
               <h2 className="rh-typography-h3 text-[var(--rh-theme-text-neutral-primary)]">
-                Сравнивайте, как менялось предложение с подпиской RHood Plus
+                Сравнивайте, как менялось предложение за последние 6 месяцев с RHood Plus
               </h2>
               <Button
                 appearance="primary"

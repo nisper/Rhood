@@ -9,7 +9,7 @@
     "isActive": true,
     "isShareSale": false,
     "address": "Широтная ул., 97",
-    "price": "3850",
+    "price": "3850000",
     "dealType": "SALE",
     "author": "OWNER",
     "clientName": "Частное лицо",
@@ -71,7 +71,7 @@
     ],
     "priceHistory": [
       {
-        "price": "3850",
+        "price": "3850000",
         "currency": "RUB",
         "createdAt": "2026-09-08T09:23:04.967Z"
       }
