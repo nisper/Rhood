@@ -126,8 +126,14 @@ const archiveMosaicPhotos = [
     src: "/Rhood/assets/alexander-andrews-A3DPhhAL6Zg-unsplash.jpg",
   },
   { alt: "Гостиная квартиры", src: "/Rhood/assets/obj-livingroom.jpg" },
-  { alt: "Жилой комплекс", src: "/Rhood/assets/object-gallery-1.png" },
-  { alt: "Кухня квартиры", src: "/Rhood/assets/object-gallery-3.png" },
+  {
+    alt: "Жилой комплекс",
+    src: "/Rhood/assets/inside-weather-Uxqlfigh6oE-unsplash.jpg",
+  },
+  {
+    alt: "Кухня квартиры",
+    src: "/Rhood/assets/spacejoy-umAXneH4GhA-unsplash.jpg",
+  },
 ];
 
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
