@@ -1381,7 +1381,7 @@ export function ArchiveNoSubscriptionScreen() {
         >
           <div
             aria-label="Фотографии объектов"
-            className="relative mx-auto mt-[5vh] grid w-[68%] grid-cols-4"
+            className="relative mx-auto mt-[5vh] grid w-full max-w-[1200px] grid-cols-4"
           >
             {archiveMosaicItems.map((item, index) => {
               const positions = [
@@ -1395,13 +1395,25 @@ export function ArchiveNoSubscriptionScreen() {
 
               if (item.type === "table") {
                 return (
-                  <img
-                    alt="Пример архивной выдачи: параметры, адреса, цены и даты публикации объявлений"
-                    className={`aspect-[4/3] w-full object-cover ${positions[index]}`}
+                  <div
+                    aria-label="Пример таблицы архивной выдачи"
+                    className={`relative grid aspect-[4/3] w-full place-items-center overflow-hidden ${positions[index]}`}
                     key="archive-table-preview"
-                    loading="lazy"
-                    src="/Rhood/assets/archive-table-preview-final.png"
-                  />
+                  >
+                    <img
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute inset-0 size-full object-cover"
+                      loading="lazy"
+                      src="/Rhood/assets/archive-unsplash-wave-wall.jpg"
+                    />
+                    <img
+                      alt="Таблица архивной выдачи с объектами, ценами и периодами публикации"
+                      className="relative mx-2 box-border h-auto max-w-[1148px] w-[calc(100%-1rem)]"
+                      loading="lazy"
+                      src="/Rhood/assets/archive-listings-table-preview.png"
+                    />
+                  </div>
                 );
               }
 
@@ -1420,8 +1432,8 @@ export function ArchiveNoSubscriptionScreen() {
                 Пока одни предложения исчезали, появлялись новые
               </p>
             </div>
-            <div className="col-start-3 col-span-2 row-start-6 flex flex-col items-center justify-center gap-6 bg-[var(--rh-palette-blue-grey-50)] p-6 text-center">
-              <h2 className="rh-typography-h3 text-[var(--rh-theme-text-neutral-primary)]">
+            <div className="col-span-4 row-start-7 flex aspect-[4/3] flex-col items-center justify-center gap-4 bg-[var(--rh-palette-blue-grey-50)] p-4 text-center lg:col-start-3 lg:col-span-2 lg:row-start-6 xl:gap-6 xl:p-6">
+              <h2 className="rh-typography-h4 text-[var(--rh-theme-text-neutral-primary)]">
                 Сравнивайте, как менялось предложение за последние 6 месяцев с RHood Plus
               </h2>
               <Button
