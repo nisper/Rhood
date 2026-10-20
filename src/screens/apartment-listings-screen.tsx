@@ -1432,7 +1432,7 @@ export function ArchiveNoSubscriptionScreen() {
                 Пока одни предложения исчезали, появлялись новые
               </p>
             </div>
-            <div className="col-span-4 row-start-7 flex aspect-[4/3] flex-col items-center justify-center gap-4 bg-[var(--rh-palette-blue-grey-50)] p-4 text-center lg:col-start-3 lg:col-span-2 lg:row-start-6 xl:gap-6 xl:p-6">
+            <div className="col-start-3 col-span-2 row-start-6 flex aspect-[4/3] flex-col items-center justify-center gap-4 bg-[var(--rh-palette-blue-grey-50)] p-4 text-center xl:gap-6 xl:p-6">
               <h2 className="rh-typography-h4 text-[var(--rh-theme-text-neutral-primary)]">
                 Сравнивайте, как менялось предложение за последние 6 месяцев с RHood Plus
               </h2>

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/instructions/showcase-page.md",
+                "file": "docs/Tests/Адаптив.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "showcase-page"
+              "title": "Адаптив"
             }
           }
         ]
@@ -83,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "24fbdb0caa4bd22e",
@@ -132,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/instructions/showcase-page.md",
+                "file": "docs/Tests/Адаптив.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,30 +191,32 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "artifacts/responsive/archive-no-subscription/596.png",
+    "artifacts/responsive/archive-no-subscription/586.png",
+    "artifacts/responsive/archive-no-subscription/585.png",
+    "artifacts/responsive/archive-no-subscription/default.png",
+    "artifacts/responsive/archive-no-subscription/593.png",
+    "artifacts/responsive/archive-no-subscription/590.png",
+    "artifacts/responsive/archive-no-subscription/584.png",
+    "artifacts/responsive/archive-no-subscription/582.png",
+    "artifacts/responsive/archive-no-subscription/575.png",
+    "artifacts/responsive/archive-no-subscription/553.png",
+    "artifacts/responsive/archive-no-subscription/510.png",
+    "artifacts/responsive/archive-no-subscription",
+    "artifacts/responsive",
+    "artifacts",
+    "docs/Tests/Адаптив.md",
+    "docs/instructions/Адаптив в проекте.md",
+    "AGENTS.md",
+    "docs/instructions/showcase-page.md",
     "public/robots.txt",
-    "public/assets/spacejoy-umAXneH4GhA-unsplash.jpg",
-    "public/assets/inside-weather-Uxqlfigh6oE-unsplash.jpg",
-    "dist/assets/inside-weather-Uxqlfigh6oE-unsplash.jpg",
-    "dist/assets/spacejoy-umAXneH4GhA-unsplash.jpg",
     "src/components/ui/object-filter.tsx",
     "src/components/ui/object-card.tsx",
     "src/components/ui/filter-modal.tsx",
     "src/components/prototype/object-filter-examples.tsx",
     "src/components/prototype/object-card-examples.tsx",
     "src/components/prototype/listing-status-examples.tsx",
-    "src/components/prototype/filter-modal-examples.tsx",
-    "public/assets/spacejoy-IH7wPsjwomc-unsplash.jpg",
-    "public/assets/concrete.jpg",
-    "public/assets/alexander-andrews-A3DPhhAL6Zg-unsplash.jpg",
-    "docs/Tests/Адаптив.md",
-    "dist/assets/spacejoy-IH7wPsjwomc-unsplash.jpg",
-    "dist/assets/index-DIl1EPO3.css",
-    "dist/assets/index-4tB6QArU.js",
-    "dist/assets/concrete.jpg",
-    "dist/assets/alexander-andrews-A3DPhhAL6Zg-unsplash.jpg",
-    "dist/assets/index-DEVeglJe.js",
     "docs/Tests/Компоненты.md",
-    "docs/instructions/showcase-page.md",
     "docs/instructions/product-design-reasoning.md",
     "docs/Tests/Выдача объектов.md",
     "docs/instructions/drawing-a-user-flow.md",
@@ -222,9 +225,7 @@
     "docs/component-map.md",
     "docs/tokens-generator.md",
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
-    "AGENTS.md",
     "docs/instructions/formatting-component-showcase-page.md",
-    "docs/instructions/Адаптив в проекте.md",
     "docs/instructions/Работа с компонентами.md",
     "docs/instructions/formatting-code-snippets.md",
     "docs/tokens.md",
