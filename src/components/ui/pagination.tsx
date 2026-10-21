@@ -1,7 +1,4 @@
 import * as React from "react"
-import { ChevronLeft, ChevronRight } from "lucide-react"
-
-import { IconButton } from "@/components/ui/icon-button"
 import { cn } from "@/lib/utils"
 
 type PaginationProps = Omit<React.ComponentProps<"nav">, "onChange"> & {
@@ -71,14 +68,13 @@ function Pagination({
 
   return (
     <nav aria-label="Пагинация" className={cn("flex items-center gap-1", className)} {...props}>
-      <IconButton
+      <button
         aria-label="Предыдущая страница"
-        appearance="ghost"
+        className="cursor-pointer rounded-[var(--rh-sizing-border-radius-md)] px-2 py-1 rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)] hover:bg-[var(--rh-theme-fill-neutral-hover)] disabled:cursor-not-allowed disabled:opacity-50"
         disabled={page <= 1}
-        icon={<ChevronLeft aria-hidden="true" />}
         onClick={() => onPageChange?.(page - 1)}
-        size={buttonSize}
-      />
+        type="button"
+      >Назад</button>
       {getVisiblePages(page, totalPages).map((item, index) => item === "ellipsis" ? (
         <span aria-hidden="true" className="flex items-center justify-center rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]" key={`ellipsis-${index}`}>…</span>
       ) : (
@@ -89,14 +85,13 @@ function Pagination({
           size={buttonSize}
         >{item}</PaginationPageButton>
       ))}
-      <IconButton
+      <button
         aria-label="Следующая страница"
-        appearance="ghost"
+        className="cursor-pointer rounded-[var(--rh-sizing-border-radius-md)] px-2 py-1 rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)] hover:bg-[var(--rh-theme-fill-neutral-hover)] disabled:cursor-not-allowed disabled:opacity-50"
         disabled={page >= totalPages}
-        icon={<ChevronRight aria-hidden="true" />}
         onClick={() => onPageChange?.(page + 1)}
-        size={buttonSize}
-      />
+        type="button"
+      >Вперёд</button>
     </nav>
   )
 }

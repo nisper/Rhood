@@ -53,6 +53,7 @@ import { CodeXml, Copy, Dot } from "lucide-react";
 
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Button } from "@/components/ui/button";
+import { BadgeExamples } from "./badge-examples";
 import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
@@ -1261,7 +1262,7 @@ const componentDocs: ComponentDoc[] = [
         name: "navItems",
         values: "MainHeaderNavItem[]",
         defaultValue: "Стандартная навигация",
-        description: "Пункты навигации и их состояния.",
+        description: "Пункты навигации и состояния. propNew добавляет маленький красный solid-бейдж.",
       },
       {
         name: "resp",
@@ -1363,6 +1364,17 @@ const componentDocs: ComponentDoc[] = [
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=1653-28207",
     source: "src/components/ui/chip.tsx",
     render: () => <ChipExamples />,
+  },
+  {
+    id: "badge",
+    title: "Badge",
+    description: "Компактная неинтерактивная метка состояния или новизны.",
+    group: "Data display",
+    source: "src/components/ui/badge.tsx",
+    properties: [
+      { name: "children", values: "ReactNode", defaultValue: "—", description: "Текст красной solid-метки малого размера." },
+    ],
+    render: () => <BadgeExamples />,
   },
   {
     id: "avatar",

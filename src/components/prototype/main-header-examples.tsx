@@ -17,6 +17,13 @@ const hoveredNavigation: MainHeaderNavItem[] = [
   { label: "Избранное" },
 ];
 
+const newNavigation: MainHeaderNavItem[] = [
+  { active: true, label: "Набор базы" },
+  { label: "Мои объекты", propNew: true },
+  { label: "Подборки" },
+  { label: "Избранное" },
+];
+
 function MainHeaderSnippet({ children }: { children?: ReactNode }) {
   return (
     <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
@@ -53,6 +60,13 @@ function MainHeaderExamples() {
               <MainHeader navItems={defaultNavigation} />
             </HeaderPanel>]}
         title="Стиль"
+      />
+
+      <ShowcaseSection
+        codeSnippet={<MainHeaderSnippet><CodeProp name="navItems" value="{[{ propNew: true }]}" /></MainHeaderSnippet>}
+        description="Маленький красный solid-бейдж отмечает новый раздел."
+        panels={[<HeaderPanel key="new"><MainHeader navItems={newNavigation} /></HeaderPanel>]}
+        title="Метка нового раздела"
       />
 
       <ShowcaseSection

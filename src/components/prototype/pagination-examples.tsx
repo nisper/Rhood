@@ -8,7 +8,7 @@ import { TableCell } from "@/components/ui/table-cell"
 const properties = [
   ["currentPage", "number", "1", "Номер текущей страницы."],
   ["totalPages", "number", "1", "Общее количество страниц."],
-  ["onPageChange", "(page: number) => void", "—", "Вызывается при выборе страницы или стрелки."],
+  ["onPageChange", "(page: number) => void", "—", "Вызывается при выборе страницы или кнопки навигации."],
   ["size", "md · sm", "md", "Размер кнопок пагинации."],
 ]
 
@@ -28,7 +28,7 @@ export function PaginationExamples() {
   return <div className="grid min-w-0">
     <ShowcaseSection
       codeSnippet={<Code><span className="text-[var(--rh-theme-text-neutral-secondary)]">{`<`}</span><span className="text-[var(--rh-palette-purple-700)]">Pagination</span>{" "}<span className="text-[var(--rh-theme-text-info)]">currentPage</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">{`{page}`}</span>{" "}<span className="text-[var(--rh-theme-text-info)]">totalPages</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">{`{12}`}</span>{" "}<span className="text-[var(--rh-theme-text-info)]">onPageChange</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">{`{setPage}`}</span>{" />"}</Code>}
-      description="Пагинация помогает перейти к нужной странице. Нажми на номер или стрелку, чтобы проверить переключение."
+      description="Пагинация помогает перейти к нужной странице. Нажми на номер, «Назад» или «Вперёд», чтобы проверить переключение."
       panels={[<div className="flex min-h-[136px] items-center justify-center rounded-xl bg-white px-6 py-4" key="default"><InteractivePagination /></div>]}
       title="Стиль"
     />
@@ -41,13 +41,13 @@ export function PaginationExamples() {
     />
 
     <ShowcaseSection
-      description="На первой странице недоступна стрелка назад, на последней — вперёд. Номера страниц остаются интерактивными."
+      description="На первой странице кнопка «Назад» недоступна, на последней — «Вперёд». Номера страниц остаются интерактивными."
       panels={[<div className="flex min-h-[136px] flex-wrap items-center justify-center gap-8 rounded-xl bg-white px-6 py-4" key="edges"><Pagination currentPage={1} totalPages={5} /><Pagination currentPage={5} totalPages={5} /></div>]}
       title="Состояния"
     />
 
     <ShowcaseSection
-      description="Компонент включает кнопки страниц, стрелки навигации и многоточие для пропущенных диапазонов."
+      description="Компонент включает кнопки страниц, текстовые кнопки навигации и многоточие для пропущенных диапазонов."
       panels={[<div className="flex min-h-[136px] items-center justify-center rounded-xl bg-white px-6 py-4" key="ellipsis"><Pagination currentPage={6} totalPages={12} /></div>]}
       title="Состав"
     />

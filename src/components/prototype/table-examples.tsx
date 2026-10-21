@@ -430,6 +430,8 @@ export function TableExamples() {
       <ShowcaseSection
         codeSnippet={sizeSnippet}
         description='compact уменьшает отступы ячейки, а textSize меняет размер текста body-строк. Для колонок используй width="fill" для равного распределения, число — для фиксированной ширины.'
+        direction="vertical"
+        panelCount={3}
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">

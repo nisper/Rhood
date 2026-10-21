@@ -2,6 +2,7 @@ import * as React from "react";
 import { Menu as MenuIcon } from "lucide-react";
 
 import { Avatar } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
 import { IconButton } from "@/components/ui/icon-button";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
@@ -155,14 +156,7 @@ function MainHeader({
                 <span className="inline-flex items-center gap-2">
                   {item.label}
                   {item.propNew && (
-                    <span className="inline-flex items-center justify-center rounded-sm bg-[var(--parser-fill-error)] px-[3px] pb-px pt-[2px]">
-                      <span
-                        className="whitespace-nowrap text-[8px] leading-none tracking-[0.012px] font-medium text-[var(--parser-text-primary-contrast)]"
-                        style={{ fontVariationSettings: "'wdth' 100" }}
-                      >
-                        НОВОЕ
-                      </span>
-                    </span>
+                    <Badge>НОВОЕ</Badge>
                   )}
                 </span>
               );
