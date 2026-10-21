@@ -1,0 +1,4440 @@
+[
+  {
+    "id": "50ff6760-b7e0-4b9a-8853-50291d573da5",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8499043654",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский муниципальный округ, сельскохозяйственный потребительский кооператив Лебёдушка",
+    "price": "700000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам земельный участок. Ровный. Имеются деревья: сосны и березы. Подала заявку на подключение к электричеству. По Гпзу возможно размещение как жилого так и садового дома. До участка можно доехать на авто. Дорога до участка зимой расчищается. Прекрасное место для отдыха. 72:12:1518001:543. Агентов Прошу Не Писать! Буду вынуждена писать жалобы в авито, что вы мошенники! Спасибо за понимание!",
+    "domain": "AVITO",
+    "latitude": 57.37764,
+    "longitude": 65.781993,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_12_sot._snt_dnp_8499043654",
+    "area": 12,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-11-19T10:08:43.000Z",
+    "modifiedAt": "2026-10-20T10:08:43.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.931Z",
+    "createdAt": "2026-10-20T10:13:48.504Z",
+    "updatedAt": "2026-10-21T11:06:53.931Z",
+    "duplicatedAt": "2026-10-20T10:20:58.442Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.gi9Q1ba-LsYef9TNWLPebVN1LMDiYirG4gVPzO6OJTzvdiw.xxJ2G0yLtROxli2LA1lcpcNC56Brw_vQivAD2vi_r7s"
+      },
+      {
+        "url": "/image/1/1.nz_6Ira-M9a0iMndyHTKOe2CMdBIlTfWSPJS3ER5OCxFgTE.N7Q00GnnsulV360H1CaAfd7aXk3lL8WG-myANWdvdS4"
+      },
+      {
+        "url": "/image/1/1.rb8Vr7a-AVZbBftdQ_3psk4OA1CnGAVWp39gXKv0CqyqDAM.Nm4H6ijGJzHgVBwkXhHtXhjphZ-aIb5gSYOlq5J5fvY"
+      },
+      {
+        "url": "/image/1/1.orL-Cra-DluwoPRQtgzpv6WrDF1MvQpbTNpvUUBRBaFBqQw.nHRQWZsZx2WOBb29qLAcKwuLpM7dEwcnimKEDuwMmH8"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "700000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T10:13:48.504Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T12:14:22.056Z"
+  },
+  {
+    "id": "6bf63740-50f2-48af-95cc-4e900d51f1c5",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8483335731",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, садовое товарищество Поле Чудес-2, Ягодная улица",
+    "price": "530000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Срочно, Продам участок от собственника. Снт поле чудес — 2. 72:17:1707006:15066.",
+    "domain": "AVITO",
+    "latitude": 57.257056,
+    "longitude": 65.53091,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_5_sot._snt_dnp_8483335731",
+    "area": 5,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-11-18T13:03:28.000Z",
+    "modifiedAt": "2026-10-19T13:03:28.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.518Z",
+    "createdAt": "2026-10-19T13:05:09.138Z",
+    "updatedAt": "2026-10-21T11:06:54.518Z",
+    "duplicatedAt": "2026-10-20T15:43:38.517Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "58ba78a4-4f9e-4777-b86e-21560ef0fe40",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.GoI0PLa-tmt6lkxgDAhJuXudtG2Gi7JrhuzXYYpnvZGLn7Q.MX2qAs4tmduiX6bWaq9SX5L0cjiJMtZ20jUcKGQD5Xk"
+      },
+      {
+        "url": "/image/1/1.7HaBeba-QJ_P07qU1TK-DYLZQpkzzkSfM6khlT8iS2U-2kI.e7FUXRHy6QTTbpAr6EXRlUfo0CeVmbL_UnVA31Iavzk"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "530000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T15:43:33.371Z"
+      },
+      {
+        "price": "550000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T13:05:09.138Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-19T15:05:18.814Z"
+  },
+  {
+    "id": "3bf96e51-de7a-48a0-adc5-c0754b1dc05d",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8340362936",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский район, Тарманское сельское поселение, озеро Среднее Тарманское",
+    "price": "790000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам хороший отсыпанный земельный участок. На участке сделана выборка торфа, отсыпка вровень с дорогой качественным грунтом и щебнем. От участка в ста метрах находятся искусственно созданные озера « Семь озёр» с зонами отдыха, мангальными зонами, футбольным полем, детской площадкой, спортивной площадкой и тд. Агентствам прошу не беспокоить!",
+    "domain": "AVITO",
+    "latitude": 57.3545,
+    "longitude": 65.339691,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_509_ga_snt_dnp_8340362936",
+    "area": 509,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-11-17T17:11:30.000Z",
+    "modifiedAt": "2026-10-18T17:11:30.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.049Z",
+    "createdAt": "2026-10-18T17:17:24.225Z",
+    "updatedAt": "2026-10-21T11:06:55.049Z",
+    "duplicatedAt": "2026-10-18T17:57:32.380Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.Fcgh7La-uSFvRkMqB6g9wiVMuyeTW70hkzzYK5-3stueT7s.i3On0pjK2V2z_JmitDXwsqaxeES5UJZ0M37YRZj_3aQ"
+      },
+      {
+        "url": "/image/1/1.bWOg0La-wYruejuB9r0cV6Rww4wSZ8WKEgCggB6LynAfc8M.5A53CJn2y6TKgk2ygr_-cHFDr-xrnMnyIa44VCBV-Bg"
+      },
+      {
+        "url": "/image/1/1.XYG0qra-8Wj6AAtjgvs48fsL824GHfVoBnqQYgrx-pILCfM.Il3DkqESJalvhl1ZkrcM8lPKrSSgAlgoluaR5BESZCg"
+      },
+      {
+        "url": "/image/1/1._KKTaLa-UEvdwqpA5xuJq5fIUk0h31RLIbgxQS0zW7Esy1I.Yp8mHGAzb0bYo9_pa83gB8a_eU4C45iGwkaVyAcgnWM"
+      },
+      {
+        "url": "/image/1/1.HyTORra-s82A7EnG_GJFLsrmsct88bfNfJbSx3AduDdx5bE.y7mU6FHQs702rIiWciE2Tkzf5HQyc56t628mgaRZuAM"
+      },
+      {
+        "url": "/image/1/1.qFJj_7a-BLstVf6wP_31WGdfBr3RSAC70S9lsd2kD0HcXAY.-bP4NW9unD1tuRU7io4ECCsXwMCdQWKowKKtcQWmrH8"
+      },
+      {
+        "url": "/image/1/1.79CnXLa-Qznp9rky9X_0-_z9QT8V60c5FYwiMxkHSMMY_0E._y471vXi45IENIOscsH2OBCJBucg_DH4Wltx3_r6-u8"
+      },
+      {
+        "url": "/image/1/1.KfsOIba-hRJAi38ZUHFvzwqBhxS8loESvPHkGLB6juixgoc.pFBR2yKMRkcJhBG7QD4Kdxwblp8MwIE1dZZR6-y2mnc"
+      },
+      {
+        "url": "/image/1/1.ogYBjLa-Du9PJvTkSbazDQUsDOmzOwrvs1xv5b_XBRW-Lww.hKvzNlJmECTApRc3d4RveDof5zgix7NmG7e9RKd41aA"
+      },
+      {
+        "url": "/image/1/1.tCAmkra-GMloOOLCQvTzKiIyGs-UJRzJlEJ5w5jJEzOZMRo.bk_hhBYiOIEplWB5kaijerm5tLrYKtYjMANhlj2HgWw"
+      },
+      {
+        "url": "/image/1/1.CuyZQra-pgXX6FwOgVYd553ipAMr9aIFK5LHDycZrf8m4aQ.RaJFjhdUm-KhzCJ6J46KR4lwYl9GRa28a9_fmriuprQ"
+      },
+      {
+        "url": "/image/1/1.XpqzeLa-8nP90gh4g0EXrrfY8HUBz_ZzAaiTeQ0j-YkM2_A.O8cTfLFNbLOIZcoGJX0nfJ1p1zeyEMIuE67vP_Q84dc"
+      },
+      {
+        "url": "/image/1/1.YDNqGra-zNoksDbRJkM8OW66ztzYrcja2Mqt0NRBxyDVuc4.3VOmS2wvCfS6doH-VmwD34R6mI4t-oS-27rbUDyfnfI"
+      },
+      {
+        "url": "/image/1/1.bCAQvra-wMleFDrCRPdHKhQews-iCcTJom6hw67lyzOvHcI.mkytU9xKRzWTB0rN3IArDd5vVdZejZlMGKOFzE9gLp0"
+      },
+      {
+        "url": "/image/1/1.ysUplLa-ZixnPpwnMY_izy00ZCqbI2Ism0QHJpfPbdaWN2Q.rAYy7jm7vUdbw7grRxRXTRId4PC5-yEzcBj0kCLDWIE"
+      },
+      {
+        "url": "/image/1/1.93lTbba-W5Adx6GbMR6qc1fNWZbh2l-Q4b06mu02UGrszlk.BBZGLTJb_1LCGa9MMTAaRAnomgXfsFy6RbRAy-WHZwg"
+      },
+      {
+        "url": "/image/1/1.uU3b0ba-FaSVe--vpZOJJNhxF6JpZhGkaQF0rmWKHl5kchc.vvjIHMr1EVqqn3qBz3qGoJnXvj0mB0ZP6aLmkmpBC6g"
+      },
+      {
+        "url": "/image/1/1.2LiN9ra-dFHDXI5asfXV0o5Wdlc_QXBRPyYVWzOtf6syVXY.cAb2XbcAnlbJWWB8P2Z0RRkGjsU1QsAHXs9081K8yPg"
+      },
+      {
+        "url": "/image/1/1.JgDHpra-iumJDHDih95uNMMGiO91EY7pdXbr43n9gRN4BYg.Pfz7DmYJYzNQwLmwbeOXyfNVWk317OCLRejCjxrz6M0"
+      },
+      {
+        "url": "/image/1/1.huXES7a-KgyK4dAHxCWh78DrKAp2_C4MdptLBnoQIfZ76Cg.jlYi4KWy0cqHDVxQNT2A99mxKAAHkNnfoIjxoEZ64VA"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "790000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T17:17:24.225Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": null,
+    "buyerDemandAvailableCount": null,
+    "buyerDemandLastCheckedAt": null
+  },
+  {
+    "id": "1fb211ed-bc8b-400e-877a-c5b056a73fe6",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8483646050",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский муниципальный округ, Тюневское сельское поселение",
+    "price": "900000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам земельный участок площадью 991 кв. М (9.9 соток) рядом с озером Штакуль, расположен напротив Снт Царицыно. Хороший подъезд, второй участок от съезда с асфальта, до участка дорога отсыпана кусковым асфальтом. Участок высокий, есть деревья (сосны, березы), также имеется свободное пространство под строительство, место достаточно тихое. Столбы для электроснабжения есть, сам договор на подключение не заключал, дальше по улице есть жилой дом, проблем с подключением быть не должно, как и с доступом к участку в зимнее время. По этой же улице есть пожарный водоем. Фото в объявлении с двух сезонов, чтобы было понятно, что участок сухой, не топит. Весной/осенью вода не держится ни на дороге ни в канаве, ни на участке. Продажа от собственника (без комиссии), цена 900 т. Р. Первые 5 фото сделаны осень, последующие в апреле. Участок есть в агентствах (Сова, Этажи), поэтому просьба к агентам: обращаться только при наличии заинтересованного покупателя.",
+    "domain": "AVITO",
+    "latitude": 57.388117,
+    "longitude": 65.780419,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_99_sot._snt_dnp_8483646050",
+    "area": 9.9,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-11-17T15:53:54.000Z",
+    "modifiedAt": "2026-10-18T15:53:54.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.120Z",
+    "createdAt": "2026-10-18T15:57:35.649Z",
+    "updatedAt": "2026-10-21T11:06:55.120Z",
+    "duplicatedAt": "2026-10-18T16:01:47.761Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.5Ngusra-SDFgGLI6avWzsi0SSjecBUwxnGIpO5DpQ8uREUo.OAbAHk6tvytFrB1By8olEFAeoJGUsANu0UMZIfga7vk"
+      },
+      {
+        "url": "/image/1/1.CLt1WLa-pFI78l5ZaTgQr3f4plTH76BSx4jFWMsDr6jK-6Y.-hCWKHRWsYUp-QshoobqMkVAWn4Phi2GuCgXBowQA2I"
+      },
+      {
+        "url": "/image/1/1.oCIMCra-DMtCoPbAQET-LBuqDs2-vQjLvtptwbJRBzGzqQ4.y5nj-74MJ9Jwyr3oMmxNc80nSaP9_uRqsriS3VO18Wk"
+      },
+      {
+        "url": "/image/1/1.m79Vfra-N1Yb1M1db1DEsULeNVDnyTNW565WXOslPKzq3TU.I0qLN5glrnC035lGMRW2a06NtcD4lfeOa0QxRvCE8J8"
+      },
+      {
+        "url": "/image/1/1.Y6p-57a-z0MwTTVINIoUrHxHzUXMUMtDzDeuScC8xLnBRM0._fK0uDuJ4XTOF9iOwOcNZOgGAQ_2ixM9GA7K2nIntJA"
+      },
+      {
+        "url": "/image/1/1.DIWKU7a-oGzE-VpnnmsL0tHyomo45KRsOIPBZjQIq5Y18KI.Y5vo1f2_-PrW9EiwIMv-fx5lpqeCXj-04tomQRwWWt0"
+      },
+      {
+        "url": "/image/1/1.3HL8KLa-cJuygoqQyGesfPyJcp1On3SbTvgRkUJze2FDi3I.rF5qLlVrsSbhoz30bz42qPxlYh17TSdu-_lsxgErCcU"
+      },
+      {
+        "url": "/image/1/1.3QEjiLa-cehtIovjFauRDyMpc-6RP3XokVgQ4p3TehKcK3M.XXhG0pypGnjGn39-hI6YF93AP-GKlQ5K-10Me_bQXx8"
+      },
+      {
+        "url": "/image/1/1.jmoVjra-IoNbJNiIBdTkFlovIIWnOSaDp15DiavVKXmqLSA.vQflFadFO09RHTDOj7gbErmDY7NI-KLe9LvTYXZ5y0o"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "900000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T15:57:35.649Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-18T17:57:38.045Z"
+  },
+  {
+    "id": "8ee6f5e0-54a1-48d1-897b-a02e6217f5db",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "8459035674",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский муниципальный округ, Тюневское сельское поселение",
+    "price": "3299000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам участки на первой.",
+    "domain": "AVITO",
+    "latitude": 57.361073,
+    "longitude": 65.679278,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_11_sot._promnaznacheniya_8459035674",
+    "area": 11,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-11-13T17:29:51.000Z",
+    "modifiedAt": "2026-10-19T06:58:33.000Z",
+    "actualizedAt": "2026-10-21T10:42:40.000Z",
+    "createdAt": "2026-10-14T17:37:46.875Z",
+    "updatedAt": "2026-10-21T10:42:40.000Z",
+    "duplicatedAt": "2026-10-21T09:12:50.000Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.K1M-BLa-h7pwrn2xZEAiJDykhbyMs4O6jNTmsIBfjECBp4U.mCUaiXlZNTCBQk-RhAUKaQIbJK_f5KCgKDrVRG0Rc1A"
+      },
+      {
+        "url": "/image/1/1.4XbRgba-TZ-fK7eUn-7QAdMhT5ljNkmfY1EslW_aRmVuIk8.fOguV6fvAIy_h3qJiaM1i9QfB9oHMuwGhXIkJHjfmWM"
+      },
+      {
+        "url": "/image/1/1.fPKiVba-0Bvs_yoQ1hh3haD10h0Q4tQbEIWxERwO2-Ed9tI.skEZZnz39WVTqoVBxpjcqpvlIpQ7-vPUyFvnny7eJ-Q"
+      },
+      {
+        "url": "/image/1/1.6yMU0La-R8paer3BTv-QVhZwRcymZ0PKpgAmwKqLTDCrc0U.3sN-EeTurZ6ALj_LiStA0GzCj3agJ1DFznEIuEpfcWo"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "3299000",
+        "currency": "RUB",
+        "createdAt": "2026-10-14T17:37:46.875Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-14T19:37:47.752Z"
+  },
+  {
+    "id": "df81d01c-e9bc-4c9c-a802-b8dc1d4038c9",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8346046130",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, 7-я Линейная улица, 33",
+    "price": "4100000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам участок 637 кв. М. На участке имеется утепленная бытовка 2.5/4, Сруб из бревна 150/150 4м на 6м на кап. Фундаменте, септик 3 кольца водоотведение заведено, вода из колодца. На участке у дороги два переливных септика (для дома). Участок ухоженный, есть возможность подключить центральное водоснабжение.",
+    "domain": "AVITO",
+    "latitude": 57.188602,
+    "longitude": 65.652657,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_64_sot._snt_dnp_8346046130",
+    "area": 6.4,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-11-01T06:05:37.000Z",
+    "modifiedAt": "2026-10-02T06:05:37.000Z",
+    "actualizedAt": "2026-10-20T21:48:07.820Z",
+    "createdAt": "2026-10-02T06:09:27.524Z",
+    "updatedAt": "2026-10-20T21:48:07.820Z",
+    "duplicatedAt": "2026-10-20T21:48:11.902Z",
+    "archiveRevision": "0",
+    "userStatusId": "17c51c0b-9e80-401c-bd9b-bbe17139c940",
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "bbbc54e4-f58c-458e-96ca-2bd232f0686b",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.sZ8Mkra-HXZCOOd9YpSdlQoyH3C-JRl2vkJ8fLLJFoyzMR8.p4RJFJ3ImelhR09baYd7OWA_ybdC0i_ybNHaO9OMN04"
+      },
+      {
+        "url": "/image/1/1.ThA1wba-4vl7axjyJZh1GzNh4P-Hdub5hxGD84ua6QOKYuA.0NdYNA3-VmmRTMPO-JIksiP31o1hGZdRUKIuWxOgvCY"
+      },
+      {
+        "url": "/image/1/1.47EWr7a-T1hYBbVTXPisuBAPTV6kGEtYpH8uUqj0RKKpDE0.gPTOT6qzlAtpzwc06vqGSuugR0ZikXgCH9atd_Jecvk"
+      },
+      {
+        "url": "/image/1/1.kBfuELa-PP6gusb1wgKIH-iwPvhcpzj-XMBd9FBLNwRRsz4.gw5ptgUpQ2PKnqszePMR4qiD-g_Oihze6sw6Np03jjM"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "4100000",
+        "currency": "RUB",
+        "createdAt": "2026-10-02T06:09:27.524Z"
+      }
+    ],
+    "userStatus": {
+      "id": "17c51c0b-9e80-401c-bd9b-bbe17139c940",
+      "userId": "182e31fe-70b5-49bc-98c3-35fb7bb316bb",
+      "statusId": "a10412c8-be1a-4e33-9717-ed8b52d4e303"
+    },
+    "_count": {
+      "comments": 2
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-13T08:53:48.707Z"
+  },
+  {
+    "id": "9c17be3d-211d-4c62-b482-45a54f635e0e",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "8542870756",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, микрорайон Парфёново, улица Тимуровцев, 7Б",
+    "price": "28000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продаю участок пром назначения П1. Закрытая территория. 150кв заведены на участок. Отличная транспортная развязка-выезд на объездную. 10 минут до центра города. Не каких красных линий, все чисто и готово к использованию. Сообвственник.",
+    "domain": "AVITO",
+    "latitude": 57.191792,
+    "longitude": 65.551036,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_18_sot._promnaznacheniya_8542870756",
+    "area": 18,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T10:57:58.000Z",
+    "modifiedAt": "2026-10-21T10:57:58.000Z",
+    "actualizedAt": "2026-10-21T11:06:56.528Z",
+    "createdAt": "2026-10-21T11:06:56.528Z",
+    "updatedAt": "2026-10-21T11:06:56.528Z",
+    "duplicatedAt": "2026-10-21T11:06:56.950Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "40a852b8-3367-4ffb-8490-90f59e4c8378",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.pylkJba-C8Aqj_HLJlfLO2aFCcbWkg_A1vVqytp-ADrbhgk.0X8veQ79aHIgdnzfLd0LZ7G1vkP7KS5Y9-nQG261iSA"
+      },
+      {
+        "url": "/image/1/1.NbFE5ra-mVgKTGNTIsoIn0dGm172UZ1Y9jb4Uvq9kqL7RZs.4zu6hjBR36H_FuW_2CJuJ2UPcxmY06rXszGf-miplKk"
+      },
+      {
+        "url": "/image/1/1.ObZrB7a-lV8lrW9UFT8DmWinl1nZsJFf2df0VdVcnqXUpJc.fE4vHkC9e5DM_Bxp-z8Y6EuWuYuKEsAooH4KRe0DQZI"
+      },
+      {
+        "url": "/image/1/1.0_6wSra-fxf-4IUcmkH10LPqfREC_XsXApoeHQ4RdO0P6X0.-03qlikkiD9rcHvP3I_VDFpJywAY1V-ELSnYgX5Am5I"
+      },
+      {
+        "url": "/image/1/1.ct1Ml7a-3jQCPSQ_JM5oz0433DL-INo0_ke_PvLM1c7zNNw.DCyYYMsBmBlWrSY47g-wAGqDoHmXksM3OwXoUjlzmf4"
+      },
+      {
+        "url": "/image/1/1.KlhCKba-hrEMg3y6GgEUdkGJhLfwnoKx8Pnnu_xyjUv9ioQ.TVeq_kkkmIu9UI3QNqJJvguJog_Ky8PkBsRXbtn2P0s"
+      },
+      {
+        "url": "/image/1/1.b3oW47a-w5NYSTmYRLYJUxVDwZWkVMeTpDOimai4yGmpQME.xvOvulh106CVaGwfuYlNSKJnzUVEY48vjDm5HhR1HY4"
+      },
+      {
+        "url": "/image/1/1.GnTTgra-tp2dKEyW644ycdMjtJthNbKdYVLXl23ZvWdsIbQ.5dQBRabJTxqILsYWd9XqqyxtwAMU_XYw-fRJYCWlDto"
+      },
+      {
+        "url": "/image/1/1.t3rB6ba-G5OPQ-GYo6uNVcJJGZVzXh-Tczl6mX-yEGl-Shk.YQ2SnCeNR1t5Q_V7kBX5Pokbr1jVTTocKBX1GYSpwEc"
+      },
+      {
+        "url": "/image/1/1.u5bOsba-F3-AG-10tKvYjtkRFXl8BhN_fGF2dXDqHIVxEhU.XpJkIPnIoUp-PzxG3rphWCYfKROpdCk2_wSZsYhBurg"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "28000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T11:06:56.528Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-21T11:06:59.732Z"
+  },
+  {
+    "id": "2a40c432-770f-4ebb-b971-1b00c1700056",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8369730764",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский район, коттеджный посёлок Решетникова-2, Мятная улица",
+    "price": "599000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Старт продаж в новом коттеджном посёлке! Готовая, нарезка, участки разного размера от 599 тыс — 4 сотки, и до 12 соток. 10 минут от черты города, рядом остановка. В 5 минутах магазин Монетка. Воркаут зоны, набережная вдоль канала, озеро с песчаным пляжем, парк, детская и волейбольная площадки. Размежёваны 15га земли. Можно в рассрочку. Сотрудники Этажи, с вами уже сотрудничаю.",
+    "domain": "AVITO",
+    "latitude": 57.257026,
+    "longitude": 65.390238,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_7_sot._izhs_8369730764",
+    "area": 7,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T10:33:42.000Z",
+    "modifiedAt": "2026-10-21T10:33:42.000Z",
+    "actualizedAt": "2026-10-21T11:06:52.801Z",
+    "createdAt": "2026-10-21T10:54:53.871Z",
+    "updatedAt": "2026-10-21T11:06:52.801Z",
+    "duplicatedAt": "2026-10-21T10:54:54.893Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.wUyiDLa-baXsppeurGPcfe2tb6MQu2mlENwMrxxXZl8dr28.UrSCidXPUQ6YbDu9qGutI1RGbQjvm4nrp-9EjbiNSKs"
+      },
+      {
+        "url": "/image/1/1.j1VeMra-I7wQmNm3TDSTfF2SIbrshSe87OJCtuBpKEbhkSE.KRkvfeoCOxppT3aDVhRKUWeNIkFnawMSGXv1_tAosno"
+      },
+      {
+        "url": "/image/1/1.eDmYw7a-1NDWaS7b5JpTFptj1tYqdNDQKhO12iaY3yonYNY.Vf8EHzOEkimKAi68keXdbgQcnIZMQvWw-nWk4nRLedw"
+      },
+      {
+        "url": "/image/1/1.k2knwra-P4BpaMWLDcSUfXxjPYaVdTuAlRJeipmZNHqYYT0.cHSx8UmnRRR3TeUjX8Gu_8uOwrKzHEfWuZZWboGXsks"
+      },
+      {
+        "url": "/image/1/1.zMjIrra-YCGGBJoq3PXX4csOYid6GWQhen4BK3b1a9t3DWI.AqyuU0X7bGWtOMhcokiILbuCT56FIvYwkkV8EHB4oMg"
+      },
+      {
+        "url": "/image/1/1.KY-iDLa-hWbspn9t_Hg4vu2th2AQu4FmENzkbBxXjpwdr4c.Hm78IY9rxUB4yj2vxvUsQVgxiBVm6BWdLkuOYP6oU6E"
+      },
+      {
+        "url": "/image/1/1.ioqCKLa-JmPMgtxomjLdpYGIJGUwnyJjMPhHaTxzLZk9iyQ.jBle_O5Z3Lj0yT8ZNrJ3qCMM-Vml0K-o3TyiKgIUYY0"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "599000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T10:54:53.871Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-21T10:54:55.527Z"
+  },
+  {
+    "id": "11c7d10c-c224-473f-b7f8-2f81c1e296ba",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8370273183",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "городской округ Тюмень, СНТ Фиалка, 4-я улица, 14",
+    "price": "450000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продается участок в Снт Фиалка по 15 км Велижанского тракта, улица 4 участок 14. Участок правильной прямоугольной формы, есть постройки дом 6*6( ленточный фундамент), баням3*4 окон и крыши нет. На сообщение не отвечаю, только Звонить. Просьба агенствам недвижимости не беспокоить.",
+    "domain": "AVITO",
+    "latitude": 57.292454,
+    "longitude": 65.687843,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._snt_dnp_8370273183",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T10:31:19.000Z",
+    "modifiedAt": "2026-10-21T10:31:19.000Z",
+    "actualizedAt": "2026-10-21T11:06:52.851Z",
+    "createdAt": "2026-10-21T10:42:40.063Z",
+    "updatedAt": "2026-10-21T11:06:52.851Z",
+    "duplicatedAt": "2026-10-21T10:42:43.182Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.HiZ5SLa-ss834kjESSAXPm7osMnL_7bPy5jTxccTuTXG67A.OhuLVzrR7vDZnVYLxzglEG2Gy2KXeFRvSWwdG2dAZlk"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "450000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T10:42:40.063Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-21T10:42:43.639Z"
+  },
+  {
+    "id": "457d7ee2-4582-4e3c-9c05-fea9e2ec418f",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8370090267",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский муниципальный округ, СНТ Березка",
+    "price": "370000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Агенства,! Риэлторы! Большая просьба не беспокоить. ( Есть везде). *Просторный участок 10 соток в экологичном районе — 18 км Велижанского тракта! * ( *В Профиле Есть Ещё Участок Смотрите*). Продаётся идеальный Угловой участок 26×38 метров в Снt «Березка. Четверная линия 159 участок. Это идеальное место для тех, кто ищет тишину и близость к природе, не отказываясь от городского комфорта. *Почему это предложение — лучшее в локации: *. *Юридически чист: * Участок в собственности, все документы на руках, можно сразу приступать к строительству дома мечты. *Превосходная доступность: *Участок у центральной дороги. Возможно размежевать на два. Дороги зимой чистят. Расстояние от Тюмени — менее 20 минут на авто! *Удобство во всём: *. Есть красивый пожарный водоем. В летние дни отдыхать. Участок не топит. Растут красивые берёзки. *Выгодное вложение: * В этой локации предложений с такими характеристиками за эту сумму практически нет. ( Инвестиция на будущее). Спокойные соседи. Новые бетонные столбы электричества,. Новые трансформаторы. ( Близость к участку, напряжение всегда будет стабильное). Вся инфраструктура развивается в ближайшем времени водопровод (27-28 год). Строятся два торговых центра: Монетка. Озон.",
+    "domain": "AVITO",
+    "latitude": 57.309225,
+    "longitude": 65.624779,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._snt_dnp_8370090267",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T10:07:00.000Z",
+    "modifiedAt": "2026-10-21T10:07:00.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.521Z",
+    "createdAt": "2026-10-21T10:17:09.468Z",
+    "updatedAt": "2026-10-21T11:06:53.521Z",
+    "duplicatedAt": "2026-10-21T10:17:10.465Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.TMDzm7a-4Cm9MRoi54p9hPA74i9BLOQpQUuBI03A69NMOOI.izaeQ-6P1_gyM7zJkZ4nnyndm31yltd0sgkkjnsSLWo"
+      },
+      {
+        "url": "/image/1/1.BNOcdra-qDrS3FIxmHY2l5_Wqjwuwaw6LqbJMCIto8Aj1ao.WTKBwMoRu9VtwicOXAaTZRiEwtwTvK5SDb8HU11jkAg"
+      },
+      {
+        "url": "/image/1/1.feLywLa-0Qu8aisAhJF5zr1h0w1Ad9ULQBCwAUyb2vFNY9M.gLRFvsfPxLMmt7wiMbCRO0UYi0nbTPFh-psEk-8vKFk"
+      },
+      {
+        "url": "/image/1/1.TyKwPLa-48v-lhnAomUMeLOc4c0Ci-fLAuyCwQ5n6DEPn-E.fyIqNDKrQdqranGLDKM5cM1I0cSkWL27i-I485w15nY"
+      },
+      {
+        "url": "/image/1/1.6DmbYba-RNDVy77bxxq3FpjBRtYp1kDQKbEl2iU6TyokwkY.E_pWiDcwnFMvwKX35lGtxb88wyYQ3_AHMhk-3Ssd62k"
+      },
+      {
+        "url": "/image/1/1.-x7fYra-V_eRyK38pRnhWtzCVfFt1VP3bbI2_WE5XA1gwVU.b_lZfweoF1iusHWPQgJZtc2xRI8xJm-bdwMKOeWFzgg"
+      },
+      {
+        "url": "/image/1/1.KFnUXba-hLCa9367iC0ZQo_8hrZm6oCwZo3lumoGj0pr_oY.QLOyo5wR-clSSf0t-LTw6L2fJh57XSoWGIAiIijrQ94"
+      },
+      {
+        "url": "/image/1/1.MX8Rpba-nZZfD2edf9U_OxIFn5CjEpmWo3X8nK_-lmyuBp8.lzGky3KaeB1Ij_X4vvt6NGVizM00M4gTYcXfrFa-ZzA"
+      },
+      {
+        "url": "/image/1/1.6-J3_La-Rws5Vr0ALcvbpnRcRQ3FS0MLxSwmAcmnTPHIX0U.3Y3urPreNUuXm5sLTR_v3z8NBvNYcgz3Rg5GTsIPet8"
+      },
+      {
+        "url": "/image/1/1.rz-0tra-A9b6HPnd5sjAO6MWAdAGAQfWBmZi3ArtCCwLFQE.MIBn2x-TMwHMBsOsmzXkiW2tCahggEP0cZ5lfpy_c4Q"
+      },
+      {
+        "url": "/image/1/1.Y2YTsra-z49dGDWEWdNnSlwTzYmhBcuPoWKuha3pxHWsEc0.37PKvCp_OKbtguFmhku44Zi_gFEXO5Ar5Cit-VABP_U"
+      },
+      {
+        "url": "/image/1/1.We6_hLa-9QfxLg8MgZluqrwk9wENM_EHDVSUDQHf_v0AJ_c.Em1y14GuxqJcQ9tXAesTyjpGvEQp3CkMUWYCy_eSAZY"
+      },
+      {
+        "url": "/image/1/1.rqRTPLa-Ak0dlvhGAxbl_lCcAEvhiwZN4exjR-1nCbfsnwA.Rr4UjRF_hKwsbS1b_0WQjmoRu9VkLQC8EYSNr9EPXWI"
+      },
+      {
+        "url": "/image/1/1.VJvvk7a--HKhOQJ5y55T_uwz-nRdJPxyXUOZeFHI84hQMPo.B3RSZSJJHXjBG5wWfCOT9rh3kmWsvZJ1DzW6RrWCRes"
+      },
+      {
+        "url": "/image/1/1.kcui5ba-PSLsT8cpjLOU5-1EPyQQUjkiEDVcKBy-NtgdRj8.F_wlqhuKFwBgZydQ-Pl8Te6hirAGuSFvQzozb28EG5U"
+      },
+      {
+        "url": "/image/1/1.dEmHZ7a-2KDJzSKr43ZwZcjG2qY10NygNbe5qjk801o4xNo.dqVJNoYW253FM7qUQrDotFMtuCsDu2VBACkYm1eXcxA"
+      },
+      {
+        "url": "/image/1/1.J3Si1La-i53sfnGW4Lwec_l1iZsQY4-dEATqlxyPgGcdd4k.uMzpyv4xPF-rMiy6MX-cnFrBlIYzsqcuNXlzJ5GmSRo"
+      },
+      {
+        "url": "/image/1/1.WHt397a-9JI5XQ6ZS7Yne3dW9pTFQPCSxSeVmMms_2jIVPY.u0gFRenvKi1s7kVTAw5GLKPRfpqsc17OnpO0RhPefpw"
+      },
+      {
+        "url": "/image/1/1.Nbu807a-mVLyeWNZ2oMC_79zm1QOZJ1SDgP4WAKIkqgDcJs.4hBfz0B40IbRmAQ3JUOhY7iTv2ODMeO1LI-fajE2A2E"
+      },
+      {
+        "url": "/image/1/1.Ink-ZLa-jpBwznSbdlQmVXHFjJaM04qQjLTvmoA_hWqBx4w.yoB-TJn8o3wwy4FKWqjN-_oXkWGGQOzuJWoR3P9tYQE"
+      },
+      {
+        "url": "/image/1/1.U6Cn5La-_0npTgVCjdFmp_xF_U8VU_tJFTSeQxm_9LMYR_0.tpI9nTbP148A_xGGyA15URP6coS-PmX02pL1h2dX75w"
+      },
+      {
+        "url": "/image/1/1.kIWlWra-PGzr8MZniWza36b6PmoX7ThsF4pdZhsBN5Ya-T4.IgIz7p1V9msnQB6J_ak05Hs72czX8JuV6rwzV4YGPc4"
+      },
+      {
+        "url": "/image/1/1.Teap87a-4Q_nWRsEv6on4r5T4wkbROUPGyOABReo6vUWUOM.7jXoDO91zmkQWxTh_UEA44npmWapoB6rpCYDSUmwHkw"
+      },
+      {
+        "url": "/image/1/1.L_7YP7a-gxeWlXkcijcdutufgRFqiIcXau_iHWZkiO1nnIE.MHZeP8qDaSW_EVqlfv9deQ5DzOT5XBna7DUImBS1-Qk"
+      },
+      {
+        "url": "/image/1/1.U2CfXba-_4nR9wWCtWwWO5z9_Y8t6vuJLY2egyEG9HMg_v0.XzSJRFkgR1NpALsxhl_QVjpBIwanut6fd4VX6aml1RM"
+      },
+      {
+        "url": "/image/1/1.oNCiM7a-DDnsmfYy7lXA0KKSDj8QhAg5EONtMxxoB8MdkA4.YSND6R8N0OV2kIhXlWaqBSpfBkwNkJutlhQPz4Zdwek"
+      },
+      {
+        "url": "/image/1/1.zfZC2ba-YR8Mc5sUVLLe6UB5YxnwbmUf8AkAFfyCauX9emM.C3rWPLJX0qAVJAEQuNa5QIuA30zusJIKIs_9QaF76Ss"
+      },
+      {
+        "url": "/image/1/1.uUxE4ba-FaUKS--uOqP6FkdBF6P2VhGl9jF0r_q6Hl_7Qhc.WY11nFKQ-EERokprplMc-866G91zWEkgJ7xUUsoSq1M"
+      },
+      {
+        "url": "/image/1/1.nsP6Xba-Miq098ghynOe47X8MCxI6jYqSI1TIEQGOdBF_jA.Fw6dNlvEwvdn0IwLdcWe6i4X0mYtlZLCxpwppHEeYxI"
+      },
+      {
+        "url": "/image/1/1.53R--7a-S50wUbGWPJyhLn1bSZvMTE-dzCsql8CgQGfBWEk.mR2KZmKhnGfgCbl8V8hJzAt34xjOP-5gNFkR4n078MA"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "370000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T10:17:09.468Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-21T10:17:10.912Z"
+  },
+  {
+    "id": "f5073457-da9e-41ea-b3a7-213d5755aa52",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8499091661",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, СНТ Мебельщик-2, Садовая улица",
+    "price": "2350000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продаётся ухоженная дача в Снт «Мебельщик-2» по Тобольскому тракту — всего 10 минут от города без пробок. Идеально для загородной жизни вдали от суеты, но рядом с цивилизацией. Одноэтажный новый дом, общей площадью 48 кв. М. Стены из бруса. На участке правильной прямоугольной формы площадью 8 соток есть вагончик утепленный 6х2,7 с верандой, теплица новая 6х2. Участок обнесён забором с распашными воротами и калиткой. Много плодоносящих насаждений: яблоня, груша, смородина, ирга, облепиха, черноплодная рябина, клубника и другое. Есть фундамент 3,2х3,2 под строительство бани. В Снт два магазина, озон. Круглогодично ходят автобусы, есть школьный автобус, дороги асфальтированные, в снт отсыпано щебнем, срезкой. Зимой дороги чистятся. Общество электрифицировано, скоро будет газ и центральное водоснабжение. Рядом деревня Тураево, в которой есть школа, детский сад, поликлиники, спорт центр.",
+    "domain": "AVITO",
+    "latitude": 57.176885,
+    "longitude": 65.8193,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_8_sot._snt_dnp_8499091661",
+    "area": 8,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T08:43:10.000Z",
+    "modifiedAt": "2026-10-21T08:43:10.000Z",
+    "actualizedAt": "2026-10-21T11:06:52.898Z",
+    "createdAt": "2026-10-21T08:48:09.372Z",
+    "updatedAt": "2026-10-21T11:06:52.898Z",
+    "duplicatedAt": "2026-10-21T10:30:14.146Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.Y41fQ7a-z2QR6TVvFUod2VzjzWLt9Mtk7ZOubuEYxJ7g4M0.iEj9GLOeSXLWCmnSwiY7PUgg0NcCVJ5KMHnrBs8FV6s"
+      },
+      {
+        "url": "/image/1/1.zzweVLa-Y9VQ_pneDG-LJQn0YdOs42fVrIQC36APaC-h92E.XnOV62m_T3RjRB84zxLz7D9tlfoyelOScCQIVZ21CzY"
+      },
+      {
+        "url": "/image/1/1.wIpMVra-bGMC_JZoQB2Lk1v2bmX-4Whj_oYNafINZ5nz9W4.D7RmaURowkOLba14PPZF0yu3c3V-QdNlmu7u6nw2WmQ"
+      },
+      {
+        "url": "/image/1/1.cNflcba-3D6r2yY1iRgd_ObR3jhXxtg-V6G9NFsq18Ra0t4.Ub_JfvVw6mNNH2xSBAAypE8Hswy-zeCPiXcVFx0cXVw"
+      },
+      {
+        "url": "/image/1/1.OZTGB7a-lX2IrW92uFcpv8Wnl3t0sJF9dNf0d3hcnod5pJc.kb5dA7FMaXrp38UHffRh_26saaZ09ei05sIYY5j2UAs"
+      },
+      {
+        "url": "/image/1/1.fqafxra-0k_RbChE76czlNBn0EktcdZPLRazRSGd2bUgZdA.tQ5_pSerWYgilSQJbV5L1CrnaBVmVgi5vocU_QBRdTA"
+      },
+      {
+        "url": "/image/1/1.X3C_1ba-85nxfwmSjewdDLx18Z8NYveZDQWSkwGO-GMAdvE.T3LeRUJeRlr32khZnHcZUqMt7ed8ToFUnC_J_NEbICo"
+      },
+      {
+        "url": "/image/1/1.JRnxi7a-ifC_IXP7t6dqM_Iri_ZDPI3wQ1vo-k_QggpOKIs.CcsleI0C7-JgqNSfv2jAHgsfTObJtBok-WfTzwTJr7I"
+      },
+      {
+        "url": "/image/1/1.q4nPkra-B2CBOP1rleDSnJQzBWZ9JQNgfUJmanHJDJpwMQU.dPavd-oFwOJ7wXO3w0ErF8tBno6dxBTdz8LGtjWg7YI"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "2350000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T08:48:09.372Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-21T10:48:10.181Z"
+  },
+  {
+    "id": "54bec36e-f6cf-44d1-9d01-5fdae7c694a2",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8382189426",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, коттеджный посёлок Онегин, Серебристая улица",
+    "price": "3250000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам участок в КП Онегин по Ирбитскому тракту. ОБ Участке: Участок 8 соток. Газ и электричество проведены до участка и все коммуникации в КП проходят под землей. Вид разрешенного использования земельного участка: Земли сельскохоз. Назначения; Зона, предназначенная для ведения садоводства (Сх4). О Коттеджном Поселке: Одним из главных преимуществ жизни в КП Онегин является близость к природе и одновременно к городу. В целом, поселок представляет собой привлекательное место жизни для тех, кто предпочитает тихое и уединенное местоположение, но при этом не хочет отказываться от удобств и инфраструктуры городской жизни. Поселок находится в окружении лесного массива, что является одной из важнейших составляющих чистоты воздуха, отсутствуют загазованность и вредные производства. Около поселка — ближайшая школа, детский сад, поликлиника — в 5 минутах, неподалеку база отдыха « Кулига парк» и горячий источник » Аван».",
+    "domain": "AVITO",
+    "latitude": 57.231309,
+    "longitude": 65.161072,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_8_sot._izhs_8382189426",
+    "area": 8,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T08:18:01.000Z",
+    "modifiedAt": "2026-10-21T08:18:01.000Z",
+    "actualizedAt": "2026-10-21T11:06:52.952Z",
+    "createdAt": "2026-10-21T08:36:16.861Z",
+    "updatedAt": "2026-10-21T11:06:52.952Z",
+    "duplicatedAt": "2026-10-21T08:36:17.110Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.M6qTj7a-n0PdJWVI-f9EmNwunUUhOJtDIV_-SS3UlLksLJ0.s2ygTRxBUE_lZ_4kAKS32rw-mz90MNetsBuVoyFjf_M"
+      },
+      {
+        "url": "/image/1/1.3v9dcba-chYT24gdbXap5krRcBDvxnYW76ETHOMqeezi0nA.5MRvROXQ8rol_XfWcw-Qi7paMCvkiSkgzmlP_4aC3To"
+      },
+      {
+        "url": "/image/1/1.cVptt7a-3bMjHSe4A7oLaCIW37XfANmz32e8udPs1knSFN8.obZ5B8tcbPwgaDKutFQcsyv8ta3aEBTRUBxI9towYfs"
+      },
+      {
+        "url": "/image/1/1.4ZQlh7a-TX1rLbd2a8j_vyYnT3uXMEl9l1csd5vcRoeaJE8.Kxz64Txu2z8zVOP9APwNlotwYrsaFk2bNVw-znI8IvE"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "3250000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T08:36:16.861Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-21T10:36:17.594Z"
+  },
+  {
+    "id": "697e204a-c2ce-436c-9e89-1cdf9995b160",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8499002450",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, деревня Падерина, Раздольная улица, 20",
+    "price": "4200000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок 7 соток (18х40 метров) в деревне Падерина, по улице Раздольная, в черте города. Это отличная возможность построить дом своей мечты в развивающемся районе с большой перспективой! Здесь запланировано строительство детского сада, школы, спортивных площадок и других объектов инфраструктуры. Сейчас детей доставляет в школу в п. Московский школьный автобус. Участок правильной формы, с плодородной землей, расположен на высоком и сухом месте. Подъезд — по щебеночной дороге. Электричество и газопровод проходят рядом с участком, водопровод уже есть на соседней улице. Район активно застраивается, многие уже построили свои дома. Участок можно перевести в Коммерческое назначение (по градплану). До города удобно добираться как по Московскому тракту, так и через Комарово Парк (район Тюменская слобода: ЖК Комарово, Преображенский, Ямальский-2 и др.). Ул. Фармана Салманова уже открыта, она напрямую соединит д. Падерина с городом. В деревне ходит общественный транспорт с интервалом 10-15 минут. Уже сейчас проведены газ, центральное водоснабжение и ведется строительство асфальтированных дорог. Категория земель — земли населенных пунктов, назначение — Лпх.",
+    "domain": "AVITO",
+    "latitude": 57.083496,
+    "longitude": 65.455402,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_7_sot._izhs_8499002450",
+    "area": 7,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T07:58:16.000Z",
+    "modifiedAt": "2026-10-21T07:58:16.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.007Z",
+    "createdAt": "2026-10-21T08:12:20.462Z",
+    "updatedAt": "2026-10-21T11:06:53.007Z",
+    "duplicatedAt": "2026-10-21T08:12:21.003Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.vr_5r7a-Ela3Behdiam76_oPEFBLGBZWS39zXEf0GaxGDBA.Yajq9b4E2PCsXmYv_eyANRoZ5hQ4ZSq8gOBZO92BMZw"
+      },
+      {
+        "url": "/image/1/1.CzbMrra-p9-CBF3U1sJvL9sOpdl-GaPffn7G1XL1rCVzDaU.4JJcVz_lJYAyut0vkX7T2CB8kJTEu7URyrLCIpwVEt4"
+      },
+      {
+        "url": "/image/1/1.L-8AOLa-gwZOknkNUgBakwOYgQCyj4cGsujiDL5jiPy_m4E.vkgm8smHQQI7VtYfW5d0lWaTofYYJcZaDZxO-RnCnBI"
+      },
+      {
+        "url": "/image/1/1.fw6gALa-0-fuqins0h0XH_uh0eESt9fnEtCy7R5b2B0fo9E.A_JZ77WMiRJP7f9vz1o-vp-G5FcdQwHDuoQzNT8N3k0"
+      },
+      {
+        "url": "/image/1/1.ilWiLLa-Jrzshty3un6yfqGMJLoQmyK8EPxHthx3LUYdjyQ.qdRSuX62qj_Qp5FlDmzIumBn8Zr-YIuZdpvHuQoXth4"
+      },
+      {
+        "url": "/image/1/1.VB4XgLa--PdZKgL8M_VYNRQg-vGlN_z3pVCZ_anb8w2oI_o.1-dlXvURwdkXeVmFSwpMRREoCIRPB70vW4kffrgnNzA"
+      },
+      {
+        "url": "/image/1/1.iKjMV7a-JEGC_d5K0DXnsdv3Jkd-4CBBfodFS3IML7tz9CY.AdiJ5Tpw6ukRCtKTblpKe8tOFjlT0tGORN1k_Jd7LyU"
+      },
+      {
+        "url": "/image/1/1.T7fwB7a-416-rRlV4l5ZsfCm4VhCsOdeQteCVE5c6KRPpOE.qHY887-6Z6Uz_7sh4hCyUvm_fst4AzewHHFeO-_7Iu4"
+      },
+      {
+        "url": "/image/1/1.Z62qPba-y0TklzFP6FAY-6mdyUIYis9EGO2qThRmwL4Vnsk.PD3Og3Eb6bjYOJ7-EdZdmrLw0SUtY0sQxvr2gKsYBLM"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "4200000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T08:12:20.462Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 4,
+    "buyerDemandLastCheckedAt": "2026-10-21T10:12:21.794Z"
+  },
+  {
+    "id": "baab1c20-2400-4d67-a0d7-1ec80d79a85b",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8328524676",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, деревня Решетникова",
+    "price": "700000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Новый коттеджный поселок! Самая выгодная цена Сегодня, уже весной они будут стоить в 2 раза дороже. -Закрытая территория, видеонаблюдение круглосуточно. -Управляющая компания следит за благоустройством и чистотой. - Свой пляж и зоны для детей и Воркута. -Рядом магазины и автобусные остановки. Покупка без комиссии, агентам не беспокоить.",
+    "domain": "AVITO",
+    "latitude": 57.249034,
+    "longitude": 65.37923,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_5_sot._snt_dnp_8328524676",
+    "area": 5,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T07:11:58.000Z",
+    "modifiedAt": "2026-10-21T07:11:58.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.079Z",
+    "createdAt": "2026-10-21T07:23:33.832Z",
+    "updatedAt": "2026-10-21T11:06:53.079Z",
+    "duplicatedAt": "2026-10-21T07:23:34.181Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.tNcxZra-GD5_zOI1VXTcgTLGGjiD0Rw-g7Z5NI89E8SOxRo.Z4qUJZo9auqbE-uSEIba2mFzvZ5yd4kGw8_vPEWq7d8"
+      },
+      {
+        "url": "/image/1/1.aIPL6ba-xGqFQz5hl-gAvYRIxmx5XsBqeTmlYHWyz5B0SsY.3bp2lkqJBrUA5BOtWk_CKkXOP7ajs0y8_8RfzQNGiWw"
+      },
+      {
+        "url": "/image/1/1.jjZMSLa-It8C4tjUXHaGL1voINn-_ybf_phD1fITKSXz6yA.DgymUZOftNp7yrlEG7EVj8ge_J6g8spIeoGPFISgruw"
+      },
+      {
+        "url": "/image/1/1.6t9EQba-RjYK67w9HBr8iUfhRDD29kI29pEnPPoaTcz74kQ.jSYuIKT_UbtSlIeVTNPSXDl9bzxt6iYkfo1pwsuFP6M"
+      },
+      {
+        "url": "/image/1/1.3x8orra-c_ZmBIn9GpGPSysOcfCaGXf2mn4S_Jb1eAyXDXE.C7hWDKnyKJOgJlBqQVd54JfGv2ydwYMqQiiLKPih6sk"
+      },
+      {
+        "url": "/image/1/1.KjtCU7a-htIM-XzZGjslb0HzhNTw5ILS8IPn2PwIjSj98IQ.uvWi4hlhUuxYabM6c7i2ykHgf1uC7Dn29MxXziLapKs"
+      },
+      {
+        "url": "/image/1/1.E_rclra-vxOSPEUY9uJ564c3vRVuIbsTbkbeGWLNtOljNb0.cal9yOTBsTuItvuHSpUgtJVu74lZuAASoSRxGh5lCGE"
+      },
+      {
+        "url": "/image/1/1.xJG5DLa-aHj3ppJzvVfXiK6san4Lu2x4C9wJcgdXY4IGr2o.5155UVVbJMhgyTDwgybinuOsgkUFBvlNMfjdxThUXfs"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "700000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T07:23:33.832Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-21T09:23:35.159Z"
+  },
+  {
+    "id": "76e2228a-1f6b-47be-bed0-30b8a73aa4ab",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8482894015",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, Кулаковское муниципальное образование",
+    "price": "2131500",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам земельный участок в развивающемся районе, кипрея Ленд. Самая низкая цена. Звоните, пишите покажу раскажу.",
+    "domain": "AVITO",
+    "latitude": 57.191525,
+    "longitude": 65.255206,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_74_sot._snt_dnp_8482894015",
+    "area": 7.4,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T05:10:01.000Z",
+    "modifiedAt": "2026-10-21T05:10:01.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.136Z",
+    "createdAt": "2026-10-21T05:21:03.809Z",
+    "updatedAt": "2026-10-21T11:06:53.136Z",
+    "duplicatedAt": "2026-10-21T05:21:07.016Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.hqxdQLa-KkUT6tBOXQr7tkrgKEPv9y5F75BLT-MbIb_i4yg.i9D6oNcHmct2lLB7Zi-4pjRMiMdHYJctGR3URu3kEmE"
+      },
+      {
+        "url": "/image/1/1.dqT3Hra-2k25tCBGlz8c9PS-2EtFqd5NRc67R0lF0bdIvdg.M1qea8jT7H4SH9uOzUUZIh8rUcBkWVejyYdf69RR_ho"
+      },
+      {
+        "url": "/image/1/1.-vKSV7a-Vhvc_awQ6kiRopH3VB0g4FIbIIc3ESwMXeEt9FQ.EW4S8pejfsNTTlWTOVv7SUcAcpotbGloi8_nKCZ2xrs"
+      },
+      {
+        "url": "/image/1/1.6X9slra-RZYiPL-dMu2tQCM3R5DeIUGW3kYknNLNTmzTNUc.kqLUO458VNNXqGyx4D1QnI8qQs8wl3t2pHw6mKBfbeM"
+      },
+      {
+        "url": "/image/1/1.SO88zra-5AZyZB4NINMP0HNv5gCOeeAGjh6FDIKV7_yDbeY.YDB6mhvaMT3dg_gDwVmT97B3py90u6s7mXMlrXSbDlY"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "2131500",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T05:21:03.809Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-21T07:21:12.410Z"
+  },
+  {
+    "id": "1daf289f-59de-41f3-a2d4-d8a62f6488c6",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8431039725",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, СНТ Ручеёк, Парковая улица, 15",
+    "price": "1600000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продаёт земельный участок. Участок ровный. Плодовые деревья вдоль забора. Построения нет. Все документы для строительства готовы. На участке только 10 м теплица(рабочая) с баком для полива на 1м3. Кад номер: 72:17:1311018:62.",
+    "domain": "AVITO",
+    "latitude": 57.1343,
+    "longitude": 65.364952,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_65_sot._snt_dnp_8431039725",
+    "area": 6.5,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-21T04:07:41.000Z",
+    "modifiedAt": "2026-10-21T04:07:41.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.264Z",
+    "createdAt": "2026-10-21T04:21:12.115Z",
+    "updatedAt": "2026-10-21T11:06:53.264Z",
+    "duplicatedAt": "2026-10-21T04:21:12.826Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "e1132f79-b15b-4fea-8853-65a045163070",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.zExqE7a-YKUkuZqufnSSdyWyYqPYpGSl2MMBr9RIa1_VsGI.fbg1QgwCYcODzTi6Zvn1QW4GZQa3-C425xWzNjuMTOw"
+      },
+      {
+        "url": "/image/1/1.XZASqba-8XlcAwtyJPgewxEJ83-gHvV5oHmQc6zy-oOtCvM.P95SDCd3LTZRxTfZlL_DRg0DAGGNSHjQi8_uWnrOz1s"
+      },
+      {
+        "url": "/image/1/1.Jcr5Gba-iSO3s3Mov1148ba4iyVLro0jS8noKUdCgtlGuos.ZWRFsM7_l5bHuIfqrFER2nb2-2_oHbfZbern2amIf8w"
+      },
+      {
+        "url": "/image/1/1.YO7lfra-zAer1DYMqX8nvebezgFXycgHV66tDVslx_1a3c4.B6r-OedgrI-_5vu-aM0-mXfo-5bJ4sUuWpzXNf2uVcE"
+      },
+      {
+        "url": "/image/1/1.sBPyWba-HPq88-bxnkPfCeX5HvxA7hj6QIl98EwCFwBN-h4.HmMDixg7-XdVn7k8MgCj4OX-FvGwkS602_7xRvIWQVQ"
+      },
+      {
+        "url": "/image/1/1.YORUTra-zA0a5DYGGGcm-w_vzgvm-cgN5p6tB-oVx_fr7c4.yRHmRfeYQfrQmJWj3eReMjY1r7ykpHLdX2k_qMw4AbI"
+      },
+      {
+        "url": "/image/1/1.gzrAKra-L9OOgNXYykTGJZuLLdVynSvTcvpO2X5xJCl_iS0.yV24Lih3u9HDI39nb8bHxZDRZ4rvdMXOaKYRx-Aj7xI"
+      },
+      {
+        "url": "/image/1/1.ODbBcLa-lN-P2m7UvVhxZcLQltlzx5Dfc6D11X8rnyV-05Y.RHwXo1pnAoTHmxxnglL0l8c-RAMebzQ1UrI4GGVIUxY"
+      },
+      {
+        "url": "/image/1/1.mlDoW7a-Nrmm8cyy0DHST7P6NL9a7DK5WotXs1YAPUNX-DQ.PjA1OlWty4YI9UTHVkkWOUfLxpvVSEtCBoIvYm30Dj0"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1600000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T04:21:12.115Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-21T06:21:13.691Z"
+  },
+  {
+    "id": "b45cd957-8a33-45b0-88d6-e6f4ffb35722",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8382822771",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, село Перевалово, КП Палитра",
+    "price": "1700000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам земельный участок.",
+    "domain": "AVITO",
+    "latitude": 57.099931,
+    "longitude": 65.212134,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._izhs_8382822771",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T17:03:00.000Z",
+    "modifiedAt": "2026-10-20T17:03:00.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.325Z",
+    "createdAt": "2026-10-20T17:11:44.427Z",
+    "updatedAt": "2026-10-21T11:06:53.325Z",
+    "duplicatedAt": "2026-10-20T17:11:45.707Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.5qQYp7a-Sk1WDbBGWODx-hsHSEuqEE5NqncrR6b8QbenBEg.dvselLoE6EXwlhTLsrJcZNmh4yhIqt4b05C1_jiaUYc"
+      },
+      {
+        "url": "/image/1/1.wrWkJ7a-blzqjZRXrHSKleuGbFoWkGpcFvcPVhp8ZaYbhGw.-agmZxbcO90BIER9NAZrqip1jouwTc9Xta8mGa6TLq8"
+      },
+      {
+        "url": "/image/1/1.ES5P2ba-vccBc0fMYdlhNRR4v8H9brnH_QnczfGCtj3wer8.qfDeFG8JWVDovAiJPu71VdXJoSMrLzxMqpnyV8IANtY"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1700000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T17:11:44.427Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 3,
+    "buyerDemandLastCheckedAt": "2026-10-20T19:11:47.035Z"
+  },
+  {
+    "id": "7c4b65c8-a824-45d5-8a97-d8b6b80f086d",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8483771275",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский муниципальный округ, посёлок Карагандинский, садовые участки",
+    "price": "1200000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам два земельных участка общей площадью 13соток (земли поселений/земли населённых пунктов), участки расположены возле леса, также на самих участках имеются деревья, идеально для глэмпинга, или для воплощения своей мечты — жить среди леса. Электричество на столбе (15квт), счетчик с автоматической передачей показаний, центральный круглогодичный водопровод идет вдоль границы участков. Заезд на участки отсыпан. В нескольких минутах ходьбы есть озеро, летом можно купаться и рыбачить. В посёлке есть магазин, детский сад. Границы участков — от деревянного забора (с права) и до трубы(слева) (смотреть на фото). От кольца Ммс 28 километров, или 20 минут езды по Велижанскому тракту(самый не загруженный тракт). Обоснованный торг. Цена за оба участка, продажа только обоих участков сразу. Кадастровые номера: 72:12:1537001:164. 72:12:1537001:165. Собственник. Агентствам просьба не беспокоить!",
+    "domain": "AVITO",
+    "latitude": 57.416877,
+    "longitude": 65.700112,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_13_sot._snt_dnp_8483771275",
+    "area": 13,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T16:50:58.000Z",
+    "modifiedAt": "2026-10-20T16:50:58.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.375Z",
+    "createdAt": "2026-10-20T17:11:44.487Z",
+    "updatedAt": "2026-10-21T11:06:53.375Z",
+    "duplicatedAt": "2026-10-20T17:11:44.848Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.yAyhcLa-ZOXv2p7uvVvNUaLQZuMTx2DlE6AF7x8rbx8e02Y.ZYP2vWJEZNtXSZTIG4IVW0xtGQNwPCwIcZNoqZcX4n0"
+      },
+      {
+        "url": "/image/1/1.-Tmigba-VdDsK6_b3MazGe0gV9YQNlHQEFE02hzaXiodIlc.PfemTcVMBRd_o92E0_b8mRIiVc6CbDmzKMzrrdkTpBI"
+      },
+      {
+        "url": "/image/1/1.N2Z0B7a-m486rWGEFldnZnSmmYnGsJ-Pxtf6hcpckHXLpJk.2HM-wcKniDiARVG2Pdapvl0o8os7BsSQI3_2I9fLNRQ"
+      },
+      {
+        "url": "/image/1/1.NXfC_La-mZ6MVmOVpJBObJldm5hwS52ecCz4lHynkmR9X5s.cztZhnrCA-CwEBOP1Uh1LQIJ20n5XBwP65I4ejbU42E"
+      },
+      {
+        "url": "/image/1/1.vTnItba-EdCGH-vbvovMYcsVE9Z6AhXQemVw2nbuGip3FhM.jMRAA5IpALH6VerPE_kgG9ak34Crvn8k5BoTLaLWcpc"
+      },
+      {
+        "url": "/image/1/1.XNUIWra-8DxG8Ao3PHdGiwv68jq67fQ8uoqRNrYB-8a3-fI.YYjbv3aEdroXOH8lNMu66vjY3_Me2SLq5fzBi0g_aP0"
+      },
+      {
+        "url": "/image/1/1.Qf-UeLa-7Rba0hcdmnUL39vZ7xAmz-kWJqiMHCoj5uwr2-8.Jv0qhkQHXMfgUaaxkfkbFQCNBnqFdt_FbiuFxiHmPlY"
+      },
+      {
+        "url": "/image/1/1.PgBM8ba-kukCW2jiPO0LG1tRkO_-Rpbp_iHz4_KqmRPzUpA.aOGNeo5kALU0JrR1boWLBhkukfj_abJPyiYnzNvmqTA"
+      },
+      {
+        "url": "/image/1/1.7WmrJ7a-QYDljbuL_TCOdqmHQ4YZkEWAGfcgihV8SnoUhEM.CrOz4Ct4ZiMpjOkTb5nJHu0_yY1pkGjycWx4xuW-mp4"
+      },
+      {
+        "url": "/image/1/1.hHKJq7a-KJvHAdKQjeXyKooLKp07HCybO3tJkTfwI2E2CCo.QzVEUvzwX2bwLxl8YOgBm1AOSAQR6sJ-nsSy2ETyad0"
+      },
+      {
+        "url": "/image/1/1.9bHIiLa-WViGIqNTrvO56csoW156P11Yelg4UnbTUqJ3K1s.7IcHMieV5c4CiAUbZJSjngOB7Ztg7eXFVXwkr3--yeg"
+      },
+      {
+        "url": "/image/1/1.rZdX2ba-AX4Zc_t1AbOrylR5A3jlbgV-5QlgdOmCCoToegM.WCXiUaxVn98dLe9C4EDlwZugMdD8p3oCLfp87Np8JIU"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1200000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T17:11:44.487Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T19:11:45.166Z"
+  },
+  {
+    "id": "cf41ab2f-ca8e-4351-8278-bc386ef5078e",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8489561150",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, 71Н-1785",
+    "price": "350000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продажа садовых земельных участков в деревне Друганово, площадью 10 соток.",
+    "domain": "AVITO",
+    "latitude": 57.082974,
+    "longitude": 65.520923,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._snt_dnp_8489561150",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T14:59:39.000Z",
+    "modifiedAt": "2026-10-20T14:59:39.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.454Z",
+    "createdAt": "2026-10-20T15:06:20.551Z",
+    "updatedAt": "2026-10-21T11:06:53.454Z",
+    "duplicatedAt": "2026-10-20T15:06:20.827Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.jeq8rLa-IQPyBtsIqv7r0L4MIwUOGyUDDnxACQL3KvkDDyM.yJK3TmqGWFXWQoEDCqCqzr_t73VvaX09cytFSnwPA4k"
+      },
+      {
+        "url": "/image/1/1.CNE3s7a-pDh5GV4zK-dN1SATpj6FBKA4hWPFMonor8KIEKY.TlWo3RgV4gopM5RZ6o7pxBalowF190VdF9Lg75NhosI"
+      },
+      {
+        "url": "/image/1/1.qJ_zs7a-BHa9Gf59r7XHpvETBnBBBAB2QWNlfE3oD4xMEAY.yu-Y8r6QoI2_Sd-KIl_bRMfZcR_2PXZtk-qeVfY1DSY"
+      },
+      {
+        "url": "/image/1/1.kPzm27a-PBWoccYeyvn1xuR7PhNUbDgVVAtdH1iAN-9ZeD4.w6CSPl6lUXVEOrKHNUl9ZX8Ob5_oGOHUuxrMB-k2WIg"
+      },
+      {
+        "url": "/image/1/1.hbm5rba-KVD3B9Nbv9Psg7sNK1YLGi1QC31IWgf2IqoGDis.B8P_YWuyJBRE7YyXxQrRMwslNaB-Klpuus6t1RYbtr4"
+      },
+      {
+        "url": "/image/1/1.l-SwI7a-Ow3-icEGknnMwLKDOQsClD8NAvNaBw54MPcPgDk.PdwYEzfaz7KVBB8Mx3u6TQ2eEXmOhaH297PEo7DyuHY"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "350000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T15:06:20.551Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 2,
+    "buyerDemandLastCheckedAt": "2026-10-20T17:06:45.173Z"
+  },
+  {
+    "id": "2475dc80-d421-4a76-9cf1-dc599e51bcb9",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8483624602",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский район, садоводческое некоммерческое товарищество Царицыно",
+    "price": "700000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Я собственник. Продаю свой земельный участок, где можно воплотить мечту о собственном доме. 10 соток, участок правильной формы, ёлочки на участке, асфальтированная дорога и коммуникации. 72:12:1502001:1908.",
+    "domain": "AVITO",
+    "latitude": 57.390354,
+    "longitude": 65.785042,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._snt_dnp_8483624602",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T13:11:03.000Z",
+    "modifiedAt": "2026-10-20T13:11:03.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.609Z",
+    "createdAt": "2026-10-20T13:17:50.820Z",
+    "updatedAt": "2026-10-21T11:06:53.609Z",
+    "duplicatedAt": "2026-10-20T13:17:53.246Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.w1or4ra-b7NlSJW4IYXIXjxCbbWZVWuzmTIOuZW5ZEmUQW0.UU7Kl_OoqA4TyjQnu5ljqb7miQYgp8wGb_UWx5nMAdc"
+      },
+      {
+        "url": "/image/1/1.l2cpt7a-O45nHcGFC93CZ3IWOYibAD-Om2dahJfsMHSWFDk.pw_N9m_Qpyn7E2d_rD1rNzreEozTfqhzvy0Y7T4rdJI"
+      },
+      {
+        "url": "/image/1/1.tqRFLra-Gk0LhOBGJUzN_0aOGEv3mR5N9_57R_t1Ebf6jRg.11Wp-Zma8bo3xjcFw21bm_9YSmqaaEj8QevJiOHuHco"
+      },
+      {
+        "url": "/image/1/1.qeCTBLa-BQndrv8CzX78pZCkBw8hswEJIdRkAy1fDvMspwc.23LwBIRa1ST23JL7OZOfd4MZgwVevykK-qT8Nj0q3dQ"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "700000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T13:17:50.820Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T15:17:53.578Z"
+  },
+  {
+    "id": "1c065a7a-392d-474b-a613-3c14a55e8857",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8413626838",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "городской округ Тюмень, СНТ Светлое",
+    "price": "270000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок, 10 соток, электричество, Салаирский тракт, высокое место, не топит.",
+    "domain": "AVITO",
+    "latitude": 57.288242,
+    "longitude": 65.411824,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._snt_dnp_8413626838",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T12:56:49.000Z",
+    "modifiedAt": "2026-10-20T12:56:49.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.659Z",
+    "createdAt": "2026-10-20T13:04:55.894Z",
+    "updatedAt": "2026-10-21T11:06:53.659Z",
+    "duplicatedAt": "2026-10-20T13:04:56.434Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.VOV0ira--Aw6IAIHUJ8u5S8r-grGPfwMxlqZBsrR8_bLKfo.HueljTYvooJJvhexs_G2dYHFzJeC2Dp3LoO9uyP5j-Q"
+      },
+      {
+        "url": "/image/1/1.Fmg84ba-uoFyS0CKHLllaGdAuIeOVr6BjjHbi4K6sXuDQrg.8XsIJ_s-4JP9YeRIMutB9DBNwKgSuRi51oiyhn3cRFM"
+      },
+      {
+        "url": "/image/1/1.Hqct8ba-sk5jW0hFHckdpy1QsEifRrZOnyHTRJOqubSSUrA.8s_Gg666zV_B1ANXm2kY53rqJT5oG9wTAAcwYu4jfEI"
+      },
+      {
+        "url": "/image/1/1.L8Vk8ra-gywqWHknNoJz6CtTgSrWRYcs1iLiJtqpiNbbUYE.lxppVPB_GOViIITEIJ8FFT2DKR6bw_2I7mUEEHsTZbw"
+      },
+      {
+        "url": "/image/1/1.vkf6_ra-Eq60VOilipi0JvleEKhISRauSC5zpESlGVRFXRA.gSM3eRRR7HcjjK1-je2XEKulOlqwTD714eqiwV-_fx8"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "270000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T13:04:55.894Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T15:04:56.825Z"
+  },
+  {
+    "id": "71a6a2ca-7b42-4a8c-82af-658e65e500cf",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8347307264",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, СНТ Берёзка, 11-я Садовая улица, 6",
+    "price": "2500000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам земельный участок в Снт «Березка». На участки старый дачный домик. Территория в газоне. На участке высажены деревья. В Этажах Уже Есть!",
+    "domain": "AVITO",
+    "latitude": 57.214214,
+    "longitude": 65.586365,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_41_sot._snt_dnp_8347307264",
+    "area": 4.1,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T11:30:49.000Z",
+    "modifiedAt": "2026-10-20T11:30:49.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.722Z",
+    "createdAt": "2026-10-20T11:33:29.097Z",
+    "updatedAt": "2026-10-21T11:06:53.722Z",
+    "duplicatedAt": "2026-10-20T11:33:30.132Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": "8ee4040e-e714-4c70-a7ff-5fbbd6e609a1",
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.eiUXt7a-1sxZHSzHb9IXIAAX1MqlANLMpWe3xqns3TaoFNQ.lMYk_Y4PbcgtrM9JpKn-LGHoIKOjbZEpO9BvQYBCgFw"
+      },
+      {
+        "url": "/image/1/1.zORGira-YA0IIJoGUvXL_0QqYgv0PWQN9FoBB_jRa_f5KWI.K0O3E_uIXgZSm730Sk0Xco9KGUna9Q6-EVOzzyfs33Q"
+      },
+      {
+        "url": "/image/1/1.ckNEW7a-3qoK8SShLDJsTx_63Kz27Nqq9ou_oPoA1VD7-Nw.3CFhEBxa0Vbla2jNooskzvxN5PeJAj6RKU_u6vTFTCI"
+      },
+      {
+        "url": "/image/1/1.3f_ix7a-cRasbYsd1Jje87lmcxBQcHUWUBcQHFyceuxdZHM.wnG9qKyTM-8UjVCcbHFC3f3SzNaMqSIL-QFCwJNz9Ek"
+      },
+      {
+        "url": "/image/1/1.AYM1t7a-rWp7HVdhO_tuqnoWr2yHAKlqh2fMYIvsppCKFK8.sdHdhHIW8LXDs8dygfZqzZWIB8lynnPv3XII1b0LzqE"
+      },
+      {
+        "url": "/image/1/1.7cHEX7a-QSiK9bsjkhz2gMf_Qy526EUodo8gInoEStJ7_EM.lngsV12iLEcTvmcVFyM3-K3IGRCKhhdxxY3kNJaXuNE"
+      },
+      {
+        "url": "/image/1/1.EOGBJ7a-vAjPjUYDrTMHyM6Gvg4zkLgIM_fdAj98t_I-hL4.ql-0p677wAqNIao6YffoFMyYAVrfordele_CwCbzIdw"
+      },
+      {
+        "url": "/image/1/1.8IkVm7a-XGBbMaZrecjwhU46XmanLFhgp0s9aqvAV5qqOF4.yJmEyXVcFlquXKnzA4WCqCMxbhl_9jiRIDuSaUPQBeA"
+      },
+      {
+        "url": "/image/1/1.CDg84ba-pNFyS17aIJknfj9BpteOVqDRjjHF24K6ryuDQqY.zlP7KEVRm1Wuk7MQ7B_B90RJ9A63iExXblF6TdltK2s"
+      },
+      {
+        "url": "/image/1/1.0NwQ6ba-fDVeQ4Y-PNrD9V9IfjOiXng1ojkdP66yd8-vSn4.ZY9uWEfjrn-fbLoXhH2UejKLtkMzMkiJ9t8nl9omgGE"
+      },
+      {
+        "url": "/image/1/1.Q3rnOra-75OpkBWY7V9Cdryb7ZVVjeuTVeqOmVlh5GlYme0.TP9kxWgI9-FaRufczmVjJimmXN9F7-A3h8X77HISZo8"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "2500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T11:33:29.097Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T13:33:31.111Z"
+  },
+  {
+    "id": "56d56f29-333b-4ce7-bdf6-575496348ce3",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8369483919",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, Кулаковское муниципальное образование",
+    "price": "345800",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участки от 5,17 соток в Горьковке — рядом с «Соловьиной рощей» и «Кипреей»! Локация, которую знают: соседство с «Соловьиной рощей» и «Кипреей» — это уже проверенное направление. До города 10–15 минут, рядом лес и свежий воздух. В селе — школа, садик, магазины, аптека. Что уже готово и не потребует вложений: Столбы электричества установлены —. Дороги шириной 10 метров — проезд круглый год, две машины разъедутся. Участки размежеваны — границы определены, никаких споров. Параметры: — Площадь: от 5,32соток. — Назначение: СХ. Ровные участки правильной формы.",
+    "domain": "AVITO",
+    "latitude": 57.182769,
+    "longitude": 65.226174,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_53_sot._snt_dnp_8369483919",
+    "area": 5.3,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T10:58:56.000Z",
+    "modifiedAt": "2026-10-20T10:58:56.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.767Z",
+    "createdAt": "2026-10-20T11:09:06.955Z",
+    "updatedAt": "2026-10-21T11:06:53.767Z",
+    "duplicatedAt": "2026-10-20T11:09:07.374Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.Tt957ba-4jY3Rxg9aYQPmHpN4DDLWuY2yz2DPMe26czGTuA.kZ5TyPniSVFwFGL9eY6-XHsGcVXbXKDtglRbxRs63XU"
+      },
+      {
+        "url": "/image/1/1.oZgRgba-DXFfK_d6X8vh2BIhD3ejNglxo1Fse6_aBouuIg8.sknGRUAHd0e8nd0chPHYfzJraFvnBVE_fGhx89mXvVo"
+      },
+      {
+        "url": "/image/1/1.lQgR87a-OeFfWcPqN_WRDQZTO-ejRD3hoyNY66-oMhuuUDs.zU7pGtozWMMa470Lds8V_ACQmlU6_tzWUH4n5LTNv4s"
+      },
+      {
+        "url": "/image/1/1.eLiv5ba-1FHhTy5a09Q32qxF1lcdUtBRHTW1WxG-36sQRtY.Ve_GoaxvpQYR3vP5d8i86kjU3XvGu3dVm9JNpq1VfAQ"
+      },
+      {
+        "url": "/image/1/1.en9V6ra-1pYbQCydLds5OFZK1JDnXdKW5zq3nOux3WzqSdQ.oE-lCZOrQlWcjiooa9awG-Cm9WECzsJgYQg7OMnxi9U"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "345800",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T11:09:06.955Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-20T13:09:11.561Z"
+  },
+  {
+    "id": "62c15342-7fa2-478b-808a-d2f9594159d6",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "8438308426",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, деревня Паренкина, А",
+    "price": "95000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продается производственный комплекс! От собственника! - Состав комплекса: 1. Административное здание (кабинет руководителя, кабинет бухгалтерии, 2 кабинета для персонала, кухня, 2 бытовых помещения, 2 санузла м/ж, комната охраны). 2. Хоз. Блок: 3 кабинета (лаборатория). 3. 2 гаража (для грузовой и среднетоннажной техники). 4. Холодный склад из металла. 5. Ангар утепленный (сэндвич). 6. Пожарный водоем 80 кубов. - Производственный мощности: 1. 2 кран — балки. 2. Резервная дизельная подстанция 100 квт. - Коммуникации: 1. Электричество (своя подстанция 380 В) — 160 квт. 2. Отопление: Газ. 3. Вода: свои скважины. 4. Канализация: септик. 5. Интернет, телефон: есть. - Инфраструктура: 1. Ограждение территории: бетонный забор. 2. Асфальт на всей территории комплекса. 3. Видеонаблюдение. 4. Противопожарная сигнализация. 5. Освещение территории. 6. Парковка для сотрудников. 7. Подъезд к территории асфальт. - Юридические аспекты: 1. В собственности (правоустанавливающие документы на землю и здание). 2. Санитарная зона (для производства). - Коммерческие и эксплуатационные преимущества: 1. Текущее использование: Пиролизный завод (производство древесного угля, брикета). 2. Потенциал развития: Производство, складские/логистические направления, база отдыха, Ижс. - Локационные преимущества: 1. 25 минут до центра города. 2. Наличие рабочей силы в районе. 3. Выход к реке 150 метров. Цена обсуждаемая, готов к диалогу с потенциальным покупателем!",
+    "domain": "AVITO",
+    "latitude": 57.123155,
+    "longitude": 65.81416,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_131_ga_promnaznacheniya_8438308426",
+    "area": 131,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T10:24:04.000Z",
+    "modifiedAt": "2026-10-20T10:24:04.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.817Z",
+    "createdAt": "2026-10-20T10:33:18.962Z",
+    "updatedAt": "2026-10-21T11:06:53.817Z",
+    "duplicatedAt": "2026-10-20T10:33:19.230Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.1qUXZLa-ekxZzoBHNy-_6xTEeEql035MpbQbRqk_cbaox3g.U5L8ugNQcrvl3Psbrh5AlTklnwvrUI8nuceurIgKY9U"
+      },
+      {
+        "url": "/image/1/1.r3Lpk7a-A5unOfmQu6W0HOozAZ1bJAebW0NikVfICGFWMAE.LLrCLBTbhxO9u6hxFbHBlMMSZ2TiUSnz2yl_c6JI9XM"
+      },
+      {
+        "url": "/image/1/1.6jlEk7a-RtAKObzbHPCVbwsyRNb2JELQ9kMn2vrITSr7MEQ.0d1Duv6g4RMxOXkIefFixcm3VR2-kCRFPBaaRkHEvpY"
+      },
+      {
+        "url": "/image/1/1._AoPmra-UONBMKroe_XYSQw6UuW9LVTjvUox6bHBWxmwOVI.lU5xgtvxUYu8eACkkO9lzKTHS6v2h3J4bynA-Z71IX0"
+      },
+      {
+        "url": "/image/1/1.3TnFe7a-cdCL0Yvb80Tiesbbc9Z3zHXQd6sQ2nsgeip62HM.xa3gB_U8b7SHxRW7WkdyrzbcXYj-WwkyKWXg3vmIlsU"
+      },
+      {
+        "url": "/image/1/1.cyTF6ra-382LQCXGr9dIZ8ZK3ct3XdvNdzq-x3ux1Dd6Sd0.7z8ZpE0BjGU1WaFH31DUHvdCu3XeR4dgicokXai7O6s"
+      },
+      {
+        "url": "/image/1/1.fTHFZ7a-0diLzSvTs15ecsbH09530NXYd7ew0ns82iJ6xNM.pNIWrcsVTMc3XDMoo3t6omO9WAtf_uhUBABzP0yQw_Q"
+      },
+      {
+        "url": "/image/1/1._MKvmba-UCvhM6og29bJjqw5Ui0dLlQrHUkxIRHCW9EQOlI.IKBb4cT6kPdpYYVFonPfvGwPW9Hs_copKd0aysDurkw"
+      },
+      {
+        "url": "/image/1/1.J-8qUra-iwZk-HENaA4ErCnyiQCY5Y8GmILqDJQJgPyV8Yk.leam0HXcAYvZ0E8xgZ2HLrkuFCl0HDKT4gl_5eW1nCw"
+      },
+      {
+        "url": "/image/1/1.iizSaba-JsWcw9zOymeOQtHJJMNg3iLFYLlHz2wyLT9tyiQ.wiuimiz2ER4Vq1vIK2wqlBO30U6jxv2AnpIUpvD007U"
+      },
+      {
+        "url": "/image/1/1.ojxyS7a-DtU84fTeOm2ucHHrDNPA_ArVwJtv38wQBS_N6Aw.0boI-jQgQrZgn7BVmpORlHxD9BaBNKGrWwMzNPBC2s8"
+      },
+      {
+        "url": "/image/1/1.XqUW5La-8kxYTghHJq076xVE8EqkU_ZMpDSTRqi_-bapR_A.Jeiydxkjb-MFl2LQVYVjA_i2SGKWZL2JSbebeck3FlY"
+      },
+      {
+        "url": "/image/1/1.M2W86La-n4zyQmWH1vw3ZLxJnYoOX5uMDjj-hgKzlHYDS50.B7LIYs8sKV51R2I_PBqtLuMZV_M9dYumX3w0xmoaQz4"
+      },
+      {
+        "url": "/image/1/1.aCNh6La-xMovQj7BPckVdS5JxszTX8DK0zilwN-zzzDeS8Y.UNwL8PXPu_91P0DPWXy7Q92ozpfUKenA6PTiQ5tZkE4"
+      },
+      {
+        "url": "/image/1/1.Yzer5ra-z97lTDXV4bNzMbxGzdgZUcveGTau1BW9xCQURc0.2EALZ7rGL6r9dF4rjqq215tMy05Yn5jOD8uXs0aljUI"
+      },
+      {
+        "url": "/image/1/1.1Z6-Gba-eXfws4N8mBK60L25e3EMrn13DMkYfQBCco0Buns.5XIKzuzxK52k7yAVRlYBfPKeshRtdvjOvVV6M1KjHbQ"
+      },
+      {
+        "url": "/image/1/1._AQjmra-UO1tMKrmV9nERyA6UuuRLVTtkUox553BWxecOVI.F-UNiRGwkE1N8Ojm3Xd9CgOf8pqm6cClikQJvbM808U"
+      },
+      {
+        "url": "/image/1/1.T6icPra-40HSlBlKjj8k5p-e4UcuiedBLu6CSyJl6LsjneE.8tpvsxXFelhMm3H0lDLN1K0i61KNaqG715TGLdItha8"
+      },
+      {
+        "url": "/image/1/1.78xi4La-QyUsSrkuMPuEynVAQSPQV0cl0DAiL9y7SN_dQ0E.4k_mdoZo8Ybz2ci1gF13Vj-z2LQi1yaG26Vm_Ld_HEk"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "95000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T10:33:18.962Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T12:33:20.020Z"
+  },
+  {
+    "id": "69be2d47-c248-4fb0-9ee6-402c856c861a",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8405053016",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, Горьковское муниципальное образование",
+    "price": "345800",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участки от 5,32 соток в Горьковке — рядом с «Соловьиной рощей» и «Кипреей». Столбы электричества уже установлены. Дороги шириной 10 метров. Участки размежеваны, границы определены. До города 10–15 минут, рядом лес. Назначение земли: СХ. Ровные участки правильной формы. В селе школа, садик, магазины, аптека.",
+    "domain": "AVITO",
+    "latitude": 57.181095,
+    "longitude": 65.224509,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_53_sot._snt_dnp_8405053016",
+    "area": 5.3,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T10:14:33.000Z",
+    "modifiedAt": "2026-10-20T10:14:33.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.888Z",
+    "createdAt": "2026-10-20T10:21:01.421Z",
+    "updatedAt": "2026-10-21T11:06:53.888Z",
+    "duplicatedAt": "2026-10-20T10:21:01.772Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.KXaR4ba-hZ_fS3-Uz91nOpJBh5kjVoGfIzHklS-6jmUuQoc.xXhC3uXZW4A2noXeiSjsxdXY2Bjv1nq-6OYAHnmzB00"
+      },
+      {
+        "url": "/image/1/1.fshcura-0iESECgqLONQzUsa0CfuDdYh7mqzK-Lh2dvjGdA.QYtOrs4fX50MkY-vf2OV9iAL52mqmOHrwSr2H5LTXGQ"
+      },
+      {
+        "url": "/image/1/1.-yT_b7a-V82xxa3GhVCvZvzPVctN2FPNTb82x0E0XDdAzFU.FIskr_z-jwpTsXrghZ95L9bjGgffwDJ069QaN9jhJrc"
+      },
+      {
+        "url": "/image/1/1.d7p7Z7a-21M1zSFYGTonkDTG2VXJ0N9Tybe6WcU80KnExNk.mynTsTU2ph75jb10orhnhYT2FtswZT_WLLY84G-vJTA"
+      },
+      {
+        "url": "/image/1/1.-bvz6ba-VVK9Q69Zjb67tqhIV1RBXlFSQTk0WE2yXqhMSlc.0ceviEHIqUSvsWfbuA-drYYVIOuVfk441_J5ldU6Pko"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "345800",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T10:21:01.421Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-20T12:21:02.309Z"
+  },
+  {
+    "id": "8b9eabec-4df5-4f67-9723-ad0c907593d6",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "7624720275",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, деревня Патрушева",
+    "price": "70000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продажа земельного участка (открытая площадка) в д. Патрушева, Тюмень. Продается от собственника земельный участок площадью 7800 м², предназначенный для стоянки автомобильной техники, спецтехники или использования под любые нужды по запросу. Зона специализированной общественной застройки (О4). Участок расположен в д. Патрушева, в черте Тюмени, вблизи автотранспортных развязок (Окружная дорога, Червишевский тракт). Имеются подъездные пути с трассы, асфальтовая дорога прямо до участка, заезд возможен с нескольких направлений. Град. План по запросу предоставим. Плюсы участка: Удобное расположение в черте города Тюмени. Отличная транспортная доступность (рядом Окружная дорога и Червишевский тракт). Асфальтированная дорога до самого участка, несколько направлений заезда. Площадь 7800 м², участок огорожен забором, широкие ворота для въезда техники. Земля выровнена, территория почти вся свободна. Подведено электричество, имеется центральное водоснабжение. Возможность использования под парковку, стоянку спецтехники или другие цели. Дополнительно: Возможна аренда всего участка или частично. Подробнее по телефону или в сообщениях.",
+    "domain": "AVITO",
+    "latitude": 57.08763495638773,
+    "longitude": 65.52758043022762,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_78_sot._promnaznacheniya_7624720275",
+    "area": 78,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T09:53:18.000Z",
+    "modifiedAt": "2026-10-20T09:53:18.000Z",
+    "actualizedAt": "2026-10-20T21:51:02.309Z",
+    "createdAt": "2026-10-20T21:51:02.309Z",
+    "updatedAt": "2026-10-20T21:51:02.309Z",
+    "duplicatedAt": "2026-10-20T21:51:02.550Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.BKBxMLa-qEk_mlJCdXRsqyGRqk_Dh6xJw-DJQ89ro7POk6o._5UNQJy8pYZJonHwYw0Z-tMcOyHw4o7j90HZJM_fdyI"
+      },
+      {
+        "url": "/image/1/1.gtaZpLa-Lj_XDtQ0kb7m3ckFLDkrEyo_K3RPNSf_JcUmByw.iOBK89oAZocD0cTbTmd8lI1wrOzI8GJj0bGG2cTwVCM"
+      },
+      {
+        "url": "/image/1/1.zXx0tba-YZU6H5ueYurodyQUY5PGAmWVxmUAn8ruam_LFmM.gqMuskrzBC-g8tGAgwghXi_yh6035OgDZ-jt2Z8cdNk"
+      },
+      {
+        "url": "/image/1/1.gJ8O_ba-LHZAV9Z9As_slV5cLnC8Sih2vC1NfLCmJ4yxXi4.UuITGLt6iwv3DOOqGQ1oJmJZEho87itJx0h93lAaET0"
+      },
+      {
+        "url": "/image/1/1.oCmCHba-DMDMt_bLzmufItK8DsYwqgjAMM1tyjxGBzo9vg4.B1Vn5O2Y1P9DmOHcYdeVuF3j_Pi2S0xvoIWrfWBtNPQ"
+      },
+      {
+        "url": "/image/1/1.KOACH7a-hAlMtX4CXnNO61K-hg-wqIAJsM_lA7xEj_O9vIY.L65Is_l7W8p1cWv8zcYtYl_CTcTCqsiuOc2jCrVVF1g"
+      },
+      {
+        "url": "/image/1/1.C3HoqLa-p5imAl2T8oxuergJpZ5aH6OYWnjGklbzrGJXC6U.fhBWizUlY6_Jti-rURxJp_sxoO3TFJ63Wb8STHxcrPo"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "70000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T21:51:02.309Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T23:51:03.173Z"
+  },
+  {
+    "id": "f953e6b6-0112-4978-bb42-75592714fddc",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8328592362",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, Горьковское муниципальное образование",
+    "price": "357500",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок по ирбитскому тракту рядом с городом для дачи от собственника! Идеален для дачи и строительства каркасника либо модульника. Локация. Заезд с Ирбитского тракта. 500 м до парка Кипрея. 200 м от бетонки! Подъезд по хорошей грунтовой дороге круглый год. Документы. Межевание выполнено. Участки на кадастровой карте. Егрн на руках — можно сразу выходить на сделку. По участкам. Цена. 65 000 ₽ за сотку. Успевайте!",
+    "domain": "AVITO",
+    "latitude": 57.182041,
+    "longitude": 65.221008,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_55_sot._snt_dnp_8328592362",
+    "area": 5.5,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T09:02:26.000Z",
+    "modifiedAt": "2026-10-20T09:02:26.000Z",
+    "actualizedAt": "2026-10-21T11:06:53.984Z",
+    "createdAt": "2026-10-20T09:16:42.377Z",
+    "updatedAt": "2026-10-21T11:06:53.984Z",
+    "duplicatedAt": "2026-10-20T09:16:42.689Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1._eU01ra-UQx6fKsHQsGUqzd2UwqGYVUMhgYwBoqNWvaLdVM.htafxu2SUO2nym_LU7_3qLMov4920Y8zSbCTwwc6gdg"
+      },
+      {
+        "url": "/image/1/1.MYUR5ra-nWxfTGdnf8YAyRJGn2qjUZlsozb8Zq-9lpauRZ8.H9mXpyrttB9oPLf4m4ntJtRpAS664jARuFs_YBy3xU4"
+      },
+      {
+        "url": "/image/1/1.YIhlC7a-zGEroTZqKWILxmarzmfXvMhh19uta9tQx5vaqM4.B-lcnxHkpiO5Qypb_3e8RAd3RVVAQLa2qtU7pM1g-9I"
+      },
+      {
+        "url": "/image/1/1.oloSRLa-DrNc7vS4WnqdGRHkDLWg8wqzoJRvuawfBUmt5ww.mOU6L4vrY3fER5BY2braYyk5nAwZhri9VAddNOvPptg"
+      },
+      {
+        "url": "/image/1/1.VN6bmba--DfVMwI8v-BZkpg5-jEpLvw3KUmZPSXC880kOvo.exSfHFgqorj2c8mpKJfC6sMY3aoPazFqpR5ziByVvW0"
+      },
+      {
+        "url": "/image/1/1.aySuyra-x83gYD3G9JNKZ61qxcscfcPNHBqmxxCRzDcRacU.PMNaAaQa3b43bufU6a_q1Afw9X-oIpn2fc3fvoDOTCU"
+      },
+      {
+        "url": "/image/1/1.2HidXLa-dJHT9o6aoXPAFp78dpcv63CRL4wVmyMHf2si_3Y.ot94ojW1IArC_ltMLky5zi8RGEJSW7Oybhvo_YSdOUk"
+      },
+      {
+        "url": "/image/1/1.6OB-dLa-RAkw3r4CIlOVtjHVRg_Mw0AJzKQlA8AvT_PB10Y.yTIipejc981e-o_6DfNWLeoMoZ-efRonPnIEQ8y11Yw"
+      },
+      {
+        "url": "/image/1/1.1NE2mra-eDh4MIIzEvWznzU6ej6ELXw4hEoZMojBc8KJOXo.0M6FKoHw48tkQrmib5Q9q4zrtGx5bNxXgq-ZcwD4q-8"
+      },
+      {
+        "url": "/image/1/1._WRa9ba-UY0UX6uGLNaVbQFUU4voQlWN6CUwh-SuWnflVlM.cUbe7VcxqDmms_ZC6FnuJvTQMH12Qk0iySBO7HfEdqQ"
+      },
+      {
+        "url": "/image/1/1.kXihMra-PZHvmMeaj3zvLu6TP5cThTmRE-Jcmx9pNmsekT8.o8nz5UrkHKHzqqOi2OKJVbXaiYp276QO_V24B0znqdY"
+      },
+      {
+        "url": "/image/1/1.VsvcSba--iKS4wAp_DQyzcvp-CRu_v4ibpmbKGIS8dhj6vg.FFfy20pMXBOopDaywRafZIxyKoReuax2rRY96rWZ-1g"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "357500",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T09:16:42.377Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-20T11:16:43.106Z"
+  },
+  {
+    "id": "8350067c-7bb2-4153-a9a4-0766247f9d34",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "8408224162",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, Буковая улица, 21",
+    "price": "15000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Коммерческий участок 58 сот. | 1 линия | Газ, 150 квт. Продам участок 58 соток на первой линии Ирбитского тракта. Газ подключён, электричество 150 квт, Гпзу получен. Можно быстро приступить к реализации коммерческого проекта. Преимущества участка: 58 соток (5 800 м²). Первая линия, высокий автомобильный трафик. Назначение — ОД-1. Газ подключён, электричество 150 квт. Гпзу получен. Ровная, огороженная территория с организованным въездом. Удобный подъезд для грузового транспорта. Без обременений, документы готовы. Подойдёт под торговлю, автосервис, офисный, медицинский или спортивный центр, шоурум и другие коммерческие объекты с учётом разрешённого использования. Продажа от собственника, без комиссии. Возможна рассрочка и индивидуальные условия расчёта. Напишите «Участок» в чат Авито — отправлю кадастровый номер, Гпзу, выписку Егрн, информацию по коммуникациям. Звоните или пишите — организую показ и обсудим условия сделки.",
+    "domain": "AVITO",
+    "latitude": 57.176155,
+    "longitude": 65.436356,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_58_sot._promnaznacheniya_8408224162",
+    "area": 58,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T08:30:56.000Z",
+    "modifiedAt": "2026-10-20T08:30:56.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.032Z",
+    "createdAt": "2026-10-20T08:38:10.110Z",
+    "updatedAt": "2026-10-21T11:06:54.032Z",
+    "duplicatedAt": "2026-10-20T08:38:10.306Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "246c3c1f-01ab-4f8c-9c7f-3e5446aa12fa",
+    "buildingId": "3b11ed34-dd96-47e3-9bc7-edbddb8fe86e",
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.wzrTRra-b9Od7JXY2T3QbJznbdVh8WvTYZYO2W0dZCls5W0.yGo-KPnSXdUCs0SEl5YXTJKMnUneRSPUzkaLt0pJzCU"
+      },
+      {
+        "url": "/image/1/1.7fnC7ba-QRCMR7sblLLEtcFNQxZwWkUQcD0gGny2Sup9TkM.zM46Z1NNEJCc1easGtGD-YoSRZ2zvMzjK_IfdFbL54A"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "15000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T08:38:10.110Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T10:38:10.908Z"
+  },
+  {
+    "id": "01ea75a5-a4af-4d31-ab52-706ab7e53280",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "8458509976",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, Калининский округ",
+    "price": "19000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок на первой линии Ткад (доступ с трёх сторон) в створе улиц Барнаульская-Владимира Полякова. Собственник. Разрешенное исполнение ИТ-1. Идеально подойдет для автомойки, автосервиса, Азс, кемпинга, торгового центра, магазина, кафе, спортивного зала, офисного центра, складского помещения и т. Д. Возможно деление площади от 10 до 115 соток. Все коммуникации центральные, получены технические условия (водоотведение, водоснабжение, электричество — Тпу-500квт, газоснабжение). Изготовлен Гпзу (градостроительный план земельного участка), предоставим по запросу. Получено разрешение на строительство примыкания к автомобильной дороге (въезд, выезд). - Возможна продажа частями и/или делением на нужную площадь, конфигурацию под Ваши потребности. - Рассмотрим частичный обмен на жилую и нежилую недвижимость, земельный участок. - Предусмотрена рассрочка платежа. Возможные варианты деления участка предоставлены в разделе «фото», также рассмотрим вариант предложенный Вами. Актуальные цены на землю: 115 сот — от 115 млн. Руб. 110 сот — от 110 млн. Руб. 105 сот — от 105 млн. Руб. 100 сот — от 100 млн. Руб. 95 сот —- от 95 млн. Руб. 90 сот —- от 90 млн. Руб. 85 сот —- от 85 млн. Руб. 80 сот —- от 80 млн. Руб. 75 сот —- от 75 млн. Руб. 70 сот —- от 70 млн. Руб. 65 сот —- от 65 млн. Руб. 60 сот —- от 60 млн. Руб. 55 сот —- от 55 млн. Руб. 50 сот —- от 50 млн. Руб. 45 сот —- от 45 млн. Руб. 40 сот —- от 40 млн. Руб. 35 сот —- от 35 млн. Руб. 30 сот —- от 30 млн. Руб. 25 сот —- от 25 млн. Руб. 20 сот —- от 20 млн. Руб.",
+    "domain": "AVITO",
+    "latitude": 57.172876,
+    "longitude": 65.439243,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_15_sot._promnaznacheniya_8458509976",
+    "area": 15,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T06:31:11.000Z",
+    "modifiedAt": "2026-10-20T06:31:11.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.085Z",
+    "createdAt": "2026-10-20T06:45:46.350Z",
+    "updatedAt": "2026-10-21T11:06:54.085Z",
+    "duplicatedAt": "2026-10-20T06:45:48.491Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.kTLD0ra-PduNeMfQ7czrONRyP91xZTnbcQJc0X2JNiF8cT8.9UgPJSBAvWcHd5BKKQhFR_MN_Jzp4QgAuP0HEKIx7MY"
+      },
+      {
+        "url": "/image/1/1.IwPukLa-j-qgOnXhpLhIC-wwjexcJ4vqXEDu4FDLhBBRM40.yJV269WXrJRapTCHG3yoZkQgOJ0CxInZmnWOXKOUb7E"
+      },
+      {
+        "url": "/image/1/1.OFMOmba-lLpAM26xcs1IWRk5lry8LpC6vEn1sLDCn0CxOpY.ZphcHVNsSi4sjP2hapLAZdIS9hpq64cYzRtf99i7g_k"
+      },
+      {
+        "url": "/image/1/1.NSH3xra-mci5bGPDkbIYTrhnm85FcZ3IRRb4wkmdkjJIZZs.wXkZt1q3PxZoGB0XsPTBwKICR5ROlJEZ-XQbH06OnC0"
+      },
+      {
+        "url": "/image/1/1.fklcQba-0qAS6yirLBwMQ0vh0Kbu9tag7pGzquIa2Vrj4tA.AINynzUULnHJES4eV9N1T4ClbLlI9i9IIpUyeEi8jCQ"
+      },
+      {
+        "url": "/image/1/1.wWGXv7a-bYjZFZeDmbjuZpUfb44lCGmIJW8MginkZnIoHG8.jx8x6NkGxWktHHOv5UbqA0zWeh1LA8uWGTXEiOIEQCU"
+      },
+      {
+        "url": "/image/1/1.MIB9jba-nGkzJ2ZiEeUa7zIsnm_POphpz139Y8PWl5PCLp4.IBni55lzT2H8g-dA079Y1QVg8yofM27lA-eyaY0fN_M"
+      },
+      {
+        "url": "/image/1/1.vcThvba-ES2vF-sml__EzvYdEytTChUtU21wJ1_mGtdeHhM.SBpA1xWA8vf-Nzo7holbuurV-IaqAeM3o_PuHnQiLiw"
+      },
+      {
+        "url": "/image/1/1.y7fjXra-Z16t9J1V-TW5vfT-ZVhR6WNeUY4GVF0FbKRc_WU.6jrNYuMjNso3CxXGoedaAIsR4ZfvSAYGVDvtXre6EHI"
+      },
+      {
+        "url": "/image/1/1.X_dZura-8x4XEAkVa98EtAIb8RjrDfce62qSFOfh-OTmGfE.r5LYKo8d3AS3-Pl47XKAPSJGf3ZWMvyM3Oa9MkGIx0o"
+      },
+      {
+        "url": "/image/1/1.C2Punba-p4qgN12B9Jlja-w9pYxcKqOKXE3GgFDGrHBRPqU.m_17I5Ebq7zkqAHaFX29sMrgnq4qyUOgepN0IX-8w0c"
+      },
+      {
+        "url": "/image/1/1.tZgNH7a-GXFDteN6axXp21a-G3e_qB1xv894e7NEEouyvBs.7S_9usmQTS5XMjT6IktOK0Hy1hdRoiCiJKCfts0oiZs"
+      },
+      {
+        "url": "/image/1/1.R36qTLa-65fk5hGcqDEePfHt6ZEY---XGJyKnRQX4G0V7-k.3KtK2snxcYvUea_419PkuKQ_sF9Vxgbohj-Z_NKKUbk"
+      },
+      {
+        "url": "/image/1/1.3lb0x7a-cr-6bYi0xOScVPZncLlGcHa_RhcTtUqceUVLZHA.boW7VgdwogIF3QwIeV1bxB8qPzOTigVSU3Ax7Bxs2Ho"
+      },
+      {
+        "url": "/image/1/1.jd-csba-ITbSG9s9ivPe354RIzAuBiU2LmFAPCLqKswjEiM.GidOLVmVxa9N7o_8O8-HrWW2xWy0DxTxooLqSE95WMQ"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "19000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T06:45:46.350Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-20T08:45:50.276Z"
+  },
+  {
+    "id": "82fdce75-e419-4520-9da2-f0117da69802",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8512126673",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, Горьковское муниципальное образование",
+    "price": "350000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок от Собственника. Звоните На Прямую. Без Комиссии. Продам Дачный Участок. Продам участок относящийся к территории Горьковского муниципально района. Заезд к участку со сторы Ирбитского трата. Дорога асфальт далее бетонные плиты. Участок сельхоз назначения Вид разрешенного использования Лпх. Электричество и Газ проходит по центральной дороге. К участку подводят по заявлению в Россети. На участке обременений нет, межевание выполнено, кадастровый номер присвоен. На продаже несколько участков от 5 до 8 сот. Лучше вариантов для инвестирования сейчас просто нет! Звоните, задайте вопросы, могу подъехать показать все участки которые у меня есть! Звоните в любое удобное время!",
+    "domain": "AVITO",
+    "latitude": 57.180713,
+    "longitude": 65.224721,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_8_sot._snt_dnp_8512126673",
+    "area": 8,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T05:15:55.000Z",
+    "modifiedAt": "2026-10-20T05:15:55.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.135Z",
+    "createdAt": "2026-10-20T05:21:59.166Z",
+    "updatedAt": "2026-10-21T11:06:54.135Z",
+    "duplicatedAt": "2026-10-20T05:21:59.545Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.k-Rnh7a-Pw0pLcUGTan30jwmPQvVMDsN1VdeB9ncNPfYJD0.EQaIsfc8o21tdH-JNAB21lT3IjFCxwgqI2R-W66RlhI"
+      },
+      {
+        "url": "/image/1/1.22JouLa-d4smEo2AUp-6KWsYdY3aD3OL2mgWgdbjfHHXG3U.Uo8pLNokWzwpMAVT9gTsSllaM0ENkb2xzlzbvxy3I7Q"
+      },
+      {
+        "url": "/image/1/1.YkaST7a-zq_c5TSk2lJTDpHvzKkg-MqvIJ-vpSwUxVUt7Mw.n8EVMtKBoQM0HTrhb1RADozKEg2pIb6SIl2O_jFIlNg"
+      },
+      {
+        "url": "/image/1/1.Fb__vra-uVaxFENd2cJviaQfu1BNCb1WTW7YXEHlsqxAHbs.4NK1FCGn7iBMAZZqNRjxgWeEsUFual9Nmk9bGwod_mw"
+      },
+      {
+        "url": "/image/1/1.tqVqBba-Gkwkr-BHCku07GmlGErYsh5M2NV7RtReEbbVphg.BfZf5MMF-m3uGP8pth-saJgZFmRMcrDz_aH9uKwkfH8"
+      },
+      {
+        "url": "/image/1/1.o1LzTba-D7u95_WwuTPqAbzsDb1B-gu7QZ1usU0WBEFM7g0.J5AGXcfKqrwrOGicnrRq8peJmLPk20SLmFDjp426sTg"
+      },
+      {
+        "url": "/image/1/1.dZAYwra-2XlWaCNyfqc8w1dj23-qdd15qhK4c6aZ0oOnYds.S7tYXtZylgKc-3sFb1el6wtMgFw5em77cPSVdzUaMV8"
+      },
+      {
+        "url": "/image/1/1.gtMkoba-LjpqC9QxLPvk5X8ALDyWFio6lnFPMJr6JcCbAiw.M8STOQBj8AYG28UkKa8wzmiROQ6H4tnIFA6xORhIZ0I"
+      },
+      {
+        "url": "/image/1/1.c6fBCba-306PoyVFqygJpcGo3UhzvttOc9m-RH9S1LR-qt0.5EiR0MQEvmeJuTM_uTA-UaBqjhUqZgxilaXIJk7LvOM"
+      },
+      {
+        "url": "/image/1/1.DOcLd7a-oA5F3VoFHy9DtETWogi5wKQOuafBBLUsq_S01KI.wRvLOOMSYHHqdr6AJmL5wT6dgoPM0TnbofMR7ZcOaSA"
+      },
+      {
+        "url": "/image/1/1.xokC8ba-amBMW5BrAva0iwJQaGawRm5gsCELaryqYZq9Umg.xzMUhTl5LO3joxkR4rNddHxCcz2_Yw1Y4f6u0nNO3BM"
+      },
+      {
+        "url": "/image/1/1.LwG0_ba-g-j6V3nj5q1gUvtcge4GSofoBi3i4gqmiBILXoE.1bQrWyPpA8G7_1l2zFhF-5jIzuuzYyimwJwBE0_ACfs"
+      },
+      {
+        "url": "/image/1/1.cnm2q7a-3pD4ASSb3v4VT-0K3JYEHNqQBHu_mgjw1WoJCNw.H3MBGZ5GHEc2cOeLoz7vpo6jL9NRdSkrF_S4DHskYpM"
+      },
+      {
+        "url": "/image/1/1.rsTEBba-Ai2Kr_gmlEvcl4ukACt2sgYtdtVjJ3peCdd7pgA.K18zOgHNeir-0MguZB5hoe5kVM8gVJTqn0gtoPAcmts"
+      },
+      {
+        "url": "/image/1/1.sgdj97a-Hu4tXeTlC_W_T2BXHOjRQBru0Sd_5N2sFRTcVBw.KBPdfbcwgPQa3NAlQbKRvzwgb_FiqhV2vfofxXEo3_Q"
+      },
+      {
+        "url": "/image/1/1.yzL3qra-Z9u5AJ3Q7d38evQKZd1FHWPbRXoG0UnxbCFICWU.d4fds7ackw3mYrqPSwSAca_Ot6Y9OHzfj9Q9eZHns64"
+      },
+      {
+        "url": "/image/1/1.uD8uK7a-FNZgge7dUnHOPS6KFtCcnBDWnPt13JBwHyyRiBY.nFmgvUCMogCVxzIqvyD_WkRN4IiGyGdznF9tGVvRS0o"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "350000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T05:21:59.166Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-20T07:22:00.101Z"
+  },
+  {
+    "id": "92782e61-6e5b-4d64-abe6-440dd11df57f",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8332085340",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, коттеджный посёлок Соловьиная роща, 3-я Соловьиная улица, 6",
+    "price": "350000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Я Собственник. Продам Несколько Дачных Участков. Продам учaстки в нoвой нарезкe 1,5 км от Гoрьковки. Зaeзд c Иpбитcкого тракта на прoтив Кулакoвa. Учacтки на пepcпeктиву, ценa шикaрная, выгода в будущем будет огpомнoй. Локация очень красивая, вокруг Лес, чистый воздух. Участки от 6 до 8 соток, есть разные площади участков. (так же участки с лесом). Категория земель: Сельскохозяйственного назначения. Вид разрешенного использования: Для ведения Лпх. ( Личного подсобного хозяйства). Строить можно, но с Ограничениями, (прописаться нельзя, пока что). По проекту \"увеличение границ населенных пунктов, будет в границах с. Горьковка. Ширина основной дороги 8м. Межевание проведено, земля в собственности, без обременении. Я Собственник. 10 км от Дом обороны. Учитывая все что на перспективу, Ткад, увеличение границ населенных пунктов, можно понять, с какой скоростью цены там будут расти! Звоните, все расскажу. Могу помочь подъехать показать. Звоните.",
+    "domain": "AVITO",
+    "latitude": 57.184298,
+    "longitude": 65.238598,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_8_sot._snt_dnp_8332085340",
+    "area": 8,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T05:11:04.000Z",
+    "modifiedAt": "2026-10-20T05:11:04.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.223Z",
+    "createdAt": "2026-10-20T05:21:59.267Z",
+    "updatedAt": "2026-10-21T11:06:54.223Z",
+    "duplicatedAt": "2026-10-20T05:21:59.728Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.lhmy7ba-OvD8R8D7kqvhUrFNOPYAWj7wAD1b-gy2MQoNTjg.ekXoReXrS1FFsg01kpcsdBtywXNJViJH5MuCLmWlkZs"
+      },
+      {
+        "url": "/image/1/1.hNWSILa-KDzcitI3lkrl48mBKjoglyw8IPBJNix7I8Ytgyo.iTB2rHSE75b04dlPkrRa25V5waWbQIoAHLBfI66OwwI"
+      },
+      {
+        "url": "/image/1/1.YgjoALa-zuGmqjTqoAF0D_-gzOdat8rhWtCv61ZbxRtXo8w.TBn0DfAYBDsGi80lgRk1gS4iupLAk6ZX8MNxNxk1u_0"
+      },
+      {
+        "url": "/image/1/1.JqKZ1ra-ikvXfHBA2aZr8dZ3iE0rYY5LKwbrQSeNgbEmdYg.IFLa8N58uWdgfuUQI_eTrOBYsIzZEDooyxTU_2gAKuk"
+      },
+      {
+        "url": "/image/1/1.9s74Uba-Wie2-6AsmBKAhfvxWCFK5l4nSoE7LUYKUd1H8lg.FvjvWaghcr5M3bsYuORjxP0r5ayDqGL3WJeA-qzXUNQ"
+      },
+      {
+        "url": "/image/1/1.nENJNLa-MKoHnsqhfXaERF6UMqz7gzSq--RRoPdvO1D2lzI.KwDD0lXcxGalaeZ8IIYnScscaweISmb54sae6v8Sffw"
+      },
+      {
+        "url": "/image/1/1.qfQH1ra-BR1JfP8WWYi18xB2Bxu1YQEdtQZkF7mNDue4dQc.Ia0iZlmtEpsOAHUvu__fxYmN_sP3IRixcUuwvrcK9Lo"
+      },
+      {
+        "url": "/image/1/1.GbtyM7a-tVI8mU9ZTGN7jSmSt1TAhLFSwOPUWMxovqjNkLc.jA984dPABf_VIK2eYP0Fqy2Eus--TnpaS6GvONmxSuE"
+      },
+      {
+        "url": "/image/1/1.dgGIK7a-2ujGgSDj6F5lBp-L2O46nN7oOvu74jZw0RI3iNg.y2KoxlGPtodPf6QsP3RdlldMJG4JA93ToaQrVqmIthE"
+      },
+      {
+        "url": "/image/1/1.92crGba-W45ls6GFSVb6Lii5WYiZrl-Omck6hJVCUHSUulk.uqXHaBgmR6z04aNYerPMuoq_LBsHMAPNfyblnOWltiI"
+      },
+      {
+        "url": "/image/1/1.7NL_Lba-QDuxh7owq0KX0P-MQj1NmkQ7Tf0hMUF2S8FAjkI.Ke_HezDE1jek8SGYu1fCwrZWexjfbq8VVzKFZz_0WOY"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "350000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T05:21:59.267Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-20T07:22:00.448Z"
+  },
+  {
+    "id": "5f3597ed-1ded-48d1-87d9-1e63b25eb657",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8471101013",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, Горьковское муниципальное образование",
+    "price": "2000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам участок 80 соток. Я собственник. Участок сельхоз назначения вид разрешенного использования Лпх. Участок правильной формы. Проехать можно. Дорога грунтовка. Электричество проходит мимо участка. Моё предложение самое выгодное, продажа срочная, остальное продаются за 3500, 5 млн и выше. Участок на перспективу, вложить сейчас деньги. Будут вопросы звоните, расскажу подробнее, могу проехать показать. Документы готовы к сделке, градостроительный план есть, межевание выполнено. Местоположение установлено относительно ориентира, расположенного за пределами участка. Почтовый адрес ориентира: обл. Тюменская, р-н Тюменский, расположен на 23 км слева от Ирбитского тракта и справа на 4-ом км полевой дороги в южном направлении урочище Ближние выпаса.",
+    "domain": "AVITO",
+    "latitude": 57.182109,
+    "longitude": 65.21416,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_80_sot._snt_dnp_8471101013",
+    "area": 80,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-20T04:49:04.000Z",
+    "modifiedAt": "2026-10-20T04:49:04.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.285Z",
+    "createdAt": "2026-10-20T04:59:05.680Z",
+    "updatedAt": "2026-10-21T11:06:54.285Z",
+    "duplicatedAt": "2026-10-20T04:59:06.219Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.DCqN1La-oMPDflrImcAEY450osU_Y6TDPwTByTOPqzkyd6I.c2n80ViXTVbRmPWxnS_VpG915TEPMq4MRp7mg0t2MzY"
+      },
+      {
+        "url": "/image/1/1.NhsW7ba-mvJYR2D5drlUUBVNmPSkWp7ypD37-Ki2kQipTpg.bcykt2zxNuvS_Z2At6K3aBHrMWzYcK4xdhYTXRtYJ_M"
+      },
+      {
+        "url": "/image/1/1.ydqsCra-ZTPioJ84sgm_2KyrZzUevWEzHtoEORJRbskTqWc.FJNoZyyumsElRjplpXjed4sgRjxI9cTHc5SU4HEyZgw"
+      },
+      {
+        "url": "/image/1/1.PNBx9ra-kDk_XGoyBfZVm3JWkj_DQZQ5wybxM8-tm8POVZI.c-6jzPG_qnobNAJMO_Y4UbKeKZiZk-_G3ys8nkZ1LeA"
+      },
+      {
+        "url": "/image/1/1.5qnzVra-SkC9_LBLs1WuqfH2SEZB4U5AQYYrSk0NQbpM9Ug.3KRI3ki3UZv8U7E5lhmAafB5AbdQVtphB_aTx2ct_Ss"
+      },
+      {
+        "url": "/image/1/1.IXwPDLa-jZVBpneeQSRcL0Ctj5O9u4mVvdzsn7FXhm-wr48.IkZZH54WiIfA17mj489jHoZZgrMQLvAsJduuKsTC1xU"
+      },
+      {
+        "url": "/image/1/1.2gUVXba-duxb94znLTLCAgL9dOqn6nLsp40X5qsGfRaq_nQ.TQBB6IMwc0O9MDdqU8llHVNXi1DDpK088v7PwixPtec"
+      },
+      {
+        "url": "/image/1/1.7KgeUra-QEFQ-LpKSkXprwnyQkes5URBrIIhS6AJS7uh8UI.LxgfCxq_fQnwPP52s0Rs7AftQcxF5bV8wqih4X9q2BM"
+      },
+      {
+        "url": "/image/1/1.f8kSZLa-0yBczikrYHUEyxLF0Sag09cgoLSyKqw_2Nqtx9E.aBytBRhUhjoXZtUKJOi4OvspnB1ue_lebG6czvdWgcI"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "2000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T04:59:05.680Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 2,
+    "buyerDemandLastCheckedAt": "2026-10-20T06:59:06.738Z"
+  },
+  {
+    "id": "bba64282-e667-4025-a8e6-a4174d9070b3",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8499338856",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, садовое товарищество Поле Чудес-2, Цветочная улица",
+    "price": "1450000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Собственник. 72:17:1707006:7675. Электричество подключено, счетчик стоит. Продажа без вагончика. Дорога до участка есть. Можно разделить на 2 участка. С продажей не тороплюсь, все вопросы по телефону.",
+    "domain": "AVITO",
+    "latitude": 57.255428,
+    "longitude": 65.535728,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_114_sot._snt_dnp_8499338856",
+    "area": 11.4,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T18:00:02.000Z",
+    "modifiedAt": "2026-10-19T18:00:02.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.358Z",
+    "createdAt": "2026-10-19T18:13:30.185Z",
+    "updatedAt": "2026-10-21T11:06:54.358Z",
+    "duplicatedAt": "2026-10-19T18:13:31.995Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "58ba78a4-4f9e-4777-b86e-21560ef0fe40",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.WIU0wba-9Gx6aw5nCLBvum9g9mqGdvBshhGVZoqa_5aLYvY.zIvY344BbLApatyepOKMxNwbG7ftslHcEwrDh-NO-GE"
+      },
+      {
+        "url": "/image/1/1.ID8qb7a-jNZkxXbdZndePCrOjtCY2IjWmL_t3JQ0hyyVzI4.HBuvRxPLFXms6UJjoGUJ14zGyivi383BIUEyAHJwtYk"
+      },
+      {
+        "url": "/image/1/1.z_jCaLa-YxGMwpka0Cv7x5nJYRdw32cRcLgCG3wzaOt9y2E.SWZ5aupBmi88cnl7n55JCts1VPFqE4S8pGUkQdOoDws"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1450000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T18:13:30.185Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-19T20:13:32.873Z"
+  },
+  {
+    "id": "4c149ea2-ca72-4aae-a01a-8a9090fac76a",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8382520357",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, ТСН Энергостроитель, Липовая улица, 190",
+    "price": "1800000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продается дача от собственника, агенства просьба не беспокоить. Участок в черте города с городской пропиской, в пешей доступности школа и автобусная остановка (Ммс/Велижанский тракт). До участка дорога асфальт, два продуктовых магазина. Зимой чистят центральные дороги. Подключено электричество, имеется асбестовая скважина, газификация в Снт по заявлению собственника, можно подключить интернет. Удобный заезд на участок, огорожен, имеется недостроенная баня, деревянный туалет, железный гараж, насаждения: две яблони, ирга, малина смородина, клубника, многолетние цветы (пионы, примулы, нарциссы, ирисы). Участок отсыпан песком, не топит, далее на ваше усмотрение построить дом или добавить плодородной земли для выращивания овощей. Идеален для постройки частного дома для постоянного проживания, соседи проживают круглогодично.",
+    "domain": "AVITO",
+    "latitude": 57.215232,
+    "longitude": 65.616152,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_38_sot._snt_dnp_8382520357",
+    "area": 3.8,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T16:24:48.000Z",
+    "modifiedAt": "2026-10-19T16:24:48.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.445Z",
+    "createdAt": "2026-10-19T16:36:30.775Z",
+    "updatedAt": "2026-10-21T11:06:54.445Z",
+    "duplicatedAt": "2026-10-19T16:36:31.741Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "2958d45d-16c3-42ca-82a0-329955fe96e9",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.2l9s-ba-drYiU4y9VIKQIW9ZdLDeTnK23ikXvNKifUzTWnQ.B_9_2dNoLVXrNC7u187QQwsY6HevxuHVVKZ4WA_Rk1U"
+      },
+      {
+        "url": "/image/1/1.41_Qqra-T7aeALW9mr2dIdMKTbBiHUu2YnouvG7xRExvCU0.Dn1ZbXX3rvoqOLg1CAEaZPfigaj4rJUgbG8EVh7Z17A"
+      },
+      {
+        "url": "/image/1/1.LvxZjba-ghUXJ3geCeV2uRYsgBPrOoYV613jH-fWie_mLoA.9JjnRnot8H82i61DLTq76cE1QQlctM00QPvh2FpM7co"
+      },
+      {
+        "url": "/image/1/1.sTGahba-HdjUL-fT9LP0TpklH94oMhnYKFV80iTeFiIlJh8.m0A8mEmKVCQV3gn2pVX2BdTV8Kg5JzVQ9lP5T6ILNdw"
+      },
+      {
+        "url": "/image/1/1.2s9v1ra-diYhfIwtV8mHsmx2dCDdYXIm3QYXLNGNfdzQdXQ.RMW3D_XnshWVAQyOkGrUvUj-MiOwqCukBNGgZBa2Df8"
+      },
+      {
+        "url": "/image/1/1.5blPNLa-SVABnrNbCSv7uFiUS1b9g01Q_eQoWvFvQqrwl0s.oH9Huo2mOePWriw_EmptCaLe0O5urZMRuZxLa6m5jP4"
+      },
+      {
+        "url": "/image/1/1.e_qOQ7a-1xPA6S0Y9BYkwtXi1RU89NMTPJO2GTAY3Okx4NU.iamnOzqJJ-rHbFfyRA9qjYmK99ymOkbJY0gT7ZyGjPk"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1800000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T16:36:30.775Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-19T18:36:32.164Z"
+  },
+  {
+    "id": "141ec2f7-7bb1-4e51-80f7-a7668ed51783",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8365996070",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, СНТ Ясень, Третья улица, 199",
+    "price": "900000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок площадью: 13 соток. Расположение: г. Тюмень, Снт Ясень, Третья улица, уч 199. Участок ровный, подходит для строительства дома или дачи. Сделана выторфовка, в конце участка растут берёзы. Коммуникации: электричество, вода (по границе участка). Газ планируется в 2027г. Тихое и живописное место, рядом лес. Отличная транспортная доступность. Асфальтированная дорога до самого общества, также в обществе проходит ремонт дороги. Цена: 900000 руб. Торг уместен реальному покупателю. Звоните, договоримся о просмотре.",
+    "domain": "AVITO",
+    "latitude": 57.261303,
+    "longitude": 65.51102,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_13_sot._snt_dnp_8365996070",
+    "area": 13,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T11:42:05.000Z",
+    "modifiedAt": "2026-10-19T11:42:05.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.589Z",
+    "createdAt": "2026-10-19T11:45:49.793Z",
+    "updatedAt": "2026-10-21T11:06:54.589Z",
+    "duplicatedAt": "2026-10-19T11:45:50.285Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "e487d762-5113-4841-be1d-6da0e2f8db39",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.YkrBG7a-zqOPsTSoiRJVVsS7zKVzrMqjc8uvqX9AxVl-uMw.FfFFafCKEGLLLQyKSHczrsXpucQTwM9K06hsFBkeDXo"
+      },
+      {
+        "url": "/image/1/1.ODWp_ba-lNznV27X1d0cJqxdltobSpDcGy311hemnyYWXpY.3N0SrbUa_gIQPj8uxEu6quDW1I9PGuGLKo31ZUMH-lY"
+      },
+      {
+        "url": "/image/1/1.dTfqWLa-2d6k8iPVjHFOK-_429hY793eWIi41FQD0iRV-9s.wcCT5fPbRVfGRV1dXeunUH3bTs1wjddrdgZJUIfy4JI"
+      },
+      {
+        "url": "/image/1/1.uVYP3ba-Fb9Bd--0cf_JRQp9F7m9ahG_vQ10tbGGHkWwfhc.uHxhan8dq0Ih65cUIsFCjeOoo3Pf9AIixPPLFoaMveA"
+      },
+      {
+        "url": "/image/1/1.7ZBqR7a-QXkk7btyPCzujW_nQ3_Y8EV52Jcgc9QcSoPV5EM.wG0CWp3Ex9CEm1jpQYr0YlbSQJ4IMvXkp7Z1DPvCdkg"
+      },
+      {
+        "url": "/image/1/1.OlJMJLa-lrsCjmywNFAgT0mElL3-k5K7_vT3sfJ_nUHzh5Q.R9xwAF0v6tLN1yKizy0K5OpVivUNOMsvkAHOB79b1Ls"
+      },
+      {
+        "url": "/image/1/1.feBqWba-0Qkk8ysCHAhg_W_50w_Y7tUJ2ImwA9QC2vPV-tM.inh1v7fD3ulyKhwoMz3C1bc1V0ztEx92-1UAc3AZs94"
+      },
+      {
+        "url": "/image/1/1.vVBtZba-Ebkjz-uyG2-cQ2jFE7_f0hW537Vws9M-GkPSxhM.o_PDvzoLBamURFSgDJlcADWPwMq8b6vU-1HTCh-8uTs"
+      },
+      {
+        "url": "/image/1/1.DPpbQLa-oBMV6loYTwQt6V7gohXp96QT6ZDBGeUbq-nk46I.qY5MwANjoDfpP16DQe8HBu65OiwSM69hEubZcDikMEo"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "900000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T11:45:49.793Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-19T13:45:51.074Z"
+  },
+  {
+    "id": "5feec1a7-11c4-42c1-b337-55f6078db987",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8431078064",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, село Горьковка, 328",
+    "price": "830000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок расположен близко к центральной дороге, не затапливаемая территория. До участка дорога с твердым покрытием, по улице есть электричество, соседи живут круглогодично. На участке теплица 3х4, хоз постройка, яблоня, вишни, малина, клубника, жимолость, смородина, черноплодная рябина. Сделано межевание, собственник, без обременений. Кадастровый номер 72:17:0601002:626.",
+    "domain": "AVITO",
+    "latitude": 57.140401,
+    "longitude": 65.256811,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_29_sot._snt_dnp_8431078064",
+    "area": 2.9,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T09:02:07.000Z",
+    "modifiedAt": "2026-10-19T09:02:07.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.680Z",
+    "createdAt": "2026-10-19T09:04:58.005Z",
+    "updatedAt": "2026-10-21T11:06:54.680Z",
+    "duplicatedAt": "2026-10-19T09:04:58.585Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.hmz0Mba-KoW6m9CO9Hv1YfaRKINGhi6FRuFLj0pqIX9Lkig.7gKuxinVUikoIz2cWUF3GGYs6hpvQazmj1gWMAc5FlM"
+      },
+      {
+        "url": "/image/1/1.jn904La-IpY6StidZL7PYnZAIJDGVyaWxjBDnMq7KWzLQyA.AXZ8in12zcjrETdGfMnOb_SfWdqEATLhajcIIgZbAo0"
+      },
+      {
+        "url": "/image/1/1.Z5qsO7a-y3PikTF47lpE_a-byXUejM9zHuuqeRJgwIkTmMk.L2pyv0hw9Fm7fR7lx55afQl0a4yMzZfCQ4KeLV-C--s"
+      },
+      {
+        "url": "/image/1/1.7w8u_ba-Q-ZgV7ntfOLzaS1dQeCcSkfmnC0i7JCmSByRXkE.3DKkwTUhxfzle7xDORNM7vgFG5bv_UdNmyi6yS1kWJ4"
+      },
+      {
+        "url": "/image/1/1.JxXr_La-i_ylVnH3qdQ_W6RdifpZS4_8WSzq9lWngAZUX4k.W0JpDhm0AWB1-KGelgpcSiqu_PgRCLKHBGb7dn_VkFU"
+      },
+      {
+        "url": "/image/1/1.uyIxrra-F8t_BO3AS8CfRTIOFc2DGRPLg352wY_1HDGODRU.eD0OVOLr0ukKekrZBHZOgvBsDfaPyfXYxVVnfZev7K0"
+      },
+      {
+        "url": "/image/1/1.PsUZtLa-kixXHmgnabwhi1YVkCqrA5Ysq2TzJqfvmdamF5A.J25ho1nHu8AcE-_9En_tOaCWqxPOjla_bu_l5q9KNA8"
+      },
+      {
+        "url": "/image/1/1.mPylAba-NBXrq84emW-d3f6gNhMXtjAVF9FVHxtaP-8aojY.sTS6jPT6yiA336lLmNcpbWP5EZ_JnN4BLO_D87kOmMk"
+      },
+      {
+        "url": "/image/1/1.JfmqGra-iRDksHMb7EZ75Ki6ixYYrY0QGMroGhRBguoVuYs.1wcSfHbhL1MCqWEPUR6vwkMqKUqLCZ-2qpFJBqTHAG4"
+      },
+      {
+        "url": "/image/1/1.C-I_6ba-pwtxQ10AJf0-gjxJpQ2NXqMLjTnGAYGyrPGASqU.gnhdWkYCiP_J2Zx8ewaRVQ-K35RJYnaoqoS5onnYQvI"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "830000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T09:04:58.005Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-19T11:04:59.261Z"
+  },
+  {
+    "id": "4812ee22-3175-4c90-a6b3-b6df3346dd52",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8340347028",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, село Горьковка",
+    "price": "390000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продажа от ИП с указанием полной суммы в договоре. Никаких «серых» схем и ухода от налогов! Собственник. Не путайте с землей в районе Горьковки, которую продают по 50 тыс. За сотку — там действуют ограничения Министерства обороны! Разрешенное использование: Личное подсобное хозяйство (Лпх). Категория регламентом не установлена. Это значит, что на участке можно размещать объекты, не нарушающие плодородный слой (баня-бочка, надувной бассейн, мангал и т. Д.). Капитальные строения не предусмотрены (некапитальными считаются объекты, которые можно быстро перенести по участку, даже при помощи «Фискарса»). Идеальное предложение для любителей природы и покоя. Без шума, суеты и беспокойства — только ваш уголок земли. Участок расположен всего в 10 минутах езды от Тюмени. Характеристики участка: · Площадь: 5,18 соток. · Статус: Земли сельскохозяйственного назначения, вид разрешенного использования — Лпх. Это позволяет построить садовый домик и баньку. Юридическая чистота: Всё оформлено в собственность, проведено межевание, границы четко обозначены и зафиксированы документально. Никаких скрытых проблем — всё прозрачно. Электроэнергия: Столбы установлены. Подключение легкое и быстрое по вашему заявлению в «Россети». Вам останется лишь подать заявку — и свет придет на вашу территорию. Подъезд: Через коттеджный посёлок «Кипрея» (Ирбитский тракт) и Соловьиную рощу. Перспективы развития района: Район активно растет. Рядом формируется новый жилой комплекс «Крылья», развивается инфраструктура. Есть перспективы включения территории в городскую черту согласно Генеральному плану развития региона. Цена и условия покупки: · Стоимость: от 65 000 руб. За сотку (зависит от удаления от будущей объездной дороги). Участки от 5,1 сотки. · Цена участка: 338 000 руб. · Возможна рассрочка до 3 месяцев при первоначальном взносе от 50%. · Оплата: наличный или безналичный расчет. · Оформление: договор купли-продажи, продажа от ИП с указанием всей суммы сделки (без занижения стоимости!). Выбивается кассовый чек. Это отличный вариант инвестирования в будущее вашей семьи.",
+    "domain": "AVITO",
+    "latitude": 57.139898,
+    "longitude": 65.264115,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_6_sot._izhs_8340347028",
+    "area": 6,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T08:38:12.000Z",
+    "modifiedAt": "2026-10-19T09:31:05.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.747Z",
+    "createdAt": "2026-10-19T08:53:19.610Z",
+    "updatedAt": "2026-10-21T11:06:54.747Z",
+    "duplicatedAt": "2026-10-19T08:53:27.243Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.1FECV7a-eLhM_YKzJnTaH032er6w4Hy4sIcZsrwMc0K99Ho.NvfApccXjrq2CsdmFYNgzQOtIDfvfFwD3kN7WXDYstg"
+      },
+      {
+        "url": "/image/1/1.pbRkN7a-CV0qnfNWIgmduGSWC1vWgA1d1udoV9psAqfblAs.QEGT781FOXCs1s_U6PkrTyZvdH_C_pvNwMrai52LcRo"
+      },
+      {
+        "url": "/image/1/1.GBTlsra-tP2rGE722ZJAdOYStvtXBbD9V2LV91vpvwdaEbY.92V6gzecddORsTYrGfctH_jcgJzKiDk3-NTTIteT4EY"
+      },
+      {
+        "url": "/image/1/1.4-DVkra-TwmbOLUCn6HcwY4zTQ9nJUsJZ0IuA2vJRPNqMU0.0OnNMp464HTLsZToZXCFejs3w5wnv7uQioaFSpEOx7E"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "390000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T08:53:19.610Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 2,
+    "buyerDemandLastCheckedAt": "2026-10-19T10:53:28.024Z"
+  },
+  {
+    "id": "da984744-9adc-4ac4-9a85-bc773182f4a4",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8543289678",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский район, коттеджный посёлок Кипрея Комьюнити",
+    "price": "5136000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок 6,42 сот. У леса в КП бизнес-класса «Кипрея» (Ирбитский тракт). Продается участок правильной формы в уникальном загородном комплексе «Кипрея» — всего в 5 минутах от аэропорта «Рощино» и вплотную к границе Тюмени. Участок: * Площадь: 6,42 соток, правильная геометрия (удобно планировать пятно застройки). * Расположение: крайний к лесу — минимум соседей, максимум природы. * Все коммуникации заведены (газ, электричество, центральное водоснабжение, интернет). * Подъездные пути: качественные твердые дороги. Поселок: * Закрытая охраняемая территория, концепция «15-минутного города». * Эко-среда: холмистый рельеф, около 50% территории отдано под природные парки и зеленые зоны. * Инфраструктура: поселок разделен на 7 авторских районов, в центре каждого — свой мини-парк с хвойными деревьями и современными детскими площадками. По окончании строительства девелопер выполнит насыщенное благоустройство и озеленение придомовой территории. Документы готовы к сделке. Звоните!",
+    "domain": "AVITO",
+    "latitude": 57.200218,
+    "longitude": 65.246078,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_64_sot._izhs_8543289678",
+    "area": 6.4,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T06:57:07.000Z",
+    "modifiedAt": "2026-10-19T06:57:07.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.837Z",
+    "createdAt": "2026-10-19T07:06:19.802Z",
+    "updatedAt": "2026-10-21T11:06:54.837Z",
+    "duplicatedAt": "2026-10-19T07:06:22.086Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.7_EuSLa-Qxhg4rkTfCukki3oQR6c_0cYnJgiEpATSOKR60E.6bEHBhh0KlSsc1XJCwL29wc0Du50d9xnz4FBggw0PaU"
+      },
+      {
+        "url": "/image/1/1.OMMNAba-lCpDq24hcW1I7Vagliy_tpAqv9H1ILNan9CyopY.brAAlVyeBX2MbLYvx53HA0R6_xaYUTmWOt5sDiw0tKo"
+      },
+      {
+        "url": "/image/1/1.KfsQmba-hRJeM38ZTslvmBM5hxSiLoESoknkGK7CjuivOoc.mR44ceUT210sUpf4XZG3WMDdIT2YwtJrs3wpMoDMsYw"
+      },
+      {
+        "url": "/image/1/1.GKblvra-tE-rFE5E2b5WxeYetklXCbBPV27VRVvlv7VaHbY.kGFYbu6Bz9K4W_BublqAa03bhOJ39ii4_lo50al0Lgg"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "5136000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T07:06:19.802Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-19T09:06:22.647Z"
+  },
+  {
+    "id": "f68d18ab-d87b-4566-987c-6843004638bc",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8482397157",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, садовое товарищество Яровское, Сливовая улица, 19",
+    "price": "1500000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Предлагается к продаже земельный участок площадью 6 соток в живописной местности за Снт «Яровское». Ключевые характеристики: Категория: Ижс (можно строить дом для постоянного проживания). Площадь: 6 соток (ровный, удобный участок). Окружение: Живописная природа, экологически чистое место. Развитие: Вдоль участка планируется прокладка дороги. Рядом идет активная застройка. Коммуникации: Ведется работа по подведению электричества (планируемый срок — 2030 г.). Дороги также в плане благоустройства. Преимущества: Это отличный вариант для тех, кто готов подождать развития инфраструктуры, чтобы затем получить комфортабельное жилье в окружении природы по выгодной цене. Цена: 1 500 000. Возможен торг! Звоните прямо сейчас для консультации и осмотра. Обсудим ваши предложения!",
+    "domain": "AVITO",
+    "latitude": 57.176605,
+    "longitude": 65.743866,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_6_sot._izhs_8482397157",
+    "area": 6,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T05:27:24.000Z",
+    "modifiedAt": "2026-10-19T05:27:24.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.921Z",
+    "createdAt": "2026-10-19T05:40:15.898Z",
+    "updatedAt": "2026-10-21T11:06:54.921Z",
+    "duplicatedAt": "2026-10-19T05:40:18.436Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "017c2901-8770-41e1-938f-09aee765bc37",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.l1ZoJLa-O78mjsG0Sk6HT2qEObnakz-_2vRatdZ_MEXXhzk.keLEUhgBwfzRkJOKU3JQwL7p5TXMsDtczt2CR05cjqU"
+      },
+      {
+        "url": "/image/1/1.1Y9Feba-eWYL04NtY0LB4kbZe2D3zn1m96kYbPsicpz62ns.anrNzpXjhxWeIj_uooiAHxla5HbysqQTcmxI18nHWko"
+      },
+      {
+        "url": "/image/1/1.sdPnhba-HTqpL-cxidvTsOQlHzxVMhk6VVV8MFneFsBYJh8.zeodkCaxPglKM_x-YpIIfe0uk6_Si0QoWadZUmPk2Jo"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T05:40:15.898Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-19T07:40:19.662Z"
+  },
+  {
+    "id": "1c84b5a7-2d11-4dbb-8904-fed48a10e642",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "8382287727",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, улица Владимира Полякова",
+    "price": "34900000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок на первой линии Ткад (доступ с трёх сторон) в створе улиц Барнаульская-Владимира Полякова. Собственник. Разрешенное исполнение ИТ-1. Идеально подойдет для автомойки, автосервиса, Азс, кемпинга, торгового центра, магазина, кафе, спортивного зала, офисного центра, складского помещения и т. Д. Возможно деление площади от 10 до 115 соток. Все коммуникации центральные, получены технические условия (водоотведение, водоснабжение, электричество — Тпу-500квт, газоснабжение). Изготовлен Гпзу (градостроительный план земельного участка), предоставим по запросу. Получено разрешение на строительство примыкания к автомобильной дороге (въезд, выезд). - Возможна продажа частями и/или делением на нужную площадь, конфигурацию под Ваши потребности. - Рассмотрим частичный обмен на жилую и нежилую недвижимость, земельный участок. - Предусмотрена рассрочка платежа. Возможные варианты деления участка предоставлены в разделе «фото», также рассмотрим вариант предложенный Вами. Актуальные цены на землю: 115 сот — от 115 млн. Руб. 110 сот — от 110 млн. Руб. 105 сот — от 105 млн. Руб. 100 сот — от 100 млн. Руб. 95 сот —- от 95 млн. Руб. 90 сот —- от 90 млн. Руб. 85 сот —- от 85 млн. Руб. 80 сот —- от 80 млн. Руб. 75 сот —- от 75 млн. Руб. 70 сот —- от 70 млн. Руб. 65 сот —- от 65 млн. Руб. 60 сот —- от 60 млн. Руб. 55 сот —- от 55 млн. Руб. 50 сот —- от 50 млн. Руб. 45 сот —- от 45 млн. Руб. 40 сот —- от 40 млн. Руб. 35 сот —- от 35 млн. Руб. 30 сот —- от 30 млн. Руб. 25 сот —- от 25 млн. Руб. 20 сот —- от 20 млн. Руб.",
+    "domain": "AVITO",
+    "latitude": 57.172618,
+    "longitude": 65.439748,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_35_sot._promnaznacheniya_8382287727",
+    "area": 35,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T05:19:04.000Z",
+    "modifiedAt": "2026-10-19T05:19:04.000Z",
+    "actualizedAt": "2026-10-21T11:06:54.982Z",
+    "createdAt": "2026-10-19T05:29:17.255Z",
+    "updatedAt": "2026-10-21T11:06:54.982Z",
+    "duplicatedAt": "2026-10-19T05:29:17.543Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.WG5F_ba-9IcLVw6MeZwBa0Bd9oH3SvCH9y2Vjfum_336XvY.Ohv0hQjcypgYwWRWdpAwzGZLqLPnEaKOOGB76IowAPI"
+      },
+      {
+        "url": "/image/1/1.5ANNIra-SOoDiLLhCXX0BEiCSuz_lUzq__Ip4PN5QxDygUo.x-vVOZSuVpTtrM5pTaWXaRYDveRI3F1SXntP-3Oljfc"
+      },
+      {
+        "url": "/image/1/1.cc87nra-3SZ1NCctVaNezz4-3yCJKdkmiU68LIXF1tyEPd8.DYl67FOh6-njLmW02tiBr-f-H4k9W6Un4rX1Xk9pIaI"
+      },
+      {
+        "url": "/image/1/1.HvAe2ba-shlQc0gSLq0k9Rt5sB-sbrYZrAnTE6CCueOherA.UUJbJsigLOYQ1-Zcjke_Wupe1fQTVhFThTluMB-ZnJo"
+      },
+      {
+        "url": "/image/1/1.9g7MnLa-WueCNqDsrN_uCck8WOF-K17nfkw77XLHUR1zP1g.IDPrttBsStP43JXRUzaOcT3Vk5fmJIs5EnxUDHqHoa8"
+      },
+      {
+        "url": "/image/1/1.qG0mPba-BIRol_6PemOdaCOdBoKUigCElO1ljphmD36ZngY.i304Zm43dHcwt-oP81PoyZvdg7Ug29ypmbf06l_JIRg"
+      },
+      {
+        "url": "/image/1/1.GYgLg7a-tWFFKU9qNct4iA4jt2e5NLFhuVPUa7XYvpu0ILc.o_yZP9LvBBxvm1mkeZ-lAxKo01WIP6hLv5435sQC6L4"
+      },
+      {
+        "url": "/image/1/1.q6gWDLa-B0FYpv1KTE6krROsBUekuwNBpNxmS6hXDLuprwU.PpVLzZp7WmwDZZfjkvOkifsGSEqUwdlHrUcDjcZ5f6U"
+      },
+      {
+        "url": "/image/1/1.XpGbgra-8njVKAhzq9NQl54i8H4pNfZ4KVKTciXZ-YIkIfA.Tt-UTA_0Hsu87jH7lFkIBB-qt1QxsGJ5yyo0qgYevg4"
+      },
+      {
+        "url": "/image/1/1.Wf1THra-9RQdtA8fbWdQ-1a-9xLhqfEU4c6UHu1F_u7svfc.GXoROOhpNiaktK64rTaUjhsxxUm0jEHdkKbLi3Pb-pE"
+      },
+      {
+        "url": "/image/1/1.fHJfoba-0JsRCyqQK-wecloB0p3tFtSb7XGxkeH622HgAtI.6RkiLAoepGjmr4l411wJAXWye_x-MNwQdieTz-yFDCs"
+      },
+      {
+        "url": "/image/1/1.vaBks7a-EUkqGetCEsHKoGETE0_WBBVJ1mNwQ9roGrPbEBM.hw2XE2YZ_AfRR9EjqB65ki_Ya4V_La2KpELSATsfsWo"
+      },
+      {
+        "url": "/image/1/1.2VauSLa-db_g4o-0kEOwUavod7kc_3G_HJgUtRATfkUR63c.1tU5Z3uAS1UmecLGYO_EkCSEATncxtzFRA_BoNUonrg"
+      },
+      {
+        "url": "/image/1/1.EvwVTra-vhVb5EQePV4D-xDuvBOn-boVp57fH6sVte-q7bw.SLPArQPKv7z8iLZSq-oGq_ahDMbVL2nrEe5GEnxDJoI"
+      },
+      {
+        "url": "/image/1/1.L942V7a-gzd4_Xk8ZAMe2zP3gTGE4Ic3hIfiPYgMiM2J9IE.YqSTGtResozg5jeK4dW_95Wl3CICjg30H4C3CT_nc1Y"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "34900000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T05:29:17.255Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-19T07:29:19.026Z"
+  },
+  {
+    "id": "fcb44b81-1f09-43b5-b19d-619157793079",
+    "taskId": "3ebf3b41-7f67-4550-8018-567262bfd5bc",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "335073144",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область Тюмень Центральный 4-й Салаирского тракта км",
+    "price": "1500000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок в собственности,в СНТ проложены дороги (грунтовка),электричество,готовят план подведения водоснабжения,чистая вода из скважены,газ проводят,есть связь,интернет,территория закрытая. На территории СНТ есть озеро,рядом Верхний бор\nКадастровый номер участка 72:17:1705001:5257",
+    "domain": "CIAN",
+    "latitude": 57.249149,
+    "longitude": 65.509489,
+    "phone": "+79199510694",
+    "url": "/sale/suburban/335073144/",
+    "area": 37,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T05:06:27.400Z",
+    "modifiedAt": "2026-10-19T05:35:25.000Z",
+    "actualizedAt": "2026-10-21T11:15:27.547Z",
+    "createdAt": "2026-10-19T05:18:05.369Z",
+    "updatedAt": "2026-10-21T11:15:27.547Z",
+    "duplicatedAt": "2026-10-19T05:18:06.441Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/images/uchastok-tyumen-4-y-salairskogo-trakta-km-2988295340-1.jpg"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T05:18:05.369Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-19T07:18:07.567Z"
+  },
+  {
+    "id": "a1ab9885-4603-4a48-ae21-509a09b48d65",
+    "taskId": "db090c9c-f9e7-4631-b0bf-cb2ba05ef2c1",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "6acc5645b6228ba53005a6b4",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "21 км Тобольского тракта, Тюмень",
+    "price": "1500000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам земельный участок в новом коттеджнем посёлке Грин Хиллс по тобольскому тракту. Участок высокий не требуется отсыпки. Правильной формы. Возможен обмен. Собственник",
+    "domain": "YOULA",
+    "latitude": 57.178793,
+    "longitude": 65.803787,
+    "phone": null,
+    "url": "/p6acc5645b6228ba53005a6b4",
+    "area": 7.5,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-19T03:38:05.000Z",
+    "modifiedAt": "2026-10-19T03:38:05.000Z",
+    "actualizedAt": "2026-10-21T10:39:25.374Z",
+    "createdAt": "2026-10-21T02:33:44.739Z",
+    "updatedAt": "2026-10-21T10:39:25.374Z",
+    "duplicatedAt": "2026-10-21T02:33:48.471Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "bcb16a92-8dbf-4c40-a521-34b4a5874401",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/files/images/orig/6a/cc/6acc56321bccc4fb2c0d03e9-2.jpg"
+      },
+      {
+        "url": "/files/images/orig/6a/cc/6acc5630c9e6b612010f171d-2.jpg"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T02:33:44.739Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-21T04:33:54.276Z"
+  },
+  {
+    "id": "5edc68d0-327e-42b8-ac80-1f523628dbfb",
+    "taskId": "3ebf3b41-7f67-4550-8018-567262bfd5bc",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "335068245",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область Тюмень Калининский мкр. Комарово улица Голышмановская",
+    "price": "14000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок 10 соток под ИЖС в черте города (КП Комарово) - готов к стройке!\n\n\nПродается ровный, ухоженный участок площадью 10 соток в одном из самых престижных и удобных районов Тюмени - КП Комарово. \n\nИдеальный вариант для тех, кто хочет совместить комфорт загородной жизни и все преимущества городской инфраструктуры.\n\n Главные преимущества для быстрой и легкой стройки:\n\nУчасток полностью готов: Земля ровная, вспахана, очищена от бурьяна, корней и строительного мусора. \n\nНикаких скрытых расходов на подготовку территории - можно сразу заезжать с техникой и заливать фундамент.\n\nКоммуникации на объекте: Свет заведен и подключен прямо на территории. Газовый стояк выведен у границы участка.\n\nПравильная форма: Ровный прямоугольник без перепадов высот - идеальная геометрия для удобного планирования дома, бани, гаража и зоны отдыха.\n\nУникальная локация: Участок находится в обжитом частном секторе, но в шаговой доступности от Тюменской слободы. Школы, детские сады, поликлиники, супермаркеты и фитнес-центры - буквально в 5-10 минутах ходьбы. \n\nБонус, который вы не купите за деньги - зрелый плодоносящий сад:\nВам не придется ждать 57 лет, пока вырастут деревья. \nНа участке уже есть:\nВзрослые сортовые яблони и груши (активно плодоносят).\nКусты отборного крыжовника и других ягод.\n\nСобственный действующий колодец с чистой водой для полива.\n\nДве готовые теплицы и сарай для хранения садового инвентаря. \n\nЮридическая чистота:\n\nУчасток без обременений, залогов и долей. \nОдин взрослый собственник. Межевание выполнено, границы четко зафиксированы. \n\n Звоните прямо сейчас! Участок реальный, фото свежие. Покажем в удобное для вас время. Земля в этой локации только дорожает - успейте зафиксировать выгодную цену до начала строительного сезона!\n\nРИЭЛТОРАМ НЕ БЕСПОКОИТЬ!",
+    "domain": "CIAN",
+    "latitude": 57.107612,
+    "longitude": 65.490724,
+    "phone": "+79827719487",
+    "url": "/sale/suburban/335068245/",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-18T14:42:55.387Z",
+    "modifiedAt": "2026-10-18T14:43:57.000Z",
+    "actualizedAt": "2026-10-21T11:15:27.612Z",
+    "createdAt": "2026-10-18T14:46:07.949Z",
+    "updatedAt": "2026-10-21T11:15:27.612Z",
+    "duplicatedAt": "2026-10-18T14:46:08.513Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "e66beada-4246-439e-8169-f07d5e95ae38",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/images/uchastok-tyumen-golyshmanovskaya-ulica-2988120978-1.jpg"
+      },
+      {
+        "url": "/images/uchastok-tyumen-golyshmanovskaya-ulica-2988120960-1.jpg"
+      },
+      {
+        "url": "/images/uchastok-tyumen-golyshmanovskaya-ulica-2988120954-1.jpg"
+      },
+      {
+        "url": "/images/uchastok-tyumen-golyshmanovskaya-ulica-2988120985-1.jpg"
+      },
+      {
+        "url": "/images/uchastok-tyumen-golyshmanovskaya-ulica-2988126581-1.jpg"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "14000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T14:46:07.949Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-18T16:46:09.431Z"
+  },
+  {
+    "id": "7300f33e-9c86-44fb-bd5e-d420b1640226",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8327971918",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, территория СОСН Геолог-1, Берёзовая улица",
+    "price": "1000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Предлагаем вам уникальную возможность приобрести земельный участок площадью 12 соток, идеально подходящий для строительства вашего загородного дома мечты! Участок расположен в живописном садовом обществе Стройтель-1, всего в 9 км от города по Велижанскому тракту. Здесь вы сможете наслаждаться тишиной и спокойствием, оставаясь в непосредственной близости от городской инфраструктуры. Садовое общество предлагает множество преимуществ: ухоженный водоем, где можно купаться и проводить время с семьей, а также круглогодичный магазин с разнообразными товарами. Зимой дороги в обществе постоянно чистятся, что обеспечит вам комфортный доступ в любое время года. Безопасность — наш приоритет! Садовое общество охраняется, установлены камеры видеонаблюдения, а въезд осуществляется через закрытые ворота, которые открываются только по звонку собственника. Здесь вы сможете чувствовать себя в полной безопасности. Для вашего удобства в обществе регулярно курсирует автобус, включая школьный, что делает это место идеальным для семей с детьми. Участок не обработан, что дает вам возможность реализовать свои идеи по строительству и ландшафтному дизайну. Не упустите шанс стать владельцем этого замечательного участка! Звоните прямо сейчас, и мы организуем для вас просмотр в любое удобное время. Ваш идеальный загородный дом ждет вас!",
+    "domain": "AVITO",
+    "latitude": 57.235848,
+    "longitude": 65.645943,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_122_sot._snt_dnp_8327971918",
+    "area": 12.2,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-18T13:16:50.000Z",
+    "modifiedAt": "2026-10-20T10:43:20.000Z",
+    "actualizedAt": "2026-10-21T10:17:07.891Z",
+    "createdAt": "2026-10-18T13:31:54.770Z",
+    "updatedAt": "2026-10-21T10:17:07.891Z",
+    "duplicatedAt": "2026-10-21T10:04:14.209Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.66PUeLa-R0qa0r1Bjke6ttbYRUxmz0NKZqgmQGojTLBr20U.ZKgU3_zhrC3idRxErsUK8Y0CpB3nrHEZCGg7RhEpvjM"
+      },
+      {
+        "url": "/image/1/1.ZkrQ8ba-yqOeWzCokLwKRNBQyKViRs6jYiGrqW6qwVlvUsg.m2Jo0DuCuCdQrHNmV04MfZ2zU5wl-xD-APIRNnEQM3k"
+      },
+      {
+        "url": "/image/1/1.8xbjWba-X_-t86X0iVLqGPT5XflR7lv_UYk-9V0CVAVc-l0.9iqlYh-sfrlH7urv6RAVVNgkBljro6pKJfkZIo4uwbU"
+      },
+      {
+        "url": "/image/1/1.LFLD6ba-gLuNQ3qwl8k5XMNIgr1xXoS7cTnhsX2yi0F8SoI.hJCyCEHQCPINqfx4-Tn8nSTIE6N4E7EEQYCqXhNqSOI"
+      },
+      {
+        "url": "/image/1/1.4ISwsLa-TG3-GrZm_Ifn-7MQTmsCB0htAmAtZw7rR5cPE04.kuwXNmbyJRWsCVVibEGLIVsbyO2TpHZ7CrLoyelACUc"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "1000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-21T10:04:13.839Z"
+      },
+      {
+        "price": "1100000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T14:44:26.611Z"
+      },
+      {
+        "price": "1500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T13:31:54.770Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 2,
+    "buyerDemandLastCheckedAt": "2026-10-18T15:31:56.199Z"
+  },
+  {
+    "id": "2e7977c6-1026-4bdc-a4a0-5d8e15a6637e",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8366049326",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "городской округ Тюмень",
+    "price": "650000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам участок в перспективном месте. Ирбитский тракт р-н д Кулакова. Участок правильной формы линия Лэп есть.",
+    "domain": "AVITO",
+    "latitude": 57.196301,
+    "longitude": 65.288878,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._snt_dnp_8366049326",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-18T12:21:16.000Z",
+    "modifiedAt": "2026-10-18T12:21:16.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.246Z",
+    "createdAt": "2026-10-18T12:33:26.265Z",
+    "updatedAt": "2026-10-21T11:06:55.246Z",
+    "duplicatedAt": "2026-10-18T12:33:28.829Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.Y13zGba-z7S9szW_uQQpJLy4zbJBrsu0Qcmuvk1CxE5Mus0.t-PEfwsdhlNvrwbLyin8hQcN3BquUzXdUgFWCeWfwRI"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "650000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T12:33:26.265Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 2,
+    "buyerDemandLastCheckedAt": "2026-10-18T14:33:34.573Z"
+  },
+  {
+    "id": "13e77118-8ec7-44c8-b574-87c9c6cd6a42",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8512173506",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменский муниципальный округ, деревня Субботина, Волонтёрская улица",
+    "price": "3500000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам земельный участок. Участок правильной формы. Отсыпан. Сделана скважина 47 метров. Установлен переливной септик, не требующий откачки. На участке возведен фундамент под строительство дома и частично выложены стены из блока.",
+    "domain": "AVITO",
+    "latitude": 57.119521,
+    "longitude": 65.824069,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_6_sot._izhs_8512173506",
+    "area": 6,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-18T09:50:06.000Z",
+    "modifiedAt": "2026-10-18T09:50:06.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.321Z",
+    "createdAt": "2026-10-18T10:02:14.235Z",
+    "updatedAt": "2026-10-21T11:06:55.321Z",
+    "duplicatedAt": "2026-10-20T18:14:13.436Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.xSU0ura-acx6EJPHMq3sMjYaa8qGDW3MhmoIxorhYjaLGWs.Tb2RnjOt5I1m4XAYEELZ1zS5QDeJCLhZ0_atolxtQlE"
+      },
+      {
+        "url": "/image/1/1.R_Spu7a-6x3nEREWq9JAqPIa6RsbDO8dG2uKFxfg4OcWGOk.H5LVM9oSUDGvftOvvPlvRS9dRza6_DwLdfeBeKRpUxs"
+      },
+      {
+        "url": "/image/1/1.ybITVra-ZVtd_J9QDS20vQT2Z12h4WFboYYEUa0NbqGs9Wc.-ikxlrmItaEdOlac2xKezj8pkP7UiEVSrRWnr_JsZMM"
+      },
+      {
+        "url": "/image/1/1.AjZUoba-rt8aC1TUXPUUTxsArNnmFqrf5nHP1er6pSXrAqw.QEJ9xPQCip2cKl9PEokp4txD_HDJoeIklCmnsK1mWlY"
+      },
+      {
+        "url": "/image/1/1.CLtocLa-pFIm2l5ZdBA1qGrQplTax6BS2qDFWNYrr6jX06Y.uVqOnVZuo1NpduNmGl7CkhmUZ7YyjTxX3Asu3FvTJtU"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "3500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T18:14:13.191Z"
+      },
+      {
+        "price": "3000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T10:02:14.235Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-18T12:02:15.273Z"
+  },
+  {
+    "id": "99a3be8b-d5a9-4fda-8dfd-f77151f636a6",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8545115831",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский муниципальный округ, СНТ Сундукульский разрез",
+    "price": "500000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Срочно! 50 т. Р за сотку! К продаже предлагается участок 10 сот на Велижанском тракте напротив озера Сундукуль. Участок ровный, почищенный. Электричество проведено, газ по заявлению. До Снт асфальтированная дорога, 100 метров грунтовая. Идеально для инвестирования или строительства дома мечты!",
+    "domain": "AVITO",
+    "latitude": 57.362587,
+    "longitude": 65.747693,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._snt_dnp_8545115831",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-18T07:35:36.000Z",
+    "modifiedAt": "2026-10-18T07:35:36.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.388Z",
+    "createdAt": "2026-10-18T07:42:11.010Z",
+    "updatedAt": "2026-10-21T11:06:55.388Z",
+    "duplicatedAt": "2026-10-18T07:42:11.358Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.E7pPgra-v1MBKEVYZf484hQjvVX9NbtT_VLeWfHZtKnwIb0.rN5Ip3yNo2xy5GOKfpsBebc3xOLy6mVmxgINrghzRFE"
+      },
+      {
+        "url": "/image/1/1.lSVnzba-OcwpZ8PHQfO8XChsO8rVej3M1R1YxtmWMjbYbjs.wsHdDL0ny9vlRFFxMuW5phpa5njuCP2DLdBC-8CGDvY"
+      },
+      {
+        "url": "/image/1/1.TOG_rba-4AjxBxoDq_A__b0N4g4NGuQIDX2BAgH26_IADuI.wTheokL-C-VYUOptpmUabHcOjWeMLoiWlDm8zGfkclo"
+      },
+      {
+        "url": "/image/1/1.AbKXira-rVvZIFdQmdZ0vZcrr10lPalbJVrMUSnRpqEoKa8.H2W7CCmAJUM1TAAjX0-EuMxNfzvghri5UEOOt1LynzQ"
+      },
+      {
+        "url": "/image/1/1.Xb5qnLa-8VckNgtcXNVmsX0881HYK_VX2EyQXdTH-q3VP_M.ImjpfYBgfdEFPoNU8wp2DkvmfR4sVawyuN9p-CryEY8"
+      },
+      {
+        "url": "/image/1/1.FYmqeba-uWDk00NrjB0olKjZu2YYzr1gGKnYahQispoV2rs.6ZB7ZowVsdBmlApdC6eo5u2du2UxEyvI4PlxRmBKYhw"
+      },
+      {
+        "url": "/image/1/1.jXyUNra-IZXanNuegnD9c5SXI5MmgSWVJuZAnyptKm8rlSM.HjKpVjsWbeV1ngJd-NrDLqqzNAIoqjnILtjwi3NKzYY"
+      },
+      {
+        "url": "/image/1/1.EBEYHba-vPhWt0bzNCUgHg-9vv6qqrj4qs3d8qZGtwKnvr4.PRJBtJvnbMUYsME8L5TnfQBuXtHt4tXPmOH4Sz-JcKA"
+      },
+      {
+        "url": "/image/1/1.vjD1Iba-Etm7i-jShRvPLPeBEN9HlhbZR_Fz00t6GSNKghA.rFA0jVgWHs7sXO6slzsvJx4CNfbt8Suj88Tt9Jgsv24"
+      },
+      {
+        "url": "/image/1/1.R_0yTba-6xR85xEfMDQY_jDt6RKA-u8UgJ2KHowW4O6N7uk.S-sKGcFU_JBgqxsTiYHqlYpMims3qMqJ5rNpeDZbwVg"
+      },
+      {
+        "url": "/image/1/1.qtIxd7a-Bjt_3fwwaVWOzzPXBD2DwAI7g6dnMY8sDcGO1AQ.XAb4PfvE1S-Iny3Hgg2dJ3cFjStwP1PwuPfXwlaIFJ4"
+      },
+      {
+        "url": "/image/1/1.FEL8dba-uKuy30Kg2AleTfzUuq1OwryrTqXZoUIus1FD1ro._1KAwDwKVwvMdZdDfUd7mL16yewD7tnR1ekDoDou7sk"
+      },
+      {
+        "url": "/image/1/1.kpweWra-PnVQ8MR-NmTOwUX7PHOs7Tp1rIpff6ABNY-h-Tw.SpPmsvu9ErgaT5v6J-DjlEr4MLglHbboCgMnekY9iPw"
+      },
+      {
+        "url": "/image/1/1.c6VXi7a-30wZISVHPfosplUr3UrlPNtM5Vu-RunQ1LboKN0.lD771jjuGwKs6qRbaOrnAux-YDLpApfD7bHPH-bAC_o"
+      },
+      {
+        "url": "/image/1/1.bfApyba-wRlnYzsSf6gV4ytpwx-bfsUZmxmgE5eSyuOWasM.DGIkW7XrzNRlJguA9muJGVHyJGZyji6amIM0HA2O638"
+      },
+      {
+        "url": "/image/1/1.Mw3HUba-n-SJ-2XvrUltUJzwneJ15pvkdYH-7nkKlB548p0.ZQMCTZhC_9BiU_CT3drmxvC9PaAL-gft9BeCdD0-n9w"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T07:42:11.010Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-18T09:42:11.624Z"
+  },
+  {
+    "id": "87dbbb74-a2e6-4945-b1e6-f68b429edfc1",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "INDUSTRIAL",
+    "advertId": "8430863519",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, улица Владимира Полякова",
+    "price": "14000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Участок на первой линии Ткад (доступ с трёх сторон) в створе улиц Барнаульская-Владимира Полякова. Собственник. Разрешенное исполнение ИТ-1. Идеально подойдет для автомойки, автосервиса, Азс, кемпинга, торгового центра, магазина, кафе, спортивного зала, офисного центра, складского помещения и т. Д. Возможно деление площади от 10 до 115 соток. Все коммуникации центральные, получены технические условия (водоотведение, водоснабжение, электричество — Тпу-500квт, газоснабжение). Изготовлен Гпзу (градостроительный план земельного участка), предоставим по запросу. Получено разрешение на строительство примыкания к автомобильной дороге (въезд, выезд). - Возможна продажа частями и/или делением на нужную площадь, конфигурацию под Ваши потребности. - Рассмотрим частичный обмен на жилую и нежилую недвижимость, земельный участок. - Предусмотрена рассрочка платежа. Возможные варианты деления участка предоставлены в разделе «фото», также рассмотрим вариант предложенный Вами. Актуальные цены на землю: 115 сот — от 115 млн. Руб. 110 сот — от 110 млн. Руб. 105 сот — от 105 млн. Руб. 100 сот — от 100 млн. Руб. 95 сот —- от 95 млн. Руб. 90 сот —- от 90 млн. Руб. 85 сот —- от 85 млн. Руб. 80 сот —- от 80 млн. Руб. 75 сот —- от 75 млн. Руб. 70 сот —- от 70 млн. Руб. 65 сот —- от 65 млн. Руб. 60 сот —- от 60 млн. Руб. 55 сот —- от 55 млн. Руб. 50 сот —- от 50 млн. Руб. 45 сот —- от 45 млн. Руб. 40 сот —- от 40 млн. Руб. 35 сот —- от 35 млн. Руб. 30 сот —- от 30 млн. Руб. 25 сот —- от 25 млн. Руб. 20 сот —- от 20 млн. Руб.",
+    "domain": "AVITO",
+    "latitude": 57.17262,
+    "longitude": 65.439778,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_10_sot._promnaznacheniya_8430863519",
+    "area": 10,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-18T05:19:00.000Z",
+    "modifiedAt": "2026-10-18T05:19:00.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.455Z",
+    "createdAt": "2026-10-18T05:29:30.311Z",
+    "updatedAt": "2026-10-21T11:06:55.455Z",
+    "duplicatedAt": "2026-10-18T05:29:30.629Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.SLsmOra-5FJokB5ZOmcFuSSa5lSUjeBSlOqFWJhh76iZmeY.PbsTNbbdsvui8e93ZOMEQMLmdfpo5HLL68nC5L4_ceE"
+      },
+      {
+        "url": "/image/1/1.RyUyCba-68x8oxHHMEALJDCp6cqAvu_MgNmKxoxS4DaNquk.UW2wefOo36zsJrUFRLnpKLCCJ9oS9guHfN5JMY03KpY"
+      },
+      {
+        "url": "/image/1/1.-9---7a-VzbwUa09xKyR17xbVTAMTFM2DCs2PACgXMwBWFU.q9a5dOYpvC4hSl4VA8Pua_s2pUQsy2J8z5Xy3e_GOu0"
+      },
+      {
+        "url": "/image/1/1.vqCaG7a-EknUsehC6mGbz9W6EE8orBZJKMtzQyRAGbMluBA.3iBUvDG1KKn0up4mSbpPPuLmi01j050r6FfYBcitJ5g"
+      },
+      {
+        "url": "/image/1/1.I2Pxhba-j4q_L3WBu4ENZPMljYxDMouKQ1XugE_ehHBOJo0.u--qi9sT9xGhOHKdDoZkldUlB8ig1ydCgpAciT-CZpQ"
+      },
+      {
+        "url": "/image/1/1.GopCh7a-tmMMLUxoeq9NikAntGXwMLJj8FfXafzcvZn9JLQ.U4FFvMFZnmBZ--RTHCWHroGvSNp3Y_RXA0yArrBhsds"
+      },
+      {
+        "url": "/image/1/1.3K6_Nra-cEfxnIpMiyWRrL2WckENgXRHDeYRTQFte70AlXI.h1EC0xn43VROavlGqya5aDh8KBIimrPRxf84wey2d0E"
+      },
+      {
+        "url": "/image/1/1.lSJMsra-OcsCGMPAapi7JU4SO83-BT3L_mJYwfLpMjHzETs.BCmYkNE5oZWObUwByRPBs8XH5ltCilOivyKKMcZggo0"
+      },
+      {
+        "url": "/image/1/1.m7Ibqba-N1tVA81QId-XuhsINV2pHjNbqXlWUaXyPKGkCjU.w5xKf31b2fOnvwNAWQxZLsaBCWNhU3YdZJt9u8Xj2-w"
+      },
+      {
+        "url": "/image/1/1.t28SO7a-G4ZckeGNcF3CbhCbGYCgjB-GoOt6jKxgEHytmBk.en6OJxx4RWeJwqBAcJlQjPctCuiq9cgERmDWW9jho_g"
+      },
+      {
+        "url": "/image/1/1.0beJNba-fV7Hn4dVpx712MaUf1g7gnleO-UcVDdudqQ2ln8.xgTKJQFvDXk7jTbMcJcorOE68ACfQ8dN9Se3Q3pggvA"
+      },
+      {
+        "url": "/image/1/1.P2nmPba-k4Col2mLlFUaX-SdkYZUipeAVO3yilhmmHpZnpE.pZNalL0OHCj8G1yVXh11ttUaz1sOcfFTodzFOIzDvAU"
+      },
+      {
+        "url": "/image/1/1.LSaPxra-gc_BbHvE2Y4HScBng8k9cYXPPRbgxTGdijUwZYM.56mAr_1ir795c0nMGx9WJhMbu41yWHpK4AsyNgyjt1E"
+      },
+      {
+        "url": "/image/1/1._L5nqra-UFcpAKpcE62wv2UKUlHVHVRX1XoxXdnxW63YCVI.U5VFcSccjFecru-1rQvApxTUi15cCyqONqmZiZL8mxM"
+      },
+      {
+        "url": "/image/1/1.PmXBdba-koyP32iHsXlnJprUkIpzwpaMc6Xzhn8umXZ-1pA.a3ZkhBpzZ3WlGWsdZbAE6jDDtDVEEyqRPkNCNdOybHk"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "14000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T05:29:30.311Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-18T07:29:31.777Z"
+  },
+  {
+    "id": "c6765381-3bbb-4860-b68c-4a11aaed4168",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "AGRICULTURAL",
+    "advertId": "8459544704",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюменская область, Нижнетавдинский район, садоводческое некоммерческое товарищество Венеция",
+    "price": "550000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продам участок в Снт Венеция. Есть электричество, интернет, оптоволокно, дороги. Посёлок активно застраивается. Собственник.",
+    "domain": "AVITO",
+    "latitude": 57.388813,
+    "longitude": 65.791875,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_119_sot._snt_dnp_8459544704",
+    "area": 11.9,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-18T02:03:32.000Z",
+    "modifiedAt": "2026-10-18T02:03:32.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.521Z",
+    "createdAt": "2026-10-18T02:10:24.498Z",
+    "updatedAt": "2026-10-21T11:06:55.521Z",
+    "duplicatedAt": "2026-10-18T02:10:35.463Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": null,
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.UgySmba-_uXcMwTuuoRGEpA5_OMgLvrlIEmf7yzC9R8tOvw.DKSsNh3Iu-mGovu9IaCSDA0eBufSeqm8axa601-lU8c"
+      },
+      {
+        "url": "/image/1/1.SW2Xm7a-5YTZMR-Pif4mbpU754IlLOGEJUuEjinA7n4oOOc.gwHfrmeJKHk9GCO2XnMTqvp9O7CAQ3dNGgh9wzfHpJ8"
+      },
+      {
+        "url": "/image/1/1.1EC16La-eKn7QoKikfe1SKJIeq8HX3ypBzgZowuzc1MKS3o.StE-7h4irZ6yY4Wy_z8m2mgF0YA8lqd8CuR97PyIXmk"
+      },
+      {
+        "url": "/image/1/1.gcprwra-LSMlaNcoZZyw1WliLyXZdSkj2RJMKdWZJtnUYS8.fPM98I4cQGGO3JokdiQ-HPrn3rew3JL_8M6jNLsE0Ds"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "550000",
+        "currency": "RUB",
+        "createdAt": "2026-10-18T02:10:24.498Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": false,
+    "buyerDemandAvailableCount": 0,
+    "buyerDemandLastCheckedAt": "2026-10-18T04:10:35.868Z"
+  },
+  {
+    "id": "34a1b0c0-3678-4494-8f88-e6b35f22c6b3",
+    "taskId": "a5fc1832-0021-49a7-b99b-ccd9986bcaeb",
+    "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+    "type": "LAND",
+    "subtype": "SETTLEMENT",
+    "advertId": "8382766241",
+    "isActive": true,
+    "isShareSale": false,
+    "address": "Тюмень, 2-я Школьная улица",
+    "price": "8000000",
+    "dealType": "SALE",
+    "author": "OWNER",
+    "clientName": "Частное лицо",
+    "description": "Продаётся земельный участок, черта города.",
+    "domain": "AVITO",
+    "latitude": 57.106639,
+    "longitude": 65.499285,
+    "phone": null,
+    "url": "/tyumen/zemelnye_uchastki/uchastok_86_sot._izhs_8382766241",
+    "area": 8.6,
+    "landArea": null,
+    "floor": null,
+    "floorCount": null,
+    "roomCount": null,
+    "publishedAt": "2026-10-17T21:16:52.000Z",
+    "modifiedAt": "2026-10-17T21:16:52.000Z",
+    "actualizedAt": "2026-10-21T11:06:55.609Z",
+    "createdAt": "2026-10-17T21:20:46.968Z",
+    "updatedAt": "2026-10-21T11:06:55.609Z",
+    "duplicatedAt": "2026-10-17T21:20:47.539Z",
+    "archiveRevision": "0",
+    "userStatusId": null,
+    "callingUserId": null,
+    "metroStationId": null,
+    "microdistrictId": "e66beada-4246-439e-8169-f07d5e95ae38",
+    "buildingId": null,
+    "currency": "RUB",
+    "images": [
+      {
+        "url": "/image/1/1.GCXmWLa-tMyo8k7H2mgGP-T4tspU77DMVIjVxlgDvzZZ-7Y.XbT7X4G1vfdCI8m2aDNAcrz3HQMAYrGp-CgqT78cPLk"
+      }
+    ],
+    "priceHistory": [
+      {
+        "price": "8000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-17T21:20:46.968Z"
+      }
+    ],
+    "userStatus": null,
+    "_count": {
+      "comments": 0
+    },
+    "metroStation": null,
+    "callingUser": null,
+    "calls": [],
+    "usersFavourites": [],
+    "duplicatesGrade": "NONE",
+    "liquidity": {
+      "status": "NOT_CALCULATED",
+      "isLiquid": false,
+      "grade": null
+    },
+    "hasBuyerDemand": true,
+    "buyerDemandAvailableCount": 1,
+    "buyerDemandLastCheckedAt": "2026-10-17T23:20:48.615Z"
+  }
+]

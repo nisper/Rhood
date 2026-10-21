@@ -153,7 +153,7 @@ function MainHeader({
           <TabBar className="border-b-0">
             {navItems.map((item) => {
               const label = (
-                <span className="inline-flex items-center gap-2">
+                <span className="inline-flex items-center gap-1">
                   {item.label}
                   {item.propNew && (
                     <Badge>НОВОЕ</Badge>

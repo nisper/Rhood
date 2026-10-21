@@ -1225,7 +1225,7 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "main-header",
     title: "MainHeader",
-    description: "Главный хедер продукта.",
+    description: "Главный хедер продукта",
     group: "Layout",
     properties: [
       {
@@ -2015,6 +2015,7 @@ const ComponentNavigation = React.forwardRef<
     "sizing",
     "button",
     "button-favorite",
+    "badge",
     "chip",
     "icon-button",
     "like-button",

@@ -1,0 +1,1979 @@
+{
+    "count": 12806,
+    "result": [
+        {
+            "id": "b7a9bfbe-637e-499e-93f5-6f1cb8e91490",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, садоводческое некоммерческое товарищество Большое Царёво-2, Зелёная улица",
+            "description": "ровный участок правильной формы. участок высокий, не топит. на участке чернозем 40-50см, почва плодородная. на территории снт асфальтированная дорога. охраняемая территория, на въезде шлагбаум с охранником. огорожен столбами с трех сторон для забора, на 2м заглубление в землю — забор будет стоять вечно. на участке: колодец, септик, электричество на 380 15кв, гараж. 700шт блоков для строительства. удаленность от дороги, очень тихое и спокойное место.",
+            "price": 1300000,
+            "area": 10,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "OWNER",
+            "domain": "AVITO",
+            "publishedAt": "2026-11-01T08:31:35.000Z",
+            "actualizedAt": "2026-10-09T04:22:19.099Z",
+            "latitude": 57.263533,
+            "longitude": 65.616658,
+            "metroStationId": null,
+            "microdistrictId": "29533282-bec1-41c9-a58d-e4ef926928a0",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "c60.img.avito.st",
+                    "id": "6896fdf7-b080-47fc-a76a-150aece3e361",
+                    "url": "/image/1/1.QV2gILa-7bTuihe_rmlOO6eA77ISl-m0EvCMvh575k4fg-8.kgl50tkWEY3kGol1uJQyMGul_nzFnowbOFchliohf9c"
+                },
+                {
+                    "domain": "b50.img.avito.st",
+                    "id": "852dafb1-55f8-4e9b-9f52-ac212a4aeedd",
+                    "url": "/image/1/1.FxNuBLa-u_ogrkHxTCBvcmmkufzcs7_63NTa8NBfsADRp7k.Qzvj_M9jizUVhhZn685Ah8HWvnhpQ6Gnz8dsG8XWTcs"
+                },
+                {
+                    "domain": "70.img.avito.st",
+                    "id": "8622618d-0398-459a-9d32-2be513382336",
+                    "url": "/image/1/1.66YzI7a-R099ib1EaXzswDSDRUmBlENPgfMmRY14TLWMgEU.pAIiMKcIIPZLyxDOlv4_J-7q8lgAZCqFqa3ldlUD39g"
+                }
+            ]
+        },
+        {
+            "id": "226afa1f-d8b0-4e7e-bb68-8afbb40ddf04",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Гвоздика, Зелёная улица, 11",
+            "description": "коротко\nпродаётся земельный участок площадью 7.5 соток по адресу: снт гвоздика. участок подходит для строительства и ведения хозяйства. к нему подведены коммуникации: электричество, газ, вода. звони 8(922)396-90-28!",
+            "price": 3500000,
+            "area": 7.5,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-20T17:29:50.386Z",
+            "actualizedAt": "2026-10-20T20:36:41.651Z",
+            "latitude": 57.24539899999223,
+            "longitude": 65.51414299999996,
+            "metroStationId": null,
+            "microdistrictId": "13b37c8b-4970-45d6-8859-4c58eb42f62a",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "2acae5e4-442a-4fce-8300-a2109ffa72fb",
+                    "url": "/vitrina/ba/e9/bae9562dfeb0b71f3d42d88d0a727e4760bd7aee.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "a0dd16e3-7a65-4504-91e0-15b90e751dd0",
+                    "url": "/vitrina/9f/c1/9fc15fc8bd8b4046c490545eddaa7c2b6a099e3c.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "d0f3acd2-3874-4fbd-a981-1b0c64a00118",
+                    "url": "/vitrina/9a/49/9a49f340cb1853782448bbf823924274101d0ef3.jpg"
+                }
+            ]
+        },
+        {
+            "id": "e32e9b6c-87ea-4eff-aef5-142e3b4cb231",
+            "type": "LAND",
+            "subtype": "AGRICULTURAL",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюменский район, село Мальково, Новая улица, 18",
+            "description": "продам земельный участок сельскохозяйственного назначения. распологается по старому тобольскому тракту.",
+            "price": 8000000,
+            "area": 150,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "OWNER",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-20T07:05:34.000Z",
+            "actualizedAt": "2026-10-20T21:57:09.075Z",
+            "latitude": 57.124692,
+            "longitude": 65.866192,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "70.img.avito.st",
+                    "id": "18b7a42a-6cf0-4173-af4c-3e1fc1f8c19a",
+                    "url": "/image/1/1.rqVdZ7a-AkwTzfhHDSGX717HAErv0AZM77djRuM8CbbixAA.O_AdxKFjFE_n-phI7DvTB4KQ8C0E2FIZeFeAv9jMNKE"
+                }
+            ]
+        },
+        {
+            "id": "e5d4f2fe-01a6-4a9b-8ff7-e721868ab6d1",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Уездная улица, 2",
+            "description": "продам участок ровный 7 соток в якушах сан вилидж, место не подтопляемо, участок ухожен, забор по периметру с 3х сторон, новый балок утеплённые, свет подключён 380в.",
+            "price": 2100000,
+            "area": 7,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "OWNER",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-19T03:16:30.000Z",
+            "actualizedAt": "2026-10-20T21:57:09.113Z",
+            "latitude": 57.120798,
+            "longitude": 65.510082,
+            "metroStationId": null,
+            "microdistrictId": "e66beada-4246-439e-8169-f07d5e95ae38",
+            "buildingId": "86dcd3fe-bbad-467e-adb2-b7123b002ff1",
+            "streetId": "faec0be8-23f8-414e-9168-d514b8417a4a",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "b30.img.avito.st",
+                    "id": "281fb496-57f5-4fe5-9046-63247f629b42",
+                    "url": "/image/1/1._keBK7a-Uq7Pgail8SD4adqKUKgznFauM_szpD9wWVQ-iFA.Y2VGjtX69Kn1u3LyrKnhprSECyxl5UcL5O9iOCmF3U8"
+                },
+                {
+                    "domain": "30.img.avito.st",
+                    "id": "5e9239d9-b910-45d3-b87f-be12ec6d9e71",
+                    "url": "/image/1/1.Cc3zEba-pSS9u18v7VU1ofCxpyJBpqEkQcHELk1Krt5Msqc.NHn4IiveTwYEu0Q5e0mw3dOK3VP50Ra0ft89AjcKwXk"
+                },
+                {
+                    "domain": "60.img.avito.st",
+                    "id": "6d84235a-5d69-4beb-bf26-815d748c1b90",
+                    "url": "/image/1/1.E45pbLa-v2cnxkVsQ1QHxSbNvWHb27tn27zebdc3tJ3Wz70.dBgSgl_1hHZrRJ2crCuzv2w29O8SiYfST29p3pkaFWY"
+                }
+            ]
+        },
+        {
+            "id": "16fe31b9-ea2f-47f7-99e8-f427adeba05c",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Центральный округ",
+            "description": "участки у озера в 10 км от тюмени / рассрочка 18 мес. это не просто очередной коттеджный посёлок. это особенное, продуманное место со своими озёрами, чистыми пляжами и благоустроенной территорией, в которое мы по-настоящему вложили душу. я не агент. я сопартнёр этого проекта, а также напрямую занимаюсь строительством и благоустройством здесь. поэтому мы будем общаться с вами напрямую, честно и как люди. сейчас на агрегаторах очень сложно показать всю красоту и перспективность этой земли, поэтому пишу всё как есть: главное о посёлке и участках: локация: всего 10 км от черты тюмени — идеальный баланс между загородной тишиной и доступностью города. готовые коммуникации: электричество уже подведено к участкам. своя ук и комфорт: в посёлке работает собственная управляющая компания (порядок, чистка дорог, обслуживание территории). обустроена общая зона для отдыха и прогулок. выход к воде: в наличии участки с собственным выходом прямо на берег озера. вы можете заказать участок как в первозданном виде, так и сразу с готовым стильным домом (например, а-фрейм или модульный барнхаус) и полным благоустройством территории. уникальные финансовые условия: осталось около 50 свободных участков (от 5 соток). беспроцентная рассрочка до 18 месяцев напрямую от нас. без участия банков, без скрытых переплат и страховок. ваша кредитная история не имеет значения. почему это офигенная инвестиция? прямо сейчас цены на соседние участки в этой локации уже доходят до 4,5 — 5 миллионов рублей. покупка земли здесь на данном этапе — это, пожалуй, одна из лучших и самых надежных инвестиций в тюмени прямо сейчас. вы покупаете актив, который гарантированно растет в цене. давайте не будем просто сотрясать воздух в переписке. землю нужно смотреть вживую. оставляйте свой номер телефона в сообщениях — я свяжусь с вами, отвечу на все вопросы и организую показ в удобное время!",
+            "price": 299000,
+            "area": 8,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-17T17:21:25.000Z",
+            "actualizedAt": "2026-10-18T14:54:57.520Z",
+            "latitude": 57.23910543999712,
+            "longitude": 65.4357461007714,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "30.img.avito.st",
+                    "id": "26e52bfb-6ae8-49ef-b753-9b261d03e647",
+                    "url": "/image/1/1.s2aHhra-H4_JLOWE7fSYBMgnHYk1MRuPNVZ-hTndFHU4JR0.F6CLcsVP4P-nVHr6LvL3j2246X1rHFFw4ZMFr70CGBU"
+                },
+                {
+                    "domain": "10.img.avito.st",
+                    "id": "30d26a95-33b9-4ec9-bc30-a2c3ed07e5bc",
+                    "url": "/image/1/1.jpJY4ba-InsWS9hwSI-mkVpBIH3qViZ76jFDcea6KYHnQiA.pLf78AkAerjMThnobhmEVpAwKxs21CrDYI-NgczNHp4"
+                },
+                {
+                    "domain": "80.img.avito.st",
+                    "id": "55f71574-6191-4941-b34c-ef0559983219",
+                    "url": "/image/1/1.2s-Jxra-dibHbIwtsdmP1ItmdCA7cXImOxYXLDedfdw2ZXQ.0AIaPA3pd6x08UwtuwIuqRcXtrjHUTe4tMSJooyzZEs"
+                }
+            ]
+        },
+        {
+            "id": "9686bbb3-444a-43dc-9acd-88ac604b512a",
+            "type": "LAND",
+            "subtype": "AGRICULTURAL",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Золотая Осень, Осенняя улица, 3",
+            "description": "участок в снт «золотая осень» (березняки)! электрифицирован — свет уже подключен, можно сразу строить! возможность подключения к газу! дороги — зимой чистятся, круглогодичный проезд. о посёлке: круглогодичное проживание — ухоженная территория, доброжелательные соседи. магазин в 50 метрах + в посёлке «магнит», «пятерочка», пекарни, мясные лавки. строительный двор рядом — все материалы под рукой. для семей: новый детский сад (работает с 2023). школа на 1100 мест (уже работает). школьный автобус — безопасность детей. отдых и экология: лесные массивы рядом — грибы, ягоды, чистый воздух. тишина и покой, но в 15 минутах — вся городская инфраструктура. уникальное предложение! такие участки в кооперативах с развитой инфраструктурой уходят очень быстро — это шанс создать родовое гнездо в престижном месте! звоните сейчас — организуем просмотр в удобное время! не упустите — здесь ваша мечта о загородной жизни станет реальностью!",
+            "price": 1600000,
+            "area": 10,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-16T11:43:44.000Z",
+            "actualizedAt": "2026-10-17T11:06:38.970Z",
+            "latitude": 57.239901,
+            "longitude": 65.515409,
+            "metroStationId": null,
+            "microdistrictId": "bd549674-6027-4f89-8c51-3439e309e5e0",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "30.img.avito.st",
+                    "id": "41089e5f-6479-4d56-a176-7a3343591ef5",
+                    "url": "/image/1/1.7u_3KLa-Qga5grgNp2_R0_WIQABFn0YGRfgjDElzSfxIi0A.0SWEP_CPzY-v_m5KJHf20rSJ1U4QY6TySGBS4Rv6J74"
+                },
+                {
+                    "domain": "60.img.avito.st",
+                    "id": "54f7af77-e32b-48eb-85c0-988bb5de2b6d",
+                    "url": "/image/1/1.XO3eira-8ASQIAoP6vdr0Nwq8gJsPfQEbFqRDmDR-_5hKfI.G8R_6VarSXniWcpzfRKJ9M44BdI-xGek4b_xypKaQag"
+                },
+                {
+                    "domain": "30.img.avito.st",
+                    "id": "5e5ff74f-58d3-430e-bf29-39066e09c1ae",
+                    "url": "/image/1/1.lPzPpba-OBWBD8Ie64vdwM0FOhN9EjwVfXVZH3H-M-9wBjo.tyvoD8qZooXdMxGItYnOn5KUPPfyTHAbW22Odsl6JRs"
+                }
+            ]
+        },
+        {
+            "id": "55f730ed-4c75-4bbd-be94-544b1945671b",
+            "type": "LAND",
+            "subtype": "INDUSTRIAL",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюменская обл., Тюменский муниципальный округ, с. Луговое",
+            "description": "готовый бизнес-плацдарм! уникальный земельный участок с двухэтажным офисным зданием и складом. начинайте работу уже завтра. полный контроль и безопасность. удобный выезд на трассу для логистики. место для маневра: принимайте фуры без ограничений. свобода действий: стройте цех или расширяйте хранение. это не просто сотки — это фундамент роста. разверните любое дело, не оглядываясь на соседей. идеально для расширения компании или запуска нового проекта. мы продаем свободу действий! не упустите шанс занять сильную позицию. звоните для просмотра! номер предложения: 77380.",
+            "price": 97920000,
+            "area": 94,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-16T08:04:58.000Z",
+            "actualizedAt": "2026-10-20T03:07:39.392Z",
+            "latitude": 57.219774,
+            "longitude": 65.353579,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "50.img.avito.st",
+                    "id": "05f04ca7-f134-4e08-bfa2-23f891412c59",
+                    "url": "/image/1/1.Ve80oba--QZ6CwMNErQ2zzYB-wCGFv0GhnGYDIr68vyLAvs.ejDQSFTk62HZ_G-mlKKSqV2f5YX9t30_gjkilN3qej8"
+                },
+                {
+                    "domain": "80.img.avito.st",
+                    "id": "1f07d037-0ac3-4561-aeaf-0660cb1b0cd7",
+                    "url": "/image/1/1.OP0Rs7a-lBRfGW4fbZcL3BMTlhKjBJAUo2P1Hq_on-6uEJY.u5oYnUNy6xIP_wKYk_oku-lHd4OBxAg_J8xOMpD4974"
+                },
+                {
+                    "domain": "70.img.avito.st",
+                    "id": "22f25b23-6221-4135-841f-c2e5de960db6",
+                    "url": "/image/1/1.qPADs7a-BBlNGf4SX7W50gETBh-xBAAZsWNlE73oD-O8EAY.-uID9HklB5PW9R99R40149fYJ_CXDRVgzPdXyGVCSMI"
+                }
+            ]
+        },
+        {
+            "id": "47798432-89b5-4414-8fa9-333ff2d915a9",
+            "type": "LAND",
+            "subtype": "AGRICULTURAL",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Луч, Яблоневая улица",
+            "description": "продается дача 9.58 сот. одноэтажный дачный дом 15 кв. м, беседка расположен на участке снт с асфальтированной дорогой. в наличии баня, что станет отличным дополнением для отдыха. водоснабжение осуществляется через колодец, газ проходит по границе участка. санузел находится на улице.  имеется теплица, смородина, вишня, яблоня.до ближайшей школы можно добраться пешком.  есть возможность провести водопровод центральный. торг возможен",
+            "price": 4500000,
+            "area": 10,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "OWNER",
+            "domain": "YANDEX",
+            "publishedAt": "2026-10-15T15:25:36.000Z",
+            "actualizedAt": "2026-10-15T18:21:39.222Z",
+            "latitude": 57.237183,
+            "longitude": 65.52744,
+            "metroStationId": null,
+            "microdistrictId": "6a80c0dc-a68e-44b2-88b8-f269050646bb",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "avatars.mds.yandex.net",
+                    "id": "35334f56-d12e-47c8-86f6-f7b6abbbae98",
+                    "url": "/get-realty-offers/21097678/add.023798dd6038d03b915211c7b62802bb.realty-api-vos/large"
+                },
+                {
+                    "domain": "avatars.mds.yandex.net",
+                    "id": "5fc187fd-aee4-48a7-ade5-b1e1d5ac4862",
+                    "url": "/get-realty-offers/20997115/add.5fce81d3e2461a0c35c2467b5580b67b.realty-api-vos/large"
+                },
+                {
+                    "domain": "avatars.mds.yandex.net",
+                    "id": "d9ae04d4-70e0-4337-b6dd-7f4af9885388",
+                    "url": "/get-realty-offers/20106954/add.811e55a4ee5e02861619b9db52b3c349.realty-api-vos/large"
+                }
+            ]
+        },
+        {
+            "id": "c6d40ceb-067c-42cf-b57c-209fee0d17fb",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Центральный округ",
+            "description": "эксклюзив у воды! осталось всего 3 участка на первой линии. идеальное место для строительства дачи или загородного дома для постоянного проживания. водоем прямо у вашего порога! выбирайте удобный формат сделки: только участок: беспроцентная рассрочка на 1 год напрямую от собственника (первый взнос 30%, без переплат и участия банков). участок + дом: поможем оформить ипотеку без первоначального взноса под ключ. что уже есть на участках: электричество (подведено к границе). хорошие подъездные пути (круглогодичный доступ). все документы готовы к сделке (межевание проведено, собственность). хотите посмотреть свободные номера участков, генплан и цены? напишите «+» в сообщения авито, и мы вышлем всю информацию в течение 5 минут! добавьте объявление в избранное, чтобы не потерять одно из лучших предложений сезона!",
+            "price": 195000,
+            "area": 7,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-15T15:23:00.000Z",
+            "actualizedAt": "2026-10-16T22:19:50.241Z",
+            "latitude": 57.23871185761346,
+            "longitude": 65.43534412282204,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "20.img.avito.st",
+                    "id": "067ac212-bd19-4fb8-8b6e-d28500fe2a2b",
+                    "url": "/image/1/1.HGj3vra-sIG5FEqKw6p9OvUesodFCbSBRW7Ri0nlu3tIHbI.ddt5bBZL7aQ2__HTW6w-DCfHNOGYzBhozn86OdRmWP4"
+                },
+                {
+                    "domain": "10.img.avito.st",
+                    "id": "3563bd79-996f-4918-a2ed-b91a4f0c608a",
+                    "url": "/image/1/1.E-NGfba-vwoI10UBbGlDv0TdvQz0yrsK9K3eAPgmtPD53r0.yDKZqyhWJRLUKFas44cjoiVCYvVL3vJWSfWs1l62EzM"
+                },
+                {
+                    "domain": "70.img.avito.st",
+                    "id": "502dfe80-9707-44b4-a7d4-b136b86d6008",
+                    "url": "/image/1/1.n2T2rba-M424B8mGxOf4OvQNMYtEGjeNRH1Sh0j2OHdJDjE.CdYzWOX5MaVwoSp-MflUEQUJpVF16BOzteBRjl1bAyc"
+                }
+            ]
+        },
+        {
+            "id": "e7893e54-dc52-4132-918a-36d2bb3083a3",
+            "type": "LAND",
+            "subtype": "AGRICULTURAL",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Дружба, 25",
+            "description": "без торга, угловой с трассой, напротив нового магнита, по факту около 6 соток, в собственности, межевание еще не делалось. номер участка 25.",
+            "price": 3000000,
+            "area": 3.8,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "OWNER",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-15T07:40:53.000Z",
+            "actualizedAt": "2026-10-16T05:44:34.161Z",
+            "latitude": 57.21358,
+            "longitude": 65.509615,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "c90.img.avito.st",
+                    "id": "2c7479ba-1213-401f-a045-91ae4431217b",
+                    "url": "/image/1/1.Ig_QcLa-juae2nTtmFwsTdLQjOBix4rmYqDv7G4rhRxv04w.ioj1HQTJsdYgtOSoTGriNFR2a9d_f8U2DqCQ-8BF1pQ"
+                }
+            ]
+        },
+        {
+            "id": "3e8ed34f-6f49-44a3-8ce6-322685e008bf",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюменский муниципальный округ, СНТСН Романтик, 31-я улица, 1034",
+            "description": "продам земельный участок в 25 минутах езды от тюмень по тобольскому тракту. в рассрочку возможном и без первоначального взноса. по всем вопросам обращайтесь в личку.",
+            "price": 160000,
+            "area": 8,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "OWNER",
+            "domain": "AVITO",
+            "publishedAt": "2026-10-14T10:14:47.000Z",
+            "actualizedAt": "2026-10-15T00:22:17.082Z",
+            "latitude": 57.17504,
+            "longitude": 65.81047,
+            "metroStationId": null,
+            "microdistrictId": "f1c46a2b-dd33-4f6c-8edb-d2938167c144",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "b50.img.avito.st",
+                    "id": "e0371ebb-8272-4c58-b7d4-f5c6af801345",
+                    "url": "/image/1/1.o-4-I7a-DwdwifUMdEXFijyDDQGMlAsHjPNuDYB4BP2BgA0.TsNVIQA-3ooo4ou5EF_01kgbYlK4OPnalAmd07Yq3Jw"
+                }
+            ]
+        },
+        {
+            "id": "34779556-6b25-497e-aa61-2c71b8df1e98",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Зелёный дол, 7-я улица, 177",
+            "description": "  земельный участок в шикарном снт \"зелёный дол\".\n\nасфальтированная центральная дорога, несколько остановок, ходит школьный автобус. центральная вода, газ в снт, электрический счётчик на участке.\n\n7-я улица.\n\nучасток правильной прямоугольной формы. дорога до участка в твёрдом исполнении.....\n номер предложения: 40849.",
+            "price": 850000,
+            "area": 8,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-14T06:44:37.901Z",
+            "actualizedAt": "2026-10-19T12:31:37.856Z",
+            "latitude": 57.29159,
+            "longitude": 65.700363,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "33ff424e-a026-4946-8864-0e42acbbc17a",
+                    "url": "/vitrina/b5/3e/b53e44f09eb8418fe3ea45b69610b60ced418efc.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "46a03924-d878-4a3d-8d22-c0628b06e66f",
+                    "url": "/vitrina/10/b2/10b285e43ddc87e0977d84ca1b1c4b6fb4f08aac.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "7c2e584c-71a9-4d3f-a7f1-5fab2c2ba55b",
+                    "url": "/vitrina/d4/9a/d49a3f3a1f7b17255108538b637a05c961ad58dd.jpg"
+                }
+            ]
+        },
+        {
+            "id": "b26b1278-3b31-40ac-b72b-a1bcc6edc642",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Большое Царёво-2",
+            "description": "  участок в снт: ровный, сухой, 27×37.5 м, электричество рядом, газ по заявлению\nпродаётся земельный участок в снт. идеальное решение для строительства: не потребуется отсыпка, участок сухой и ровный.\n\nпараметры участка:\n\nфасад — 27 м, глубина — 37.5 м;\n\nплощадь — 1012.5 кв. м (≈10.1 соток);\n\nрельеф — идеально ровный, без уклонов;\n\nсостояние — сухой, не подтапливается.\n\nкоммуникации и подъезд:\n\nэлектрический столб находится возле участка — удобно для подключения;\n\nгаз подведён к снт, к участку подведут по заявлению;\n\nдорога отсыпана щебнем и асфальтной крошкой — практичное покрытие;\n\nот шлагбаума (въезда в снт) до участка — 280 м.\n\nдополнительно: идеальные соседи — спокойная обстановка, без конфликтов. документы готовы к сделке.\n\n номер предложения: 76123.",
+            "price": 1000000,
+            "area": 10,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T11:20:39.087Z",
+            "actualizedAt": "2026-10-20T12:35:16.447Z",
+            "latitude": 57.263397,
+            "longitude": 65.621081,
+            "metroStationId": null,
+            "microdistrictId": "29533282-bec1-41c9-a58d-e4ef926928a0",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "8e0c41c3-4eb6-4f2b-b80c-efd2b9a79bc0",
+                    "url": "/vitrina/d1/da/d1dadefa73e5569cdfe88d131bb9b498df7ef090.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "bcd41324-f66f-49f3-849f-85334ad7475c",
+                    "url": "/vitrina/89/48/894838cbf74a9f434b7b3c9974485a7d8d613e4c.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "c6405b3a-ed0d-4cfb-a1f0-f2438001a548",
+                    "url": "/vitrina/6f/70/6f706b1707ad3f97552ef0ab65f7d7990c49537d.jpg"
+                }
+            ]
+        },
+        {
+            "id": "e5dadc9f-eeb5-4ffb-b22d-fc91c0ff8c76",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Велижанский тракт 7 километр, 2",
+            "description": " 🏢 продается участок — 1 линия! зона од-2.\n\n📍 черта города тюмень отличная локация с высоким трафиком и удобным подъездом.\n\nплощадь: 4800 соток / 4,8га.\n\nвозможные виды использования:\n\n✅ хранение автотранспорта\n\n✅ коммунальные услуги (аварийные службы, жэки)\n\n✅ административные здания и офисы\n\n✅ социальное обслуживание и помощь населению\n\n✅ бытовое обслуживание (ремонт, химчистки, ателье)\n\n✅ общественное управление (мфц, госучреждения)\n\n✅ склады\n\nкоммуникации: свет по ту, газ на границе учатска.\n\nцена указана  10 000 000 руб за 1 гектар, торг обсуждаем.\n\nотмежуем нужную площадь под вашу деятельность.\n\nусловия: без комиссий для покупателя. юридическое сопровождение.\n\n📞 звоните! покажу участок в любое удобное время.\n\n номер предложения: 13345.",
+            "price": 10000000,
+            "area": 4800,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:54:07.587Z",
+            "actualizedAt": "2026-10-15T20:21:38.754Z",
+            "latitude": 57.214467,
+            "longitude": 65.64615,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "buildingId": "9e4964d0-d9e1-4d8f-b677-0f02698e524c",
+            "streetId": "34d614a5-8a12-4c15-ad31-fdc1e4578ba3",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "561737c5-4197-4a33-bd22-411623f1679b",
+                    "url": "/vitrina/20/13/20133c301873d1cab0aab6221a20e7732073adbb.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "8c661fee-32f9-4ae4-984d-9539ae87bf56",
+                    "url": "/vitrina/b9/f1/b9f117facdf599d61ab53898f1be4df9a86211b7.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "c58eeadd-68d1-4742-b278-68fd4265303a",
+                    "url": "/vitrina/87/b7/87b79c4226fa0a83e509d6a86e253f82e8ebd594.jpg"
+                }
+            ]
+        },
+        {
+            "id": "ffa3a86e-536b-4f16-b981-50b9d62ce868",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Центральный",
+            "description": " вы ищете участок, который станет и домом, и выгодной инвестицией? у нас есть такой вариант! \nэксклюзивное предложение в районе казарово, рядом с объездной. цена настолько приятная, что хочется сказать «это шутка», но нет — это реальность. и действует она только до конца месяца! предложение ограниченное, такие участки появляются редко.\n\nпочему это выгодно:\n\nчистокровный ижс — никаких ограничений, стройте дом мечты и живите с пропиской.\n\n инвестиционный потенциал — район развивается, а значит, участок будет только дорожать.\n\nюридическая чистота — все документы проверены и готовы к сделке.\n\nне упустите шанс купить землю по суперцене!\n\n \n\n номер предложения: 20575.",
+            "price": 40000000,
+            "area": 100,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:54:07.035Z",
+            "actualizedAt": "2026-10-15T20:21:38.794Z",
+            "latitude": 57.268782,
+            "longitude": 65.641506,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "242e25e4-ad8b-425b-b84b-5624c109013c",
+                    "url": "/vitrina/c3/88/c388e4514cdfca78550357749c08398d5e07ded6.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "7683a976-b354-4dbc-b8f1-7f1027da2a4e",
+                    "url": "/vitrina/22/c1/22c178a28d64f9ece47ddbdf0c3ab6471009a92e.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "ab768327-a85f-4b2d-9615-31f597e04830",
+                    "url": "/vitrina/ba/55/ba55cc5096415c4da0a5bceec913fa46849cfeda.jpg"
+                }
+            ]
+        },
+        {
+            "id": "fb1c0a67-b481-4551-94bc-17242da94c3e",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, НСТ Сосновая поляна, 23-я улица, 693",
+            "description": " хотите просыпаться с видом на сосны и отдыхать у горячих источников? \n\nпродаётся земельный участок под строительство жилого дома в очень атмосферном месте. здесь уже всё готово для старта: межевание сделано, участок на кадастре, документы проверены — никакой волокиты. на участке нет построек, так что это чистый лист для вашего идеального дома.\nчто вокруг:\n\n*сосновый лес — тишина, прогулки, грибы и ягоды.\n\n*2 горячих источника неподалёку — отличный релакс даже зимой.\n\n*рядом д. решетникова — доступность магазинов, почты и других бытовых точек.\n\nэто не просто участок — это место, где хочется жить и куда хочется возвращаться.\n\nпишите в личные сообщения или звоните — с радостью покажу и расскажу всё, что важно именно вам!\n\n номер предложения: 29560.",
+            "price": 760000,
+            "area": 9.5,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:54:05.804Z",
+            "actualizedAt": "2026-10-15T20:21:38.822Z",
+            "latitude": 57.283131,
+            "longitude": 65.298799,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0f524f9b-dc66-4b77-8af0-3d8993080af2",
+                    "url": "/vitrina/b9/54/b9548d4010d393e8e52220598407781bff723277.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "2deb32f0-9eb2-4fd6-bd19-d48626cf3690",
+                    "url": "/vitrina/c2/59/c2594f367f89399591b47864b0ff15874d3af2d4.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "4b6deeea-900b-40fd-96ff-b50962f84511",
+                    "url": "/vitrina/a3/dd/a3dd327f617c9b1024369a4bf34fdcee85a6ee59.jpg"
+                }
+            ]
+        },
+        {
+            "id": "151d9d25-7eb5-4d4a-865a-268fb343e925",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Полянка, Степная улица, 82",
+            "description": " предлагаем вам возможность обзавестись уникальным земельным участком, расположенным в городской черте. это идеальное решение для тех,  кто мечтает о комфорте, уединении и близости к природе.\n\nучасток окружен забором, оборудован собственной скважиной и имеет непосредственный доступ к электричеству, расположившись в полуметре от электрического столба. плодородная почва позволит вам реализовать, свои садоводческие амбиции, выращивая свежие овощи, сочные ягоды и прекрасные цветы.\n\nрасположение участка просто великолепно: всего в нескольких шагах находятся живописные озера липовое и озеро чемпионов, где вы сможете насладиться природой. участок подходит как для круглогодичного проживания (всего 15 минут езды до центра города), так и для дачного отдыха.\n\nвозможна установка каркасного дома, который можно выгодно  сдавать в аренду, обеспечивая себе стабильный доход. в следующем году планируется улучшение транспортной инфраструктуры в садовом товариществе, что еще больше повысит привлекательность этой местности.\n\nне упустите этот шанс стать владельцем великолепного участка, где вы сможете осуществить свои мечты, наслаждаться природой и даже зарабатывать деньги. звоните прямо сейчас, чтобы получить дополнительную информацию и записаться на просмотр!\n\n номер предложения: 32674.",
+            "price": 2700000,
+            "area": 16,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:47.661Z",
+            "actualizedAt": "2026-10-15T20:21:38.850Z",
+            "latitude": 57.230252,
+            "longitude": 65.582731,
+            "metroStationId": null,
+            "microdistrictId": "ea75a8b4-b1d5-45da-a01c-8c2914b1929c",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "32252f00-1e4b-4478-8bb8-cf35c93be718",
+                    "url": "/vitrina/60/20/6020caf701ef8ec5f9128141b34a86a48138bd17.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "448affeb-bf04-419a-aee2-8cc4597390d9",
+                    "url": "/vitrina/a1/cb/a1cb5fbdf083db708244f0312273eb02a68ed054.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "75706f09-277e-4657-84d6-bd222e3f7614",
+                    "url": "/vitrina/2d/b0/2db0b64b76f851f5e50ef9ffaa9149e2c002ad30.jpg"
+                }
+            ]
+        },
+        {
+            "id": "ed9dbdb9-69f2-41dd-8b63-ab3d11234e82",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Фиалка, 11-я улица, 5",
+            "description": " продается земельный участок в снт «фиалка» по велижанскому тракту!\n\n\n📍 местоположение: одиннадцатая улица снт «фиалка»  \n\n🌳 площадь: 10 соток\n\n🏡 назначение:  для садоводства и огородничества\n\nпреимущества:\n\n• природа и спокойствие: идеальное место для тех, кто хочет отдохнуть от городской суеты и насладиться единением с природой.\n\n• транспортная доступность: круглогодичный автобусный маршрут из города до снт.\n\n• безопасность: охраняемая территория с шлагбаумом на въезде.\n\n• возможности для жизни: участок подходит для строительства жилого дома, в котором можно проживать круглый год.\n\nесли вы любите зелёный туризм или рассматриваете дауншифтинг, этот участок станет отличным выбором для создания вашего загородного уюта!\n\nне упустите шанс стать владельцем прекрасного участка в живописном месте! звоните для получения дополнительной информации и организации просмотра!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n номер предложения: 34537.",
+            "price": 450000,
+            "area": 10,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:44.675Z",
+            "actualizedAt": "2026-10-15T20:21:38.885Z",
+            "latitude": 57.289479,
+            "longitude": 65.683392,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0d9f4a61-d16c-4b72-abfe-55158769a7b6",
+                    "url": "/vitrina/c0/98/c09842828fda5ccb200052676e69ad24acd24e80.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "3716c307-1c0d-4801-b218-1cfdefe30081",
+                    "url": "/vitrina/84/10/8410a7b7c689974e5f7996e64df7378268d52d3c.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "49c39df8-13bf-4902-b5b8-dd72996fe8b9",
+                    "url": "/vitrina/ac/62/ac62ad47dedc11ac55edbe96c110df51ffea0a99.jpg"
+                }
+            ]
+        },
+        {
+            "id": "7a2632ee-1684-498b-baa6-6d99ba135b97",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Энергия",
+            "description": "предлагается участок под коммерческую деятельность, в отличном месте, с хорошей транспортной развязкой. места достаточно для размещения 10000 м2 под торговые площади и около 9000 м2 под склады. \nболее подробную информацию можно уточнять по телефону, а лучше встречаться на месте. \n\n номер предложения: 36198.",
+            "price": 200000000,
+            "area": 170,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:42.793Z",
+            "actualizedAt": "2026-10-15T20:21:38.916Z",
+            "latitude": 57.209011,
+            "longitude": 65.617076,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "705cfa71-4f69-4ddb-b71a-2542d1ca3212",
+                    "url": "/vitrina/01/b8/01b8c352538d072e650adcaee37f80ea7d8449ee.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "851f1664-db30-44df-a87c-8bac573ac9f5",
+                    "url": "/vitrina/c8/75/c875065b1f80fe089075bf7c9d66fac0662fd5fb.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "b7050615-aafd-42f3-9fa4-742c0e75cbd0",
+                    "url": "/vitrina/a2/09/a209149c4fd4c3c6a352faf8b5b106502bff6190.jpg"
+                }
+            ]
+        },
+        {
+            "id": "0399170d-0af3-4458-9ce7-b226dab11ddb",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Зайкова м-н, Лиственная улица",
+            "description": "  продам участок 5 соток.\nучасток в перспективном районе гилёвской рощи.\n-участок высокий, подготовлена песочная подушка под дом 10*10.\n\n-заключен договор с россети на подключение электричества\n\n-получены  техусловия от водоканала\n\n-газопровод вдоль дороги\n\n-через дорогу в скором времени будет производится большая стройка нового жилищного комплекса.\n\n-до центра 10-15 минут на автомобиле.\n\n-остановка в шаговой доступности.\n\n-подъездные пути к участку асфальтированные.\n\nпишите или звоните, договоримся на просмотр!!!!!!!!!\n \n\n номер предложения: 36019.",
+            "price": 5000000,
+            "area": 4.9,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:42.069Z",
+            "actualizedAt": "2026-10-15T20:21:38.948Z",
+            "latitude": 57.123595,
+            "longitude": 65.670306,
+            "metroStationId": null,
+            "microdistrictId": "a1ace25d-8537-43dc-9f07-9df5fe6e9faf",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "089e39f0-11b4-4370-8908-adebc39388d3",
+                    "url": "/vitrina/61/23/61239ace385c0aef5a53e20ee144d39d4564937a.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "621ce145-2081-4d27-b589-8a42c2ea857b",
+                    "url": "/vitrina/8b/9f/8b9feaec6d6c3587d811c2809e8d9bf91296edc1.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "d10f0eba-b4f6-4c32-a21e-9557ec88edc6",
+                    "url": "/vitrina/7a/b2/7ab2371dace3be1cb6da12a97e59bbad6dc75e87.jpg"
+                }
+            ]
+        },
+        {
+            "id": "4e37d271-5f9e-4524-9083-ef361dbcac98",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Центральный, ММС м-н",
+            "description": "  🔥 уникальное предложение! продается участок 6,6 соток в городе на ммс\n\n🏡 ваш будущий дом в перспективном районе!\n\n✔ площадь: 6,6 соток\n\n✔ форма: идеальный прямоугольник — удобно для строительства и зонирования\n\n✔ локация: развивающийся район с отличной инфраструктурой\n\n🌟 главные преимущества:\n\n✅ рядом  новая школа — отличный вариант для семей с детьми!\n\n✅ магазины и остановка общественного транспорта в шаговой доступности\n\n✅ электричество: столб уже установлен — быстрое и удобное подключение\n\n✅ перспектива роста — район активно развивается\n\n📌 почему стоит купить именно этот участок?\n\nудобная форма и размер — можно построить дом мечты без лишних хлопот\n\nвсё под рукой — не нужно ехать за хлебом или ждать автобус\n\nтихий, но перспективный район — комфортно жить и выгодно инвестировать\n\n🚀 не упустите шанс! такие участки разбирают быстро — звоните прямо сейчас и организуем просмотр!\n\n📞 ваш идеальный участок ждет вас!\n\n номер предложения: 41431.",
+            "price": 4400000,
+            "area": 6.66,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:33.155Z",
+            "actualizedAt": "2026-10-15T20:21:38.995Z",
+            "latitude": 57.211535,
+            "longitude": 65.588918,
+            "metroStationId": null,
+            "microdistrictId": "88b58fe8-8c32-4db7-8955-ee91702abf07",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0cfbe39d-7cfe-4764-bce9-6904ca097826",
+                    "url": "/vitrina/40/f7/40f740d442296ff001092834c3ccec79c068ff45.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "529861c4-f919-4f2c-9472-406658223fb2",
+                    "url": "/vitrina/5c/da/5cda5961e18fc59b2d13463ef956fab93a5a2f4f.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "5e50d010-4f56-4584-8348-6995d6fd0ee8",
+                    "url": "/vitrina/a0/6e/a06e85fc141d04fbe6be770e701831569f11c3f6.jpg"
+                }
+            ]
+        },
+        {
+            "id": "8b143905-6622-47f1-ac17-82d05c28bbcc",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Сигнал, Сиреневая улица",
+            "description": " 🏡 продаётся земельный участок в снт «сигнал» — загородная жизнь, не выезжая из города! 🌿\n✨ мечтаете о собственном доме, где можно наслаждаться тишиной, свежим воздухом и природой, но при этом оставаться рядом с городской инфраструктурой?\n\nтогда этот участок в снт «сигнал» — прекрасная возможность воплотить вашу мечту в реальность!\n\n💚 почему стоит выбрать именно это место?\n\n🌳 природа и спокойствие\n\nуютная атмосфера частного сектора, зелень, свежий воздух и возможность отдыхать от городского ритма. здесь можно наслаждаться спокойными семейными вечерами, проводить время на свежем воздухе и обустроить собственный уголок уюта.\n\n🚗 город совсем рядом!одно из главных преимуществ снт «сигнал» — расположение в черте тюмени.\n\nвы сможете жить в собственном доме, наслаждаться загородной атмосферой и при этом оставаться в привычном городском ритме.\n\n🏫 удобная инфраструктура\n\nвсё необходимое для комфортной жизни находится в доступности:\n\n✅ продуктовые магазины\n\n✅ остановки общественного транспорта\n\n✅ школы и детские сады в близлежащих районах\n\n✅ удобное сообщение с районом дом обороны\n\n✅ городская инфраструктура тюмени\n\n⚡ коммуникации и перспективы\n\nснт развивается как территория для частной жилой застройки. в товариществе есть электроснабжение, проходит газификация отдельных улиц, строятся современные частные дома.\n\nвозможность подключения коммуникаций к конкретному участку уточняется индивидуально.\n\n👨‍👩‍👧‍👦 отличное место для семейной жизни\n\nздесь можно создать уютное пространство для всей семьи, где у детей будет собственный двор для игр, а у взрослых — место для отдыха после рабочего дня.\n\n🏡 представьте свой будущий дом…\n\n✨ светлая гостиная с панорамными окнами.\n\n✨ просторная терраса для утреннего кофе.\n\n✨ собственная баня и уютная зона барбекю.\n\n✨ красивый сад с цветами и зелёным газоном.\n\n✨ тёплые летние вечера в кругу самых близких.\n\nи всё это — на собственной земле, в черте любимого города!\n\n📍 местоположение: г. тюмень,снт «сигнал».\n\n📐 площадь участка: 9.65 соток.\n\n⚡ коммуникации: газ, электричество, интернет\n\n💰 стоимость: 7.600.000₽.\n\n💚 снт «сигнал» — отличная возможность совместить преимущества собственного дома с комфортом городской жизни!\n\n📞 звоните и записывайтесь на просмотр!\n\nс удовольствием отвечу на ваши вопросы, расскажу обо всех преимуществах участка и организую показ в удобное для вас время!\n\n✨ не откладывайте мечту о собственном доме — возможно, именно здесь начинается новая счастливая глава вашей жизни! 🏡\n номер предложения: 38250.",
+            "price": 7600000,
+            "area": 9.65,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:32.709Z",
+            "actualizedAt": "2026-10-15T20:21:39.027Z",
+            "latitude": 57.172898,
+            "longitude": 65.401233,
+            "metroStationId": null,
+            "microdistrictId": "ea288420-85f4-453e-9934-1bb2dad53f9d",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "22001624-ddc9-4489-a8bd-c8a1fd296c20",
+                    "url": "/vitrina/36/ba/36bab3773712cfa5431a27d5e7a9505fabf39aa9.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "4e46b8bc-7a4c-4977-9323-f5bde4320b68",
+                    "url": "/vitrina/28/75/2875b348474532aeb745b8a56a11da7533dc6491.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "78389280-0b24-4c65-ac1c-324cd644e86c",
+                    "url": "/vitrina/09/09/090917a5c5054c67ced2a36f750e164bae0ec679.jpg"
+                }
+            ]
+        },
+        {
+            "id": "772c4dbe-403f-4920-9b86-e3687d90c4e4",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Сигнал",
+            "description": " 🏡 участок у леса в снт «сигнал» – готовый уголок для жизни и отдыха!\n\n\n🌲 идеальное расположение:\n\n✔ всего 5 минут от города – близко к инфраструктуре, но в окружении природы\n\n✔ тупиковая улица – минимум проезжающего транспорта, тишина и безопасность\n\n✔ соседи круглый год – уютное и живое сообщество\n\n🏠 на участке уже есть:\n\nдвухэтажный сруб – крепкий, экологичный и готовый к проживанию\n\nбаня – для настоящего русского отдыха после рабочей недели\n\nэлектричество – все удобства подведены\n\nгаз по границе участка – возможность подключения\n\n🛣 инфраструктура и транспорт:\n\n🚌 проезд через пос. труфанова – рядом остановка общественного транспорта и магазин\n\n🛒 все необходимое – в шаговой доступности\n\n🌿 почему это отличный выбор?\n\nлес рядом – свежий воздух, грибы, ягоды и прогулки среди сосен\n\nухоженная территория – участок готов к заселению\n\nподходит для пмж или дачи – в зависимости от ваших целей\n\n⏳ такие предложения разбирают быстро – успевайте!\n\n📞 звоните, чтобы увидеть участок и сделать его своим!\n\nваш уютный уголок у леса ждет вас! 🏡✨\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n номер предложения: 50920.",
+            "price": 5500000,
+            "area": 5.63,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:24.459Z",
+            "actualizedAt": "2026-10-15T20:21:39.059Z",
+            "latitude": 57.17301,
+            "longitude": 65.398711,
+            "metroStationId": null,
+            "microdistrictId": "ea288420-85f4-453e-9934-1bb2dad53f9d",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0dcb5547-ed1c-4676-bf26-5fd5b8a6b76e",
+                    "url": "/vitrina/22/5e/225e971d44592b8ba372c30001e4d6f646ef5993.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "18ac6c15-1d52-4720-a85e-35a32fcacbb1",
+                    "url": "/vitrina/ae/c2/aec2cd25943b546ee30906d77667e72b9ff8410e.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "1c9f63fd-c968-4eb6-a115-4e3783048c1f",
+                    "url": "/vitrina/e6/8c/e68c957d6c3354566b6de084e2d0a2589e521761.jpg"
+                }
+            ]
+        },
+        {
+            "id": "1145adf1-e173-494a-a4d8-ff247200f786",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Лето-парк, Тюмень, 486 / улица Вишневая (к/п Лето-парк), 23",
+            "description": "  добрый день! предлагаем к покупке участок, расположен в перспективном районе вблизи тюмени, сочетая преимущества загородной жизни с близостью к городской инфраструктуре. улица включает всего восемь домовладений, что обеспечивает приватность и спокойную атмосферу. тупиковый проезд исключает транзитный транспорт, гарантируя тишину и безопасность для детей. в конце улицы расположена лесополоса, за ней живописное озеро с возможностью рыбалки и отдыха на природе. поселок полностью обустроен для комфортного проживания: проведены газ, электричество и центральный водопровод, что редкость для подобных локаций. участок находится в черте города, что дает право на городскую прописку, сниженные налоги на недвижимость по сравнению с другими загородными предложениями.\n\n\nблизость к тюмени обеспечивает быстрый доступ к школам, магазинам и медицинским учреждениям, при этом сохраняется ощущение уединенности. есть школьный автобус! развитая дорожная инфраструктура позволяет добраться до центра города за 15-20 минут. участок подходит как для строительства постоянного жилья, так и для сезонного использования — перспективы развития района делают его выгодным вложением. планировка территории позволяет реализовать различные проекты: от компактного коттеджа до просторного усадебного комплекса с гостевыми постройками. наличие всех коммуникаций значительно сократит сроки и бюджет строительства. экологически чистая зона с лесным массивом и водоемом создает здоровую среду для жизни, а статус городской территории упрощает оформление документов и подключение к сервисам.\n номер предложения: 54091.",
+            "price": 7200000,
+            "area": 9,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:09.741Z",
+            "actualizedAt": "2026-10-15T20:21:39.099Z",
+            "latitude": 57.220066,
+            "longitude": 65.384817,
+            "metroStationId": null,
+            "microdistrictId": "4fe3e694-b9ed-4970-b402-0fca59adb9bb",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "03f5075f-66a0-4cff-9db4-26d1c01cd46d",
+                    "url": "/vitrina/ca/c8/cac83547cb1bbcbe69e74069f7932ae3a2dbab88.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "256125fd-6b50-44db-90f4-49b55eae1c60",
+                    "url": "/vitrina/4d/b3/4db3429411de04b080c25f24adc2e3afec011dca.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "33f4c171-0b02-4cb2-9003-f52d69ab36e8",
+                    "url": "/vitrina/a8/3a/a83afb1514be9ef64889781378fb4292d0284c5d.jpg"
+                }
+            ]
+        },
+        {
+            "id": "45bbb105-0137-4ed8-bc07-46fc0da7ba30",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Лето-парк, Светлая (к/п Лето-парк) улица, 28",
+            "description": "  продается уникальный участок для строительства в живописном коттеджном поселке \"лето-парк\"! этот участок расположен в непосредственной близости к днт \"звенящие кедры тюмени\", всего в нескольких минутах от уютного поселка метелево, на живописном берегу реки тура.\n\n\nучасток выделяется высоким и сухим рельефом, что делает его идеальным для возведения вашего загородного дома мечты. к участку ведет качественный подъезд с песчано-гравийным основанием и асфальтовым покрытием, а также удобная асфальтобетонная дорога от метелева, что гарантирует легкий доступ в любое время года.\n\nна территории поселка уже подведены электричество и центральное водоснабжение, что значительно упрощает процесс строительства. в \"лето-парке\" предусмотрены современные инфраструктурные решения: в проекте создание футбольного стадиона, спортивных кортов и детской площадки для детей разных возрастов. это идеальное место для активного отдыха и семейных развлечений!\n\nне упустите возможность стать владельцем этого замечательного участка, где природа и комфорт городской жизни гармонично сочетаются. здесь вы сможете наслаждаться тишиной и спокойствием загородной жизни, оставаясь при этом в шаговой доступности от всех удобств.\n\nпредставьте себе утренние прогулки по живописным окрестностям, вечерние посиделки у реки и активные выходные с семьей и друзьями. этот участок – не просто земля, это ваше будущее, полное радости и счастья! звоните прямо сейчас, чтобы узнать больше и записаться на просмотр! ваш идеальный дом ждет вас!\n\n\n\n\n\n\n номер предложения: 56365.",
+            "price": 4100000,
+            "area": 8,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:50:05.603Z",
+            "actualizedAt": "2026-10-15T20:21:39.144Z",
+            "latitude": 57.221149,
+            "longitude": 65.390696,
+            "metroStationId": null,
+            "microdistrictId": "4fe3e694-b9ed-4970-b402-0fca59adb9bb",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "16c4e9a8-d7b7-4598-9512-f89e201e04c6",
+                    "url": "/vitrina/ee/2a/ee2ad1e555f13c2fbc44d771aeb0af16f757e9d1.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "5e7e0a8b-e8cc-4bac-a13f-be217d885fe3",
+                    "url": "/vitrina/b1/44/b1444c2affa2b087b2bb21d357a8bc5c96b308e5.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "8e71dc64-8a46-4d31-8723-2cb5acabd227",
+                    "url": "/vitrina/72/5e/725edee066c9164481ab2871961fd4f696362ab6.jpg"
+                }
+            ]
+        },
+        {
+            "id": "d2f8a844-2d99-4f03-9e76-9869a5c1bc1a",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Ленинский",
+            "description": "  уникальная возможность для развития вашего бизнеса!\n\n\nпродаётся земельный участок площадью 22 сот., идеально расположенный в городской черте. возможности для вашего бизнеса: от  строительства промышленных объектов любого типа — от крупных заводов до небольших производств и автосервисов.\n\nпреимущества участка:\n\n✅ развитая инфраструктура рядом: уже действуют соседние предприятия, обеспечены электричеством и интернетом.\n\n✅ железнодорожная ветка поблизости упрощает логистику сырья и готовой продукции.\n\n✅ завод всего в паре километров обеспечивает дополнительную привлекательность для расширения производства.\n\n✅ удобная транспортная доступность позволяет быстро доставлять грузы и обеспечивать доступ сотрудников.\n\nиспользуйте этот участок для реализации ваших амбициозных планов — от открытия производственного цеха до создания автосервиса или коммерческой недвижимости!\n\n\n\n\n номер предложения: 59385.",
+            "price": 6500000,
+            "area": 21.91,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:49:52.329Z",
+            "actualizedAt": "2026-10-15T20:21:39.212Z",
+            "latitude": 57.17701,
+            "longitude": 65.716943,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0794926b-2b0f-4631-8922-6d8402a40dff",
+                    "url": "/vitrina/bb/fd/bbfd28a08f7c22c995d57f3b09adfb34a026397e.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "07eed56f-6f81-4779-8523-fc897b681dc2",
+                    "url": "/vitrina/75/a8/75a88232f9d8a0ed75830a180208672ff019a3e1.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "23d18640-a6e0-4246-86f7-10f00fc52b48",
+                    "url": "/vitrina/6a/1e/6a1e3801b18fe34bb333f401e9277ab5af9672e3.jpg"
+                }
+            ]
+        },
+        {
+            "id": "3eb02e33-992e-4eb6-b168-29d8426acde9",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Велижанский тракт 7 километр, 8",
+            "description": " уважаемые покупатели, представляю вашему вниманию  земельный участок в живописном коттеджном поселке, расположенном на велижанском тракте всего в 5 минутах езды от тюмени.\n\nэто идеальное место для тех, кто мечтает о загородной жизни с комфортом городской инфраструктуры.\n\nосновные характеристики:\n\n• центральное водоснабжение, • газ, • электричество, дороги в твердом исполнении\n\nинфраструктура:\n\n• детская площадка и воркаут-зона\n\n• магазины и прогулочные зоны\n\nтранспортная доступность:\n\nпоселок отлично связан с городом благодаря качественной дорожной сети. в непосредственной близости находятся популярные торговые центры, такие как сити молл, а также развлекательные комплексы и спортивные объекты, что делает жизнь максимально удобной в этом районе.\n\nпоселок активно застраивается \n\nпри строительстве жилого дома - регистрация г.тюмень\n\nзвоните для подробностей и просмотра!\n номер предложения: 62805.",
+            "price": 900000,
+            "area": 7,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:49:45.937Z",
+            "actualizedAt": "2026-10-15T20:21:39.247Z",
+            "latitude": 57.216397,
+            "longitude": 65.647129,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "buildingId": "55404fd8-49a9-47ab-bb9f-67e17128e03b",
+            "streetId": "34d614a5-8a12-4c15-ad31-fdc1e4578ba3",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0722ed58-ba30-4062-82fd-2ba7c2d9aa0d",
+                    "url": "/vitrina/b9/59/b9598f938ce7ea47f6339950f784a292e6cf72f3.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0d202a5d-4a91-4ca2-a7ef-e55ac42c527e",
+                    "url": "/vitrina/0c/2b/0c2b16288c8c8bf6c11b090e3f5ad12ae93ffb68.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "1aab273a-4a0f-481a-8b1e-0dfeff4a8097",
+                    "url": "/vitrina/f1/b2/f1b2967339f635eddfe5a8f193b401d46d97106e.jpg"
+                }
+            ]
+        },
+        {
+            "id": "faa11bbb-43dd-4216-a684-072e6ef0ee4f",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Ясень, 5-я улица",
+            "description": "пpодaем учaсток 14 соток, снt «ясeнь» , ул. пятая , уч. 382. учacток огoрожeн зaбopoм c 3-х сторон.oбщeство наxoдитcя в нeпоcрeдствeнной близocти к бeрeзнякам , остановка в пешей доступнoсти( 10мин.), ходит школьный автoбус. учacток нe тpебует отсыпки, мeсто выcокоe, чистое. газ в перспективе, согласно программе газификации на конец 2026 должны завести. центральное водоснабжение в общество заведено. круглогодичное проживание, прописка, интернет. с реальным покупателем готовы торговаться.\n\nдокументы в порядке, обременений нет.\n\nзвоните\n\nзастройщику хорошо подойдёт,   на два дома  отлично! по 7 соток. место высокое , отсыпки не требует, участок чистый. \n номер предложения: 65498.",
+            "price": 2600000,
+            "area": 14,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:49:34.032Z",
+            "actualizedAt": "2026-10-15T20:21:39.280Z",
+            "latitude": 57.257659,
+            "longitude": 65.513729,
+            "metroStationId": null,
+            "microdistrictId": "e487d762-5113-4841-be1d-6da0e2f8db39",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "449779bc-806c-4baa-ac50-2867a3eb68c6",
+                    "url": "/vitrina/77/26/7726a491552161a14bd841eee0536976e1b50aa2.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "4cc82050-77d5-4d31-8b0f-154f3b28afff",
+                    "url": "/vitrina/89/13/8913b491c7fe929735219716e82f197f95d5e3eb.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "5e9d19e3-d079-4fda-89f4-1f2465c496dd",
+                    "url": "/vitrina/42/23/4223814479d9c448f4b5da99d5a894393406364c.jpg"
+                }
+            ]
+        },
+        {
+            "id": "331bbb72-e4ea-4d95-a50e-1b39bf9c7786",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Русь",
+            "description": "участок в снт «русь» — ваш шанс на загородную жизнь по доступной цене!\n\n* срочная продажа: владелец готов рассмотреть любые предложения. не упустите возможность приобрести землю с выгодой.\n\n* расположение: участок находится в живописном садоводческом товариществе, где природа и тишина сочетаются с удобством расположения. идеальное место для строительства дачного домика или капитальной постройки.\n\n* инфраструктура: рядом есть все необходимое: магазины, остановки общественного транспорта, зоны отдыха. удобный подъезд к участку позволит вам быстро добираться до города.\n\n* возможности использования: здесь вы можете воплотить свои мечты о собственном огороде, уютной беседке под яблоней или просторном доме для всей семьи. участок ждет своего хозяина!\n\n«купив этот участок сегодня, завтра вы начнете строить свою мечту!»\n\nне откладывайте решение. свяжитесь с нами прямо сейчас, чтобы договориться об осмотре и обсудить условия покупки. мы поможем вам сделать правильный выбор!\n номер предложения: 74762.",
+            "price": 1900000,
+            "area": 7.5,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:49:16.421Z",
+            "actualizedAt": "2026-10-15T20:21:39.309Z",
+            "latitude": 57.180344,
+            "longitude": 65.727915,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "06fabd06-5f95-44c4-9e2b-5c05df637360",
+                    "url": "/vitrina/6a/86/6a86ca258b009457556cc08bee9fb099db6a3f4e.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "783a1351-ae5c-4311-a1db-1ff65f814379",
+                    "url": "/vitrina/4c/b4/4cb4de8f762e735cc146c82b1044a4cac4b04a1b.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "b52798f7-3cfa-4211-8f3e-0ea2b67982b0",
+                    "url": "/vitrina/e1/27/e1274f0c0d57ed9bdbc7f7543959a12be7694cd2.jpg"
+                }
+            ]
+        },
+        {
+            "id": "995ec44b-2299-4424-af9c-7568542103b8",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, ДНТ Весна",
+            "description": "🏡 ваш идеальный участок в тюмени — здесь начнётся дом вашей мечты!\nпредставьте прямоугольную территорию с плодородной землёй. на ней уже растут плодоносящие трёхэтажные кедры, дубы, сосны, липа, а также фруктовый сад — яблони, груши, вишня. добавьте смородину, крыжовник и малину — урожай можно собирать сразу!\n\n✅ удобный заезд и парковка для гостей — транспорт без хлопот\n✅ прекрасные соседи — плюс к комфортной жизни\n✅ на краю участка — величественные плодоносящие кедры и дубы, создающие особый микроклимат\n\n🌳 вокруг всё для жизни:\n• остановка автобуса № 17к — рядом\n• садик и школа — в шаговой доступности\n• «воронинские горки» — для активного отдыха\n• бассейн и каток в «партиком» — для здоровья и развлечений\n• картинг — для ярких эмоций!\n\n📍 стройте дом мечты там, где природа и инфраструктура идут рука об руку!\n\n📞 звоните и приезжайте смотреть — участок ждёт именно вас!\n номер предложения: 75554.",
+            "price": 6500000,
+            "area": 12,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-13T09:49:13.318Z",
+            "actualizedAt": "2026-10-15T20:21:39.372Z",
+            "latitude": 57.194488,
+            "longitude": 65.42706,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "1b98874a-4d46-4a11-9831-e24d31e7d3c0",
+                    "url": "/vitrina/92/c3/92c34e6192be03f5d9ed9efc0c27acf60858d1ac.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "6b1378b2-be31-4fb4-941d-f4b97a98fd9b",
+                    "url": "/vitrina/a2/d9/a2d97bdce9bacda07421d155f1c1e8054599a1b0.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "828beb7d-0e0a-424c-aa5e-799c2c86f2b4",
+                    "url": "/vitrina/0f/df/0fdf35f07b8c7b6440e7dab64af1bf186080c40a.jpg"
+                }
+            ]
+        },
+        {
+            "id": "952b9879-ee00-4c58-abb3-28bed8861fee",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Березняки, Центральная улица, 16",
+            "description": "арт. 80399713. продам ровный участок в отличном месте, березняковский район, рядом школа, детский сад, идеальный участок для семей, можно под подряд.",
+            "price": 999999,
+            "area": 7,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T14:09:26.194Z",
+            "actualizedAt": "2026-10-15T20:21:41.151Z",
+            "latitude": 57.230465,
+            "longitude": 65.501153,
+            "metroStationId": null,
+            "microdistrictId": "fcb8c32e-ba58-4ff8-a38c-07a16c15d04c",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "18758061-f9a5-400c-b550-4fef79c11d0e",
+                    "url": "/vitrina/fe/e4/fee4de463afa26e827ee2dc3f67fc44b6546ca10.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "f2106b19-53b5-4018-8b6d-aed9806f1fed",
+                    "url": "/vitrina/78/85/7885aaad9516caca9705b049dab6c4b0c1049faa.jpg"
+                }
+            ]
+        },
+        {
+            "id": "820b87b2-f93a-4b08-8386-9cab0c63af99",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Липовый остров, 6-я Западная, 2631",
+            "description": "арт. 80297164. продaётcя земeльный учacток снт липoвый оcтров , улицa 6-я зaпaднaя. hа учаcткe кoнтeйнeр и колодец. плoщадь 8+сoток. 20х40+метров. дорога oбнoвленa в 2024году. газ у границ сht. b этoм гoду обeщaют pазвecти по зарегистриpoванным домоxозяйствaм. pаcстoяние от учaстка дo мaгазинов 900 метров. рейсовый и школьный автобусы. обоснованный торг по претензиям покупателя. межевой план 2024г. по этому плану от угла участка до центра города 13км.872м. участок №2631.",
+            "price": 1350000,
+            "area": 8,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T14:09:02.153Z",
+            "actualizedAt": "2026-10-15T20:21:41.180Z",
+            "latitude": 57.271884,
+            "longitude": 65.540741,
+            "metroStationId": null,
+            "microdistrictId": "38e20f16-9691-444b-8b4a-9a528a2e2a14",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "044dcc77-69bb-44b9-b4a7-c2b610f14bd6",
+                    "url": "/vitrina/ae/e8/aee8252413ac46e91e64b28c4da93d037acb4768.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "8fa6e073-4563-4676-b79e-ea9dfaf8b38e",
+                    "url": "/vitrina/9c/5e/9c5e348e867ba740899af14ec841c102e10d535e.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "c88f8f70-7bb9-47c5-b401-92e26bfb2679",
+                    "url": "/vitrina/f3/a6/f3a6d648f4e16d28bd40c4c9ae73f24c83f21a0f.jpg"
+                }
+            ]
+        },
+        {
+            "id": "994012ca-2eaf-4b08-ab3e-423da40b2ee1",
+            "type": "LAND",
+            "subtype": "AGRICULTURAL",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, коттеджный посёлок Тополя",
+            "description": "арт. 127262482 продается земельный участок в  кп тополя, в самом начале с. луговое.\nхoрoшая доpoга до участка. \nводоcнaбжeние, элeктричествo, газ.\nвoкруг жилыe дoма кpуглoгoдичнoго пpоживания. cпокойноe тиxоe мeсто.\nучасток  на берeгу у водоёма, c крacивым видом.\nmeсто прекрасное, красивейшие виды, чистый воздух. \nкадастровый номер 72:17:1105002:11359\nгпзу по запросу.\nдва смежных земельных участка по 7 соток с выходом на водоем так же продаются.\n\nинфраструктура: \nв селе луговое имеются  продуктовые, хозяйственные, строительные магазины, детский сад и школа, культурно - досуговый центр и много другое.\nот города тюмени 7 минут езды на автомашине. \n\nгарантия юридической чистоты сделки от компании!  \n\n️звоните!  записывайтесь на показ объекта прямо сейчас!  \n\nрады будем ответить на все ваши вопросы.",
+            "price": 2850000,
+            "area": 7.74,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T10:38:26.955Z",
+            "actualizedAt": "2026-10-15T20:21:41.411Z",
+            "latitude": 57.202566,
+            "longitude": 65.365595,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0a461053-f83f-4977-bc85-b1e3b2567c12",
+                    "url": "/vitrina/00/0e/000e09ec9a25285f16403d5220d589a65c4acc3f.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "2220b1da-37c3-4278-896d-7e4dc8c907a4",
+                    "url": "/vitrina/31/7b/317bd527ef1985dad7b7c3c6973fc7c971007719.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "403962d3-76d5-4f04-b7da-c0d06d74cae2",
+                    "url": "/vitrina/c7/b9/c7b97a537b742594b33a664bb23707bf78b7012d.jpg"
+                }
+            ]
+        },
+        {
+            "id": "04680681-4027-45a4-b378-5fc7544827e4",
+            "type": "LAND",
+            "subtype": "AGRICULTURAL",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Яровское, Сливовая улица, 21",
+            "description": "арт. 70490154 прoдaм: зeмeльный учacтoк с летним домом c.т \"яpовcкoe \"пo ялутopoвскoму тpaкту!!!\nha участке рaспoлoжен дачный дoмик c манcаpдoй eсть душeвaя cан узел,\nпри нeбольших влoжeниях можно прoживать круглoгодичнo!!!\nна учaсткe eсть: электричecтво, вoда - cквaжина + колoдeц, тeплица, беceдка, много плодов ягодных деревьев и кустарников! все очень хорошо растёт и плодоносит. малина, белая, красная смородина, крыжовник, вишня. яблони, юрга, и даже фисташки!!!\nтак же большой плюс рядом озеро!!!\n\nотличный подъезд к участку - новая асфальтная дорога!!!\nодин собственник! документы готовы к продаже!",
+            "price": 3500000,
+            "area": 10,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T10:37:57.327Z",
+            "actualizedAt": "2026-10-15T20:21:41.444Z",
+            "latitude": 57.176606,
+            "longitude": 65.743869,
+            "metroStationId": null,
+            "microdistrictId": "017c2901-8770-41e1-938f-09aee765bc37",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "05a4aa38-df27-4b39-ae24-e986fb72f6bd",
+                    "url": "/vitrina/6b/66/6b6659bcc01636d625f73999437d9c4ae2134eb8.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "5870ebba-5ecf-4aa4-88cb-ecc38d42d5d2",
+                    "url": "/vitrina/53/a8/53a8e1ab55b373a06ba35f9f371b9aee0731cb61.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "58f556e8-5edf-42f2-839c-a32bf3b6b0f7",
+                    "url": "/vitrina/e4/a5/e4a5f148eb469fd9ad7240b7a92e16b2ff59d691.jpg"
+                }
+            ]
+        },
+        {
+            "id": "95b1a6a5-866b-47fc-b2e7-41d0d54b300d",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Ленинский",
+            "description": "  🌟 продается земельный участок! 🌟\n\nищете идеальное место для строительства вашего дома или выгодной инвестиции? у нас есть отличное предложение для вас!\n\n🏡 характеристики:\n\n• площадь: 6,1 соток\n\n• форма: правильная\n\n• назначение земли: индивидуальное жилищное строительство\n\n✨ преимущества:\n\n• участок идеально подходит для строительства комфортного жилья.\n\n• отличная транспортная доступность и развитая инфраструктура в округе.\n\n• возможность реализации ваших дизайнерских идей и создания уютного уголка для жизни.\n\n💰 не упустите шанс! этот участок — отличный вариант как для личного строительства, так и для инвестиционных целей. \n\n📞 звоните прямо сейчас, чтобы узнать больше и записаться на просмотр! ваш идеальный участок ждет вас!\n\n\n\n\n\n\n\n\n\n\n номер предложения: 22330.",
+            "price": 1700000,
+            "area": 6,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:30:01.672Z",
+            "actualizedAt": "2026-10-14T12:19:13.967Z",
+            "latitude": 57.166143,
+            "longitude": 65.763168,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "14b5816f-fbd0-4d5d-98f8-4db2d4db13ee",
+                    "url": "/vitrina/49/5f/495f3497bf67c6263a0fd1d4cfe65bb409f5433a.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "1f2c33e1-3c54-488c-b56b-50a21ac224ee",
+                    "url": "/vitrina/65/6d/656d0a2bde852406f3ddceda7291c6327ac31c9b.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "3773ceef-9b18-467d-b3ad-f0f560f823fd",
+                    "url": "/vitrina/3e/e4/3ee4a6e3f09b7e59b5e4fa7f345a684208474690.jpg"
+                }
+            ]
+        },
+        {
+            "id": "fa8d75db-a47d-4190-b09a-376660c073c7",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СТ Россиянка",
+            "description": " срочно продам земельный участок площадью 10 соток в садоводческом обществе \"россиянка\".  ул . сиреневая, смежное с снт липовый остров. категория: земли поселений (земли населенных пунктов), для садоводства и огородничества. при строительстве дома разрешена прописка (тюмень), рядом дачи \"липовый остров\", 2 км от объездной дороги (черта города тюмени!), вблизи находится посёлок березняки, в котором есть школа, почта и больница). участок свободен от построек и прекрасно подходит под строительство вашего дома. к участку проведено электричество. идет подведение газа. дорога на улице грунтовая, до снт асфальтирована. рядом озеро «липовое» и местный карьер для купания. также есть лес и водоемы для рыбалки. недалеко горячий источник \"верхний бор\". круглый год работает продуктовый магазин и регулярно из центра города ходит автобус № 156. хорошая транспортная развязка.\n\nуспевайте! прекрасная инвестиция! цены на участки растут с каждым днем! звоните! организуем показ в удобное для вас время!\n номер предложения: 23343.",
+            "price": 950000,
+            "area": 10,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:29:49.868Z",
+            "actualizedAt": "2026-10-14T12:19:14.448Z",
+            "latitude": 57.255201,
+            "longitude": 65.542035,
+            "metroStationId": null,
+            "microdistrictId": "ecf7e0ae-2dfc-4e27-a041-14153172be9e",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "15939d1e-2810-4ff0-aff7-4096b3c1c039",
+                    "url": "/vitrina/f1/5a/f15a7392f5f05edd61e395427c00656e4d5af8db.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "308f9232-d29a-4d43-9479-15ef3a831835",
+                    "url": "/vitrina/11/e9/11e9d02c004e5a128e42f244208c5498f150c0f6.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "4c1d1f3b-d08a-40e6-a918-497e00cd00f7",
+                    "url": "/vitrina/66/f1/66f1b7b43ce65a0b47bc2440d0703f80d18549ee.jpg"
+                }
+            ]
+        },
+        {
+            "id": "351fcb52-e857-4088-8921-67c613371b36",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СНТ Облепиховое, Зелёная улица",
+            "description": " продается участок на 15 км велижанского тракта, снт облепиховое. рядом лес. участок ровный 12,22 сотки. забор с 2-х сторон. дорога- асфальт, + немного грунтовая, в обществе есть остановка, магазин. можно и нужно строиться! въезд в общество закрыт воротами, открываются по звонку./ номер предложения: 27813.",
+            "price": 730000,
+            "area": 12.22,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:29:30.247Z",
+            "actualizedAt": "2026-10-14T12:19:15.453Z",
+            "latitude": 57.290184,
+            "longitude": 65.714799,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "4f09323a-33d1-42b6-a80d-8456872b33e3",
+                    "url": "/vitrina/27/7f/277feb40ea21ee355afb0f90506c34760404eeaf.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "51a0f17c-aedc-4836-9c6c-126733f5d6be",
+                    "url": "/vitrina/e6/d4/e6d4f9da9f7da382add131619ca5a35fcecdde28.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "571e9e0e-9f9d-429f-8557-7b97bb52c23b",
+                    "url": "/vitrina/8d/f6/8df6b1c40baf446fbfd92b35c9d593fbda65b57a.jpg"
+                }
+            ]
+        },
+        {
+            "id": "76460fcb-7a11-4b90-9037-202bbdb707a9",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Царёво, Хрустальная, 317",
+            "description": " продается участок 6 соток на 9-км велижанского тракта в с/о царёво.  7 минут от объездной, 20 минут от центра тюмени. до снт асфальт, по снт – срезка. можно проехать в любое время года и в любую погоду. в снт есть детская площадка, свой пляж, магазин. автобусная остановка в 3 мин, ходит школьный автобус. можно подключиться к центральному водоснабжению, планируется проведение газа. рядом с участком есть электрический столб. очень удобно, что нет старых построек, можно самостоятельно спланировать строительство нового уютного дома, бани, беседки, высадку деревьев и цветов. в обществе зимой дороги чистят, недалеко магазин, тихое спокойное место. царево прекрасное место для строительства дачи или капитального дома для постоянного проживания. отличное место для отдыха всей семьей: тишина, свежий воздух. документы все готовы, межевание сделано в 2024 году. звоните! организуем показ в любое удобное время!\n\n номер предложения: 33874.",
+            "price": 2000000,
+            "area": 6,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:28:55.894Z",
+            "actualizedAt": "2026-10-13T20:17:46.605Z",
+            "latitude": 57.258409,
+            "longitude": 65.631822,
+            "metroStationId": null,
+            "microdistrictId": "2b8bd81b-9be7-4353-9647-f88237a4f4b5",
+            "buildingId": "285b4b86-8e23-496b-902d-a9c57b6799d5",
+            "streetId": "22b6e900-b5f1-42b7-b891-4dbc8af544c5",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "089d12d5-72e8-4431-8644-f225a74dfd3d",
+                    "url": "/vitrina/d8/08/d808d64786171ee6d273b2155af517c47393f594.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "11d0cb13-82e6-408a-a5b4-c4027c9d9e6d",
+                    "url": "/vitrina/05/9e/059ed451fed89b4d4e4d0742f2b86c663616a130.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "25177b3f-2ab0-490e-8255-dc70c4a55b96",
+                    "url": "/vitrina/ca/87/ca8732605d19e68ac144947d7b7fd0306554db33.jpg"
+                }
+            ]
+        },
+        {
+            "id": "de94d280-3d22-41d1-ba83-ed6b9958d694",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Царёво, Березовая, 3",
+            "description": "продается участок 7.5 соток на 9-км велижанского тракта в с/о царёво.  7 минут от объездной, 20 минут от центра тюмени. до снт асфальт, по снт – срезка. можно проехать в любое время года и в любую погоду. в снт есть детская площадка, свой пляж, магазин. автобусная остановка в 3 мин, ходит школьный автобус. можно подключиться к центральному водоснабжению, планируется проведение газа. рядом с участком есть электрический столб . очень удобно, что нет старых построек, можно самостоятельно спланировать строительство нового уютного дома, бани, беседки, высадку деревьев и цветов. в обществе зимой дороги чистят, не далеко магазин, тихое спокойное место. царево прекрасное место для строительства дачи или капитального дома для постоянного проживания. отличное место для отдыха всей семьей : тишина, свежий воздух. документы все готовы, межевание сделано в 2024 году. звоните! организуем показ в любое удобное время!\n\n номер предложения: 33877.",
+            "price": 2000000,
+            "area": 7.5,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:28:55.012Z",
+            "actualizedAt": "2026-10-13T20:17:46.667Z",
+            "latitude": 57.259655,
+            "longitude": 65.624752,
+            "metroStationId": null,
+            "microdistrictId": "2b8bd81b-9be7-4353-9647-f88237a4f4b5",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "390f0402-0b12-4a1c-8690-b78da041c8e4",
+                    "url": "/vitrina/f2/11/f211d63c1f93765b2c8fdb6e2fca213d396572e6.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "3a993dd7-c100-4540-9c7c-c4b93478fc6a",
+                    "url": "/vitrina/f8/c6/f8c635dbb1f25f8372759917697fcb72e2734a5e.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "3f4ab785-5b1c-4752-a6fa-ec330353ec50",
+                    "url": "/vitrina/3f/c8/3fc89f32a58f5b796104fbc6ba78f6fb055f6eda.jpg"
+                }
+            ]
+        },
+        {
+            "id": "9396703d-8f32-437f-87f8-be919253521f",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Сооружение",
+            "description": " ваш шанс построить успешный проект! земельный участок под строительство многоквартирного дома в перспективном районе тюмени.\n*   вид разрешенного использования: под строительство многоквартирного жилого дома (полное соответствие градостроительным нормам для жилой застройки).\n\n*   площадь: 14 соток  – оптимальный размер для создания современного жилого комплекса с продуманной инфраструктурой.\n\n*   транспортная доступность:\n\n    *   удобная транспортная развязка: легкий доступ к основным городским магистралям, что обеспечивает быстрые поездки в любую точку города.\n\n    *   остановка общественного транспорта: в шаговой доступности, что повышает привлекательность вашего будущего дома для жителей.\n\n*   коммуникации:\n\n    *   центральное водоснабжение.\n\n    *   электричество.\n\n*   подъездные пути: асфальтированное покрытие до участка, гарантирующее удобство для строительной техники и будущих жильцов.\n\n*   окружение: развитая инфраструктура района – рядом школы, детские сады, магазины, парки.\n\nпочему этот участок – выгодное вложение в ваш девелоперский проект?\n\n1. активно развивающийся район: расположение в перспективной части города обеспечивает стабильный спрос на жилье и рост его стоимости.\n\n2. готовая инфраструктура: наличие центрального водоснабжения, электричества и асфальтированных подъездов значительно сокращает время и затраты на подготовку к строительству.\n\n3. высокая транспортная доступность: удобное расположение делает район привлекательным для жителей, ценящих свое время.\n\n4. оптимальный размер: 14 соток – это возможность построить комфортный дом с учетом всех современных требований к благоустройству территории.\n\n5. надежные инвестиции: рынок недвижимости в тюмени демонстрирует стабильный рост, делая строительство жилья здесь выгодным и перспективным.\n\nпредложите жителям города качественное и современное жилье в комфортном районе!\n номер предложения: 54943.",
+            "price": 16000000,
+            "area": 14,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:27:21.991Z",
+            "actualizedAt": "2026-10-13T12:16:39.251Z",
+            "latitude": 57.155845,
+            "longitude": 65.605403,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "07ea84f3-605a-4eab-9d2d-f96a2a26fbc9",
+                    "url": "/vitrina/47/21/4721110bd26577fe7408a02c09fbb27c175f0e8e.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "28bb3853-ceef-4be1-89d2-fdbf095ef7e8",
+                    "url": "/vitrina/0e/e3/0ee337f2bedd41866ea5825d31ab595870e625a7.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "3149d470-562b-46af-9678-0dba7b8815d0",
+                    "url": "/vitrina/35/f3/35f3b2fda978000b9a62f229ac35c199558dc3ed.jpg"
+                }
+            ]
+        },
+        {
+            "id": "eaac616a-498e-4311-92e4-3adfa13eac97",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Ленинский",
+            "description": "предлагается к продаже земельный участок в зоне смешанной жилой застройки ж-6. этот участок выделен для формирования территорий, предназначенных для строительства среднеэтажных и многоэтажных жилых комплексов, а также объектов. \nбольшая площадь позволяет построить на участке несколько десятков жилых домов и паркингов к ним. \n\nкатегория земель:\tземли населенных пунктов\n\nразрешенное использование:\tмногоэтажная жилая застройка (высотная застройка).\n\n номер предложения: 55281.",
+            "price": 300000000,
+            "area": 932.38,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:27:13.541Z",
+            "actualizedAt": "2026-10-13T12:16:39.609Z",
+            "latitude": 57.168207,
+            "longitude": 65.765487,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0a3d7560-2ef4-4f9f-8ce7-8e0282bcc8fb",
+                    "url": "/vitrina/00/79/007909ba796950c0517bb5b7feb0216540a1aa11.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "3399145e-4b05-4eb8-9eb5-21c4186cdc88",
+                    "url": "/vitrina/88/95/8895f985a7f7b0d15034603264ffb408cd69ed34.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "39fbff4e-dffc-4303-90db-a105281b1c17",
+                    "url": "/vitrina/fb/63/fb639d155e5a5890cabc021661f7cb6f26b4288e.jpg"
+                }
+            ]
+        },
+        {
+            "id": "2a79b115-2d4c-4d28-ab9b-ee43fe0d18c2",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Липовый остров, Западная 4-я улица, 1161",
+            "description": " продается отличный земельный участок в снт \"липовый остров\" - ваш шанс жить в черте города с комфортом загородной жизни!\n\nместоположение:\n\n*   снт \"липовый остров\" входит в состав города тюмени, что обеспечивает городскую прописку и доступ ко всей необходимой инфраструктуре.\n\n*   участок расположен в центре общества, что гарантирует удобное расположение и тишину.\n\n*   широкие дороги в снт делают передвижение удобным в любое время года.\n\nинфраструктура рядом:\n\n*   в шаговой доступности находятся продовольственные магазины, а также пункты выдачи заказов wildberries и ozon – все необходимое для комфортной жизни рядом!\n\n*   отличное транспортное сообщение: круглогодично ходят автобусы, что позволит вам легко добраться до любой точки города.\n\n*   школьный автобус – забота о ваших детях обеспечена!\n\nпреимущества:\n\n*   соседи проживают круглогодично, создавая дружелюбную и безопасную атмосферу.\n\n*   участок расположен в престижном и развитом снт, что является гарантией качества и удобства.\n\n*   отличное место для строительства дома вашей мечты, где вы сможете наслаждаться тишиной и природой, оставаясь при этом в черте города.\n\nне упустите свой шанс приобрести этот замечательный участок!\n\nзвоните прямо сейчас, чтобы узнать подробности и договориться о просмотре!\n номер предложения: 56002.",
+            "price": 1050000,
+            "area": 8.15,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:27:02.669Z",
+            "actualizedAt": "2026-10-13T12:16:39.700Z",
+            "latitude": 57.262754,
+            "longitude": 65.543361,
+            "metroStationId": null,
+            "microdistrictId": "38e20f16-9691-444b-8b4a-9a528a2e2a14",
+            "buildingId": "ee0570a5-e0eb-4c6b-b4d1-73d06a224a51",
+            "streetId": "77841838-cbba-4236-ad13-2f5f45c51fc7",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "094cfc32-9868-4a88-bd7e-91038eda7aa2",
+                    "url": "/vitrina/59/0b/590bd81f18f4924c439ff98cdbe6b5fbf47eac5c.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "2b6c92f7-f740-44bf-a6d3-e04958e21b22",
+                    "url": "/vitrina/7e/cd/7ecd475b5bb437ef28c337162a74151ea7d02dde.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "6c51ae96-ec21-4b2f-9d82-72bc2d0a8271",
+                    "url": "/vitrina/58/a8/58a8a61d0cde3255c01db068fc2937de6089cf3c.jpg"
+                }
+            ]
+        },
+        {
+            "id": "ce0616de-7ff4-4db7-8b65-59e073900264",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Казарово м-н, Земная улица, 10",
+            "description": "продам участок 7,5 соток в центре казарова.\nбез обременений.\nкоммуникации по улице.",
+            "price": 4500000,
+            "area": 7.5,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:26:11.000Z",
+            "actualizedAt": "2026-10-13T12:16:40.781Z",
+            "latitude": 57.211847,
+            "longitude": 65.558305,
+            "metroStationId": null,
+            "microdistrictId": "a3ed8c88-f6c3-4fe1-8559-bfeda704556f",
+            "buildingId": "88192066-3c3f-4dc7-b163-ce91ab1ba9dd",
+            "streetId": "507c6f7f-7bf4-4992-8e09-96476e2c3653",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "32610780-1b30-4b96-874a-06f0981a4e05",
+                    "url": "/vitrina/owner/cd/de/cdde64f215ea40f0b45903c912f65527.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "8f69a0a6-1ab8-40ad-b7ed-14d316ea4401",
+                    "url": "/vitrina/owner/5b/d6/5bd6d3b758424184bcbade62f98e7939.jpg"
+                }
+            ]
+        },
+        {
+            "id": "b929f49c-6ce0-4b71-9e40-16651183801d",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СОСН Березовое озеро",
+            "description": "  участок в тихом охраняемом посёлке рядом с лесом — газ и электричество уже подведены!\n\nпродаётся добротный земельный надел в современном кп «берёза парк у леса» — всего 10 минут от города по салаирскому тракту.\n\nчто важно знать о предложении:\n\n🌲 расположение: посёлок стоит вдали от тракта, поэтому здесь по-настоящему спокойно. вокруг лес — чистая экология и красивые панорамы.\n\n🌳 надел: ровной конфигурации, приподнятый, вода не застаивается. дорогостоящая отсыпка грунта не понадобится.\n\n🔌 коммуникации и межи: газ проходит по границе. электрощит уже смонтирован! \n\nчем располагает посёлок:\n\nохрана: территория закрыта, установлен шлагбаум, по периметру ведётся видеонаблюдение.\n\nпроезды: широкие внутренние дороги, работает ливневая канализация.\n\nдетям: обустроена современная игровая площадка.\n\nобслуживание: за порядком следит профессиональная управляющая компания.\n\nрядом с домом:\n\nв пешей доступности — продуктовый магазин и пункт выдачи интернет-заказов. налажено регулярное автобусное сообщение с городом, а школьников возит отдельный автобус.\n\nобратите внимание! готов рассмотреть продажу вместе с соседним участком — площадь можно увеличить.\n\nпозвоните сейчас — расскажу детали и запишу вас на просмотр!\n\n номер предложения: 74310.",
+            "price": 2450000,
+            "area": 6.3,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:20:54.929Z",
+            "actualizedAt": "2026-10-13T12:16:49.330Z",
+            "latitude": 57.267273,
+            "longitude": 65.410432,
+            "metroStationId": null,
+            "microdistrictId": "6a5b374d-a411-4ff6-b557-49d09ccd56f0",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0b968f07-c442-48f9-86a8-cd3ce6afae94",
+                    "url": "/vitrina/ba/c1/bac10c3a36b8b7061a658d5cb7879b768337bbad.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "0f87da86-f09c-4167-b339-5ace899148b4",
+                    "url": "/vitrina/b7/89/b78959b38d466d7daf0177e4531dbfc6b4dd0bf5.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "1d72448d-0d87-4eef-84b8-46edec6adbd2",
+                    "url": "/vitrina/62/1d/621d8e60aa278469dcb553623f0eb2edf620cf5c.jpg"
+                }
+            ]
+        },
+        {
+            "id": "88967c13-2dd6-42fe-93f0-136dea3da902",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, коттеджный посёлок Береза парк. Квартал у леса",
+            "description": "  ваш будущий участок в тихом охраняемом посёлке рядом с лесом. газ и электричество уже подведены!\n\nпродаётся ровный земельный участок в современном кп «берёза парк у леса» — всего 10 минут от города по салаирскому тракту.\n\nчто важно знать о самом участке:\n\n🌲 расположение: посёлок стоит вдали от тракта, поэтому здесь по-настоящему тихо. кп со всех сторон окружает лес — чистый воздух и красивые виды.\n\n🌲 надел: правильная форма, высокое место, вода не застаивается. дорогостоящая досыпка грунта не понадобится. \n\n🌲 коммуникации и границы: газ подведён по границе, электрический щиток уже установлен! \n\nчто даёт инфраструктура посёлка:\n\nбезопасность: территория закрыта, на въезде шлагбаум, по периметру работает видеонаблюдение.\n\nдороги: широкие внутренние проезды, продумана система водоотведения (ливневка).\n\nдля детей: оборудована современная детская площадка.\n\nуправление: за порядком следит профессиональная управляющая компания.\n\nчто рядом:\n\nпешком можно дойти до продуктового магазина и пункта выдачи интернет-заказов. для жителей курсирует регулярный автобус до города, а школьников возит отдельный автобус.\n\nобратите внимание! готов рассмотреть продажу вместе с соседним участком — площадь можно увеличить.\n\nнаберите прямо сейчас, чтобы уточнить детали и договориться о просмотре!\n\n номер предложения: 74312.",
+            "price": 2670000,
+            "area": 8,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:20:48.427Z",
+            "actualizedAt": "2026-10-13T12:16:49.361Z",
+            "latitude": 57.260154,
+            "longitude": 65.401485,
+            "metroStationId": null,
+            "microdistrictId": "04990fb0-a634-4662-8d10-0869035cc368",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "04113827-925a-4cc4-9fd9-bad1d0a0c24b",
+                    "url": "/vitrina/e7/49/e749d3cccf3ec59620196cfb99ba27a4fd5a23e7.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "13743579-e55e-4537-af2d-ba86c0531535",
+                    "url": "/vitrina/3d/b0/3db00f54c7c4ec1d2c639977015cf6426254ea1b.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "26e0fbf6-9322-4e33-918d-ddfc57624af5",
+                    "url": "/vitrina/a3/88/a388c1a2fb253d80e85b3e2eff9c3ec690b0b2d2.jpg"
+                }
+            ]
+        },
+        {
+            "id": "57b1eaa9-93a9-4e06-8ea4-8620ac62aacd",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Ленинский",
+            "description": "ембаевское тоо\n\nучасток 6,54 сотки рядом с тобольским трактом — ухоженный и готовый к вашим планам. отличный вариант для тех, кто ищет своё место для жизни.\n\n🌿 что делает это предложение удобным и выгодным?\n\n✅ свет и газ уже подведены — начинайте стройку без лишних забот и проволочек.\n\n✅ тихий экологичный район: чистый воздух, красивые пейзажи, покой — и всего 15 минут до города.\n\n✅ удобный выезд: до объездной дороги 6–8 минут, поэтому легко добраться в любую часть города.\n\n✅ можно построить дом, разбить сад или вести дачное хозяйство. а удачное расположение делает покупку перспективным вложением.\n\n🔥 такие варианты долго не задерживаются — предложений немного!\n\n📱 позвоните сейчас — организуем показ в удобное для вас время!\n номер предложения: 74313.",
+            "price": 1650000,
+            "area": 6.54,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:20:40.218Z",
+            "actualizedAt": "2026-10-13T12:16:49.679Z",
+            "latitude": 57.203678,
+            "longitude": 65.67538,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "6ce8c2b1-8c31-4de4-89c7-a0d10b3b06e0",
+                    "url": "/vitrina/63/35/63356284e607ae9e782071a7164d4dfcb7c4f23c.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "aad4ee2e-a937-47e6-a4f6-c010973a6dea",
+                    "url": "/vitrina/06/6d/066dbb8044f4b49fc8187f2afc020edac4c6a743.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "c0430ae1-bf48-424e-a21e-36bcf7097468",
+                    "url": "/vitrina/22/ac/22acb60a5b53f50e58a24e6fa42cd4221ea082d0.jpg"
+                }
+            ]
+        },
+        {
+            "id": "b9cbdd8c-f7ca-4189-bd32-b8dbde01c189",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, СО Тура, Вишнёвая улица, 74",
+            "description": " 🌲 продаётся участок 15 соток в тихом микрорайоне «три сосны» — здесь можно построить дом, о котором вы давно мечтаете.\nпочему стоит обратить внимание:\n\n✅ место высокое и сухое — весенние воды и сезонные подтопления вам не страшны.\n\n✅ соседи давно живут рядом, обстановка спокойная и безопасная — то, что нужно для семьи.\n\n✅ магазин «магнит» и остановка транспорта рядом — ежедневные покупки и поездки без хлопот.\n\n✅ неподалёку база отдыха «верхний бор» и природная зона — выходные на свежем воздухе всегда доступны.\n\n✅ всего пара минут — и вы в настоящем сосновом лесу: чистый воздух, тишина, прогулки, отдых с детьми и друзьями.\n\n ⏳ не тяните: такие участки уходят быстро. позвоните — расскажем детали и подберём удобное время для просмотра.\n номер предложения: 74316.",
+            "price": 3500000,
+            "area": 15,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:20:37.701Z",
+            "actualizedAt": "2026-10-13T12:16:49.738Z",
+            "latitude": 57.246849,
+            "longitude": 65.461334,
+            "metroStationId": null,
+            "microdistrictId": "d0e5bc0f-fb6b-4545-aa7a-4e9907bbda6e",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "21f2420c-f7b9-4c56-a1a2-e9b7d86bb332",
+                    "url": "/vitrina/fe/76/fe760c20fbda2242d231ca867ed5976fc5fa30ec.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "2ce9b936-5ea9-474c-ad0b-e002e8959a72",
+                    "url": "/vitrina/64/05/640561044f0c832c43aa2c625a1d63820222896d.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "4eb1c49f-5f79-4a13-9cf6-e1ec2414a01b",
+                    "url": "/vitrina/0b/df/0bdf27949d0a20833b99ffcb532c1ede475d0d46.jpg"
+                }
+            ]
+        },
+        {
+            "id": "3e729bca-9124-4dcf-ad72-8caf59048b1f",
+            "type": "LAND",
+            "subtype": null,
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Центральный",
+            "description": "  продаётся земельный участок в охраняемом посёлке рядом с лесом. газ и электричество — всё подведено!\n\n\nвашему вниманию — добротный земельный участок в современном кп «берёза парк у леса» (всего 10 минут от города по салаирскому тракту).\n\nчто важно знать об объекте:\n\n🌲 расположение: посёлок стоит в стороне от тракта — здесь по-настоящему тихо. кп со всех сторон окружён лесом: прекрасная экология и впечатляющие пейзажи.\n\n🌲 надел: ровной конфигурации, возвышенный, без подтоплений. дорогостоящая досыпка грунта не понадобится.\n\n🌲 коммуникации и границы: газ подведён по границе. электрический щиток уже смонтирован! \n\nинфраструктура посёлка:\n\nбезопасность: огороженная территория, шлагбаум, видеонаблюдение по всему периметру.\n\nдороги: просторные внутренние проезды, обустроена ливневая канализация.\n\nдля детей: новая детская площадка.\n\nуправление: профессиональная управляющая компания.\n\nсоциальная составляющая:\n\nрядом, в шаговой доступности, — продуктовый магазин и пункт выдачи интернет-заказов. для жителей налажено регулярное автобусное сообщение с городом, а школьников возит отдельный автобус.\n\nобратите внимание! готов рассмотреть продажу вместе с соседним участком (площадь может быть увеличена).\n\nпозвоните сейчас — расскажу детали и запишу вас на просмотр!\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n номер предложения: 74405.",
+            "price": 1800000,
+            "area": 5.3,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-12T09:20:19.520Z",
+            "actualizedAt": "2026-10-13T12:16:51.153Z",
+            "latitude": 57.264457,
+            "longitude": 65.415425,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "01ac561d-8ccd-4c7d-b064-7c910b7069c4",
+                    "url": "/vitrina/9e/ec/9eec8f9900b9aba4aafa1985839c343fc9950551.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "08f28371-0bba-405d-bc3a-718180106917",
+                    "url": "/vitrina/e8/e8/e8e81f88ae250bd390b7cff193d4170cbd00084d.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "1f2935c3-bbe7-46d2-bb0d-2a3f1dd88f69",
+                    "url": "/vitrina/01/ac/01ac52b40308f62495e01c0bb160c2cec36ac251.jpg"
+                }
+            ]
+        },
+        {
+            "id": "a7ed7190-861a-4f72-8875-8ed158c0600e",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Ленинский",
+            "description": "n 854840. участок ижс в черте города, тобольский тракт.расположен за яровским. огромные перспективы у данной локации т.к. планируется неподалёку многоэтажная застройка от известных тюменских и федеральных застройщиков, цена будет кратно расти. участок находится в 10 минутах от крупнейшего трц сити молл, школы №48 и таких современных жилых комплексов как мириады и звёздный городок. здесь очень отличная инфраструктура, есть абсолютно всё необходимое для жизни и удовольствия. напротив по другую сторону тобольского тракта жк ритмы с банным комплексом биография, рестораном и скейт-парком.рядом есть столбы с электричеством, дорога чистится. в соседнем коттеджном посёлке уже газ проводят. отличное место для строительства собственного дома, а также хорошая инвестиция в будущее. есть ещё участок побольше.дата актуализации: 11.10.2026 16:42:48локация: тюмень",
+            "price": 600000,
+            "area": 6,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-11T14:20:18.262Z",
+            "actualizedAt": "2026-10-13T12:16:53.686Z",
+            "latitude": 57.183162,
+            "longitude": 65.733393,
+            "metroStationId": null,
+            "microdistrictId": null,
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "4c7ee7fd-b3f4-4cc3-a4f4-80a8d5e5987c",
+                    "url": "/vitrina/0d/94/0d94c8c027e84b524d602e465dcada236ca9609f.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "cbfbc424-ec6b-4eec-a9be-df771df88f33",
+                    "url": "/vitrina/80/b0/80b0205134c1fbc5f4e8db986e44c69e9854fc6c.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "fd7686f5-2d51-4ab7-b748-c706810abb2a",
+                    "url": "/vitrina/19/98/1998d2cf4978d7513b9d94d3e3fc55795109a9dd.jpg"
+                }
+            ]
+        },
+        {
+            "id": "a2a34471-6590-49fe-883f-0fa2e41f3b1e",
+            "type": "LAND",
+            "subtype": "SETTLEMENT",
+            "cityId": "3c1a3e7f-28f6-4adc-95b7-44bfa8372399",
+            "address": "Тюмень, Пышминская улица, 67",
+            "description": "код предложения id 279475. продается земельный участок в центральной части нашего города. на участке ветхий дом. дорога асфальтированная. хорошее место расположение в шаговой доступности детский сад, школа и магазины. на все интересующие вопросы отвечу по телефону, звоните!дата актуализации: 11.10.2026 11:25:13локация: тюмень, стрела",
+            "price": 4700000,
+            "area": 5.1,
+            "landArea": null,
+            "floor": null,
+            "floorCount": null,
+            "roomCount": null,
+            "author": "AGENCY",
+            "domain": "DOMCLICK",
+            "publishedAt": "2026-10-11T07:33:02.239Z",
+            "actualizedAt": "2026-10-13T12:16:53.907Z",
+            "latitude": 57.132018,
+            "longitude": 65.533716,
+            "metroStationId": null,
+            "microdistrictId": "6f10edb2-387f-4872-8425-247f2b09afa8",
+            "buildingId": "5a451a45-773e-41c3-ad74-351632c44b7a",
+            "streetId": "32ee7a11-55e8-4c88-939c-2116d8842f5e",
+            "isShareSale": false,
+            "images": [
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "078d13a1-f509-40f2-8814-fcf5f54e424e",
+                    "url": "/vitrina/4f/3c/4f3ccc761d516d62c58b97eca4815a66edf3de9f.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "28fe322b-eb6a-41a7-9d95-e69e8642cf95",
+                    "url": "/vitrina/b9/d8/b9d861e7c8733aaa21343edf6c39cbf8b749e879.jpg"
+                },
+                {
+                    "domain": "img.dmclk.ru",
+                    "id": "8b2dacef-491e-48b5-99c0-6dbc2efbfaf2",
+                    "url": "/vitrina/cd/17/cd173c3e16c04d8628517f32f3c606a7bd84f21f.jpg"
+                }
+            ]
+        }
+    ]
+}

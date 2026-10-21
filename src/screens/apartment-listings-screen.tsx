@@ -26,9 +26,20 @@ import { Select } from "@/components/ui/select";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
-import listings from "@/data/mock/real-estate-listings.json";
+import archiveFlatListings from "@/data/mock/archive-flat-listings.json";
+import archiveHouseListings from "@/data/mock/archive-house-listings.json";
+import archiveLandListings from "@/data/mock/archive-land-listings.json";
+import flatListings from "@/data/mock/real-estate-flat-listings.json";
+import houseListings from "@/data/mock/real-estate-house-listings.json";
+import landListings from "@/data/mock/real-estate-land-listings.json";
 
 const LISTINGS_PER_PAGE = 20;
+const listings = [...flatListings, ...houseListings, ...landListings];
+const archiveListingsByPropertyType = {
+  Квартиры: archiveFlatListings.result,
+  Дома: archiveHouseListings.result,
+  Участки: archiveLandListings.result,
+};
 
 function getNavItems(activeItem: "base" | "my" | "archive") {
   return [
@@ -54,14 +65,17 @@ type ColumnKey =
   | "address"
   | "rooms"
   | "area"
+  | "landArea"
   | "floor"
   | "buyer"
   | "price"
   | "pricePerM2"
+  | "pricePerSotka"
   | "liquidity"
   | "source"
   | "author"
   | "publishedAt"
+  | "actualizedAt"
   | "status";
 
 const listingsTableColumns: { key: ColumnKey; label: string }[] = [
@@ -73,17 +87,44 @@ const listingsTableColumns: { key: ColumnKey; label: string }[] = [
   { key: "status", label: "Статус" },
 ];
 
-const archiveColumns: { key: ColumnKey; label: string }[] = [
+type ArchivePropertyType = keyof typeof archiveListingsByPropertyType;
+type ArchiveColumn = { key: ColumnKey; label: string };
+
+const sharedArchiveColumns: ArchiveColumn[] = [
   { key: "address", label: "Адрес" },
-  { key: "rooms", label: "Комнат" },
-  { key: "area", label: "Площадь" },
-  { key: "floor", label: "Этаж" },
-  { key: "price", label: "Цена" },
-  { key: "pricePerM2", label: "Цена за м²" },
+  { key: "price", label: "Цена, ₽" },
   { key: "source", label: "Источник" },
   { key: "author", label: "Автор" },
   { key: "publishedAt", label: "Опубликован" },
+  { key: "actualizedAt", label: "Снят" },
 ];
+
+const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]> = {
+  Квартиры: [
+    sharedArchiveColumns[0],
+    { key: "rooms", label: "Комнат" },
+    { key: "area", label: "Площадь, м²" },
+    { key: "floor", label: "Этаж" },
+    sharedArchiveColumns[1],
+    { key: "pricePerM2", label: "Цена, ₽/м²" },
+    ...sharedArchiveColumns.slice(2),
+  ],
+  Дома: [
+    sharedArchiveColumns[0],
+    { key: "area", label: "Площадь, м²" },
+    { key: "landArea", label: "Площадь, сот." },
+    sharedArchiveColumns[1],
+    { key: "pricePerM2", label: "Цена, ₽/м²" },
+    ...sharedArchiveColumns.slice(2),
+  ],
+  Участки: [
+    sharedArchiveColumns[0],
+    { key: "landArea", label: "Площадь, сот." },
+    sharedArchiveColumns[1],
+    { key: "pricePerSotka", label: "Цена, ₽/сот." },
+    ...sharedArchiveColumns.slice(2),
+  ],
+};
 
 const resultTableColumns = [
   { key: "selection", alignment: "left" },
@@ -97,17 +138,41 @@ const resultTableColumns = [
   { key: "status", alignment: "left" },
 ] as const;
 
-const archiveTableColumns = [
-  { key: "address", alignment: "left" },
-  { key: "rooms", alignment: "right" },
-  { key: "area", alignment: "right" },
-  { key: "floor", alignment: "right" },
-  { key: "price", alignment: "right" },
-  { key: "pricePerM2", alignment: "right" },
-  { key: "source", alignment: "left" },
-  { key: "author", alignment: "left" },
-  { key: "publishedAt", alignment: "left" },
-] as const;
+const archiveTableColumnsByPropertyType = {
+  Квартиры: [
+    { key: "address", alignment: "left" },
+    { key: "rooms", alignment: "right" },
+    { key: "area", alignment: "right" },
+    { key: "floor", alignment: "right" },
+    { key: "price", alignment: "right" },
+    { key: "pricePerM2", alignment: "right" },
+    { key: "source", alignment: "left" },
+    { key: "author", alignment: "left" },
+    { key: "publishedAt", alignment: "left" },
+    { key: "actualizedAt", alignment: "left" },
+  ],
+  Дома: [
+    { key: "address", alignment: "left" },
+    { key: "area", alignment: "right" },
+    { key: "landArea", alignment: "right" },
+    { key: "price", alignment: "right" },
+    { key: "pricePerM2", alignment: "right" },
+    { key: "source", alignment: "left" },
+    { key: "author", alignment: "left" },
+    { key: "publishedAt", alignment: "left" },
+    { key: "actualizedAt", alignment: "left" },
+  ],
+  Участки: [
+    { key: "address", alignment: "left" },
+    { key: "landArea", alignment: "right" },
+    { key: "price", alignment: "right" },
+    { key: "pricePerSotka", alignment: "right" },
+    { key: "source", alignment: "left" },
+    { key: "author", alignment: "left" },
+    { key: "publishedAt", alignment: "left" },
+    { key: "actualizedAt", alignment: "left" },
+  ],
+} as const;
 
 const archivePhotos = [
   { alt: "Гостиная объекта", src: "/Rhood/assets/obj-livingroom.jpg" },
@@ -247,6 +312,7 @@ function getSpecs(listing: (typeof listings)[number]) {
 
 function TableToolbar({
   archive = false,
+  archivePropertyType = "Квартиры",
   hiddenColumns,
   onHiddenColumnsChange,
   onLeaderboardOpen,
@@ -258,6 +324,7 @@ function TableToolbar({
   sort,
 }: {
   archive?: boolean;
+  archivePropertyType?: ArchivePropertyType;
   hiddenColumns: ReadonlySet<ColumnKey>;
   onHiddenColumnsChange: (columns: Set<ColumnKey>) => void;
   onLeaderboardOpen: () => void;
@@ -392,7 +459,7 @@ function TableToolbar({
             className="absolute right-0 top-full z-30 mt-1"
             role="menu"
           >
-              {(archive ? archiveColumns : listingsTableColumns).map((column) => (
+              {(archive ? archiveColumnsByPropertyType[archivePropertyType] : listingsTableColumns).map((column) => (
               <MenuItemMultiselect
                 checked={!hiddenColumns.has(column.key)}
                 icon={false}
@@ -520,10 +587,7 @@ function ResultHeader({
   sortable?: boolean;
 }) {
   return (
-    <div
-      className="flex rounded-t-[var(--rh-sizing-border-radius-md)] border-x border-t border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
-      role="row"
-    >
+    <TableRow>
       <TableCell
         column="selection"
         paddingX
@@ -651,7 +715,7 @@ function ResultHeader({
           Статус
         </TableCell>
       )}
-    </div>
+    </TableRow>
   );
 }
 
@@ -839,83 +903,114 @@ function ResultRow({
   );
 }
 
-function ArchiveResultHeader({ hiddenColumns }: { hiddenColumns: ReadonlySet<ColumnKey> }) {
+function ArchiveResultHeader({
+  columns,
+  hiddenColumns,
+}: {
+  columns: ArchiveColumn[];
+  hiddenColumns: ReadonlySet<ColumnKey>;
+}) {
+  const availableColumns = new Set(columns.map(({ key }) => key));
+  const label = (key: ColumnKey) => columns.find((column) => column.key === key)?.label ?? "";
+
   return (
-    <div
-      className="flex rounded-t-[var(--rh-sizing-border-radius-md)] border-x border-t border-b border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
-      role="row"
-    >
-      {!hiddenColumns.has("address") && <TableCell column="address" helpIcon={false} role="head" sort={false} type="text" width="fill">
-        Адрес
-      </TableCell>}
-      {!hiddenColumns.has("rooms") && <TableCell column="rooms" helpIcon={false} role="head" sort={false} type="number" width={80}>
-        Комнат
-      </TableCell>}
-      {!hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={90}>
-        Площадь
-      </TableCell>}
-      {!hiddenColumns.has("floor") && <TableCell column="floor" helpIcon={false} role="head" sort={false} type="number" width={70}>
-        Этаж
-      </TableCell>}
-      {!hiddenColumns.has("price") && <TableCell column="price" helpIcon={false} role="head" sort={false} type="number" width={140}>
-        Цена, ₽
-      </TableCell>}
-      {!hiddenColumns.has("pricePerM2") && <TableCell column="pricePerM2" helpIcon={false} role="head" sort={false} type="number" width={140}>
-        Цена, ₽/м²
-      </TableCell>}
-      {!hiddenColumns.has("source") && <TableCell column="source" helpIcon={false} role="head" sort={false} type="text" width={110}>
-        Источник
-      </TableCell>}
-      {!hiddenColumns.has("author") && <TableCell column="author" helpIcon={false} role="head" sort={false} type="text" width={120}>
-        Автор
-      </TableCell>}
-      {!hiddenColumns.has("publishedAt") && <TableCell column="publishedAt" helpIcon={false} role="head" sort={false} type="text" width={150}>
-        Опубликован
-      </TableCell>}
-    </div>
+    <TableRow>
+        {availableColumns.has("address") && !hiddenColumns.has("address") && <TableCell column="address" helpIcon={false} role="head" sort={false} type="text" width="fill">
+          {label("address")}
+        </TableCell>}
+        {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" helpIcon={false} role="head" sort={false} type="number" width={80}>
+          {label("rooms")}
+        </TableCell>}
+        {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={110}>
+          {label("area")}
+        </TableCell>}
+        {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" helpIcon={false} role="head" sort={false} type="number" width={120}>
+          {label("landArea")}
+        </TableCell>}
+        {availableColumns.has("floor") && !hiddenColumns.has("floor") && <TableCell column="floor" helpIcon={false} role="head" sort={false} type="number" width={70}>
+          {label("floor")}
+        </TableCell>}
+        {availableColumns.has("price") && !hiddenColumns.has("price") && <TableCell column="price" helpIcon={false} role="head" sort={false} type="number" width={110}>
+          {label("price")}
+        </TableCell>}
+        {availableColumns.has("pricePerM2") && !hiddenColumns.has("pricePerM2") && <TableCell column="pricePerM2" helpIcon={false} role="head" sort={false} type="number" width={110}>
+          {label("pricePerM2")}
+        </TableCell>}
+        {availableColumns.has("pricePerSotka") && !hiddenColumns.has("pricePerSotka") && <TableCell column="pricePerSotka" helpIcon={false} role="head" sort={false} type="number" width={120}>
+          {label("pricePerSotka")}
+        </TableCell>}
+        {availableColumns.has("source") && !hiddenColumns.has("source") && <TableCell column="source" helpIcon={false} role="head" sort={false} type="text" width={110}>
+          {label("source")}
+        </TableCell>}
+        {availableColumns.has("author") && !hiddenColumns.has("author") && <TableCell column="author" helpIcon={false} role="head" sort={false} type="text" width={120}>
+          {label("author")}
+        </TableCell>}
+        {availableColumns.has("publishedAt") && !hiddenColumns.has("publishedAt") && <TableCell column="publishedAt" helpIcon={false} role="head" sort={false} type="text" width={150}>
+          {label("publishedAt")}
+        </TableCell>}
+        {availableColumns.has("actualizedAt") && !hiddenColumns.has("actualizedAt") && <TableCell column="actualizedAt" helpIcon={false} role="head" sort={false} type="text" width={100}>
+          {label("actualizedAt")}
+        </TableCell>}
+    </TableRow>
   );
 }
 
 function ArchiveResultRow({
+  propertyType,
   hiddenColumns,
   listing,
   onOpen,
 }: {
+  propertyType: ArchivePropertyType;
   hiddenColumns: ReadonlySet<ColumnKey>;
   listing: (typeof listings)[number];
   onOpen: () => void;
 }) {
   const price = getPrice(listing);
+  const availableColumns = new Set(archiveColumnsByPropertyType[propertyType].map(({ key }) => key));
   const pricePerM2 = Math.round(price / listing.area);
+  const landArea = listing.landArea ?? (propertyType === "Участки" ? listing.area : null);
+  const pricePerSotka = landArea ? Math.round(price / landArea) : null;
+  const areaValue = (value: number | null | undefined) =>
+    value == null ? "—" : value.toLocaleString("ru-RU");
 
   return (
     <TableRow hover onClick={onOpen}>
-      {!hiddenColumns.has("address") && <TableCell column="address" role="body" type="text" width="fill">
+      {availableColumns.has("address") && !hiddenColumns.has("address") && <TableCell column="address" role="body" type="text" width="fill">
         {listing.address}
       </TableCell>}
-      {!hiddenColumns.has("rooms") && <TableCell column="rooms" role="body" type="number" width={80}>
+      {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" role="body" type="number" width={80}>
         {listing.roomCount === 0 ? "Студия" : listing.roomCount}
       </TableCell>}
-      {!hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={90}>
-        {listing.area.toLocaleString("ru-RU")} м²
+      {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={110}>
+        {areaValue(listing.area)}
       </TableCell>}
-      {!hiddenColumns.has("floor") && <TableCell column="floor" role="body" type="number" width={70}>
+      {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" role="body" type="number" width={120}>
+        {areaValue(landArea)}
+      </TableCell>}
+      {availableColumns.has("floor") && !hiddenColumns.has("floor") && <TableCell column="floor" role="body" type="number" width={70}>
         {listing.floor}/{listing.floorCount}
       </TableCell>}
-      {!hiddenColumns.has("price") && <TableCell column="price" role="body" type="number" width={140}>
+      {availableColumns.has("price") && !hiddenColumns.has("price") && <TableCell column="price" role="body" type="number" width={110}>
         {formatNumber(price)}
       </TableCell>}
-      {!hiddenColumns.has("pricePerM2") && <TableCell column="pricePerM2" role="body" type="number" width={140}>
+      {availableColumns.has("pricePerM2") && !hiddenColumns.has("pricePerM2") && <TableCell column="pricePerM2" role="body" type="number" width={110}>
         {formatNumber(pricePerM2)}
       </TableCell>}
-      {!hiddenColumns.has("source") && <TableCell column="source" role="body" type="text" width={110}>
+      {availableColumns.has("pricePerSotka") && !hiddenColumns.has("pricePerSotka") && <TableCell column="pricePerSotka" role="body" type="number" width={120}>
+        {pricePerSotka == null ? "—" : formatNumber(pricePerSotka)}
+      </TableCell>}
+      {availableColumns.has("source") && !hiddenColumns.has("source") && <TableCell column="source" role="body" type="text" width={110}>
         {formatSource(listing.domain)}
       </TableCell>}
-      {!hiddenColumns.has("author") && <TableCell column="author" role="body" type="text" width={120}>
+      {availableColumns.has("author") && !hiddenColumns.has("author") && <TableCell column="author" role="body" type="text" width={120}>
         {listing.clientName ?? "Частное лицо"}
       </TableCell>}
-      {!hiddenColumns.has("publishedAt") && <TableCell column="publishedAt" role="body" type="text" width={150}>
+      {availableColumns.has("publishedAt") && !hiddenColumns.has("publishedAt") && <TableCell column="publishedAt" role="body" type="text" width={150}>
         {formatPublishedAt(listing.publishedAt)}
+      </TableCell>}
+      {availableColumns.has("actualizedAt") && !hiddenColumns.has("actualizedAt") && <TableCell column="actualizedAt" role="body" type="text" width={100}>
+        {formatDate(listing.actualizedAt)}
       </TableCell>}
     </TableRow>
   );
@@ -925,6 +1020,7 @@ function ArchiveListingsTable({
   className,
   currentPage,
   hiddenColumns,
+  propertyType,
   listings: tableListings,
   onOpenObjectInfo,
   sort,
@@ -932,6 +1028,7 @@ function ArchiveListingsTable({
   className?: string;
   currentPage: number;
   hiddenColumns: ReadonlySet<ColumnKey>;
+  propertyType: ArchivePropertyType;
   listings: readonly (typeof listings)[number][];
   onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
   sort: SortState;
@@ -967,16 +1064,20 @@ function ArchiveListingsTable({
     <Table
       bordered
       className={className}
-      columns={archiveTableColumns}
+      columns={archiveTableColumnsByPropertyType[propertyType]}
       minWidth={1200}
       stickyHeader
     >
-      <ArchiveResultHeader hiddenColumns={hiddenColumns} />
+      <ArchiveResultHeader
+        columns={archiveColumnsByPropertyType[propertyType]}
+        hiddenColumns={hiddenColumns}
+      />
       {sortedListings.map((listing) => (
         <ArchiveResultRow
           key={listing.id}
           hiddenColumns={hiddenColumns}
           listing={listing}
+          propertyType={propertyType}
           onOpen={() => onOpenObjectInfo(listing)}
         />
       ))}
@@ -1163,6 +1264,16 @@ export function ApartmentListingsScreen({
 }) {
   const isMyListings = view === "my";
   const isArchive = view === "archive";
+  const [archivePropertyType, setArchivePropertyType] = React.useState<
+    keyof typeof archiveListingsByPropertyType
+  >("Квартиры");
+  const screenListings = isArchive
+    ? archiveListingsByPropertyType[archivePropertyType].map((listing) => ({
+        ...listing,
+        clientName: listing.author === "AGENCY" ? "Агентство" : "Частное лицо",
+        buyerDemandAvailableCount: 0,
+      })) as unknown as typeof listings
+    : listings;
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
@@ -1194,7 +1305,12 @@ export function ApartmentListingsScreen({
       />
       {!isMyListings && (
         isArchive ? (
-          <ObjectFilter contentWidth="container" showFiltersButton={false} />
+          <ObjectFilter
+            contentWidth="container"
+            propertyType={archivePropertyType}
+            onPropertyTypeChange={(value) => setArchivePropertyType(value as typeof archivePropertyType)}
+            showFiltersButton={false}
+          />
         ) : (
           <ObjectFilter
             contentWidth="container"
@@ -1207,11 +1323,15 @@ export function ApartmentListingsScreen({
         <section className="rhood-layout-container py-8">
           <h1 className="rh-typography-h2 mb-1 font-[500]">
             {isArchive ? (
-              "Архив квартир в Тюмени"
+              `Архив: ${archivePropertyType.toLowerCase()} в Тюмени`
             ) : (
               <>
-                {formatNumber(listings.length)}{" "}
-                {listings.length === 1 ? "квартира" : "квартир"} в Тюмени
+                {formatNumber(screenListings.length)}{" "}
+                {screenListings.length === 1
+                  ? "объект"
+                  : screenListings.length >= 2 && screenListings.length <= 4
+                    ? "объекта"
+                    : "объектов"} в Тюмени
               </>
             )}
           </h1>
@@ -1226,6 +1346,7 @@ export function ApartmentListingsScreen({
         >
           <TableToolbar
             archive={isArchive}
+            archivePropertyType={archivePropertyType}
             hiddenColumns={hiddenColumns}
             onHiddenColumnsChange={setHiddenColumns}
             onLeaderboardOpen={() => setLeaderboardOpen(true)}
@@ -1244,7 +1365,7 @@ export function ApartmentListingsScreen({
           {cardsView && !isArchive ? (
             <ListingsCardGrid
               currentPage={currentPage}
-              listings={listings}
+              listings={screenListings}
               onOpenObjectInfo={setSelectedListing}
               sort={sort}
             />
@@ -1253,7 +1374,8 @@ export function ApartmentListingsScreen({
               className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
               currentPage={currentPage}
               hiddenColumns={hiddenColumns}
-              listings={listings}
+              propertyType={archivePropertyType}
+              listings={screenListings}
               onOpenObjectInfo={setSelectedListing}
               sort={sort}
             />
@@ -1262,7 +1384,7 @@ export function ApartmentListingsScreen({
               className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
               currentPage={currentPage}
               hiddenColumns={hiddenColumns}
-              listings={listings}
+              listings={screenListings}
               onOpenObjectInfo={setSelectedListing}
               onSort={handleSort}
               sort={sort}
@@ -1273,7 +1395,7 @@ export function ApartmentListingsScreen({
             <Pagination
               currentPage={currentPage}
               onPageChange={setCurrentPage}
-              totalPages={Math.ceil(listings.length / LISTINGS_PER_PAGE)}
+              totalPages={Math.ceil(screenListings.length / LISTINGS_PER_PAGE)}
             />
           </footer>
         </section>

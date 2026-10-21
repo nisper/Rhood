@@ -8,7 +8,8 @@ import { TableCell } from "@/components/ui/table-cell"
 const properties = [
   ["appearance", "primary · secondary · ghost · contrast · inherit", "primary", "Визуальный стиль кнопки."],
   ["size", "md · sm · xsm", "md", "Размер кнопки и вложенной иконки."],
-  ["state", "default · hovered", "default", "Визуальное состояние для витрины и тестирования."],
+  ["state", "default · hovered", "default", "Визуальное состояние наведения для витрины."],
+  ["isDisabled", "boolean", "false", "Отключает кнопку и применяет состояние Disabled."],
   ["icon", "ReactNode · boolean", "true", "Иконка внутри кнопки. Передай false, чтобы скрыть её."],
 ]
 
@@ -17,7 +18,7 @@ function Section({ children, description, settings, title }: { children: React.R
 }
 
 function StateRow({ appearance }: { appearance: NonNullable<React.ComponentProps<typeof IconButton>["appearance"]> }) {
-  return <div className="grid grid-cols-2 items-center justify-items-center gap-2"><IconButton appearance={appearance} /><IconButton appearance={appearance} state="hovered" /></div>
+  return <div className="grid grid-cols-3 items-center justify-items-center gap-2"><IconButton appearance={appearance} /><IconButton appearance={appearance} state="hovered" /><IconButton appearance={appearance} isDisabled /></div>
 }
 
 export function IconButtonExamples() {
@@ -30,8 +31,8 @@ export function IconButtonExamples() {
       <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3">{(["md", "sm", "xsm"] as const).map(size => <IconButton appearance="secondary" key={size} size={size} />)}</div></div></div>
     </Section>
 
-    <Section description="Hover показывает реакцию на наведение. Состояние применяется также при передаче state='hovered' в витрине." settings={["state: default · hovered"]} title="Состояния">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-row auto-rows-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[360px] gap-2"><div className="grid grid-cols-2 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span></div>{(["primary", "secondary", "ghost", "inherit"] as const).map(appearance => <StateRow appearance={appearance} key={appearance} />)}</div></div><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4"><div className="grid w-full max-w-[360px] gap-2"><div className="grid grid-cols-2 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span></div><StateRow appearance="contrast" /></div></div></div>
+    <Section description="Hover показывает реакцию на наведение. isDisabled отключает кнопку и применяет Disabled-стили из Button." settings={["state: default · hovered", "isDisabled: boolean"]} title="Состояния">
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-row auto-rows-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[420px] gap-2"><div className="grid grid-cols-3 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span><span>Disabled</span></div>{(["primary", "secondary", "ghost", "inherit"] as const).map(appearance => <StateRow appearance={appearance} key={appearance} />)}</div></div><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4"><div className="grid w-full max-w-[420px] gap-2"><div className="grid grid-cols-3 justify-items-center gap-2 text-center text-xs leading-4 text-[var(--parser-text-neutral-secondary)]"><span>default</span><span>hovered</span><span>Disabled</span></div><StateRow appearance="contrast" /></div></div></div>
     </Section>
 
     <Section description="Иконка определяет действие. По умолчанию используется Star; для конкретного сценария передай свою через prop icon." settings={["icon: ReactNode · boolean"]} title="Состав">

@@ -67,6 +67,9 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
               >
                 <div
                   ref={stickyHeaderContentRef}
+                  className={cn(
+                    bordered && "rounded-t-[var(--rh-sizing-border-radius-md)] border-x border-t border-b border-[var(--parser-border-light)]",
+                  )}
                   style={{
                     minWidth,
                   }}

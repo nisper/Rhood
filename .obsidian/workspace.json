@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/Tests/Адаптив.md",
+                "file": "docs/instructions/Сборка сцены.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Адаптив"
+              "title": "Сборка сцены"
             }
           }
         ]
@@ -133,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/Tests/Адаптив.md",
+                "file": "docs/product/features/Архив объявлений.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -176,7 +176,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -191,6 +192,9 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "docs/product/features/Архив объявлений.md",
+    "docs/instructions/Работа с библиотекой компонентов в Figma.md",
+    "docs/Tests/Адаптив.md",
     "artifacts/responsive/archive-no-subscription/596.png",
     "artifacts/responsive/archive-no-subscription/586.png",
     "artifacts/responsive/archive-no-subscription/585.png",
@@ -201,11 +205,9 @@
     "artifacts/responsive/archive-no-subscription/582.png",
     "artifacts/responsive/archive-no-subscription/575.png",
     "artifacts/responsive/archive-no-subscription/553.png",
-    "artifacts/responsive/archive-no-subscription/510.png",
     "artifacts/responsive/archive-no-subscription",
     "artifacts/responsive",
     "artifacts",
-    "docs/Tests/Адаптив.md",
     "docs/instructions/Адаптив в проекте.md",
     "AGENTS.md",
     "docs/instructions/showcase-page.md",
@@ -224,9 +226,8 @@
     "docs/backlog.md",
     "docs/component-map.md",
     "docs/tokens-generator.md",
-    "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "docs/instructions/formatting-component-showcase-page.md",
-    "docs/instructions/Работа с компонентами.md",
+    "docs/instructions/Сборка сцены.md",
     "docs/instructions/formatting-code-snippets.md",
     "docs/tokens.md",
     "docs/token-mapping.md",

@@ -25,6 +25,8 @@ type ObjectFilterKey =
 type ObjectFilterProps = React.ComponentProps<"section"> & {
   contentWidth?: "full" | "container"
   filters?: ObjectFilterKey[]
+  propertyType?: string
+  onPropertyTypeChange?: (value: string) => void
   showFiltersButton?: boolean
   modalDisplay?: React.ComponentProps<typeof FilterModal>["containerDisplay"]
 }
@@ -44,10 +46,12 @@ const cityOptions = ["Москва", "Химки", "Красногорск", "М
 function ArchiveFilterSelect({
   label,
   multiSelect = false,
+  onValueChange,
   options,
 }: {
   label: string
   multiSelect?: boolean
+  onValueChange?: (value: string) => void
   options: readonly string[]
 }) {
   const menuRef = React.useRef<HTMLDivElement>(null)
@@ -99,6 +103,7 @@ function ArchiveFilterSelect({
                   onClick={(event) => {
                     event.stopPropagation()
                     setValue(option)
+                    onValueChange?.(option)
                     setExpanded(false)
                   }}
                   rightSlot={false}
@@ -125,6 +130,8 @@ function ObjectFilter({
   className,
   contentWidth = "full",
   filters = defaultFilters,
+  propertyType,
+  onPropertyTypeChange,
   modalDisplay = "viewport",
   showFiltersButton = true,
   ...props
@@ -160,7 +167,11 @@ function ObjectFilter({
             <ArchiveFilterSelect label="Город" multiSelect options={cityOptions} />
           )}
           {filters.includes("propertyType") && (
-            <ArchiveFilterSelect label="Квартиры" options={propertyTypeOptions} />
+            <ArchiveFilterSelect
+              label={propertyType ?? "Квартиры"}
+              onValueChange={onPropertyTypeChange}
+              options={propertyTypeOptions}
+            />
           )}
           {filters.includes("roominess") && (
             <RoominessSelect aria-label="Количество комнат" label={false} size="sm" />

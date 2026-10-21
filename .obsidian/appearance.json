@@ -1,5 +1,7 @@
 {
   "showViewHeader": true,
   "showRibbon": false,
-  "nativeMenus": true
+  "nativeMenus": true,
+  "cssTheme": "",
+  "accentColor": ""
 }

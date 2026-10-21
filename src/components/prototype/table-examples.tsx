@@ -408,7 +408,7 @@ export function TableExamples() {
     <div className="grid min-w-0">
       <ShowcaseSection
         codeSnippet={borderSnippet}
-        description="bordered добавляет стандартную обводку Table. По умолчанию prop выключен; включай его, когда таблицу нужно отделить от фона."
+        description="bordered добавляет стандартную обводку Table, включая шапку при stickyHeader. По умолчанию prop выключен; включай его, когда таблицу нужно отделить от фона."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-2">
                 <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
