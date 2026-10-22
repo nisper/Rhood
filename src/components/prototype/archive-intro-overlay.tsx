@@ -10,7 +10,7 @@ function ArchiveIntroOverlay() {
   return (
     <aside
       aria-label="Об архиве объявлений"
-      className="fixed bottom-6 right-6 z-40 box-border flex h-[400px] w-[350px] max-w-[calc(100vw-32px)] flex-col items-center justify-end gap-[var(--rh-sizing-base-module-2)] overflow-hidden rounded-[var(--rh-sizing-border-radius-xlg)] p-[var(--rh-sizing-base-module-2-5)] text-center text-[var(--rh-theme-text-neutral-primary-contrast)]"
+      className="archive-overlay-enter fixed bottom-6 right-6 z-40 box-border flex h-[400px] w-[330px] max-w-[calc(100vw-32px)] flex-col items-center justify-end gap-[var(--rh-sizing-base-module-2)] overflow-hidden rounded-[var(--rh-sizing-border-radius-xlg)] p-[var(--rh-sizing-base-module-2-5)] text-center text-[var(--rh-theme-text-neutral-primary-contrast)]"
       style={{
         backgroundColor: "var(--rh-theme-surface-neutral-ultra-dark)",
         backgroundImage:
@@ -39,7 +39,7 @@ function ArchiveIntroOverlay() {
       <IconButton
         appearance="inherit"
         aria-label="Закрыть баннер Архива"
-        className="absolute right-3 top-3 z-10"
+        className="absolute right-2 top-2 z-10"
         icon={<X aria-hidden="true" />}
         onClick={() => setIsVisible(false)}
         size="md"
