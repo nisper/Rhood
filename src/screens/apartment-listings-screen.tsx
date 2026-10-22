@@ -107,7 +107,7 @@ const sharedArchiveColumns: ArchiveColumn[] = [
 const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]> = {
   Квартиры: [
     sharedArchiveColumns[0],
-    { key: "rooms", label: "Комнат" },
+    { key: "rooms", label: "Ком." },
     { key: "area", label: "Площадь, м²" },
     { key: "floor", label: "Этаж" },
     sharedArchiveColumns[1],
@@ -273,6 +273,13 @@ const leaderboardColumnWidths = {
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
+}
+
+function getMaximumFractionDigits(values: readonly (number | null | undefined)[]) {
+  return values.reduce((maximum, value) => {
+    if (value == null) return maximum;
+    return Math.max(maximum, value.toString().split(".")[1]?.length ?? 0);
+  }, 0);
 }
 
 function formatPublishedAt(value: string) {
@@ -934,10 +941,10 @@ function ArchiveResultHeader({
         {availableColumns.has("address") && !hiddenColumns.has("address") && <TableCell column="address" helpIcon={false} role="head" sort={false} type="text" width="fill">
           {label("address")}
         </TableCell>}
-        {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" helpIcon={false} role="head" sort={false} type="number" width={80}>
+        {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" helpIcon={false} role="head" sort={false} type="number" width={60}>
           {label("rooms")}
         </TableCell>}
-        {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={130}>
+        {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={120}>
           {label("area")}
         </TableCell>}
         {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" helpIcon={false} role="head" sort={false} type="number" width={120}>
@@ -972,12 +979,16 @@ function ArchiveResultHeader({
 }
 
 function ArchiveResultRow({
+  areaFractionDigits,
   propertyType,
+  landAreaFractionDigits,
   hiddenColumns,
   listing,
   onOpen,
 }: {
+  areaFractionDigits: number;
   propertyType: ArchivePropertyType;
+  landAreaFractionDigits: number;
   hiddenColumns: ReadonlySet<ColumnKey>;
   listing: (typeof listings)[number];
   onOpen: () => void;
@@ -987,22 +998,25 @@ function ArchiveResultRow({
   const pricePerM2 = Math.round(price / listing.area);
   const landArea = listing.landArea ?? (propertyType === "Участки" ? listing.area : null);
   const pricePerSotka = landArea ? Math.round(price / landArea) : null;
-  const areaValue = (value: number | null | undefined) =>
-    value == null ? "—" : value.toLocaleString("ru-RU");
+  const areaValue = (value: number | null | undefined, fractionDigits: number) =>
+    value == null ? "—" : value.toLocaleString("ru-RU", {
+      minimumFractionDigits: fractionDigits,
+      maximumFractionDigits: fractionDigits,
+    });
 
   return (
     <TableRow hover onClick={onOpen}>
       {availableColumns.has("address") && !hiddenColumns.has("address") && <TableCell column="address" role="body" type="text" width="fill">
         {listing.address}
       </TableCell>}
-      {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" role="body" type="number" width={80}>
+      {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" role="body" type="number" width={60}>
         {listing.roomCount === 0 ? "Студия" : listing.roomCount}
       </TableCell>}
-      {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={130}>
-        {areaValue(listing.area)}
+      {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={120}>
+        {areaValue(listing.area, areaFractionDigits)}
       </TableCell>}
       {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" role="body" type="number" width={120}>
-        {areaValue(landArea)}
+        {areaValue(landArea, landAreaFractionDigits)}
       </TableCell>}
       {availableColumns.has("floor") && !hiddenColumns.has("floor") && <TableCell column="floor" role="body" type="number" width={70}>
         {listing.floor}/{listing.floorCount}
@@ -1075,6 +1089,10 @@ function ArchiveListingsTable({
         : secondValue - firstValue;
     })
     .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
+  const areaFractionDigits = getMaximumFractionDigits(tableListings.map(({ area }) => area));
+  const landAreaFractionDigits = getMaximumFractionDigits(tableListings.map((listing) =>
+    listing.landArea ?? (propertyType === "Участки" ? listing.area : null),
+  ));
 
   return (
     <Table
@@ -1083,6 +1101,7 @@ function ArchiveListingsTable({
       columns={archiveTableColumnsByPropertyType[propertyType]}
       minWidth={1200}
       stickyHeader
+      verticalBorders
     >
       <ArchiveResultHeader
         columns={archiveColumnsByPropertyType[propertyType]}
@@ -1091,8 +1110,10 @@ function ArchiveListingsTable({
       {sortedListings.map((listing) => (
         <ArchiveResultRow
           key={listing.id}
+          areaFractionDigits={areaFractionDigits}
           hiddenColumns={hiddenColumns}
           listing={listing}
+          landAreaFractionDigits={landAreaFractionDigits}
           propertyType={propertyType}
           onOpen={() => onOpenObjectInfo(listing)}
         />
