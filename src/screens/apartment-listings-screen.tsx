@@ -7,6 +7,7 @@ import {
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { ArchiveIntroOverlay } from "@/components/prototype/archive-intro-overlay";
 import { ObjectFilter } from "@/components/ui/object-filter";
 import { Chip } from "@/components/ui/chip";
 import { Footer } from "@/components/ui/footer";
@@ -44,6 +45,11 @@ const archiveListingsByPropertyType = {
   Квартиры: archiveFlatListings.result,
   Дома: archiveHouseListings.result,
   Участки: archiveLandListings.result,
+};
+const archiveObjectCountByPropertyType = {
+  Квартиры: archiveFlatListings.count,
+  Дома: archiveHouseListings.count,
+  Участки: archiveLandListings.count,
 };
 
 function getNavItems(activeItem: "base" | "my" | "archive") {
@@ -94,6 +100,25 @@ const listingsTableColumns: { key: ColumnKey; label: string }[] = [
 
 type ArchivePropertyType = keyof typeof archiveListingsByPropertyType;
 type ArchiveColumn = { key: ColumnKey; label: string };
+
+function getArchivePropertyTypeLabel(count: number, propertyType: ArchivePropertyType) {
+  const lastTwoDigits = count % 100;
+  const lastDigit = count % 10;
+  const formIndex = lastTwoDigits >= 11 && lastTwoDigits <= 14
+    ? 2
+    : lastDigit === 1
+      ? 0
+      : lastDigit >= 2 && lastDigit <= 4
+        ? 1
+        : 2;
+  const forms: Record<ArchivePropertyType, [string, string, string]> = {
+    Квартиры: ["квартира", "квартиры", "квартир"],
+    Дома: ["дом", "дома", "домов"],
+    Участки: ["участок", "участка", "участков"],
+  };
+
+  return forms[propertyType][formIndex];
+}
 
 const sharedArchiveColumns: ArchiveColumn[] = [
   { key: "address", label: "Адрес" },
@@ -1370,7 +1395,7 @@ export function ApartmentListingsScreen({
         <section className="rhood-layout-container py-8">
           <h1 className="rh-typography-h2 mb-1 font-[500]">
             {isArchive ? (
-              `Архив: ${archivePropertyType.toLowerCase()} в Тюмени`
+              `В архиве — ${formatNumber(archiveObjectCountByPropertyType[archivePropertyType])} ${getArchivePropertyTypeLabel(archiveObjectCountByPropertyType[archivePropertyType], archivePropertyType)}`
             ) : (
               <>
                 {formatNumber(screenListings.length)}{" "}
@@ -1382,10 +1407,6 @@ export function ApartmentListingsScreen({
               </>
             )}
           </h1>
-          <p className="text-[var(--rh-theme-text-neutral-secondary)]">
-            Но вообще, сегодня-то мы проверили 19 880 объектов. Мы просто дубли
-            не показываем
-          </p>
         </section>
         <section
           aria-label="Управление выдачей"
@@ -1490,6 +1511,7 @@ export function ApartmentListingsScreen({
         )}
       </main>
       <Footer className="mt-8" />
+      {isArchive && <ArchiveIntroOverlay />}
     </div>
   );
 }
