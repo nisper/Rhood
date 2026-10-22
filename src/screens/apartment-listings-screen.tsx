@@ -300,8 +300,8 @@ function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
 
-function getMaximumFractionDigits(values: readonly (number | null | undefined)[]) {
-  return values.reduce((maximum, value) => {
+function getMaximumFractionDigits(values: readonly (number | null | undefined)[]): number {
+  return values.reduce<number>((maximum, value) => {
     if (value == null) return maximum;
     return Math.max(maximum, value.toString().split(".")[1]?.length ?? 0);
   }, 0);
