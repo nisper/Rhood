@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/instructions/Сборка сцены.md",
+                "file": "AGENTS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Сборка сцены"
+              "title": "AGENTS"
             }
           }
         ]
@@ -191,17 +191,19 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
-    "src/components/ui/table-context.ts",
     "dist/assets/index-DruNVTHF.js",
     "dist/assets/index-ChOQmsVo.css",
     "dist/assets/fonts/inter-semibold.ttf",
     "dist/assets/fonts/inter-regular.ttf",
-    "dist/assets/index-Ct_yOqVD.css",
-    "dist/assets/index-CBwmf9Qy.js",
+    "dist/assets/index-DdQwcPtN.css",
+    "dist/assets/index-nTGI11fM.js",
     "dist/assets/fonts/InterVariable.woff2",
-    "public/assets/fonts/InterVariable.woff2",
-    "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "docs/instructions/Сборка сцены.md",
+    "dist/assets/index-BONoUCYz.css",
+    "dist/assets/index-wCsK84ua.js",
+    "src/components/prototype/switch-examples.tsx",
+    "src/components/ui/switch.tsx",
+    "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "docs/product/features/Архив объявлений.md",
     "docs/Tests/Адаптив.md",
     "artifacts/responsive/archive-no-subscription/596.png",
@@ -214,8 +216,6 @@
     "artifacts/responsive/archive-no-subscription/582.png",
     "artifacts/responsive/archive-no-subscription/575.png",
     "artifacts/responsive/archive-no-subscription/553.png",
-    "artifacts/responsive/archive-no-subscription",
-    "artifacts/responsive",
     "docs/instructions/Адаптив в проекте.md",
     "AGENTS.md",
     "docs/instructions/showcase-page.md",

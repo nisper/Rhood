@@ -15,6 +15,7 @@ import { LikeButtonExamples } from "./like-button-examples";
 import { LinkExamples } from "./link-examples";
 import { ShowcaseSectionExamples } from "./showcase-section-examples";
 import { CheckboxExamples } from "./checkbox-examples";
+import { SwitchExamples } from "./switch-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
@@ -687,6 +688,25 @@ const componentDocs: ComponentDoc[] = [
     group: "Forms",
     source: "src/components/ui/checkbox.tsx",
     render: () => <CheckboxExamples />,
+  },
+  {
+    id: "switch",
+    title: "Switch",
+    description: "Переключатель для быстрого включения и выключения настройки.",
+    figmaUrl:
+      "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=10342-365",
+    group: "Forms",
+    properties: [
+      { name: "size", values: "md · sm", defaultValue: "md", description: "Размер переключателя и подписи." },
+      { name: "checked", values: "boolean", defaultValue: "—", description: "Текущее значение в контролируемом режиме." },
+      { name: "defaultChecked", values: "boolean", defaultValue: "true", description: "Начальное значение в неконтролируемом режиме." },
+      { name: "disabled", values: "boolean", defaultValue: "false", description: "Блокирует переключение." },
+      { name: "label", values: "boolean", defaultValue: "true", description: "Показывает подпись рядом с переключателем." },
+      { name: "switchPosition", values: "left · right", defaultValue: "right", description: "Расположение переключателя относительно подписи." },
+      { name: "onChange", values: "(event) => void", defaultValue: "—", description: "Вызывается при изменении значения." },
+    ],
+    source: "src/components/ui/switch.tsx",
+    render: () => <SwitchExamples />,
   },
   {
     id: "clear-button",
