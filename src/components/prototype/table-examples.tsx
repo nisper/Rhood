@@ -22,6 +22,12 @@ const cellProperties = [
     "Добавляет стандартную обводку таблицы.",
   ],
   [
+    "verticalBorders",
+    "true / false",
+    "false",
+    "Добавляет вертикальные границы между ячейками.",
+  ],
+  [
     "minWidth",
     "number / CSS length",
     "—",
@@ -136,6 +142,18 @@ const borderSnippet = (
     <span className={syntax}>{`>`}</span>
   </Snippet>
 );
+const verticalBordersSnippet = (
+  <Snippet>
+    <span className={syntax}>{`<`}</span>
+    <span className={component}>Table</span>{" "}
+    <CodeProp name="verticalBorders" value="{true}" />
+    <span className={syntax}>{`>`}</span>
+    {"\n  …\n"}
+    <span className={syntax}>{`</`}</span>
+    <span className={component}>Table</span>
+    <span className={syntax}>{`>`}</span>
+  </Snippet>
+);
 const sizeSnippet = (
   <Snippet>
     <span className={syntax}>{`<`}</span>
@@ -239,15 +257,18 @@ function ListingTable({
   bordered = true,
   compact = false,
   textSize = "b2",
+  verticalBorders = false,
 }: {
   bordered?: boolean;
   compact?: boolean;
   textSize?: "b2" | "b1";
+  verticalBorders?: boolean;
 }) {
   return (
     <Table
       bordered={bordered}
       className="w-full !min-w-0 bg-[var(--rh-theme-surface-bg)]"
+      verticalBorders={verticalBorders}
     >
       <TableRow>
         <TableCell
@@ -425,6 +446,22 @@ export function TableExamples() {
               </div>
             </div>]}
         title="Стиль"
+      />
+
+      <ShowcaseSection
+        codeSnippet={verticalBordersSnippet}
+        description="verticalBorders включает вертикальные границы между ячейками. По умолчанию они выключены."
+        panels={[
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
+            <div className="grid w-full gap-2">
+              <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
+                verticalBorders=true
+              </span>
+              <ListingTable verticalBorders />
+            </div>
+          </div>,
+        ]}
+        title="Вертикальные границы"
       />
 
       <ShowcaseSection

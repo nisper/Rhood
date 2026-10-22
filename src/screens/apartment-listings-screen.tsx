@@ -35,6 +35,11 @@ import landListings from "@/data/mock/real-estate-land-listings.json";
 
 const LISTINGS_PER_PAGE = 20;
 const listings = [...flatListings, ...houseListings, ...landListings];
+const listingsByPropertyType = {
+  Квартиры: flatListings,
+  Дома: houseListings,
+  Участки: landListings,
+};
 const archiveListingsByPropertyType = {
   Квартиры: archiveFlatListings.result,
   Дома: archiveHouseListings.result,
@@ -306,6 +311,17 @@ function getPrice(listing: (typeof listings)[number]) {
 }
 
 function getSpecs(listing: (typeof listings)[number]) {
+  if (listing.type === "LAND") {
+    return `Участок, ${listing.area.toLocaleString("ru-RU")} сот.`;
+  }
+
+  if (listing.type === "HOUSE") {
+    const landArea = listing.landArea
+      ? `, участок ${listing.landArea.toLocaleString("ru-RU")} сот.`
+      : "";
+    return `Дом, ${listing.area.toLocaleString("ru-RU")} м²${landArea}`;
+  }
+
   const rooms = listing.roomCount === 0 ? "Ст." : `${listing.roomCount} ком.`;
   return `${rooms}, ${listing.area.toLocaleString("ru-RU")} м², этаж ${listing.floor}/${listing.floorCount}`;
 }
@@ -620,7 +636,7 @@ function ResultHeader({
             sortable && sort?.column === "buyer" ? sort.direction : undefined
           }
           type="number"
-          width={130}
+          width={150}
         >
           Покупатель
         </TableCell>
@@ -768,9 +784,9 @@ function ResultRow({
           role="body"
           compact
           type="number"
-          width={130}
+          width={150}
         >
-          <p className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
+          <p className="w-full rh-typography-b2-mono text-right">
             {listing.buyerDemandAvailableCount}
           </p>
         </TableCell>
@@ -810,7 +826,7 @@ function ResultRow({
           type="number"
           width={175}
         >
-          <div className="w-full font-mono text-right text-sm leading-5 tracking-[0.17px]">
+          <div className="w-full rh-typography-b2-mono text-right">
             <p className="text-[var(--parser-text-neutral-primary)]">
               {formatNumber(price)}
             </p>
@@ -921,7 +937,7 @@ function ArchiveResultHeader({
         {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" helpIcon={false} role="head" sort={false} type="number" width={80}>
           {label("rooms")}
         </TableCell>}
-        {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={110}>
+        {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={130}>
           {label("area")}
         </TableCell>}
         {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" helpIcon={false} role="head" sort={false} type="number" width={120}>
@@ -942,13 +958,13 @@ function ArchiveResultHeader({
         {availableColumns.has("source") && !hiddenColumns.has("source") && <TableCell column="source" helpIcon={false} role="head" sort={false} type="text" width={110}>
           {label("source")}
         </TableCell>}
-        {availableColumns.has("author") && !hiddenColumns.has("author") && <TableCell column="author" helpIcon={false} role="head" sort={false} type="text" width={120}>
+        {availableColumns.has("author") && !hiddenColumns.has("author") && <TableCell column="author" helpIcon={false} role="head" sort={false} type="text" width={130}>
           {label("author")}
         </TableCell>}
-        {availableColumns.has("publishedAt") && !hiddenColumns.has("publishedAt") && <TableCell column="publishedAt" helpIcon={false} role="head" sort={false} type="text" width={150}>
+        {availableColumns.has("publishedAt") && !hiddenColumns.has("publishedAt") && <TableCell column="publishedAt" helpIcon={false} role="head" sort={false} type="text" width={120}>
           {label("publishedAt")}
         </TableCell>}
-        {availableColumns.has("actualizedAt") && !hiddenColumns.has("actualizedAt") && <TableCell column="actualizedAt" helpIcon={false} role="head" sort={false} type="text" width={100}>
+        {availableColumns.has("actualizedAt") && !hiddenColumns.has("actualizedAt") && <TableCell column="actualizedAt" helpIcon={false} role="head" sort={false} type="text" width={120}>
           {label("actualizedAt")}
         </TableCell>}
     </TableRow>
@@ -982,7 +998,7 @@ function ArchiveResultRow({
       {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" role="body" type="number" width={80}>
         {listing.roomCount === 0 ? "Студия" : listing.roomCount}
       </TableCell>}
-      {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={110}>
+      {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={130}>
         {areaValue(listing.area)}
       </TableCell>}
       {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" role="body" type="number" width={120}>
@@ -1003,13 +1019,13 @@ function ArchiveResultRow({
       {availableColumns.has("source") && !hiddenColumns.has("source") && <TableCell column="source" role="body" type="text" width={110}>
         {formatSource(listing.domain)}
       </TableCell>}
-      {availableColumns.has("author") && !hiddenColumns.has("author") && <TableCell column="author" role="body" type="text" width={120}>
+      {availableColumns.has("author") && !hiddenColumns.has("author") && <TableCell column="author" role="body" type="text" width={130}>
         {listing.clientName ?? "Частное лицо"}
       </TableCell>}
-      {availableColumns.has("publishedAt") && !hiddenColumns.has("publishedAt") && <TableCell column="publishedAt" role="body" type="text" width={150}>
-        {formatPublishedAt(listing.publishedAt)}
+      {availableColumns.has("publishedAt") && !hiddenColumns.has("publishedAt") && <TableCell className="tabular-nums" column="publishedAt" role="body" type="text" width={120}>
+        {formatDate(listing.publishedAt)}
       </TableCell>}
-      {availableColumns.has("actualizedAt") && !hiddenColumns.has("actualizedAt") && <TableCell column="actualizedAt" role="body" type="text" width={100}>
+      {availableColumns.has("actualizedAt") && !hiddenColumns.has("actualizedAt") && <TableCell className="tabular-nums" column="actualizedAt" role="body" type="text" width={120}>
         {formatDate(listing.actualizedAt)}
       </TableCell>}
     </TableRow>
@@ -1044,7 +1060,7 @@ function ArchiveListingsTable({
             ? Math.round(getPrice(first) / first.area)
             : sort.column === "publishedAt"
               ? new Date(first.publishedAt).getTime()
-              : first.buyerDemandAvailableCount;
+              : first.buyerDemandAvailableCount ?? 0;
       const secondValue =
         sort.column === "price"
           ? getPrice(second)
@@ -1052,7 +1068,7 @@ function ArchiveListingsTable({
             ? Math.round(getPrice(second) / second.area)
             : sort.column === "publishedAt"
               ? new Date(second.publishedAt).getTime()
-              : second.buyerDemandAvailableCount;
+              : second.buyerDemandAvailableCount ?? 0;
 
       return sort.direction === "asc"
         ? firstValue - secondValue
@@ -1117,7 +1133,7 @@ function ListingsTable({
             ? Math.round(getPrice(first) / first.area)
             : sort.column === "publishedAt"
               ? new Date(first.publishedAt).getTime()
-              : first.buyerDemandAvailableCount;
+              : first.buyerDemandAvailableCount ?? 0;
       const secondValue =
         sort.column === "price"
           ? getPrice(second)
@@ -1125,7 +1141,7 @@ function ListingsTable({
             ? Math.round(getPrice(second) / second.area)
             : sort.column === "publishedAt"
               ? new Date(second.publishedAt).getTime()
-              : second.buyerDemandAvailableCount;
+              : second.buyerDemandAvailableCount ?? 0;
       const comparison = firstValue - secondValue;
 
       return sort.direction === "asc" ? comparison : -comparison;
@@ -1218,14 +1234,14 @@ function ListingsCardGrid({
           ? Math.round(getPrice(first) / first.area)
           : sort.column === "publishedAt"
             ? new Date(first.publishedAt).getTime()
-            : first.buyerDemandAvailableCount;
+          : first.buyerDemandAvailableCount ?? 0;
       const secondValue = sort.column === "price"
         ? getPrice(second)
         : sort.column === "pricePerM2"
           ? Math.round(getPrice(second) / second.area)
           : sort.column === "publishedAt"
             ? new Date(second.publishedAt).getTime()
-            : second.buyerDemandAvailableCount;
+          : second.buyerDemandAvailableCount ?? 0;
       return sort.direction === "asc" ? firstValue - secondValue : secondValue - firstValue;
     })
     .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
@@ -1264,6 +1280,7 @@ export function ApartmentListingsScreen({
 }) {
   const isMyListings = view === "my";
   const isArchive = view === "archive";
+  const [basePropertyType, setBasePropertyType] = React.useState<ArchivePropertyType>("Квартиры");
   const [archivePropertyType, setArchivePropertyType] = React.useState<
     keyof typeof archiveListingsByPropertyType
   >("Квартиры");
@@ -1273,7 +1290,9 @@ export function ApartmentListingsScreen({
         clientName: listing.author === "AGENCY" ? "Агентство" : "Частное лицо",
         buyerDemandAvailableCount: 0,
       })) as unknown as typeof listings
-    : listings;
+    : isMyListings
+      ? listings
+      : listingsByPropertyType[basePropertyType];
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
@@ -1314,7 +1333,14 @@ export function ApartmentListingsScreen({
         ) : (
           <ObjectFilter
             contentWidth="container"
-            filters={["propertyType", "roominess", "area", "price"]}
+            filters={basePropertyType === "Квартиры"
+              ? ["propertyType", "roominess", "area", "price"]
+              : ["propertyType", "area", "price"]}
+            onPropertyTypeChange={(value) => {
+              setBasePropertyType(value as ArchivePropertyType);
+              setCurrentPage(1);
+            }}
+            propertyType={basePropertyType}
           />
         )
       )}
@@ -1359,7 +1385,7 @@ export function ApartmentListingsScreen({
           />
         </section>
         <section
-          aria-label="Список квартир"
+          aria-label={`Список: ${isArchive ? archivePropertyType.toLowerCase() : isMyListings ? "объекты" : basePropertyType.toLowerCase()}`}
           className="mt-3 min-w-0"
         >
           {cardsView && !isArchive ? (

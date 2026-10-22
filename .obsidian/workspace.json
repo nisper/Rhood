@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "24fbdb0caa4bd22e",
@@ -192,8 +191,18 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
-    "docs/product/features/Архив объявлений.md",
+    "src/components/ui/table-context.ts",
+    "dist/assets/index-DruNVTHF.js",
+    "dist/assets/index-ChOQmsVo.css",
+    "dist/assets/fonts/inter-semibold.ttf",
+    "dist/assets/fonts/inter-regular.ttf",
+    "dist/assets/index-Ct_yOqVD.css",
+    "dist/assets/index-CBwmf9Qy.js",
+    "dist/assets/fonts/InterVariable.woff2",
+    "public/assets/fonts/InterVariable.woff2",
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
+    "docs/instructions/Сборка сцены.md",
+    "docs/product/features/Архив объявлений.md",
     "docs/Tests/Адаптив.md",
     "artifacts/responsive/archive-no-subscription/596.png",
     "artifacts/responsive/archive-no-subscription/586.png",
@@ -207,17 +216,9 @@
     "artifacts/responsive/archive-no-subscription/553.png",
     "artifacts/responsive/archive-no-subscription",
     "artifacts/responsive",
-    "artifacts",
     "docs/instructions/Адаптив в проекте.md",
     "AGENTS.md",
     "docs/instructions/showcase-page.md",
-    "public/robots.txt",
-    "src/components/ui/object-filter.tsx",
-    "src/components/ui/object-card.tsx",
-    "src/components/ui/filter-modal.tsx",
-    "src/components/prototype/object-filter-examples.tsx",
-    "src/components/prototype/object-card-examples.tsx",
-    "src/components/prototype/listing-status-examples.tsx",
     "docs/Tests/Компоненты.md",
     "docs/instructions/product-design-reasoning.md",
     "docs/Tests/Выдача объектов.md",
@@ -227,7 +228,6 @@
     "docs/component-map.md",
     "docs/tokens-generator.md",
     "docs/instructions/formatting-component-showcase-page.md",
-    "docs/instructions/Сборка сцены.md",
     "docs/instructions/formatting-code-snippets.md",
     "docs/tokens.md",
     "docs/token-mapping.md",
@@ -236,7 +236,6 @@
     "docs/instructions/updating-a-component.md",
     "docs/instructions/implementing-a-figma-frame.md",
     "docs/instructions/implementing-a-component.md",
-    "docs/instructions/figma/entities/table.md",
-    "docs/instructions/figma/entities/page.md"
+    "docs/instructions/figma/entities/table.md"
   ]
 }

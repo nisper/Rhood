@@ -167,6 +167,7 @@ function TableCell({
         className,
       )}
       role={isHead ? "columnheader" : "cell"}
+      data-table-cell=""
       style={{ ...style, flexBasis: fixedWidth, width: fixedWidth }}
     >
       {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={resolvedChecked} className="min-h-0 p-0" indeterminate={resolvedIndeterminate} label={false} onChange={event => handleCheckedChange(event.target.checked)} size="sm" />}

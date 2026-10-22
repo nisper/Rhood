@@ -1,5 +1,6 @@
 import * as React from "react"
 
+import { TableVerticalBordersContext } from "@/components/ui/table-context"
 import { cn } from "@/lib/utils"
 
 type TableSelection = {
@@ -21,6 +22,8 @@ type TableColumn = {
 type TableProps = React.ComponentProps<"div"> & {
   /** Adds the standard table border. */
   bordered?: boolean
+  /** Adds vertical borders between cells. */
+  verticalBorders?: boolean
   /** Shared settings for table columns. */
   columns?: readonly TableColumn[]
   /** Minimum table width before horizontal scrolling is used. */
@@ -43,7 +46,7 @@ function useTableColumns() {
 }
 
 /** Container for header and body rows composed from TableCell instances. */
-function Table({ bordered = false, children, className, columns = [], minWidth, selection, stickyHeader = false, style, ...props }: TableProps) {
+function Table({ bordered = false, children, className, columns = [], minWidth, selection, stickyHeader = false, verticalBorders = false, style, ...props }: TableProps) {
   const stickyHeaderContentRef = React.useRef<HTMLDivElement>(null)
   const tableChildren = React.Children.toArray(children)
   const stickyHeaderContent = stickyHeader ? tableChildren[0] : null
@@ -52,6 +55,7 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
   return (
     <TableSelectionContext.Provider value={selection ?? null}>
       <TableColumnsContext.Provider value={columns}>
+        <TableVerticalBordersContext.Provider value={verticalBorders}>
         {stickyHeader ? (
           <div
             {...props}
@@ -113,6 +117,7 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
             </div>
           </div>
         )}
+        </TableVerticalBordersContext.Provider>
       </TableColumnsContext.Provider>
     </TableSelectionContext.Provider>
   )

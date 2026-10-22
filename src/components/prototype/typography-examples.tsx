@@ -33,42 +33,42 @@ const styles: TextStyle[] = [
   {
     className: "rh-typography-b1",
     name: "body/body1",
-    settings: "Roboto Regular · 16 / 24 · 0.15",
+    settings: "Inter Regular · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b1-med",
     name: "body/body1 medium",
-    settings: "Roboto SemiBold · 16 / 24 · 0.15",
+    settings: "Inter SemiBold · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b2",
     name: "body/body2",
-    settings: "Roboto Regular · 14 / 20 · 0.17",
+    settings: "Inter Regular · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b2-med",
     name: "body/body2 medium",
-    settings: "Roboto SemiBold · 14 / 20 · 0.17",
+    settings: "Inter SemiBold · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b1-mono",
     name: "body/body1 mono",
-    settings: "Roboto Regular · tabular nums · 16 / 24 · 0.15",
+    settings: "Inter Regular · tabular nums · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b1-mono-med",
     name: "body/body1 mono medium",
-    settings: "Roboto Medium · tabular nums · 16 / 24 · 0.15",
+    settings: "Inter SemiBold · tabular nums · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b2-mono",
     name: "body/body2 mono",
-    settings: "Roboto Regular · tabular nums · 14 / 20 · 0.17",
+    settings: "Inter Regular · tabular nums · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b2-mono-med",
     name: "body/body2 mono medium",
-    settings: "Roboto Medium · tabular nums · 14 / 20 · 0.17",
+    settings: "Inter SemiBold · tabular nums · 14 / 20 · 0.17",
   },
 ];
 

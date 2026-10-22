@@ -105,7 +105,7 @@ function InputNumber({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute left-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 font-mono text-[var(--rh-theme-text-neutral-secondary)]",
+            "pointer-events-none absolute left-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 font-[family-name:var(--rh-typography-font-family-sans)] tabular-nums text-[var(--rh-theme-text-neutral-secondary)]",
             size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >
@@ -115,7 +115,7 @@ function InputNumber({
       <input
         aria-invalid={error || undefined}
         className={cn(
-          "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border font-mono font-normal text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+          "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border font-[family-name:var(--rh-typography-font-family-sans)] font-normal tabular-nums text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
           backgroundClasses,
           sizeClasses[size],
           stateClasses({ appearance, disabled, error, state }),
