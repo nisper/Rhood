@@ -12,6 +12,7 @@ import { ObjectFilter } from "@/components/ui/object-filter";
 import { Chip } from "@/components/ui/chip";
 import { Footer } from "@/components/ui/footer";
 import { IconButton } from "@/components/ui/icon-button";
+import { Link } from "@/components/ui/link";
 import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
@@ -301,7 +302,7 @@ function formatNumber(value: number) {
 }
 
 function getMaximumFractionDigits(values: readonly (number | null | undefined)[]) {
-  return values.reduce((maximum, value) => {
+  return values.reduce<number>((maximum, value) => {
     if (value == null) return maximum;
     return Math.max(maximum, value.toString().split(".")[1]?.length ?? 0);
   }, 0);
@@ -802,7 +803,18 @@ function ResultRow({
         width="fill"
       >
         <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
-          <p className="text-[var(--parser-text-brand)]">{getSpecs(listing)}</p>
+          <Link
+            className="text-[var(--parser-text-brand)]"
+            href="#object-info"
+            onClick={(event) => {
+              event.preventDefault();
+              event.stopPropagation();
+              onOpen();
+            }}
+            size="b2"
+          >
+            {getSpecs(listing)}
+          </Link>
           <p className="text-[var(--parser-text-neutral-primary)]">
             {listing.address}
           </p>
@@ -901,9 +913,16 @@ function ResultRow({
           width={190}
         >
           <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
-            <p className="text-[var(--parser-text-brand)]">
+            <Link
+              className="text-[var(--parser-text-brand)]"
+              href={sourceHref(listing.domain, listing.url)}
+              onClick={(event) => event.stopPropagation()}
+              rel="noreferrer"
+              size="b2"
+              target="_blank"
+            >
               {formatSource(listing.domain)}
-            </p>
+            </Link>
             <p className="text-[var(--parser-text-neutral-secondary)]">
               {listing.clientName ?? "Частное лицо"}
             </p>
@@ -1488,15 +1507,17 @@ export function ApartmentListingsScreen({
                   {
                     label: "Когда размещался",
                     value: `${formatDate(selectedListing.publishedAt)}–${formatDate(selectedListing.actualizedAt)}`,
+                    numeric: true,
                   },
                 ],
                 fields: [
                   {
                     label: "Комнаты",
                     value: selectedListing.roomCount === 0 ? "Студия" : `${selectedListing.roomCount} комната`,
+                    numeric: selectedListing.roomCount !== 0,
                   },
-                  { label: "Площадь", value: `${selectedListing.area.toLocaleString("ru-RU")} м²` },
-                  { label: "Этаж", value: `${selectedListing.floor} из ${selectedListing.floorCount}` },
+                  { label: "Площадь", value: `${selectedListing.area.toLocaleString("ru-RU")} м²`, numeric: true },
+                  { label: "Этаж", value: `${selectedListing.floor} из ${selectedListing.floorCount}`, numeric: true },
                 ],
                 description: selectedListing.description ?? undefined,
               }}

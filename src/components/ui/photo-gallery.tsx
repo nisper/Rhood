@@ -12,6 +12,7 @@ type PhotoGalleryPhoto = {
 
 type PhotoGallerySidebarField = {
   label: string;
+  numeric?: boolean;
   value: string;
 };
 
@@ -64,12 +65,12 @@ function PhotoGallerySidebarRows({
 }) {
   return (
     <dl className="grid divide-y divide-[var(--parser-border-light)] border-b border-[var(--parser-border-light)]">
-      {rows.map(({ label, value }) => (
+      {rows.map(({ label, numeric, value }) => (
         <div className="flex items-center justify-between gap-4 py-2" key={label}>
           <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
             {label}
           </dt>
-          <dd className="rh-typography-b2 text-right text-[var(--rh-theme-text-neutral-primary)]">
+          <dd className={`${numeric ? "rh-typography-b2-mono" : "rh-typography-b2"} text-right text-[var(--rh-theme-text-neutral-primary)]`}>
             {value}
           </dd>
         </div>
@@ -169,7 +170,7 @@ function PhotoGallery({
             {(sidebar.title || sidebar.headline || sidebar.supportingText) && (
               <div className="grid gap-3">
                 {sidebar.title && (
-                  <h2 className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
+                  <h2 className="rh-typography-b1-med max-w-[calc(100%-32px)] text-[var(--rh-theme-text-neutral-primary)]">
                     {sidebar.title}
                   </h2>
                 )}
@@ -198,9 +199,9 @@ function PhotoGallery({
                   Описание
                 </h3>
                 <ExpandableContent
-                  buttonSize="sm"
                   collapsedHeight={96}
-                  expandLabel="Читать полностью"
+                  expandLabel="Показать полностью"
+                  linkControl
                 >
                   <p className="rh-typography-b2 whitespace-pre-line text-[var(--rh-theme-text-neutral-primary)]">
                     {sidebar.description}
