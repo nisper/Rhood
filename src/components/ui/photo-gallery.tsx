@@ -73,7 +73,9 @@ function PhotoGalleryMapView({
       .addTo(leafletMap)
       .bindPopup(title ?? "Расположение объекта");
 
-    return () => leafletMap.remove();
+    return () => {
+      leafletMap.remove();
+    };
   }, [latitude, longitude, title]);
 
   return (
