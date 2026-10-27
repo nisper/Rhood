@@ -47,7 +47,7 @@ function ModalSelect({
                     ? [...current, option]
                     : current.filter((selectedOption) => selectedOption !== option));
                 } else {
-                  setValue(option);
+                  setValue(checked ? option : "Не выбрано");
                 }
               }}
               size="md"

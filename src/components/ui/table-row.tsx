@@ -18,7 +18,7 @@ function TableRow({ children, className, hover = false, ...props }: TableRowProp
       className={cn(
         "flex border-b border-[var(--parser-border-light)] last:border-b-0",
         verticalBorders && "[&>[data-table-cell]+[data-table-cell]]:border-l [&>[data-table-cell]+[data-table-cell]]:border-[color:var(--parser-border-light)]",
-        hover && "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+        hover && "cursor-pointer hover:bg-[var(--rh-theme-surface-neutral-hover)]",
         className,
       )}
       role="row"

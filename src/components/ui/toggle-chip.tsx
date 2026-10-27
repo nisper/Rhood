@@ -6,7 +6,34 @@ import { cn } from "@/lib/utils"
 type ToggleChipSize = "lg" | "md" | "sm"
 type ToggleChipColor = "neutral" | "brand" | "error" | "warning" | "success" | "contrast"
 
-type ToggleChipProps = Omit<React.ComponentProps<"button">, "children" | "onChange"> & {
+const hoverBackgroundTokens: Record<ToggleChipColor, { muted: string; selected: string }> = {
+  neutral: {
+    muted: "hover:bg-[var(--parser-fill-neutral-hover)]",
+    selected: "hover:bg-[var(--parser-fill-neutral-dark-hover)]",
+  },
+  brand: {
+    muted: "hover:bg-[var(--parser-fill-brand-light-hover)]",
+    selected: "hover:bg-[var(--parser-fill-brand-hover)]",
+  },
+  error: {
+    muted: "hover:bg-[var(--parser-fill-error-light-hover)]",
+    selected: "hover:bg-[var(--parser-fill-error-hover)]",
+  },
+  warning: {
+    muted: "hover:bg-[var(--parser-fill-warning-light-hover)]",
+    selected: "hover:bg-[var(--parser-fill-warning-hover)]",
+  },
+  success: {
+    muted: "hover:bg-[var(--parser-fill-success-light-hover)]",
+    selected: "hover:bg-[var(--parser-fill-success-hover)]",
+  },
+  contrast: {
+    muted: "hover:bg-[var(--parser-fill-contrast-light-hover)]",
+    selected: "hover:bg-[var(--parser-fill-contrast-hover)]",
+  },
+}
+
+type ToggleChipProps = Omit<React.ComponentProps<"button">, "children" | "disabled" | "onChange"> & {
   checked?: boolean
   children?: React.ReactNode
   color?: ToggleChipColor
@@ -26,7 +53,6 @@ function ToggleChip({
   className,
   color = "neutral",
   defaultChecked = false,
-  disabled = false,
   icon = true,
   label = true,
   onCheckedChange,
@@ -41,7 +67,7 @@ function ToggleChip({
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     onClick?.(event)
 
-    if (event.defaultPrevented || disabled) {
+    if (event.defaultPrevented) {
       return
     }
 
@@ -56,16 +82,19 @@ function ToggleChip({
     <button
       aria-pressed={isChecked}
       className={cn(
-        "inline-flex cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "inline-flex cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
       )}
-      disabled={disabled}
       onClick={handleClick}
       type={type}
       {...props}
     >
       <Chip
         appearance={isChecked ? "default" : "muted"}
-        className={className}
+        className={cn(
+          "transition-colors duration-150",
+          hoverBackgroundTokens[color][isChecked ? "selected" : "muted"],
+          className,
+        )}
         color={color}
         icon={icon}
         label={label}

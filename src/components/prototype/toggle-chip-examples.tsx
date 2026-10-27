@@ -16,7 +16,6 @@ const properties = [
   ["size", "lg · md · sm", "lg", "Размер вложенного Chip."],
   ["icon", "boolean", "true", "Показывает иконку Star."],
   ["label", "boolean", "true", "Показывает подпись."],
-  ["disabled", "boolean", "false", "Блокирует переключение."],
   ["children", "ReactNode", "Chip", "Текст подписи."],
 ]
 
@@ -30,16 +29,25 @@ function ToggleChipSnippet({ children }: { children: React.ReactNode }) {
 
 const appearanceSnippet = <ToggleChipSnippet><CodeProp name="defaultChecked" /></ToggleChipSnippet>
 const sizeSnippet = <ToggleChipSnippet><CodeProp name="size" value={'"sm"'} /></ToggleChipSnippet>
-const stateSnippet = <ToggleChipSnippet><CodeProp name="disabled" /></ToggleChipSnippet>
 const compositionSnippet = <ToggleChipSnippet><CodeProp name="icon" value="{false}" />{" "}<CodeProp name="label" value="{false}" /></ToggleChipSnippet>
 
 export function ToggleChipExamples() {
+  const [singleValue, setSingleValue] = React.useState<string | null>("1")
+  const [multipleValues, setMultipleValues] = React.useState<string[]>(["Циан"])
+  const [lockedValue, setLockedValue] = React.useState("1")
+
+  function toggleMultiple(value: string, checked: boolean) {
+    setMultipleValues((current) => checked
+      ? [...current, value]
+      : current.filter((item) => item !== value))
+  }
+
   return <div className="grid min-w-0">
     <ShowcaseSection codeSnippet={appearanceSnippet} description="Состояние определяет стиль вложенного Chip: по умолчанию muted, после выбора — default. Нажми на любой пример, чтобы переключить его." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid gap-3"><div className="flex flex-wrap items-center justify-center gap-3">{colors.map((color) => <ToggleChip color={color} key={color}>{color}</ToggleChip>)}</div><div className="flex flex-wrap items-center justify-center gap-3">{colors.map((color) => <ToggleChip color={color} defaultChecked key={color}>{color}</ToggleChip>)}</div></div></div>]} title="Стиль" />
 
     <ShowcaseSection codeSnippet={sizeSnippet} description="Размер передаётся вложенному Chip. Каждый пример интерактивен." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3">{sizes.map((size) => <ToggleChip color="neutral" key={size} size={size}>{size}</ToggleChip>)}</div></div>]} title="Размер" />
 
-    <ShowcaseSection codeSnippet={stateSnippet} description="Компонент поддерживает невыбранное, выбранное и disabled-состояния. В выбранных примерах начальное состояние задаёт defaultChecked." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[560px] grid-cols-3 gap-3 justify-items-center"><div className="grid justify-items-center gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">default</span><ToggleChip /></div><div className="grid justify-items-center gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">checked</span><ToggleChip defaultChecked /></div><div className="grid justify-items-center gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">disabled</span><ToggleChip disabled /></div></div></div>]} title="Состояния" />
+    <ShowcaseSection description="Настройка выбора задаётся группой: можно снять выбранный вариант, выбрать несколько или запретить снятие повторным нажатием." panels={[<div className="grid min-h-[220px] gap-6 rounded-xl bg-white px-6 py-5"><div className="grid gap-2"><span className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Несколько из множества</span><div className="flex flex-wrap gap-2" role="group">{["Авито", "Циан", "Юла", "ДомКлик"].map((value) => <ToggleChip checked={multipleValues.includes(value)} icon={false} key={value} onCheckedChange={(checked) => toggleMultiple(value, checked)} size="md">{value}</ToggleChip>)}</div></div><div className="grid gap-2"><span className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Один из множества</span><div className="flex flex-wrap gap-2" role="group">{["Студия", "1", "2", "3", "4+"].map((value) => <ToggleChip checked={singleValue === value} icon={false} key={value} onCheckedChange={(checked) => setSingleValue(checked ? value : null)} size="md">{value}</ToggleChip>)}</div></div><div className="grid gap-2"><span className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Один из множества с отключением снятия выбора</span><div className="flex flex-wrap gap-2" role="group">{["Студия", "1", "2", "3", "4+"].map((value) => <ToggleChip checked={lockedValue === value} icon={false} key={value} onCheckedChange={(checked) => checked && setLockedValue(value)} size="md">{value}</ToggleChip>)}</div></div></div>]} title="Поведение" />
 
     <ShowcaseSection codeSnippet={compositionSnippet} description="Настраивай состав Chip: иконку и подпись. Кнопка удаления исключена, чтобы ToggleChip оставался единым элементом управления." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center justify-center gap-3"><ToggleChip>Иконка и подпись</ToggleChip><ToggleChip icon={false}>Только подпись</ToggleChip><ToggleChip label={false} /></div></div>]} title="Состав" />
 

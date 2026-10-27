@@ -1921,12 +1921,16 @@ export function ComponentDocs() {
   const activeDoc =
     componentDocs.find((doc) => doc.id === activeId) ?? componentDocs[0];
   const activeNavigationGroup = getComponentNavigationGroup(activeDoc.group);
-  const visibleDocs = normalizedQuery
-    ? filteredDocs
-    : componentDocs.filter(
-        (doc) => getComponentNavigationGroup(doc.group) === activeNavigationGroup,
-      );
-  const groupedDocs = groupDocs(visibleDocs);
+  const visibleDocs = (normalizedQuery ? filteredDocs : componentDocs).filter(
+    (doc) => getComponentNavigationGroup(doc.group) === activeNavigationGroup,
+  );
+  const groupedDocs = activeNavigationGroup === "Components"
+    ? {
+        Components: [...visibleDocs].sort((first, second) =>
+          first.title.localeCompare(second.title),
+        ),
+      }
+    : groupDocs(visibleDocs);
 
   const handleNavigationGroupChange = (
     nextGroup: ComponentNavigationGroup,
@@ -2001,9 +2005,8 @@ export function ComponentDocs() {
               groups={groupedDocs}
               ref={mobileNavigationRef}
               showGroupHeadings={
-                Boolean(normalizedQuery) ||
-                activeNavigationGroup === "Components" ||
-                activeNavigationGroup === "Features"
+                activeNavigationGroup !== "Components" &&
+                (Boolean(normalizedQuery) || activeNavigationGroup === "Features")
               }
             />
           </details>
@@ -2013,9 +2016,8 @@ export function ComponentDocs() {
               groups={groupedDocs}
               ref={desktopNavigationRef}
               showGroupHeadings={
-                Boolean(normalizedQuery) ||
-                activeNavigationGroup === "Components" ||
-                activeNavigationGroup === "Features"
+                activeNavigationGroup !== "Components" &&
+                (Boolean(normalizedQuery) || activeNavigationGroup === "Features")
               }
             />
           </div>

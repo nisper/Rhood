@@ -59,10 +59,10 @@ function ListItem({
         dense ? "py-[calc(var(--spacing)*1)]" : "py-[calc(var(--spacing)*2)]",
         hasPaddingX && "px-[calc(var(--spacing)*3)]",
         isSelected && "bg-[var(--rh-theme-fill-brand-selected)]",
-        isHighlighted && "bg-[var(--rh-theme-fill-neutral-hover)]",
+        isHighlighted && "bg-[var(--rh-theme-surface-neutral-hover)]",
         !disabled &&
           !isSelected &&
-          "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+          "cursor-pointer hover:bg-[var(--rh-theme-surface-neutral-hover)]",
         className,
       )}
       aria-disabled={disabled || undefined}

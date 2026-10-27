@@ -1930,6 +1930,16 @@
     },
     {
       "collection": "theme",
+      "name": "surface/neutral-hover",
+      "cssVariable": "--rh-theme-surface-neutral-hover",
+      "type": "color",
+      "cssValue": "rgb(43 43 43 / 0.04)",
+      "resolvedValue": "rgb(43 43 43 / 0.04)",
+      "alias": null,
+      "figmaVariableId": null
+    },
+    {
+      "collection": "theme",
       "name": "fill/neutral",
       "cssVariable": "--rh-theme-fill-neutral",
       "type": "color",
@@ -1947,9 +1957,13 @@
       "name": "fill/neutral-hover",
       "cssVariable": "--rh-theme-fill-neutral-hover",
       "type": "color",
-      "cssValue": "rgb(43 43 43 / 0.04)",
-      "resolvedValue": "rgb(43 43 43 / 0.04)",
-      "alias": null,
+      "cssValue": "var(--rh-palette-neutral-100)",
+      "resolvedValue": "#e8e8e8",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/100",
+        "source": "figma"
+      },
       "figmaVariableId": "VariableID:8669:13910"
     },
     {

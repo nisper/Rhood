@@ -136,6 +136,7 @@ function ButtonFavorite({
       aria-pressed={isChecked}
       className={cn(
         "group inline-flex shrink-0 cursor-pointer items-center justify-center border-0 text-[var(--rh-theme-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed disabled:bg-[var(--rh-theme-fill-disabled)] disabled:text-[var(--rh-theme-text-neutral-disabled)]",
+        !isIconOnly && "w-max whitespace-nowrap",
         isIconOnly
           ? cn(
               "rounded-full bg-[var(--rh-theme-surface-bg)] p-0",
@@ -175,7 +176,7 @@ function ButtonFavorite({
           strokeWidth={2}
         />
       </span>
-      {!isIconOnly && <span>{content}</span>}
+      {!isIconOnly && <span className="whitespace-nowrap">{content}</span>}
     </button>
   )
 }
