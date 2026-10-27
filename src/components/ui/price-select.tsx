@@ -58,7 +58,6 @@ function PriceSelect({
                 placeholder: "до",
                 value: endValue,
               }}
-              unit="₽"
             />
             {(startValue || endValue) && (
               <div className="mt-2 flex">

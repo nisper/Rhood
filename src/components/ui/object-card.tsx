@@ -1,9 +1,10 @@
 import * as React from "react";
-import { CheckCircle2, MessageSquareText, Train, TriangleAlert, UserRound, TrendingDown } from "lucide-react";
+import { CheckCircle2, MessageSquareText, TriangleAlert, UserRound } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/ui/icon-button";
 import { ButtonFavorite as FavoriteButton } from "@/components/ui/button-favorite";
+import { PriceWithTrend } from "@/components/ui/price-with-trend";
 import { cn } from "@/lib/utils";
 
 type ObjectCardProps = React.ComponentProps<"article"> & {
@@ -12,7 +13,6 @@ type ObjectCardProps = React.ComponentProps<"article"> & {
   favorite?: boolean;
   notForClient?: boolean;
   pictures?: boolean;
-  state?: "default" | "hovered";
   subway?: boolean;
   footer?: React.ReactNode;
   onDetailsClick?: () => void;
@@ -30,6 +30,16 @@ type ObjectCardProps = React.ComponentProps<"article"> & {
 
 const showcaseImage = "/Rhood/assets/object-gallery-2.png";
 
+function renderTabularNumber(value: string) {
+  const match = value.match(/^([\d][\d\s.,]*\d|[\d])(.*)$/u);
+
+  if (!match) {
+    return value;
+  }
+
+  return <><span className="tabular-nums">{match[1]}</span>{match[2]}</>;
+}
+
 function ObjectCard({
   className,
   image = showcaseImage,
@@ -37,14 +47,13 @@ function ObjectCard({
   favorite = true,
   notForClient = true,
   pictures = true,
-  state = "default",
   subway = true,
   footer,
   onDetailsClick,
   onCommentsClick,
   onReportClick,
   price = "140 000 000 ₽",
-  pricePerM2 = "88 000 ₽ / м²",
+  pricePerM2 = "88 000 ₽/м²",
   details = "2 ком, 44 м², этаж 5/16",
   address = "Москва СЗАО р-н Южное Тушино м. Сходненская Сходненская улица 14",
   source = "Яндекс.Недвижимость",
@@ -54,13 +63,10 @@ function ObjectCard({
   ...props
 }: ObjectCardProps) {
   const [isFavorite, setIsFavorite] = React.useState(false);
-  const isHovered = state === "hovered";
-
   return (
     <article
       className={cn(
-        "group/card grid w-[260px] shrink-0 content-start rounded-[20px] p-2 text-[var(--rh-theme-text-neutral-primary)] transition-colors",
-        isHovered ? "bg-[var(--rh-theme-fill-neutral-hover)]" : "bg-[var(--rh-theme-surface-bg)] hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+        "grid w-[260px] shrink-0 content-start rounded-[20px] bg-[var(--rh-theme-surface-bg)] text-[var(--rh-theme-text-neutral-primary)]",
         className,
       )}
       {...props}
@@ -74,7 +80,7 @@ function ObjectCard({
                 aria-label={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
                 checked={isFavorite}
                 onCheckedChange={setIsFavorite}
-                size="md"
+                size="sm"
               />
             </div>
           )}
@@ -91,18 +97,15 @@ function ObjectCard({
       )}
 
       <div className="grid justify-start pt-2">
-        <div className="flex items-center gap-1">
-          <p className="text-[20px] font-medium leading-[1.28]">{price}</p>
-          <span className="flex size-6 items-center justify-center rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-success-light)] text-[var(--rh-theme-icon-success)]" aria-label="Цена снизилась"><TrendingDown aria-hidden="true" className="size-4" /></span>
-        </div>
-        <p className="text-base leading-6">{pricePerM2}</p>
+        <PriceWithTrend price={price} />
+        <p className="text-base leading-6">{renderTabularNumber(pricePerM2)}</p>
       </div>
 
       <div className="py-2 text-base leading-6">{details}</div>
 
       <div className="grid gap-2 pb-1 text-[14px] leading-5">
         <p>{address}</p>
-        {subway && <p className="flex items-start gap-1"><Train aria-hidden="true" className="mt-0.5 size-5 shrink-0 text-[var(--rh-theme-text-error)]" /><span>Университет дружбы народов</span></p>}
+        {subway && <p className="flex items-start gap-1"><span aria-hidden="true" className="mt-1 size-3 shrink-0 rounded-full bg-[var(--rh-theme-text-error)]" /><span>Университет дружбы народов</span></p>}
       </div>
 
       {notForClient && (
@@ -116,9 +119,9 @@ function ObjectCard({
       )}
 
       {(footer ?? <div className="flex items-end gap-1 pt-3">
-        <Button appearance={isHovered ? "contrast" : "default"} className={cn("min-w-0 flex-1 group-hover/card:bg-[var(--rh-theme-fill-contrast-static)]", isHovered && "bg-[var(--rh-theme-fill-contrast-static)]")} onClick={onDetailsClick} size="sm" startIcon={false} endIcon={false}>Подробнее</Button>
-        <IconButton aria-label="Комментарии к объекту" appearance={isHovered ? "contrast" : "secondary"} className="rounded-full group-hover/card:bg-[var(--rh-theme-fill-contrast-static)]" icon={<MessageSquareText aria-hidden="true" />} onClick={onCommentsClick} size="sm" />
-        <IconButton aria-label="Пожаловаться на объект" appearance={isHovered ? "contrast" : "secondary"} className="rounded-full group-hover/card:bg-[var(--rh-theme-fill-contrast-static)]" icon={<TriangleAlert aria-hidden="true" />} onClick={onReportClick} size="sm" />
+        <Button appearance="default" className="min-w-0 flex-1" onClick={onDetailsClick} size="sm" startIcon={false} endIcon={false}>Подробнее</Button>
+        <IconButton aria-label="Комментарии к объекту" appearance="secondary" icon={<MessageSquareText aria-hidden="true" />} onClick={onCommentsClick} size="sm" />
+        <IconButton aria-label="Пожаловаться на объект" appearance="secondary" icon={<TriangleAlert aria-hidden="true" />} onClick={onReportClick} size="sm" />
       </div>)}
     </article>
   );

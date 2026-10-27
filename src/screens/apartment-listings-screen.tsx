@@ -1,5 +1,6 @@
 import {
   Columns3Cog,
+  ChevronRight,
   Map,
   Phone,
   Table2,
@@ -19,9 +20,11 @@ import { MenuDivider } from "@/components/ui/menu-divider";
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { useMenuOpen } from "@/hooks/use-menu-open";
+import { cn } from "@/lib/utils";
 import { Modal, ModalContainer } from "@/components/ui/modal";
 import { ObjectInfo } from "@/components/ui/object-info";
 import { ObjectCard } from "@/components/ui/object-card";
+import { MapPriceTag } from "@/components/ui/map-price-tag";
 import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
 import { Select } from "@/components/ui/select";
@@ -91,7 +94,7 @@ type ColumnKey =
   | "status";
 
 const listingsTableColumns: { key: ColumnKey; label: string }[] = [
-  { key: "buyer", label: "Покупатель" },
+  { key: "buyer", label: "Покупатели" },
   { key: "price", label: "Цена" },
   { key: "liquidity", label: "Ликвидность" },
   { key: "source", label: "Источник" },
@@ -168,6 +171,7 @@ const resultTableColumns = [
   { key: "publishedAt", alignment: "left" },
   { key: "status", alignment: "left" },
 ] as const;
+const CALL_COLUMN_WIDTH = 104;
 
 const archiveTableColumnsByPropertyType = {
   Квартиры: [
@@ -469,7 +473,7 @@ function TableToolbar({
         size="sm"
         startIcon={cardsView ? <Table2 aria-hidden="true" strokeWidth={2} /> : <Map aria-hidden="true" strokeWidth={2} />}
       >
-        {cardsView ? "Таблица" : "На карте"}
+        {cardsView ? "Списком" : "На карте"}
       </Button>}
 
       {showLeaderboard && <Button
@@ -644,7 +648,7 @@ function ResultHeader({
         compact
         sort={false}
         type="checkbox"
-        width={28}
+        width={36}
       />
       <TableCell
         className="min-w-[300px]"
@@ -669,9 +673,9 @@ function ResultHeader({
             sortable && sort?.column === "buyer" ? sort.direction : undefined
           }
           type="number"
-          width={150}
+          width={120}
         >
-          Покупатель
+          Покупатели
         </TableCell>
       )}
       <TableCell
@@ -681,7 +685,7 @@ function ResultHeader({
         compact
         sort={false}
         type="text"
-        width="content"
+        width={CALL_COLUMN_WIDTH}
       >
         Позвонить
       </TableCell>
@@ -790,7 +794,7 @@ function ResultRow({
         rowId={listing.id}
         compact
         type="checkbox"
-        width={28}
+        width={36}
       />
 
       <TableCell
@@ -828,7 +832,7 @@ function ResultRow({
           role="body"
           compact
           type="number"
-          width={150}
+          width={120}
         >
           <p className="w-full rh-typography-b2-mono text-right">
             {listing.buyerDemandAvailableCount}
@@ -841,7 +845,7 @@ function ResultRow({
         role="body"
         compact
         type="text"
-        width="content"
+        width={CALL_COLUMN_WIDTH}
       >
         <div className="grid">
           <span
@@ -1243,6 +1247,7 @@ function ListingsTable({
         rowIds: sortedListings.map((listing) => listing.id),
         selectedIds,
       }}
+      verticalBorders
     >
       <ResultHeader
         hiddenColumns={hiddenColumns}
@@ -1268,6 +1273,21 @@ const listingCardPhotos = [
   "/Rhood/assets/object-gallery-4.png",
   "/Rhood/assets/obj-livingroom.jpg",
 ];
+
+const mapObjectMarkers = [
+  [8, 29], [12, 64], [19, 47], [22, 74], [25, 85], [27, 31], [31, 56], [34, 41],
+  [36, 24], [38, 70], [40, 49], [44, 35], [44, 84], [47, 58], [50, 46], [53, 63],
+  [56, 38], [57, 26], [58, 51], [60, 72], [63, 44], [66, 58], [68, 35], [71, 67],
+  [73, 23], [74, 47], [78, 56], [82, 36], [86, 62], [91, 48],
+] as const;
+
+const mapObjectMarkerCounts: Record<number, number> = {
+  2: 3,
+  7: 2,
+  13: 4,
+  18: 2,
+  24: 3,
+};
 
 function sourceHref(domain: string, path: string) {
   const host = {
@@ -1327,10 +1347,10 @@ function ListingsCardGrid({
           key={listing.id}
           onDetailsClick={() => onOpenObjectInfo(listing)}
           price={`${formatNumber(getPrice(listing))} ₽`}
-          pricePerM2={`${formatNumber(Math.round(getPrice(listing) / listing.area))} ₽ / м²`}
+          pricePerM2={`${formatNumber(Math.round(getPrice(listing) / listing.area))} ₽/м²`}
           publishedAt={`Опубликован: ${formatPublishedAt(listing.publishedAt)}`}
           source={formatSource(listing.domain)}
-          sourceHref={sourceHref(listing.domain, listing.url)}
+          sourceHref={sourceHref(listing.domain, listing.url ?? "")}
           subway={false}
         />
       ))}
@@ -1368,9 +1388,23 @@ export function ApartmentListingsScreen({
   const [currentPage, setCurrentPage] = React.useState(1);
   const [leaderboardOpen, setLeaderboardOpen] = React.useState(false);
   const [cardsView, setCardsView] = React.useState(false);
+  const isMapView = !isMyListings && cardsView;
+  const mapListObjectCount = isArchive
+    ? archiveObjectCountByPropertyType[archivePropertyType]
+    : screenListings.length;
+  const mapListPropertyType = isArchive ? archivePropertyType : basePropertyType;
   const [selectedListing, setSelectedListing] = React.useState<
     (typeof listings)[number] | null
   >(null);
+  const [selectedMapMarkerIndex, setSelectedMapMarkerIndex] = React.useState<number | null>(null);
+  const selectedMapMarkerCount = selectedMapMarkerIndex === null
+    ? 0
+    : mapObjectMarkerCounts[selectedMapMarkerIndex] ?? 1;
+  const selectedMapListings = selectedMapMarkerIndex === null || screenListings.length === 0
+    ? []
+    : Array.from({ length: selectedMapMarkerCount }, (_, offset) => (
+        screenListings[(selectedMapMarkerIndex + offset) % screenListings.length]
+      ));
 
   function handleSort(column: SortColumn) {
     setSort((current) =>
@@ -1411,81 +1445,169 @@ export function ApartmentListingsScreen({
       )}
 
       <main className="grid min-w-0 gap-0">
-        <section className="rhood-layout-container py-8">
-          <h1 className="rh-typography-h2 mb-1 font-[500]">
-            {isArchive ? (
-              `В архиве — ${formatNumber(archiveObjectCountByPropertyType[archivePropertyType])} ${getArchivePropertyTypeLabel(archiveObjectCountByPropertyType[archivePropertyType], archivePropertyType)}`
-            ) : (
-              <>
-                {formatNumber(screenListings.length)}{" "}
-                {screenListings.length === 1
-                  ? "объект"
-                  : screenListings.length >= 2 && screenListings.length <= 4
-                    ? "объекта"
-                    : "объектов"} в Тюмени
-              </>
+        {!isMapView && (
+          <>
+            <section className="rhood-layout-container py-8">
+              <h1 className="rh-typography-h2 mb-1 font-[500]">
+                {isArchive ? (
+                  `В архиве — ${formatNumber(archiveObjectCountByPropertyType[archivePropertyType])} ${getArchivePropertyTypeLabel(archiveObjectCountByPropertyType[archivePropertyType], archivePropertyType)}`
+                ) : (
+                  <>
+                    {formatNumber(screenListings.length)}{" "}
+                    {screenListings.length === 1
+                      ? "объект"
+                      : screenListings.length >= 2 && screenListings.length <= 4
+                        ? "объекта"
+                        : "объектов"} в Тюмени
+                  </>
+                )}
+              </h1>
+            </section>
+            <section
+              aria-label="Управление выдачей"
+              className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+            >
+              <TableToolbar
+                archive={isArchive}
+                archivePropertyType={archivePropertyType}
+                hiddenColumns={hiddenColumns}
+                onHiddenColumnsChange={setHiddenColumns}
+                onLeaderboardOpen={() => setLeaderboardOpen(true)}
+                onCardsViewChange={setCardsView}
+                onSortChange={setSort}
+                cardsView={cardsView}
+                showLeaderboard={!isMyListings && !isArchive}
+                showMap={!isMyListings}
+                sort={sort}
+              />
+            </section>
+          </>
+        )}
+        {isMapView ? (
+          <div className="relative mt-4 flex h-[calc(100vh-135px)] min-h-[420px] w-full gap-0">
+            <section
+              aria-label="Карта объявлений"
+              className={cn(
+                "relative min-w-0 flex-1 bg-cover bg-center",
+                selectedMapMarkerIndex !== null && selectedMapListings.length > 0 && "rounded-tr-[var(--rh-sizing-border-radius-lg)]",
+              )}
+              style={{ backgroundImage: 'url("/Rhood/assets/tyumen-lenina-54-2-map.png")' }}
+            >
+              {mapObjectMarkers.map(([left, top], index) => (
+                <MapPriceTag
+                  className="absolute z-[2] mt-1 -translate-x-1/2 -translate-y-full"
+                  count={mapObjectMarkerCounts[index]}
+                  key={`map-object-${index}`}
+                  onClick={() => setSelectedMapMarkerIndex(index)}
+                  price={Number(screenListings[index % screenListings.length]?.price ?? 0)}
+                  selected={selectedMapMarkerIndex === index}
+                  style={{ left: `${left}%`, top: `${top}%` }}
+                />
+              ))}
+              <Button
+                appearance="contrast"
+                className="absolute left-4 top-4 z-10"
+                endIcon={false}
+                onClick={() => setCardsView(false)}
+                size="sm"
+                startIcon={<Table2 aria-hidden="true" strokeWidth={2} />}
+              >
+                {formatNumber(mapListObjectCount)}{" "}
+                {getArchivePropertyTypeLabel(mapListObjectCount, mapListPropertyType)} списком
+              </Button>
+            </section>
+            {selectedMapMarkerIndex !== null && selectedMapListings.length > 0 && (
+              <div className="absolute right-[348px] top-2 z-10">
+                <IconButton
+                  aria-label="Закрыть панель объектов"
+                  appearance="contrast"
+                  icon={<ChevronRight aria-hidden="true" />}
+                  onClick={() => setSelectedMapMarkerIndex(null)}
+                  size="sm"
+                />
+              </div>
             )}
-          </h1>
-        </section>
-        <section
-          aria-label="Управление выдачей"
-          className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
-        >
-          <TableToolbar
-            archive={isArchive}
-            archivePropertyType={archivePropertyType}
-            hiddenColumns={hiddenColumns}
-            onHiddenColumnsChange={setHiddenColumns}
-            onLeaderboardOpen={() => setLeaderboardOpen(true)}
-            onCardsViewChange={setCardsView}
-            onSortChange={setSort}
-            cardsView={cardsView}
-            showLeaderboard={!isMyListings && !isArchive}
-            showMap={!isMyListings && !isArchive}
-            sort={sort}
-          />
-        </section>
-        <section
-          aria-label={`Список: ${isArchive ? archivePropertyType.toLowerCase() : isMyListings ? "объекты" : basePropertyType.toLowerCase()}`}
-          className="mt-3 min-w-0"
-        >
-          {cardsView && !isArchive ? (
-            <ListingsCardGrid
-              currentPage={currentPage}
-              listings={screenListings}
-              onOpenObjectInfo={setSelectedListing}
-              sort={sort}
-            />
-          ) : isArchive ? (
-            <ArchiveListingsTable
-              className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
-              currentPage={currentPage}
-              hiddenColumns={hiddenColumns}
-              propertyType={archivePropertyType}
-              listings={screenListings}
-              onOpenObjectInfo={setSelectedListing}
-              sort={sort}
-            />
-          ) : (
-            <ListingsTable
-              className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
-              currentPage={currentPage}
-              hiddenColumns={hiddenColumns}
-              listings={screenListings}
-              onOpenObjectInfo={setSelectedListing}
-              onSort={handleSort}
-              sort={sort}
-              sortable={false}
-            />
-          )}
-          <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] flex justify-center pt-4 pb-4">
-            <Pagination
-              currentPage={currentPage}
-              onPageChange={setCurrentPage}
-              totalPages={Math.ceil(screenListings.length / LISTINGS_PER_PAGE)}
-            />
-          </footer>
-        </section>
+            <div
+              aria-hidden={selectedMapMarkerIndex === null}
+              className={cn(
+                "shrink-0 overflow-hidden transition-[width] duration-300 ease-out",
+                selectedMapMarkerIndex !== null && selectedMapListings.length > 0 ? "w-[340px]" : "w-0",
+              )}
+              inert={selectedMapMarkerIndex === null}
+            >
+              <aside
+                aria-label="Карточки объектов"
+                className={cn(
+                  "relative h-full w-[340px] bg-[var(--rh-theme-surface-bg)] transition-transform duration-300 ease-out",
+                  selectedMapMarkerIndex !== null && selectedMapListings.length > 0 ? "translate-x-0" : "translate-x-full",
+                )}
+              >
+                <div className="h-full space-y-2 overflow-y-auto px-3 pb-3 pt-0">
+                  {selectedMapListings.map((listing, index) => (
+                    <ObjectCard
+                      address={listing.address}
+                      author={listing.clientName ?? "Частное лицо"}
+                      className="w-full"
+                      details={getSpecs(listing)}
+                      image={listingCardPhotos[(selectedMapMarkerIndex! + index) % listingCardPhotos.length]}
+                      imageAlt={`Объект недвижимости: ${listing.address}`}
+                      key={`map-panel-${listing.id}-${index}`}
+                      onDetailsClick={() => setSelectedListing(listing)}
+                      price={`${formatNumber(getPrice(listing))} ₽`}
+                      pricePerM2={`${formatNumber(Math.round(getPrice(listing) / listing.area))} ₽/м²`}
+                      publishedAt={`Опубликован: ${formatPublishedAt(listing.publishedAt)}`}
+                      source={formatSource(listing.domain)}
+                      sourceHref={sourceHref(listing.domain, listing.url ?? "")}
+                      subway={false}
+                    />
+                  ))}
+                </div>
+              </aside>
+            </div>
+          </div>
+        ) : (
+          <section
+            aria-label={`Список: ${isArchive ? archivePropertyType.toLowerCase() : isMyListings ? "объекты" : basePropertyType.toLowerCase()}`}
+            className="mt-3 min-w-0"
+          >
+            {cardsView ? (
+              <ListingsCardGrid
+                currentPage={currentPage}
+                listings={screenListings}
+                onOpenObjectInfo={setSelectedListing}
+                sort={sort}
+              />
+            ) : isArchive ? (
+              <ArchiveListingsTable
+                className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+                currentPage={currentPage}
+                hiddenColumns={hiddenColumns}
+                propertyType={archivePropertyType}
+                listings={screenListings}
+                onOpenObjectInfo={setSelectedListing}
+                sort={sort}
+              />
+            ) : (
+              <ListingsTable
+                className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+                currentPage={currentPage}
+                hiddenColumns={hiddenColumns}
+                listings={screenListings}
+                onOpenObjectInfo={setSelectedListing}
+                onSort={handleSort}
+                sort={sort}
+                sortable={false}
+              />
+            )}
+            <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] flex justify-center pt-4 pb-4">
+              <Pagination
+                currentPage={currentPage}
+                onPageChange={setCurrentPage}
+                totalPages={Math.ceil(screenListings.length / LISTINGS_PER_PAGE)}
+              />
+            </footer>
+          </section>
+        )}
         {leaderboardOpen && (
           <LeaderboardModal
             onOpenChange={setLeaderboardOpen}
@@ -1497,6 +1619,17 @@ export function ApartmentListingsScreen({
             <PhotoGallery
               containerDisplay="viewport"
               photos={archivePhotos}
+              map={
+                selectedListing.latitude != null && selectedListing.longitude != null
+                  ? {
+                      latitude: selectedListing.latitude,
+                      longitude: selectedListing.longitude,
+                      imageSrc: "/Rhood/assets/tyumen-lenina-54-2-map.png",
+                      previewSrc: "/Rhood/assets/map-preview-figma.png",
+                      title: `Расположение объекта: ${selectedListing.address}`,
+                    }
+                  : undefined
+              }
               sidebar={{
                 title: selectedListing.address,
                 headline: `${formatNumber(getPrice(selectedListing))} ₽`,
@@ -1531,8 +1664,8 @@ export function ApartmentListingsScreen({
           )
         )}
       </main>
-      <Footer className="mt-8" />
-      {isArchive && <ArchiveIntroOverlay />}
+      {!isMapView && <Footer className="mt-8" />}
+      {isArchive && !isMapView && <ArchiveIntroOverlay />}
     </div>
   );
 }

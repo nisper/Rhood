@@ -191,6 +191,8 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "src/components/prototype/price-with-trend-examples.tsx",
+    "src/components/ui/price-with-trend.tsx",
     "dist/assets/index-DruNVTHF.js",
     "dist/assets/index-ChOQmsVo.css",
     "dist/assets/fonts/inter-semibold.ttf",
@@ -201,8 +203,6 @@
     "docs/instructions/Сборка сцены.md",
     "dist/assets/index-BONoUCYz.css",
     "dist/assets/index-wCsK84ua.js",
-    "src/components/prototype/switch-examples.tsx",
-    "src/components/ui/switch.tsx",
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "docs/product/features/Архив объявлений.md",
     "docs/Tests/Адаптив.md",

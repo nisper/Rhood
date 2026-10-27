@@ -12,6 +12,14 @@ const photos = [
   { alt: "Фасад дома", src: "/Rhood/assets/obj-outside.jpg" },
 ];
 
+const map = {
+  imageSrc: "/Rhood/assets/tyumen-lenina-54-2-map.png",
+  previewSrc: "/Rhood/assets/map-preview-figma.png",
+  latitude: 57.130026,
+  longitude: 65.542077,
+  title: "Карта Тюмени в районе улицы Ленина, 54/2",
+};
+
 type PropertyType = "apartment" | "house" | "land";
 
 const propertyDetails = {
@@ -78,6 +86,9 @@ const codeSnippet = (
     {",\n  "}<span className="text-[var(--rh-theme-text-info)]">sidebar</span>
     <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
     <span className="text-[var(--rh-theme-text-success)]">{"{details}"}</span>
+    {",\n  "}<span className="text-[var(--rh-theme-text-info)]">map</span>
+    <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
+    <span className="text-[var(--rh-theme-text-success)]">{"{map}"}</span>
     <span className="text-[var(--rh-theme-text-neutral-secondary)]">{" />"}</span>
   </code>
 );
@@ -104,6 +115,7 @@ function PhotoGalleryDemo() {
         containerDisplay="embedded"
         onClose={() => setOpen(false)}
         photos={photos}
+        map={map}
         sidebar={details}
       />
     </div>
@@ -125,7 +137,7 @@ function PhotoGalleryExamples() {
     <div className="grid min-w-0">
       <ShowcaseSection
         codeSnippet={codeSnippet}
-        description="Передавай фотографии и, при необходимости, данные для боковой панели. Галерея не зависит от типа сущности. Переключай фотографии миниатюрами, кнопками или стрелками на клавиатуре."
+        description="Передавай фотографии, необязательную карту последним слайдом и, при необходимости, данные для боковой панели. Переключай слайды миниатюрами, кнопками или стрелками на клавиатуре."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 w-full items-center overflow-x-auto p-0">
               <PhotoGalleryDemo />
             </div>]}

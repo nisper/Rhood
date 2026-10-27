@@ -170,7 +170,7 @@ function ButtonFavorite({
               ? "text-[var(--rh-theme-icon-neutral-disabled)]"
               : isChecked
                 ? "fill-current text-[var(--rh-theme-icon-error)]"
-                : "text-[var(--rh-theme-icon-neutral-secondary)]",
+                : "text-[var(--rh-theme-text-neutral-primary)]",
           )}
           strokeWidth={2}
         />

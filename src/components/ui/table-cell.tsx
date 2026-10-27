@@ -157,7 +157,9 @@ function TableCell({
           : cn("flex-col", verticalAlignmentClasses[verticalAlign]),
         !isCheckbox && alignmentClasses[resolvedAlignment],
         compact ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
-        hasPaddingX && (isCheckbox ? "px-[calc(var(--spacing)*2)]" : "px-[var(--rh-sizing-table-padding-px)]"),
+        hasPaddingX && (isCheckbox
+          ? "pl-[calc(var(--spacing)*2)] pr-[var(--rh-sizing-table-padding-px)]"
+          : "px-[var(--rh-sizing-table-padding-px)]"),
         isContentWidth && "w-max",
         isFillWidth && "flex-1 basis-0",
         fixedWidth && "shrink-0",
