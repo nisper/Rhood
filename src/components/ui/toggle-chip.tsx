@@ -8,7 +8,7 @@ type ToggleChipColor = "neutral" | "brand" | "error" | "warning" | "success" | "
 
 const hoverBackgroundTokens: Record<ToggleChipColor, { muted: string; selected: string }> = {
   neutral: {
-    muted: "hover:bg-[var(--parser-fill-neutral-hover)]",
+    muted: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
     selected: "hover:bg-[var(--parser-fill-neutral-dark-hover)]",
   },
   brand: {
@@ -28,7 +28,7 @@ const hoverBackgroundTokens: Record<ToggleChipColor, { muted: string; selected: 
     selected: "hover:bg-[var(--parser-fill-success-hover)]",
   },
   contrast: {
-    muted: "hover:bg-[var(--parser-fill-contrast-light-hover)]",
+    muted: "hover:bg-[var(--rh-theme-fill-contrast-hover)]",
     selected: "hover:bg-[var(--parser-fill-contrast-hover)]",
   },
 }

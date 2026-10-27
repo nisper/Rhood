@@ -127,7 +127,7 @@ function FilterFields() {
         <FormBlock direction="row" label="Комнатность">
         <SegmentedControl
           className="w-full"
-          appearance="contrast"
+          appearance="neutral"
           selectionMode="multiple"
           size="md"
         >
