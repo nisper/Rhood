@@ -1,8 +1,8 @@
 import * as React from "react"
+import { createPortal } from "react-dom"
 import { ArrowDown, ArrowUp } from "lucide-react"
 
 import { Checkbox } from "@/components/ui/checkbox"
-import { HelpIcon } from "@/components/ui/help-icon"
 import { useTableColumns, useTableSelection } from "@/components/ui/table"
 import { cn } from "@/lib/utils"
 
@@ -22,6 +22,7 @@ type TableCellProps = React.ComponentProps<"div"> & {
   /** Legacy alias; paddingX takes precedence when supplied. */
   disGutters?: boolean
   helpIcon?: boolean
+  helpTooltip?: React.ReactNode
   indeterminate?: boolean
   instance1?: boolean
   instance2?: boolean
@@ -78,10 +79,13 @@ function TableCell({
   custom = false,
   disGutters = false,
   helpIcon = true,
+  helpTooltip = "Typography",
   indeterminate = false,
   instance1 = true,
   instance2 = false,
   onCheckedChange,
+  onMouseEnter,
+  onMouseLeave,
   paddingX,
   role = "head",
   rowId,
@@ -95,6 +99,8 @@ function TableCell({
   style,
   ...props
 }: TableCellProps) {
+  const cellRef = React.useRef<HTMLDivElement>(null)
+  const [tooltipPosition, setTooltipPosition] = React.useState<{ left: number; top: number } | null>(null)
   const tableSelection = useTableSelection()
   const tableColumns = useTableColumns()
   const hasPaddingX = paddingX ?? !disGutters
@@ -103,6 +109,7 @@ function TableCell({
   const isCheckbox = type === "checkbox"
   const isSkeleton = type === "skeleton"
   const isPlaceholder = type === "placeholder"
+  const showHelpTooltip = isHead && helpIcon && !custom
   const isSortable = isHead && !isCheckbox && !isSkeleton && !isPlaceholder && sort
   const isSorted = isSortable && sortDirection !== undefined
   const hasSortPadding = !hasPaddingX && sortDirection !== undefined
@@ -150,6 +157,17 @@ function TableCell({
   return (
     <div
       {...props}
+      ref={cellRef}
+      onMouseEnter={(event) => {
+        onMouseEnter?.(event)
+        if (!showHelpTooltip) return
+        const rect = event.currentTarget.getBoundingClientRect()
+        setTooltipPosition({ left: rect.left + rect.width / 2, top: rect.top - 8 })
+      }}
+      onMouseLeave={(event) => {
+        onMouseLeave?.(event)
+        setTooltipPosition(null)
+      }}
       className={cn(
         "relative flex min-w-0 shrink-0",
         isCheckbox
@@ -190,11 +208,21 @@ function TableCell({
           )}>
             {children ?? (instance1 && <>{isHead ? "Head" : "Cell"}{instance2 && " secondary instance"}</>)}
           </span>
-          {isHead && helpIcon && !custom && <HelpIcon aria-label="Справка по колонке" size="sm" tooltip="Typography" />}
+          {showHelpTooltip && <sup aria-hidden="true" className="-mt-1 text-[10px] leading-none">?</sup>}
         </div>
       ))}
 
       {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} />)}
+      {showHelpTooltip && tooltipPosition && typeof document !== "undefined" && createPortal(
+        <span
+          className="pointer-events-none fixed z-[9999] max-w-[300px] -translate-x-1/2 -translate-y-full rounded-[4px] bg-[color:var(--parser-fill-neutral-dark-ultra)] px-1.5 py-0.5 text-sm leading-[1.43] tracking-[0.0238px] text-white"
+          role="tooltip"
+          style={{ fontVariationSettings: "'wdth' 100", left: tooltipPosition.left, top: tooltipPosition.top }}
+        >
+          {helpTooltip}
+        </span>,
+        document.body,
+      )}
     </div>
   )
 }

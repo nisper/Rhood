@@ -50,6 +50,8 @@ import { MainHeaderExamples } from "./main-header-examples";
 import { FooterExamples } from "./footer-examples";
 import { ObjectFilterExamples } from "./object-filter-examples";
 import { ListingStatusExamples } from "./listing-status-examples";
+import { HelpIconExamples } from "./help-icon-examples";
+import { TooltipExamples } from "./tooltip-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
@@ -61,7 +63,6 @@ import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
-import { InfoIcon } from "@/components/ui/info-icon";
 import { Island } from "@/components/ui/island";
 import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
@@ -70,7 +71,6 @@ import { Search } from "@/components/ui/search";
 import { Snackbar } from "@/components/ui/snackbar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
-import { Tooltip } from "@/components/ui/tooltip";
 import { cn, matchesSearchTerms } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -1668,14 +1668,10 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "tooltip",
     title: "Tooltip",
-    description: "Тултип.",
+    description: "Компактная текстовая подсказка в едином тёмном стиле.",
     group: "Feedback",
     source: "src/components/ui/tooltip.tsx",
-    render: () => (
-      <Canvas>
-        <Tooltip>Typography</Tooltip>
-      </Canvas>
-    ),
+    render: () => <TooltipExamples />,
   },
   {
     id: "onboarding-tooltip",
@@ -1698,31 +1694,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Иконка помощи.",
     group: "Feedback",
     source: "src/components/ui/help-icon.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <HelpIcon />
-          <HelpIcon state="hovered" />
-          <HelpIcon size="sm" />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
-    id: "info-icon",
-    title: "InfoIcon",
-    description: "Иконка информации.",
-    group: "Feedback",
-    source: "src/components/ui/info-icon.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <InfoIcon />
-          <InfoIcon state="hovered" />
-          <InfoIcon size="sm" />
-        </Matrix>
-      </Canvas>
-    ),
+    render: () => <HelpIconExamples />,
   },
   {
     id: "help-center",
@@ -2107,6 +2079,8 @@ const ComponentNavigation = React.forwardRef<
     "photo-gallery",
     "checkbox",
     "clear-button",
+    "help-icon",
+    "tooltip",
     "text-field",
     "search",
     "input-number",

@@ -1,6 +1,7 @@
 import {
   Columns3Cog,
   ChevronRight,
+  CircleUser,
   Map,
   Phone,
   Table2,
@@ -171,7 +172,10 @@ const resultTableColumns = [
   { key: "publishedAt", alignment: "left" },
   { key: "status", alignment: "left" },
 ] as const;
-const CALL_COLUMN_WIDTH = 104;
+const CALL_COLUMN_WIDTH = 56;
+const BUYER_COLUMN_WIDTH = 55;
+const PRICE_COLUMN_WIDTH = 128;
+const PUBLISHED_AT_COLUMN_WIDTH = 144;
 
 const archiveTableColumnsByPropertyType = {
   Квартиры: [
@@ -665,6 +669,8 @@ function ResultHeader({
       {!hiddenColumns.has("buyer") && (
         <TableCell
           column="buyer"
+          aria-label="Покупатели"
+          helpTooltip="Покупатели с точным совпадением потребности под этот объект в Космосе"
           onClick={sortable ? () => onSort("buyer") : undefined}
           role="head"
           compact
@@ -673,21 +679,22 @@ function ResultHeader({
             sortable && sort?.column === "buyer" ? sort.direction : undefined
           }
           type="number"
-          width={120}
+          width={BUYER_COLUMN_WIDTH}
         >
-          Покупатели
+          <CircleUser aria-hidden="true" className="size-5" />
         </TableCell>
       )}
       <TableCell
         column="call"
-        helpIcon={false}
+        aria-label="Позвонить"
+        helpTooltip="Звонок будет совершен из Rhood, мы его запишем и расшифруем"
         role="head"
         compact
         sort={false}
         type="text"
         width={CALL_COLUMN_WIDTH}
       >
-        Позвонить
+        <Phone aria-hidden="true" className="size-5" />
       </TableCell>
       {!hiddenColumns.has("price") && (
         <TableCell
@@ -701,7 +708,7 @@ function ResultHeader({
             sortable && sort?.column === "price" ? sort.direction : undefined
           }
           type="number"
-          width={175}
+          width={PRICE_COLUMN_WIDTH}
         >
           <>
             Цена, ₽
@@ -750,7 +757,7 @@ function ResultHeader({
               : undefined
           }
           type="text"
-          width={150}
+          width={PUBLISHED_AT_COLUMN_WIDTH}
         >
           Опубликован
         </TableCell>
@@ -832,7 +839,7 @@ function ResultRow({
           role="body"
           compact
           type="number"
-          width={120}
+          width={BUYER_COLUMN_WIDTH}
         >
           <p className="w-full rh-typography-b2-mono text-right">
             {listing.buyerDemandAvailableCount}
@@ -848,12 +855,6 @@ function ResultRow({
         width={CALL_COLUMN_WIDTH}
       >
         <div className="grid">
-          <span
-            aria-hidden="true"
-            className="invisible col-start-1 row-start-1 rh-typography-b2 whitespace-nowrap"
-          >
-            Позвонить
-          </span>
           <IconButton
             appearance="primary"
             aria-label="Позвонить"
@@ -872,7 +873,7 @@ function ResultRow({
           role="body"
           compact
           type="number"
-          width={175}
+          width={PRICE_COLUMN_WIDTH}
         >
           <div className="w-full rh-typography-b2-mono text-right">
             <p className="text-[var(--parser-text-neutral-primary)]">
@@ -941,7 +942,7 @@ function ResultRow({
           role="body"
           compact
           type="text"
-          width={150}
+          width={PUBLISHED_AT_COLUMN_WIDTH}
         >
           <p className="text-sm leading-5 tracking-[0.17px]">
             {formatPublishedAt(listing.publishedAt)}
