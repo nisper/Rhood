@@ -56,7 +56,6 @@ function FloorSelect({
                 placeholder: "до",
                 value: endValue,
               }}
-              unit="эт."
             />
             {(startValue || endValue) && (
               <div className="mt-2 flex">

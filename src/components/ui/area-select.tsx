@@ -56,7 +56,6 @@ function AreaSelect({
                 placeholder: "до",
                 value: endValue,
               }}
-              unit="м²"
             />
             {(startValue || endValue) && (
               <div className="mt-2 flex">

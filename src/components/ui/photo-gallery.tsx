@@ -1,7 +1,8 @@
 import * as React from "react";
 import { ChevronLeft, ChevronRight, X } from "lucide-react";
+import L from "leaflet";
+import "leaflet/dist/leaflet.css";
 
-import { ExpandableContent } from "@/components/ui/expandable-content";
 import { IconButton } from "@/components/ui/icon-button";
 import { ModalContainer } from "@/components/ui/modal";
 
@@ -12,6 +13,7 @@ type PhotoGalleryPhoto = {
 
 type PhotoGallerySidebarField = {
   label: string;
+  numeric?: boolean;
   value: string;
 };
 
@@ -27,10 +29,62 @@ type PhotoGallerySidebar = {
 type PhotoGalleryProps = {
   containerDisplay?: React.ComponentProps<typeof ModalContainer>["display"];
   initialPhotoIndex?: number;
+  map?: PhotoGalleryMap;
   onClose?: () => void;
   photos: readonly PhotoGalleryPhoto[];
   sidebar?: PhotoGallerySidebar;
 };
+
+type PhotoGalleryMap = {
+  latitude: number;
+  longitude: number;
+  imageSrc?: string;
+  previewSrc?: string;
+  title?: string;
+};
+
+function PhotoGalleryMapView({
+  latitude,
+  longitude,
+  title,
+}: PhotoGalleryMap) {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const leafletMap = L.map(container, { scrollWheelZoom: false }).setView(
+      [latitude, longitude],
+      16,
+    );
+    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 19,
+    }).addTo(leafletMap);
+    L.circleMarker([latitude, longitude], {
+      color: "var(--rh-theme-surface-bg)",
+      fillColor: "var(--rh-theme-fill-brand)",
+      fillOpacity: 1,
+      radius: 9,
+      weight: 3,
+    })
+      .addTo(leafletMap)
+      .bindPopup(title ?? "Расположение объекта");
+
+    return () => leafletMap.remove();
+  }, [latitude, longitude, title]);
+
+  return (
+    <div
+      aria-label={title ?? "Карта OpenStreetMap"}
+      className="size-full"
+      ref={containerRef}
+      role="region"
+    />
+  );
+}
 
 function isPointOnContainedImage(
   image: HTMLImageElement,
@@ -64,12 +118,12 @@ function PhotoGallerySidebarRows({
 }) {
   return (
     <dl className="grid divide-y divide-[var(--parser-border-light)] border-b border-[var(--parser-border-light)]">
-      {rows.map(({ label, value }) => (
+      {rows.map(({ label, numeric, value }) => (
         <div className="flex items-center justify-between gap-4 py-2" key={label}>
           <dt className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
             {label}
           </dt>
-          <dd className="rh-typography-b2 text-right text-[var(--rh-theme-text-neutral-primary)]">
+          <dd className={`${numeric ? "rh-typography-b2-mono" : "rh-typography-b2"} text-right text-[var(--rh-theme-text-neutral-primary)]`}>
             {value}
           </dd>
         </div>
@@ -81,13 +135,15 @@ function PhotoGallerySidebarRows({
 function PhotoGallery({
   containerDisplay = "viewport",
   initialPhotoIndex = 0,
+  map,
   onClose,
   photos,
   sidebar,
 }: PhotoGalleryProps) {
+  const slideCount = photos.length + (map ? 1 : 0);
   const [open, setOpen] = React.useState(true);
   const [activePhotoIndex, setActivePhotoIndex] = React.useState(() =>
-    Math.min(Math.max(initialPhotoIndex, 0), photos.length - 1),
+    Math.min(Math.max(initialPhotoIndex, 0), slideCount - 1),
   );
   const handleClose = React.useCallback(() => {
     setOpen(false);
@@ -100,31 +156,32 @@ function PhotoGallery({
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") handleClose();
       if (
-        photos.length > 1 &&
+        slideCount > 1 &&
         (event.key === "ArrowLeft" || event.key === "ArrowRight")
       ) {
         event.preventDefault();
         const direction = event.key === "ArrowRight" ? 1 : -1;
         setActivePhotoIndex((index) =>
-          (index + direction + photos.length) % photos.length,
+          (index + direction + slideCount) % slideCount,
         );
       }
     }
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [handleClose, open, photos.length]);
+  }, [handleClose, open, slideCount]);
 
-  if (!open || photos.length === 0) return null;
+  if (!open || slideCount === 0) return null;
 
-  const activePhoto = photos[activePhotoIndex];
-  const showControls = photos.length > 1;
+  const isMapSlide = Boolean(map && activePhotoIndex === photos.length);
+  const activePhoto = isMapSlide ? undefined : photos[activePhotoIndex];
+  const showControls = slideCount > 1;
   const sidebarRows = [...(sidebar?.fields ?? []), ...(sidebar?.metadata ?? [])];
 
   return (
     <ModalContainer
       alignment="center"
-      aria-label="Просмотр фотографий"
+      aria-label="Просмотр фотографий и карты"
       aria-modal={containerDisplay === "viewport" ? true : undefined}
       className={`!min-h-0 !grid-rows-[minmax(0,1fr)] !overflow-hidden bg-[var(--rh-theme-surface-bg)] ${
         containerDisplay === "embedded"
@@ -138,6 +195,7 @@ function PhotoGallery({
         if (!(target instanceof Element)) return;
         if (target.closest("button") || target.closest("aside")) return;
 
+        if (target.closest("[data-main-map]")) return;
         const mainPhoto = target.closest("[data-main-photo]");
         if (
           mainPhoto instanceof HTMLImageElement &&
@@ -169,7 +227,7 @@ function PhotoGallery({
             {(sidebar.title || sidebar.headline || sidebar.supportingText) && (
               <div className="grid gap-3">
                 {sidebar.title && (
-                  <h2 className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
+                  <h2 className="rh-typography-b1-med max-w-[calc(100%-32px)] text-[var(--rh-theme-text-neutral-primary)]">
                     {sidebar.title}
                   </h2>
                 )}
@@ -197,58 +255,69 @@ function PhotoGallery({
                 <h3 className="rh-typography-b1-med text-[var(--rh-theme-text-neutral-primary)]">
                   Описание
                 </h3>
-                <ExpandableContent
-                  buttonSize="sm"
-                  collapsedHeight={96}
-                  expandLabel="Читать полностью"
-                >
-                  <p className="rh-typography-b2 whitespace-pre-line text-[var(--rh-theme-text-neutral-primary)]">
-                    {sidebar.description}
-                  </p>
-                </ExpandableContent>
+                <p className="rh-typography-b2 whitespace-pre-line text-[var(--rh-theme-text-neutral-primary)]">
+                  {sidebar.description}
+                </p>
               </div>
             )}
           </aside>
         )}
 
         <section
-          aria-label="Фотографии объекта"
+          aria-label="Слайды объекта"
           className={`group relative col-start-1 row-start-1 grid h-full min-h-0 min-w-0 grid-cols-1 grid-rows-[minmax(0,1fr)_52px] gap-y-4 p-4 max-md:p-2 ${
             sidebar ? "max-md:col-start-1 max-md:row-start-1" : ""
           }`}
         >
           <div className="col-start-1 row-start-1 grid min-h-0 min-w-0 place-items-center overflow-hidden">
-            <img
-              alt={activePhoto.alt}
-              className="h-full w-full min-h-0 min-w-0 object-contain"
-              data-main-photo
-              src={activePhoto.src}
-            />
+            {isMapSlide ? (
+              <div
+                className="h-full w-full min-h-0 min-w-0 overflow-hidden"
+                data-main-map
+              >
+                {map && (map.imageSrc ? (
+                  <img
+                    alt={map.title ?? "Карта расположения объекта"}
+                    className="size-full object-cover"
+                    src={map.imageSrc}
+                  />
+                ) : (
+                  <PhotoGalleryMapView {...map} />
+                ))}
+              </div>
+            ) : (
+              <img
+                alt={activePhoto?.alt ?? ""}
+                className="h-full w-full min-h-0 min-w-0 object-contain"
+                data-main-photo
+                src={activePhoto?.src}
+              />
+            )}
           </div>
           {showControls && (
             <>
               <div className="pointer-events-none col-start-1 row-start-1 z-10 flex min-h-0 min-w-0 items-center justify-between px-2 opacity-0 transition-opacity group-hover:pointer-events-auto group-hover:opacity-100 group-focus-within:pointer-events-auto group-focus-within:opacity-100 max-md:pointer-events-auto max-md:opacity-100">
                 <IconButton
                   appearance="contrast"
-                  aria-label="Предыдущее фото"
+                  aria-label="Предыдущий слайд"
                   icon={<ChevronLeft aria-hidden="true" />}
                   onClick={() =>
                     setActivePhotoIndex((index) =>
-                      (index + photos.length - 1) % photos.length,
+                      (index + slideCount - 1) % slideCount,
                     )
                   }
                 />
                 <IconButton
                   appearance="contrast"
-                  aria-label="Следующее фото"
+                  aria-label="Следующий слайд"
                   icon={<ChevronRight aria-hidden="true" />}
                   onClick={() =>
-                    setActivePhotoIndex((index) => (index + 1) % photos.length)
+                    setActivePhotoIndex((index) => (index + 1) % slideCount)
                   }
                 />
               </div>
               <div
-                aria-label="Фотографии"
+                aria-label="Фотографии и карта"
                 className="col-start-1 row-start-2 flex w-full min-w-0 justify-center gap-2 overflow-x-auto"
               >
                 {photos.map((photo, index) => (
@@ -269,6 +338,34 @@ function PhotoGallery({
                     )}
                   </button>
                 ))}
+                {map && (
+                  <button
+                    aria-label="Показать карту расположения объекта"
+                    aria-pressed={activePhotoIndex === photos.length}
+                    className="relative size-[52px] shrink-0 cursor-pointer overflow-hidden"
+                    key="map-slide"
+                    onClick={() => setActivePhotoIndex(photos.length)}
+                    type="button"
+                  >
+                    {map.previewSrc || map.imageSrc ? (
+                      <img
+                        alt=""
+                        className="size-full object-cover"
+                        src={map.previewSrc ?? map.imageSrc}
+                      />
+                    ) : (
+                      <span aria-hidden="true" className="grid size-full place-items-center bg-[var(--rh-theme-surface-bg)] text-[var(--rh-theme-text-neutral-secondary)]">
+                        <span className="rh-typography-b2">Карта</span>
+                      </span>
+                    )}
+                    {activePhotoIndex !== photos.length && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute inset-0 bg-[var(--rh-theme-fill-contrast-static)] opacity-60"
+                      />
+                    )}
+                  </button>
+                )}
               </div>
             </>
           )}
@@ -281,6 +378,7 @@ function PhotoGallery({
 export { PhotoGallery };
 export type {
   PhotoGalleryPhoto,
+  PhotoGalleryMap,
   PhotoGalleryProps,
   PhotoGallerySidebar,
   PhotoGallerySidebarField,

@@ -13,18 +13,52 @@ import { SegmentedControl } from "@/components/ui/segmented-control";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Textfield } from "@/components/ui/text-field";
+import { ToggleChip } from "@/components/ui/toggle-chip";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 
 function ModalSelect({
   label,
   options,
+  toggleOptions = false,
+  multipleOptions = false,
 }: {
   label: string;
   options: readonly string[];
+  toggleOptions?: boolean;
+  multipleOptions?: boolean;
 }) {
   const menuRef = React.useRef<HTMLDivElement>(null);
   const [expanded, setExpanded] = useMenuOpen(menuRef);
   const [value, setValue] = React.useState("Не выбрано");
+  const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+
+  if (toggleOptions) {
+    return (
+      <FormBlock direction="row" label={label}>
+        <div className="flex flex-wrap gap-2">
+          {options.map((option) => (
+            <ToggleChip
+              checked={multipleOptions ? selectedValues.includes(option) : option === value}
+              icon={false}
+              key={option}
+              onCheckedChange={(checked) => {
+                if (multipleOptions) {
+                  setSelectedValues((current) => checked
+                    ? [...current, option]
+                    : current.filter((selectedOption) => selectedOption !== option));
+                } else {
+                  setValue(option);
+                }
+              }}
+              size="md"
+            >
+              {option}
+            </ToggleChip>
+          ))}
+        </div>
+      </FormBlock>
+    );
+  }
 
   return (
     <div ref={menuRef}>
@@ -81,13 +115,14 @@ function ModalRangeField({ label, unit }: { label: string; unit?: string }) {
 function FilterFields() {
   return (
     <form>
-      <FormSet labelWidth="200px">
+      <FormSet gap="calc(var(--spacing) * 6)" labelWidth="200px">
         <FormBlock direction="row" label="Расположение">
         <Textfield id="filter-location" placeholder="Введите расположение" />
         </FormBlock>
         <ModalSelect
           label="Подтип недвижимости"
           options={["Студия", "Свободная планировка", "Апартаменты", "Гостинка"]}
+          toggleOptions
         />
         <FormBlock direction="row" label="Комнатность">
         <SegmentedControl
@@ -107,20 +142,25 @@ function FilterFields() {
         <ModalSelect
           label="Источники"
           options={["Авито", "Циан", "Юла", "Яндекс.Недвижимость", "ДомКлик"]}
+          toggleOptions
+          multipleOptions
         />
-        <ModalSelect label="Автор" options={["Частное лицо", "Агентство"]} />
+        <ModalSelect label="Автор" options={["Частное лицо", "Агентство"]} toggleOptions />
         <ModalRangeField label="Опубликован" />
         <ModalSelect
           label="Статус"
-          options={["Не выбранОтказ", "Не отвечает", "Думает", "Другое АН"]}
+          options={["Не выбран", "Отказ", "Не отвечает", "Думает", "Другое АН"]}
+          toggleOptions
+          multipleOptions
         />
         <ModalSelect
           label="Тип сделки"
           options={["Продажа", "Аренда долгосрочная"]}
+          toggleOptions
         />
-        <ModalSelect label="Объекты в выдаче" options={["Уникальные", "Все"]} />
-        <ModalSelect label="Есть клиент" options={["Есть", "Все"]} />
-        <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} />
+        <ModalSelect label="Объекты в выдаче" options={["Уникальные", "Все"]} toggleOptions />
+        <ModalSelect label="Есть клиент" options={["Есть", "Все"]} toggleOptions />
+        <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} toggleOptions />
         <FormBlock direction="row" label="Содержит слова в объявлении">
         <Textarea id="filter-contains-words" placeholder="Введите слова" />
         </FormBlock>
@@ -140,6 +180,8 @@ function FilterFields() {
             "Предчистовая отделка",
             "Евроремонт",
           ]}
+          toggleOptions
+          multipleOptions
         />
       </FormSet>
     </form>

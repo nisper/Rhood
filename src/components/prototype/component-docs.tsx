@@ -36,6 +36,8 @@ import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
 import { ObjectCardExamples } from "./object-card-examples";
+import { PriceWithTrendExamples } from "./price-with-trend-examples";
+import { MapPriceTagExamples } from "./map-price-tag-examples";
 import { PhotoGalleryExamples } from "./photo-gallery-examples";
 import { PaginationExamples } from "./pagination-examples";
 import { ObjectBuyersExamples, ObjectBuyersV2Examples } from "./object-buyers-examples";
@@ -48,6 +50,8 @@ import { MainHeaderExamples } from "./main-header-examples";
 import { FooterExamples } from "./footer-examples";
 import { ObjectFilterExamples } from "./object-filter-examples";
 import { ListingStatusExamples } from "./listing-status-examples";
+import { HelpIconExamples } from "./help-icon-examples";
+import { TooltipExamples } from "./tooltip-examples";
 import "./component-docs.css";
 import * as React from "react";
 import { CodeXml, Copy, Dot } from "lucide-react";
@@ -59,7 +63,6 @@ import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
 import { HelpIcon } from "@/components/ui/help-icon";
-import { InfoIcon } from "@/components/ui/info-icon";
 import { Island } from "@/components/ui/island";
 import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
@@ -68,7 +71,6 @@ import { Search } from "@/components/ui/search";
 import { Snackbar } from "@/components/ui/snackbar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
-import { Tooltip } from "@/components/ui/tooltip";
 import { cn, matchesSearchTerms } from "@/lib/utils";
 
 type ComponentDoc = {
@@ -545,7 +547,6 @@ const componentDocs: ComponentDoc[] = [
       { name: "favorite", values: "boolean", defaultValue: "true", description: "Показывает кнопку избранного." },
       { name: "notForClient", values: "boolean", defaultValue: "true", description: "Показывает внутренние статусы, источник и дату." },
       { name: "pictures", values: "boolean", defaultValue: "true", description: "Показывает фотографию объекта." },
-      { name: "state", values: "default · hovered", defaultValue: "default", description: "Статичное состояние для демонстрации; реальный hover работает при наведении." },
       { name: "subway", values: "boolean", defaultValue: "true", description: "Показывает станцию метро." },
       { name: "footer", values: "ReactNode", defaultValue: "действия карточки", description: "Заменяет нижний блок действий." },
       { name: "onDetailsClick · onCommentsClick · onReportClick", values: "() => void", defaultValue: "—", description: "Обработчики нижних действий карточки." },
@@ -555,6 +556,60 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/object-card.tsx",
     render: () => <ObjectCardExamples />,
+  },
+  {
+    id: "price-with-trend",
+    title: "PriceWithTrend",
+    description: "Цена объекта с индикатором направления изменения.",
+    group: "Выдача объектов",
+    properties: [
+      { name: "price", values: "string", defaultValue: "обязательное", description: "Цена объекта с валютой." },
+      { name: "trend", values: "down · up", defaultValue: "down", description: "Направление изменения цены; снижение отображается зелёным, рост — красным." },
+      { name: "className", values: "string", defaultValue: "—", description: "Дополнительные классы корневого контейнера." },
+      { name: "…props", values: "ComponentProps<div>", defaultValue: "—", description: "Нативные свойства корневого div." },
+    ],
+    source: "src/components/ui/price-with-trend.tsx",
+    render: () => <PriceWithTrendExamples />,
+  },
+  {
+    id: "map-price-tag",
+    title: "MapPriceTag",
+    description: "Компактный ценник объекта на карте.",
+    group: "Выдача объектов",
+    properties: [
+      {
+        name: "price",
+        values: "number",
+        defaultValue: "обязательное",
+        description: "Цена в рублях; отображается компактно в тысячах или миллионах с точностью до десятых.",
+      },
+      {
+        name: "count",
+        values: "number",
+        defaultValue: "—",
+        description: "Количество объектов; при значении больше 1 показывает каунтер перед ценой и добавляет префикс «от».",
+      },
+      {
+        name: "selected",
+        values: "boolean",
+        defaultValue: "false",
+        description: "Показывает, что панель объектов открыта для этого ценника.",
+      },
+      {
+        name: "className · style",
+        values: "string · CSSProperties",
+        defaultValue: "—",
+        description: "Дополнительные классы и inline-стили для размещения ценника на карте.",
+      },
+      {
+        name: "…props",
+        values: "ComponentProps<span>",
+        defaultValue: "—",
+        description: "Нативные свойства HTML-элемента button.",
+      },
+    ],
+    source: "src/components/ui/map-price-tag.tsx",
+    render: () => <MapPriceTagExamples />,
   },
   {
     id: "object-info",
@@ -1393,6 +1448,7 @@ const componentDocs: ComponentDoc[] = [
     source: "src/components/ui/badge.tsx",
     properties: [
       { name: "children", values: "ReactNode", defaultValue: "—", description: "Текст красной solid-метки малого размера." },
+      { name: "shape", values: "default · circle", defaultValue: "default", description: "Форма метки; circle задаёт круглую форму для короткого содержимого." },
     ],
     render: () => <BadgeExamples />,
   },
@@ -1612,14 +1668,10 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "tooltip",
     title: "Tooltip",
-    description: "Тултип.",
+    description: "Компактная текстовая подсказка в едином тёмном стиле.",
     group: "Feedback",
     source: "src/components/ui/tooltip.tsx",
-    render: () => (
-      <Canvas>
-        <Tooltip>Typography</Tooltip>
-      </Canvas>
-    ),
+    render: () => <TooltipExamples />,
   },
   {
     id: "onboarding-tooltip",
@@ -1642,31 +1694,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Иконка помощи.",
     group: "Feedback",
     source: "src/components/ui/help-icon.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <HelpIcon />
-          <HelpIcon state="hovered" />
-          <HelpIcon size="sm" />
-        </Matrix>
-      </Canvas>
-    ),
-  },
-  {
-    id: "info-icon",
-    title: "InfoIcon",
-    description: "Иконка информации.",
-    group: "Feedback",
-    source: "src/components/ui/info-icon.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <InfoIcon />
-          <InfoIcon state="hovered" />
-          <InfoIcon size="sm" />
-        </Matrix>
-      </Canvas>
-    ),
+    render: () => <HelpIconExamples />,
   },
   {
     id: "help-center",
@@ -2051,6 +2079,8 @@ const ComponentNavigation = React.forwardRef<
     "photo-gallery",
     "checkbox",
     "clear-button",
+    "help-icon",
+    "tooltip",
     "text-field",
     "search",
     "input-number",
