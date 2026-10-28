@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { InputNumberRange } from "@/components/ui/input-number-range"
 import { Menu } from "@/components/ui/menu"
 import { Select, type SelectProps } from "@/components/ui/select"
+import { cn } from "@/lib/utils"
 
 type FloorSelectProps = Omit<
   SelectProps,
@@ -36,6 +37,7 @@ function FloorSelect({
     <Select
       {...props}
       aria-label={props["aria-label"] ?? "Этаж"}
+      className={cn(props.className, value !== "Этаж" && "tabular-nums")}
       expanded={expanded}
       label={props.label ?? false}
       menu={

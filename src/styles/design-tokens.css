@@ -169,8 +169,8 @@
   --rh-theme-text-error: var(--rh-palette-red-600);
   --rh-theme-text-warning: var(--rh-palette-orange-700);
   --rh-theme-text-info: var(--rh-palette-light-blue-600);
-  --rh-theme-text-link: var(--rh-palette-brand-500);
-  --rh-theme-text-link-hovered: var(--rh-palette-brand-600);
+  --rh-theme-text-link: var(--rh-palette-blue-500);
+  --rh-theme-text-link-hovered: var(--rh-palette-blue-600);
   --rh-theme-text-neutral-primary: rgb(26 26 26 / 0.87);
   --rh-theme-text-neutral-primary-contrast: var(--rh-palette-neutral-white);
   --rh-theme-text-neutral-primary-static: rgb(26 26 26 / 0.87);
@@ -183,7 +183,7 @@
   --rh-theme-surface-under-islands: var(--rh-palette-neutral-50);
   --rh-theme-surface-under-islands-alt: var(--rh-palette-blue-grey-100);
   --rh-theme-surface-neutral-ultra-dark: var(--rh-palette-neutral-900);
-  --rh-theme-surface-backdrop: rgb(0 0 0 / 0.8);
+  --rh-theme-surface-backdrop: rgb(0 0 0 / 0.4);
   --rh-theme-surface-neutral-hover: rgb(43 43 43 / 0.04);
   --rh-theme-fill-neutral: var(--rh-palette-neutral-50);
   --rh-theme-fill-neutral-hover: var(--rh-palette-neutral-100);
@@ -365,8 +365,6 @@
   --rh-sizing-layout-edge-to-edge-content: 0px;
   --rh-sizing-map-container-pxy: calc(var(--spacing) * 4);
   --rh-sizing-menu-border-radius: var(--rh-sizing-border-radius-md);
-  --rh-sizing-menu-padding-px-md: calc(var(--spacing) * 4);
-  --rh-sizing-menu-padding-py-md: calc(var(--spacing) * 4);
   --rh-sizing-menu-padding-px-sm: calc(var(--spacing) * 3);
   --rh-sizing-menu-padding-py-sm: calc(var(--spacing) * 2);
   --rh-sizing-menu-padding-gap-sm: calc(var(--spacing) * 2);

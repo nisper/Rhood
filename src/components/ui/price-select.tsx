@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { InputNumberRange } from "@/components/ui/input-number-range"
 import { Menu } from "@/components/ui/menu"
 import { Select, type SelectProps } from "@/components/ui/select"
+import { cn } from "@/lib/utils"
 
 type PriceSelectProps = Omit<
   SelectProps,
@@ -36,6 +37,7 @@ function PriceSelect({
     <Select
       {...props}
       aria-label={props["aria-label"] ?? "Цена"}
+      className={cn(props.className, value !== "Цена" && "tabular-nums")}
       expanded={expanded}
       label={props.label ?? false}
       menu={
@@ -97,10 +99,7 @@ function getPriceValue(start: string, end: string) {
   if (sameValue) return `${formatPriceAmount(start, Number(start) >= 1_000_000)} ₽`
 
   const useCompactFormat = Number(start) >= 1_000_000 || Number(end) >= 1_000_000
-  const separator = useCompactFormat
-    ? " – "
-    : "–"
-  return `${formatPriceAmount(start, useCompactFormat)}${separator}${formatPriceAmount(end, useCompactFormat)} ₽`
+  return `${formatPriceAmount(start, useCompactFormat)}–${formatPriceAmount(end, useCompactFormat)} ₽`
 }
 
 function formatPriceAmount(value: string, compact: boolean) {

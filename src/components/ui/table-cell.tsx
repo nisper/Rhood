@@ -1,5 +1,6 @@
 import * as React from "react"
 import { createPortal } from "react-dom"
+import { Tooltip } from "@/components/ui/tooltip"
 import { ArrowDown, ArrowUp } from "lucide-react"
 
 import { Checkbox } from "@/components/ui/checkbox"
@@ -7,7 +8,7 @@ import { useTableColumns, useTableSelection } from "@/components/ui/table"
 import { cn } from "@/lib/utils"
 
 type TableCellRole = "body" | "head"
-type TableCellType = "text" | "number" | "skeleton" | "checkbox" | "placeholder"
+type TableCellType = "text" | "number" | "skeleton" | "checkbox" | "placeholder" | "chip" | "button"
 type TableCellWidth = "content" | "fill" | number
 type TableCellAlignment = "left" | "center" | "right"
 type TableCellVerticalAlignment = "top" | "center" | "bottom"
@@ -79,7 +80,7 @@ function TableCell({
   custom = false,
   disGutters = false,
   helpIcon = true,
-  helpTooltip = "Typography",
+  helpTooltip,
   indeterminate = false,
   instance1 = true,
   instance2 = false,
@@ -109,7 +110,23 @@ function TableCell({
   const isCheckbox = type === "checkbox"
   const isSkeleton = type === "skeleton"
   const isPlaceholder = type === "placeholder"
-  const showHelpTooltip = isHead && helpIcon && !custom
+  const isChip = type === "chip"
+  const isButton = type === "button"
+  const resolvedVerticalAlignment = isButton && verticalAlign === "top"
+    ? "center"
+    : verticalAlign
+  const contentVerticalPadding = isChip
+    ? "3px"
+    : isButton
+      ? "var(--rh-sizing-common-input-padding-py-sm)"
+      : undefined
+  const tableVerticalPadding = compact
+    ? "var(--rh-sizing-table-padding-py-size-small)"
+    : "var(--rh-sizing-table-padding-py)"
+  const adjustedVerticalPadding = contentVerticalPadding
+    ? `max(0px, calc(${tableVerticalPadding} - ${contentVerticalPadding}))`
+    : undefined
+  const showHelpTooltip = helpIcon && (isHead ? !custom : helpTooltip !== undefined)
   const isSortable = isHead && !isCheckbox && !isSkeleton && !isPlaceholder && sort
   const isSorted = isSortable && sortDirection !== undefined
   const hasSortPadding = !hasPaddingX && sortDirection !== undefined
@@ -162,7 +179,7 @@ function TableCell({
         onMouseEnter?.(event)
         if (!showHelpTooltip) return
         const rect = event.currentTarget.getBoundingClientRect()
-        setTooltipPosition({ left: rect.left + rect.width / 2, top: rect.top - 8 })
+        setTooltipPosition({ left: rect.left + rect.width / 2, top: rect.top - 4 })
       }}
       onMouseLeave={(event) => {
         onMouseLeave?.(event)
@@ -172,7 +189,7 @@ function TableCell({
         "relative flex min-w-0 shrink-0",
         isCheckbox
           ? checkboxVerticalAlignmentClasses[verticalAlign]
-          : cn("flex-col", verticalAlignmentClasses[verticalAlign]),
+        : cn("flex-col", verticalAlignmentClasses[resolvedVerticalAlignment]),
         !isCheckbox && alignmentClasses[resolvedAlignment],
         compact ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
         hasPaddingX && (isCheckbox
@@ -188,13 +205,22 @@ function TableCell({
       )}
       role={isHead ? "columnheader" : "cell"}
       data-table-cell=""
-      style={{ ...style, flexBasis: fixedWidth, width: fixedWidth }}
+      style={{
+        ...style,
+        paddingBlock: adjustedVerticalPadding ?? style?.paddingBlock,
+        flexBasis: fixedWidth,
+        width: fixedWidth,
+      }}
     >
       {isCheckbox && <Checkbox aria-label={isHead ? "Выбрать все строки" : "Выбрать строку"} checked={resolvedChecked} className="min-h-0 p-0" indeterminate={resolvedIndeterminate} label={false} onChange={event => handleCheckedChange(event.target.checked)} size="sm" />}
 
       {isSkeleton && <span aria-hidden="true" className="block h-[calc(var(--spacing)*1.5)] w-full rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-skeleton)]" />}
 
-      {!isCheckbox && !isSkeleton && !isPlaceholder && (custom ? (
+      {isChip && <div className={cn("flex min-h-5 w-full items-baseline", contentAlignmentClasses[resolvedAlignment])}>{children}</div>}
+
+      {isButton && <div className={cn("flex min-h-5 w-full items-center", contentAlignmentClasses[resolvedAlignment])}>{children}</div>}
+
+      {!isCheckbox && !isSkeleton && !isPlaceholder && !isChip && !isButton && (custom ? (
         <div className={cn("flex min-h-5 w-full", contentAlignmentClasses[resolvedAlignment])}>
           {children}
         </div>
@@ -208,18 +234,17 @@ function TableCell({
           )}>
             {children ?? (instance1 && <>{isHead ? "Head" : "Cell"}{instance2 && " secondary instance"}</>)}
           </span>
-          {showHelpTooltip && <sup aria-hidden="true" className="-mt-1 text-[10px] leading-none">?</sup>}
+          {isHead && showHelpTooltip && <sup aria-hidden="true" className="-mt-1 text-[10px] leading-none">?</sup>}
         </div>
       ))}
 
       {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} />)}
       {showHelpTooltip && tooltipPosition && typeof document !== "undefined" && createPortal(
         <span
-          className="pointer-events-none fixed z-[9999] max-w-[300px] -translate-x-1/2 -translate-y-full rounded-[4px] bg-[color:var(--parser-fill-neutral-dark-ultra)] px-1.5 py-0.5 text-sm leading-[1.43] tracking-[0.0238px] text-white"
-          role="tooltip"
-          style={{ fontVariationSettings: "'wdth' 100", left: tooltipPosition.left, top: tooltipPosition.top }}
+          className="pointer-events-none fixed z-[2147483647] -translate-x-1/2 -translate-y-full"
+          style={{ left: tooltipPosition.left, top: tooltipPosition.top }}
         >
-          {helpTooltip}
+          <Tooltip className="max-w-[300px]" role="tooltip">{helpTooltip ?? "Typography"}</Tooltip>
         </span>,
         document.body,
       )}

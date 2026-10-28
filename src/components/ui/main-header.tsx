@@ -82,7 +82,7 @@ function MainHeader({
     return (
       <header
         className={cn(
-          "w-full overflow-hidden border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]",
+          "w-full overflow-hidden border-b border-[color:var(--rh-theme-border-light)]",
           className,
         )}
         {...props}
@@ -118,7 +118,7 @@ function MainHeader({
   return (
     <header
       className={cn(
-        "w-full border-b border-[color:var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)]",
+        "w-full border-b border-[color:var(--rh-theme-border-light)]",
         className,
       )}
       {...props}

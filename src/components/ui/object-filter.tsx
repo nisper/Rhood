@@ -9,7 +9,8 @@ import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
 import { PriceSelect } from "@/components/ui/price-select"
 import { RoominessSelect } from "@/components/ui/roominess-select"
 import { Select } from "@/components/ui/select"
-import { Settings2 } from "lucide-react"
+import { Search, Settings2, X } from "lucide-react"
+import { IconButton } from "@/components/ui/icon-button"
 import { useMenuOpen } from "@/hooks/use-menu-open"
 import { cn } from "@/lib/utils"
 
@@ -46,11 +47,13 @@ const cityOptions = ["Москва", "Химки", "Красногорск", "М
 function ArchiveFilterSelect({
   label,
   multiSelect = false,
+  onFilterChange,
   onValueChange,
   options,
 }: {
   label: string
   multiSelect?: boolean
+  onFilterChange?: () => void
   onValueChange?: (value: string) => void
   options: readonly string[]
 }) {
@@ -85,9 +88,11 @@ function ArchiveFilterSelect({
                   key={option}
                   onClick={(event) => {
                     event.stopPropagation()
-                    setSelectedValues((current) => current.includes(option)
-                      ? current.filter((item) => item !== option)
-                      : [...current, option])
+                    const next = selectedValues.includes(option)
+                      ? selectedValues.filter((item) => item !== option)
+                      : [...selectedValues, option]
+                    setSelectedValues(next)
+                    onFilterChange?.()
                   }}
                   rightSlot={false}
                   role="option"
@@ -102,6 +107,7 @@ function ArchiveFilterSelect({
                   key={option}
                   onClick={(event) => {
                     event.stopPropagation()
+                    if (value !== option) onFilterChange?.()
                     setValue(option)
                     onValueChange?.(option)
                     setExpanded(false)
@@ -134,9 +140,21 @@ function ObjectFilter({
   onPropertyTypeChange,
   modalDisplay = "viewport",
   showFiltersButton = true,
+  onChange,
   ...props
 }: ObjectFilterProps) {
   const [isFiltersModalOpen, setIsFiltersModalOpen] = React.useState(false)
+  const [hasChangedFilter, setHasChangedFilter] = React.useState(false)
+  const [resetVersion, setResetVersion] = React.useState(0)
+  const initialPropertyType = React.useRef(propertyType)
+  const markFilterChanged = React.useCallback(() => setHasChangedFilter(true), [])
+  const resetFilters = React.useCallback(() => {
+    setResetVersion((version) => version + 1)
+    setHasChangedFilter(false)
+    if (onPropertyTypeChange) {
+      onPropertyTypeChange(initialPropertyType.current ?? "Квартиры")
+    }
+  }, [onPropertyTypeChange])
   const contentWidthClass =
     contentWidth === "container"
       ? "rhood-layout-container"
@@ -148,6 +166,10 @@ function ObjectFilter({
         "relative w-full overflow-visible bg-[var(--rh-theme-surface-bg)] pt-4",
         className,
       )}
+      onChange={(event) => {
+        onChange?.(event)
+        markFilterChanged()
+      }}
       {...props}
     >
       <div className={cn(contentWidthClass, "overflow-visible")}>
@@ -164,33 +186,58 @@ function ObjectFilter({
             </Button>
           )}
           {filters.includes("city") && (
-            <ArchiveFilterSelect label="Город" multiSelect options={cityOptions} />
+            <ArchiveFilterSelect key={`city-${resetVersion}`} label="Город" multiSelect onFilterChange={markFilterChanged} options={cityOptions} />
           )}
           {filters.includes("propertyType") && (
             <ArchiveFilterSelect
+              key={`property-type-${resetVersion}`}
               label={propertyType ?? "Квартиры"}
+              onFilterChange={markFilterChanged}
               onValueChange={onPropertyTypeChange}
               options={propertyTypeOptions}
             />
           )}
           {filters.includes("roominess") && (
-            <RoominessSelect aria-label="Количество комнат" label={false} size="sm" />
+            <RoominessSelect key={`roominess-${resetVersion}`} aria-label="Количество комнат" label={false} onSelectedValuesChange={markFilterChanged} size="sm" />
           )}
-          {filters.includes("area") && <AreaSelect size="sm" />}
-          {filters.includes("price") && <PriceSelect size="sm" />}
+          {filters.includes("area") && <AreaSelect key={`area-${resetVersion}`} size="sm" />}
+          {filters.includes("price") && <PriceSelect key={`price-${resetVersion}`} size="sm" />}
           {filters.includes("source") && (
             <ArchiveFilterSelect
+              key={`source-${resetVersion}`}
               label="Источник"
               multiSelect
+              onFilterChange={markFilterChanged}
               options={["Авито", "Циан", "Домклик", "Яндекс Недвижимость"]}
             />
           )}
           {filters.includes("author") && (
             <ArchiveFilterSelect
+              key={`author-${resetVersion}`}
               label="Автор"
               multiSelect
+              onFilterChange={markFilterChanged}
               options={["Частное лицо", "Агентство"]}
             />
+          )}
+          {hasChangedFilter && (
+            <>
+              <Button
+                appearance="ghost"
+                endIcon={false}
+                size="sm"
+                startIcon={<Search aria-hidden="true" strokeWidth={2} />}
+              >
+                Сохранить фильтр
+              </Button>
+              <IconButton
+                aria-label="Закрыть действия фильтра"
+                appearance="ghost"
+                icon={<X aria-hidden="true" strokeWidth={2} />}
+                onClick={resetFilters}
+                size="sm"
+              />
+            </>
           )}
         </div>
       </div>

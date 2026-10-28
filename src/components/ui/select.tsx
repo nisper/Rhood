@@ -8,9 +8,11 @@ import { cn } from "@/lib/utils"
 
 type SelectSize = "md" | "sm"
 type SelectContent = "text" | "chips"
+type SelectAppearance = "default" | "ghost"
 type SelectState = "default" | "hovered" | "focused"
 
 type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
+  appearance?: SelectAppearance
   content?: SelectContent
   disabled?: boolean
   error?: boolean
@@ -119,6 +121,7 @@ function resolveValue(value: React.ReactNode | undefined, fallback: string) {
 }
 
 function Select({
+  appearance = "default",
   className,
   content = "text",
   disabled = false,
@@ -147,6 +150,9 @@ function Select({
   const resolvedState: SelectState = disabled ? "default" : state
   const hasIcon = icon || startIcon
   const resolvedValue = resolveValue(value, "Value")
+  const valueTextClass = appearance === "ghost" && size === "sm"
+    ? "rh-typography-b2-med"
+    : sizeTokens[size].valueText
   const valueTone = error
     ? "text-[color:var(--rh-theme-text-error)]"
     : disabled
@@ -227,7 +233,8 @@ function Select({
             "relative flex w-fit max-w-full items-center gap-[var(--rh-sizing-common-input-padding-gap-md)] rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150",
             fullWidth && "w-full",
             sizeTokens[size].container,
-            getSurfaceClasses({ disabled, error, state: resolvedState }),
+            appearance === "ghost" && !disabled && !error && "bg-transparent",
+            !(appearance === "ghost" && !disabled && !error) && getSurfaceClasses({ disabled, error, state: resolvedState }),
             disabled ? "cursor-not-allowed" : "cursor-pointer",
             !disabled && !error && resolvedState === "default" && "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
           )}
@@ -264,7 +271,7 @@ function Select({
               className={cn(
             "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[calc(var(--spacing)*1)]",
                 valueTone,
-                sizeTokens[size].valueText,
+                valueTextClass,
               )}
               style={{ fontVariationSettings: "'wdth' 100" }}
             >
@@ -277,7 +284,7 @@ function Select({
               "flex min-w-0 flex-1 items-center overflow-hidden",
               valueTone,
               disabled && "opacity-60",
-              sizeTokens[size].valueText,
+              valueTextClass,
             )}
             style={{ fontVariationSettings: "'wdth' 100" }}
           >

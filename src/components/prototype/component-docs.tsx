@@ -62,7 +62,6 @@ import { BadgeExamples } from "./badge-examples";
 import { FormLabel } from "@/components/ui/form-label";
 import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
-import { HelpIcon } from "@/components/ui/help-icon";
 import { Island } from "@/components/ui/island";
 import { ListItem } from "@/components/ui/list-item";
 import { MainHeader } from "@/components/ui/main-header";
@@ -487,9 +486,9 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "listing-statuses",
     title: "Справочник статусов",
-    description: "Значения статусов звонка и объекта в выдаче и смысл каждого из них.",
+    description: "Подписи статусов звонка и объекта в выдаче и условия их показа.",
     group: "Выдача объектов",
-    source: "src/screens/apartment-listings-screen.tsx · docs/product/features/Режимы выдачи объектов.md",
+    source: "src/screens/apartment-listings-screen.tsx",
     render: () => <ListingStatusExamples />,
   },
   {
@@ -1447,8 +1446,10 @@ const componentDocs: ComponentDoc[] = [
     group: "Data display",
     source: "src/components/ui/badge.tsx",
     properties: [
-      { name: "children", values: "ReactNode", defaultValue: "—", description: "Текст красной solid-метки малого размера." },
+      { name: "color", values: "neutral · brand · error · warning · success · contrast", defaultValue: "error", description: "Цветовая семантика метки." },
+      { name: "appearance", values: "muted · default", defaultValue: "default", description: "Приглушённая или контрастная заливка." },
       { name: "shape", values: "default · circle", defaultValue: "default", description: "Форма метки; circle задаёт круглую форму для короткого содержимого." },
+      { name: "children", values: "ReactNode", defaultValue: "—", description: "Текст или число внутри метки." },
     ],
     render: () => <BadgeExamples />,
   },

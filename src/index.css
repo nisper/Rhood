@@ -14,6 +14,18 @@
   }
 }
 
+@keyframes tooltip-enter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .archive-overlay-enter {
   animation: archive-overlay-enter 700ms cubic-bezier(0.16, 1, 0.3, 1) 1s both;
 }
@@ -47,13 +59,13 @@
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --radius: 0.5rem;
-  --parser-fill-brand: #154ef9;
-  --parser-fill-brand-hover: #0f3bd6;
-  --parser-fill-brand-light: #d0e0fe;
-  --parser-fill-brand-light-hover: #f1f6fe;
-  --parser-fill-brand-selected: #f1f6fe;
-  --parser-fill-brand-selected-hover: #d0e0fe;
-  --parser-fill-brand-highlighted: #f1f6fe;
+  --parser-fill-brand: var(--rh-palette-brand-500);
+  --parser-fill-brand-hover: var(--rh-palette-brand-600);
+  --parser-fill-brand-light: var(--rh-palette-brand-100);
+  --parser-fill-brand-light-hover: var(--rh-palette-brand-50);
+  --parser-fill-brand-selected: var(--rh-palette-brand-50);
+  --parser-fill-brand-selected-hover: var(--rh-palette-brand-100);
+  --parser-fill-brand-highlighted: var(--rh-palette-brand-50);
   --parser-fill-contrast-static: #ffffff;
   --parser-fill-neutral: #f4f4f4;
   --parser-fill-neutral-hover: rgba(43, 43, 43, 0.04);
@@ -95,7 +107,7 @@
   --parser-border-neutral-dark: #454545;
   --parser-border-contrast: #ffffff;
   --parser-border-hover-inverse: #ffffff;
-  --parser-border-focus: #154ef9;
+  --parser-border-focus: var(--rh-palette-brand-500);
   --parser-border-error: #fc3c2a;
   --parser-border-contrast-disabled: rgba(255, 255, 255, 0.12);
   --parser-border-error-light: #fe9e7f;
@@ -107,9 +119,9 @@
   --parser-border-success-light: #a4f282;
   --parser-border-disabled: #131d351f;
   --parser-border-disabled-inverse: rgba(255, 255, 255, 0.12);
-  --parser-text-brand: #0f3bd6;
-  --parser-text-link: #154ef9;
-  --parser-text-link-hovered: #0f3bd6;
+  --parser-text-brand: var(--rh-palette-brand-600);
+  --parser-text-link: var(--rh-palette-brand-500);
+  --parser-text-link-hovered: var(--rh-palette-brand-600);
   --parser-text-neutral-primary: rgba(26, 26, 26, 0.87);
   --parser-text-neutral-secondary: rgba(26, 26, 26, 0.6);
   --parser-text-neutral-secondary-contrast: rgba(255, 255, 255, 0.6);

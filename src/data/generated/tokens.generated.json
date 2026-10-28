@@ -1,12 +1,12 @@
 {
   "summary": {
-    "total": 407,
+    "total": 408,
     "byCollection": {
       "palette": 161,
-      "theme": 113,
+      "theme": 114,
       "sizing": 133
     },
-    "aliases": 203,
+    "aliases": 204,
     "warnings": []
   },
   "tokens": [
@@ -1755,11 +1755,11 @@
       "name": "text/link",
       "cssVariable": "--rh-theme-text-link",
       "type": "color",
-      "cssValue": "var(--rh-palette-brand-500)",
+      "cssValue": "var(--rh-palette-blue-500)",
       "resolvedValue": "#154ef9",
       "alias": {
         "collection": "palette",
-        "name": "brand/500",
+        "name": "blue/500",
         "source": "figma"
       },
       "figmaVariableId": "VariableID:1654:29578"
@@ -1769,11 +1769,11 @@
       "name": "text/link-hovered",
       "cssVariable": "--rh-theme-text-link-hovered",
       "type": "color",
-      "cssValue": "var(--rh-palette-brand-600)",
+      "cssValue": "var(--rh-palette-blue-600)",
       "resolvedValue": "#0f3bd6",
       "alias": {
         "collection": "palette",
-        "name": "brand/600",
+        "name": "blue/600",
         "source": "figma"
       },
       "figmaVariableId": "VariableID:1654:29579"

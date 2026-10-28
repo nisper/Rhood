@@ -12,6 +12,8 @@ const properties = [
   ["children", "ReactNode", "—", "Текст или другое содержимое ссылки."],
   ["startIcon", "ReactNode", "—", "Иконка слева от содержимого."],
   ["endIcon", "ReactNode", "—", "Иконка справа от содержимого."],
+  ["external", "boolean", "false", "Показывает стрелку внешнего ресурса при наведении или фокусе."],
+  ["externalLabel", "ReactNode", "—", "Необязательная подпись рядом со стрелкой внешнего ресурса."],
 ]
 
 function CodeProp({ name, value }: { name: string; value: string }) {
@@ -59,6 +61,19 @@ const compositionSnippet = (
   </code>
 )
 
+const externalSnippet = (
+  <>
+    <LinkSnippet>
+      <CodeProp name="external" value="true" />
+    </LinkSnippet>
+    <br />
+    <LinkSnippet>
+      <CodeProp name="external" value="true" />{" "}
+      <CodeProp name="externalLabel" value={'"Космос"'} />
+    </LinkSnippet>
+  </>
+)
+
 function ExampleLink({
   children,
   ...props
@@ -83,6 +98,13 @@ export function LinkExamples() {
               </div>
             </div>]}
         title="Размер"
+      />
+
+      <ShowcaseSection
+        codeSnippet={externalSnippet}
+        description="При наведении ссылка подчёркивается и показывает стрелку внешнего ресурса. Можно добавить необязательную подпись рядом с иконкой. Стрелка и подпись также появляются при клавиатурном фокусе."
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center gap-6"><ExampleLink external>Открыть на агрегаторе</ExampleLink><ExampleLink external externalLabel="Космос">Открыть объект</ExampleLink></div></div>]}
+        title="Внешний ресурс"
       />
 
       <ShowcaseSection

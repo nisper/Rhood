@@ -1,6 +1,9 @@
 import { ShowcaseSection } from "@/components/ui/showcase-section";
+import { Copy } from "lucide-react";
 import * as React from "react";
 
+import { Chip } from "@/components/ui/chip";
+import { IconButton } from "@/components/ui/icon-button";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
@@ -48,9 +51,9 @@ const cellProperties = [
   ["role", "head / body", "head", "Ячейка заголовка или данных."],
   [
     "type",
-    "text / number / skeleton / checkbox / placeholder",
+    "text / number / skeleton / checkbox / placeholder / chip / button",
     "checkbox",
-    "Содержимое, выравнивание и состояние загрузки.",
+    "Содержимое ячейки; для chip и button уменьшает вертикальные отступы ячейки на внутренний padding содержимого.",
   ],
   [
     "rowId",
@@ -204,14 +207,11 @@ const stateSnippet = (
 );
 const compositionSnippet = (
   <Snippet>
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>TableCell</span>{" "}
-    <CodeProp name="role" value={'"head"'} />{" "}
-    <CodeProp name="type" value={'"number"'} />
-    <span className={syntax}>{`>`}</span>Стоимость, ₽
-    <span className={syntax}>{`</`}</span>
-    <span className={component}>TableCell</span>
-    <span className={syntax}>{`>`}</span>
+    <span className={syntax}>{`<`}</span><span className={component}>TableCell</span>{" "}<CodeProp name="type" value={'"chip"'} />
+    <span className={syntax}>{`>`}</span><span className={syntax}>{`<`}</span><span className={component}>Chip</span>{" "}<CodeProp name="appearance" value={'"muted"'} /><span className={syntax}>{`>`}</span>Активный<span className={syntax}>{`</`}</span><span className={component}>Chip</span><span className={syntax}>{`>`}</span><span className={syntax}>{`</`}</span><span className={component}>TableCell</span><span className={syntax}>{`>`}</span>
+    {"\n"}
+    <span className={syntax}>{`<`}</span><span className={component}>TableCell</span>{" "}<CodeProp name="type" value={'"button"'} />
+    <span className={syntax}>{`>`}</span><span className={syntax}>{`<`}</span><span className={component}>IconButton</span>{" "}<CodeProp name="size" value={'"sm"'} />{" "}<CodeProp name="icon" value="{<Copy />}" /><span className={syntax}>{` />`}</span><span className={syntax}>{`</`}</span><span className={component}>TableCell</span><span className={syntax}>{`>`}</span>
   </Snippet>
 );
 const sortingSnippet = (
@@ -422,6 +422,47 @@ function Properties() {
   );
 }
 
+function CompositionCellsTable() {
+  return (
+    <Table
+      className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
+      columns={[
+        { key: "object", alignment: "left" },
+        { key: "price", alignment: "right" },
+        { key: "status", alignment: "left" },
+        { key: "id", alignment: "center" },
+      ]}
+    >
+      <TableRow>
+        <TableCell column="object" helpIcon={false} role="head" type="text" width="fill">Объект</TableCell>
+        <TableCell column="price" helpIcon={false} role="head" type="number" width={150}>Стоимость, ₽</TableCell>
+        <TableCell column="status" helpIcon={false} role="head" type="text" width={180}>Статус</TableCell>
+        <TableCell column="id" helpIcon={false} role="head" type="text" width={56}>ID</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell column="object" role="body" type="text" width="fill">Космос</TableCell>
+        <TableCell column="price" role="body" type="number" width={150}>12 500 000</TableCell>
+        <TableCell column="status" role="body" type="chip" width={180}>
+          <Chip appearance="muted" color="brand" icon={false} propDelete={false} size="sm">Активный</Chip>
+        </TableCell>
+        <TableCell column="id" role="body" type="button" width={56}>
+          <IconButton aria-label="Скопировать ID объекта Космос" appearance="inherit" icon={<Copy aria-hidden="true" strokeWidth={2} />} size="sm" />
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell column="object" role="body" type="text" width="fill">Маяк</TableCell>
+        <TableCell column="price" role="body" type="number" width={150}>8 900 000</TableCell>
+        <TableCell column="status" role="body" type="chip" width={180}>
+          <Chip appearance="muted" color="warning" icon={false} propDelete={false} size="sm">Приостановлен</Chip>
+        </TableCell>
+        <TableCell column="id" role="body" type="button" width={56}>
+          <IconButton aria-label="Скопировать ID объекта Маяк" appearance="inherit" icon={<Copy aria-hidden="true" strokeWidth={2} />} size="sm" />
+        </TableCell>
+      </TableRow>
+    </Table>
+  );
+}
+
 export function TableExamples() {
   const [selectedIds, setSelectedIds] = React.useState<string[]>(["mayak"]);
 
@@ -585,42 +626,16 @@ export function TableExamples() {
 
       <ShowcaseSection
         codeSnippet={compositionSnippet}
-        description="Table собирается из строк и TableCell. Заголовки описывают колонку, числовые ячейки выравниваются по правому краю, а skeleton показывает загрузку данных."
+        description="Table собирается из строк и TableCell. Для type=chip и type=button вертикальные отступы ячейки уменьшаются на внутренний padding содержимого, чтобы выровнять статус и кнопку с обычным текстом и сохранить высоту строки."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full gap-5 sm:grid-cols-2">
+              <div className="grid w-full gap-5">
                 <div className="grid gap-2">
                   <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Заголовок и данные
+                    Заголовок, данные, статус и действие
                   </span>
-                  <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-                    <TableRow>
-                      <TableCell
-                        role="head"
-                        type="text"
-                        width="fill"
-                      >
-                        Название
-                      </TableCell>
-                      <TableCell
-                        helpIcon={false}
-                        role="head"
-                        type="number"
-                        width="fill"
-                      >
-                        Стоимость, ₽
-                      </TableCell>
-                    </TableRow>
-                    <TableRow>
-                      <TableCell role="body" type="text" width="fill">
-                        Космос
-                      </TableCell>
-                      <TableCell role="body" type="number" width="fill">
-                        12 500 000
-                      </TableCell>
-                    </TableRow>
-                  </Table>
+                  <CompositionCellsTable />
                 </div>
-                <div className="grid gap-2">
+                <div className="grid max-w-[480px] gap-2">
                   <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
                     Загрузка
                   </span>
@@ -636,11 +651,13 @@ export function TableExamples() {
         title="Состав"
       />
 
-      <ShowcaseSection
-        description="Публичные свойства Table, TableCell и TableRow. Пагинация, данные и обработчики сортировки принадлежат экрану, который использует таблицу."
-        panels={[<Properties />]}
-        title="Свойства"
-      />
+      <section className="mt-10 grid gap-4">
+        <div className="grid gap-1">
+          <h2 className="rh-typography-h4">Свойства</h2>
+          <p className="rh-typography-b1">Публичные свойства Table, TableCell и TableRow. Пагинация, данные и обработчики сортировки принадлежат экрану, который использует таблицу.</p>
+        </div>
+        <Properties />
+      </section>
     </div>
   );
 }

@@ -1,7 +1,10 @@
 import {
   Columns3Cog,
   ChevronRight,
+  ChevronsDown,
+  ChevronsUp,
   CircleUser,
+  Copy,
   Map,
   Phone,
   Table2,
@@ -29,6 +32,9 @@ import { MapPriceTag } from "@/components/ui/map-price-tag";
 import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
 import { Select } from "@/components/ui/select";
+import { Segment } from "@/components/ui/segment";
+import { SegmentedControl } from "@/components/ui/segmented-control";
+import { TabBar } from "@/components/ui/tab-bar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
@@ -38,8 +44,11 @@ import archiveLandListings from "@/data/mock/archive-land-listings.json";
 import flatListings from "@/data/mock/real-estate-flat-listings.json";
 import houseListings from "@/data/mock/real-estate-house-listings.json";
 import landListings from "@/data/mock/real-estate-land-listings.json";
+import { myObjectStatuses } from "@/data/my-object-statuses";
 
 const LISTINGS_PER_PAGE = 20;
+const MY_LISTING_STATUS_COLUMN_WIDTH = 152;
+const MY_LISTING_DUPLICATES_COLUMN_WIDTH = 142;
 const listings = [...flatListings, ...houseListings, ...landListings];
 const listingsByPropertyType = {
   Квартиры: flatListings,
@@ -92,7 +101,11 @@ type ColumnKey =
   | "author"
   | "publishedAt"
   | "actualizedAt"
-  | "status";
+  | "status"
+  | "duplicates"
+  | "savedAt"
+  | "crmStatus"
+  | "id";
 
 const listingsTableColumns: { key: ColumnKey; label: string }[] = [
   { key: "buyer", label: "Покупатели" },
@@ -103,8 +116,36 @@ const listingsTableColumns: { key: ColumnKey; label: string }[] = [
   { key: "status", label: "Статус" },
 ];
 
+const myListingsTableColumns: { key: ColumnKey; label: string }[] = [
+  { key: "address", label: "Адрес" },
+  { key: "price", label: "Цена, ₽" },
+  { key: "pricePerM2", label: "Цена за м², ₽" },
+  { key: "duplicates", label: "Дубли" },
+  { key: "savedAt", label: "Сохранен в CRM" },
+  { key: "crmStatus", label: "Статус в CRM" },
+  { key: "id", label: "ID" },
+];
+
 type ArchivePropertyType = keyof typeof archiveListingsByPropertyType;
 type ArchiveColumn = { key: ColumnKey; label: string };
+type MyListingsMode = "saved" | "duplicates";
+const myListingsTabs: { label: string; value: MyListingsMode }[] = [
+  { label: "Объекты из Rhood", value: "saved" },
+  { label: "Дубли", value: "duplicates" },
+];
+type MyListingRow = {
+  listing: (typeof listings)[number];
+  originalIndex: number;
+  duplicateCount: number;
+  duplicatePriceStatus: "cheaper" | "more-expensive" | null;
+  crmStatus: (typeof myObjectStatuses)[number];
+};
+
+const listingTypeByPropertyType: Record<ArchivePropertyType, "FLAT" | "HOUSE" | "LAND"> = {
+  Квартиры: "FLAT",
+  Дома: "HOUSE",
+  Участки: "LAND",
+};
 
 function getArchivePropertyTypeLabel(count: number, propertyType: ArchivePropertyType) {
   const lastTwoDigits = count % 100;
@@ -138,7 +179,7 @@ const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]>
   Квартиры: [
     sharedArchiveColumns[0],
     { key: "rooms", label: "Ком." },
-    { key: "area", label: "Площадь, м²" },
+    { key: "area", label: "Площ., м²" },
     { key: "floor", label: "Этаж" },
     sharedArchiveColumns[1],
     { key: "pricePerM2", label: "Цена, ₽/м²" },
@@ -146,7 +187,7 @@ const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]>
   ],
   Дома: [
     sharedArchiveColumns[0],
-    { key: "area", label: "Площадь, м²" },
+    { key: "area", label: "Площ., м²" },
     { key: "landArea", label: "Площадь, сот." },
     sharedArchiveColumns[1],
     { key: "pricePerM2", label: "Цена, ₽/м²" },
@@ -252,6 +293,14 @@ const archiveMosaicItems = [
 
 const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
   {
+    label: "По дате — новые",
+    value: { column: "publishedAt", direction: "desc" },
+  },
+  {
+    label: "По дате — старые",
+    value: { column: "publishedAt", direction: "asc" },
+  },
+  {
     label: "По цене — дороже",
     value: { column: "price", direction: "desc" },
   },
@@ -266,14 +315,6 @@ const sortOptions: { label: string; value: Exclude<SortState, null> }[] = [
   {
     label: "По цене за м² — дешевле",
     value: { column: "pricePerM2", direction: "asc" },
-  },
-  {
-    label: "По дате — новые",
-    value: { column: "publishedAt", direction: "desc" },
-  },
-  {
-    label: "По дате — старые",
-    value: { column: "publishedAt", direction: "asc" },
   },
 ];
 
@@ -375,6 +416,7 @@ function TableToolbar({
   onLeaderboardOpen,
   onCardsViewChange,
   onSortChange,
+  myListings = false,
   cardsView = false,
   showLeaderboard = true,
   showMap = true,
@@ -387,6 +429,7 @@ function TableToolbar({
   onLeaderboardOpen: () => void;
   onCardsViewChange: (cardsView: boolean) => void;
   onSortChange: (sort: SortState) => void;
+  myListings?: boolean;
   cardsView?: boolean;
   showLeaderboard?: boolean;
   showMap?: boolean;
@@ -426,10 +469,13 @@ function TableToolbar({
     onHiddenColumnsChange(nextColumns);
   }
 
+  const toolbarButtonAppearance = myListings ? "default" : "ghost";
+
   return (
     <div className="flex flex-wrap items-center gap-2">
       <div className={sortOpen ? "relative z-40" : "relative"} ref={sortMenuRef}>
       <Select
+        appearance="ghost"
         aria-expanded={sortOpen}
         aria-haspopup="menu"
         expanded={sortOpen}
@@ -471,7 +517,7 @@ function TableToolbar({
       </div>
 
       {showMap && <Button
-        appearance="default"
+        appearance={toolbarButtonAppearance}
         endIcon={false}
         onClick={() => onCardsViewChange(!cardsView)}
         size="sm"
@@ -481,7 +527,7 @@ function TableToolbar({
       </Button>}
 
       {showLeaderboard && <Button
-        appearance="default"
+        appearance={toolbarButtonAppearance}
         endIcon={false}
         onClick={onLeaderboardOpen}
         size="sm"
@@ -497,7 +543,7 @@ function TableToolbar({
       </Button>}
       {!cardsView && <div className="relative ml-auto" ref={columnsMenuRef}>
         <Button
-          appearance="default"
+          appearance={myListings ? "ghost" : toolbarButtonAppearance}
           aria-expanded={columnsOpen}
           aria-haspopup="menu"
           endIcon={false}
@@ -516,7 +562,7 @@ function TableToolbar({
             className="absolute right-0 top-full z-30 mt-1"
             role="menu"
           >
-              {(archive ? archiveColumnsByPropertyType[archivePropertyType] : listingsTableColumns).map((column) => (
+              {(archive ? archiveColumnsByPropertyType[archivePropertyType] : myListings ? myListingsTableColumns : listingsTableColumns).map((column) => (
               <MenuItemMultiselect
                 checked={!hiddenColumns.has(column.key)}
                 icon={false}
@@ -815,7 +861,6 @@ function ResultRow({
       >
         <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
           <Link
-            className="text-[var(--parser-text-brand)]"
             href="#object-info"
             onClick={(event) => {
               event.preventDefault();
@@ -851,12 +896,12 @@ function ResultRow({
         custom
         role="body"
         compact
-        type="text"
+        type="button"
         width={CALL_COLUMN_WIDTH}
       >
         <div className="grid">
           <IconButton
-            appearance="primary"
+            appearance="secondary"
             aria-label="Позвонить"
             className="col-start-1 row-start-1 justify-self-center"
             icon={<Phone aria-hidden="true" strokeWidth={2} />}
@@ -892,7 +937,7 @@ function ResultRow({
           custom
           role="body"
           compact
-          type="text"
+          type="chip"
           width={152}
         >
           <Chip
@@ -919,7 +964,6 @@ function ResultRow({
         >
           <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
             <Link
-              className="text-[var(--parser-text-brand)]"
               href={sourceHref(listing.domain, listing.url)}
               onClick={(event) => event.stopPropagation()}
               rel="noreferrer"
@@ -956,7 +1000,7 @@ function ResultRow({
           custom
           role="body"
           compact
-          type="text"
+          type="chip"
           width={236}
         >
           <Chip
@@ -993,7 +1037,7 @@ function ArchiveResultHeader({
         {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" helpIcon={false} role="head" sort={false} type="number" width={60}>
           {label("rooms")}
         </TableCell>}
-        {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={120}>
+        {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" helpIcon={false} role="head" sort={false} type="number" width={96}>
           {label("area")}
         </TableCell>}
         {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" helpIcon={false} role="head" sort={false} type="number" width={120}>
@@ -1061,7 +1105,7 @@ function ArchiveResultRow({
       {availableColumns.has("rooms") && !hiddenColumns.has("rooms") && <TableCell column="rooms" role="body" type="number" width={60}>
         {listing.roomCount === 0 ? "Студия" : listing.roomCount}
       </TableCell>}
-      {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={120}>
+      {availableColumns.has("area") && !hiddenColumns.has("area") && <TableCell column="area" role="body" type="number" width={96}>
         {areaValue(listing.area, areaFractionDigits)}
       </TableCell>}
       {availableColumns.has("landArea") && !hiddenColumns.has("landArea") && <TableCell column="landArea" role="body" type="number" width={120}>
@@ -1268,6 +1312,313 @@ function ListingsTable({
   );
 }
 
+function getObjectCountLabel(count: number) {
+  const lastTwoDigits = count % 100;
+  const lastDigit = count % 10;
+  const noun = lastTwoDigits >= 11 && lastTwoDigits <= 14
+    ? "объектов"
+    : lastDigit === 1
+      ? "объект"
+      : lastDigit >= 2 && lastDigit <= 4
+        ? "объекта"
+        : "объектов";
+
+  return `${count} ${noun}`;
+}
+
+function MyListingsSelect({
+  label,
+  onValueChange,
+  options,
+  value,
+}: {
+  label: string;
+  onValueChange: (value: string) => void;
+  options: readonly string[];
+  value: string;
+}) {
+  const menuRef = React.useRef<HTMLDivElement>(null);
+  const [expanded, setExpanded] = useMenuOpen(menuRef);
+
+  return (
+    <div className={expanded ? "relative z-40" : "relative"} ref={menuRef}>
+      <Select
+        aria-label={label}
+        expanded={expanded}
+        label={false}
+        menu={expanded && (
+          <Menu aria-label={label} className="absolute left-0 top-full z-50 mt-1 min-w-full" role="listbox">
+            {options.map((option) => (
+              <MenuItemSingleSelect
+                aria-selected={value === option}
+                icon={false}
+                key={option}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  onValueChange(option);
+                  setExpanded(false);
+                }}
+                rightSlot={false}
+                role="option"
+                secondaryText={false}
+                selected={value === option}
+                startIcon={false}
+              >
+                {option}
+              </MenuItemSingleSelect>
+            ))}
+          </Menu>
+        )}
+        onClick={() => setExpanded((current) => !current)}
+        onExpandedChange={setExpanded}
+        size="sm"
+        value={value}
+      />
+    </div>
+  );
+}
+
+function MyListingsFilters({
+  onPropertyTypeChange,
+  onStatusChange,
+  propertyType,
+  status,
+}: {
+  onPropertyTypeChange: (value: ArchivePropertyType) => void;
+  onStatusChange: (value: string) => void;
+  propertyType: ArchivePropertyType;
+  status: string;
+}) {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <SegmentedControl
+        aria-label="Тип недвижимости"
+        onValueChange={(value) => onPropertyTypeChange(value as ArchivePropertyType)}
+        size="sm"
+        value={propertyType}
+      >
+        <Segment value="Квартиры">Квартиры</Segment>
+        <Segment value="Дома">Дома</Segment>
+        <Segment value="Участки">Участки</Segment>
+      </SegmentedControl>
+      <MyListingsSelect
+        label="Статус в CRM"
+        onValueChange={onStatusChange}
+        options={["Все статусы", ...myObjectStatuses.map(({ label }) => label)]}
+        value={status}
+      />
+    </div>
+  );
+}
+
+function MyListingsTitleTabs({
+  mode,
+  onModeChange,
+}: {
+  mode: MyListingsMode;
+  onModeChange: (mode: MyListingsMode) => void;
+}) {
+  const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([]);
+  const [activeTabOffset, setActiveTabOffset] = React.useState(0);
+
+  React.useLayoutEffect(() => {
+    const selectedIndex = myListingsTabs.findIndex(({ value }) => value === mode);
+    setActiveTabOffset(tabRefs.current[selectedIndex]?.offsetLeft ?? 0);
+  }, [mode]);
+
+  function handleKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+    const nextIndex = event.key === "ArrowRight"
+      ? (index + 1) % myListingsTabs.length
+      : event.key === "ArrowLeft"
+        ? (index - 1 + myListingsTabs.length) % myListingsTabs.length
+        : event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? myListingsTabs.length - 1
+            : -1;
+
+    if (nextIndex < 0) return;
+    event.preventDefault();
+    const nextTab = myListingsTabs[nextIndex];
+    onModeChange(nextTab.value);
+    tabRefs.current[nextIndex]?.focus();
+  }
+
+  return (
+    <div className="grid justify-items-start">
+      <div className="relative w-fit">
+        <TabBar aria-label="Режим списка объектов" className="w-fit gap-[var(--rh-sizing-base-module-4)] border-b-0" role="tablist">
+          {myListingsTabs.map(({ label, value }, index) => {
+            const selected = mode === value;
+
+            return (
+              <button
+                aria-controls="my-listings-panel"
+                aria-selected={selected}
+                className={cn(
+                  "flex cursor-pointer items-center border-0 bg-transparent px-0 py-0 text-[var(--rh-theme-text-neutral-secondary)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] hover:text-[var(--rh-theme-text-neutral-primary)]",
+                  selected && "text-[var(--rh-theme-text-neutral-primary)]",
+                )}
+                id={`my-listings-tab-${value}`}
+                key={value}
+                onClick={() => onModeChange(value)}
+                onKeyDown={(event) => handleKeyDown(event, index)}
+                ref={(element) => { tabRefs.current[index] = element; }}
+                role="tab"
+                tabIndex={selected ? 0 : -1}
+                type="button"
+              >
+                <span className="rh-typography-h2 font-[500]">{label}</span>
+              </button>
+            );
+          })}
+        </TabBar>
+      </div>
+      <p
+        className="mt-2 rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]"
+        style={{ marginLeft: activeTabOffset }}
+      >
+        {mode === "duplicates"
+          ? "Rhood нашёл похожие объявления на агрегаторах"
+          : "Вы сохранили эти объекты из парсера"}
+      </p>
+    </div>
+  );
+}
+
+function MyListingsTable({
+  className,
+  currentPage,
+  hiddenColumns,
+  listings: tableListings,
+}: {
+  className?: string;
+  currentPage: number;
+  hiddenColumns: ReadonlySet<ColumnKey>;
+  listings: readonly MyListingRow[];
+}) {
+  const pageListings = tableListings.slice(
+    (currentPage - 1) * LISTINGS_PER_PAGE,
+    currentPage * LISTINGS_PER_PAGE,
+  );
+
+  if (tableListings.length === 0) {
+    return (
+      <div className="px-4 py-8 text-center rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+        Нет объектов по выбранным фильтрам
+      </div>
+    );
+  }
+
+  return (
+    <Table
+      bordered
+      className={className}
+      columns={[
+        ...myListingsTableColumns
+          .filter(({ key }) => !hiddenColumns.has(key))
+          .map(({ key }) => ({
+            key,
+            alignment: key === "price" || key === "pricePerM2" ? "right" as const : key === "id" ? "center" as const : "left" as const,
+          })),
+      ]}
+      minWidth={1440}
+      stickyHeader
+      verticalBorders
+    >
+      <TableRow>
+        {!hiddenColumns.has("address") && <TableCell column="address" helpIcon helpTooltip="Ссылка откроет объект в Космосе" role="head" sort={false} type="text" width="fill">Адрес</TableCell>}
+        {!hiddenColumns.has("price") && <TableCell column="price" helpIcon helpTooltip="Мы постоянно сравниваем актуальные цены из CRM с изменениями цен на агрегаторе" role="head" sort={false} type="number" width={PRICE_COLUMN_WIDTH}>Цена, ₽</TableCell>}
+        {!hiddenColumns.has("pricePerM2") && <TableCell column="pricePerM2" helpIcon={false} role="head" sort={false} type="number" width={PRICE_COLUMN_WIDTH}>Цена за м², ₽</TableCell>}
+        {!hiddenColumns.has("duplicates") && <TableCell column="duplicates" helpIcon helpTooltip="Объекты, найденные на других площадках, как возможные дубли" role="head" sort={false} type="text" width={MY_LISTING_DUPLICATES_COLUMN_WIDTH}>Дубли</TableCell>}
+        {!hiddenColumns.has("savedAt") && <TableCell column="savedAt" helpIcon={false} role="head" sort={false} type="text" width={176}>Сохранен в CRM</TableCell>}
+        {!hiddenColumns.has("crmStatus") && <TableCell column="crmStatus" helpIcon={false} role="head" sort={false} type="text" width={MY_LISTING_STATUS_COLUMN_WIDTH}>Статус в CRM</TableCell>}
+        {!hiddenColumns.has("id") && <TableCell column="id" helpIcon={false} role="head" sort={false} type="text" width={56}>ID</TableCell>}
+      </TableRow>
+      {pageListings.map(({ listing, duplicateCount, duplicatePriceStatus, crmStatus }) => {
+        const price = getPrice(listing);
+
+        return (
+          <TableRow key={listing.id}>
+            {!hiddenColumns.has("address") && <TableCell column="address" role="body" type="text" width="fill">
+              <Link
+                external
+                externalLabel="Космос"
+                href={sourceHref(listing.domain, listing.url ?? "")}
+                onClick={(event) => event.stopPropagation()}
+                rel="noreferrer"
+                size="b2"
+                target="_blank"
+              >
+                {listing.address}
+              </Link>
+            </TableCell>}
+            {!hiddenColumns.has("price") && <TableCell column="price" role="body" type="number" width={PRICE_COLUMN_WIDTH}>{formatNumber(price)}</TableCell>}
+            {!hiddenColumns.has("pricePerM2") && <TableCell column="pricePerM2" role="body" type="number" width={PRICE_COLUMN_WIDTH}>{formatNumber(Math.round(price / listing.area))}</TableCell>}
+            {!hiddenColumns.has("duplicates") && <TableCell
+              column="duplicates"
+              custom
+              helpIcon={Boolean(duplicatePriceStatus)}
+              helpTooltip={duplicatePriceStatus === "cheaper"
+                ? "Есть дешевле"
+                : duplicatePriceStatus === "more-expensive"
+                  ? "Есть дороже"
+                  : undefined}
+              role="body"
+              type="text"
+              width={MY_LISTING_DUPLICATES_COLUMN_WIDTH}
+            >
+              <div className="flex min-h-5 w-full items-center justify-between gap-1">
+                {duplicateCount > 0 ? (
+                  <Link href="#duplicates" onClick={(event) => event.stopPropagation()} size="b2">
+                    {getObjectCountLabel(duplicateCount)}
+                  </Link>
+                ) : "—"}
+                {duplicatePriceStatus && (
+                  <span
+                    aria-label={duplicatePriceStatus === "cheaper" ? "Есть дешевле" : "Есть дороже"}
+                    className={cn(
+                      "flex size-5 shrink-0 items-center justify-center rounded-[var(--rh-sizing-border-radius-md)]",
+                      duplicatePriceStatus === "cheaper"
+                        ? "bg-[var(--rh-theme-fill-error-light)] text-[var(--rh-theme-icon-error)]"
+                        : "bg-[var(--rh-theme-fill-success-light)] text-[var(--rh-theme-icon-success)]",
+                    )}
+                    role="img"
+                  >
+                    {duplicatePriceStatus === "cheaper"
+                      ? <ChevronsDown aria-hidden="true" className="size-4" />
+                      : <ChevronsUp aria-hidden="true" className="size-4" />}
+                  </span>
+                )}
+              </div>
+            </TableCell>}
+            {!hiddenColumns.has("savedAt") && <TableCell className="tabular-nums" column="savedAt" role="body" type="text" width={176}>
+              {formatPublishedAt(listing.createdAt)}
+            </TableCell>}
+            {!hiddenColumns.has("crmStatus") && <TableCell column="crmStatus" role="body" type="chip" width={MY_LISTING_STATUS_COLUMN_WIDTH}>
+              <Chip appearance="muted" className="shrink-0 self-start" color={crmStatus.color} icon={false} propDelete={false} size="sm">
+                {crmStatus.label}
+              </Chip>
+            </TableCell>}
+            {!hiddenColumns.has("id") && <TableCell column="id" role="body" type="button" width={56}>
+              <IconButton
+                aria-label={`Скопировать ID ${listing.id}`}
+                appearance="inherit"
+                icon={<Copy aria-hidden="true" strokeWidth={2} />}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  void navigator.clipboard?.writeText(String(listing.id));
+                }}
+                size="sm"
+              />
+            </TableCell>}
+          </TableRow>
+        );
+      })}
+    </Table>
+  );
+}
+
 const listingCardPhotos = [
   "/Rhood/assets/object-gallery-2.png",
   "/Rhood/assets/object-gallery-3.png",
@@ -1366,6 +1717,9 @@ export function ApartmentListingsScreen({
 }) {
   const isMyListings = view === "my";
   const isArchive = view === "archive";
+  const [myListingsMode, setMyListingsMode] = React.useState<MyListingsMode>("saved");
+  const [myPropertyType, setMyPropertyType] = React.useState<ArchivePropertyType>("Квартиры");
+  const [myCrmStatus, setMyCrmStatus] = React.useState("Все статусы");
   const [basePropertyType, setBasePropertyType] = React.useState<ArchivePropertyType>("Квартиры");
   const [archivePropertyType, setArchivePropertyType] = React.useState<
     keyof typeof archiveListingsByPropertyType
@@ -1379,6 +1733,22 @@ export function ApartmentListingsScreen({
     : isMyListings
       ? listings
       : listingsByPropertyType[basePropertyType];
+  const myObjectRows: MyListingRow[] = screenListings.map((listing, originalIndex) => ({
+    listing,
+    originalIndex,
+    duplicateCount: originalIndex % 5 === 4 ? 0 : originalIndex % 4 + 1,
+    duplicatePriceStatus: originalIndex % 5 === 0
+      ? "cheaper"
+      : originalIndex % 5 === 1
+        ? "more-expensive"
+        : null,
+    crmStatus: myObjectStatuses[originalIndex % myObjectStatuses.length],
+  }));
+  const filteredMyObjectRows = myObjectRows.filter(({ listing, duplicateCount, crmStatus }) => (
+    listing.type === listingTypeByPropertyType[myPropertyType]
+    && (myListingsMode !== "duplicates" || duplicateCount > 0)
+    && (myCrmStatus === "Все статусы" || crmStatus.label === myCrmStatus)
+  ));
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
     new Set(),
   );
@@ -1422,49 +1792,82 @@ export function ApartmentListingsScreen({
         logoHref="/Rhood/"
         navItems={getNavItems(view)}
       />
-      {!isMyListings && (
-        isArchive ? (
-          <ObjectFilter
-            contentWidth="container"
-            propertyType={archivePropertyType}
-            onPropertyTypeChange={(value) => setArchivePropertyType(value as typeof archivePropertyType)}
-            showFiltersButton={false}
-          />
-        ) : (
-          <ObjectFilter
-            contentWidth="container"
-            filters={basePropertyType === "Квартиры"
-              ? ["propertyType", "roominess", "area", "price"]
-              : ["propertyType", "area", "price"]}
-            onPropertyTypeChange={(value) => {
-              setBasePropertyType(value as ArchivePropertyType);
-              setCurrentPage(1);
-            }}
-            propertyType={basePropertyType}
-          />
-        )
-      )}
-
       <main className="grid min-w-0 gap-0">
-        {!isMapView && (
-          <>
-            <section className="rhood-layout-container py-8">
-              <h1 className="rh-typography-h2 mb-1 font-[500]">
-                {isArchive ? (
-                  `В архиве — ${formatNumber(archiveObjectCountByPropertyType[archivePropertyType])} ${getArchivePropertyTypeLabel(archiveObjectCountByPropertyType[archivePropertyType], archivePropertyType)}`
+        <>
+            <section className="py-8">
+              <div className="rhood-layout-container">
+              {isMyListings ? (
+                <>
+                  <h1 className="sr-only">
+                    {myListingsMode === "duplicates" ? "Дубли объектов из Космоса" : "Объекты из Rhood"}
+                  </h1>
+                  <MyListingsTitleTabs
+                    mode={myListingsMode}
+                    onModeChange={(mode) => {
+                      setMyListingsMode(mode);
+                      setCurrentPage(1);
+                    }}
+                  />
+                </>
+              ) : (
+                <h1 className="rh-typography-h2 mb-1 font-[500]">
+                  {isArchive ? (
+                    "Архив объектов"
+                  ) : (
+                    <>
+                      {formatNumber(screenListings.length)}{" "}
+                      {screenListings.length === 1
+                        ? "объект"
+                        : screenListings.length >= 2 && screenListings.length <= 4
+                          ? "объекта"
+                          : "объектов"} в Тюмени
+                    </>
+                  )}
+                </h1>
+              )}
+              {isMyListings && (
+                <div aria-label="Фильтры моих объектов" className="mt-6" role="group">
+                  <MyListingsFilters
+                    onPropertyTypeChange={(value) => {
+                      setMyPropertyType(value);
+                      setCurrentPage(1);
+                    }}
+                    onStatusChange={(value) => {
+                      setMyCrmStatus(value);
+                      setCurrentPage(1);
+                    }}
+                    propertyType={myPropertyType}
+                    status={myCrmStatus}
+                  />
+                </div>
+              )}
+              </div>
+              {!isMyListings && (
+                isArchive ? (
+                  <ObjectFilter
+                    className="mt-6 pt-0"
+                    contentWidth="container"
+                    propertyType={archivePropertyType}
+                    onPropertyTypeChange={(value) => setArchivePropertyType(value as typeof archivePropertyType)}
+                    showFiltersButton={false}
+                  />
                 ) : (
-                  <>
-                    {formatNumber(screenListings.length)}{" "}
-                    {screenListings.length === 1
-                      ? "объект"
-                      : screenListings.length >= 2 && screenListings.length <= 4
-                        ? "объекта"
-                        : "объектов"} в Тюмени
-                  </>
-                )}
-              </h1>
+                  <ObjectFilter
+                    className="mt-6 pt-0"
+                    contentWidth="container"
+                    filters={basePropertyType === "Квартиры"
+                      ? ["propertyType", "roominess", "area", "price"]
+                      : ["propertyType", "area", "price"]}
+                    onPropertyTypeChange={(value) => {
+                      setBasePropertyType(value as ArchivePropertyType);
+                      setCurrentPage(1);
+                    }}
+                    propertyType={basePropertyType}
+                  />
+                )
+              )}
             </section>
-            <section
+            {!isMapView && <section
               aria-label="Управление выдачей"
               className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
             >
@@ -1476,16 +1879,16 @@ export function ApartmentListingsScreen({
                 onLeaderboardOpen={() => setLeaderboardOpen(true)}
                 onCardsViewChange={setCardsView}
                 onSortChange={setSort}
+                myListings={isMyListings}
                 cardsView={cardsView}
                 showLeaderboard={!isMyListings && !isArchive}
                 showMap={!isMyListings}
                 sort={sort}
               />
-            </section>
-          </>
-        )}
+            </section>}
+        </>
         {isMapView ? (
-          <div className="relative mt-4 flex h-[calc(100vh-135px)] min-h-[420px] w-full gap-0">
+          <div className="relative flex h-[calc(100vh-280px)] min-h-[420px] w-full gap-0">
             <section
               aria-label="Карта объявлений"
               className={cn(
@@ -1543,7 +1946,7 @@ export function ApartmentListingsScreen({
                   selectedMapMarkerIndex !== null && selectedMapListings.length > 0 ? "translate-x-0" : "translate-x-full",
                 )}
               >
-                <div className="h-full space-y-2 overflow-y-auto px-3 pb-3 pt-0">
+                <div className="flex h-full flex-col gap-6 overflow-y-auto px-3 pb-3 pt-0">
                   {selectedMapListings.map((listing, index) => (
                     <ObjectCard
                       address={listing.address}
@@ -1570,6 +1973,10 @@ export function ApartmentListingsScreen({
           <section
             aria-label={`Список: ${isArchive ? archivePropertyType.toLowerCase() : isMyListings ? "объекты" : basePropertyType.toLowerCase()}`}
             className="mt-3 min-w-0"
+            id={isMyListings ? "my-listings-panel" : undefined}
+            aria-labelledby={isMyListings ? `my-listings-tab-${myListingsMode}` : undefined}
+            role={isMyListings ? "tabpanel" : undefined}
+            tabIndex={isMyListings ? 0 : undefined}
           >
             {cardsView ? (
               <ListingsCardGrid
@@ -1577,6 +1984,13 @@ export function ApartmentListingsScreen({
                 listings={screenListings}
                 onOpenObjectInfo={setSelectedListing}
                 sort={sort}
+              />
+            ) : isMyListings ? (
+              <MyListingsTable
+                className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
+                currentPage={currentPage}
+                hiddenColumns={hiddenColumns}
+                listings={filteredMyObjectRows}
               />
             ) : isArchive ? (
               <ArchiveListingsTable
@@ -1604,7 +2018,7 @@ export function ApartmentListingsScreen({
               <Pagination
                 currentPage={currentPage}
                 onPageChange={setCurrentPage}
-                totalPages={Math.ceil(screenListings.length / LISTINGS_PER_PAGE)}
+                totalPages={Math.ceil((isMyListings ? filteredMyObjectRows.length : screenListings.length) / LISTINGS_PER_PAGE)}
               />
             </footer>
           </section>
