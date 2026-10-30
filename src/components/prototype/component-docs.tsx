@@ -1281,7 +1281,7 @@ const componentDocs: ComponentDoc[] = [
     id: "tab",
     title: "Tab",
     description:
-      "Вкладка и группа вкладок с горизонтальной или вертикальной активной границей.",
+      "Вкладка с настраиваемым размером подписи и группа вкладок с горизонтальной или вертикальной активной границей.",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=464-3585",
     group: "Navigation",

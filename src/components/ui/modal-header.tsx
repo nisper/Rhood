@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 type ModalHeaderProps = Omit<React.ComponentProps<"header">, "title"> & {
   closeButton?: boolean;
   description?: React.ReactNode;
+  headerContent?: React.ReactNode;
   onClose?: () => void;
   title: React.ReactNode;
   titleAs?: "h1" | "h2";
@@ -17,6 +18,7 @@ function ModalHeader({
   className,
   closeButton = true,
   description,
+  headerContent,
   onClose,
   title,
   titleAs: Title = "h2",
@@ -33,11 +35,15 @@ function ModalHeader({
     >
       <div className="grid min-w-0 flex-1 gap-2">
         <Title
-          className="rh-typography-h4 text-[var(--rh-theme-text-neutral-primary)]"
+          className={cn(
+            "rh-typography-h4 text-[var(--rh-theme-text-neutral-primary)]",
+            headerContent && "sr-only",
+          )}
           id={titleId}
         >
           {title}
         </Title>
+        {headerContent}
         {description && (
           <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-primary)]">
             {description}

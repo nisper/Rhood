@@ -13,6 +13,7 @@ const tabProperties = [
   ["Tab.secondaryLabel", "ReactNode", "Tab", "Текст второй строки подписи."],
   ["Tab.secondaryText", "true · false", "false", "Показывает вторую строку подписи."],
   ["Tab.selected", "true · false", "false", "Выделяет текущую вкладку."],
+  ["Tab.size", "b2 · h2 · h4", "b2", "Размер типографики основной подписи."],
   ["Tab.startIcon", "true · false", "false", "Показывает иконку Star слева от подписи."],
   ["Tab.state", "default · hovered", "default", "Задаёт демонстрационное состояние текста; hover работает при наведении."],
 ];
@@ -20,6 +21,7 @@ const tabProperties = [
 const tabBarProperties = [
   ["TabBar.direction", "horizontal · vertical", "horizontal", "Располагает вкладки в строку или столбец и задаёт расстояние между ними."],
   ["TabBar.children", "ReactNode", "3 × Tab", "Содержимое группы; без children отображаются три вкладки по умолчанию."],
+  ["TabBar.indicator", "true · false", "true", "Показывает или скрывает общую нижнюю границу группы."],
 ];
 
 function CodeProp({ name, value }: { name: string; value?: string }) {
@@ -104,26 +106,58 @@ function PropertiesPanel() {
   );
 }
 
-function InteractiveTabBar({ direction = "horizontal" }: { direction?: "horizontal" | "vertical" }) {
+function InteractiveTabBar({
+  direction = "horizontal",
+  indicator = true,
+  size = "b2",
+}: {
+  direction?: "horizontal" | "vertical";
+  indicator?: boolean;
+  size?: "b2" | "h2" | "h4";
+}) {
   const [selected, setSelected] = React.useState("Объекты");
   const labels = ["Объекты", "Контакты", "Документы"];
 
   return (
     <TabBar
-      className={direction === "vertical" ? "w-fit flex-col border-b-0" : "w-full"}
+      className={direction === "vertical" ? "w-fit flex-col" : "w-full"}
       direction={direction}
+      indicator={indicator}
     >
       {labels.map((label) => (
         <Tab
           aria-selected={selected === label}
           direction={direction}
+          indicator={indicator}
           key={label}
           label={label}
           onClick={() => setSelected(label)}
           selected={selected === label}
+          size={size}
         />
       ))}
     </TabBar>
+  );
+}
+
+function InteractiveTabSize() {
+  const sizes = ["b2", "h2", "h4"] as const;
+  const [selectedSize, setSelectedSize] = React.useState<(typeof sizes)[number]>("b2");
+
+  return (
+    <div aria-label="Размер подписи вкладки" className="flex flex-wrap items-center gap-6" role="group">
+      {sizes.map((size) => (
+        <button
+          aria-pressed={selectedSize === size}
+          className="border-0 bg-transparent p-0"
+          key={size}
+          onClick={() => setSelectedSize(size)}
+          type="button"
+        >
+          <Tab indicator={false} label={size} selected={selectedSize === size} size={size} />
+        </button>
+      ))}
+    </div>
   );
 }
 
@@ -131,8 +165,19 @@ export function TabExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
+        settings={["size: b2 · h2 · h4"]}
+        description="Выбери размер типографики подписи. По умолчанию сохраняется текущий размер b2; h2 и h4 подходят для крупных заголовочных вкладок."
+        panels={[
+          <Panel key="sizes">
+            <InteractiveTabSize />
+          </Panel>,
+        ]}
+        title="Размер"
+      />
+
+      <ShowcaseSection
         settings={["state: default · hovered", "selected: boolean"]}
-        description="У Tab нет вариантов внешнего стиля и размера, а также состояния disabled. Витрина показывает default, наведение и выбранную вкладку."
+        description="Витрина показывает default, наведение и выбранную вкладку. Состояние disabled не поддерживается."
         panels={[
           <Panel key="states">
             <div className="grid w-full grid-cols-3 items-start gap-3">
@@ -175,12 +220,28 @@ export function TabExamples() {
       />
 
       <ShowcaseSection
+        settings={["Tab.size: b2 · h2 · h4", "Tab.indicator: false", "TabBar.indicator: false"]}
+        description="Так выглядят группы вкладок с разными размерами подписи без подчёркивания и общей нижней границы — как на странице «Мои объекты». В каждой группе можно переключать активную вкладку."
+        panels={(["b2", "h2", "h4"] as const).map((size) => (
+          <Panel key={size}>
+            <div className="grid w-full gap-3">
+              <p className="text-xs text-[var(--rh-theme-text-neutral-secondary)]">{size}</p>
+              <InteractiveTabBar indicator={false} size={size} />
+            </div>
+          </Panel>
+        ))}
+        direction="vertical"
+        title="TabBar с разными размерами"
+      />
+
+      <ShowcaseSection
         codeSnippet={
           <TabSnippet>
-            {" "}<CodeProp name="label" value={'"Основной текст"'} />
+            {"\n  "}<CodeProp name="label" value={'"Основной текст"'} />
             {"\n  "}<CodeProp name="startIcon" value="{true}" />
             {"\n  "}<CodeProp name="secondaryText" value="{true}" />
             {"\n  "}<CodeProp name="secondaryLabel" value={'"Подпись"'} />
+            {"\n"}
           </TabSnippet>
         }
         description="Подпись может включать иконку и вторую строку текста."

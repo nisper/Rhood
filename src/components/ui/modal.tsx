@@ -5,6 +5,11 @@ import { ModalBody } from "@/components/ui/modal-body";
 import { ModalFooter } from "@/components/ui/modal-footer";
 
 import { cn } from "@/lib/utils";
+import {
+  isTopDismissibleLayer,
+  registerDismissibleLayer,
+  unregisterDismissibleLayer,
+} from "@/lib/dismissible-layer";
 
 const ModalDismissContext = React.createContext<
   ((requestClose?: () => void) => void) | null
@@ -18,6 +23,7 @@ type ModalProps = Omit<React.ComponentProps<"div">, "title"> & {
   defaultOpen?: boolean;
   description?: React.ReactNode;
   footer?: React.ReactNode;
+  headerContent?: React.ReactNode;
   hasFooter?: boolean;
   maxWidth?: React.CSSProperties["maxWidth"];
   onOpenChange?: (open: boolean) => void;
@@ -66,9 +72,31 @@ function ModalContainer({
   const isMobileViewport = useIsMobileViewport();
   const resolvedAlignment = isMobileViewport ? "bottom" : alignment;
   const requestCloseRef = React.useRef<(() => void) | undefined>(undefined);
+  const [modalContainerId] = React.useState(() => Symbol("modal-container"));
   const registerClose = React.useCallback((requestClose?: () => void) => {
     requestCloseRef.current = requestClose;
-  }, []);
+    registerDismissibleLayer(modalContainerId, requestClose);
+  }, [modalContainerId]);
+
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        event.key !== "Escape" ||
+        !isTopDismissibleLayer(modalContainerId) ||
+        !requestCloseRef.current
+      ) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      requestCloseRef.current();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      unregisterDismissibleLayer(modalContainerId);
+    };
+  }, [modalContainerId]);
 
   return (
     <ModalDismissContext.Provider value={registerClose}>
@@ -105,9 +133,11 @@ function Modal({
   defaultOpen = true,
   description,
   footer,
+  headerContent,
   hasFooter = Boolean(footer),
   maxWidth = 480,
   onOpenChange,
+  onKeyDown,
   onTransitionEnd,
   open,
   presentation = "dialog",
@@ -154,9 +184,14 @@ function Modal({
   const requestClose = React.useCallback(() => changeOpen(false), [changeOpen]);
 
   React.useEffect(() => {
+    if (!resolvedOpen || !isRendered) {
+      registerClose?.();
+      return;
+    }
+
     registerClose?.(requestClose);
     return () => registerClose?.();
-  }, [registerClose, requestClose]);
+  }, [isRendered, registerClose, requestClose, resolvedOpen]);
 
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     if (resolvedPresentation === "bottom-sheet") {
@@ -209,6 +244,13 @@ function Modal({
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerEnd}
       role="dialog"
+      onKeyDown={(event) => {
+        onKeyDown?.(event)
+        if (event.key === "Escape") {
+          event.stopPropagation()
+          requestClose()
+        }
+      }}
       style={{ ...style, maxWidth }}
       onTransitionEnd={handleTransitionEnd}
       {...props}
@@ -217,6 +259,7 @@ function Modal({
         <ModalHeader
           closeButton={showCloseButton}
           description={description}
+          headerContent={headerContent}
           onClose={requestClose}
           title={title}
           titleAs={titleAs}

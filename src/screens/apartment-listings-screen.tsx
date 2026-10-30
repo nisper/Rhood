@@ -13,7 +13,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { ArchiveIntroOverlay } from "@/components/prototype/archive-intro-overlay";
-import { ObjectFilter } from "@/components/ui/object-filter";
+import { ObjectFilter, type ObjectFilterValues } from "@/components/ui/object-filter";
 import { Chip } from "@/components/ui/chip";
 import { Footer } from "@/components/ui/footer";
 import { IconButton } from "@/components/ui/icon-button";
@@ -38,6 +38,7 @@ import { TabBar } from "@/components/ui/tab-bar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
+import { Tab } from "@/components/ui/tab";
 import archiveFlatListings from "@/data/mock/archive-flat-listings.json";
 import archiveHouseListings from "@/data/mock/archive-house-listings.json";
 import archiveLandListings from "@/data/mock/archive-land-listings.json";
@@ -129,9 +130,9 @@ const myListingsTableColumns: { key: ColumnKey; label: string }[] = [
 type ArchivePropertyType = keyof typeof archiveListingsByPropertyType;
 type ArchiveColumn = { key: ColumnKey; label: string };
 type MyListingsMode = "saved" | "duplicates";
-const myListingsTabs: { label: string; value: MyListingsMode }[] = [
-  { label: "Объекты из Rhood", value: "saved" },
-  { label: "Дубли", value: "duplicates" },
+const myListingsTabs: { label: string; value: MyListingsMode; description: string }[] = [
+  { label: "Объекты из Rhood", value: "saved", description: "Вы сохранили эти объекты из парсера" },
+  { label: "Дубли", value: "duplicates", description: "Дубли ваших объектов из Космоса" },
 ];
 type MyListingRow = {
   listing: (typeof listings)[number];
@@ -1419,12 +1420,6 @@ function MyListingsTitleTabs({
   onModeChange: (mode: MyListingsMode) => void;
 }) {
   const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([]);
-  const [activeTabOffset, setActiveTabOffset] = React.useState(0);
-
-  React.useLayoutEffect(() => {
-    const selectedIndex = myListingsTabs.findIndex(({ value }) => value === mode);
-    setActiveTabOffset(tabRefs.current[selectedIndex]?.offsetLeft ?? 0);
-  }, [mode]);
 
   function handleKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
     const nextIndex = event.key === "ArrowRight"
@@ -1445,43 +1440,41 @@ function MyListingsTitleTabs({
   }
 
   return (
-    <div className="grid justify-items-start">
-      <div className="relative w-fit">
-        <TabBar aria-label="Режим списка объектов" className="w-fit gap-[var(--rh-sizing-base-module-4)] border-b-0" role="tablist">
-          {myListingsTabs.map(({ label, value }, index) => {
-            const selected = mode === value;
+    <div className="relative w-fit">
+      <TabBar aria-label="Режим списка объектов" className="w-fit gap-[var(--rh-sizing-base-module-4)]" indicator={false} role="tablist">
+        {myListingsTabs.map(({ description, label, value }, index) => {
+          const selected = mode === value;
 
-            return (
-              <button
-                aria-controls="my-listings-panel"
-                aria-selected={selected}
-                className={cn(
-                  "flex cursor-pointer items-center border-0 bg-transparent px-0 py-0 text-[var(--rh-theme-text-neutral-secondary)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] hover:text-[var(--rh-theme-text-neutral-primary)]",
-                  selected && "text-[var(--rh-theme-text-neutral-primary)]",
-                )}
-                id={`my-listings-tab-${value}`}
-                key={value}
-                onClick={() => onModeChange(value)}
-                onKeyDown={(event) => handleKeyDown(event, index)}
-                ref={(element) => { tabRefs.current[index] = element; }}
-                role="tab"
-                tabIndex={selected ? 0 : -1}
-                type="button"
-              >
-                <span className="rh-typography-h2 font-[500]">{label}</span>
-              </button>
-            );
-          })}
-        </TabBar>
-      </div>
-      <p
-        className="mt-2 rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]"
-        style={{ marginLeft: activeTabOffset }}
-      >
-        {mode === "duplicates"
-          ? "Дубли ваших объектов из Космоса"
-          : "Вы сохранили эти объекты из парсера"}
-      </p>
+          return (
+            <button
+              aria-label={label}
+              aria-controls="my-listings-panel"
+              aria-selected={selected}
+              className={cn(
+                "flex cursor-pointer items-center border-0 bg-transparent px-0 py-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
+              )}
+              id={`my-listings-tab-${value}`}
+              key={value}
+              onClick={() => onModeChange(value)}
+              onKeyDown={(event) => handleKeyDown(event, index)}
+              ref={(element) => { tabRefs.current[index] = element; }}
+              role="tab"
+              tabIndex={selected ? 0 : -1}
+              type="button"
+            >
+              <Tab
+                className="py-0"
+                indicator={false}
+                label={label}
+                secondaryLabel={description}
+                secondaryText
+                selected={selected}
+                size="h2"
+              />
+            </button>
+          );
+        })}
+      </TabBar>
     </div>
   );
 }
@@ -1721,6 +1714,25 @@ export function ApartmentListingsScreen({
   const [myPropertyType, setMyPropertyType] = React.useState<ArchivePropertyType>("Квартиры");
   const [myCrmStatus, setMyCrmStatus] = React.useState("Все статусы");
   const [basePropertyType, setBasePropertyType] = React.useState<ArchivePropertyType>("Квартиры");
+  const [baseFilterValues, setBaseFilterValues] = React.useState<ObjectFilterValues>({
+    city: [], propertyType: "Квартиры", roominess: [], areaStart: "", areaEnd: "", priceStart: "", priceEnd: "", source: [], author: [],
+  });
+  const baseListings = listingsByPropertyType[basePropertyType].filter((listing) => {
+    const { city, roominess, areaStart, areaEnd, priceStart, priceEnd, source, author } = baseFilterValues;
+    if (city.length && !city.some((cityName) => listing.address.toLowerCase().includes(cityName.toLowerCase()))) return false;
+    if (roominess.length && !roominess.some((room) => room === "Студия"
+      ? listing.roomCount === 0 || listing.description?.toLowerCase().includes("студия")
+      : room === "4+" ? (listing.roomCount ?? 0) >= 4 : listing.roomCount === Number(room))) return false;
+    if (areaStart && listing.area < Number(areaStart)) return false;
+    if (areaEnd && listing.area > Number(areaEnd)) return false;
+    if (priceStart && Number(listing.price) < Number(priceStart)) return false;
+    if (priceEnd && Number(listing.price) > Number(priceEnd)) return false;
+    const sourceDomains: Record<string, string> = { "Авито": "AVITO", "Циан": "CIAN", "Домклик": "DOMCLICK", "Яндекс Недвижимость": "YANDEX" };
+    if (source.length && !source.some((sourceName) => listing.domain === sourceDomains[sourceName])) return false;
+    const authorTypes: Record<string, string> = { "Частное лицо": "OWNER", "Агентство": "AGENCY" };
+    if (author.length && !author.some((authorName) => listing.author === authorTypes[authorName])) return false;
+    return true;
+  });
   const [archivePropertyType, setArchivePropertyType] = React.useState<
     keyof typeof archiveListingsByPropertyType
   >("Квартиры");
@@ -1732,7 +1744,7 @@ export function ApartmentListingsScreen({
       })) as unknown as typeof listings
     : isMyListings
       ? listings
-      : listingsByPropertyType[basePropertyType];
+      : baseListings;
   const myObjectRows: MyListingRow[] = screenListings.map((listing, originalIndex) => ({
     listing,
     originalIndex,
@@ -1801,9 +1813,6 @@ export function ApartmentListingsScreen({
               <div className="rhood-layout-container">
               {isMyListings ? (
                 <>
-                  <h1 className="sr-only">
-                    {myListingsMode === "duplicates" ? "Дубли объектов из Космоса" : "Объекты из Rhood"}
-                  </h1>
                   <MyListingsTitleTabs
                     mode={myListingsMode}
                     onModeChange={(mode) => {
@@ -1861,6 +1870,11 @@ export function ApartmentListingsScreen({
                     filters={basePropertyType === "Квартиры"
                       ? ["propertyType", "roominess", "area", "price"]
                       : ["propertyType", "area", "price"]}
+                    savedFiltersEnabled
+                    onValuesChange={(nextValues) => {
+                      setBaseFilterValues(nextValues);
+                      setCurrentPage(1);
+                    }}
                     onPropertyTypeChange={(value) => {
                       setBasePropertyType(value as ArchivePropertyType);
                       setCurrentPage(1);
