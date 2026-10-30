@@ -8,6 +8,8 @@ type FormBlockProps = React.ComponentProps<"div"> & {
   children: React.ReactNode
   /** Layout direction for the label and control. */
   direction?: "column" | "row"
+  /** Control size used to vertically align the label in row layout. */
+  controlSize?: "sm" | "md" | "lg"
   /** Space between the label and control. */
   gap?: React.CSSProperties["gap"]
   /** Visible label for the control. */
@@ -22,6 +24,7 @@ type FormBlockProps = React.ComponentProps<"div"> & {
 function FormBlock({
   children,
   className,
+  controlSize = "md",
   direction = "column",
   gap,
   label = "Label",
@@ -33,6 +36,13 @@ function FormBlock({
   const resolvedGap = gap ?? (direction === "row" ? "calc(var(--spacing) * 4)" : "calc(var(--spacing) * 1)")
   const { className: labelClassName, style: labelStyle, ...restLabelProps } = labelProps ?? {}
   const resolvedLabelWidth = labelWidth ?? labelStyle?.width ?? "var(--rhood-form-set-label-width)"
+  const labelPaddingTop = direction === "row"
+    ? {
+      sm: "calc((var(--spacing) * 9 - var(--rh-sizing-typography-line-height-sm)) / 2)",
+      md: "calc((var(--spacing) * 10 - var(--rh-sizing-typography-line-height-md)) / 2)",
+      lg: "calc((var(--rh-sizing-typography-line-height-md) + var(--rh-sizing-common-input-py-lg) * 2 + var(--rh-sizing-common-input-shape-border-width) * 2 - var(--rh-sizing-typography-line-height-md)) / 2)",
+    }[controlSize]
+    : undefined
 
   return (
     <div
@@ -46,8 +56,8 @@ function FormBlock({
     >
       <FormLabel
         {...restLabelProps}
-        className={cn(labelClassName, direction === "row" && "pt-2")}
-        style={{ ...labelStyle, width: resolvedLabelWidth }}
+        className={labelClassName}
+        style={{ ...labelStyle, width: resolvedLabelWidth, paddingTop: labelStyle?.paddingTop ?? labelPaddingTop }}
       >
         {label}
       </FormLabel>

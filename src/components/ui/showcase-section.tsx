@@ -8,6 +8,7 @@ type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
   description: React.ReactNode
   panelCount?: number
   panels?: React.ReactNode[]
+  settings?: string[]
   usedComponents?: { href: string; title: React.ReactNode }[]
   title: React.ReactNode
 }
@@ -21,6 +22,7 @@ function ShowcaseSection({
   description,
   panelCount,
   panels,
+  settings,
   usedComponents,
   title,
   ...props
@@ -45,6 +47,15 @@ function ShowcaseSection({
           {panels.map((panel, index) => <React.Fragment key={index}>{panel}</React.Fragment>)}
         </div>
       ) : null}
+      {settings?.length ? (
+        <div className="grid gap-0.5">
+          {settings.map((setting) => (
+            <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>
+              {setting}
+            </p>
+          ))}
+        </div>
+      ) : null}
       {usedComponents?.length ? (
         <div className="grid gap-2 pb-4" aria-label="Использованные компоненты">
           <h3 className="rh-typography-b1-med">Использованные компоненты</h3>
@@ -54,7 +65,7 @@ function ShowcaseSection({
         </div>
       ) : null}
       {codeSnippet && (
-        <pre className="overflow-x-auto rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-neutral)] p-4">
+        <pre className="overflow-x-auto rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-surface-bg)] p-4 font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
           {codeSnippet}
         </pre>
       )}

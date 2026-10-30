@@ -34,7 +34,7 @@ function formatThousands(value: string | number | readonly string[] | undefined)
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
-  lg: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  lg: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-shape-border-width)*2)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   md: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   sm: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
@@ -44,12 +44,12 @@ const bareInputClasses = "h-full rounded-none border-0 bg-transparent hover:bord
 function stateClasses({ appearance, disabled, error, state }: { appearance: InputNumberAppearance; disabled: boolean; error: boolean; state: InputNumberState }) {
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      ? "border-[color:var(--rh-theme-border-error)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
       : "border-[color:var(--rh-theme-border-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--rh-theme-border-focus)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
+    return "border-[color:var(--rh-theme-border-focus)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
   }
 
   if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
@@ -80,6 +80,7 @@ function InputNumber({
   size = "md",
   startText,
   state = "default",
+  style,
   value,
   ...props
 }: InputNumberProps) {
@@ -95,9 +96,9 @@ function InputNumber({
     ? "bg-[var(--rh-theme-fill-input-neutral)]"
     : "bg-[var(--rh-theme-surface-bg)]"
   const interactiveClasses = !disabled && !error && !isFocusedPreview
-    ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-focus)]"
+    ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:[border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
     : !disabled && error
-      ? "focus:border-[color:var(--rh-theme-border-error)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-error)]"
+      ? "focus:border-[color:var(--rh-theme-border-error)] focus:[border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
       : undefined
 
   return (
@@ -116,7 +117,7 @@ function InputNumber({
       <input
         aria-invalid={error || undefined}
         className={cn(
-          "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border font-[family-name:var(--rh-typography-font-family-sans)] font-normal tabular-nums text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+          "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border [border-width:var(--rh-sizing-common-input-shape-border-width)] font-[family-name:var(--rh-typography-font-family-sans)] font-normal tabular-nums text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:font-sans placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
           backgroundClasses,
           sizeClasses[size],
           stateClasses({ appearance, disabled, error, state }),
@@ -152,6 +153,7 @@ function InputNumber({
         }}
         placeholder={placeholder}
         required={required}
+        style={bare ? { ...style, borderWidth: 0, boxShadow: "none" } : style}
         type="text"
         value={displayValue}
         {...props}

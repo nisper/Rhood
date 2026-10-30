@@ -66,7 +66,7 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
             {stickyHeaderContent && (
               <div
                 className={cn(
-                  "sticky top-0 z-20 overflow-x-clip bg-[var(--rh-theme-surface-bg)]",
+                  "sticky top-0 z-20 overflow-x-clip bg-[color-mix(in_srgb,var(--rh-theme-fill-contrast-static)_75%,transparent)] backdrop-blur-[12px]",
                 )}
               >
                 <div

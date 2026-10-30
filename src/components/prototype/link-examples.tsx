@@ -26,27 +26,6 @@ function CodeProp({ name, value }: { name: string; value: string }) {
   )
 }
 
-function LinkSnippet({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"<"}</span>
-      <span className="text-[var(--rh-palette-purple-700)]">Link</span>{" "}
-      {children}
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span>
-      Link
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"</"}</span>
-      <span className="text-[var(--rh-palette-purple-700)]">Link</span>
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span>
-    </code>
-  )
-}
-
-const sizeSnippet = (
-  <LinkSnippet>
-    <CodeProp name="size" value={'"b2"'} />
-  </LinkSnippet>
-)
-
 const compositionSnippet = (
   <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
     <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"<"}</span>
@@ -59,19 +38,6 @@ const compositionSnippet = (
     <span className="text-[var(--rh-palette-purple-700)]">Link</span>
     <span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span>
   </code>
-)
-
-const externalSnippet = (
-  <>
-    <LinkSnippet>
-      <CodeProp name="external" value="true" />
-    </LinkSnippet>
-    <br />
-    <LinkSnippet>
-      <CodeProp name="external" value="true" />{" "}
-      <CodeProp name="externalLabel" value={'"Космос"'} />
-    </LinkSnippet>
-  </>
 )
 
 function ExampleLink({
@@ -89,7 +55,7 @@ export function LinkExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={sizeSnippet}
+        settings={["size: b1 · b2"]}
         description="b1 — размер по умолчанию; b2 подходит для плотных интерфейсов. Наведи курсор, чтобы увидеть hover-состояние."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-center justify-center gap-4">
@@ -101,7 +67,7 @@ export function LinkExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={externalSnippet}
+        settings={["external: true", "externalLabel: ReactNode"]}
         description="При наведении ссылка подчёркивается и показывает стрелку внешнего ресурса. Можно добавить необязательную подпись рядом с иконкой. Стрелка и подпись также появляются при клавиатурном фокусе."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center gap-6"><ExampleLink external>Открыть на агрегаторе</ExampleLink><ExampleLink external externalLabel="Космос">Открыть объект</ExampleLink></div></div>]}
         title="Внешний ресурс"

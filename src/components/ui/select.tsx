@@ -41,7 +41,7 @@ const sizeTokens: Record<
   }
 > = {
   lg: {
-    container: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]",
+    container: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-shape-border-width)*2)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]",
     valueText: "rh-typography-b1",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
@@ -77,12 +77,12 @@ function getSurfaceClasses({
 
   if (error) {
     return state === "focused"
-      ? "border border-[color:var(--rh-theme-border-error)] bg-[var(--rh-theme-fill-error-light-hover)] text-[var(--rh-theme-text-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      ? "border border-[color:var(--rh-theme-border-error)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)] bg-[var(--rh-theme-fill-error-light-hover)] text-[var(--rh-theme-text-error)]"
       : "bg-[var(--rh-theme-fill-error-light)] text-[var(--rh-theme-text-error)]"
   }
 
   if (state === "focused") {
-    return "border border-[color:var(--rh-theme-border-focus)] bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-primary)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
+    return "border border-[color:var(--rh-theme-border-focus)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)] bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-primary)]"
   }
 
   if (state === "hovered") {

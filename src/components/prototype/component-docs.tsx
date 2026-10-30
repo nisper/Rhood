@@ -44,6 +44,9 @@ import { ObjectBuyersExamples, ObjectBuyersV2Examples } from "./object-buyers-ex
 import { AdaptiveExamples } from "./adaptive-examples";
 import { FormExamples } from "./form-examples";
 import { ExpandableContentExamples } from "./expandable-content-examples";
+import { ExpandableContentTriggerExamples } from "./expandable-content-trigger-examples";
+import { FormHelperTextExamples } from "./form-helper-text-examples";
+import { FormLabelExamples } from "./form-label-examples";
 import { AvatarExamples } from "./avatar-examples";
 import { CommentsExamples } from "./comments-examples";
 import { MainHeaderExamples } from "./main-header-examples";
@@ -59,8 +62,6 @@ import { CodeXml, Copy, Dot } from "lucide-react";
 import { AlertDefault } from "@/components/ui/alert-default";
 import { Button } from "@/components/ui/button";
 import { BadgeExamples } from "./badge-examples";
-import { FormLabel } from "@/components/ui/form-label";
-import { FormHelperText } from "@/components/ui/form-helper-text";
 import { HelpCenter } from "@/components/ui/help-center";
 import { Island } from "@/components/ui/island";
 import { ListItem } from "@/components/ui/list-item";
@@ -308,6 +309,12 @@ const componentDocs: ComponentDoc[] = [
         description: "Количество колонок или строк в композиции панелей.",
       },
       {
+        name: "settings",
+        values: "string[]",
+        defaultValue: "—",
+        description: "Короткий список параметров, которые отвечают за вид и поведение примера.",
+      },
+      {
         name: "codeSnippet",
         values: "ReactNode",
         defaultValue: "—",
@@ -394,12 +401,6 @@ const componentDocs: ComponentDoc[] = [
         description: "Подписи кнопки в свёрнутом и раскрытом состояниях.",
       },
       {
-        name: "buttonSize",
-        values: '"md" · "sm" · "xsm"',
-        defaultValue: '"sm"',
-        description: "Размер кнопки раскрытия и сворачивания.",
-      },
-      {
         name: "children",
         values: "ReactNode",
         defaultValue: "—",
@@ -408,6 +409,40 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/expandable-content.tsx",
     render: () => <ExpandableContentExamples />,
+  },
+  {
+    id: "expandable-content-trigger",
+    title: "ExpandableContentTrigger",
+    description: "Кнопка-ссылка для раскрытия и сворачивания содержимого.",
+    group: "Actions",
+    properties: [
+      {
+        name: "controls",
+        values: "string",
+        defaultValue: "—",
+        description: "ID элемента, видимость которого переключает кнопка.",
+      },
+      {
+        name: "expanded",
+        values: "boolean",
+        defaultValue: "—",
+        description: "Текущее состояние; определяет направление шеврона и aria-expanded.",
+      },
+      {
+        name: "children",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Текст кнопки.",
+      },
+      {
+        name: "onClick",
+        values: "MouseEventHandler<HTMLButtonElement>",
+        defaultValue: "—",
+        description: "Обработчик переключения содержимого.",
+      },
+    ],
+    source: "src/components/ui/expandable-content-trigger.tsx",
+    render: () => <ExpandableContentTriggerExamples />,
   },
   {
     id: "icon-button",
@@ -1151,16 +1186,7 @@ const componentDocs: ComponentDoc[] = [
       },
     ],
     source: "src/components/ui/form-label.tsx",
-    render: () => (
-      <Canvas>
-        <Matrix>
-          <FormLabel>Label</FormLabel>
-          <FormLabel color="error">Label</FormLabel>
-          <FormLabel color="disabled">Label</FormLabel>
-          <FormLabel fontWeight="medium">Label</FormLabel>
-        </Matrix>
-      </Canvas>
-    ),
+    render: () => <FormLabelExamples />,
   },
   {
     id: "form",
@@ -1168,6 +1194,12 @@ const componentDocs: ComponentDoc[] = [
     description: "FormBlock объединяет лейбл с контролом, а FormSet собирает блоки формы в общий layout.",
     group: "Forms",
     properties: [
+      {
+        name: "FormBlock.controlSize",
+        values: "sm · md · lg",
+        defaultValue: "md",
+        description: "Выравнивает лейбл по вертикали с размером контрола в строковой раскладке.",
+      },
       {
         name: "FormBlock.direction",
         values: "column · row",
@@ -1226,16 +1258,12 @@ const componentDocs: ComponentDoc[] = [
     description: "Подсказка под полем.",
     group: "Forms",
     source: "src/components/ui/form-helper-text.tsx",
-    render: () => (
-      <Canvas>
-        <div className="grid gap-2">
-          <FormHelperText>Helper text</FormHelperText>
-          <FormHelperText color="error">Helper text</FormHelperText>
-          <FormHelperText color="warning">Helper text</FormHelperText>
-          <FormHelperText color="disabled">Helper text</FormHelperText>
-        </div>
-      </Canvas>
-    ),
+    properties: [
+      { name: "color", values: "default · error · warning · disabled", defaultValue: "default", description: "Цвет текста подсказки." },
+      { name: "children", values: "ReactNode", defaultValue: "Helper text", description: "Текст пояснения." },
+      { name: "…props", values: 'ComponentProps<"p">', defaultValue: "—", description: "Нативные свойства элемента p." },
+    ],
+    render: () => <FormHelperTextExamples />,
   },
   {
     id: "menu",

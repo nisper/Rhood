@@ -18,9 +18,9 @@ type SegmentProps = Omit<React.ComponentProps<"button">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "rh-typography-b1-med h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[var(--rh-sizing-common-input-gap-lg)] rounded-[10px] px-[var(--rh-sizing-common-input-px-lg)] py-[2px]",
-  md: "rh-typography-b1-med h-[calc(var(--spacing)*9)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[6px] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1.5)]",
-  sm: "rh-typography-b2-med h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] rounded-[6px] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1.5)]",
+  lg: "rh-typography-b1-med h-[calc(var(--spacing)*12)] min-w-[calc(var(--spacing)*9)] gap-[var(--rh-sizing-common-input-gap-lg)] px-[var(--rh-sizing-common-input-px-lg)] py-[2px]",
+  md: "rh-typography-b1-med h-[calc(var(--spacing)*9)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1.5)]",
+  sm: "rh-typography-b2-med h-[calc(var(--spacing)*8)] min-w-[calc(var(--spacing)*9)] gap-[calc(var(--spacing)*2)] px-[calc(var(--spacing)*3)] py-[calc(var(--spacing)*1.5)]",
 }
 
 const iconClasses: Record<SegmentSize, string> = {
@@ -75,6 +75,7 @@ function Segment({
         !disabled && !isSelected && "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
         className,
       )}
+      style={{ borderRadius: "10px" }}
       disabled={disabled}
       onClick={(event) => {
         if (!isControlled && !disabled) setUncontrolledSelected((value) => !value)

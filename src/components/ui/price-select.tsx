@@ -42,12 +42,12 @@ function PriceSelect({
       label={props.label ?? false}
       menu={
         expanded && (
-          <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full px-[var(--rh-sizing-menu-padding-px-md)] py-[var(--rh-sizing-menu-padding-py-md)]">
+          <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full px-[var(--rh-sizing-menu-padding-px-sm)] py-[var(--rh-sizing-menu-padding-py-sm)]">
             <InputNumberRange
               aria-label="Диапазон цены"
               appearance="neutral"
               className="!w-[310px]"
-              size={props.size}
+              size="md"
               startInputProps={{
                 groupThousands: true,
                 onChange: (event) => setStartValue(event.target.value),

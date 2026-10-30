@@ -1,12 +1,12 @@
 {
   "summary": {
-    "total": 408,
+    "total": 410,
     "byCollection": {
       "palette": 161,
       "theme": 114,
-      "sizing": 133
+      "sizing": 135
     },
-    "aliases": 204,
+    "aliases": 203,
     "warnings": []
   },
   "tokens": [
@@ -1923,8 +1923,8 @@
       "name": "surface/backdrop",
       "cssVariable": "--rh-theme-surface-backdrop",
       "type": "color",
-      "cssValue": "rgb(0 0 0 / 0.4)",
-      "resolvedValue": "rgb(0 0 0 / 0.4)",
+      "cssValue": "rgb(0 0 0 / 0.5)",
+      "resolvedValue": "rgb(0 0 0 / 0.5)",
       "alias": null,
       "figmaVariableId": "VariableID:2805:6053"
     },
@@ -3539,13 +3539,9 @@
       "name": "border-radius/modal",
       "cssVariable": "--rh-sizing-border-radius-modal",
       "type": "number",
-      "cssValue": "var(--rh-sizing-border-radius-lg)",
-      "resolvedValue": "12px",
-      "alias": {
-        "collection": "sizing",
-        "name": "border-radius/border-radius-lg",
-        "source": "dtcg"
-      },
+      "cssValue": "24px",
+      "resolvedValue": "24px",
+      "alias": null,
       "figmaVariableId": "VariableID:1923:19139"
     },
     {
@@ -3969,6 +3965,26 @@
         "source": "dtcg"
       },
       "figmaVariableId": "VariableID:6562:3893"
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/shape/border-width",
+      "cssVariable": "--rh-sizing-common-input-shape-border-width",
+      "type": "number",
+      "cssValue": "1px",
+      "resolvedValue": "1px",
+      "alias": null,
+      "figmaVariableId": null
+    },
+    {
+      "collection": "sizing",
+      "name": "common-input/shape/focused-border-width",
+      "cssVariable": "--rh-sizing-common-input-shape-focused-border-width",
+      "type": "number",
+      "cssValue": "1.5px",
+      "resolvedValue": "1.5px",
+      "alias": null,
+      "figmaVariableId": null
     },
     {
       "collection": "sizing",

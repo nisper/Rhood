@@ -68,12 +68,13 @@ function ToggleChip({
     <button
       aria-pressed={isChecked}
       className={cn(
-        "inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-border-radius-lg)] border border-[color:var(--rh-theme-border-light)] text-[color:var(--parser-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
+        "inline-flex cursor-pointer items-center justify-center overflow-hidden border border-[color:var(--rh-theme-border-light)] text-[color:var(--parser-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
         sizeClasses[size].root,
         isChecked && "border-[color:var(--rh-theme-border-neutral-dark)]",
         className,
       )}
       onClick={handleClick}
+      style={{ borderRadius: "var(--rh-sizing-common-input-shape-border-radius)", borderWidth: "1.5px" }}
       type={type}
       {...props}
     >

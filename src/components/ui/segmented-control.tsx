@@ -12,12 +12,6 @@ type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
   value?: string | readonly string[]
 }
 
-const sizeClasses: Record<SegmentSize, string> = {
-  lg: "rounded-[12px]",
-  md: "rounded-[8px]",
-  sm: "rounded-[8px]",
-}
-
 const colorClasses: Record<SegmentColor, string> = {
   neutral: "bg-[var(--rh-theme-fill-neutral)]",
   contrast: "border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-fill-contrast-static)]",
@@ -89,10 +83,10 @@ function SegmentedControl({
       aria-label="Segmented control"
       className={cn(
         "inline-flex w-fit items-center gap-[calc(var(--spacing)*0.5)] overflow-clip p-[2px]",
-        sizeClasses[size],
         colorClasses[appearance],
         className,
       )}
+      style={{ borderRadius: "var(--rh-sizing-common-input-shape-border-radius)" }}
       role={selectionMode === "single" ? "radiogroup" : "group"}
       {...props}
     >

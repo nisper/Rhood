@@ -27,7 +27,7 @@ type InputNumberRangeProps = Omit<React.ComponentProps<"div">, "onChange"> & {
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
-  lg: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)]",
+  lg: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-shape-border-width)*2)]",
   md: "h-[calc(var(--spacing)*10)]",
   sm: "h-[calc(var(--spacing)*9)]",
 }
@@ -35,12 +35,12 @@ const sizeClasses: Record<InputNumberSize, string> = {
 function groupStateClasses({ appearance, disabled, error, state }: { appearance: InputNumberRangeAppearance; disabled: boolean; error: boolean; state: InputNumberState }) {
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      ? "border-[color:var(--rh-theme-border-error)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
       : "border-[color:var(--rh-theme-border-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--rh-theme-border-focus)] bg-[var(--rh-theme-surface-bg)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
+    return "border-[color:var(--rh-theme-border-focus)] bg-[var(--rh-theme-surface-bg)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
   }
 
   if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
@@ -75,13 +75,14 @@ function InputNumberRange({
       {...props}
       aria-disabled={disabled || undefined}
       className={cn(
-        "flex w-full items-stretch overflow-hidden rounded-lg border transition-colors duration-150",
+        "flex w-full items-stretch overflow-hidden border [border-width:var(--rh-sizing-common-input-shape-border-width)] transition-colors duration-150",
         appearance === "neutral" ? "bg-[var(--rh-theme-fill-input-neutral)]" : "bg-[var(--rh-theme-surface-bg)]",
         sizeClasses[size],
         groupStateClasses({ appearance, disabled, error, state: resolvedState }),
         disabled && "cursor-not-allowed bg-[var(--rh-theme-surface-bg)] text-[color:var(--rh-theme-text-neutral-disabled)]",
         className,
       )}
+      style={{ borderRadius: "var(--rh-sizing-common-input-shape-border-radius)" }}
       onBlurCapture={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setIsFocused(false)
         props.onBlurCapture?.(event)

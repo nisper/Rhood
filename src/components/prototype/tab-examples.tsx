@@ -47,20 +47,6 @@ function TabSnippet({ children }: { children?: React.ReactNode }) {
   );
 }
 
-function TabBarSnippet({ children }: { children?: React.ReactNode }) {
-  return (
-    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`<`}</span>
-      <span className="text-[var(--rh-palette-purple-700)]">TabBar</span>
-      {children}
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`>`}</span>
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`</`}</span>
-      <span className="text-[var(--rh-palette-purple-700)]">TabBar</span>
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`>`}</span>
-    </code>
-  );
-}
-
 function Panel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
@@ -145,7 +131,7 @@ export function TabExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={<TabSnippet><CodeProp name="state" value={'"hovered"'} /></TabSnippet>}
+        settings={["state: default · hovered", "selected: boolean"]}
         description="У Tab нет вариантов внешнего стиля и размера, а также состояния disabled. Витрина показывает default, наведение и выбранную вкладку."
         panels={[
           <Panel key="states">
@@ -169,7 +155,7 @@ export function TabExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={<TabBarSnippet><CodeProp name="direction" value={'"vertical"'} /></TabBarSnippet>}
+        settings={["direction: horizontal · vertical"]}
         description="TabBar размещает вкладки в строку с промежутком 24 px или в столбец без промежутка. Выбирай вкладку, чтобы увидеть активную границу."
         panels={[
           <Panel key="horizontal">
@@ -191,6 +177,7 @@ export function TabExamples() {
       <ShowcaseSection
         codeSnippet={
           <TabSnippet>
+            {" "}<CodeProp name="label" value={'"Основной текст"'} />
             {"\n  "}<CodeProp name="startIcon" value="{true}" />
             {"\n  "}<CodeProp name="secondaryText" value="{true}" />
             {"\n  "}<CodeProp name="secondaryLabel" value={'"Подпись"'} />
@@ -200,8 +187,7 @@ export function TabExamples() {
         panels={[
           <Panel key="parts">
             <div className="flex flex-wrap items-center justify-center gap-8">
-              <Tab label="С иконкой" startIcon />
-              <Tab label="Основной текст" secondaryLabel="Второй текст" secondaryText />
+              <Tab label="Основной текст" secondaryLabel="Подпись" secondaryText startIcon />
             </div>
           </Panel>,
         ]}

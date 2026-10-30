@@ -14,21 +14,6 @@ const properties = [
   ["children", "ReactNode", "—", "Текст или число внутри метки."],
 ];
 
-function BadgeSnippet({ color, appearance }: { color?: BadgeColor; appearance?: "muted" | "default" }) {
-  return (
-    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`<`}</span>
-      <span className="text-[var(--rh-palette-purple-700)]">Badge</span>
-      {color && <> <span className="text-[var(--rh-theme-text-info)]">color</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">"{color}"</span></>}
-      {appearance && <> <span className="text-[var(--rh-theme-text-info)]">appearance</span><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">"{appearance}"</span></>}
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`>`}</span>Метка
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`</`}</span>
-      <span className="text-[var(--rh-palette-purple-700)]">Badge</span>
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`>`}</span>
-    </code>
-  );
-}
-
 function PropertiesTable() {
   return (
     <section className="mb-10 grid gap-3">
@@ -49,7 +34,6 @@ export function BadgeExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={<BadgeSnippet color="error" appearance="default" />}
         description="Badge повторяет цветовую палитру Chip. Сохраняй один appearance для набора меток, чтобы цвет считывался последовательно."
         direction="vertical"
         panelCount={1}
@@ -69,13 +53,14 @@ export function BadgeExamples() {
             </div>
           ))}
         </div>]}
+        settings={["appearance: default · muted", "color: neutral · brand · error · warning · success · contrast", "shape: default · circle"]}
         title="Стиль"
       />
 
       <ShowcaseSection
-        codeSnippet={<BadgeSnippet color="error" />}
         description="Круглая форма подходит для коротких счётчиков."
         panels={[<div className="flex min-h-[136px] items-center justify-center gap-4" key="shapes"><Badge>НОВОЕ</Badge><Badge shape="circle">3</Badge><Badge shape="circle">12</Badge><Badge shape="circle">123</Badge></div>]}
+        settings={["shape: default · circle"]}
         title="Состав"
       />
       <PropertiesTable />

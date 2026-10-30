@@ -133,47 +133,6 @@ function Snippet({ children }: { children: React.ReactNode }) {
 const syntax = "text-[var(--rh-theme-text-neutral-secondary)]";
 const component = "text-[var(--rh-palette-purple-700)]";
 
-const borderSnippet = (
-  <Snippet>
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>Table</span>{" "}
-    <CodeProp name="bordered" value="{true}" />
-    <span className={syntax}>{`>`}</span>
-    {"\n  …\n"}
-    <span className={syntax}>{`</`}</span>
-    <span className={component}>Table</span>
-    <span className={syntax}>{`>`}</span>
-  </Snippet>
-);
-const verticalBordersSnippet = (
-  <Snippet>
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>Table</span>{" "}
-    <CodeProp name="verticalBorders" value="{true}" />
-    <span className={syntax}>{`>`}</span>
-    {"\n  …\n"}
-    <span className={syntax}>{`</`}</span>
-    <span className={component}>Table</span>
-    <span className={syntax}>{`>`}</span>
-  </Snippet>
-);
-const sizeSnippet = (
-  <Snippet>
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>TableCell</span>{" "}
-    {"\n  "}
-    <CodeProp name="compact" value="{true}" />
-    {"\n  "}
-    <CodeProp name="textSize" value={'"b1"'} />
-    {"\n  "}
-    <CodeProp name="width" value={'"fill"'} />
-    <span className={syntax}>{`>`}</span>
-    {"\n  "}Космос{"\n"}
-    <span className={syntax}>{`</`}</span>
-    <span className={component}>TableCell</span>
-    <span className={syntax}>{`>`}</span>
-  </Snippet>
-);
 const stateSnippet = (
   <Snippet>
     <span className={syntax}>{`<`}</span>
@@ -240,19 +199,6 @@ const sortingSnippet = (
     <span className={syntax}>{`>`}</span>
   </Snippet>
 );
-const hoverSnippet = (
-  <Snippet>
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>TableRow</span>{" "}
-    <CodeProp name="hover" />
-    <span className={syntax}>{`>`}</span>
-    {"\n  …\n"}
-    <span className={syntax}>{`</`}</span>
-    <span className={component}>TableRow</span>
-    <span className={syntax}>{`>`}</span>
-  </Snippet>
-);
-
 function ListingTable({
   bordered = true,
   compact = false,
@@ -469,7 +415,7 @@ export function TableExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={borderSnippet}
+        settings={["bordered: false · true"]}
         description="bordered добавляет стандартную обводку Table, включая шапку при stickyHeader. По умолчанию prop выключен; включай его, когда таблицу нужно отделить от фона."
         direction="vertical"
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
@@ -491,7 +437,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={verticalBordersSnippet}
+        settings={["verticalBorders: true"]}
         description="verticalBorders включает вертикальные границы между ячейками. По умолчанию они выключены."
         panels={[
           <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
@@ -507,7 +453,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={sizeSnippet}
+        settings={["compact: false · true", "textSize: b2 · b1"]}
         description='compact уменьшает отступы ячейки, а textSize меняет размер текста body-строк. Для колонок используй width="fill" для равного распределения, число — для фиксированной ширины.'
         direction="vertical"
         panelCount={3}
@@ -594,7 +540,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={hoverSnippet}
+        settings={["hover: boolean"]}
         description="Используй hover только для строк, клик по которым запускает действие: открывает детали, меняет состояние или ведёт на другую страницу."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">

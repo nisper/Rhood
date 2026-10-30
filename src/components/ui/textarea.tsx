@@ -40,12 +40,12 @@ function stateClasses({
 }) {
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      ? "border-[color:var(--rh-theme-border-error)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
       : "border-[color:var(--rh-theme-border-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--rh-theme-border-focus)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
+    return "border-[color:var(--rh-theme-border-focus)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
   }
 
   if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
@@ -104,16 +104,16 @@ function Textarea({
     ? "bg-[var(--rh-theme-fill-input-neutral)]"
     : "bg-[var(--rh-theme-surface-bg)]"
   const interactiveClasses = !disabled && !error && !isFocusedPreview
-    ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-focus)]"
+    ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:[border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
     : !disabled && error
-      ? "focus:border-[color:var(--rh-theme-border-error)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-error)]"
+      ? "focus:border-[color:var(--rh-theme-border-error)] focus:[border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
       : undefined
 
   const textarea = (
     <textarea
       aria-invalid={error || undefined}
       className={cn(
-        "box-border block w-full resize-none appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        "box-border block w-full resize-none appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border [border-width:var(--rh-sizing-common-input-shape-border-width)] text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
         backgroundClasses,
         sizeClasses[size],
         stateClasses({ appearance, disabled, error, state }),

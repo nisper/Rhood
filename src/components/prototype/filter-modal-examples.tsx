@@ -6,6 +6,7 @@ import { ShowcaseSection } from "@/components/ui/showcase-section";
 
 const usedComponents = [
   { href: "/Rhood/?view=components&component=button", title: "Button" },
+  { href: "/Rhood/?view=components&component=expandable-content", title: "ExpandableContent" },
   { href: "/Rhood/?view=components&component=form", title: "FormBlock · FormSet" },
   { href: "/Rhood/?view=components&component=input-number-range", title: "InputNumberRange" },
   { href: "/Rhood/?view=components&component=modal", title: "Modal · ModalContainer" },

@@ -17,7 +17,7 @@ type CheckboxProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
 }
 
 const sizes: Record<CheckboxSize, { control: string; label: string; root: string; skeleton: string }> = {
-  lg: { control: "m-0.5 size-6 rounded-[3px]", label: "rh-typography-b1", root: "min-h-12 gap-[var(--rh-sizing-common-input-gap-lg)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]", skeleton: "h-8 w-14 rounded-lg" },
+  lg: { control: "m-0.5 size-6 rounded-[3px]", label: "rh-typography-b1", root: "min-h-12 gap-[var(--rh-sizing-common-input-gap-lg)] py-[var(--rh-sizing-common-input-py-lg)]", skeleton: "h-8 w-14 rounded-lg" },
   md: { control: "m-0.5 size-5 rounded-[3px]", label: "rh-typography-b1", root: "min-h-10 gap-2 py-2", skeleton: "h-6 w-14 rounded-lg" },
   sm: { control: "m-0.5 size-4 rounded-[3px]", label: "rh-typography-b2", root: "min-h-9 gap-2 py-2", skeleton: "h-5 w-14 rounded-lg" },
 }

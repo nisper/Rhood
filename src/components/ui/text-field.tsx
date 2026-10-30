@@ -21,7 +21,7 @@ type TextfieldProps = Omit<React.ComponentProps<"input">, "size"> & {
 }
 
 const sizeClasses: Record<TextfieldSize, string> = {
-  lg: "rh-typography-b1 h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]",
+  lg: "rh-typography-b1 h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-shape-border-width)*2)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]",
   md: "rh-typography-b1 h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-px-md)]",
   sm: "rh-typography-b2 h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-px-sm)]",
 }
@@ -29,12 +29,12 @@ const sizeClasses: Record<TextfieldSize, string> = {
 function stateClasses({ appearance, disabled, error, state }: { appearance: TextfieldAppearance; disabled: boolean; error: boolean; state: TextfieldState }) {
   if (error) {
     return state === "focused"
-      ? "border-[color:var(--rh-theme-border-error)] ring-1 ring-inset ring-[color:var(--rh-theme-border-error)]"
+      ? "border-[color:var(--rh-theme-border-error)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
       : "border-[color:var(--rh-theme-border-error)]"
   }
 
   if (state === "focused") {
-    return "border-[color:var(--rh-theme-border-focus)] ring-1 ring-inset ring-[color:var(--rh-theme-border-focus)]"
+    return "border-[color:var(--rh-theme-border-focus)] [border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
   }
 
   if (state === "hovered") return "border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)]"
@@ -75,16 +75,16 @@ function Textfield({
     ? "bg-[var(--rh-theme-fill-input-neutral)]"
     : "bg-[var(--rh-theme-surface-bg)]"
   const interactiveClasses = !disabled && !error && !isFocusedPreview
-    ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-focus)]"
+    ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)] focus:border-[color:var(--rh-theme-border-focus)] focus:bg-[var(--rh-theme-surface-bg)] focus:[border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
     : !disabled && error
-      ? "focus:border-[color:var(--rh-theme-border-error)] focus:ring-1 focus:ring-inset focus:ring-[color:var(--rh-theme-border-error)]"
+      ? "focus:border-[color:var(--rh-theme-border-error)] focus:[border-width:var(--rh-sizing-common-input-shape-focused-border-width)]"
       : undefined
 
   const input = (
     <input
       aria-invalid={error || undefined}
       className={cn(
-        "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
+        "box-border block w-full appearance-none rounded-[var(--rh-sizing-common-input-shape-border-radius)] border [border-width:var(--rh-sizing-common-input-shape-border-width)] text-[color:var(--rh-theme-text-neutral-primary)] outline-none transition-colors duration-150 placeholder:text-[color:var(--rh-theme-text-neutral-secondary)] placeholder:opacity-100 disabled:cursor-not-allowed disabled:border-[color:var(--rh-theme-border-light)] disabled:text-[color:var(--rh-theme-text-neutral-disabled)]",
         backgroundClasses,
         sizeClasses[size],
         stateClasses({ appearance, disabled, error, state }),

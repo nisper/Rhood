@@ -142,7 +142,7 @@
   --parser-surface-under-islands: #f4f4f4;
   --parser-surface-under-islands-alt: #f1f5f9;
   --parser-surface-neutral-ultra-dark: #1a1a1a;
-  --parser-surface-backdrop: rgba(0, 0, 0, 0.4);
+  --parser-surface-backdrop: rgba(0, 0, 0, 0.5);
   --parser-focus-ring: var(--parser-text-neutral-focus);
 }
 

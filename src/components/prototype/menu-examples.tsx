@@ -35,18 +35,6 @@ function CodeProp({ children }: { children: React.ReactNode }) {
   return <span className="text-[var(--rh-theme-text-info)]">{children}</span>
 }
 
-function CodeValue({ children }: { children: React.ReactNode }) {
-  return <span className="text-[var(--rh-theme-text-success)]">{children}</span>
-}
-
-function MenuStructureSnippet() {
-  return <code className="font-mono text-sm leading-5"><CodeSyntax>{"<"}</CodeSyntax><CodeComponent>Menu</CodeComponent><CodeSyntax>{">\n  <"}</CodeSyntax><CodeComponent>MenuItemSingleSelect</CodeComponent><CodeSyntax>{">"}</CodeSyntax>Menu item<CodeSyntax>{"</"}</CodeSyntax><CodeComponent>MenuItemSingleSelect</CodeComponent><CodeSyntax>{">\n  <"}</CodeSyntax><CodeComponent>MenuDivider</CodeComponent><CodeSyntax>{" />\n  <"}</CodeSyntax><CodeComponent>MenuItemMultiselect</CodeComponent><CodeSyntax>{">"}</CodeSyntax>Menu item<CodeSyntax>{"</"}</CodeSyntax><CodeComponent>MenuItemMultiselect</CodeComponent><CodeSyntax>{">\n</"}</CodeSyntax><CodeComponent>Menu</CodeComponent><CodeSyntax>{">"}</CodeSyntax></code>
-}
-
-function MenuStateSnippet() {
-  return <code className="font-mono text-sm leading-5"><CodeSyntax>{"<"}</CodeSyntax><CodeComponent>MenuItemSingleSelect</CodeComponent>{" "}<CodeProp>state</CodeProp><CodeSyntax>=</CodeSyntax><CodeValue>{'"hovered"'}</CodeValue><CodeSyntax>{" />\n<"}</CodeSyntax><CodeComponent>MenuItemSingleSelect</CodeComponent>{" "}<CodeProp>disabled</CodeProp><CodeSyntax>{" />\n<"}</CodeSyntax><CodeComponent>MenuItemMultiselect</CodeComponent>{" "}<CodeProp>checked</CodeProp><CodeSyntax>{" />"}</CodeSyntax></code>
-}
-
 function MenuCompositionSnippet() {
   return <code className="font-mono text-sm leading-5"><CodeSyntax>{"<"}</CodeSyntax><CodeComponent>Menu</CodeComponent><CodeSyntax>{">\n  <"}</CodeSyntax><CodeComponent>MenuItemSingleSelect</CodeComponent>{" "}<CodeProp>selected</CodeProp><CodeSyntax>{" />\n  <"}</CodeSyntax><CodeComponent>MenuDivider</CodeComponent><CodeSyntax>{" />\n  <"}</CodeSyntax><CodeComponent>MenuItemMultiselect</CodeComponent>{" "}<CodeProp>checked</CodeProp><CodeSyntax>{" />\n</"}</CodeSyntax><CodeComponent>Menu</CodeComponent><CodeSyntax>{">"}</CodeSyntax></code>
 }
@@ -82,14 +70,14 @@ function InteractiveMenus() {
 export function MenuExamples() {
   return <div className="grid min-w-0 gap-10">
     <ShowcaseSection
-      codeSnippet={<MenuStructureSnippet />}
+      codeSnippet={<MenuCompositionSnippet />}
       description="Menu использует единый контрастный контейнер без вариантов appearance и размеров. Его визуальный контекст формируют пункты MenuItemSingleSelect и MenuItemMultiselect."
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false}>Menu item</MenuItemSingleSelect><MenuDivider /><MenuItemMultiselect checked={false} icon={false} secondaryText={false} rightSlot={false}>Menu item</MenuItemMultiselect></Menu></div>]}
       title="Стиль"
     />
 
     <ShowcaseSection
-      codeSnippet={<MenuStateSnippet />}
+      settings={["state: default · hovered", "disabled: boolean", "selected: boolean", "checked: boolean"]}
       description="Пункты поддерживают default, hover и disabled. Для одиночного выбора выбранность — отдельное состояние; для множественного её показывает чекбокс."
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] grid-cols-3 gap-3"><MenuItemLabel label="default"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false} selected={false}>Menu item</MenuItemSingleSelect></Menu></MenuItemLabel><MenuItemLabel label="hover"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false} selected={false} state="hovered">Menu item</MenuItemSingleSelect></Menu></MenuItemLabel><MenuItemLabel label="disabled"><Menu><MenuItemSingleSelect disabled secondaryText={false} rightSlot={false} selected={false}>Menu item</MenuItemSingleSelect></Menu></MenuItemLabel></div></div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4"><div className="grid w-full max-w-[640px] grid-cols-2 gap-3"><MenuItemLabel label="selected"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false}>Menu item</MenuItemSingleSelect></Menu></MenuItemLabel><MenuItemLabel label="checked"><Menu><MenuItemMultiselect checked icon={false} secondaryText={false} rightSlot={false}>Menu item</MenuItemMultiselect></Menu></MenuItemLabel></div></div>]}
       title="Состояния"

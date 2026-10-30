@@ -1,38 +1,14 @@
-import { ShowcaseSection } from "@/components/ui/showcase-section";
+import { ShowcaseSection } from "@/components/ui/showcase-section"
 import { Button } from "@/components/ui/button"
 import { FormBlock } from "@/components/ui/form-block"
 import { FormSet } from "@/components/ui/form-set"
 import { Textfield } from "@/components/ui/text-field"
 
-function CodeSyntax({ children }: { children: React.ReactNode }) {
-  return <span className="text-[var(--rh-theme-text-neutral-secondary)]">{children}</span>
-}
-
-function CodeComponent({ children }: { children: React.ReactNode }) {
-  return <span className="text-[var(--rh-palette-purple-700)]">{children}</span>
-}
-
-function CodeProp({ children }: { children: React.ReactNode }) {
-  return <span className="text-[var(--rh-theme-text-info)]">{children}</span>
-}
-
-function CodeValue({ children }: { children: React.ReactNode }) {
-  return <span className="text-[var(--rh-theme-text-success)]">{children}</span>
-}
-
-function FormBlockSnippet() {
+function DemoPanel({ children }: { children: React.ReactNode }) {
   return (
-    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-      <CodeSyntax>{"<"}</CodeSyntax><CodeComponent>FormBlock</CodeComponent>{" "}<CodeProp>direction</CodeProp><CodeSyntax>=</CodeSyntax><CodeValue>{'"row"'}</CodeValue>{" "}<CodeProp>label</CodeProp><CodeSyntax>=</CodeSyntax><CodeValue>{'"Электронная почта"'}</CodeValue><CodeSyntax>{">\n  <"}</CodeSyntax><CodeComponent>Textfield</CodeComponent>{" "}<CodeProp>type</CodeProp><CodeSyntax>=</CodeSyntax><CodeValue>{'"email"'}</CodeValue><CodeSyntax>{" />\n</"}</CodeSyntax><CodeComponent>FormBlock</CodeComponent><CodeSyntax>{">"}</CodeSyntax>
-    </code>
-  )
-}
-
-function FormSetSnippet() {
-  return (
-    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-      <CodeSyntax>{"<"}</CodeSyntax><CodeComponent>FormSet</CodeComponent>{" "}<CodeProp>direction</CodeProp><CodeSyntax>=</CodeSyntax><CodeValue>{'"row"'}</CodeValue><CodeSyntax>{">\n  <"}</CodeSyntax><CodeComponent>FormBlock</CodeComponent>{" "}<CodeProp>label</CodeProp><CodeSyntax>=</CodeSyntax><CodeValue>{'"Город"'}</CodeValue><CodeSyntax>{"><"}</CodeSyntax><CodeComponent>Textfield</CodeComponent><CodeSyntax>{" /></"}</CodeSyntax><CodeComponent>FormBlock</CodeComponent><CodeSyntax>{">\n  <"}</CodeSyntax><CodeComponent>FormBlock</CodeComponent>{" "}<CodeProp>label</CodeProp><CodeSyntax>=</CodeSyntax><CodeValue>{'"Индекс"'}</CodeValue><CodeSyntax>{"><"}</CodeSyntax><CodeComponent>Textfield</CodeComponent><CodeSyntax>{" /></"}</CodeSyntax><CodeComponent>FormBlock</CodeComponent><CodeSyntax>{">\n</"}</CodeSyntax><CodeComponent>FormSet</CodeComponent><CodeSyntax>{">"}</CodeSyntax>
-    </code>
+    <div className="flex min-h-[136px] min-w-0 items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
+      {children}
+    </div>
   )
 }
 
@@ -40,49 +16,48 @@ export function FormExamples() {
   return (
     <div className="grid min-w-0 gap-10">
       <ShowcaseSection
-        codeSnippet={<FormBlockSnippet />}
-        description="FormBlock объединяет FormLabel и контрол. В column лейбл располагается сверху, а в row получает стандартный верхний отступ."
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full max-w-[640px] gap-6">
-                <FormBlock label="Имя">
-                  <Textfield aria-label="Имя" placeholder="Введите имя" />
-                </FormBlock>
-                <FormBlock direction="row" label="Электронная почта">
-                  <Textfield aria-label="Электронная почта" placeholder="name@example.com" type="email" />
-                </FormBlock>
-              </div>
-            </div>]}
-        title="Состав"
+        description="FormBlock располагает лейбл и контрол вертикально или в одну строку."
+        panels={[
+          <DemoPanel key="column"><div className="w-full max-w-[360px]"><FormBlock direction="column" label="Имя"><Textfield appearance="neutral" aria-label="Имя" placeholder="Введите имя" /></FormBlock></div></DemoPanel>,
+          <DemoPanel key="row"><div className="w-full max-w-[520px]"><FormBlock direction="row" label="Электронная почта"><Textfield appearance="neutral" aria-label="Электронная почта" placeholder="name@example.com" type="email" /></FormBlock></div></DemoPanel>,
+        ]}
+        settings={["FormBlock.direction: column · row"]}
+        title="Направление"
       />
 
       <ShowcaseSection
-        codeSnippet={<FormSetSnippet />}
-        description="FormSet располагает FormBlock в столбец или строку и задаёт одинаковое расстояние между ними."
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full max-w-[640px] gap-6">
-                <form onSubmit={(event) => event.preventDefault()}>
-                  <FormSet>
-                    <FormBlock label="Имя">
-                      <Textfield aria-label="Имя" placeholder="Введите имя" />
-                    </FormBlock>
-                    <FormBlock label="Электронная почта">
-                      <Textfield aria-label="Электронная почта" placeholder="name@example.com" type="email" />
-                    </FormBlock>
-                    <Button className="self-start" type="submit">
-                      Сохранить
-                    </Button>
-                  </FormSet>
-                </form>
-                <FormSet direction="row">
-                  <FormBlock className="flex-1" label="Город">
-                    <Textfield aria-label="Город" placeholder="Екатеринбург" />
-                  </FormBlock>
-                  <FormBlock className="flex-1" label="Индекс">
-                    <Textfield aria-label="Индекс" placeholder="620000" />
-                  </FormBlock>
+        description="controlSize выравнивает лейбл по вертикали относительно контрола того же размера."
+        panels={[
+          <DemoPanel key="sizes">
+            <div className="grid w-full max-w-[640px] gap-4">
+              {(["sm", "md", "lg"] as const).map((size) => (
+                <FormBlock controlSize={size} direction="row" key={size} label={size} labelWidth="56px">
+                  <Textfield appearance="neutral" aria-label={`Поле размера ${size}`} placeholder="Значение" size={size} />
+                </FormBlock>
+              ))}
+            </div>
+          </DemoPanel>,
+        ]}
+        settings={["FormBlock.controlSize: sm · md · lg", "Textfield.size: sm · md · lg"]}
+        title="Размер"
+      />
+
+      <ShowcaseSection
+        description="FormSet группирует блоки формы, выравнивает лейблы и задаёт общее расстояние между полями."
+        panels={[
+          <DemoPanel key="column">
+            <div className="w-full max-w-[520px]">
+              <form onSubmit={(event) => event.preventDefault()}>
+                <FormSet>
+                  <FormBlock label="Имя"><Textfield appearance="neutral" aria-label="Имя" placeholder="Введите имя" /></FormBlock>
+                  <FormBlock label="Электронная почта"><Textfield appearance="neutral" aria-label="Электронная почта" placeholder="name@example.com" type="email" /></FormBlock>
+                  <Button className="self-start" type="submit">Сохранить</Button>
                 </FormSet>
-              </div>
-            </div>]}
+              </form>
+            </div>
+          </DemoPanel>,
+        ]}
+        settings={["FormSet.direction: column · row", "FormSet.gap: CSS gap value", "FormSet.labelWidth: CSS width value"]}
         title="FormSet"
       />
     </div>

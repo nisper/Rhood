@@ -195,7 +195,7 @@ function Modal({
       aria-labelledby={titleId}
       aria-modal="true"
       className={cn(
-        "grid max-h-full w-full grid-rows-[auto_minmax(0,1fr)_auto] overflow-hidden rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg",
+        "grid max-h-full w-full grid-rows-[minmax(0,1fr)] overflow-hidden rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)] shadow-lg",
         resolvedPresentation === "bottom-sheet" &&
           "transition-transform duration-200 ease-in-out",
         resolvedPresentation === "bottom-sheet" &&
@@ -213,27 +213,29 @@ function Modal({
       onTransitionEnd={handleTransitionEnd}
       {...props}
     >
-      <ModalHeader
-        closeButton={showCloseButton}
-        description={description}
-        onClose={requestClose}
-        title={title}
-        titleAs={titleAs}
-        titleId={titleId}
-      />
+      <div className="min-h-0 overflow-y-auto">
+        <ModalHeader
+          closeButton={showCloseButton}
+          description={description}
+          onClose={requestClose}
+          title={title}
+          titleAs={titleAs}
+          titleId={titleId}
+        />
 
-      {children && <ModalBody className={bodyClassName}>{children}</ModalBody>}
+        {children && <ModalBody className={bodyClassName}>{children}</ModalBody>}
 
-      {hasFooter && footer && (
-        <ModalFooter
-          className={cn(
-            resolvedPresentation === "bottom-sheet" &&
-              "flex-col-reverse [&>button]:w-full",
-          )}
-        >
-          {footer}
-        </ModalFooter>
-      )}
+        {hasFooter && footer && (
+          <ModalFooter
+            className={cn(
+              resolvedPresentation === "bottom-sheet" &&
+                "flex-col-reverse [&>button]:w-full",
+            )}
+          >
+            {footer}
+          </ModalFooter>
+        )}
+      </div>
     </div>
   );
 }

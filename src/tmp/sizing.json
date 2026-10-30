@@ -371,7 +371,7 @@
     },
     "modal": {
       "$type": "number",
-      "$value": "{border-radius.border-radius-lg}",
+      "$value": 24,
       "$extensions": {
         "com.figma.variableId": "VariableID:1923:19139",
         "com.figma.scopes": [
@@ -712,6 +712,14 @@
       }
     },
     "shape": {
+      "border-width": {
+        "$type": "number",
+        "$value": 1
+      },
+      "focused-border-width": {
+        "$type": "number",
+        "$value": 1.5
+      },
       "border_radius": {
         "$type": "number",
         "$value": "{border-radius.border-radius-md}",

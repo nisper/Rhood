@@ -30,36 +30,6 @@ const properties = [
   ["fullWidth", "boolean", "false", "Растягивает поле на ширину контейнера."],
 ];
 
-function CodeProp({ name, value }: { name: string; value?: string }) {
-  return (
-    <>
-      <span className="text-[var(--rh-theme-text-info)]">{name}</span>
-      {value && (
-        <>
-          <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
-          <span className="text-[var(--rh-theme-text-success)]">{value}</span>
-        </>
-      )}
-    </>
-  );
-}
-
-function SelectSnippet({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`<`}</span>
-      <span className="text-[var(--rh-palette-purple-700)]">Select</span>{" "}
-      {children}
-      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{` />`}</span>
-    </code>
-  );
-}
-
-const sizeSnippet = <SelectSnippet><CodeProp name="size" value={'"lg"'} /></SelectSnippet>;
-const appearanceSnippet = <><SelectSnippet><CodeProp name="size" value={'"sm"'} /></SelectSnippet><br /><SelectSnippet><CodeProp name="appearance" value={'"ghost"'} /> <CodeProp name="size" value={'"sm"'} /></SelectSnippet></>;
-const stateSnippet = <SelectSnippet><CodeProp name="state" value={'"focused"'} /></SelectSnippet>;
-const compositionSnippet = <SelectSnippet><CodeProp name="icon" /></SelectSnippet>;
-
 function SelectWithMenu({
   align = "left",
   defaultOpen = false,
@@ -195,14 +165,14 @@ export function SelectExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={appearanceSnippet}
+        settings={["appearance: default · neutral · ghost"]}
         description="default использует стандартную заливку; neutral — нейтральный фон поля ввода; ghost — прозрачный фон для компактных контролов, например сортировки над таблицей."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="flex flex-wrap items-center gap-6"><SelectWithMenu label={false} size="sm" value="По дате — новые" /><SelectWithMenu appearance="neutral" label={false} size="sm" value="По дате — новые" /><SelectWithMenu appearance="ghost" label={false} size="sm" value="По дате — новые" /></div></div>]}
         title="Стиль"
       />
 
       <ShowcaseSection
-        codeSnippet={sizeSnippet}
+        settings={["size: lg · md · sm"]}
         description="lg использует увеличенные отступы по вертикали и горизонтали; md — основной размер, sm подходит для плотных панелей и фильтров."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-end justify-center gap-6">
@@ -215,7 +185,7 @@ export function SelectExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={stateSnippet}
+        settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean", "expanded: boolean"]}
         description="Нативный hover работает при наведении. Focused, error и disabled помогают показать статичные состояния в макетах."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[760px] grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-4">
@@ -230,7 +200,7 @@ export function SelectExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={compositionSnippet}
+        settings={["icon: boolean", "helperText: ReactNode"]}
         description="Select может показывать подпись, иконку и пояснение. Нажми на поле, чтобы открыть меню."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-start justify-center gap-6">

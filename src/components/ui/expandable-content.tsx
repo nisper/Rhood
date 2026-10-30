@@ -1,8 +1,6 @@
 import * as React from "react"
-import { ChevronDown } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
-import { Link } from "@/components/ui/link"
+import { ExpandableContentTrigger } from "@/components/ui/expandable-content-trigger"
 import { cn } from "@/lib/utils"
 
 type ExpandableContentProps = React.ComponentProps<"div"> & {
@@ -12,9 +10,8 @@ type ExpandableContentProps = React.ComponentProps<"div"> & {
   defaultExpanded?: boolean
   expandLabel?: React.ReactNode
   expanded?: boolean
-  linkControl?: boolean
   onExpandedChange?: (expanded: boolean) => void
-  buttonSize?: React.ComponentProps<typeof Button>["size"]
+  triggerClassName?: string
 }
 
 /**
@@ -29,9 +26,8 @@ function ExpandableContent({
   defaultExpanded = false,
   expandLabel = "Читать полностью",
   expanded: expandedProp,
-  linkControl = false,
   onExpandedChange,
-  buttonSize = "sm",
+  triggerClassName,
   ...props
 }: ExpandableContentProps) {
   const contentId = React.useId()
@@ -81,31 +77,14 @@ function ExpandableContent({
       </div>
 
       {hasOverflow && (
-        linkControl ? (
-          <Link
-            asButton
-            aria-controls={contentId}
-            aria-expanded={expanded}
-            className="mt-2 justify-self-start"
-            size="b2"
-            onClick={handleExpandedChange}
-          >
-            {expanded ? collapseLabel : expandLabel}
-          </Link>
-        ) : (
-          <Button
-            appearance="default"
-            aria-controls={contentId}
-            aria-expanded={expanded}
-            className="mt-3 justify-self-start"
-            endIcon={<ChevronDown aria-hidden="true" className={cn("transition-transform duration-150", expanded && "rotate-180")} />}
-            onClick={handleExpandedChange}
-            size={buttonSize}
-            startIcon={false}
-          >
-            {expanded ? collapseLabel : expandLabel}
-          </Button>
-        )
+        <ExpandableContentTrigger
+          className={cn("mt-2 justify-self-start", triggerClassName)}
+          controls={contentId}
+          expanded={expanded}
+          onClick={handleExpandedChange}
+        >
+          {expanded ? collapseLabel : expandLabel}
+        </ExpandableContentTrigger>
       )}
     </div>
   )

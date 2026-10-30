@@ -26,7 +26,7 @@ function ModalHeader({
   return (
     <header
       className={cn(
-        "flex items-start justify-between gap-4 px-4 py-6 pb-2 md:px-6",
+        "sticky top-0 z-10 flex items-start justify-between gap-4 bg-[color-mix(in_srgb,var(--rh-theme-fill-contrast-static)_75%,transparent)] px-4 py-6 pb-4 backdrop-blur-[12px] md:px-6",
         className,
       )}
       {...props}

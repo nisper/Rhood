@@ -13,21 +13,19 @@ const properties = [
   ["…props", 'ComponentProps<"div">', "—", "Нативные свойства корневого div, включая атрибуты доступности."],
 ]
 
-function CodeName({ children }: { children: React.ReactNode }) {
-  return <span className="text-[var(--rh-palette-purple-700)]">{children}</span>
+function TooltipCompositionSnippet() {
+  return (
+    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
+      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"<"}</span>
+      <span className="text-[var(--rh-palette-purple-700)]">Tooltip</span>
+      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span>
+      Короткая подсказка
+      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"</"}</span>
+      <span className="text-[var(--rh-palette-purple-700)]">Tooltip</span>
+      <span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span>
+    </code>
+  )
 }
-
-function CodeProp({ name, value }: { name: string; value?: string }) {
-  return <><span className="text-[var(--rh-theme-text-info)]">{name}</span>{value && <><span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span><span className="text-[var(--rh-theme-text-success)]">{value}</span></>}</>
-}
-
-function TooltipSnippet({ children }: { children: React.ReactNode }) {
-  return <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]"><span className="text-[var(--rh-theme-text-neutral-secondary)]">{"<"}</span><CodeName>Tooltip</CodeName>{" "}{children}<span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span>Typography<span className="text-[var(--rh-theme-text-neutral-secondary)]">{"</"}</span><CodeName>Tooltip</CodeName><span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span></code>
-}
-
-const defaultSnippet = <TooltipSnippet><CodeProp name="children" value={'"Typography"'} /></TooltipSnippet>
-const contentSnippet = <TooltipSnippet><CodeProp name="children" value={'"Текст подсказки"'} /></TooltipSnippet>
-const animationSnippet = <TooltipSnippet><CodeProp name="children" value={'"Подсказка появляется с анимацией"'} /></TooltipSnippet>
 
 function TooltipAnimationDemo() {
   const triggerRef = React.useRef<HTMLDivElement>(null)
@@ -59,11 +57,11 @@ function TooltipAnimationDemo() {
 
 export function TooltipExamples() {
   return <div className="grid min-w-0">
-    <ShowcaseSection codeSnippet={defaultSnippet} description="Tooltip использует единый тёмный стиль и компактную типографику. Вариантов внешнего вида, размеров и отдельных состояний у компонента нет." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><Tooltip>Typography</Tooltip></div>]} title="Стиль" />
+    <ShowcaseSection description="Tooltip использует единый тёмный стиль и компактную типографику. Вариантов внешнего вида, размеров и отдельных состояний у компонента нет." panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><Tooltip>Typography</Tooltip></div>]} title="Стиль" />
 
-    <ShowcaseSection codeSnippet={animationSnippet} description="Наведи курсор на кнопку или перейди к ней клавишей Tab, чтобы увидеть появление подсказки: fade-in и подъём на 4 px за 160 мс. При включённом prefers-reduced-motion движение отключается." panels={[<TooltipAnimationDemo />]} title="Анимация появления" />
+    <ShowcaseSection description="Наведи курсор на кнопку или перейди к ней клавишей Tab, чтобы увидеть появление подсказки: fade-in и подъём на 4 px за 160 мс. При включённом prefers-reduced-motion движение отключается." panels={[<TooltipAnimationDemo />]} title="Анимация появления" />
 
-    <ShowcaseSection codeSnippet={contentSnippet} description="Передай текст или ReactNode через children. Ширина подсказки ограничена 350 px; длинный текст переносится внутри контейнера." panels={[<div className="flex min-h-[136px] flex-wrap items-center justify-center gap-6 overflow-hidden rounded-xl bg-white px-6 py-4"><Tooltip>Короткая подсказка</Tooltip><Tooltip className="max-w-[220px]">Подсказка с более длинным текстом, который переносится на следующую строку.</Tooltip></div>]} title="Состав" />
+    <ShowcaseSection codeSnippet={<TooltipCompositionSnippet />} description="Передай текст или ReactNode через children. Ширина подсказки ограничена 350 px; длинный текст переносится внутри контейнера." panels={[<div className="flex min-h-[136px] flex-wrap items-center justify-center gap-6 overflow-hidden rounded-xl bg-white px-6 py-4"><Tooltip>Короткая подсказка</Tooltip><Tooltip className="max-w-[220px]">Подсказка с более длинным текстом, который переносится на следующую строку.</Tooltip></div>]} title="Состав" />
 
     <section className="mb-10 grid gap-3">
       <div className="grid gap-1"><h2 className="rh-typography-h4">Свойства</h2><p className="rh-typography-b1">Tooltip отображает содержимое в компактном текстовом контейнере и принимает нативные свойства div.</p></div>
