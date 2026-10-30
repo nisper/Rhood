@@ -9,9 +9,12 @@ import { InputNumberRange } from "@/components/ui/input-number-range";
 import { Menu } from "@/components/ui/menu";
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { Modal, ModalContainer } from "@/components/ui/modal";
+import { createDefaultFilterModalValues, type FilterModalValues } from "@/components/ui/filter-modal-values";
 import { Select } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Textfield } from "@/components/ui/text-field";
+import { Tab } from "@/components/ui/tab";
+import { TabBar } from "@/components/ui/tab-bar";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { useMenuOpen } from "@/hooks/use-menu-open";
 
@@ -22,6 +25,10 @@ function ModalSelect({
   options,
   toggleOptions = false,
   multipleOptions = false,
+  selectedValue: controlledValue,
+  selectedValues: controlledSelectedValues,
+  onValueChange,
+  onSelectedValuesChange,
 }: {
   allowDeselect?: boolean;
   defaultValue?: string;
@@ -29,11 +36,17 @@ function ModalSelect({
   options: readonly string[];
   toggleOptions?: boolean;
   multipleOptions?: boolean;
+  selectedValue?: string;
+  selectedValues?: string[];
+  onValueChange?: (value: string) => void;
+  onSelectedValuesChange?: (values: string[]) => void;
 }) {
   const menuRef = React.useRef<HTMLDivElement>(null);
   const [expanded, setExpanded] = useMenuOpen(menuRef);
   const [value, setValue] = React.useState(defaultValue ?? "Не выбрано");
   const [selectedValues, setSelectedValues] = React.useState<string[]>([]);
+  const resolvedValue = controlledValue ?? value;
+  const resolvedSelectedValues = controlledSelectedValues ?? selectedValues;
 
   if (toggleOptions) {
     return (
@@ -41,16 +54,20 @@ function ModalSelect({
         <div className={cn("flex flex-wrap", multipleOptions ? "gap-[var(--rh-sizing-base-module-0-75)]" : "gap-1")}>
           {options.map((option) => (
             <ToggleChip
-              checked={multipleOptions ? selectedValues.includes(option) : option === value}
+              checked={multipleOptions ? resolvedSelectedValues.includes(option) : option === resolvedValue}
               icon={false}
               key={option}
               onCheckedChange={(checked) => {
                 if (multipleOptions) {
-                  setSelectedValues((current) => checked
-                    ? [...current, option]
-                    : current.filter((selectedOption) => selectedOption !== option));
-                  } else if (checked || allowDeselect) {
-                    setValue(checked ? option : "Не выбрано");
+                  const nextValues = checked
+                    ? [...resolvedSelectedValues, option]
+                    : resolvedSelectedValues.filter((selectedOption) => selectedOption !== option);
+                  if (controlledSelectedValues === undefined) setSelectedValues(nextValues);
+                  onSelectedValuesChange?.(nextValues);
+                } else if (checked || allowDeselect) {
+                  const nextValue = checked ? option : "Не выбрано";
+                  if (controlledValue === undefined) setValue(nextValue);
+                  onValueChange?.(nextValue);
                 }
               }}
               size="md"
@@ -81,13 +98,14 @@ function ModalSelect({
                   key={option}
                   onClick={(event) => {
                     event.stopPropagation();
-                    setValue(option);
+                    if (controlledValue === undefined) setValue(option);
+                    onValueChange?.(option);
                     setExpanded(false);
                   }}
                   rightSlot={false}
                   role="option"
                   secondaryText={false}
-                  selected={option === value}
+                  selected={option === resolvedValue}
                 >
                   {option}
                 </MenuItemSingleSelect>
@@ -97,57 +115,83 @@ function ModalSelect({
         }
         onClick={() => setExpanded((current) => !current)}
         onExpandedChange={setExpanded}
-        value={value}
+        value={resolvedValue}
       />
     </FormBlock>
     </div>
   );
 }
 
-function ModalRangeField({ label, unit }: { label: string; unit?: string }) {
+function ModalRangeField({
+  label,
+  unit,
+  startValue,
+  endValue,
+  onChange,
+}: {
+  label: string;
+  unit?: string;
+  startValue: string;
+  endValue: string;
+  onChange: (startValue: string, endValue: string) => void;
+}) {
   return (
     <FormBlock direction="row" label={label}>
       <InputNumberRange
         appearance="neutral"
-        endInputProps={{ placeholder: "до" }}
+        endInputProps={{ onChange: (event) => onChange(startValue, event.target.value), placeholder: "до", value: endValue }}
         size="lg"
-        startInputProps={{ placeholder: "от" }}
+        startInputProps={{ onChange: (event) => onChange(event.target.value, endValue), placeholder: "от", value: startValue }}
         unit={unit}
       />
     </FormBlock>
   );
 }
 
-function FilterFields() {
+function FilterFields({
+  values,
+  onValuesChange,
+}: {
+  values: FilterModalValues;
+  onValuesChange: (values: FilterModalValues) => void;
+}) {
+  const update = (patch: Partial<FilterModalValues>) => onValuesChange({ ...values, ...patch });
+
   return (
-    <form>
+    <div>
       <FormSet gap="calc(var(--spacing) * 5)" labelWidth="200px">
         <FormBlock controlSize="lg" direction="row" label="Расположение">
-        <Textfield appearance="neutral" id="filter-location" placeholder="Введите расположение" size="lg" />
+        <Textfield appearance="neutral" id="filter-location" onChange={(event) => update({ location: event.target.value })} placeholder="Введите расположение" size="lg" value={values.location} />
         </FormBlock>
         <ModalSelect
           label="Комнатность"
           options={["Студия", "1", "2", "3", "4+"]}
           toggleOptions
           multipleOptions
+          selectedValues={values.roominess}
+          onSelectedValuesChange={(roominess) => update({ roominess })}
         />
-        <ModalRangeField label="Площадь" unit="м²" />
-        <ModalRangeField label="Цена" unit="₽" />
-        <ModalRangeField label="Этаж" />
+        <ModalRangeField endValue={values.areaEnd} label="Площадь" onChange={(areaStart, areaEnd) => update({ areaStart, areaEnd })} startValue={values.areaStart} unit="м²" />
+        <ModalRangeField endValue={values.priceEnd} label="Цена" onChange={(priceStart, priceEnd) => update({ priceStart, priceEnd })} startValue={values.priceStart} unit="₽" />
+        <ModalRangeField endValue={values.floorEnd} label="Этаж" onChange={(floorStart, floorEnd) => update({ floorStart, floorEnd })} startValue={values.floorStart} />
         <ModalSelect
           label="Источники"
           options={["Авито", "Циан", "Юла", "Яндекс.Недвижимость", "ДомКлик"]}
           toggleOptions
           multipleOptions
+          selectedValues={values.source}
+          onSelectedValuesChange={(source) => update({ source })}
         />
-        <ModalSelect label="Автор" options={["Частное лицо", "Агентство"]} toggleOptions />
+        <ModalSelect label="Автор" options={["Частное лицо", "Агентство"]} selectedValue={values.author} onValueChange={(author) => update({ author })} toggleOptions />
         <ModalSelect
           label="Тип сделки"
           options={["Продажа", "Аренда долгосрочная"]}
           toggleOptions
+          selectedValue={values.dealType}
+          onValueChange={(dealType) => update({ dealType })}
         />
-        <ModalSelect allowDeselect={false} defaultValue="Все" label="Объекты в выдаче" options={["Все", "Уникальные"]} toggleOptions />
-        <ModalSelect allowDeselect={false} defaultValue="Все" label="Есть клиент" options={["Все", "Есть"]} toggleOptions />
+        <ModalSelect allowDeselect={false} defaultValue="Все" label="Объекты в выдаче" options={["Все", "Уникальные"]} selectedValue={values.listingType} onValueChange={(listingType) => update({ listingType })} toggleOptions />
+        <ModalSelect allowDeselect={false} defaultValue="Все" label="Есть клиент" options={["Все", "Есть"]} selectedValue={values.hasClient} onValueChange={(hasClient) => update({ hasClient })} toggleOptions />
         <ExpandableContent
           collapseLabel="Дополнительные параметры"
           collapsedHeight={0}
@@ -161,22 +205,26 @@ function FilterFields() {
               options={["Студия", "Свободная планировка", "Апартаменты", "Гостинка"]}
               toggleOptions
               multipleOptions
+              selectedValues={values.propertySubtype}
+              onSelectedValuesChange={(propertySubtype) => update({ propertySubtype })}
             />
-            <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} toggleOptions />
+            <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} selectedValue={values.liquidity} onValueChange={(liquidity) => update({ liquidity })} toggleOptions />
             <ModalSelect
               label="Статус"
               options={["Не выбран", "Отказ", "Не отвечает", "Думает", "Другое АН"]}
               toggleOptions
               multipleOptions
+              selectedValues={values.status}
+              onSelectedValuesChange={(status) => update({ status })}
             />
-            <ModalRangeField label="Опубликован" />
+            <ModalRangeField endValue={values.publishedEnd} label="Опубликован" onChange={(publishedStart, publishedEnd) => update({ publishedStart, publishedEnd })} startValue={values.publishedStart} />
             <FormBlock controlSize="lg" direction="row" label="Содержит слова в объявлении">
-              <Textarea appearance="neutral" id="filter-contains-words" placeholder="Введите слова" size="lg" />
+              <Textarea appearance="neutral" id="filter-contains-words" onChange={(event) => update({ containsWords: event.target.value })} placeholder="Введите слова" size="lg" value={values.containsWords} />
             </FormBlock>
             <FormBlock controlSize="lg" direction="row" label="Исключить слова в объявлении">
-              <Textarea appearance="neutral" id="filter-exclude-words" placeholder="Введите слова" size="lg" />
+              <Textarea appearance="neutral" id="filter-exclude-words" onChange={(event) => update({ excludeWords: event.target.value })} placeholder="Введите слова" size="lg" value={values.excludeWords} />
             </FormBlock>
-            <ModalRangeField label="Год постройки" />
+            <ModalRangeField endValue={values.yearEnd} label="Год постройки" onChange={(yearStart, yearEnd) => update({ yearStart, yearEnd })} startValue={values.yearStart} />
             <ModalSelect
               label="Тип ремонта"
               options={[
@@ -191,11 +239,13 @@ function FilterFields() {
               ]}
               toggleOptions
               multipleOptions
+              selectedValues={values.renovation}
+              onSelectedValuesChange={(renovation) => update({ renovation })}
             />
           </FormSet>
         </ExpandableContent>
       </FormSet>
-    </form>
+    </div>
   );
 }
 
@@ -206,6 +256,12 @@ type FilterModalProps = {
   resultCount?: number;
   containerDisplay?: React.ComponentProps<typeof ModalContainer>["display"];
   containerClassName?: string;
+  onSave?: () => void;
+  onApply?: () => void;
+  savedFilterLimitReached?: boolean;
+  values?: FilterModalValues;
+  onValuesChange?: (values: FilterModalValues) => void;
+  savedSearchesContent?: React.ReactNode;
 };
 
 function FilterModal({
@@ -215,8 +271,59 @@ function FilterModal({
   onOpenChange,
   open,
   resultCount = 50,
+  onSave,
+  onApply,
+  savedFilterLimitReached = false,
+  values: controlledValues,
+  onValuesChange,
+  savedSearchesContent,
 }: FilterModalProps) {
-  const [fieldsKey, setFieldsKey] = React.useState(0);
+  const [activeTab, setActiveTab] = React.useState<"filter" | "saved-searches">("filter");
+  const [savedSearchesModalHeight, setSavedSearchesModalHeight] = React.useState<number>();
+  const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([]);
+  const filterPanelRef = React.useRef<HTMLDivElement>(null);
+  const [uncontrolledValues, setUncontrolledValues] = React.useState(createDefaultFilterModalValues);
+  const values = controlledValues ?? uncontrolledValues;
+  const updateValues = (next: FilterModalValues) => {
+    if (controlledValues === undefined) setUncontrolledValues(next);
+    onValuesChange?.(next);
+  };
+  const isModified = Object.entries(values).some(([key, value]) => {
+    const initialValue = createDefaultFilterModalValues()[key as keyof FilterModalValues];
+    return Array.isArray(value) ? value.length > 0 : value !== initialValue;
+  });
+  const tabs = [
+    { id: "filter", label: "Фильтр" },
+    { id: "saved-searches", label: "Сохранённые поиски" },
+  ] as const;
+
+  function selectTab(tabId: (typeof tabs)[number]["id"]) {
+    if (tabId === "saved-searches") {
+      const dialog = filterPanelRef.current?.closest<HTMLElement>('[role="dialog"]');
+      setSavedSearchesModalHeight(dialog?.getBoundingClientRect().height);
+    } else {
+      setSavedSearchesModalHeight(undefined);
+    }
+
+    setActiveTab(tabId);
+  }
+
+  function handleTabKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
+    const nextIndex = event.key === "ArrowRight"
+      ? (index + 1) % tabs.length
+      : event.key === "ArrowLeft"
+        ? (index - 1 + tabs.length) % tabs.length
+        : event.key === "Home"
+          ? 0
+          : event.key === "End"
+            ? tabs.length - 1
+            : -1;
+
+    if (nextIndex < 0) return;
+    event.preventDefault();
+    selectTab(tabs[nextIndex].id);
+    tabRefs.current[nextIndex]?.focus();
+  }
 
   return (
     <ModalContainer
@@ -227,18 +334,67 @@ function FilterModal({
       display={containerDisplay}
     >
       <Modal
-        footer={
+        headerContent={(
+          <TabBar aria-label="Раздел фильтра" indicator={false} role="tablist">
+            {tabs.map((tab, index) => {
+              const selected = activeTab === tab.id;
+
+              return (
+                <button
+                  aria-controls={`filter-modal-panel-${tab.id}`}
+                  aria-selected={selected}
+                  className="border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]"
+                  id={`filter-modal-tab-${tab.id}`}
+                  key={tab.id}
+                  onClick={() => selectTab(tab.id)}
+                  onKeyDown={(event) => handleTabKeyDown(event, index)}
+                  ref={(element) => { tabRefs.current[index] = element; }}
+                  role="tab"
+                  tabIndex={selected ? 0 : -1}
+                  type="button"
+                >
+                  <Tab indicator={false} label={tab.label} selected={selected} size="h4" />
+                </button>
+              );
+            })}
+          </TabBar>
+        )}
+        footer={activeTab === "filter" ? (
           <>
-            <Button appearance="default" endIcon={false} onClick={() => { setFieldsKey((key) => key + 1); onClear?.(); }} size="md" startIcon={false}>Очистить</Button>
-            <Button appearance="primary" endIcon={false} onClick={() => onOpenChange?.(false)} size="md" startIcon={false}>Показать {new Intl.NumberFormat("ru-RU").format(resultCount)} объектов</Button>
+            {onSave && isModified && !savedFilterLimitReached && <Button appearance="ghost" className="mr-auto" endIcon={false} onClick={onSave} size="md" startIcon={false}>Сохранить фильтр</Button>}
+            <Button appearance="default" endIcon={false} onClick={() => { updateValues(createDefaultFilterModalValues()); onClear?.(); }} size="md" startIcon={false}>Очистить</Button>
+            <Button appearance="primary" endIcon={false} onClick={() => { onApply?.(); onOpenChange?.(false); }} size="md" startIcon={false}>Показать {new Intl.NumberFormat("ru-RU").format(resultCount)} объектов</Button>
           </>
-        }
+        ) : undefined}
         maxWidth={720}
         onOpenChange={onOpenChange}
         open={open}
+        style={activeTab === "saved-searches" && savedSearchesModalHeight
+          ? { height: savedSearchesModalHeight }
+          : undefined}
         title="Фильтры"
       >
-        <FilterFields key={fieldsKey} />
+        <div className="grid gap-5">
+          <div
+            aria-labelledby="filter-modal-tab-filter"
+            className={activeTab === "filter" ? "grid" : "hidden"}
+            id="filter-modal-panel-filter"
+            ref={filterPanelRef}
+            role="tabpanel"
+            tabIndex={0}
+          >
+            <FilterFields onValuesChange={updateValues} values={values} />
+          </div>
+          <div
+            aria-labelledby="filter-modal-tab-saved-searches"
+            className={activeTab === "saved-searches" ? "grid min-h-0" : "hidden"}
+            id="filter-modal-panel-saved-searches"
+            role="tabpanel"
+            tabIndex={0}
+          >
+            {savedSearchesContent ?? <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">Пока нет сохранённых поисков.</p>}
+          </div>
+        </div>
       </Modal>
     </ModalContainer>
   );

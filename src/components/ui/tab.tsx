@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 
 type TabState = "default" | "hovered";
 type TabDirection = "horizontal" | "vertical";
+type TabSize = "b2" | "h2" | "h4";
 
 type TabProps = React.ComponentProps<"div"> & {
   direction?: TabDirection;
@@ -13,6 +14,7 @@ type TabProps = React.ComponentProps<"div"> & {
   secondaryLabel?: React.ReactNode;
   secondaryText?: boolean;
   selected?: boolean;
+  size?: TabSize;
   startIcon?: boolean;
   state?: TabState;
 };
@@ -60,6 +62,7 @@ function Tab({
   secondaryLabel = "Tab",
   secondaryText = false,
   selected = false,
+  size = "b2",
   startIcon = false,
   state = "default",
   ...props
@@ -95,10 +98,10 @@ function Tab({
       >
         <p
           className={cn(
-            cn(
-              selected ? "rh-typography-b2-med" : "rh-typography-b2",
-              "relative shrink-0",
-            ),
+            size === "b2" && (selected ? "rh-typography-b2-med" : "rh-typography-b2"),
+            size === "h2" && "rh-typography-h2 font-[500]",
+            size === "h4" && "rh-typography-h4",
+            "relative shrink-0",
             isHorizontal && "whitespace-nowrap",
           )}
           style={{ fontVariationSettings: "'wdth' 100" }}
@@ -120,4 +123,4 @@ function Tab({
 }
 
 export { Tab };
-export type { TabDirection, TabProps, TabState };
+export type { TabDirection, TabProps, TabSize, TabState };

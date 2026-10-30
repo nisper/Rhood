@@ -2,6 +2,11 @@ import * as React from "react";
 
 import { ModalFooter } from "@/components/ui/modal-footer";
 import { ModalHeader } from "@/components/ui/modal-header";
+import {
+  isTopDismissibleLayer,
+  registerDismissibleLayer,
+  unregisterDismissibleLayer,
+} from "@/lib/dismissible-layer";
 import { cn } from "@/lib/utils";
 
 const DrawerDismissContext = React.createContext<
@@ -59,9 +64,31 @@ function DrawerContainer({
   ...props
 }: DrawerContainerProps) {
   const requestCloseRef = React.useRef<(() => void) | undefined>(undefined);
+  const [drawerContainerId] = React.useState(() => Symbol("drawer-container"));
   const registerClose = React.useCallback((requestClose?: () => void) => {
     requestCloseRef.current = requestClose;
-  }, []);
+    registerDismissibleLayer(drawerContainerId, requestClose);
+  }, [drawerContainerId]);
+
+  React.useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (
+        event.key !== "Escape" ||
+        !isTopDismissibleLayer(drawerContainerId) ||
+        !requestCloseRef.current
+      ) return;
+
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      requestCloseRef.current();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      unregisterDismissibleLayer(drawerContainerId);
+    };
+  }, [drawerContainerId]);
 
   return (
     <DrawerDismissContext.Provider value={registerClose}>

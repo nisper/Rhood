@@ -11,22 +11,36 @@ type FloorSelectProps = Omit<
   "expanded" | "menu" | "onExpandedChange" | "value"
 > & {
   defaultExpanded?: boolean
+  startValue?: string
+  endValue?: string
   expanded?: boolean
+  onRangeChange?: (startValue: string, endValue: string) => void
   onExpandedChange?: (expanded: boolean) => void
 }
 
 function FloorSelect({
   defaultExpanded = false,
+  endValue: controlledEndValue,
   expanded: controlledExpanded,
+  onRangeChange,
   onClick,
   onExpandedChange,
+  startValue: controlledStartValue,
   ...props
 }: FloorSelectProps) {
   const [uncontrolledExpanded, setUncontrolledExpanded] = React.useState(defaultExpanded)
-  const [startValue, setStartValue] = React.useState("")
-  const [endValue, setEndValue] = React.useState("")
+  const [uncontrolledStartValue, setUncontrolledStartValue] = React.useState("")
+  const [uncontrolledEndValue, setUncontrolledEndValue] = React.useState("")
+  const startValue = controlledStartValue ?? uncontrolledStartValue
+  const endValue = controlledEndValue ?? uncontrolledEndValue
   const expanded = controlledExpanded ?? uncontrolledExpanded
   const value = getFloorValue(startValue, endValue)
+
+  function updateRange(nextStartValue: string, nextEndValue: string) {
+    if (controlledStartValue === undefined) setUncontrolledStartValue(nextStartValue)
+    if (controlledEndValue === undefined) setUncontrolledEndValue(nextEndValue)
+    onRangeChange?.(nextStartValue, nextEndValue)
+  }
 
   function updateExpanded(nextExpanded: boolean) {
     if (controlledExpanded === undefined) setUncontrolledExpanded(nextExpanded)
@@ -49,12 +63,12 @@ function FloorSelect({
               className="!w-[200px]"
               size="md"
               startInputProps={{
-                onChange: (event) => setStartValue(event.target.value),
+                onChange: (event) => updateRange(event.target.value, endValue),
                 placeholder: "от",
                 value: startValue,
               }}
               endInputProps={{
-                onChange: (event) => setEndValue(event.target.value),
+                onChange: (event) => updateRange(startValue, event.target.value),
                 placeholder: "до",
                 value: endValue,
               }}
@@ -65,8 +79,7 @@ function FloorSelect({
                   appearance="ghost"
                   endIcon={false}
                   onClick={() => {
-                    setStartValue("")
-                    setEndValue("")
+                    updateRange("", "")
                   }}
                   size="sm"
                   startIcon={false}
