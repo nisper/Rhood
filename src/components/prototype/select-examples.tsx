@@ -14,8 +14,8 @@ import { cn } from "@/lib/utils";
 const options = ["Квартиры", "Дома", "Участки", "Дачи", "Коттеджные поселки"];
 
 const properties = [
-  ["appearance", "default · ghost", "default", "Вариант оформления поля."],
-  ["size", "md · sm", "md", "Размер поля и типографики значения."],
+  ["appearance", "default · neutral · ghost", "default", "Вариант оформления поля."],
+  ["size", "lg · md · sm", "md", "Размер поля и типографики значения."],
   ["content", "text · chips", "text", "Одно или несколько выбранных значений."],
   ["value", "ReactNode", "Value", "Отображаемое выбранное значение."],
   ["label", "ReactNode · false", "Label", "Подпись над полем; false скрывает её."],
@@ -55,7 +55,7 @@ function SelectSnippet({ children }: { children: React.ReactNode }) {
   );
 }
 
-const sizeSnippet = <SelectSnippet><CodeProp name="size" value={'"sm"'} /></SelectSnippet>;
+const sizeSnippet = <SelectSnippet><CodeProp name="size" value={'"lg"'} /></SelectSnippet>;
 const appearanceSnippet = <><SelectSnippet><CodeProp name="size" value={'"sm"'} /></SelectSnippet><br /><SelectSnippet><CodeProp name="appearance" value={'"ghost"'} /> <CodeProp name="size" value={'"sm"'} /></SelectSnippet></>;
 const stateSnippet = <SelectSnippet><CodeProp name="state" value={'"focused"'} /></SelectSnippet>;
 const compositionSnippet = <SelectSnippet><CodeProp name="icon" /></SelectSnippet>;
@@ -196,16 +196,17 @@ export function SelectExamples() {
     <div className="grid min-w-0">
       <ShowcaseSection
         codeSnippet={appearanceSnippet}
-        description="default использует нейтральный фон. ghost — прозрачный фон и подходит для компактных элементов управления, например сортировки над таблицей."
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="flex flex-wrap items-center gap-6"><SelectWithMenu label={false} size="sm" value="По дате — новые" /><SelectWithMenu appearance="ghost" label={false} size="sm" value="По дате — новые" /></div></div>]}
+        description="default использует стандартную заливку; neutral — нейтральный фон поля ввода; ghost — прозрачный фон для компактных контролов, например сортировки над таблицей."
+        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="flex flex-wrap items-center gap-6"><SelectWithMenu label={false} size="sm" value="По дате — новые" /><SelectWithMenu appearance="neutral" label={false} size="sm" value="По дате — новые" /><SelectWithMenu appearance="ghost" label={false} size="sm" value="По дате — новые" /></div></div>]}
         title="Стиль"
       />
 
       <ShowcaseSection
         codeSnippet={sizeSnippet}
-        description="Select использует единый визуальный стиль. Размер md — основной, sm подходит для плотных панелей и фильтров."
+        description="lg использует увеличенные отступы по вертикали и горизонтали; md — основной размер, sm подходит для плотных панелей и фильтров."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-end justify-center gap-6">
+                <SelectWithMenu label="lg" size="lg" />
                 <SelectWithMenu label="md" size="md" />
                 <SelectWithMenu label="sm" size="sm" />
               </div>

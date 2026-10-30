@@ -57,13 +57,13 @@ export function TextareaExamples() {
       <Section
         description={
           <>
-            md — основной размер для форм.
+            lg — увеличенный размер с крупными отступами; md — основной размер для форм.
             <br />
             Высота фиксирована по rows, если autoResize не задана; с autoResize поле растёт по тексту, а maxRows ограничивает рост и включает нативный скролл.
           </>
         }
         settings={[
-          "size: md · sm",
+          "size: lg · md · sm",
           "rows: number (default: 2)",
           "autoResize: boolean",
           "maxRows: number",
@@ -72,7 +72,16 @@ export function TextareaExamples() {
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
           <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-            <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
+            <div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-3">
+              <FieldCell label="lg">
+                <Textarea
+                  aria-label="Textarea lg"
+                  autoResize
+                  placeholder="Комментарий"
+                  rows={1}
+                  size="lg"
+                />
+              </FieldCell>
               <FieldCell label="md">
                 <Textarea
                   aria-label="Textarea md"

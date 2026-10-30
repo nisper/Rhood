@@ -1,42 +1,13 @@
 import * as React from "react"
+import { Star } from "lucide-react"
 
-import { Chip } from "@/components/ui/chip"
 import { cn } from "@/lib/utils"
 
 type ToggleChipSize = "lg" | "md" | "sm"
-type ToggleChipColor = "neutral" | "brand" | "error" | "warning" | "success" | "contrast"
 
-const hoverBackgroundTokens: Record<ToggleChipColor, { muted: string; selected: string }> = {
-  neutral: {
-    muted: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
-    selected: "hover:bg-[var(--parser-fill-neutral-dark-hover)]",
-  },
-  brand: {
-    muted: "hover:bg-[var(--parser-fill-brand-light-hover)]",
-    selected: "hover:bg-[var(--parser-fill-brand-hover)]",
-  },
-  error: {
-    muted: "hover:bg-[var(--parser-fill-error-light-hover)]",
-    selected: "hover:bg-[var(--parser-fill-error-hover)]",
-  },
-  warning: {
-    muted: "hover:bg-[var(--parser-fill-warning-light-hover)]",
-    selected: "hover:bg-[var(--parser-fill-warning-hover)]",
-  },
-  success: {
-    muted: "hover:bg-[var(--parser-fill-success-light-hover)]",
-    selected: "hover:bg-[var(--parser-fill-success-hover)]",
-  },
-  contrast: {
-    muted: "hover:bg-[var(--rh-theme-fill-contrast-hover)]",
-    selected: "hover:bg-[var(--parser-fill-contrast-hover)]",
-  },
-}
-
-type ToggleChipProps = Omit<React.ComponentProps<"button">, "children" | "disabled" | "onChange"> & {
+type ToggleChipProps = Omit<React.ComponentProps<"button">, "children" | "color" | "disabled" | "onChange"> & {
   checked?: boolean
   children?: React.ReactNode
-  color?: ToggleChipColor
   defaultChecked?: boolean
   icon?: boolean
   label?: boolean
@@ -44,14 +15,29 @@ type ToggleChipProps = Omit<React.ComponentProps<"button">, "children" | "disabl
   size?: ToggleChipSize
 }
 
-/**
- * Интерактивный Chip. Нажатие переключает его между muted и default.
- */
+const sizeClasses: Record<ToggleChipSize, { root: string; icon: string; label: string }> = {
+  lg: {
+    root: "rh-typography-b1 min-w-8 gap-1 px-2 py-2",
+    icon: "size-6",
+    label: "px-2",
+  },
+  md: {
+    root: "rh-typography-b1 min-w-8 gap-1 px-1 py-1",
+    icon: "size-6",
+    label: "px-2",
+  },
+  sm: {
+    root: "rh-typography-b2 min-w-8 gap-1 px-[3px] py-[3px]",
+    icon: "size-5",
+    label: "px-1",
+  },
+}
+
+/** A standalone toggle chip with its own neutral styles. */
 function ToggleChip({
   checked,
-  children,
+  children = "Chip",
   className,
-  color = "neutral",
   defaultChecked = false,
   icon = true,
   label = true,
@@ -82,30 +68,24 @@ function ToggleChip({
     <button
       aria-pressed={isChecked}
       className={cn(
-        "inline-flex cursor-pointer rounded-full focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
+        "inline-flex cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-border-radius-lg)] border border-[color:var(--rh-theme-border-light)] text-[color:var(--parser-text-neutral-primary)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
+        sizeClasses[size].root,
+        isChecked && "border-[color:var(--rh-theme-border-neutral-dark)]",
+        className,
       )}
       onClick={handleClick}
       type={type}
       {...props}
     >
-      <Chip
-        appearance={isChecked ? "default" : "muted"}
-        className={cn(
-          "transition-colors duration-150",
-          hoverBackgroundTokens[color][isChecked ? "selected" : "muted"],
-          className,
-        )}
-        color={color}
-        icon={icon}
-        label={label}
-        remove={false}
-        size={size}
-      >
-        {children}
-      </Chip>
+      {icon && <Star aria-hidden="true" className={cn("shrink-0", sizeClasses[size].icon)} strokeWidth={2.1} />}
+      {label && (
+        <span className={cn("whitespace-nowrap", sizeClasses[size].label)} style={{ fontVariationSettings: "'wdth' 100" }}>
+          {children}
+        </span>
+      )}
     </button>
   )
 }
 
 export { ToggleChip }
-export type { ToggleChipColor, ToggleChipProps, ToggleChipSize }
+export type { ToggleChipProps, ToggleChipSize }

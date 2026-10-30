@@ -3,7 +3,7 @@ import * as React from "react"
 import { ClearButton } from "@/components/ui/clear-button"
 import { cn } from "@/lib/utils"
 
-type InputNumberSize = "md" | "sm"
+type InputNumberSize = "lg" | "md" | "sm"
 type InputNumberState = "default" | "hovered" | "focused"
 type InputNumberAppearance = "default" | "neutral"
 
@@ -34,8 +34,9 @@ function formatThousands(value: string | number | readonly string[] | undefined)
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
-  md: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  lg: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  md: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 const bareInputClasses = "h-full rounded-none border-0 bg-transparent hover:border-0 hover:bg-transparent focus:border-0 focus:bg-transparent focus:ring-0 disabled:border-0 disabled:bg-transparent"
@@ -105,8 +106,8 @@ function InputNumber({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute left-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 font-[family-name:var(--rh-typography-font-family-sans)] tabular-nums text-[var(--rh-theme-text-neutral-secondary)]",
-            size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
+            "pointer-events-none absolute top-1/2 -translate-y-1/2 font-[family-name:var(--rh-typography-font-family-sans)] tabular-nums text-[var(--rh-theme-text-neutral-secondary)]",
+            size === "lg" ? "left-[var(--rh-sizing-common-input-px-lg)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : size === "md" ? "left-[var(--rh-sizing-common-input-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "left-[var(--rh-sizing-common-input-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >
           {startText}
@@ -121,7 +122,7 @@ function InputNumber({
           stateClasses({ appearance, disabled, error, state }),
           interactiveClasses,
           bare && bareInputClasses,
-          startText && "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-md))]",
+          startText && (size === "lg" ? "pl-[calc(var(--rh-sizing-common-input-px-lg)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-gap-lg))]" : "pl-[calc(var(--rh-sizing-common-input-px-md)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-gap-md))]"),
           (endText || (required && showRequiredIndicator) || showClearButton) && "pr-[calc(var(--spacing)*8)]",
         )}
         disabled={disabled}
@@ -159,7 +160,7 @@ function InputNumber({
         <span
           className={cn(
             "absolute top-1/2 flex -translate-y-1/2 items-center justify-center",
-            size === "md" ? "size-[calc(var(--spacing)*6)]" : "size-[calc(var(--spacing)*5)]",
+            size === "sm" ? "size-[calc(var(--spacing)*5)]" : "size-[calc(var(--spacing)*6)]",
             endText || (required && showRequiredIndicator) ? "right-[calc(var(--spacing)*8)]" : "right-[calc(var(--spacing)*2)]",
           )}
         >
@@ -167,13 +168,13 @@ function InputNumber({
             aria-label="Очистить поле"
             className={cn(
               "focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-border-focus)]",
-              size === "md" ? "m-[calc(calc(var(--spacing)*3)*-1)]" : "m-[calc(calc(var(--spacing)*2)*-1)]",
+              size === "sm" ? "m-[calc(calc(var(--spacing)*2)*-1)]" : "m-[calc(calc(var(--spacing)*3)*-1)]",
             )}
             onClick={() => {
               if (!isControlled) setUncontrolledValue("")
               onClear?.()
             }}
-            size={size}
+            size={size === "sm" ? "sm" : "md"}
           />
         </span>
       )}
@@ -181,8 +182,8 @@ function InputNumber({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute right-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 text-[var(--rh-theme-text-neutral-primary)]",
-            size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
+            "pointer-events-none absolute top-1/2 -translate-y-1/2 text-[var(--rh-theme-text-neutral-primary)]",
+            size === "lg" ? "right-[var(--rh-sizing-common-input-px-lg)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : size === "md" ? "right-[var(--rh-sizing-common-input-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "right-[var(--rh-sizing-common-input-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >
           {endText}
@@ -193,8 +194,8 @@ function InputNumber({
           aria-hidden="true"
           className={cn(
             "pointer-events-none absolute top-1/2 -translate-y-1/2 text-[var(--rh-theme-text-error)]",
-            endText ? "right-[calc(var(--spacing)*8)]" : "right-[var(--rh-sizing-common-input-padding-px-md)]",
-            size === "md" ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]" : "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
+            endText ? "right-[calc(var(--spacing)*8)]" : size === "lg" ? "right-[var(--rh-sizing-common-input-px-lg)]" : size === "sm" ? "right-[var(--rh-sizing-common-input-px-sm)]" : "right-[var(--rh-sizing-common-input-px-md)]",
+            size === "sm" ? "text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]" : "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]",
           )}
         >
           *

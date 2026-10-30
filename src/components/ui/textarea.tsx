@@ -2,7 +2,7 @@ import * as React from "react"
 
 import { cn } from "@/lib/utils"
 
-type TextareaSize = "md" | "sm"
+type TextareaSize = "lg" | "md" | "sm"
 type TextareaState = "default" | "hovered" | "focused"
 type TextareaAppearance = "default" | "neutral"
 type TextareaRows = number
@@ -22,8 +22,9 @@ type TextareaProps = Omit<React.ComponentProps<"textarea">, "rows" | "size"> & {
 }
 
 const sizeClasses: Record<TextareaSize, string> = {
-  md: "rh-typography-b1 px-[var(--rh-sizing-common-input-padding-px-md)] pb-[calc(var(--rh-sizing-common-input-padding-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-padding-py-md)-1px)]",
-  sm: "rh-typography-b2 px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+  lg: "rh-typography-b1 px-[var(--rh-sizing-common-input-px-lg)] pb-[calc(var(--rh-sizing-common-input-py-lg)+1px)] pt-[calc(var(--rh-sizing-common-input-py-lg)-1px)]",
+  md: "rh-typography-b1 px-[var(--rh-sizing-common-input-px-md)] pb-[calc(var(--rh-sizing-common-input-py-md)+1px)] pt-[calc(var(--rh-sizing-common-input-py-md)-1px)]",
+  sm: "rh-typography-b2 px-[var(--rh-sizing-common-input-px-sm)] py-[var(--rh-sizing-common-input-py-sm)]",
 }
 
 function stateClasses({
@@ -140,7 +141,7 @@ function Textarea({
       {textarea}
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] text-[var(--rh-theme-text-error)]"
+        className={cn("pointer-events-none absolute top-1/2 -translate-y-1/2 text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] text-[var(--rh-theme-text-error)]", size === "lg" ? "right-[var(--rh-sizing-common-input-px-lg)]" : "right-[var(--rh-sizing-common-input-px-md)]")}
       >
         *
       </span>

@@ -64,9 +64,11 @@ function ModalSelect({
     <div ref={menuRef}>
     <FormBlock direction="row" label={label}>
       <Select
+        appearance="neutral"
         expanded={expanded}
         fullWidth
         label={false}
+        size="lg"
         menu={
           expanded && (
             <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full" role="listbox">
@@ -103,8 +105,9 @@ function ModalRangeField({ label, unit }: { label: string; unit?: string }) {
   return (
     <FormBlock direction="row" label={label}>
       <InputNumberRange
+        appearance="neutral"
         endInputProps={{ placeholder: "до" }}
-        size="md"
+        size="lg"
         startInputProps={{ placeholder: "от" }}
         unit={unit}
       />
@@ -117,7 +120,7 @@ function FilterFields() {
     <form>
       <FormSet gap="calc(var(--spacing) * 6)" labelWidth="200px">
         <FormBlock direction="row" label="Расположение">
-        <Textfield id="filter-location" placeholder="Введите расположение" />
+        <Textfield appearance="neutral" id="filter-location" placeholder="Введите расположение" size="lg" />
         </FormBlock>
         <ModalSelect
           label="Подтип недвижимости"
@@ -129,7 +132,7 @@ function FilterFields() {
           className="w-full"
           appearance="neutral"
           selectionMode="multiple"
-          size="md"
+          size="lg"
         >
           {["Студия", "1", "2", "3", "4+"].map((room) => (
             <Segment className="flex-1" key={room} value={room}>{room}</Segment>
@@ -162,10 +165,10 @@ function FilterFields() {
         <ModalSelect label="Есть клиент" options={["Есть", "Все"]} toggleOptions />
         <ModalSelect label="Ликвидность" options={["Высокая", "Средняя"]} toggleOptions />
         <FormBlock direction="row" label="Содержит слова в объявлении">
-        <Textarea id="filter-contains-words" placeholder="Введите слова" />
+        <Textarea appearance="neutral" id="filter-contains-words" placeholder="Введите слова" size="lg" />
         </FormBlock>
         <FormBlock direction="row" label="Исключить слова в объявлении">
-        <Textarea id="filter-exclude-words" placeholder="Введите слова" />
+        <Textarea appearance="neutral" id="filter-exclude-words" placeholder="Введите слова" size="lg" />
         </FormBlock>
         <ModalRangeField label="Год постройки" />
         <ModalSelect

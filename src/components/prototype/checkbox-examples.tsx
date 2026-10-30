@@ -5,7 +5,7 @@ import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 
 const properties = [
-  ["size", "md · sm", "md", "Размер control и текста label."],
+  ["size", "lg · md · sm", "md", "Размер control, текста label и области нажатия."],
   ["checked", "true · false", "false", "Значение в контролируемом режиме."],
   [
     "defaultChecked",
@@ -108,13 +108,14 @@ export function CheckboxExamples() {
   return (
     <div className="grid min-w-0 gap-10">
       <Section
-        description="md использует control 20 px, sm — 16 px; у обоих control внешний margin 2 px. В обоих размерах вертикальные отступы строки составляют 8 px."
-        settings={["size: md · sm"]}
+        description="lg использует control 24 px и увеличенные отступы строки; md — control 20 px, sm — 16 px."
+        settings={["size: lg · md · sm"]}
         title="Размер"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
           <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
             <div className="grid gap-3">
+              <StateRow size="lg">Large</StateRow>
               <StateRow size="md">Medium</StateRow>
               <StateRow size="sm">Small</StateRow>
             </div>

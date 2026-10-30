@@ -72,6 +72,10 @@ function flattenTokens(node, collection, pathParts = []) {
 function cssVariableName(collection, tokenPath) {
   const parts = tokenPath.map(toKebabCase)
 
+  if (collection === "sizing" && parts[0] === "common-input" && parts[1] === "padding") {
+    parts.splice(1, 1)
+  }
+
   if (parts[0] === "border-radius" && parts[1]?.startsWith("border-radius-")) {
     parts[1] = parts[1].slice("border-radius-".length)
   }

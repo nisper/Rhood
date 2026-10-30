@@ -1479,7 +1479,7 @@ function MyListingsTitleTabs({
         style={{ marginLeft: activeTabOffset }}
       >
         {mode === "duplicates"
-          ? "Rhood нашёл похожие объявления на агрегаторах"
+          ? "Дубли ваших объектов из Космоса"
           : "Вы сохранили эти объекты из парсера"}
       </p>
     </div>
@@ -1786,13 +1786,16 @@ export function ApartmentListingsScreen({
   }
 
   return (
-    <div className="min-h-screen overflow-x-clip bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]">
+    <div className={cn(
+      "overflow-x-clip bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]",
+      isMapView ? "flex h-svh flex-col overflow-hidden" : "min-h-screen",
+    )}>
       <MainHeader
         contentWidth="container"
         logoHref="/Rhood/"
         navItems={getNavItems(view)}
       />
-      <main className="grid min-w-0 gap-0">
+      <main className={cn("grid min-w-0 gap-0", isMapView && "min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)]")}>
         <>
             <section className="py-8">
               <div className="rhood-layout-container">
@@ -1888,7 +1891,7 @@ export function ApartmentListingsScreen({
             </section>}
         </>
         {isMapView ? (
-          <div className="relative flex h-[calc(100vh-280px)] min-h-[420px] w-full gap-0">
+          <div className="relative flex min-h-0 w-full flex-1 gap-0">
             <section
               aria-label="Карта объявлений"
               className={cn(

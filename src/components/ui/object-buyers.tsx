@@ -218,7 +218,7 @@ function ObjectBuyersV2({ className, isLoading = false, ...props }: ObjectBuyers
           <div className="ml-auto flex items-center gap-2">
             <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Проверили в 15:20</p>
             {loading ? (
-              <p className="inline-flex min-h-[calc(var(--spacing)*9)] shrink-0 items-center gap-[var(--rh-sizing-common-input-padding-gap-sm)] px-[var(--rh-sizing-common-input-padding-ghost-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)] rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
+              <p className="inline-flex min-h-[calc(var(--spacing)*9)] shrink-0 items-center gap-[var(--rh-sizing-common-input-gap-sm)] px-[var(--rh-sizing-common-input-ghost-px-sm)] py-[var(--rh-sizing-common-input-py-sm)] rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">
                 Проверяем покупателей
                 <RefreshCw
                   aria-hidden="true"

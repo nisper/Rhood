@@ -6,9 +6,9 @@ import { Chip } from "@/components/ui/chip"
 import { FormHelperText } from "@/components/ui/form-helper-text"
 import { cn } from "@/lib/utils"
 
-type SelectSize = "md" | "sm"
+type SelectSize = "lg" | "md" | "sm"
 type SelectContent = "text" | "chips"
-type SelectAppearance = "default" | "ghost"
+type SelectAppearance = "default" | "ghost" | "neutral"
 type SelectState = "default" | "hovered" | "focused"
 
 type SelectProps = Omit<React.ComponentProps<"div">, "content"> & {
@@ -40,14 +40,20 @@ const sizeTokens: Record<
     staticLabel: string
   }
 > = {
+  lg: {
+    container: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]",
+    valueText: "rh-typography-b1",
+    helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+    staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  },
   md: {
-    container: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+    container: "h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-px-md)] py-[var(--rh-sizing-common-input-py-md)]",
     valueText: "rh-typography-b1",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   },
   sm: {
-    container: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)] py-[var(--rh-sizing-common-input-padding-py-sm)]",
+    container: "h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-px-sm)] py-[var(--rh-sizing-common-input-py-sm)]",
     valueText: "rh-typography-b2",
     helperText: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
     staticLabel: "text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
@@ -55,10 +61,12 @@ const sizeTokens: Record<
 }
 
 function getSurfaceClasses({
+  appearance,
   disabled,
   error,
   state,
 }: {
+  appearance: SelectAppearance
   disabled: boolean
   error: boolean
   state: SelectState
@@ -78,7 +86,14 @@ function getSurfaceClasses({
   }
 
   if (state === "hovered") {
+    if (appearance === "neutral") {
+      return "border border-[color:var(--rh-theme-border-hover)] bg-[var(--rh-theme-surface-bg)] text-[var(--rh-theme-text-neutral-primary)]"
+    }
     return "bg-[var(--rh-theme-fill-neutral-hover)] text-[var(--rh-theme-text-neutral-primary)]"
+  }
+
+  if (appearance === "neutral") {
+    return "border border-transparent bg-[var(--rh-theme-fill-input-neutral)] text-[var(--rh-theme-text-neutral-primary)]"
   }
 
   return "bg-[var(--rh-theme-fill-neutral)] text-[var(--rh-theme-text-neutral-primary)]"
@@ -230,13 +245,16 @@ function Select({
       <div className={cn("relative w-fit max-w-full", fullWidth && "w-full")} ref={menuAnchorRef}>
         <div
           className={cn(
-            "relative flex w-fit max-w-full items-center gap-[var(--rh-sizing-common-input-padding-gap-md)] rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150",
+            "relative flex w-fit max-w-full items-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150",
+            size === "lg" ? "gap-[var(--rh-sizing-common-input-gap-lg)]" : "gap-[var(--rh-sizing-common-input-gap-md)]",
             fullWidth && "w-full",
             sizeTokens[size].container,
             appearance === "ghost" && !disabled && !error && "bg-transparent",
-            !(appearance === "ghost" && !disabled && !error) && getSurfaceClasses({ disabled, error, state: resolvedState }),
+            !(appearance === "ghost" && !disabled && !error) && getSurfaceClasses({ appearance, disabled, error, state: resolvedState }),
             disabled ? "cursor-not-allowed" : "cursor-pointer",
-            !disabled && !error && resolvedState === "default" && "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
+            !disabled && !error && resolvedState === "default" && (appearance === "neutral"
+              ? "hover:border-[color:var(--rh-theme-border-hover)] hover:bg-[var(--rh-theme-surface-bg)]"
+              : "hover:bg-[var(--rh-theme-fill-neutral-hover)]"),
           )}
         >
         {hasIcon && (
@@ -269,7 +287,8 @@ function Select({
             </Chip>
             <span
               className={cn(
-            "whitespace-nowrap pl-[var(--rh-sizing-common-input-padding-px-md)] pr-[calc(var(--spacing)*1)]",
+              "whitespace-nowrap pr-[calc(var(--spacing)*1)]",
+              size === "lg" ? "pl-[var(--rh-sizing-common-input-px-lg)]" : "pl-[var(--rh-sizing-common-input-px-md)]",
                 valueTone,
                 valueTextClass,
               )}

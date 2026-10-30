@@ -57,7 +57,7 @@ function Comments({
       <div className="grid gap-5">
         <div className="flex items-start gap-3">
           <Avatar imageSrc={userAvatarSrc} />
-          <div className="flex h-10 min-w-0 flex-1 items-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)] px-[var(--rh-sizing-common-input-padding-px-md)] text-[var(--rh-theme-text-neutral-secondary)]">
+          <div className="flex h-10 min-w-0 flex-1 items-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] border border-[var(--rh-theme-border-light)] bg-[var(--rh-theme-surface-bg)] px-[var(--rh-sizing-common-input-px-md)] text-[var(--rh-theme-text-neutral-secondary)]">
             <span className="rh-typography-b1">{placeholder}</span>
           </div>
         </div>

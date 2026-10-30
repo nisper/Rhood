@@ -118,7 +118,7 @@ function TableCell({
   const contentVerticalPadding = isChip
     ? "3px"
     : isButton
-      ? "var(--rh-sizing-common-input-padding-py-sm)"
+      ? "var(--rh-sizing-common-input-py-sm)"
       : undefined
   const tableVerticalPadding = compact
     ? "var(--rh-sizing-table-padding-py-size-small)"

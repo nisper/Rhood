@@ -21,7 +21,7 @@ function Search({ appearance = "neutral", size = "md", ...props }: SearchProps) 
       size={size}
       startAdornment={
         <SearchIcon
-          className={size === "md" ? "size-6" : "size-5"}
+          className={size === "sm" ? "size-5" : "size-6"}
           strokeWidth={2}
         />
       }

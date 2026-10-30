@@ -3,7 +3,7 @@ import * as React from "react"
 import { ClearButton } from "@/components/ui/clear-button"
 import { cn } from "@/lib/utils"
 
-type TextfieldSize = "md" | "sm"
+type TextfieldSize = "lg" | "md" | "sm"
 type TextfieldState = "default" | "hovered" | "focused"
 type TextfieldAppearance = "default" | "neutral"
 
@@ -21,8 +21,9 @@ type TextfieldProps = Omit<React.ComponentProps<"input">, "size"> & {
 }
 
 const sizeClasses: Record<TextfieldSize, string> = {
-  md: "rh-typography-b1 h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-padding-px-md)]",
-  sm: "rh-typography-b2 h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-padding-px-sm)]",
+  lg: "rh-typography-b1 h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]",
+  md: "rh-typography-b1 h-[calc(var(--spacing)*10)] px-[var(--rh-sizing-common-input-px-md)]",
+  sm: "rh-typography-b2 h-[calc(var(--spacing)*9)] px-[var(--rh-sizing-common-input-px-sm)]",
 }
 
 function stateClasses({ appearance, disabled, error, state }: { appearance: TextfieldAppearance; disabled: boolean; error: boolean; state: TextfieldState }) {
@@ -88,7 +89,11 @@ function Textfield({
         sizeClasses[size],
         stateClasses({ appearance, disabled, error, state }),
         interactiveClasses,
-        hasStartAdornment && (size === "md" ? "pl-[calc(var(--rh-sizing-common-input-padding-px-md)+calc(var(--spacing)*6)+var(--rh-sizing-common-input-padding-gap-md))]" : "pl-[calc(var(--rh-sizing-common-input-padding-px-sm)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-padding-gap-sm))]"),
+        hasStartAdornment && (size === "sm"
+          ? "pl-[calc(var(--rh-sizing-common-input-px-sm)+calc(var(--spacing)*5)+var(--rh-sizing-common-input-gap-sm))]"
+          : size === "lg"
+            ? "pl-[calc(var(--rh-sizing-common-input-px-lg)+calc(var(--spacing)*6)+var(--rh-sizing-common-input-gap-lg))]"
+            : "pl-[calc(var(--rh-sizing-common-input-px-md)+calc(var(--spacing)*6)+var(--rh-sizing-common-input-gap-md))]"),
         (required || showClearButton) && "pr-[calc(var(--spacing)*8)]",
         className,
       )}
@@ -121,7 +126,10 @@ function Textfield({
       {hasStartAdornment && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute left-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 flex -translate-y-1/2 items-center justify-center text-[var(--rh-theme-text-neutral-secondary)]"
+          className={cn(
+            "pointer-events-none absolute top-1/2 flex -translate-y-1/2 items-center justify-center text-[var(--rh-theme-text-neutral-secondary)]",
+            size === "lg" ? "left-[var(--rh-sizing-common-input-px-lg)]" : "left-[var(--rh-sizing-common-input-px-md)]",
+          )}
         >
           {startAdornment}
         </span>
@@ -130,7 +138,7 @@ function Textfield({
         <span
           className={cn(
             "absolute top-1/2 flex -translate-y-1/2 items-center justify-center",
-            size === "md" ? "size-[calc(var(--spacing)*6)]" : "size-[calc(var(--spacing)*5)]",
+            size === "sm" ? "size-[calc(var(--spacing)*5)]" : "size-[calc(var(--spacing)*6)]",
             required ? "right-[calc(var(--spacing)*8)]" : "right-[calc(var(--spacing)*2)]",
           )}
         >
@@ -138,20 +146,23 @@ function Textfield({
             aria-label="Очистить поле"
             className={cn(
               "focus-visible:ring-2 focus-visible:ring-[var(--rh-theme-border-focus)]",
-              size === "md" ? "m-[calc(calc(var(--spacing)*3)*-1)]" : "m-[calc(calc(var(--spacing)*2)*-1)]",
+              size === "sm" ? "m-[calc(calc(var(--spacing)*2)*-1)]" : "m-[calc(calc(var(--spacing)*3)*-1)]",
             )}
             onClick={() => {
               if (!isControlled) setUncontrolledValue("")
               onClear?.()
             }}
-            size={size}
+            size={size === "sm" ? "sm" : "md"}
           />
         </span>
       )}
       {required && (
       <span
         aria-hidden="true"
-        className="pointer-events-none absolute right-[var(--rh-sizing-common-input-padding-px-md)] top-1/2 -translate-y-1/2 text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] text-[var(--rh-theme-text-error)]"
+        className={cn(
+          "pointer-events-none absolute top-1/2 -translate-y-1/2 text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] text-[var(--rh-theme-text-error)]",
+          size === "lg" ? "right-[var(--rh-sizing-common-input-px-lg)]" : "right-[var(--rh-sizing-common-input-px-md)]",
+        )}
       >
         *
       </span>

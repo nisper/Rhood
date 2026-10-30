@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "AGENTS"
             }
+          },
+          {
+            "id": "44d3b70396873ec7",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.14.5"
+              },
+              "icon": "lucide-book-up",
+              "title": "Release Notes 1.14.5"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -189,8 +202,15 @@
       "bases:Create new base": false
     }
   },
-  "active": "763df968cb3c2d08",
+  "active": "44d3b70396873ec7",
   "lastOpenFiles": [
+    "src/data/my-object-statuses.ts",
+    "dist/assets/tyumen-lenina-54-2-map.png",
+    "dist/assets/map-tyumen-lenina-54-2.png",
+    "dist/assets/map-preview-figma.svg",
+    "dist/assets/map-preview-figma.png",
+    "dist/assets/index-LpY9oFjO.css",
+    "dist/assets/index-CDI_KT8D.js",
     "hover-token-usage.md",
     "AGENTS.md",
     "src/components/prototype/price-with-trend-examples.tsx",
@@ -201,9 +221,7 @@
     "dist/assets/fonts/inter-regular.ttf",
     "dist/assets/index-DdQwcPtN.css",
     "dist/assets/index-nTGI11fM.js",
-    "dist/assets/fonts/InterVariable.woff2",
     "docs/instructions/Сборка сцены.md",
-    "dist/assets/index-BONoUCYz.css",
     "docs/instructions/Работа с библиотекой компонентов в Figma.md",
     "docs/product/features/Архив объявлений.md",
     "docs/Tests/Адаптив.md",
@@ -213,10 +231,6 @@
     "artifacts/responsive/archive-no-subscription/default.png",
     "artifacts/responsive/archive-no-subscription/593.png",
     "artifacts/responsive/archive-no-subscription/590.png",
-    "artifacts/responsive/archive-no-subscription/584.png",
-    "artifacts/responsive/archive-no-subscription/582.png",
-    "artifacts/responsive/archive-no-subscription/575.png",
-    "artifacts/responsive/archive-no-subscription/553.png",
     "docs/instructions/Адаптив в проекте.md",
     "docs/instructions/showcase-page.md",
     "docs/Tests/Компоненты.md",
@@ -235,7 +249,6 @@
     "docs/instructions/working-in-figma.md",
     "docs/instructions/updating-a-component.md",
     "docs/instructions/implementing-a-figma-frame.md",
-    "docs/instructions/implementing-a-component.md",
-    "docs/instructions/figma/entities/table.md"
+    "docs/instructions/implementing-a-component.md"
   ]
 }

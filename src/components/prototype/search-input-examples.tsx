@@ -6,7 +6,7 @@ import { TableCell } from "@/components/ui/table-cell"
 
 const properties = [
   ["appearance", "neutral · default", "neutral", "Нейтральный фон по умолчанию или белое поле с рамкой."],
-  ["size", "md · sm", "md", "Размер поля и иконки поиска."],
+  ["size", "lg · md · sm", "md", "Размер поля и иконки поиска."],
   ["state", "default · hovered · focused", "default", "Состояние для витрины и визуальных тестов."],
   ["disabled", "true · false", "false", "Недоступное для ввода поле."],
   ["placeholder", "string", "Поиск", "Текст пустого поля."],
@@ -23,8 +23,8 @@ function FieldCell({ children, label }: { children: React.ReactNode; label: stri
 
 export function SearchExamples() {
   return <div className="grid min-w-0 gap-10">
-    <Section description="md — основной размер поля; sm — компактный вариант для плотных панелей и фильтров." settings={["size: md · sm"]} title="Размер">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><FieldCell label="md"><Search placeholder="Поиск" size="md" /></FieldCell><FieldCell label="sm"><Search placeholder="Поиск" size="sm" /></FieldCell></div></div></div>
+    <Section description="lg использует увеличенные паддинги по обеим осям; sm — компактный вариант для плотных панелей и фильтров." settings={["size: lg · md · sm"]} title="Размер">
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-3"><FieldCell label="lg"><Search placeholder="Поиск" size="lg" /></FieldCell><FieldCell label="md"><Search placeholder="Поиск" size="md" /></FieldCell><FieldCell label="sm"><Search placeholder="Поиск" size="sm" /></FieldCell></div></div></div>
     </Section>
 
     <Section description="Search использует neutral appearance по умолчанию. Передай default, чтобы показать белое поле с рамкой." settings={["appearance: neutral · default"]} title="Внешний вид">

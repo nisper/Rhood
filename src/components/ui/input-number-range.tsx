@@ -27,6 +27,7 @@ type InputNumberRangeProps = Omit<React.ComponentProps<"div">, "onChange"> & {
 }
 
 const sizeClasses: Record<InputNumberSize, string> = {
+  lg: "h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)+var(--rh-sizing-common-input-py-lg)+2px)]",
   md: "h-[calc(var(--spacing)*10)]",
   sm: "h-[calc(var(--spacing)*9)]",
 }
@@ -132,10 +133,12 @@ function InputNumberRange({
         <span
           aria-hidden="true"
           className={cn(
-            "flex shrink-0 items-center pr-[var(--rh-sizing-common-input-padding-px-md)] text-[color:var(--rh-theme-text-neutral-primary)]",
-            size === "md"
-              ? "text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]"
-              : "pr-[var(--rh-sizing-common-input-padding-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
+            "flex shrink-0 items-center text-[color:var(--rh-theme-text-neutral-primary)]",
+            size === "lg"
+              ? "pr-[var(--rh-sizing-common-input-px-lg)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]"
+              : size === "md"
+                ? "pr-[var(--rh-sizing-common-input-px-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)]"
+                : "pr-[var(--rh-sizing-common-input-px-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)]",
           )}
         >
           {unit}

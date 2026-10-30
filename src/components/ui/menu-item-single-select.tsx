@@ -63,7 +63,7 @@ function MenuItemSingleSelect({
   return (
     <div
       className={cn(
-        "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+        "flex w-full items-center gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-common-input-px-md)] py-[var(--rh-sizing-common-input-py-md)]",
         getBackground({ disabled, selected, state }),
         selected && !disabled && "text-[var(--rh-theme-text-brand)]",
         !disabled &&

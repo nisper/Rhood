@@ -677,6 +677,20 @@ const componentDocs: ComponentDoc[] = [
     group: "Forms",
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=348-8648",
+    properties: [
+      {
+        name: "appearance",
+        values: "default · neutral · ghost",
+        defaultValue: "default",
+        description: "Стандартная заливка, нейтральный фон поля ввода или прозрачный фон.",
+      },
+      {
+        name: "size",
+        values: "lg · md · sm",
+        defaultValue: "md",
+        description: "Размер поля и типографики значения.",
+      },
+    ],
     source: "src/components/ui/select.tsx",
     render: () => <SelectExamples />,
   },
@@ -818,9 +832,9 @@ const componentDocs: ComponentDoc[] = [
       },
       {
         name: "size",
-        values: "md · sm",
+        values: "lg · md · sm",
         defaultValue: "md",
-        description: "Высота, типографика и отступы поля.",
+        description: "Высота, типографика и отступы поля; lg увеличивает паддинги по обеим осям.",
       },
       {
         name: "placeholder",
@@ -899,7 +913,7 @@ const componentDocs: ComponentDoc[] = [
       },
       {
         name: "size",
-        values: "md · sm",
+        values: "lg · md · sm",
         defaultValue: "md",
         description: "Высота, типографика и размер кнопки очистки.",
       },
@@ -1012,7 +1026,7 @@ const componentDocs: ComponentDoc[] = [
       },
       {
         name: "size",
-        values: "md · sm",
+        values: "lg · md · sm",
         defaultValue: "md",
         description: "Единый размер двух вложенных InputNumber.",
       },
@@ -1036,7 +1050,7 @@ const componentDocs: ComponentDoc[] = [
       },
       {
         name: "size",
-        values: "md · sm",
+        values: "lg · md · sm",
         defaultValue: "md",
         description: "Минимальная высота, типографика и отступы поля.",
       },

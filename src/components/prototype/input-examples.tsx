@@ -129,13 +129,20 @@ export function InputExamples() {
   return (
     <div className="grid min-w-0 gap-10">
       <Section
-        description="md — основной размер для форм; sm — компактный вариант для плотных панелей и фильтров."
-        settings={["size: md · sm"]}
+        description="lg использует увеличенные паддинги по обеим осям; sm — компактный вариант для плотных панелей и фильтров."
+        settings={["size: lg · md · sm"]}
         title="Размер"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
           <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-            <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
+            <div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-3">
+              <FieldCell label="lg">
+                <Textfield
+                  aria-label="Input lg"
+                  placeholder="Placeholder"
+                  size="lg"
+                />
+              </FieldCell>
               <FieldCell label="md">
                 <Textfield
                   aria-label="Input md"

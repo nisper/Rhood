@@ -84,7 +84,7 @@ function MenuItemMultiselect({
   return (
     <div
       className={cn(
-        "flex w-full items-start gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-common-input-padding-px-md)] py-[var(--rh-sizing-common-input-padding-py-md)]",
+        "flex w-full items-start gap-[var(--rh-sizing-menu-padding-gap-sm)] rounded-[var(--rh-sizing-border-radius-md)] px-[var(--rh-sizing-common-input-px-md)] py-[var(--rh-sizing-common-input-py-md)]",
         getBackground({ disabled, state }),
         !disabled &&
           "cursor-pointer hover:bg-[var(--rh-theme-fill-neutral-hover)]",

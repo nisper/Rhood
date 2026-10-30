@@ -17,7 +17,7 @@ function EditableRange() {
   return <InputNumberRange endInputProps={{ onChange: (event) => setEnd(event.target.value), value: end }} startInputProps={{ onChange: (event) => setStart(event.target.value), value: start }} />
 }
 
-function ClearableRange({ size = "md" }: { size?: "md" | "sm" }) {
+function ClearableRange({ size = "md" }: { size?: "lg" | "md" | "sm" }) {
   const [start, setStart] = React.useState("25")
   const [end, setEnd] = React.useState("120")
 
@@ -29,8 +29,8 @@ export function InputNumberRangeExamples() {
 
   return (
     <div className="grid min-w-0 gap-10">
-      <Section description="md — основной размер, sm — компактный. Размер применяется к обоим числовым полям диапазона." settings={["size: md · sm"]} title="Размер">
-        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="sm"><InputNumberRange endInputProps={inputProps} size="sm" startInputProps={inputProps} /></Cell></div></div></div>
+      <Section description="lg использует увеличенные отступы; md — основной размер, sm — компактный. Размер применяется к обоим числовым полям диапазона." settings={["size: lg · md · sm"]} title="Размер">
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-3"><Cell label="lg"><InputNumberRange endInputProps={inputProps} size="lg" startInputProps={inputProps} /></Cell><Cell label="md"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="sm"><InputNumberRange endInputProps={inputProps} size="sm" startInputProps={inputProps} /></Cell></div></div></div>
       </Section>
       <Section description="Neutral использует нейтральную заливку без рамки в default-состоянии. Остальные состояния совпадают с default appearance." settings={["appearance: default · neutral"]} title="Внешний вид">
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="default"><InputNumberRange endInputProps={inputProps} startInputProps={inputProps} /></Cell><Cell label="neutral"><InputNumberRange appearance="neutral" endInputProps={inputProps} startInputProps={inputProps} /></Cell></div></div></div>
@@ -49,7 +49,7 @@ export function InputNumberRangeExamples() {
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full gap-5 sm:grid-cols-2"><Cell label="value"><EditableRange /></Cell><Cell label="unit"><InputNumberRange endInputProps={{ value: "120" }} startInputProps={{ value: "25" }} unit="м²" /></Cell><Cell label="required"><InputNumberRange endInputProps={{ required: true, value: "120" }} startInputProps={{ required: true, value: "25" }} /></Cell><Cell label="groupThousands"><InputNumberRange endInputProps={{ groupThousands: true, value: "1000000" }} startInputProps={{ groupThousands: true, value: "500000" }} unit="₽" /></Cell></div></div></div>
       </Section>
       <Section description="Опциональный крестик показывается для заполненного поля, которое находится в фокусе." settings={["startInputProps.clearButton: boolean", "endInputProps.clearButton: boolean"]} title="Очистка ввода">
-        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><ClearableRange /></Cell><Cell label="sm"><ClearableRange size="sm" /></Cell></div></div></div>
+        <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-3"><Cell label="lg"><ClearableRange size="lg" /></Cell><Cell label="md"><ClearableRange /></Cell><Cell label="sm"><ClearableRange size="sm" /></Cell></div></div></div>
       </Section>
     </div>
   )

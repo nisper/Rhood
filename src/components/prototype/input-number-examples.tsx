@@ -10,7 +10,7 @@ function Cell({ children, label }: { children: React.ReactNode; label: string })
   return <div className="grid min-w-0 gap-2"><p className="text-xs leading-4 text-[var(--parser-text-neutral-secondary)]">{label}</p>{children}</div>
 }
 
-function ClearableNumber({ size = "md" }: { size?: "md" | "sm" }) {
+function ClearableNumber({ size = "md" }: { size?: "lg" | "md" | "sm" }) {
   const [value, setValue] = React.useState("2007")
   return <InputNumber aria-label="Числовое значение" clearButton onChange={(event) => setValue(event.target.value)} onClear={() => setValue("")} size={size} state="focused" value={value} />
 }
@@ -24,8 +24,8 @@ function EditableNumber(props: Omit<React.ComponentProps<typeof InputNumber>, "o
 
 export function InputNumberExamples() {
   return <div className="grid min-w-0 gap-10">
-    <Section description="md — основной размер, sm — компактный. Значение набирается моноширинным шрифтом." settings={["size: md · sm"]} title="Размер">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><InputNumber placeholder="Введите значение" /></Cell><Cell label="sm"><InputNumber placeholder="Введите значение" size="sm" /></Cell></div></div></div>
+    <Section description="lg использует увеличенные отступы; md — основной размер, sm — компактный. Значение набирается моноширинным шрифтом." settings={["size: lg · md · sm"]} title="Размер">
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-3"><Cell label="lg"><InputNumber placeholder="Введите значение" size="lg" /></Cell><Cell label="md"><InputNumber placeholder="Введите значение" /></Cell><Cell label="sm"><InputNumber placeholder="Введите значение" size="sm" /></Cell></div></div></div>
     </Section>
     <Section description="Neutral использует нейтральную заливку без рамки в default-состоянии. Остальные состояния совпадают с default appearance." settings={["appearance: default · neutral"]} title="Внешний вид">
       <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="default"><InputNumber placeholder="Введите значение" /></Cell><Cell label="neutral"><InputNumber appearance="neutral" placeholder="Введите значение" /></Cell></div></div></div>
@@ -37,7 +37,7 @@ export function InputNumberExamples() {
       <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full gap-5 sm:grid-cols-2"><Cell label="value"><EditableNumber initialValue="2007" /></Cell><Cell label="endText"><EditableNumber endText="м²" initialValue="2007" /></Cell><Cell label="startText"><EditableNumber initialValue="2007" startText="с" /></Cell><Cell label="required"><EditableNumber initialValue="2007" required /></Cell><Cell label="groupThousands"><EditableNumber groupThousands initialValue="1000000" /></Cell></div></div></div>
     </Section>
     <Section description="Опциональный крестик показывается для заполненного поля в состоянии focused." settings={["clearButton: boolean", "onClear: () => void"]} title="Очистка ввода">
-      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2"><Cell label="md"><ClearableNumber /></Cell><Cell label="sm"><ClearableNumber size="sm" /></Cell></div></div></div>
+      <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr"><div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[920px] gap-5 sm:grid-cols-3"><Cell label="lg"><ClearableNumber size="lg" /></Cell><Cell label="md"><ClearableNumber /></Cell><Cell label="sm"><ClearableNumber size="sm" /></Cell></div></div></div>
     </Section>
   </div>
 }

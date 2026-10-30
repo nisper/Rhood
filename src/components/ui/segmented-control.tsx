@@ -13,9 +13,9 @@ type SegmentedControlProps = Omit<React.ComponentProps<"div">, "color"> & {
 }
 
 const sizeClasses: Record<SegmentSize, string> = {
-  lg: "h-[calc(var(--spacing)*14)] rounded-[12px]",
-  md: "h-[calc(var(--spacing)*10)] rounded-[8px]",
-  sm: "h-[calc(var(--spacing)*9)] rounded-[8px]",
+  lg: "rounded-[12px]",
+  md: "rounded-[8px]",
+  sm: "rounded-[8px]",
 }
 
 const colorClasses: Record<SegmentColor, string> = {
@@ -72,7 +72,7 @@ function SegmentedControl({
     const segmentValue = getSegmentValue(segment, index)
     const isSelected = selectedValues.includes(segmentValue)
     return React.cloneElement(segment, {
-      color: segment.props.color ?? (isSelected ? "contrast" : appearance),
+      color: segment.props.color ?? appearance,
       onClick: (event: React.MouseEvent<HTMLButtonElement>) => {
         segment.props.onClick?.(event)
         if (!event.defaultPrevented && !segment.props.disabled) selectValue(segmentValue)

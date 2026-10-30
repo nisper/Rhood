@@ -26,7 +26,7 @@ function getRootClasses({
 
   if (isHorizontal) {
     return cn(
-      "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
+      "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-gap-sm)]",
       selected &&
         indicator &&
         "border-b-2 border-[color:var(--rh-theme-text-neutral-primary)]",
@@ -35,7 +35,7 @@ function getRootClasses({
   }
 
   return cn(
-    "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
+    "group relative flex cursor-pointer items-center justify-center gap-[var(--rh-sizing-common-input-gap-sm)]",
     selected &&
       indicator &&
       "border-l-2 border-[color:var(--rh-theme-text-neutral-primary)]",

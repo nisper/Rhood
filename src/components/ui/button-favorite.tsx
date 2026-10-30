@@ -24,9 +24,9 @@ type ButtonFavoriteProps = Omit<React.ComponentProps<"button">, "onChange"> & {
 }
 
 const sizeClasses: Record<ButtonFavoriteSize, string> = {
-  md: "min-h-[calc(var(--spacing)*10)] py-[var(--rh-sizing-common-input-padding-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
-  sm: "min-h-[calc(var(--spacing)*9)] py-[var(--rh-sizing-common-input-padding-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
-  xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] py-[var(--rh-sizing-common-input-padding-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  md: "min-h-[calc(var(--spacing)*10)] py-[var(--rh-sizing-common-input-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  sm: "min-h-[calc(var(--spacing)*9)] py-[var(--rh-sizing-common-input-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
+  xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] py-[var(--rh-sizing-common-input-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
 }
 
 const typographyClasses: Record<ButtonFavoriteSize, string> = {
@@ -36,9 +36,9 @@ const typographyClasses: Record<ButtonFavoriteSize, string> = {
 }
 
 const gapClasses: Record<ButtonFavoriteSize, string> = {
-  md: "gap-[var(--rh-sizing-common-input-padding-gap-md)]",
-  sm: "gap-[var(--rh-sizing-common-input-padding-gap-sm)]",
-  xsm: "gap-[var(--rh-sizing-common-input-padding-gap-xsm)]",
+  md: "gap-[var(--rh-sizing-common-input-gap-md)]",
+  sm: "gap-[var(--rh-sizing-common-input-gap-sm)]",
+  xsm: "gap-[var(--rh-sizing-common-input-gap-xsm)]",
 }
 
 const iconSlotClasses: Record<ButtonFavoriteSize, string> = {
@@ -52,16 +52,16 @@ const horizontalPaddingClasses: Record<
   { default: string; ghost: string }
 > = {
   md: {
-    default: "px-[var(--rh-sizing-common-input-padding-px-md)]",
-    ghost: "px-[var(--rh-sizing-common-input-padding-ghost-px-md)]",
+    default: "px-[var(--rh-sizing-common-input-px-md)]",
+    ghost: "px-[var(--rh-sizing-common-input-ghost-px-md)]",
   },
   sm: {
-    default: "px-[var(--rh-sizing-common-input-padding-px-sm)]",
-    ghost: "px-[var(--rh-sizing-common-input-padding-ghost-px-sm)]",
+    default: "px-[var(--rh-sizing-common-input-px-sm)]",
+    ghost: "px-[var(--rh-sizing-common-input-ghost-px-sm)]",
   },
   xsm: {
-    default: "px-[var(--rh-sizing-common-input-padding-px-xsm)]",
-    ghost: "px-[var(--rh-sizing-common-input-padding-ghost-px-xsm)]",
+    default: "px-[var(--rh-sizing-common-input-px-xsm)]",
+    ghost: "px-[var(--rh-sizing-common-input-ghost-px-xsm)]",
   },
 }
 

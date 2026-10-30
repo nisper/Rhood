@@ -528,7 +528,7 @@
       },
       "py-lg": {
         "$type": "number",
-        "$value": "{base module.2}",
+        "$value": "{base module.1,5}",
         "$description": "icon button",
         "$extensions": {
           "com.figma.variableId": "VariableID:1114:14114",

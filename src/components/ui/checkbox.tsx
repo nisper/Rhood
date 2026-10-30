@@ -3,7 +3,7 @@ import { Check, Minus } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-type CheckboxSize = "md" | "sm"
+type CheckboxSize = "lg" | "md" | "sm"
 type CheckboxState = "default" | "hovered"
 
 type CheckboxProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
@@ -17,6 +17,7 @@ type CheckboxProps = Omit<React.ComponentProps<"input">, "size" | "type"> & {
 }
 
 const sizes: Record<CheckboxSize, { control: string; label: string; root: string; skeleton: string }> = {
+  lg: { control: "m-0.5 size-6 rounded-[3px]", label: "rh-typography-b1", root: "min-h-12 gap-[var(--rh-sizing-common-input-gap-lg)] px-[var(--rh-sizing-common-input-px-lg)] py-[var(--rh-sizing-common-input-py-lg)]", skeleton: "h-8 w-14 rounded-lg" },
   md: { control: "m-0.5 size-5 rounded-[3px]", label: "rh-typography-b1", root: "min-h-10 gap-2 py-2", skeleton: "h-6 w-14 rounded-lg" },
   sm: { control: "m-0.5 size-4 rounded-[3px]", label: "rh-typography-b2", root: "min-h-9 gap-2 py-2", skeleton: "h-5 w-14 rounded-lg" },
 }
@@ -49,7 +50,7 @@ function Checkbox({ checked, children = "Label", className, defaultChecked = fal
 
   return <label className={cn("group inline-flex shrink-0 items-start text-left", token.root, !disabled && "cursor-pointer", className)}>
     <input {...props} checked={isControlled ? checked : undefined} className="sr-only" defaultChecked={isControlled ? undefined : defaultChecked} disabled={disabled} onChange={handleChange} ref={inputRef} type="checkbox" />
-    <span aria-hidden="true" className={controlClassName}>{indeterminate ? <Minus className={size === "md" ? "size-4" : "size-3.5"} strokeWidth={2} /> : isChecked ? <Check className={size === "md" ? "size-4" : "size-3.5"} strokeWidth={2.5} /> : null}</span>
+    <span aria-hidden="true" className={controlClassName}>{indeterminate ? <Minus className={size === "lg" ? "size-5" : size === "md" ? "size-4" : "size-3.5"} strokeWidth={2} /> : isChecked ? <Check className={size === "lg" ? "size-5" : size === "md" ? "size-4" : "size-3.5"} strokeWidth={2.5} /> : null}</span>
     {label && <span className={cn("whitespace-nowrap", token.label, disabled ? "text-[var(--parser-text-disabled)]" : "text-[var(--parser-text-neutral-primary)]")} style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>}
   </label>
 }

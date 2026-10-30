@@ -4,6 +4,17 @@ import { Button } from "@/components/ui/button";
 import { FilterModal } from "@/components/ui/filter-modal";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
 
+const usedComponents = [
+  { href: "/Rhood/?view=components&component=button", title: "Button" },
+  { href: "/Rhood/?view=components&component=form", title: "FormBlock · FormSet" },
+  { href: "/Rhood/?view=components&component=input-number-range", title: "InputNumberRange" },
+  { href: "/Rhood/?view=components&component=modal", title: "Modal · ModalContainer" },
+  { href: "/Rhood/?view=components&component=segmented-control", title: "Segment · SegmentedControl" },
+  { href: "/Rhood/?view=components&component=textarea", title: "Textarea" },
+  { href: "/Rhood/?view=components&component=text-field", title: "Textfield" },
+  { href: "/Rhood/?view=components&component=toggle-chip", title: "ToggleChip" },
+];
+
 export function FilterModalExamples() {
   const [open, setOpen] = React.useState(true);
 
@@ -22,6 +33,7 @@ export function FilterModalExamples() {
         </div>,
       ]}
       title="Состав и поведение"
+      usedComponents={usedComponents}
     />
   );
 }

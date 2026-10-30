@@ -3711,7 +3711,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/ghost-px-lg",
-      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-lg",
+      "cssVariable": "--rh-sizing-common-input-ghost-px-lg",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3725,13 +3725,13 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/py-lg",
-      "cssVariable": "--rh-sizing-common-input-padding-py-lg",
+      "cssVariable": "--rh-sizing-common-input-py-lg",
       "type": "number",
-      "cssValue": "calc(var(--spacing) * 4)",
-      "resolvedValue": "16px",
+      "cssValue": "calc(var(--spacing) * 3)",
+      "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
-        "name": "base module/2",
+        "name": "base module/1,5",
         "source": "dtcg"
       },
       "figmaVariableId": "VariableID:1114:14114"
@@ -3739,7 +3739,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/py-chips-lg",
-      "cssVariable": "--rh-sizing-common-input-padding-py-chips-lg",
+      "cssVariable": "--rh-sizing-common-input-py-chips-lg",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
@@ -3753,7 +3753,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/px-lg",
-      "cssVariable": "--rh-sizing-common-input-padding-px-lg",
+      "cssVariable": "--rh-sizing-common-input-px-lg",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 4)",
       "resolvedValue": "16px",
@@ -3767,7 +3767,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/gap-lg",
-      "cssVariable": "--rh-sizing-common-input-padding-gap-lg",
+      "cssVariable": "--rh-sizing-common-input-gap-lg",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3781,7 +3781,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/ghost-px-md",
-      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-md",
+      "cssVariable": "--rh-sizing-common-input-ghost-px-md",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3795,7 +3795,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/px-md",
-      "cssVariable": "--rh-sizing-common-input-padding-px-md",
+      "cssVariable": "--rh-sizing-common-input-px-md",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
@@ -3809,7 +3809,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/py-md",
-      "cssVariable": "--rh-sizing-common-input-padding-py-md",
+      "cssVariable": "--rh-sizing-common-input-py-md",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3823,7 +3823,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/py-chips-md",
-      "cssVariable": "--rh-sizing-common-input-padding-py-chips-md",
+      "cssVariable": "--rh-sizing-common-input-py-chips-md",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
@@ -3837,7 +3837,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/gap-md",
-      "cssVariable": "--rh-sizing-common-input-padding-gap-md",
+      "cssVariable": "--rh-sizing-common-input-gap-md",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3851,7 +3851,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/ghost-px-sm",
-      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-sm",
+      "cssVariable": "--rh-sizing-common-input-ghost-px-sm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3865,7 +3865,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/px-sm",
-      "cssVariable": "--rh-sizing-common-input-padding-px-sm",
+      "cssVariable": "--rh-sizing-common-input-px-sm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 3)",
       "resolvedValue": "12px",
@@ -3879,7 +3879,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/py-sm",
-      "cssVariable": "--rh-sizing-common-input-padding-py-sm",
+      "cssVariable": "--rh-sizing-common-input-py-sm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3893,7 +3893,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/py-chips-sm",
-      "cssVariable": "--rh-sizing-common-input-padding-py-chips-sm",
+      "cssVariable": "--rh-sizing-common-input-py-chips-sm",
       "type": "number",
       "cssValue": "5px",
       "resolvedValue": "5px",
@@ -3903,7 +3903,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/gap-sm",
-      "cssVariable": "--rh-sizing-common-input-padding-gap-sm",
+      "cssVariable": "--rh-sizing-common-input-gap-sm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3917,7 +3917,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/ghost-px-xsm",
-      "cssVariable": "--rh-sizing-common-input-padding-ghost-px-xsm",
+      "cssVariable": "--rh-sizing-common-input-ghost-px-xsm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3931,7 +3931,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/py-xsm",
-      "cssVariable": "--rh-sizing-common-input-padding-py-xsm",
+      "cssVariable": "--rh-sizing-common-input-py-xsm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 1.5)",
       "resolvedValue": "6px",
@@ -3945,7 +3945,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/px-xsm",
-      "cssVariable": "--rh-sizing-common-input-padding-px-xsm",
+      "cssVariable": "--rh-sizing-common-input-px-xsm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 2)",
       "resolvedValue": "8px",
@@ -3959,7 +3959,7 @@
     {
       "collection": "sizing",
       "name": "common-input/padding/gap-xsm",
-      "cssVariable": "--rh-sizing-common-input-padding-gap-xsm",
+      "cssVariable": "--rh-sizing-common-input-gap-xsm",
       "type": "number",
       "cssValue": "calc(var(--spacing) * 1)",
       "resolvedValue": "4px",
@@ -4543,7 +4543,7 @@
       "name": "tabs/padding/px",
       "cssVariable": "--rh-sizing-tabs-padding-px",
       "type": "number",
-      "cssValue": "var(--rh-sizing-common-input-padding-px-md)",
+      "cssValue": "var(--rh-sizing-common-input-px-md)",
       "resolvedValue": "12px",
       "alias": {
         "collection": "sizing",
@@ -4557,7 +4557,7 @@
       "name": "tabs/padding/py",
       "cssVariable": "--rh-sizing-tabs-padding-py",
       "type": "number",
-      "cssValue": "var(--rh-sizing-common-input-padding-py-md)",
+      "cssValue": "var(--rh-sizing-common-input-py-md)",
       "resolvedValue": "8px",
       "alias": {
         "collection": "sizing",

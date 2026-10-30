@@ -98,7 +98,6 @@ function RoominessSelect({
               {roominessOptions.map((option) => (
                 <ToggleChip
                   checked={values.includes(option)}
-                  color="neutral"
                   icon={false}
                   key={option}
                   onCheckedChange={(selected) => toggleOption(option, selected)}
