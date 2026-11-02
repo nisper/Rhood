@@ -572,7 +572,7 @@ export function TableExamples() {
 
       <ShowcaseSection
         codeSnippet={compositionSnippet}
-        description="Table собирается из строк и TableCell. Для type=chip и type=button вертикальные отступы ячейки уменьшаются на внутренний padding содержимого, чтобы выровнять статус и кнопку с обычным текстом и сохранить высоту строки."
+        description="Table собирается из строк и TableCell. Для type=chip и type=button вертикальные отступы ячейки уменьшаются на внутренний padding содержимого; buttonSize задаёт размер кнопки, для которой рассчитывается отступ."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-5">
                 <div className="grid gap-2">

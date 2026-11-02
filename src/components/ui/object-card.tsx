@@ -1,5 +1,5 @@
 import * as React from "react";
-import { CheckCircle2, MessageSquareText, TriangleAlert, UserRound } from "lucide-react";
+import { CheckCircle2, Eye, MessageSquareText, TriangleAlert, UserRound } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { IconButton } from "@/components/ui/icon-button";
@@ -26,6 +26,7 @@ type ObjectCardProps = React.ComponentProps<"article"> & {
   author?: string;
   publishedAt?: string;
   sourceHref?: string;
+  viewed?: boolean;
 };
 
 const showcaseImage = "/Rhood/assets/object-gallery-2.png";
@@ -60,6 +61,7 @@ function ObjectCard({
   author = "Агентство недвижимости «СОВА»",
   publishedAt = "Опубликован: 17.08.2023, 17:00:58",
   sourceHref = "https://realty.yandex.ru",
+  viewed = false,
   ...props
 }: ObjectCardProps) {
   const [isFavorite, setIsFavorite] = React.useState(false);
@@ -74,6 +76,12 @@ function ObjectCard({
       {pictures && (
         <div className="relative h-[200px] w-full overflow-hidden rounded-[var(--rh-sizing-border-radius-lg)] border border-[var(--rh-theme-border-light)]">
           <img alt={imageAlt} className="size-full object-cover" src={image} />
+          {viewed && (
+            <span className="absolute bottom-2 left-2 inline-flex items-center gap-1 rounded-[var(--rh-sizing-border-radius-sm)] bg-[var(--rh-theme-fill-neutral)] px-2 py-1 text-xs leading-4 text-[var(--rh-theme-text-neutral-primary)]">
+              <Eye aria-hidden="true" className="size-4" />
+              Уже смотрели
+            </span>
+          )}
           {favorite && (
             <div className="absolute right-2 top-2">
               <FavoriteButton

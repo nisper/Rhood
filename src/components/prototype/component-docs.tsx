@@ -36,6 +36,9 @@ import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
 import { ObjectInfoExamples } from "./object-info-examples";
 import { ObjectCardExamples } from "./object-card-examples";
+import { ObjectRowExamples } from "./object-row-examples";
+import { ObjectPriceCellExamples } from "./object-price-cell-examples";
+import { PriceHistoryExamples } from "./price-history-examples";
 import { PriceWithTrendExamples } from "./price-with-trend-examples";
 import { MapPriceTagExamples } from "./map-price-tag-examples";
 import { PhotoGalleryExamples } from "./photo-gallery-examples";
@@ -110,6 +113,8 @@ function getComponentNavigationGroup(
     group === "Features" ||
     group === "Фильтр объектов" ||
     group === "Выдача объектов" ||
+    group === "Объект в выдаче" ||
+    group === "Информация об объекте" ||
     group === "Коммуникации"
   ) return "Features";
   return "Components";
@@ -532,7 +537,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Покупатели с точным совпадением для объекта и их потребности.",
     figmaUrl:
       "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=26647-8829",
-    group: "Выдача объектов",
+    group: "Информация об объекте",
     properties: [
       {
         name: "defaultExpanded",
@@ -556,7 +561,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Покупатели с точным совпадением в секционном представлении.",
     figmaUrl:
       "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=26647-8829",
-    group: "Выдача объектов",
+    group: "Информация об объекте",
     properties: [
       {
         name: "isLoading",
@@ -574,7 +579,7 @@ const componentDocs: ComponentDoc[] = [
     description: "Карточка объекта недвижимости для списка или выдачи.",
     figmaUrl:
       "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24003-64638",
-    group: "Выдача объектов",
+    group: "Объект в выдаче",
     properties: [
       { name: "image", values: "string", defaultValue: "демо-изображение", description: "URL фотографии объекта." },
       { name: "imageAlt", values: "string", defaultValue: "Интерьер квартиры", description: "Альтернативный текст фотографии." },
@@ -586,16 +591,66 @@ const componentDocs: ComponentDoc[] = [
       { name: "onDetailsClick · onCommentsClick · onReportClick", values: "() => void", defaultValue: "—", description: "Обработчики нижних действий карточки." },
       { name: "price · pricePerM2 · details · address", values: "string", defaultValue: "данные демо-объекта", description: "Цена и основные характеристики объекта." },
       { name: "source · author · publishedAt · sourceHref", values: "string", defaultValue: "данные демо-объекта", description: "Источник объявления, автор, дата и ссылка." },
+      { name: "viewed", values: "boolean", defaultValue: "false", description: "Показывает метку «Уже смотрели» на фотографии объекта." },
       { name: "…props", values: "ComponentProps<article>", defaultValue: "—", description: "Нативные свойства article." },
     ],
     source: "src/components/ui/object-card.tsx",
     render: () => <ObjectCardExamples />,
   },
   {
+    id: "object-row",
+    title: "ObjectRow",
+    description: "Строка таблицы выдачи объектов с собранными колонками.",
+    group: "Объект в выдаче",
+    properties: [
+      { name: "id", values: "string", defaultValue: "обязательное", description: "ID строки для выбора объекта в таблице." },
+      { name: "specs · address", values: "string", defaultValue: "обязательное", description: "Краткие характеристики и адрес объекта." },
+      { name: "buyerCount", values: "number", defaultValue: "обязательное", description: "Количество покупателей с совпадением." },
+      { name: "price · pricePerArea", values: "number", defaultValue: "обязательное", description: "Цена объекта и цена за единицу площади (м² или сотку); значения отображаются без единиц измерения." },
+      { name: "priceColor", values: "neutral · success · error", defaultValue: "neutral", description: "Цвет цены по изменению: зелёный при повышении, красный при снижении." },
+      { name: "priceHistory", values: "PriceHistoryEntry[]", defaultValue: "пустой список", description: "История изменений с датой и ценой; появляется при наведении на цветную цену." },
+      { name: "liquidity · status", values: "string", defaultValue: "обязательное", description: "Текущая оценка ликвидности и статус звонка." },
+      { name: "source · sourceHref · author", values: "string", defaultValue: "обязательное", description: "Название площадки, ссылка на объявление и автор." },
+      { name: "publishedAt", values: "string", defaultValue: "обязательное", description: "Дата публикации; отображается с табличными цифрами." },
+      { name: "hiddenColumns", values: "ReadonlySet<ObjectRowColumn>", defaultValue: "пустой набор", description: "Скрывает выбранные колонки данных." },
+      { name: "selected", values: "boolean", defaultValue: "false", description: "Подсвечивает выбранную строку таблицы." },
+      { name: "viewed", values: "boolean", defaultValue: "false", description: "Показывает метку «Просмотрен» у объекта." },
+      { name: "onOpen", values: "() => void", defaultValue: "—", description: "Обработчик открытия объекта по нажатию на строку." },
+      { name: "onCall", values: "() => void", defaultValue: "—", description: "Обработчик кнопки звонка." },
+    ],
+    source: "src/components/ui/object-row.tsx",
+    render: () => <ObjectRowExamples />,
+  },
+  {
+    id: "object-price-cell",
+    title: "ObjectPriceCell",
+    description: "Ячейка с ценой, ценой за площадь и историей изменений.",
+    group: "Объект в выдаче",
+    properties: [
+      { name: "price · pricePerArea", values: "number", defaultValue: "обязательное", description: "Основная цена и цена за площадь без единиц измерения." },
+      { name: "priceColor", values: "neutral · success · error", defaultValue: "neutral", description: "Зелёный для повышения цены, красный для снижения." },
+      { name: "priceHistory", values: "readonly PriceHistoryEntry[]", defaultValue: "пустой список", description: "История цены с датами; открывается при наведении на ячейку." },
+    ],
+    source: "src/components/ui/object-price-cell.tsx",
+    render: () => <ObjectPriceCellExamples />,
+  },
+  {
+    id: "price-history",
+    title: "PriceHistory",
+    description: "Выпадающий список дат и значений изменения цены.",
+    group: "Объект в выдаче",
+    properties: [
+      { name: "history", values: "readonly PriceHistoryEntry[]", defaultValue: "обязательное", description: "Записи с датой изменения, ценой и валютой в порядке от новых к старым." },
+      { name: "…props", values: "ComponentProps<div>", defaultValue: "—", description: "Нативные свойства контейнера выпадающего списка." },
+    ],
+    source: "src/components/ui/price-history.tsx",
+    render: () => <PriceHistoryExamples />,
+  },
+  {
     id: "price-with-trend",
     title: "PriceWithTrend",
     description: "Цена объекта с индикатором направления изменения.",
-    group: "Выдача объектов",
+    group: "Информация об объекте",
     properties: [
       { name: "price", values: "string", defaultValue: "обязательное", description: "Цена объекта с валютой." },
       { name: "trend", values: "down · up", defaultValue: "down", description: "Направление изменения цены; снижение отображается зелёным, рост — красным." },
@@ -652,7 +707,7 @@ const componentDocs: ComponentDoc[] = [
       "Композиция информации об объекте для страницы объекта или Drawer.",
     figmaUrl:
       "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24335-23012",
-    group: "Выдача объектов",
+    group: "Информация об объекте",
     properties: [
       {
         name: "onClose",

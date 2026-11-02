@@ -13,6 +13,7 @@ type TableCellWidth = "content" | "fill" | number
 type TableCellAlignment = "left" | "center" | "right"
 type TableCellVerticalAlignment = "top" | "center" | "bottom"
 type TableCellTextSize = "b2" | "b1"
+type TableCellButtonSize = "sm" | "xsm"
 
 type TableCellProps = React.ComponentProps<"div"> & {
   children?: React.ReactNode
@@ -36,6 +37,10 @@ type TableCellProps = React.ComponentProps<"div"> & {
   compact?: boolean
   /** Enables sorting affordances for a header cell. Disabled by default. */
   sort?: boolean
+  /** Size of the button inside a `type="button"` cell. */
+  buttonSize?: TableCellButtonSize
+  /** Vertical padding inside the button, used to calculate the cell inset. */
+  buttonPadding?: React.CSSProperties["padding"]
   /** The active sorting direction. The arrow is visible only when this is set. */
   sortDirection?: "asc" | "desc"
   /** Text size for standard body cells. Header cells keep their own typography. */
@@ -91,11 +96,13 @@ function TableCell({
   role = "head",
   rowId,
   compact = false,
+  buttonSize = "sm",
+  buttonPadding,
   sort = false,
   sortDirection,
   textSize = "b2",
   type = "checkbox",
-  verticalAlign = "top",
+  verticalAlign,
   width = "content",
   style,
   ...props
@@ -112,13 +119,13 @@ function TableCell({
   const isPlaceholder = type === "placeholder"
   const isChip = type === "chip"
   const isButton = type === "button"
-  const resolvedVerticalAlignment = isButton && verticalAlign === "top"
-    ? "center"
-    : verticalAlign
+  const resolvedVerticalAlignment = verticalAlign ?? (isButton ? "center" : "top")
   const contentVerticalPadding = isChip
     ? "3px"
     : isButton
-      ? "var(--rh-sizing-common-input-py-sm)"
+      ? buttonPadding ?? (buttonSize === "xsm"
+        ? "var(--rh-sizing-common-input-py-xsm)"
+        : "var(--rh-sizing-common-input-py-sm)")
       : undefined
   const tableVerticalPadding = compact
     ? "var(--rh-sizing-table-padding-py-size-small)"
@@ -179,7 +186,7 @@ function TableCell({
         onMouseEnter?.(event)
         if (!showHelpTooltip) return
         const rect = event.currentTarget.getBoundingClientRect()
-        setTooltipPosition({ left: rect.left + rect.width / 2, top: rect.top - 4 })
+        setTooltipPosition({ left: rect.left + rect.width / 2, top: rect.bottom + 4 })
       }}
       onMouseLeave={(event) => {
         onMouseLeave?.(event)
@@ -188,7 +195,7 @@ function TableCell({
       className={cn(
         "relative flex min-w-0 shrink-0",
         isCheckbox
-          ? checkboxVerticalAlignmentClasses[verticalAlign]
+          ? checkboxVerticalAlignmentClasses[verticalAlign ?? "top"]
         : cn("flex-col", verticalAlignmentClasses[resolvedVerticalAlignment]),
         !isCheckbox && alignmentClasses[resolvedAlignment],
         compact ? "py-[var(--rh-sizing-table-padding-py-size-small)]" : "py-[var(--rh-sizing-table-padding-py)]",
@@ -241,7 +248,7 @@ function TableCell({
       {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} />)}
       {showHelpTooltip && tooltipPosition && typeof document !== "undefined" && createPortal(
         <span
-          className="pointer-events-none fixed z-[2147483647] -translate-x-1/2 -translate-y-full"
+          className="pointer-events-none fixed z-[2147483647] -translate-x-1/2"
           style={{ left: tooltipPosition.left, top: tooltipPosition.top }}
         >
           <Tooltip className="max-w-[300px]" role="tooltip">{helpTooltip ?? "Typography"}</Tooltip>

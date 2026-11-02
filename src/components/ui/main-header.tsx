@@ -39,6 +39,7 @@ const defaultNavItems: MainHeaderNavItem[] = [
   { label: "Мои объекты" },
   { label: "Подборки" },
   { label: "Избранное" },
+  { label: "Расширение" },
 ];
 
 function MainHeader({
@@ -118,7 +119,7 @@ function MainHeader({
   return (
     <header
       className={cn(
-        "w-full border-b border-[color:var(--rh-theme-border-light)]",
+        "h-14 w-full border-b border-[color:var(--rh-theme-border-light)]",
         className,
       )}
       {...props}
@@ -126,18 +127,18 @@ function MainHeader({
       <div
         className={cn(
           contentWidthClass,
-          "relative flex items-center gap-6 py-4",
+          "relative flex h-full items-center gap-6",
         )}
       >
         <div className="flex shrink-0 items-center justify-start">
           {logoHref ? (
             <a aria-label="На главную" href={logoHref}>
-              <img alt="Rhood" className="h-[32px] w-auto" src={logoSrc} />
+              <img alt="Rhood" className="h-7 w-auto" src={logoSrc} />
             </a>
           ) : (
             <img
               alt="Rhood"
-              className="h-[30px] w-auto shrink-0"
+              className="h-7 w-auto shrink-0"
               src={logoSrc}
             />
           )}
@@ -145,12 +146,13 @@ function MainHeader({
 
         <nav
           className={cn(
-            "flex items-center",
-            navAlign === "center" && "absolute left-1/2 -translate-x-1/2",
+            "flex self-stretch",
+            navAlign === "center" &&
+              "absolute inset-y-0 left-1/2 -translate-x-1/2",
             navAlign === "end" && "ml-auto",
           )}
         >
-          <TabBar className="border-b-0">
+          <TabBar className="h-full items-stretch border-b-0">
             {navItems.map((item) => {
               const label = (
                 <span className="inline-flex items-center gap-1">
@@ -161,13 +163,18 @@ function MainHeader({
                 </span>
               );
               const tab = (
-                <Tab label={label} selected={item.active} state={item.state} />
+                <Tab
+                  className="h-full"
+                  label={label}
+                  selected={item.active}
+                  state={item.state}
+                />
               );
 
               return item.href ? (
                 <a
                   aria-current={item.active ? "page" : undefined}
-                  className="cursor-pointer"
+                  className="flex h-full cursor-pointer"
                   href={item.href}
                   key={item.label}
                 >
@@ -176,7 +183,7 @@ function MainHeader({
               ) : (
                 <button
                   aria-current={item.active ? "page" : undefined}
-                  className="cursor-pointer border-0 bg-transparent p-0"
+                  className="flex h-full cursor-pointer border-0 bg-transparent p-0"
                   key={item.label}
                   onClick={item.onClick}
                   type="button"

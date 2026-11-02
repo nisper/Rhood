@@ -47,6 +47,11 @@
         "price": "6050000",
         "currency": "RUB",
         "createdAt": "2026-10-21T09:58:59.439Z"
+      },
+      {
+        "price": "6200000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T09:58:59.439Z"
       }
     ],
     "userStatus": null,
@@ -141,6 +146,11 @@
         "price": "7200000",
         "currency": "RUB",
         "createdAt": "2026-10-21T06:11:05.124Z"
+      },
+      {
+        "price": "7000000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T06:11:05.124Z"
       }
     ],
     "userStatus": null,
@@ -746,6 +756,11 @@
         "price": "6000000",
         "currency": "RUB",
         "createdAt": "2026-10-08T07:48:38.663Z"
+      },
+      {
+        "price": "6200000",
+        "currency": "RUB",
+        "createdAt": "2026-10-07T07:48:38.663Z"
       }
     ],
     "userStatus": {
@@ -1191,6 +1206,11 @@
         "price": "4600000",
         "currency": "RUB",
         "createdAt": "2026-10-21T07:38:12.506Z"
+      },
+      {
+        "price": "4400000",
+        "currency": "RUB",
+        "createdAt": "2026-10-20T07:38:12.506Z"
       }
     ],
     "userStatus": {
@@ -1685,6 +1705,11 @@
         "price": "5300000",
         "currency": "RUB",
         "createdAt": "2026-10-20T16:50:46.462Z"
+      },
+      {
+        "price": "5500000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T16:50:46.462Z"
       }
     ],
     "userStatus": null,
@@ -1783,6 +1808,11 @@
         "price": "12000000",
         "currency": "RUB",
         "createdAt": "2026-10-20T13:09:25.018Z"
+      },
+      {
+        "price": "11800000",
+        "currency": "RUB",
+        "createdAt": "2026-10-19T13:09:25.018Z"
       }
     ],
     "userStatus": {

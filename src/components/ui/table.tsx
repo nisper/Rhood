@@ -72,7 +72,7 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
                 <div
                   ref={stickyHeaderContentRef}
                   className={cn(
-                    bordered && "rounded-t-[var(--rh-sizing-border-radius-md)] border-x border-t border-b border-[var(--parser-border-light)]",
+                    bordered && "rounded-t-[var(--rh-sizing-common-input-shape-border-radius)] border-x border-t border-b border-[var(--parser-border-light)]",
                   )}
                   style={{
                     minWidth,
@@ -92,7 +92,7 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
             >
               <div
                 className={cn(
-                  "flex min-w-max flex-col items-stretch rounded-b-[var(--rh-sizing-border-radius-md)] overflow-visible [&>[role=row]:last-child]:overflow-hidden [&>[role=row]:last-child]:rounded-b-[var(--rh-sizing-border-radius-md)]",
+                  "flex min-w-max flex-col items-stretch rounded-b-[var(--rh-sizing-common-input-shape-border-radius)] overflow-visible [&>[role=row]:last-child]:overflow-hidden [&>[role=row]:last-child]:rounded-b-[var(--rh-sizing-common-input-shape-border-radius)]",
                   bordered && "border border-t-0 border-[var(--parser-border-light)]",
                 )}
                 style={{ ...style, minWidth }}
@@ -106,7 +106,7 @@ function Table({ bordered = false, children, className, columns = [], minWidth, 
             <div
               {...props}
               className={cn(
-                "flex min-w-max flex-col items-stretch rounded-[var(--rh-sizing-border-radius-md)] overflow-hidden",
+                "flex min-w-max flex-col items-stretch rounded-[var(--rh-sizing-common-input-shape-border-radius)] overflow-hidden",
                 bordered && "border border-[var(--parser-border-light)]",
                 className,
               )}

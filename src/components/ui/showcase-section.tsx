@@ -57,10 +57,15 @@ function ShowcaseSection({
         </div>
       ) : null}
       {usedComponents?.length ? (
-        <div className="grid gap-2 pb-4" aria-label="Использованные компоненты">
-          <h3 className="rh-typography-b1-med">Использованные компоненты</h3>
+        <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pb-4" aria-label="Использованные компоненты">
+          <h3 className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">Компоненты:</h3>
           <ul className="flex flex-wrap gap-2">
-            {usedComponents.map(({ href, title: componentTitle }) => <li key={href}><a className="cursor-pointer rh-typography-b1 text-[var(--rh-theme-text-brand)] underline" href={href}>{componentTitle}</a></li>)}
+            {usedComponents.map(({ href, title: componentTitle }, index) => (
+              <li className="flex" key={href}>
+                <a className="cursor-pointer rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)] hover:underline" href={href}>{componentTitle}</a>
+                {index < usedComponents.length - 1 ? "," : null}
+              </li>
+            ))}
           </ul>
         </div>
       ) : null}

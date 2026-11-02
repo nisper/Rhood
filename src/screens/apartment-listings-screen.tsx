@@ -28,6 +28,7 @@ import { cn } from "@/lib/utils";
 import { Modal, ModalContainer } from "@/components/ui/modal";
 import { ObjectInfo } from "@/components/ui/object-info";
 import { ObjectCard } from "@/components/ui/object-card";
+import { ObjectRow, type ObjectRowColumn, type ObjectRowPriceColor } from "@/components/ui/object-row";
 import { MapPriceTag } from "@/components/ui/map-price-tag";
 import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
@@ -48,6 +49,7 @@ import landListings from "@/data/mock/real-estate-land-listings.json";
 import { myObjectStatuses } from "@/data/my-object-statuses";
 
 const LISTINGS_PER_PAGE = 20;
+const VIEWED_LISTINGS_STORAGE_KEY = "rhood-viewed-listings";
 const MY_LISTING_STATUS_COLUMN_WIDTH = 152;
 const MY_LISTING_DUPLICATES_COLUMN_WIDTH = 142;
 const listings = [...flatListings, ...houseListings, ...landListings];
@@ -81,32 +83,14 @@ function getNavItems(activeItem: "base" | "my" | "archive") {
     },
     { label: "Подборки" },
     { label: "Избранное" },
+    { label: "Расширение" },
     { label: "Архив", active: activeItem === "archive", href: "?view=archive" },
   ];
 }
 
 type SortColumn = "buyer" | "price" | "pricePerM2" | "publishedAt";
 type SortState = { column: SortColumn; direction: "asc" | "desc" } | null;
-type ColumnKey =
-  | "address"
-  | "rooms"
-  | "area"
-  | "landArea"
-  | "floor"
-  | "buyer"
-  | "price"
-  | "pricePerM2"
-  | "pricePerSotka"
-  | "liquidity"
-  | "source"
-  | "author"
-  | "publishedAt"
-  | "actualizedAt"
-  | "status"
-  | "duplicates"
-  | "savedAt"
-  | "crmStatus"
-  | "id";
+type ColumnKey = ObjectRowColumn;
 
 const listingsTableColumns: { key: ColumnKey; label: string }[] = [
   { key: "buyer", label: "Покупатели" },
@@ -217,7 +201,7 @@ const resultTableColumns = [
 const CALL_COLUMN_WIDTH = 56;
 const BUYER_COLUMN_WIDTH = 55;
 const PRICE_COLUMN_WIDTH = 128;
-const PUBLISHED_AT_COLUMN_WIDTH = 144;
+const PUBLISHED_AT_COLUMN_WIDTH = 160;
 
 const archiveTableColumnsByPropertyType = {
   Квартиры: [
@@ -391,6 +375,21 @@ function formatSource(domain: string) {
 
 function getPrice(listing: (typeof listings)[number]) {
   return Number(listing.price);
+}
+
+function getListingPriceColor(listing: (typeof listings)[number]): ObjectRowPriceColor {
+  const previousPrice = listing.priceHistory?.[1]?.price;
+  if (previousPrice == null) return "neutral";
+
+  const currentPrice = getPrice(listing);
+  const priorPrice = Number(previousPrice);
+  if (!Number.isFinite(priorPrice)) return "neutral";
+
+  return currentPrice < priorPrice
+    ? "error"
+    : currentPrice > priorPrice
+      ? "success"
+      : "neutral";
 }
 
 function getSpecs(listing: (typeof listings)[number]) {
@@ -682,11 +681,13 @@ function LeaderboardModal({
 function ResultHeader({
   hiddenColumns,
   onSort,
+  propertyType,
   sort,
   sortable = true,
 }: {
   hiddenColumns: ReadonlySet<ColumnKey>;
   onSort: (column: SortColumn) => void;
+  propertyType: ArchivePropertyType;
   sort: SortState;
   sortable?: boolean;
 }) {
@@ -760,7 +761,7 @@ function ResultHeader({
           <>
             Цена, ₽
             <br />
-            Цена за м², ₽
+            {propertyType === "Участки" ? "Цена, ₽/сот." : "Цена, ₽/м²"}
           </>
         </TableCell>
       )}
@@ -820,200 +821,6 @@ function ResultHeader({
           width={236}
         >
           Статус
-        </TableCell>
-      )}
-    </TableRow>
-  );
-}
-
-function ResultRow({
-  hiddenColumns,
-  listing,
-  onOpen,
-}: {
-  hiddenColumns: ReadonlySet<ColumnKey>;
-  listing: (typeof listings)[number];
-  onOpen: () => void;
-}) {
-  const price = getPrice(listing);
-  const pricePerM2 = Math.round(price / listing.area);
-
-  return (
-    <TableRow hover onClick={onOpen}>
-      <TableCell
-        column="selection"
-        onClick={(event) => event.stopPropagation()}
-        paddingX
-        role="body"
-        rowId={listing.id}
-        compact
-        type="checkbox"
-        width={36}
-      />
-
-      <TableCell
-        className="min-w-[300px]"
-        column="address"
-        custom
-        role="body"
-        compact
-        type="text"
-        width="fill"
-      >
-        <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
-          <Link
-            href="#object-info"
-            onClick={(event) => {
-              event.preventDefault();
-              event.stopPropagation();
-              onOpen();
-            }}
-            size="b2"
-          >
-            {getSpecs(listing)}
-          </Link>
-          <p className="text-[var(--parser-text-neutral-primary)]">
-            {listing.address}
-          </p>
-        </div>
-      </TableCell>
-
-      {!hiddenColumns.has("buyer") && (
-        <TableCell
-          column="buyer"
-          custom
-          role="body"
-          compact
-          type="number"
-          width={BUYER_COLUMN_WIDTH}
-        >
-          <p className="w-full rh-typography-b2-mono text-right">
-            {listing.buyerDemandAvailableCount}
-          </p>
-        </TableCell>
-      )}
-      <TableCell
-        column="call"
-        custom
-        role="body"
-        compact
-        type="button"
-        width={CALL_COLUMN_WIDTH}
-      >
-        <div className="grid">
-          <IconButton
-            appearance="secondary"
-            aria-label="Позвонить"
-            className="col-start-1 row-start-1 justify-self-center"
-            icon={<Phone aria-hidden="true" strokeWidth={2} />}
-            onClick={(event) => event.stopPropagation()}
-            size="xsm"
-          />
-        </div>
-      </TableCell>
-
-      {!hiddenColumns.has("price") && (
-        <TableCell
-          column="price"
-          custom
-          role="body"
-          compact
-          type="number"
-          width={PRICE_COLUMN_WIDTH}
-        >
-          <div className="w-full rh-typography-b2-mono text-right">
-            <p className="text-[var(--parser-text-neutral-primary)]">
-              {formatNumber(price)}
-            </p>
-            <p className="text-[var(--parser-text-neutral-secondary)]">
-              {formatNumber(pricePerM2)}
-            </p>
-          </div>
-        </TableCell>
-      )}
-
-      {!hiddenColumns.has("liquidity") && (
-        <TableCell
-          column="liquidity"
-          custom
-          role="body"
-          compact
-          type="chip"
-          width={152}
-        >
-          <Chip
-            appearance="muted"
-            className="self-start"
-            color="neutral"
-            icon={false}
-            propDelete={false}
-            size="sm"
-          >
-            Оцениваем
-          </Chip>
-        </TableCell>
-      )}
-
-      {!hiddenColumns.has("source") && (
-        <TableCell
-          column="source"
-          custom
-          role="body"
-          compact
-          type="text"
-          width={190}
-        >
-          <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
-            <Link
-              href={sourceHref(listing.domain, listing.url)}
-              onClick={(event) => event.stopPropagation()}
-              rel="noreferrer"
-              size="b2"
-              target="_blank"
-            >
-              {formatSource(listing.domain)}
-            </Link>
-            <p className="text-[var(--parser-text-neutral-secondary)]">
-              {listing.clientName ?? "Частное лицо"}
-            </p>
-          </div>
-        </TableCell>
-      )}
-
-      {!hiddenColumns.has("publishedAt") && (
-        <TableCell
-          column="publishedAt"
-          custom
-          role="body"
-          compact
-          type="text"
-          width={PUBLISHED_AT_COLUMN_WIDTH}
-        >
-          <p className="text-sm leading-5 tracking-[0.17px]">
-            {formatPublishedAt(listing.publishedAt)}
-          </p>
-        </TableCell>
-      )}
-
-      {!hiddenColumns.has("status") && (
-        <TableCell
-          column="status"
-          custom
-          role="body"
-          compact
-          type="chip"
-          width={236}
-        >
-          <Chip
-            appearance="muted"
-            className="self-start"
-            color="neutral"
-            icon={false}
-            propDelete={false}
-            size="sm"
-          >
-            {listing.userStatus ? "В работе" : "Еще не звонили из Rhood"}
-          </Chip>
         </TableCell>
       )}
     </TableRow>
@@ -1223,16 +1030,20 @@ function ListingsTable({
   listings: tableListings,
   onOpenObjectInfo,
   onSort,
+  propertyType,
+  viewedListingIds,
   sort,
   sortable = true,
 }: {
   className?: string;
   currentPage: number;
   hiddenColumns: ReadonlySet<ColumnKey>;
+  propertyType: ArchivePropertyType;
   listings: readonly (typeof listings)[number][];
   onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
   onSort: (column: SortColumn) => void;
   sort: SortState;
+  viewedListingIds: ReadonlySet<string>;
   /** Enables sorting by clicking a column header. */
   sortable?: boolean;
 }) {
@@ -1298,15 +1109,31 @@ function ListingsTable({
       <ResultHeader
         hiddenColumns={hiddenColumns}
         onSort={onSort}
+        propertyType={propertyType}
         sort={sort}
         sortable={sortable}
       />
       {sortedListings.map((listing) => (
-        <ResultRow
+        <ObjectRow
           hiddenColumns={hiddenColumns}
           key={listing.id}
-          listing={listing}
+          id={listing.id}
+          specs={getSpecs(listing)}
+          address={listing.address}
+          buyerCount={listing.buyerDemandAvailableCount ?? 0}
+          price={getPrice(listing)}
+          pricePerArea={Math.round(getPrice(listing) / listing.area)}
+          priceColor={getListingPriceColor(listing)}
+          priceHistory={listing.priceHistory}
+          liquidity="Оцениваем"
+          source={formatSource(listing.domain)}
+          sourceHref={sourceHref(listing.domain, listing.url)}
+          author={listing.clientName ?? "Частное лицо"}
+          publishedAt={formatPublishedAt(listing.publishedAt)}
+          status={listing.userStatus ? "В работе" : "Еще не звонили из Rhood"}
           onOpen={() => onOpenObjectInfo(listing)}
+          selected={selectedIds.includes(listing.id)}
+          viewed={viewedListingIds.has(listing.id)}
         />
       ))}
     </Table>
@@ -1647,11 +1474,13 @@ function sourceHref(domain: string, path: string) {
 function ListingsCardGrid({
   currentPage,
   listings: tableListings,
+  viewedListingIds,
   onOpenObjectInfo,
   sort,
 }: {
   currentPage: number;
   listings: readonly (typeof listings)[number][];
+  viewedListingIds: ReadonlySet<string>;
   onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
   sort: SortState;
 }) {
@@ -1696,6 +1525,7 @@ function ListingsCardGrid({
           publishedAt={`Опубликован: ${formatPublishedAt(listing.publishedAt)}`}
           source={formatSource(listing.domain)}
           sourceHref={sourceHref(listing.domain, listing.url ?? "")}
+          viewed={viewedListingIds.has(listing.id)}
           subway={false}
         />
       ))}
@@ -1779,6 +1609,14 @@ export function ApartmentListingsScreen({
   const [selectedListing, setSelectedListing] = React.useState<
     (typeof listings)[number] | null
   >(null);
+  const [viewedListingIds, setViewedListingIds] = React.useState<Set<string>>(() => {
+    try {
+      const stored = window.localStorage.getItem(VIEWED_LISTINGS_STORAGE_KEY);
+      return new Set(stored ? JSON.parse(stored) as string[] : []);
+    } catch {
+      return new Set();
+    }
+  });
   const [selectedMapMarkerIndex, setSelectedMapMarkerIndex] = React.useState<number | null>(null);
   const selectedMapMarkerCount = selectedMapMarkerIndex === null
     ? 0
@@ -1795,6 +1633,20 @@ export function ApartmentListingsScreen({
         ? { column, direction: current.direction === "asc" ? "desc" : "asc" }
         : { column, direction: "asc" },
     );
+  }
+
+  function openListing(listing: (typeof listings)[number]) {
+    setViewedListingIds((current) => {
+      if (current.has(listing.id)) return current;
+      const next = new Set(current).add(listing.id);
+      try {
+        window.localStorage.setItem(VIEWED_LISTINGS_STORAGE_KEY, JSON.stringify([...next]));
+      } catch {
+        // Keep the viewed state for this session when storage is unavailable.
+      }
+      return next;
+    });
+    setSelectedListing(listing);
   }
 
   return (
@@ -1973,12 +1825,13 @@ export function ApartmentListingsScreen({
                       image={listingCardPhotos[(selectedMapMarkerIndex! + index) % listingCardPhotos.length]}
                       imageAlt={`Объект недвижимости: ${listing.address}`}
                       key={`map-panel-${listing.id}-${index}`}
-                      onDetailsClick={() => setSelectedListing(listing)}
+                      onDetailsClick={() => openListing(listing)}
                       price={`${formatNumber(getPrice(listing))} ₽`}
                       pricePerM2={`${formatNumber(Math.round(getPrice(listing) / listing.area))} ₽/м²`}
                       publishedAt={`Опубликован: ${formatPublishedAt(listing.publishedAt)}`}
                       source={formatSource(listing.domain)}
                       sourceHref={sourceHref(listing.domain, listing.url ?? "")}
+                      viewed={viewedListingIds.has(listing.id)}
                       subway={false}
                     />
                   ))}
@@ -1999,7 +1852,8 @@ export function ApartmentListingsScreen({
               <ListingsCardGrid
                 currentPage={currentPage}
                 listings={screenListings}
-                onOpenObjectInfo={setSelectedListing}
+                onOpenObjectInfo={openListing}
+                viewedListingIds={viewedListingIds}
                 sort={sort}
               />
             ) : isMyListings ? (
@@ -2016,7 +1870,7 @@ export function ApartmentListingsScreen({
                 hiddenColumns={hiddenColumns}
                 propertyType={archivePropertyType}
                 listings={screenListings}
-                onOpenObjectInfo={setSelectedListing}
+                onOpenObjectInfo={openListing}
                 sort={sort}
               />
             ) : (
@@ -2025,8 +1879,10 @@ export function ApartmentListingsScreen({
                 currentPage={currentPage}
                 hiddenColumns={hiddenColumns}
                 listings={screenListings}
-                onOpenObjectInfo={setSelectedListing}
+                onOpenObjectInfo={openListing}
                 onSort={handleSort}
+                propertyType={basePropertyType}
+                viewedListingIds={viewedListingIds}
                 sort={sort}
                 sortable={false}
               />

@@ -11,5 +11,12 @@ const usedComponents = [
 export function ObjectCardExamples() {
   return <div className="grid min-w-0">
     <ShowcaseSection description="Изображение, статусы, станция метро и нижние действия можно скрыть или заменить. Кнопка избранного переключается по нажатию." panels={[<div className="flex items-start justify-center rounded-xl bg-white px-4 py-3"><div className="flex flex-wrap items-start justify-center gap-4"><ObjectCard notForClient={false} /></div></div>]} title="Состав" usedComponents={usedComponents} />
+    <ShowcaseSection
+      description="После открытия объекта на карточке появляется метка «Уже смотрели»."
+      panels={[<div className="flex flex-wrap items-start justify-center gap-4 rounded-xl bg-white px-4 py-3"><ObjectCard notForClient={false} /><ObjectCard notForClient={false} viewed /></div>]}
+      settings={["viewed: false · true"]}
+      title="Состояния"
+      usedComponents={usedComponents}
+    />
   </div>;
 }
