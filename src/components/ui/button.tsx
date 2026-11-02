@@ -145,7 +145,7 @@ const appearanceClasses: Record<
     default:
       "bg-[var(--rh-theme-fill-contrast)] text-[var(--rh-theme-text-neutral-primary-static)]",
     hover:
-      "bg-[var(--rh-theme-fill-contrast-hover)] text-[var(--rh-theme-text-neutral-primary-static)]",
+      "bg-[var(--rh-theme-fill-neutral-dark)] text-[var(--rh-theme-text-neutral-primary-contrast)]",
     disabled:
       "bg-[var(--rh-theme-fill-contrast-disabled)] text-[var(--rh-theme-text-neutral-contrast-disabled)]",
   },
@@ -166,7 +166,7 @@ const appearanceHoverClasses: Record<ButtonAppearance, string> = {
   destructive:
     "hover:bg-[var(--rh-theme-fill-error-light-hover)] hover:text-[var(--rh-theme-text-error)]",
   contrast:
-    "hover:bg-[var(--rh-theme-fill-contrast-hover)] hover:text-[var(--rh-theme-text-neutral-primary-static)]",
+    "hover:bg-[var(--rh-theme-fill-neutral-dark)] hover:text-[var(--rh-theme-text-neutral-primary-contrast)]",
   inherit: "hover:bg-current/8 hover:text-inherit",
 }
 
@@ -273,7 +273,7 @@ function Button({
   return (
     <Comp
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
         typographyClasses[resolvedSize],
         sizeClasses[resolvedSize],
         horizontalPaddingClasses[resolvedSize][resolvedAppearance === "ghost" ? "ghost" : "default"],

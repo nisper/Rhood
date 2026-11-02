@@ -8,6 +8,7 @@ const defaultNavigation: MainHeaderNavItem[] = [
   { label: "Мои объекты" },
   { label: "Подборки" },
   { label: "Избранное" },
+  { label: "Расширение" },
 ];
 
 const hoveredNavigation: MainHeaderNavItem[] = [

@@ -55,7 +55,7 @@ const toneClasses: Record<
     default:
       "bg-[var(--rh-theme-fill-contrast)] text-[var(--rh-theme-text-neutral-primary-static)]",
     hovered:
-      "bg-[var(--rh-theme-fill-contrast-hover)] text-[var(--rh-theme-text-neutral-primary-static)]",
+      "bg-[var(--rh-theme-fill-neutral-dark)] text-[var(--rh-theme-text-neutral-primary-contrast)]",
     disabled:
       "bg-[var(--rh-theme-fill-disabled)] text-[var(--rh-theme-text-neutral-disabled)]",
   },
@@ -70,7 +70,8 @@ const hoverClasses: Record<IconButtonAppearance, string> = {
   primary: "hover:bg-[var(--rh-theme-fill-brand-hover)]",
   secondary: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
   ghost: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
-  contrast: "hover:bg-[var(--rh-theme-fill-contrast-hover)]",
+  contrast:
+    "hover:bg-[var(--rh-theme-fill-neutral-dark)] hover:text-[var(--rh-theme-text-neutral-primary-contrast)]",
   inherit: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
 }
 
@@ -139,7 +140,7 @@ function IconButton({
   return (
     <button
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] border-0 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] border-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
         sizeClasses[resolvedSize],
         toneClasses[resolvedAppearance][resolvedState],
         !resolvedDisabled && resolvedState === "default" && hoverClasses[resolvedAppearance],
