@@ -505,9 +505,9 @@ function ObjectFilter({
           onSave={() => openSaveDialog(modalValues)}
           onValuesChange={setModalValues}
           savedFilterLimitReached={savedFilters.length >= 10}
-          savedSearchesContent={savedFilters.length === 0
-            ? <p className="rh-typography-b1 px-2 py-4 text-[var(--rh-theme-text-neutral-secondary)]">Пока нет сохранённых поисков. Настрой фильтр и сохрани его.</p>
-            : <Menu className="max-h-[min(560px,55vh)] overflow-y-auto p-2">{renderSavedFilterRows()}</Menu>}
+          savedSearchesContent={savedFilters.length > 0
+            ? <Menu className="max-h-[min(560px,55vh)] overflow-y-auto p-2">{renderSavedFilterRows()}</Menu>
+            : undefined}
           onOpenChange={setIsFiltersModalOpen}
           open={isFiltersModalOpen}
           values={modalValues}

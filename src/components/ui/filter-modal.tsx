@@ -17,6 +17,7 @@ import { Tab } from "@/components/ui/tab";
 import { TabBar } from "@/components/ui/tab-bar";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { useMenuOpen } from "@/hooks/use-menu-open";
+import { SavedFilterCard } from "@/components/ui/saved-filter-card";
 
 function ModalSelect({
   allowDeselect = true,
@@ -249,6 +250,18 @@ function FilterFields({
   );
 }
 
+function DefaultSavedSearches() {
+  const details = "г. Тюмень, 2 ком, Студия, 66–80 м², 3 000 000–6 000 000 ₽, Мурино, Все источники";
+
+  return (
+    <div className="grid gap-2">
+      <SavedFilterCard details={details} name="Двухкомнатные в Тюмени" />
+      <SavedFilterCard details={details} name="Свежие объявления рядом" subscription="subscribed" />
+      <SavedFilterCard details={`${details}, поиск по области, содержит слова в объявлении`} name="Фильтр с неподдерживаемыми параметрами" subscription="unavailable" />
+    </div>
+  );
+}
+
 type FilterModalProps = {
   onClear?: () => void;
   onOpenChange?: (open: boolean) => void;
@@ -392,7 +405,7 @@ function FilterModal({
             role="tabpanel"
             tabIndex={0}
           >
-            {savedSearchesContent ?? <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">Пока нет сохранённых поисков.</p>}
+            {savedSearchesContent ?? <DefaultSavedSearches />}
           </div>
         </div>
       </Modal>

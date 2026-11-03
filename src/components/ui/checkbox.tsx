@@ -48,10 +48,10 @@ function Checkbox({ checked, children = "Label", className, defaultChecked = fal
     !disabled && !isActive && state === "hovered" && "border-[var(--parser-fill-checkbox-neutral-hover)]",
   )
 
-  return <label className={cn("group inline-flex shrink-0 items-start text-left", token.root, !disabled && "cursor-pointer", className)}>
+  return <label className={cn("group inline-flex min-w-0 items-start text-left", token.root, !disabled && "cursor-pointer", className)}>
     <input {...props} checked={isControlled ? checked : undefined} className="sr-only" defaultChecked={isControlled ? undefined : defaultChecked} disabled={disabled} onChange={handleChange} ref={inputRef} type="checkbox" />
     <span aria-hidden="true" className={controlClassName}>{indeterminate ? <Minus className={size === "lg" ? "size-5" : size === "md" ? "size-4" : "size-3.5"} strokeWidth={2} /> : isChecked ? <Check className={size === "lg" ? "size-5" : size === "md" ? "size-4" : "size-3.5"} strokeWidth={2.5} /> : null}</span>
-    {label && <span className={cn("whitespace-nowrap", token.label, disabled ? "text-[var(--parser-text-disabled)]" : "text-[var(--parser-text-neutral-primary)]")} style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>}
+    {label && <span className={cn("min-w-0", size !== "sm" && "mt-0.5", token.label, disabled ? "text-[var(--parser-text-disabled)]" : "text-[var(--parser-text-neutral-primary)]")} style={{ fontVariationSettings: "'wdth' 100" }}>{children}</span>}
   </label>
 }
 

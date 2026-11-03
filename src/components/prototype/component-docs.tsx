@@ -31,6 +31,7 @@ import { TabExamples } from "./tab-examples";
 import { TypographyExamples } from "./typography-examples";
 import { ModalExamples } from "./modal-examples";
 import { FilterModalExamples } from "./filter-modal-examples";
+import { SavedFiltersExamples } from "./saved-filters-examples";
 import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
@@ -1503,6 +1504,25 @@ const componentDocs: ComponentDoc[] = [
     properties: objectFilterProperties,
     source: "src/components/ui/object-filter.tsx",
     render: () => <ObjectFilterExamples />,
+  },
+  {
+    id: "saved-filters",
+    title: "Сохраненый фильтр",
+    description: "Карточка создания или сохранённого фильтра с управлением подпиской.",
+    figmaUrl: "https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%D0%92%D1%8B%D0%B4%D0%B0%D1%87%D0%B0?node-id=15123-7396",
+    group: "Фильтр объектов",
+    properties: [
+      { name: "variant", values: "new · saved", defaultValue: "saved", description: "Показывает форму нового фильтра или сохранённую карточку." },
+      { name: "subscription", values: "available · subscribed · unavailable", defaultValue: "available", description: "Состояние возможности подписки." },
+      { name: "name", values: "string", defaultValue: "—", description: "Название сохранённого фильтра или начальное значение поля создания." },
+      { name: "details", values: "string", defaultValue: "—", description: "Краткое описание параметров фильтра." },
+      { name: "onNameChange", values: "(name: string) => void", defaultValue: "—", description: "Получает новое значение поля названия при создании." },
+      { name: "onSave", values: "(name: string) => void", defaultValue: "—", description: "Вызывается при сохранении нового фильтра." },
+      { name: "onSubscriptionChange", values: "(subscribed: boolean) => void", defaultValue: "—", description: "Вызывается при изменении подписки." },
+      { name: "onEdit · onDelete", values: "() => void", defaultValue: "—", description: "Обработчики переименования и удаления сохранённого фильтра." },
+    ],
+    source: "src/components/ui/saved-filter-card.tsx",
+    render: () => <SavedFiltersExamples />,
   },
   {
     id: "list",
