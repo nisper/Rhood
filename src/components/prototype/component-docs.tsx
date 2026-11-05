@@ -174,6 +174,12 @@ const objectFilterProperties = [
     description: "Набор быстрых фильтров, которые нужно показать. Кнопка «Фильтры» остаётся в начале строки.",
   },
   {
+    name: "propertyType",
+    values: "string",
+    defaultValue: "Квартиры",
+    description: "Начальный тип объекта в быстром фильтре.",
+  },
+  {
     name: "showFiltersButton",
     values: "boolean",
     defaultValue: "true",
@@ -184,6 +190,18 @@ const objectFilterProperties = [
     values: "viewport · embedded",
     defaultValue: "viewport",
     description: "Режим контейнера дополнительных фильтров.",
+  },
+  {
+    name: "onPropertyTypeChange",
+    values: "(value: string) => void",
+    defaultValue: "—",
+    description: "Вызывается при смене типа объекта.",
+  },
+  {
+    name: "onValuesChange",
+    values: "(values: ObjectFilterValues) => void",
+    defaultValue: "—",
+    description: "Получает полный набор быстрых фильтров после изменения или сброса.",
   },
   {
     name: "…props",
@@ -295,6 +313,12 @@ const componentDocs: ComponentDoc[] = [
         values: "ReactNode[]",
         defaultValue: "—",
         description: "Содержимое панелей для демонстрации компонента.",
+      },
+      {
+        name: "panelFrame",
+        values: "boolean",
+        defaultValue: "true",
+        description: "Показывает общую подложку, скругление и отступ вокруг панелей.",
       },
       {
         name: "direction",
@@ -1499,7 +1523,7 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "object-filter",
     title: "ObjectFilter",
-    description: "Панель быстрых фильтров с кнопкой дополнительных параметров.",
+    description: "Панель быстрых фильтров, полная форма фильтрации и действия над изменённым поиском.",
     group: "Фильтр объектов",
     properties: objectFilterProperties,
     source: "src/components/ui/object-filter.tsx",

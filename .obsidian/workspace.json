@@ -191,6 +191,11 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "src/components/prototype/object-filter-examples.tsx",
+    "docs/instructions/showcase-page.md",
+    "docs/instructions/Оформление страницы витрины компонента.md",
+    "src/components/prototype/showcase-section-examples.tsx",
+    "docs/product/features/Сохраненные фильтры.md",
     "dist/index.html",
     "dist/assets/index-C1x8mbHZ.css",
     "dist/assets/index-B-s1jm_E.js",
@@ -200,10 +205,7 @@
     "dist/assets/index-B2zp7KNC.js",
     "dist/assets/index-BXRLKfHo.js",
     "dist/assets/index-gQ0IbSmH.js",
-    "dist/assets/index-DfX3S5UM.js",
-    "src/components/ui/filter-modal-values.ts",
     "AGENTS.md",
-    "docs/product/features/Сохраненные фильтры.md",
     "dist/assets/tyumen-lenina-54-2-map.png",
     "dist/assets/map-tyumen-lenina-54-2.png",
     "dist/assets/map-preview-figma.svg",
@@ -220,7 +222,6 @@
     "artifacts/responsive/archive-no-subscription/593.png",
     "artifacts/responsive/archive-no-subscription/590.png",
     "docs/instructions/Адаптив в проекте.md",
-    "docs/instructions/showcase-page.md",
     "docs/Tests/Компоненты.md",
     "docs/instructions/product-design-reasoning.md",
     "docs/Tests/Выдача объектов.md",
@@ -235,7 +236,6 @@
     "docs/token-mapping.md",
     "docs/table.md",
     "docs/instructions/working-in-figma.md",
-    "docs/instructions/updating-a-component.md",
-    "docs/instructions/implementing-a-figma-frame.md"
+    "docs/instructions/updating-a-component.md"
   ]
 }

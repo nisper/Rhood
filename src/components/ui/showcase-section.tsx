@@ -6,6 +6,7 @@ type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
   codeSnippet?: React.ReactNode
   direction?: ShowcaseDirection
   description: React.ReactNode
+  panelFrame?: boolean
   panelCount?: number
   panels?: React.ReactNode[]
   settings?: string[]
@@ -20,6 +21,7 @@ function ShowcaseSection({
   codeSnippet,
   direction,
   description,
+  panelFrame = true,
   panelCount,
   panels,
   settings,
@@ -36,7 +38,8 @@ function ShowcaseSection({
       {panels ? (
         <div
           className={cn(
-            "grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)]",
+            "grid gap-1",
+            panelFrame && "rounded-2xl bg-[var(--parser-surface-under-islands)] p-1",
             direction === "vertical" ? "grid-flow-row auto-rows-fr" : "grid-flow-col auto-cols-fr",
           )}
           style={panelCount ? {

@@ -1722,7 +1722,6 @@ export function ApartmentListingsScreen({
                     filters={basePropertyType === "Квартиры"
                       ? ["propertyType", "roominess", "area", "price"]
                       : ["propertyType", "area", "price"]}
-                    savedFiltersEnabled
                     onValuesChange={(nextValues) => {
                       setBaseFilterValues(nextValues);
                       setCurrentPage(1);

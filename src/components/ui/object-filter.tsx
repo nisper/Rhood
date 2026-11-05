@@ -52,7 +52,6 @@ type ObjectFilterProps = React.ComponentProps<"section"> & {
   propertyType?: string
   onPropertyTypeChange?: (value: string) => void
   showFiltersButton?: boolean
-  savedFiltersEnabled?: boolean
   onValuesChange?: (values: ObjectFilterValues) => void
   modalDisplay?: React.ComponentProps<typeof FilterModal>["containerDisplay"]
 }
@@ -189,7 +188,6 @@ function ObjectFilter({
   onPropertyTypeChange,
   modalDisplay = "viewport",
   showFiltersButton = true,
-  savedFiltersEnabled = false,
   onValuesChange,
   onChange,
   ...props
@@ -447,7 +445,7 @@ function ObjectFilter({
               options={["Частное лицо", "Агентство"]}
             />
           )}
-          {savedFiltersEnabled && isFilterModified && (
+          {isFilterModified && (
             <>
               <Button
                 appearance="ghost"
@@ -457,15 +455,9 @@ function ObjectFilter({
                 size="sm"
                 startIcon={<Search aria-hidden="true" strokeWidth={2} />}
               >
-                Сохранить фильтр
+                Сохранить поиск
               </Button>
-              <IconButton
-                aria-label="Закрыть действия фильтра"
-                appearance="ghost"
-                icon={<X aria-hidden="true" strokeWidth={2} />}
-                onClick={resetFilters}
-                size="sm"
-              />
+              <IconButton aria-label="Очистить фильтры" appearance="ghost" icon={<X aria-hidden="true" strokeWidth={2} />} onClick={resetFilters} size="sm" title="Очистить" />
             </>
           )}
           {notice && <span aria-live="polite" className="self-center text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">{notice}</span>}
