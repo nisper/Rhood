@@ -47,7 +47,7 @@ type ButtonProps = React.ComponentProps<"button"> & {
 }
 
 const sizeClasses: Record<ButtonSize, string> = {
-  lg: "min-h-[calc(var(--spacing)*10)] py-[calc(var(--rh-sizing-common-input-py-md)+var(--spacing)*2)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
+  lg: "min-h-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)*2+var(--rh-sizing-common-input-shape-border-width)*2)] py-[var(--rh-sizing-common-input-py-lg)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   md: "min-h-[calc(var(--spacing)*10)] py-[var(--rh-sizing-common-input-py-md)] text-[length:var(--rh-sizing-typography-font-size-md)] leading-[var(--rh-sizing-typography-line-height-md)] tracking-[var(--rh-sizing-typography-letter-spacing-md)]",
   sm: "min-h-[calc(var(--spacing)*9)] py-[var(--rh-sizing-common-input-py-sm)] text-[length:var(--rh-sizing-typography-font-size-sm)] leading-[var(--rh-sizing-typography-line-height-sm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
   xsm: "min-h-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] py-[var(--rh-sizing-common-input-py-xsm)] text-[length:var(--rh-sizing-typography-font-size-xsm)] leading-[var(--rh-sizing-typography-line-height-xsm)] tracking-[var(--rh-sizing-typography-letter-spacing-sm)]",
@@ -55,8 +55,8 @@ const sizeClasses: Record<ButtonSize, string> = {
 
 const horizontalPaddingClasses: Record<ButtonSize, { default: string; ghost: string }> = {
   lg: {
-    default: "px-[calc(var(--rh-sizing-common-input-px-md)+var(--spacing)*2)]",
-    ghost: "px-[calc(var(--rh-sizing-common-input-ghost-px-md)+var(--spacing)*2)]",
+    default: "px-[var(--rh-sizing-common-input-px-lg)]",
+    ghost: "px-[var(--rh-sizing-common-input-px-lg)]",
   },
   md: {
     default: "px-[var(--rh-sizing-common-input-px-md)]",
@@ -80,21 +80,21 @@ const typographyClasses: Record<ButtonSize, string> = {
 }
 
 const gapClasses: Record<ButtonSize, string> = {
-  lg: "gap-[var(--rh-sizing-common-input-gap-md)]",
+  lg: "gap-[var(--rh-sizing-common-input-gap-lg)]",
   md: "gap-[var(--rh-sizing-common-input-gap-md)]",
   sm: "gap-[var(--rh-sizing-common-input-gap-sm)]",
   xsm: "gap-[var(--rh-sizing-common-input-gap-xsm)]",
 }
 
 const iconOnlyClasses: Record<ButtonSize, string> = {
-  lg: "size-[calc(var(--spacing)*10)] p-0",
+  lg: "size-[calc(var(--rh-sizing-typography-line-height-md)+var(--rh-sizing-common-input-py-lg)*2+var(--rh-sizing-common-input-shape-border-width)*2)] p-0",
   md: "size-[calc(var(--spacing)*10)] p-0",
   sm: "size-[calc(var(--spacing)*9)] p-0",
   xsm: "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] p-0",
 }
 
 const iconSlotClasses: Record<ButtonSize, string> = {
-  lg: "w-[calc(var(--spacing)*5)] [&_svg]:size-[calc(var(--spacing)*6)]",
+  lg: "w-[var(--rh-sizing-common-input-icon-width-md)] [&_svg]:size-[var(--rh-sizing-common-input-icon-width-md)]",
   md: "w-[calc(var(--spacing)*5)] [&_svg]:size-[calc(var(--spacing)*6)]",
   sm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*5)]",
   xsm: "w-[calc(var(--spacing)*4)] [&_svg]:size-[calc(var(--spacing)*4)]",

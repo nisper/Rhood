@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/product/features/Сохраненные фильтры.md",
+                "file": "AGENTS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Сохраненные фильтры"
+              "title": "AGENTS"
             }
           }
         ]
@@ -83,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "24fbdb0caa4bd22e",
@@ -191,20 +192,20 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "dist/assets/index-C1x8mbHZ.css",
+    "dist/assets/index-B-s1jm_E.js",
+    "dist/assets/index-3mteFBNF.css",
+    "dist/assets/index-jjEgWL1_.js",
     "src/components/prototype/object-filter-examples.tsx",
+    "dist/assets/index-DPEvCfoj.js",
+    "src/components/prototype/roominess-select-examples.tsx",
+    "docs/product/features/Сохраненные фильтры.md",
     "docs/instructions/showcase-page.md",
     "docs/instructions/Оформление страницы витрины компонента.md",
     "src/components/prototype/showcase-section-examples.tsx",
-    "docs/product/features/Сохраненные фильтры.md",
     "dist/index.html",
-    "dist/assets/index-C1x8mbHZ.css",
-    "dist/assets/index-B-s1jm_E.js",
     "dist/assets/index-Bb6C1JcG.js",
     "dist/assets/index-OmR2323o.js",
-    "dist/assets/index-DWPk8EYl.js",
-    "dist/assets/index-B2zp7KNC.js",
-    "dist/assets/index-BXRLKfHo.js",
-    "dist/assets/index-gQ0IbSmH.js",
     "AGENTS.md",
     "dist/assets/tyumen-lenina-54-2-map.png",
     "dist/assets/map-tyumen-lenina-54-2.png",

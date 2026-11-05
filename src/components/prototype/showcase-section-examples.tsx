@@ -6,6 +6,9 @@ const properties = [
   ["title", "ReactNode", "обязательное", "Заголовок секции."],
   ["description", "ReactNode", "обязательное", "Описание примера."],
   ["panels", "ReactNode[]", "—", "Содержимое панелей примера."],
+  ["exampleVariants", "{ label, value, content }[]", "—", "Переключаемые случаи применения компонента."],
+  ["defaultExampleVariant / exampleVariant", "string", "первый вариант", "Начальный или выбранный случай примера."],
+  ["onExampleVariantChange", "(value) => void", "—", "Обработчик выбора случая примера."],
   ["panelFrame", "boolean", "true", "Показывает общую подложку, скругление и отступ вокруг панелей."],
   ["direction", "horizontal · vertical", "horizontal", "Расположение панелей в строку или столбец."],
   ["panelCount", "number", "авто", "Количество колонок или строк в сетке панелей."],
@@ -47,6 +50,15 @@ export function ShowcaseSectionExamples() {
         ]}
         settings={["panelFrame: false"]}
         title="Панель без рамки"
+      />
+
+      <ShowcaseSection
+        description="Переключатель позволяет показать разные случаи применения одного компонента."
+        exampleVariants={[
+          { label: "Карточка", value: "card", content: <div className={panelClass}>Компонент внутри карточки</div> },
+          { label: "Список", value: "list", content: <div className={panelClass}>Компонент в строке списка</div> },
+        ]}
+        title="Варианты примера"
       />
 
       <ShowcaseSection

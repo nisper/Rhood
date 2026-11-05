@@ -1,11 +1,17 @@
 import * as React from "react"
 
+import { Segment } from "@/components/ui/segment"
+import { SegmentedControl } from "@/components/ui/segmented-control"
 import { cn } from "@/lib/utils"
 
 type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
   codeSnippet?: React.ReactNode
   direction?: ShowcaseDirection
   description: React.ReactNode
+  exampleVariants?: ShowcaseExampleVariant[]
+  defaultExampleVariant?: string
+  exampleVariant?: string
+  onExampleVariantChange?: (value: string) => void
   panelFrame?: boolean
   panelCount?: number
   panels?: React.ReactNode[]
@@ -15,12 +21,17 @@ type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
 }
 
 type ShowcaseDirection = "horizontal" | "vertical"
+type ShowcaseExampleVariant = { label: React.ReactNode; value: string; content: React.ReactNode }
 
 function ShowcaseSection({
   className,
   codeSnippet,
   direction,
   description,
+  exampleVariants,
+  defaultExampleVariant,
+  exampleVariant,
+  onExampleVariantChange,
   panelFrame = true,
   panelCount,
   panels,
@@ -29,13 +40,36 @@ function ShowcaseSection({
   title,
   ...props
 }: ShowcaseSectionProps) {
+  const [uncontrolledExampleVariant, setUncontrolledExampleVariant] = React.useState(
+    () => defaultExampleVariant ?? exampleVariants?.[0]?.value ?? "",
+  )
+  const selectedExampleVariant = exampleVariant ?? uncontrolledExampleVariant
+  const activeExample = exampleVariants?.find(({ value }) => value === selectedExampleVariant) ?? exampleVariants?.[0]
+
+  function handleExampleVariantChange(value: string) {
+    if (exampleVariant === undefined) setUncontrolledExampleVariant(value)
+    onExampleVariantChange?.(value)
+  }
+
   return (
     <section className={cn("mb-10 grid gap-3", className)} {...props}>
       <div className="grid gap-1">
         <h2 className="rh-typography-h4">{title}</h2>
         <p className="rh-typography-b1">{description}</p>
       </div>
-      {panels ? (
+      {exampleVariants?.length ? (
+        <>
+          <SegmentedControl
+            aria-label="Вариант примера"
+            className="mt-3"
+            onValueChange={(value) => typeof value === "string" && handleExampleVariantChange(value)}
+            value={activeExample?.value}
+          >
+            {exampleVariants.map(({ label, value }) => <Segment key={value} value={value}>{label}</Segment>)}
+          </SegmentedControl>
+          {activeExample ? <div className={cn("grid gap-1", panelFrame && "rounded-2xl bg-[var(--parser-surface-under-islands)] p-1")}>{activeExample.content}</div> : null}
+        </>
+      ) : panels ? (
         <div
           className={cn(
             "grid gap-1",

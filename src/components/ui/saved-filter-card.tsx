@@ -71,7 +71,7 @@ function SavedFilterCard({
                 checked={subscription === "subscribed"}
                 disabled={subscription === "unavailable"}
                 onChange={(event) => onSubscriptionChange?.(event.target.checked)}
-                size="lg"
+                size="md"
               >
                 Подписаться
               </Checkbox>

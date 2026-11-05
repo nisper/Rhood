@@ -19,12 +19,6 @@ import { SwitchExamples } from "./switch-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
-import { RoominessSelectExamples } from "./roominess-select-examples";
-import {
-  AreaSelectExamples,
-  FloorSelectExamples,
-  PriceSelectExamples,
-} from "./empty-filter-select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
@@ -120,96 +114,6 @@ function getComponentNavigationGroup(
   ) return "Features";
   return "Components";
 }
-
-const emptyFilterSelectProperties = [
-  {
-    name: "defaultExpanded",
-    values: "boolean",
-    defaultValue: "false",
-    description: "Начальное состояние меню при неконтролируемом использовании.",
-  },
-  {
-    name: "expanded",
-    values: "boolean",
-    defaultValue: "—",
-    description: "Управляет открытым состоянием меню извне.",
-  },
-  {
-    name: "onExpandedChange",
-    values: "(expanded) => void",
-    defaultValue: "—",
-    description: "Вызывается при изменении или закрытии меню вне компонента.",
-  },
-  {
-    name: "size",
-    values: "md · sm",
-    defaultValue: "md",
-    description: "Размер поля и типографики значения.",
-  },
-  {
-    name: "disabled",
-    values: "boolean",
-    defaultValue: "false",
-    description: "Блокирует взаимодействие с полем.",
-  },
-  {
-    name: "label",
-    values: "ReactNode · false",
-    defaultValue: "false",
-    description: "Подпись над полем; false скрывает её.",
-  },
-];
-
-const objectFilterProperties = [
-  {
-    name: "contentWidth",
-    values: "full · container",
-    defaultValue: "full",
-    description: "Ширина содержимого: по всей области или в контейнере страницы.",
-  },
-  {
-    name: "filters",
-    values: "city · propertyType · roominess · area · price · source · author",
-    defaultValue: "все фильтры",
-    description: "Набор быстрых фильтров, которые нужно показать. Кнопка «Фильтры» остаётся в начале строки.",
-  },
-  {
-    name: "propertyType",
-    values: "string",
-    defaultValue: "Квартиры",
-    description: "Начальный тип объекта в быстром фильтре.",
-  },
-  {
-    name: "showFiltersButton",
-    values: "boolean",
-    defaultValue: "true",
-    description: "Показывает кнопку дополнительных фильтров.",
-  },
-  {
-    name: "modalDisplay",
-    values: "viewport · embedded",
-    defaultValue: "viewport",
-    description: "Режим контейнера дополнительных фильтров.",
-  },
-  {
-    name: "onPropertyTypeChange",
-    values: "(value: string) => void",
-    defaultValue: "—",
-    description: "Вызывается при смене типа объекта.",
-  },
-  {
-    name: "onValuesChange",
-    values: "(values: ObjectFilterValues) => void",
-    defaultValue: "—",
-    description: "Получает полный набор быстрых фильтров после изменения или сброса.",
-  },
-  {
-    name: "…props",
-    values: "ComponentProps&lt;\"section\"&gt;",
-    defaultValue: "—",
-    description: "Нативные свойства корневого section-элемента.",
-  },
-];
 
 function Canvas({
   children,
@@ -808,41 +712,6 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/select.tsx",
     render: () => <SelectExamples />,
-  },
-  {
-    id: "roominess",
-    title: "Комнатность",
-    description: "Мультиселект для выбора количества комнат.",
-    group: "Фильтр объектов",
-    source: "src/components/ui/roominess-select.tsx",
-    render: () => <RoominessSelectExamples />,
-  },
-  {
-    id: "area-select",
-    title: "Площадь",
-    description: "Селект площади с пустым выпадающим меню.",
-    group: "Фильтр объектов",
-    properties: emptyFilterSelectProperties,
-    source: "src/components/ui/area-select.tsx",
-    render: () => <AreaSelectExamples />,
-  },
-  {
-    id: "price-select",
-    title: "Цена",
-    description: "Селект цены с пустым выпадающим меню.",
-    group: "Фильтр объектов",
-    properties: emptyFilterSelectProperties,
-    source: "src/components/ui/price-select.tsx",
-    render: () => <PriceSelectExamples />,
-  },
-  {
-    id: "floor-select",
-    title: "Этаж",
-    description: "Селект этажа с пустым выпадающим меню.",
-    group: "Фильтр объектов",
-    properties: emptyFilterSelectProperties,
-    source: "src/components/ui/floor-select.tsx",
-    render: () => <FloorSelectExamples />,
   },
   {
     id: "search",
@@ -1525,7 +1394,6 @@ const componentDocs: ComponentDoc[] = [
     title: "ObjectFilter",
     description: "Панель быстрых фильтров, полная форма фильтрации и действия над изменённым поиском.",
     group: "Фильтр объектов",
-    properties: objectFilterProperties,
     source: "src/components/ui/object-filter.tsx",
     render: () => <ObjectFilterExamples />,
   },

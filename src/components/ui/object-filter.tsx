@@ -1,15 +1,14 @@
 import * as React from "react"
 
-import { AreaSelect } from "@/components/ui/area-select"
 import { Button } from "@/components/ui/button"
 import { FilterModal } from "@/components/ui/filter-modal"
 import { createDefaultFilterModalValues, type FilterModalValues } from "@/components/ui/filter-modal-values"
+import { InputNumberRange } from "@/components/ui/input-number-range"
 import { Menu } from "@/components/ui/menu"
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect"
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { PriceSelect } from "@/components/ui/price-select"
-import { RoominessSelect } from "@/components/ui/roominess-select"
 import { Select } from "@/components/ui/select"
+import { ToggleChip } from "@/components/ui/toggle-chip"
 import { Bell, Pencil, Search, Settings2, Trash2, X } from "lucide-react"
 import { IconButton } from "@/components/ui/icon-button"
 import { useMenuOpen } from "@/hooks/use-menu-open"
@@ -67,7 +66,139 @@ const defaultFilters: ObjectFilterKey[] = [
 ]
 const propertyTypeOptions = ["Квартиры", "Дома", "Участки"]
 const cityOptions = ["Москва", "Химки", "Красногорск", "Мытищи", "Люберцы", "Одинцово"]
+const roominessOptions = ["Студия", "1", "2", "3", "4+"] as const
 const SAVED_FILTERS_STORAGE_KEY = "rhood.saved-filters.v1"
+
+type QuickRangeKey = "area" | "price"
+type ExpandedQuickFilter = "roominess" | QuickRangeKey | null
+
+function formatRoominessValue(selectedValues: readonly string[]) {
+  const selected = roominessOptions.filter((option) => selectedValues.includes(option))
+  if (selected.length === 0) return "Комнат"
+  if (selected.length === 1 && selected[0] === "Студия") return "Студия"
+
+  const labels: string[] = []
+  if (selected.includes("Студия")) labels.push("Студия")
+
+  const numbers = selected.filter((option) => option !== "Студия")
+  for (let index = 0; index < numbers.length;) {
+    let endIndex = index
+    while (
+      endIndex + 1 < numbers.length &&
+      (numbers[endIndex] === "3" && numbers[endIndex + 1] === "4+" ||
+        numbers[endIndex + 1] !== "4+" &&
+        Number(numbers[endIndex + 1]) === Number(numbers[endIndex]) + 1)
+    ) {
+      endIndex += 1
+    }
+
+    if (endIndex > index) {
+      labels.push(`${numbers[index]}–${numbers[endIndex]}`)
+    } else {
+      labels.push(...numbers.slice(index, endIndex + 1))
+    }
+    index = endIndex + 1
+  }
+
+  return `${labels.join(", ")} комн.`
+}
+
+function formatPriceAmount(value: string, compact: boolean) {
+  const amount = Number(value)
+  if (compact && amount >= 1_000) {
+    return new Intl.NumberFormat("ru-RU", {
+      maximumFractionDigits: 2,
+      notation: "compact",
+    }).format(amount)
+  }
+
+  return value.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+}
+
+function formatPriceValue(start: string, end: string) {
+  if (!start && !end) return "Цена"
+  if (!start) return `до ${formatPriceAmount(end, Number(end) >= 1_000_000)} ₽`
+  if (!end) return `от ${formatPriceAmount(start, Number(start) >= 1_000_000)} ₽`
+
+  const sameValue = Number(start) === Number(end)
+  if (sameValue) return `${formatPriceAmount(start, Number(start) >= 1_000_000)} ₽`
+
+  const useCompactFormat = Number(start) >= 1_000_000 || Number(end) >= 1_000_000
+  return `${formatPriceAmount(start, useCompactFormat)}–${formatPriceAmount(end, useCompactFormat)} ₽`
+}
+
+function renderQuickRangeFilter({
+  expanded,
+  endValue,
+  groupThousands = false,
+  label,
+  onExpandedChange,
+  onRangeChange,
+  startValue,
+  unit,
+  value,
+  width,
+}: {
+  expanded: boolean
+  endValue: string
+  groupThousands?: boolean
+  label: string
+  onExpandedChange: (expanded: boolean) => void
+  onRangeChange: (startValue: string, endValue: string) => void
+  startValue: string
+  unit?: string
+  value: string
+  width: string
+}) {
+  return (
+    <Select
+      aria-label={label}
+      className={cn((startValue || endValue) && "tabular-nums")}
+      expanded={expanded}
+      label={false}
+      menu={expanded && (
+        <Menu className="absolute left-0 top-full z-20 mt-1 min-w-full !p-0">
+          <InputNumberRange
+            aria-label={`Диапазон: ${label.toLowerCase()}`}
+            appearance="default"
+            className={width}
+            endInputProps={{
+              ...(groupThousands && { groupThousands: true }),
+              onChange: (event) => onRangeChange(startValue, event.target.value),
+              placeholder: "до",
+              value: endValue,
+            }}
+            size="lg"
+            startInputProps={{
+              ...(groupThousands && { groupThousands: true }),
+              onChange: (event) => onRangeChange(event.target.value, endValue),
+              placeholder: "от",
+              value: startValue,
+            }}
+            unit={unit}
+          />
+          {(startValue || endValue) && (
+            <div className="mt-2 flex">
+              <Button
+                appearance="ghost"
+                endIcon={false}
+                onClick={() => onRangeChange("", "")}
+                size="sm"
+                startIcon={false}
+              >
+                Сбросить
+              </Button>
+            </div>
+          )}
+        </Menu>
+      )}
+      onClick={() => onExpandedChange(!expanded)}
+      onExpandedChange={onExpandedChange}
+      size="sm"
+      value={value}
+    />
+  )
+}
 
 function createDefaultFilterValues(propertyType = "Квартиры"): ObjectFilterValues {
   return { city: [], propertyType, roominess: [], areaStart: "", areaEnd: "", priceStart: "", priceEnd: "", source: [], author: [] }
@@ -193,6 +324,7 @@ function ObjectFilter({
   ...props
 }: ObjectFilterProps) {
   const [isFiltersModalOpen, setIsFiltersModalOpen] = React.useState(false)
+  const [expandedQuickFilter, setExpandedQuickFilter] = React.useState<ExpandedQuickFilter>(null)
   const [values, setValues] = React.useState(() => createDefaultFilterValues(propertyType))
   const [modalValues, setModalValues] = React.useState(createDefaultFilterModalValues)
   const [savedFilters, setSavedFilters] = React.useState<SavedFilter[]>(readSavedFilters)
@@ -423,10 +555,82 @@ function ObjectFilter({
             />
           )}
           {filters.includes("roominess") && (
-            <RoominessSelect aria-label="Количество комнат" label={false} selectedValues={values.roominess} onSelectedValuesChange={(roominess) => updateValues({ roominess })} size="sm" />
+            <Select
+              aria-label="Количество комнат"
+              expanded={expandedQuickFilter === "roominess"}
+              label={false}
+              menu={expandedQuickFilter === "roominess" && (
+                <Menu className="absolute left-0 top-full z-20 mt-1 p-2">
+                  <div className="flex flex-wrap gap-[var(--rh-sizing-base-module-0-75)]">
+                    {roominessOptions.map((option) => (
+                      <ToggleChip
+                        checked={values.roominess.includes(option)}
+                        icon={false}
+                        key={option}
+                        onCheckedChange={(checked) => {
+                          const roominess = checked
+                            ? [...values.roominess, option]
+                            : values.roominess.filter((value) => value !== option)
+                          updateValues({ roominess })
+                        }}
+                        size="md"
+                      >
+                        {option}
+                      </ToggleChip>
+                    ))}
+                  </div>
+                  {values.roominess.length > 0 && (
+                    <div className="mt-2 flex w-full">
+                      <Button
+                        appearance="ghost"
+                        endIcon={false}
+                        onClick={() => updateValues({ roominess: [] })}
+                        size="sm"
+                        startIcon={false}
+                      >
+                        Сбросить
+                      </Button>
+                    </div>
+                  )}
+                </Menu>
+              )}
+              onClick={() => setExpandedQuickFilter((current) => current === "roominess" ? null : "roominess")}
+              onExpandedChange={(expanded) => setExpandedQuickFilter(expanded ? "roominess" : null)}
+              size="sm"
+              value={formatRoominessValue(values.roominess)}
+            />
           )}
-          {filters.includes("area") && <AreaSelect startValue={values.areaStart} endValue={values.areaEnd} onRangeChange={(areaStart, areaEnd) => updateValues({ areaStart, areaEnd })} size="sm" />}
-          {filters.includes("price") && <PriceSelect startValue={values.priceStart} endValue={values.priceEnd} onRangeChange={(priceStart, priceEnd) => updateValues({ priceStart, priceEnd })} size="sm" />}
+          {filters.includes("area") && renderQuickRangeFilter({
+            expanded: expandedQuickFilter === "area",
+            endValue: values.areaEnd,
+            label: "Площадь",
+            onExpandedChange: (expanded) => setExpandedQuickFilter(expanded ? "area" : null),
+            onRangeChange: (areaStart, areaEnd) => updateValues({ areaStart, areaEnd }),
+            startValue: values.areaStart,
+            unit: "м²",
+            value: !values.areaStart && !values.areaEnd
+              ? "Площадь"
+              : !values.areaStart
+                ? `до ${values.areaEnd} м²`
+                : !values.areaEnd
+                  ? `от ${values.areaStart} м²`
+                  : Number(values.areaStart) === Number(values.areaEnd)
+                    ? `${values.areaStart} м²`
+                    : `${values.areaStart}–${values.areaEnd} м²`,
+            width: "!w-[200px]",
+          })}
+          {filters.includes("price") && renderQuickRangeFilter({
+            expanded: expandedQuickFilter === "price",
+            endValue: values.priceEnd,
+            groupThousands: true,
+            label: "Цена",
+            onExpandedChange: (expanded) => setExpandedQuickFilter(expanded ? "price" : null),
+            onRangeChange: (priceStart, priceEnd) => updateValues({ priceStart, priceEnd }),
+            startValue: values.priceStart,
+            unit: "₽",
+            value: formatPriceValue(values.priceStart, values.priceEnd),
+            width: "!w-[310px]",
+          })}
           {filters.includes("source") && (
             <ArchiveFilterSelect
               label="Источник"
