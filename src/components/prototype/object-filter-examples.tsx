@@ -1,13 +1,7 @@
 import * as React from "react"
 
 import { ObjectFilter } from "@/components/ui/object-filter"
-import { Menu } from "@/components/ui/menu"
-import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { Segment } from "@/components/ui/segment"
-import { SegmentedControl } from "@/components/ui/segmented-control"
-import { Select } from "@/components/ui/select"
 import { myObjectStatuses } from "@/data/my-object-statuses"
-import { useMenuOpen } from "@/hooks/use-menu-open"
 import { ShowcaseSection } from "@/components/ui/showcase-section"
 
 const myObjectStatusOptions = ["Все статусы", ...myObjectStatuses.map(({ label }) => label)]
@@ -26,56 +20,18 @@ const usedComponents = [
 function MyListingsFiltersExample() {
   const [propertyType, setPropertyType] = React.useState("Квартиры")
   const [status, setStatus] = React.useState(myObjectStatusOptions[0])
-  const statusRef = React.useRef<HTMLDivElement>(null)
-  const [isStatusOpen, setIsStatusOpen] = useMenuOpen(statusRef)
 
   return (
-    <div className="flex flex-wrap items-center gap-2">
-      <SegmentedControl
-        aria-label="Тип недвижимости"
-        onValueChange={(value) => setPropertyType(value as string)}
-        size="sm"
-        value={propertyType}
-      >
-        <Segment value="Квартиры">Квартиры</Segment>
-        <Segment value="Дома">Дома</Segment>
-        <Segment value="Участки">Участки</Segment>
-      </SegmentedControl>
-      <div className={isStatusOpen ? "relative z-40" : "relative"} ref={statusRef}>
-        <Select
-          aria-label="Статус в CRM"
-          expanded={isStatusOpen}
-          label={false}
-          menu={isStatusOpen && (
-            <Menu aria-label="Статус в CRM" className="absolute left-0 top-full z-50 mt-1 min-w-full" role="listbox">
-              {myObjectStatusOptions.map((option) => (
-                <MenuItemSingleSelect
-                  aria-selected={status === option}
-                  icon={false}
-                  key={option}
-                  onClick={(event) => {
-                    event.stopPropagation()
-                    setStatus(option)
-                    setIsStatusOpen(false)
-                  }}
-                  rightSlot={false}
-                  role="option"
-                  secondaryText={false}
-                  selected={status === option}
-                  startIcon={false}
-                >
-                  {option}
-                </MenuItemSingleSelect>
-              ))}
-            </Menu>
-          )}
-          onClick={() => setIsStatusOpen((current) => !current)}
-          onExpandedChange={setIsStatusOpen}
-          size="sm"
-          value={status}
-        />
-      </div>
-    </div>
+    <ObjectFilter
+      crmStatus={status}
+      crmStatusOptions={myObjectStatusOptions}
+      filters={["propertyType", "crmStatus"]}
+      onCrmStatusChange={setStatus}
+      onPropertyTypeChange={setPropertyType}
+      propertyType={propertyType}
+      propertyTypeControl="segmented"
+      showFiltersButton={false}
+    />
   )
 }
 

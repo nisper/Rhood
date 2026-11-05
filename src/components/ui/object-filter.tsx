@@ -7,10 +7,13 @@ import { InputNumberRange } from "@/components/ui/input-number-range"
 import { Menu } from "@/components/ui/menu"
 import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect"
 import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
-import { Select } from "@/components/ui/select"
-import { ToggleChip } from "@/components/ui/toggle-chip"
-import { Bell, Pencil, Search, Settings2, Trash2, X } from "lucide-react"
+import { SavedFilterCard } from "@/components/ui/saved-filter-card"
 import { IconButton } from "@/components/ui/icon-button"
+import { Select } from "@/components/ui/select"
+import { Segment } from "@/components/ui/segment"
+import { SegmentedControl } from "@/components/ui/segmented-control"
+import { ToggleChip } from "@/components/ui/toggle-chip"
+import { Search, Settings2, X } from "lucide-react"
 import { useMenuOpen } from "@/hooks/use-menu-open"
 import { cn } from "@/lib/utils"
 import { Modal, ModalContainer } from "@/components/ui/modal"
@@ -24,6 +27,7 @@ type ObjectFilterKey =
   | "price"
   | "source"
   | "author"
+  | "crmStatus"
 
 type ObjectFilterValues = {
   city: string[]
@@ -46,13 +50,17 @@ type SavedFilter = {
 }
 
 type ObjectFilterProps = React.ComponentProps<"section"> & {
-  contentWidth?: "full" | "container"
+  contentWidth?: "full" | "container" | "none"
   filters?: ObjectFilterKey[]
   propertyType?: string
   onPropertyTypeChange?: (value: string) => void
   showFiltersButton?: boolean
   onValuesChange?: (values: ObjectFilterValues) => void
   modalDisplay?: React.ComponentProps<typeof FilterModal>["containerDisplay"]
+  propertyTypeControl?: "select" | "segmented"
+  crmStatus?: string
+  crmStatusOptions?: string[]
+  onCrmStatusChange?: (value: string) => void
 }
 
 const defaultFilters: ObjectFilterKey[] = [
@@ -320,6 +328,10 @@ function ObjectFilter({
   modalDisplay = "viewport",
   showFiltersButton = true,
   onValuesChange,
+  propertyTypeControl = "select",
+  crmStatus = "Все статусы",
+  crmStatusOptions = ["Все статусы"],
+  onCrmStatusChange,
   onChange,
   ...props
 }: ObjectFilterProps) {
@@ -331,6 +343,7 @@ function ObjectFilter({
   const [isNameModalOpen, setIsNameModalOpen] = React.useState(false)
   const [nameDraft, setNameDraft] = React.useState("")
   const [editingFilterId, setEditingFilterId] = React.useState<string | null>(null)
+  const [editingSearchName, setEditingSearchName] = React.useState("")
   const [subscriptionFilterId, setSubscriptionFilterId] = React.useState<string | null>(null)
   const [notice, setNotice] = React.useState("")
   const pendingSaveRef = React.useRef<{ values: ObjectFilterValues; modalValues: FilterModalValues } | null>(null)
@@ -364,7 +377,7 @@ function ObjectFilter({
     const parts = [filterValues.propertyType]
     if (filterValues.roominess.length) parts.push(`${filterValues.roominess.join(", ")} комн.`)
     if (filterValues.areaStart || filterValues.areaEnd) parts.push(`Площадь ${filterValues.areaStart || "от 0"}–${filterValues.areaEnd || "∞"} м²`)
-    if (filterValues.priceStart || filterValues.priceEnd) parts.push(`Цена ${filterValues.priceStart || "от 0"}–${filterValues.priceEnd || "∞"} ₽`)
+    if (filterValues.priceStart || filterValues.priceEnd) parts.push(`Цена ${formatPriceValue(filterValues.priceStart, filterValues.priceEnd)}`)
     if (filterValues.city.length) parts.push(filterValues.city.join(", "))
     if (filterValues.source.length) parts.push(filterValues.source.join(", "))
     if (filterValues.author.length) parts.push(filterValues.author.join(", "))
@@ -405,6 +418,31 @@ function ObjectFilter({
     setValues(nextValues)
     onValuesChange?.(nextValues)
     onPropertyTypeChange?.(nextValues.propertyType)
+    if (editingFilterId) {
+      setSavedFilters((current) => current.map((filter) => filter.id === editingFilterId
+        ? { ...filter, name: editingSearchName.trim() || filter.name, values: structuredClone(nextValues), modalValues: structuredClone(modalValues) }
+        : filter))
+      setNotice("Сохранённый поиск обновлен")
+      setEditingFilterId(null)
+    }
+  }
+
+  function editSavedFilter(filter: SavedFilter) {
+    const nextModalValues = filter.modalValues ?? {
+      ...createDefaultFilterModalValues(),
+      location: filter.values.city.join(", "),
+      roominess: filter.values.roominess,
+      areaStart: filter.values.areaStart,
+      areaEnd: filter.values.areaEnd,
+      priceStart: filter.values.priceStart,
+      priceEnd: filter.values.priceEnd,
+      source: filter.values.source,
+      author: filter.values.author[0] ?? "Не выбрано",
+    }
+    setEditingFilterId(filter.id)
+    setEditingSearchName(filter.name)
+    setModalValues(structuredClone(nextModalValues))
+    setIsFiltersModalOpen(true)
   }
 
   function openSaveDialog(modalSnapshot?: FilterModalValues) {
@@ -418,35 +456,24 @@ function ObjectFilter({
     setIsNameModalOpen(true)
   }
 
-  function openRenameDialog(filter: SavedFilter) {
-    setEditingFilterId(filter.id)
-    setNameDraft(filter.name)
-    setIsNameModalOpen(true)
-  }
-
   function saveNamedFilter() {
     const name = nameDraft.trim()
     if (!name) return
 
-    if (editingFilterId) {
-      setSavedFilters((current) => current.map((filter) => filter.id === editingFilterId ? { ...filter, name } : filter))
-      setNotice("Название фильтра изменено")
-    } else {
-      if (savedFilters.length >= 10) {
-        setNotice("Достигнут лимит: можно сохранить до 10 фильтров")
-        pendingSaveRef.current = null
-        setIsNameModalOpen(false)
-        return
-      }
-      const snapshot = pendingSaveRef.current ?? { values, modalValues: getModalSnapshotFromQuickFilters() }
-      setSavedFilters((current) => [...current, {
-        id: crypto.randomUUID(),
-        name,
-        values: structuredClone(snapshot.values),
-        modalValues: structuredClone(snapshot.modalValues),
-      }])
-      setNotice("Фильтр сохранен")
+    if (savedFilters.length >= 10) {
+      setNotice("Достигнут лимит: можно сохранить до 10 фильтров")
+      pendingSaveRef.current = null
+      setIsNameModalOpen(false)
+      return
     }
+    const snapshot = pendingSaveRef.current ?? { values, modalValues: getModalSnapshotFromQuickFilters() }
+    setSavedFilters((current) => [...current, {
+      id: crypto.randomUUID(),
+      name,
+      values: structuredClone(snapshot.values),
+      modalValues: structuredClone(snapshot.modalValues),
+    }])
+    setNotice("Фильтр сохранен")
     pendingSaveRef.current = null
     setIsNameModalOpen(false)
   }
@@ -479,39 +506,34 @@ function ObjectFilter({
 
   function renderSavedFilterRows() {
     return savedFilters.map((filter) => (
-      <div className="grid gap-1 rounded-[var(--rh-sizing-border-radius-md)] p-1" key={filter.id}>
-        <div className="flex min-w-0 items-center gap-1">
-          <MenuItemSingleSelect
-            className="min-w-0 flex-1"
-            icon={false}
-            onClick={() => {
-              applySavedFilter(filter)
-              setIsFiltersModalOpen(false)
-            }}
-            rightSlot={false}
-            secondaryText={false}
-            selected={false}
-          >
-            {filter.name}
-          </MenuItemSingleSelect>
-          <IconButton aria-label={`Переименовать фильтр «${filter.name}»`} appearance="ghost" icon={<Pencil aria-hidden="true" />} onClick={() => openRenameDialog(filter)} size="xsm" title="Переименовать" />
-          <IconButton aria-label={`Удалить фильтр «${filter.name}»`} appearance="ghost" icon={<Trash2 aria-hidden="true" />} onClick={() => {
-            setSavedFilters((current) => current.filter((item) => item.id !== filter.id))
-            setNotice(`Фильтр «${filter.name}» удален`)
-          }} size="xsm" title="Удалить" />
-        </div>
-        <div className="flex min-w-0 items-center justify-between gap-2 px-3">
-          <p className="min-w-0 flex-1 text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">{describeFilter(filter.values)}</p>
-          <Button appearance="ghost" disabled={filter.subscribed} endIcon={false} onClick={() => setSubscriptionFilterId(filter.id)} size="sm" startIcon={<Bell aria-hidden="true" />}>{filter.subscribed ? "Подписка активна" : "Подписаться"}</Button>
-        </div>
-      </div>
+      <SavedFilterCard
+        details={describeFilter(filter.values)}
+        key={filter.id}
+        name={filter.name}
+        onApply={() => {
+          applySavedFilter(filter)
+          setIsFiltersModalOpen(false)
+        }}
+        onDelete={() => {
+          setSavedFilters((current) => current.filter((item) => item.id !== filter.id))
+          setNotice(`Фильтр «${filter.name}» удален`)
+        }}
+        onEdit={() => editSavedFilter(filter)}
+        onSubscriptionChange={(subscribed) => {
+          if (subscribed) setSubscriptionFilterId(filter.id)
+          else setSavedFilters((current) => current.map((item) => item.id === filter.id ? { ...item, subscribed: false } : item))
+        }}
+        subscription={filter.subscribed ? "subscribed" : "available"}
+      />
     ))
   }
 
   const contentWidthClass =
     contentWidth === "container"
       ? "rhood-layout-container"
-      : "rhood-page-gutter"
+      : contentWidth === "full"
+        ? "rhood-page-gutter"
+        : ""
 
   return (
     <section
@@ -531,6 +553,7 @@ function ObjectFilter({
               appearance="default"
               endIcon={false}
               onClick={() => {
+                setEditingFilterId(null)
                 setModalValues(getModalSnapshotFromQuickFilters())
                 setIsFiltersModalOpen(true)
               }}
@@ -543,7 +566,15 @@ function ObjectFilter({
           {filters.includes("city") && (
             <ArchiveFilterSelect label="Город" multiSelect options={cityOptions} selectedValues={values.city} onSelectedValuesChange={(city) => updateValues({ city })} />
           )}
-          {filters.includes("propertyType") && (
+          {filters.includes("propertyType") && propertyTypeControl === "segmented" && (
+            <SegmentedControl aria-label="Тип недвижимости" onValueChange={(value) => {
+              updateValues({ propertyType: value as string })
+              onPropertyTypeChange?.(value as string)
+            }} size="sm" value={values.propertyType}>
+              {propertyTypeOptions.map((option) => <Segment key={option} value={option}>{option}</Segment>)}
+            </SegmentedControl>
+          )}
+          {filters.includes("propertyType") && propertyTypeControl === "select" && (
             <ArchiveFilterSelect
               label={values.propertyType}
               value={values.propertyType}
@@ -553,6 +584,9 @@ function ObjectFilter({
               }}
               options={propertyTypeOptions}
             />
+          )}
+          {filters.includes("crmStatus") && (
+            <ArchiveFilterSelect label="Статус в CRM" value={crmStatus} onValueChange={(value) => onCrmStatusChange?.(value)} options={crmStatusOptions} />
           )}
           {filters.includes("roominess") && (
             <Select
@@ -672,16 +706,28 @@ function ObjectFilter({
           containerClassName={modalDisplay === "embedded" ? "fixed inset-0 z-50" : undefined}
           containerDisplay={modalDisplay}
           onApply={applyModalFilters}
-          onClear={resetFilters}
-          onSave={() => openSaveDialog(modalValues)}
+          onClear={editingFilterId ? undefined : resetFilters}
+          onDelete={editingFilterId ? () => {
+            const deletedFilter = savedFilters.find((filter) => filter.id === editingFilterId)
+            setSavedFilters((current) => current.filter((filter) => filter.id !== editingFilterId))
+            if (deletedFilter) setNotice(`Фильтр «${deletedFilter.name}» удален`)
+            setEditingFilterId(null)
+          } : undefined}
+          onSave={editingFilterId ? undefined : () => openSaveDialog(modalValues)}
           onValuesChange={setModalValues}
+          onSearchNameChange={setEditingSearchName}
+          primaryActionLabel="Сохранить изменения"
           savedFilterLimitReached={savedFilters.length >= 10}
           savedSearchesContent={savedFilters.length > 0
-            ? <Menu className="max-h-[min(560px,55vh)] overflow-y-auto p-2">{renderSavedFilterRows()}</Menu>
+            ? <div className="grid max-h-[min(560px,55vh)] gap-2 overflow-y-auto p-2">{renderSavedFilterRows()}</div>
             : undefined}
-          onOpenChange={setIsFiltersModalOpen}
           open={isFiltersModalOpen}
+          searchName={editingFilterId ? editingSearchName : undefined}
           values={modalValues}
+          onOpenChange={(open) => {
+            setIsFiltersModalOpen(open)
+            if (!open) setEditingFilterId(null)
+          }}
         />
       )}
       {isNameModalOpen && (
@@ -690,18 +736,18 @@ function ObjectFilter({
             footer={
               <>
                 <Button appearance="default" endIcon={false} onClick={() => setIsNameModalOpen(false)} size="md" startIcon={false}>Отмена</Button>
-                <Button appearance="primary" disabled={!nameDraft.trim()} endIcon={false} onClick={saveNamedFilter} size="md" startIcon={false}>{editingFilterId ? "Сохранить" : "Сохранить фильтр"}</Button>
+                <Button appearance="primary" disabled={!nameDraft.trim()} endIcon={false} onClick={saveNamedFilter} size="md" startIcon={false}>Сохранить фильтр</Button>
               </>
             }
             maxWidth={420}
             onOpenChange={setIsNameModalOpen}
             open={isNameModalOpen}
-            title={editingFilterId ? "Переименовать фильтр" : "Сохранить фильтр"}
+            title="Сохранить фильтр"
           >
             <div className="grid gap-2">
               <p className="text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">Назови набор параметров, чтобы быстро найти его позже.</p>
               <Textfield aria-label="Название фильтра" autoFocus onChange={(event) => setNameDraft(event.target.value)} onKeyDown={(event) => event.key === "Enter" && saveNamedFilter()} placeholder="Например, Двухкомнатные в центре" size="lg" value={nameDraft} />
-              {!editingFilterId && <p className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">Сохранено {savedFilters.length} из 10 фильтров</p>}
+              <p className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">Сохранено {savedFilters.length} из 10 фильтров</p>
             </div>
           </Modal>
         </ModalContainer>

@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { Button } from "@/components/ui/button";
 import { FilterModal } from "@/components/ui/filter-modal";
+import { createDefaultFilterModalValues, type FilterModalValues } from "@/components/ui/filter-modal-values";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
 
 const usedComponents = [
@@ -18,9 +19,22 @@ const usedComponents = [
 
 export function FilterModalExamples() {
   const [open, setOpen] = React.useState(true);
+  const [editOpen, setEditOpen] = React.useState(true);
+  const [searchName, setSearchName] = React.useState("Двухкомнатные в Тюмени");
+  const [editValues, setEditValues] = React.useState<FilterModalValues>({
+    ...createDefaultFilterModalValues(),
+    location: "Тюмень",
+    roominess: ["2"],
+    areaStart: "66",
+    areaEnd: "80",
+    priceStart: "3000000",
+    priceEnd: "6000000",
+    source: ["Авито", "Циан"],
+  });
 
   return (
-    <ShowcaseSection
+    <div className="grid min-w-0 gap-8">
+      <ShowcaseSection
       description="Модальное окно с полями фильтрации объектов, действиями очистки и применения."
       panels={[
         <div className="min-h-[720px] overflow-hidden rounded-xl" key="filter-modal">
@@ -35,6 +49,35 @@ export function FilterModalExamples() {
       ]}
       title="Состав и поведение"
       usedComponents={usedComponents}
-    />
+      />
+      <ShowcaseSection
+      description="Редактирование сохранённого поиска: можно изменить название и любые параметры, затем сохранить изменения."
+      panels={[
+        <div className="min-h-[720px] overflow-hidden rounded-xl" key="saved-filter-edit">
+          {editOpen ? (
+            <FilterModal
+              containerDisplay="embedded"
+              onApply={() => setEditOpen(false)}
+              onDelete={() => setEditOpen(false)}
+              onOpenChange={setEditOpen}
+              onSearchNameChange={setSearchName}
+              onValuesChange={setEditValues}
+              open={editOpen}
+              primaryActionLabel="Сохранить изменения"
+              searchName={searchName}
+              values={editValues}
+            />
+          ) : (
+            <div className="flex min-h-[720px] items-center justify-center">
+              <Button endIcon={false} onClick={() => setEditOpen(true)} startIcon={false}>Редактировать сохранённый поиск</Button>
+            </div>
+          )}
+        </div>,
+      ]}
+      settings={["searchName: enabled", "primaryActionLabel: Сохранить изменения"]}
+      title="Редактирование сохранённого поиска"
+      usedComponents={usedComponents}
+      />
+    </div>
   );
 }

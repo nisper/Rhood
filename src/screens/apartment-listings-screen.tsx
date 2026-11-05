@@ -33,8 +33,6 @@ import { MapPriceTag } from "@/components/ui/map-price-tag";
 import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
 import { Select } from "@/components/ui/select";
-import { Segment } from "@/components/ui/segment";
-import { SegmentedControl } from "@/components/ui/segmented-control";
 import { TabBar } from "@/components/ui/tab-bar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
@@ -1154,91 +1152,6 @@ function getObjectCountLabel(count: number) {
   return `${count} ${noun}`;
 }
 
-function MyListingsSelect({
-  label,
-  onValueChange,
-  options,
-  value,
-}: {
-  label: string;
-  onValueChange: (value: string) => void;
-  options: readonly string[];
-  value: string;
-}) {
-  const menuRef = React.useRef<HTMLDivElement>(null);
-  const [expanded, setExpanded] = useMenuOpen(menuRef);
-
-  return (
-    <div className={expanded ? "relative z-40" : "relative"} ref={menuRef}>
-      <Select
-        aria-label={label}
-        expanded={expanded}
-        label={false}
-        menu={expanded && (
-          <Menu aria-label={label} className="absolute left-0 top-full z-50 mt-1 min-w-full" role="listbox">
-            {options.map((option) => (
-              <MenuItemSingleSelect
-                aria-selected={value === option}
-                icon={false}
-                key={option}
-                onClick={(event) => {
-                  event.stopPropagation();
-                  onValueChange(option);
-                  setExpanded(false);
-                }}
-                rightSlot={false}
-                role="option"
-                secondaryText={false}
-                selected={value === option}
-                startIcon={false}
-              >
-                {option}
-              </MenuItemSingleSelect>
-            ))}
-          </Menu>
-        )}
-        onClick={() => setExpanded((current) => !current)}
-        onExpandedChange={setExpanded}
-        size="sm"
-        value={value}
-      />
-    </div>
-  );
-}
-
-function MyListingsFilters({
-  onPropertyTypeChange,
-  onStatusChange,
-  propertyType,
-  status,
-}: {
-  onPropertyTypeChange: (value: ArchivePropertyType) => void;
-  onStatusChange: (value: string) => void;
-  propertyType: ArchivePropertyType;
-  status: string;
-}) {
-  return (
-    <div className="flex flex-wrap items-center gap-2">
-      <SegmentedControl
-        aria-label="Тип недвижимости"
-        onValueChange={(value) => onPropertyTypeChange(value as ArchivePropertyType)}
-        size="sm"
-        value={propertyType}
-      >
-        <Segment value="Квартиры">Квартиры</Segment>
-        <Segment value="Дома">Дома</Segment>
-        <Segment value="Участки">Участки</Segment>
-      </SegmentedControl>
-      <MyListingsSelect
-        label="Статус в CRM"
-        onValueChange={onStatusChange}
-        options={["Все статусы", ...myObjectStatuses.map(({ label }) => label)]}
-        value={status}
-      />
-    </div>
-  );
-}
-
 function MyListingsTitleTabs({
   mode,
   onModeChange,
@@ -1690,20 +1603,24 @@ export function ApartmentListingsScreen({
                 </h1>
               )}
               {isMyListings && (
-                <div aria-label="Фильтры моих объектов" className="mt-6" role="group">
-                  <MyListingsFilters
-                    onPropertyTypeChange={(value) => {
-                      setMyPropertyType(value);
-                      setCurrentPage(1);
-                    }}
-                    onStatusChange={(value) => {
-                      setMyCrmStatus(value);
-                      setCurrentPage(1);
-                    }}
-                    propertyType={myPropertyType}
-                    status={myCrmStatus}
-                  />
-                </div>
+                <ObjectFilter
+                  className="mt-6 pt-0"
+                  contentWidth="none"
+                  crmStatus={myCrmStatus}
+                  crmStatusOptions={["Все статусы", ...myObjectStatuses.map(({ label }) => label)]}
+                  filters={["propertyType", "crmStatus"]}
+                  onCrmStatusChange={(value) => {
+                    setMyCrmStatus(value);
+                    setCurrentPage(1);
+                  }}
+                  onPropertyTypeChange={(value) => {
+                    setMyPropertyType(value as ArchivePropertyType);
+                    setCurrentPage(1);
+                  }}
+                  propertyType={myPropertyType}
+                  propertyTypeControl="segmented"
+                  showFiltersButton={false}
+                />
               )}
               </div>
               {!isMyListings && (

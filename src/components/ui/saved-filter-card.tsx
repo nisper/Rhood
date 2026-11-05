@@ -15,6 +15,7 @@ type SavedFilterCardProps = Omit<React.ComponentProps<"article">, "onChange"> & 
   name?: string
   onDelete?: () => void
   onEdit?: () => void
+  onApply?: () => void
   onNameChange?: (name: string) => void
   onSave?: (name: string) => void
   onSubscriptionChange?: (subscribed: boolean) => void
@@ -28,6 +29,7 @@ function SavedFilterCard({
   name: controlledName,
   onDelete,
   onEdit,
+  onApply,
   onNameChange,
   onSave,
   onSubscriptionChange,
@@ -53,7 +55,7 @@ function SavedFilterCard({
       {variant === "new" ? (
         <div className="grid min-w-0 gap-1">
           <div className="flex min-w-0 items-center gap-2">
-            <Textfield appearance="neutral" aria-label="Название нового фильтра" autoFocus className="min-w-0 flex-1" onChange={(event) => changeName(event.target.value)} onKeyDown={(event) => event.key === "Enter" && save()} placeholder="Название фильтра" size="lg" value={name} />
+            <Textfield appearance="neutral" aria-label="Название поиска" autoFocus className="min-w-0 flex-1" onChange={(event) => changeName(event.target.value)} onKeyDown={(event) => event.key === "Enter" && save()} placeholder="Название поиска" size="lg" value={name} />
             <Button appearance="primary" endIcon={false} onClick={save} size="lg" startIcon={false}>Сохранить</Button>
           </div>
           <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">{details}</p>
@@ -61,7 +63,11 @@ function SavedFilterCard({
       ) : (
         <>
           <div className="grid min-w-0 gap-1">
-            <p className="rh-typography-b1-med break-words text-[var(--rh-theme-text-link)]">{name}</p>
+            {onApply ? (
+              <button className="rh-typography-b1-med w-fit cursor-pointer break-words text-left text-[var(--rh-theme-text-link)] hover:underline" onClick={onApply} type="button">{name}</button>
+            ) : (
+              <p className="rh-typography-b1-med break-words text-[var(--rh-theme-text-link)]">{name}</p>
+            )}
             <p className="rh-typography-b2 break-words text-[var(--rh-theme-text-neutral-secondary)]">{details}</p>
           </div>
           <div className="flex min-w-0 items-center gap-4">
