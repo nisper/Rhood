@@ -10,7 +10,7 @@
 
 ## Технологический стек
 
-Прототип приложения на React и TypeScript, собранный на Vite с Tailwind CSS, shadcn/ui и lucide-react.
+Прототип приложения на React и TypeScript, собранный на Vite с Tailwind CSS и lucide-react. UI-компоненты проекта находятся в `src/components/ui`.
 
 ## Скрипты
 
@@ -21,7 +21,7 @@
 
 ## Структура
 
-- `src/components/ui` компоненты shadcn/ui.
+- `src/components/ui` библиотека UI-компонентов RHOOD.
 - `src/components/prototype` оболочки компонентов, используемые только в прототипе.
 - `src/screens` будущие экраны продукта.
 - `src/data` тестовые данные для прототипа.
