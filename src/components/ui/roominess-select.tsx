@@ -2,8 +2,8 @@ import * as React from "react"
 
 import { Button } from "@/components/ui/button"
 import { Menu } from "@/components/ui/menu"
-import { MenuItemMultiselect } from "@/components/ui/menu-item-multiselect"
 import { Select, type SelectProps } from "@/components/ui/select"
+import { ToggleChip } from "@/components/ui/toggle-chip"
 
 const roominessOptions = ["Студия", "1", "2", "3", "4+"] as const
 
@@ -91,23 +91,22 @@ function RoominessSelect({
       onExpandedChange={updateExpanded}
       menu={
         expanded && (
-          <Menu
-            className="absolute left-0 top-full z-20 mt-1"
-          >
-            {roominessOptions.map((option) => (
-              <MenuItemMultiselect
-                checked={values.includes(option)}
-                icon={false}
-                key={option}
-                onClick={() => toggleOption(option, !values.includes(option))}
-                rightSlot={false}
-                secondaryText={false}
-              >
-                {option}
-              </MenuItemMultiselect>
-            ))}
+          <Menu className="absolute left-0 top-full z-20 mt-1 p-2">
+            <div className="flex flex-wrap gap-[var(--rh-sizing-base-module-0-75)]">
+              {roominessOptions.map((option) => (
+                <ToggleChip
+                  checked={values.includes(option)}
+                  icon={false}
+                  key={option}
+                  onCheckedChange={(checked) => toggleOption(option, checked)}
+                  size="md"
+                >
+                  {option}
+                </ToggleChip>
+              ))}
+            </div>
             {values.length > 0 && (
-              <div className="mt-2 flex">
+              <div className="mt-2 flex w-full">
                 <Button
                   appearance="ghost"
                   endIcon={false}

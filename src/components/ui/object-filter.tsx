@@ -10,7 +10,7 @@ import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select"
 import { PriceSelect } from "@/components/ui/price-select"
 import { RoominessSelect } from "@/components/ui/roominess-select"
 import { Select } from "@/components/ui/select"
-import { Bookmark, Bell, ChevronDown, Pencil, Search, Settings2, Trash2, X } from "lucide-react"
+import { Bell, Pencil, Search, Settings2, Trash2, X } from "lucide-react"
 import { IconButton } from "@/components/ui/icon-button"
 import { useMenuOpen } from "@/hooks/use-menu-open"
 import { cn } from "@/lib/utils"
@@ -198,8 +198,6 @@ function ObjectFilter({
   const [values, setValues] = React.useState(() => createDefaultFilterValues(propertyType))
   const [modalValues, setModalValues] = React.useState(createDefaultFilterModalValues)
   const [savedFilters, setSavedFilters] = React.useState<SavedFilter[]>(readSavedFilters)
-  const savedFiltersRef = React.useRef<HTMLDivElement>(null)
-  const [isSavedFiltersOpen, setIsSavedFiltersOpen] = useMenuOpen(savedFiltersRef)
   const [isNameModalOpen, setIsNameModalOpen] = React.useState(false)
   const [nameDraft, setNameDraft] = React.useState("")
   const [editingFilterId, setEditingFilterId] = React.useState<string | null>(null)
@@ -321,7 +319,6 @@ function ObjectFilter({
     }
     pendingSaveRef.current = null
     setIsNameModalOpen(false)
-    setIsSavedFiltersOpen(false)
   }
 
   function applySavedFilter(filter: SavedFilter) {
@@ -340,7 +337,6 @@ function ObjectFilter({
       author: filter.values.author[0] ?? "Не выбрано",
     }
     setModalValues(structuredClone(nextModalValues))
-    setIsSavedFiltersOpen(false)
     setNotice(`Применен фильтр «${filter.name}»`)
   }
 
@@ -349,7 +345,6 @@ function ObjectFilter({
     setSavedFilters((current) => current.map((filter) => filter.id === subscriptionFilterId ? { ...filter, subscribed: true } : filter))
     setNotice("Подписка на поиск оформлена")
     setSubscriptionFilterId(null)
-    setIsSavedFiltersOpen(false)
   }
 
   function renderSavedFilterRows() {
@@ -451,26 +446,6 @@ function ObjectFilter({
               onSelectedValuesChange={(author) => updateValues({ author })}
               options={["Частное лицо", "Агентство"]}
             />
-          )}
-          {savedFiltersEnabled && (
-            <div className="relative" ref={savedFiltersRef}>
-              <Button
-                appearance="default"
-                endIcon={<ChevronDown aria-hidden="true" className={cn("transition-transform", isSavedFiltersOpen && "rotate-180")} />}
-                onClick={() => setIsSavedFiltersOpen((open) => !open)}
-                size="sm"
-                startIcon={<Bookmark aria-hidden="true" />}
-              >
-                Сохранённые фильтры
-              </Button>
-              {isSavedFiltersOpen && (
-                <Menu className="absolute left-0 top-full z-30 mt-1 max-h-[420px] w-[min(420px,calc(100vw-32px))] overflow-y-auto p-2">
-                  <p className="px-3 pb-1 pt-2 rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Сохранённые фильтры</p>
-                  {savedFilters.length === 0 && <p className="px-3 py-2 text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">Пока нет сохранённых фильтров. Измени параметры и нажми «Сохранить фильтр».</p>}
-                  {renderSavedFilterRows()}
-                </Menu>
-              )}
-            </div>
           )}
           {savedFiltersEnabled && isFilterModified && (
             <>
