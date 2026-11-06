@@ -165,7 +165,7 @@ export function TabExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        settings={["size: b2 · h2 · h4"]}
+        props={["size: b2 · h2 · h4"]}
         description="Выбери размер типографики подписи. По умолчанию сохраняется текущий размер b2; h2 и h4 подходят для крупных заголовочных вкладок."
         panels={[
           <Panel key="sizes">
@@ -176,7 +176,7 @@ export function TabExamples() {
       />
 
       <ShowcaseSection
-        settings={["state: default · hovered", "selected: boolean"]}
+        props={["state: default · hovered", "selected: boolean"]}
         description="Витрина показывает default, наведение и выбранную вкладку. Состояние disabled не поддерживается."
         panels={[
           <Panel key="states">
@@ -200,7 +200,7 @@ export function TabExamples() {
       />
 
       <ShowcaseSection
-        settings={["direction: horizontal · vertical"]}
+        props={["direction: horizontal · vertical"]}
         description="TabBar размещает вкладки в строку с промежутком 24 px или в столбец без промежутка. Выбирай вкладку, чтобы увидеть активную границу."
         panels={[
           <Panel key="horizontal">
@@ -220,7 +220,7 @@ export function TabExamples() {
       />
 
       <ShowcaseSection
-        settings={["Tab.size: b2 · h2 · h4", "Tab.indicator: false", "TabBar.indicator: false"]}
+        props={["Tab.size: b2 · h2 · h4", "Tab.indicator: false", "TabBar.indicator: false"]}
         description="Так выглядят группы вкладок с разными размерами подписи без подчёркивания и общей нижней границы — как на странице «Мои объекты». В каждой группе можно переключать активную вкладку."
         panels={(["b2", "h2", "h4"] as const).map((size) => (
           <Panel key={size}>
@@ -235,7 +235,7 @@ export function TabExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={
+        compositionExample={
           <TabSnippet>
             {"\n  "}<CodeProp name="label" value={'"Основной текст"'} />
             {"\n  "}<CodeProp name="startIcon" value="{true}" />

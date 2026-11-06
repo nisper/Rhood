@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 function Section({
   children,
   description,
-  settings,
+  props,
   title,
 }: {
   children: React.ReactNode;
   description: string;
-  settings: string[];
+  props: string[];
   title: string;
 }) {
   return (
@@ -22,7 +22,7 @@ function Section({
       </div>
       {children}
       <div className="grid gap-0.5">
-        {settings.map((setting) => (
+        {props.map((setting) => (
           <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>
         ))}
       </div>
@@ -130,7 +130,7 @@ export function InputExamples() {
     <div className="grid min-w-0 gap-10">
       <Section
         description="lg использует увеличенные паддинги по обеим осям; sm — компактный вариант для плотных панелей и фильтров."
-        settings={["size: lg · md · sm"]}
+        props={["size: lg · md · sm"]}
         title="Размер"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -164,7 +164,7 @@ export function InputExamples() {
 
       <Section
         description="Neutral использует нейтральную заливку без рамки в default-состоянии. Hover, focus, error и disabled совпадают с default appearance."
-        settings={["appearance: default · neutral"]}
+        props={["appearance: default · neutral"]}
         title="Внешний вид"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -179,7 +179,7 @@ export function InputExamples() {
 
       <Section
         description="Hover и focus работают у нативного input. Error и disabled имеют приоритет над обычными состояниями."
-        settings={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]}
+        props={["state: default · hovered · focused", "error: boolean", "disabled: boolean"]}
         title="Состояния"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -234,7 +234,7 @@ export function InputExamples() {
 
       <Section
         description="Каждый дополнительный элемент показан отдельным вариантом: пустое поле, placeholder, prefix, suffix, обязательность и helper text."
-        settings={["placeholder: string", "startText: ReactNode", "endText: ReactNode", "required: boolean", "helperText: ReactNode"]}
+        props={["placeholder: string", "startText: ReactNode", "endText: ReactNode", "required: boolean", "helperText: ReactNode"]}
         title="Наполнение"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -265,7 +265,7 @@ export function InputExamples() {
 
       <Section
         description="Обязательное поле отмечается красной звёздочкой в правой части Input."
-        settings={["required: boolean"]}
+        props={["required: boolean"]}
         title="Обязательное поле"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -279,7 +279,7 @@ export function InputExamples() {
 
       <Section
         description="Опциональный крестик появляется только у заполненного Input в состоянии focused. Нажми на него, чтобы очистить значение."
-        settings={["clearButton: boolean", "onClear: () => void"]}
+        props={["clearButton: boolean", "onClear: () => void"]}
         title="Очистка ввода"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">

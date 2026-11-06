@@ -1,7 +1,8 @@
 import * as React from "react"
 
 import { Button } from "@/components/ui/button"
-import { FilterModal } from "@/components/ui/filter-modal"
+import { Confirm } from "@/components/ui/confirm"
+import { EmptySavedSearches, FilterModal } from "@/components/ui/filter-modal"
 import { createDefaultFilterModalValues, type FilterModalValues } from "@/components/ui/filter-modal-values"
 import { InputNumberRange } from "@/components/ui/input-number-range"
 import { Menu } from "@/components/ui/menu"
@@ -15,9 +16,11 @@ import { SegmentedControl } from "@/components/ui/segmented-control"
 import { ToggleChip } from "@/components/ui/toggle-chip"
 import { Search, Settings2, X } from "lucide-react"
 import { useMenuOpen } from "@/hooks/use-menu-open"
+import { useSnackbarQueue } from "@/hooks/use-snackbar-queue"
 import { cn } from "@/lib/utils"
 import { Modal, ModalContainer } from "@/components/ui/modal"
 import { Textfield } from "@/components/ui/text-field"
+import { SnackbarViewport } from "@/components/ui/snackbar-viewport"
 
 type ObjectFilterKey =
   | "city"
@@ -216,7 +219,12 @@ function readSavedFilters(): SavedFilter[] {
   try {
     const stored = window.localStorage.getItem(SAVED_FILTERS_STORAGE_KEY)
     const parsed = stored ? JSON.parse(stored) as SavedFilter[] : []
-    return Array.isArray(parsed) ? parsed : []
+    return Array.isArray(parsed)
+      ? parsed.map((filter) => ({
+          ...filter,
+          id: typeof filter.id === "string" && filter.id ? filter.id : crypto.randomUUID(),
+        }))
+      : []
   } catch {
     return []
   }
@@ -343,9 +351,11 @@ function ObjectFilter({
   const [isNameModalOpen, setIsNameModalOpen] = React.useState(false)
   const [nameDraft, setNameDraft] = React.useState("")
   const [editingFilterId, setEditingFilterId] = React.useState<string | null>(null)
+  const [isEditingSavedFilter, setIsEditingSavedFilter] = React.useState(false)
   const [editingSearchName, setEditingSearchName] = React.useState("")
+  const [pendingDeleteFilterId, setPendingDeleteFilterId] = React.useState<string | null>(null)
   const [subscriptionFilterId, setSubscriptionFilterId] = React.useState<string | null>(null)
-  const [notice, setNotice] = React.useState("")
+  const { notices, show: setNotice } = useSnackbarQueue(3)
   const pendingSaveRef = React.useRef<{ values: ObjectFilterValues; modalValues: FilterModalValues } | null>(null)
   const initialPropertyType = React.useRef(propertyType ?? "Квартиры")
   function updateValues(patch: Partial<ObjectFilterValues>) {
@@ -367,12 +377,6 @@ function ObjectFilter({
   React.useEffect(() => {
     window.localStorage.setItem(SAVED_FILTERS_STORAGE_KEY, JSON.stringify(savedFilters))
   }, [savedFilters])
-  React.useEffect(() => {
-    if (!notice) return
-    const timeoutId = window.setTimeout(() => setNotice(""), 3000)
-    return () => window.clearTimeout(timeoutId)
-  }, [notice])
-
   function describeFilter(filterValues: ObjectFilterValues) {
     const parts = [filterValues.propertyType]
     if (filterValues.roominess.length) parts.push(`${filterValues.roominess.join(", ")} комн.`)
@@ -418,12 +422,13 @@ function ObjectFilter({
     setValues(nextValues)
     onValuesChange?.(nextValues)
     onPropertyTypeChange?.(nextValues.propertyType)
-    if (editingFilterId) {
+    if (isEditingSavedFilter) {
       setSavedFilters((current) => current.map((filter) => filter.id === editingFilterId
         ? { ...filter, name: editingSearchName.trim() || filter.name, values: structuredClone(nextValues), modalValues: structuredClone(modalValues) }
         : filter))
       setNotice("Сохранённый поиск обновлен")
       setEditingFilterId(null)
+      setIsEditingSavedFilter(false)
     }
   }
 
@@ -440,6 +445,7 @@ function ObjectFilter({
       author: filter.values.author[0] ?? "Не выбрано",
     }
     setEditingFilterId(filter.id)
+    setIsEditingSavedFilter(true)
     setEditingSearchName(filter.name)
     setModalValues(structuredClone(nextModalValues))
     setIsFiltersModalOpen(true)
@@ -504,6 +510,19 @@ function ObjectFilter({
     setSubscriptionFilterId(null)
   }
 
+  function confirmDeleteSavedFilter() {
+    if (!pendingDeleteFilterId) return
+    const deletedFilter = savedFilters.find((filter) => filter.id === pendingDeleteFilterId)
+    setSavedFilters((current) => current.filter((filter) => filter.id !== pendingDeleteFilterId))
+    if (deletedFilter) setNotice(`Фильтр «${deletedFilter.name}» удален`)
+    setPendingDeleteFilterId(null)
+    if (isEditingSavedFilter) {
+      setEditingFilterId(null)
+      setIsEditingSavedFilter(false)
+      setIsFiltersModalOpen(false)
+    }
+  }
+
   function renderSavedFilterRows() {
     return savedFilters.map((filter) => (
       <SavedFilterCard
@@ -514,10 +533,7 @@ function ObjectFilter({
           applySavedFilter(filter)
           setIsFiltersModalOpen(false)
         }}
-        onDelete={() => {
-          setSavedFilters((current) => current.filter((item) => item.id !== filter.id))
-          setNotice(`Фильтр «${filter.name}» удален`)
-        }}
+        onDelete={() => setPendingDeleteFilterId(filter.id)}
         onEdit={() => editSavedFilter(filter)}
         onSubscriptionChange={(subscribed) => {
           if (subscribed) setSubscriptionFilterId(filter.id)
@@ -698,35 +714,36 @@ function ObjectFilter({
               <IconButton aria-label="Очистить фильтры" appearance="ghost" icon={<X aria-hidden="true" strokeWidth={2} />} onClick={resetFilters} size="sm" title="Очистить" />
             </>
           )}
-          {notice && <span aria-live="polite" className="self-center text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">{notice}</span>}
         </div>
       </div>
+      <SnackbarViewport button={false} close={false} icon={false} notices={notices} />
       {isFiltersModalOpen && (
         <FilterModal
+          key={isEditingSavedFilter ? editingFilterId ?? "editing-saved-filter" : "filter-modal"}
           containerClassName={modalDisplay === "embedded" ? "fixed inset-0 z-50" : undefined}
           containerDisplay={modalDisplay}
           onApply={applyModalFilters}
-          onClear={editingFilterId ? undefined : resetFilters}
-          onDelete={editingFilterId ? () => {
-            const deletedFilter = savedFilters.find((filter) => filter.id === editingFilterId)
-            setSavedFilters((current) => current.filter((filter) => filter.id !== editingFilterId))
-            if (deletedFilter) setNotice(`Фильтр «${deletedFilter.name}» удален`)
-            setEditingFilterId(null)
-          } : undefined}
-          onSave={editingFilterId ? undefined : () => openSaveDialog(modalValues)}
+          onClear={isEditingSavedFilter ? undefined : resetFilters}
+          onDelete={isEditingSavedFilter ? () => setPendingDeleteFilterId(editingFilterId) : undefined}
+          onSave={isEditingSavedFilter ? undefined : () => openSaveDialog(modalValues)}
           onValuesChange={setModalValues}
           onSearchNameChange={setEditingSearchName}
           primaryActionLabel="Сохранить изменения"
           savedFilterLimitReached={savedFilters.length >= 10}
-          savedSearchesContent={savedFilters.length > 0
-            ? <div className="grid max-h-[min(560px,55vh)] gap-2 overflow-y-auto p-2">{renderSavedFilterRows()}</div>
-            : undefined}
+          savedSearchesContent={savedFilters.length > 0 ? (
+            <div className="grid content-start max-h-[min(560px,55vh)] gap-2 overflow-y-auto p-2">{renderSavedFilterRows()}</div>
+          ) : (
+            <EmptySavedSearches />
+          )}
           open={isFiltersModalOpen}
-          searchName={editingFilterId ? editingSearchName : undefined}
+          searchName={isEditingSavedFilter ? editingSearchName : undefined}
           values={modalValues}
           onOpenChange={(open) => {
             setIsFiltersModalOpen(open)
-            if (!open) setEditingFilterId(null)
+            if (!open) {
+              setEditingFilterId(null)
+              setIsEditingSavedFilter(false)
+            }
           }}
         />
       )}
@@ -769,6 +786,17 @@ function ObjectFilter({
             <p className="text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">Будем присылать новые объекты по сохранённому фильтру «{savedFilters.find((filter) => filter.id === subscriptionFilterId)?.name}». Подписка на поиск оформляется отдельно от сохранения фильтра.</p>
           </Modal>
         </ModalContainer>
+      )}
+      {pendingDeleteFilterId && (
+        <Confirm
+          cancelLabel="Отмена"
+          confirmLabel="Удалить"
+          description={`Фильтр «${savedFilters.find((filter) => filter.id === pendingDeleteFilterId)?.name}» будет удалён. Это действие нельзя отменить.`}
+          onConfirm={confirmDeleteSavedFilter}
+          onOpenChange={(open) => !open && setPendingDeleteFilterId(null)}
+          open={Boolean(pendingDeleteFilterId)}
+          title="Удалить сохранённый фильтр?"
+        />
       )}
     </section>
   )

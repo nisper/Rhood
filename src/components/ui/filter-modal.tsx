@@ -261,14 +261,36 @@ function FilterFields({
   );
 }
 
-function DefaultSavedSearches() {
+function DefaultSavedSearches({ onEdit }: { onEdit?: (name: string, values: FilterModalValues) => void }) {
   const details = "г. Тюмень, 2 ком, Студия, 66–80 м², 3 000 000–6 000 000 ₽, Мурино, Все источники";
+  const values: FilterModalValues = {
+    ...createDefaultFilterModalValues(),
+    location: "г. Тюмень, Мурино",
+    roominess: ["2", "Студия"],
+    areaStart: "66",
+    areaEnd: "80",
+    priceStart: "3000000",
+    priceEnd: "6000000",
+  };
 
   return (
-    <div className="grid gap-2">
-      <SavedFilterCard details={details} name="Двухкомнатные в Тюмени" />
-      <SavedFilterCard details={details} name="Свежие объявления рядом" subscription="subscribed" />
-      <SavedFilterCard details={`${details}, поиск по области, содержит слова в объявлении`} name="Фильтр с неподдерживаемыми параметрами" subscription="unavailable" />
+    <div className="grid content-start gap-2">
+      <SavedFilterCard details={details} name="Двухкомнатные в Тюмени" onEdit={() => onEdit?.("Двухкомнатные в Тюмени", values)} />
+      <SavedFilterCard details={details} name="Свежие объявления рядом" onEdit={() => onEdit?.("Свежие объявления рядом", values)} subscription="subscribed" />
+      <SavedFilterCard details={`${details}, поиск по области, содержит слова в объявлении`} name="Фильтр с неподдерживаемыми параметрами" onEdit={() => onEdit?.("Фильтр с неподдерживаемыми параметрами", values)} subscription="unavailable" />
+    </div>
+  );
+}
+
+function EmptySavedSearches() {
+  return (
+    <div className="grid h-full min-h-0 place-items-center p-6 text-center">
+      <div className="grid gap-1">
+        <p className="rh-typography-b1-med">Пока нет сохранённых поисков</p>
+        <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">
+          Настройте фильтры и сохраните поиск — он появится здесь.
+        </p>
+      </div>
     </div>
   );
 }
@@ -280,6 +302,7 @@ type FilterModalProps = {
   resultCount?: number;
   containerDisplay?: React.ComponentProps<typeof ModalContainer>["display"];
   containerClassName?: string;
+  defaultActiveTab?: "filter" | "saved-searches";
   onSave?: () => void;
   onApply?: () => void;
   onDelete?: () => void;
@@ -287,6 +310,7 @@ type FilterModalProps = {
   onSearchNameChange?: (name: string) => void;
   primaryActionLabel?: string;
   savedFilterLimitReached?: boolean;
+  onEditSavedSearch?: (name: string, values: FilterModalValues) => void;
   values?: FilterModalValues;
   onValuesChange?: (values: FilterModalValues) => void;
   savedSearchesContent?: React.ReactNode;
@@ -295,6 +319,7 @@ type FilterModalProps = {
 function FilterModal({
   containerClassName,
   containerDisplay = "viewport",
+  defaultActiveTab = "filter",
   onClear,
   onOpenChange,
   open,
@@ -306,6 +331,7 @@ function FilterModal({
   onSearchNameChange,
   primaryActionLabel = "Показать",
   savedFilterLimitReached = false,
+  onEditSavedSearch,
   values: controlledValues,
   onValuesChange,
   savedSearchesContent,
@@ -316,9 +342,25 @@ function FilterModal({
   const filterPanelRef = React.useRef<HTMLDivElement>(null);
   const [uncontrolledValues, setUncontrolledValues] = React.useState(createDefaultFilterModalValues);
   const values = controlledValues ?? uncontrolledValues;
-  React.useEffect(() => {
-    if (open) setActiveTab("filter");
-  }, [open, searchName]);
+  React.useLayoutEffect(() => {
+    if (!open) return;
+
+    if (searchName !== undefined) {
+      setSavedSearchesModalHeight(undefined);
+      setActiveTab("filter");
+      return;
+    }
+
+    if (defaultActiveTab === "saved-searches") {
+      const dialog = filterPanelRef.current?.closest<HTMLElement>('[role="dialog"]');
+      const height = dialog?.getBoundingClientRect().height;
+      if (height) setSavedSearchesModalHeight(height);
+    } else {
+      setSavedSearchesModalHeight(undefined);
+    }
+
+    setActiveTab(defaultActiveTab);
+  }, [defaultActiveTab, open, searchName]);
   const updateValues = (next: FilterModalValues) => {
     if (controlledValues === undefined) setUncontrolledValues(next);
     onValuesChange?.(next);
@@ -369,6 +411,8 @@ function FilterModal({
       display={containerDisplay}
     >
       <Modal
+        bodyClassName={activeTab === "saved-searches" ? "min-h-0 flex-1" : undefined}
+        className={activeTab === "saved-searches" ? "[&>div:first-child]:flex [&>div:first-child]:flex-col" : undefined}
         headerContent={searchName !== undefined ? (
           <div className="rh-typography-h4">Редактирование поиска</div>
         ) : (
@@ -400,7 +444,7 @@ function FilterModal({
           <>
             {searchName !== undefined ? (
               <>
-                {onDelete && <Button appearance="ghost" className="mr-auto" endIcon={false} onClick={() => { onDelete(); onOpenChange?.(false); }} size="md" startIcon={false}>Удалить</Button>}
+                {onDelete && <Button appearance="ghost" className="mr-auto" endIcon={false} onClick={onDelete} size="md" startIcon={false}>Удалить</Button>}
                 <Button appearance="default" endIcon={false} onClick={() => onOpenChange?.(false)} size="md" startIcon={false}>Отменить</Button>
                 <Button appearance="primary" disabled={!searchName.trim()} endIcon={false} onClick={() => { onApply?.(); onOpenChange?.(false); }} size="md" startIcon={false}>{primaryActionLabel}</Button>
               </>
@@ -421,7 +465,7 @@ function FilterModal({
           : undefined}
         title="Фильтры"
       >
-        <div className="grid gap-5">
+        <div className={cn("grid gap-5", activeTab === "saved-searches" && "h-full min-h-0")}>
           <div
             aria-labelledby={searchName === undefined ? "filter-modal-tab-filter" : undefined}
             className={activeTab === "filter" ? "grid" : "hidden"}
@@ -434,12 +478,12 @@ function FilterModal({
           </div>
           <div
             aria-labelledby="filter-modal-tab-saved-searches"
-            className={activeTab === "saved-searches" ? "grid min-h-0" : "hidden"}
+            className={activeTab === "saved-searches" ? "grid h-full min-h-0 grid-rows-[minmax(0,1fr)]" : "hidden"}
             id="filter-modal-panel-saved-searches"
             role="tabpanel"
             tabIndex={0}
           >
-            {savedSearchesContent ?? <DefaultSavedSearches />}
+            {savedSearchesContent ?? <DefaultSavedSearches onEdit={onEditSavedSearch} />}
           </div>
         </div>
       </Modal>
@@ -447,5 +491,5 @@ function FilterModal({
   );
 }
 
-export { FilterModal };
+export { EmptySavedSearches, FilterModal };
 export type { FilterModalProps };

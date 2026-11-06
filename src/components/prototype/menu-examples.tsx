@@ -70,21 +70,21 @@ function InteractiveMenus() {
 export function MenuExamples() {
   return <div className="grid min-w-0 gap-10">
     <ShowcaseSection
-      codeSnippet={<MenuCompositionSnippet />}
+      compositionExample={<MenuCompositionSnippet />}
       description="Menu использует единый контрастный контейнер без вариантов appearance и размеров. Его визуальный контекст формируют пункты MenuItemSingleSelect и MenuItemMultiselect."
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false}>Menu item</MenuItemSingleSelect><MenuDivider /><MenuItemMultiselect checked={false} icon={false} secondaryText={false} rightSlot={false}>Menu item</MenuItemMultiselect></Menu></div>]}
       title="Стиль"
     />
 
     <ShowcaseSection
-      settings={["state: default · hovered", "disabled: boolean", "selected: boolean", "checked: boolean"]}
+      props={["state: default · hovered", "disabled: boolean", "selected: boolean", "checked: boolean"]}
       description="Пункты поддерживают default, hover и disabled. Для одиночного выбора выбранность — отдельное состояние; для множественного её показывает чекбокс."
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="grid w-full max-w-[640px] grid-cols-3 gap-3"><MenuItemLabel label="default"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false} selected={false}>Menu item</MenuItemSingleSelect></Menu></MenuItemLabel><MenuItemLabel label="hover"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false} selected={false} state="hovered">Menu item</MenuItemSingleSelect></Menu></MenuItemLabel><MenuItemLabel label="disabled"><Menu><MenuItemSingleSelect disabled secondaryText={false} rightSlot={false} selected={false}>Menu item</MenuItemSingleSelect></Menu></MenuItemLabel></div></div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4"><div className="grid w-full max-w-[640px] grid-cols-2 gap-3"><MenuItemLabel label="selected"><Menu><MenuItemSingleSelect secondaryText={false} rightSlot={false}>Menu item</MenuItemSingleSelect></Menu></MenuItemLabel><MenuItemLabel label="checked"><Menu><MenuItemMultiselect checked icon={false} secondaryText={false} rightSlot={false}>Menu item</MenuItemMultiselect></Menu></MenuItemLabel></div></div>]}
       title="Состояния"
     />
 
     <ShowcaseSection
-      codeSnippet={<MenuCompositionSnippet />}
+      compositionExample={<MenuCompositionSnippet />}
       description="Собирай Menu из пунктов и MenuDivider. Примеры интерактивны: нажми на пункт, чтобы изменить выбранное значение."
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><InteractiveMenus /></div>]}
       title="Состав"

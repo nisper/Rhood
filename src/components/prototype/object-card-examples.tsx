@@ -14,7 +14,7 @@ export function ObjectCardExamples() {
     <ShowcaseSection
       description="После открытия объекта на карточке появляется метка «Уже смотрели»."
       panels={[<div className="flex flex-wrap items-start justify-center gap-4 rounded-xl bg-white px-4 py-3"><ObjectCard notForClient={false} /><ObjectCard notForClient={false} viewed /></div>]}
-      settings={["viewed: false · true"]}
+      props={["viewed: false · true"]}
       title="Состояния"
       usedComponents={usedComponents}
     />

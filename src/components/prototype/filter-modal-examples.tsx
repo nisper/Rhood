@@ -1,7 +1,7 @@
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
-import { FilterModal } from "@/components/ui/filter-modal";
+import { EmptySavedSearches, FilterModal } from "@/components/ui/filter-modal";
 import { createDefaultFilterModalValues, type FilterModalValues } from "@/components/ui/filter-modal-values";
 import { ShowcaseSection } from "@/components/ui/showcase-section";
 
@@ -19,7 +19,9 @@ const usedComponents = [
 
 export function FilterModalExamples() {
   const [open, setOpen] = React.useState(true);
+  const [mainEditSearch, setMainEditSearch] = React.useState<{ name: string; values: FilterModalValues } | null>(null);
   const [editOpen, setEditOpen] = React.useState(true);
+  const [emptyStateOpen, setEmptyStateOpen] = React.useState(true);
   const [searchName, setSearchName] = React.useState("Двухкомнатные в Тюмени");
   const [editValues, setEditValues] = React.useState<FilterModalValues>({
     ...createDefaultFilterModalValues(),
@@ -39,7 +41,21 @@ export function FilterModalExamples() {
       panels={[
         <div className="min-h-[720px] overflow-hidden rounded-xl" key="filter-modal">
           {open ? (
-            <FilterModal containerDisplay="embedded" onOpenChange={setOpen} open={open} resultCount={50} />
+            <FilterModal
+              containerDisplay="embedded"
+              onApply={() => setMainEditSearch(null)}
+              onEditSavedSearch={(name, values) => setMainEditSearch({ name, values: structuredClone(values) })}
+              onOpenChange={(nextOpen) => {
+                setOpen(nextOpen);
+                if (!nextOpen) setMainEditSearch(null);
+              }}
+              onSearchNameChange={(name) => setMainEditSearch((current) => current ? { ...current, name } : current)}
+              onValuesChange={(values) => setMainEditSearch((current) => current ? { ...current, values } : current)}
+              open={open}
+              resultCount={50}
+              searchName={mainEditSearch?.name}
+              values={mainEditSearch?.values}
+            />
           ) : (
             <div className="flex min-h-[720px] items-center justify-center">
               <Button endIcon={false} onClick={() => setOpen(true)} startIcon={false}>Открыть фильтр</Button>
@@ -74,9 +90,32 @@ export function FilterModalExamples() {
           )}
         </div>,
       ]}
-      settings={["searchName: enabled", "primaryActionLabel: Сохранить изменения"]}
+      props={["searchName: enabled", "primaryActionLabel: Сохранить изменения"]}
       title="Редактирование сохранённого поиска"
       usedComponents={usedComponents}
+      />
+      <ShowcaseSection
+        description="Когда сохранённых поисков нет, вместо списка показывается подсказка о том, как добавить первый поиск."
+        panels={[
+          <div className="min-h-[900px] overflow-hidden rounded-xl" key="empty-saved-searches">
+            {emptyStateOpen ? (
+              <FilterModal
+                containerDisplay="embedded"
+                defaultActiveTab="saved-searches"
+                onOpenChange={setEmptyStateOpen}
+                open={emptyStateOpen}
+                savedSearchesContent={<EmptySavedSearches />}
+              />
+            ) : (
+              <div className="flex min-h-[900px] items-center justify-center">
+                <Button endIcon={false} onClick={() => setEmptyStateOpen(true)} startIcon={false}>Показать пустое состояние</Button>
+              </div>
+            )}
+          </div>,
+        ]}
+        props={["defaultActiveTab: saved-searches", "savedSearchesContent: EmptySavedSearches"]}
+        title="Пустое состояние сохранённых поисков"
+        usedComponents={usedComponents}
       />
     </div>
   );

@@ -5,7 +5,7 @@ function FooterExamples() {
   return (
     <section className="grid gap-3">
       <ShowcaseSection
-        codeSnippet={
+        compositionExample={
           <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
             <span className="text-[var(--rh-theme-text-neutral-secondary)]">{`<`}</span>
             <span className="text-[var(--rh-palette-purple-700)]">Footer</span>

@@ -49,12 +49,12 @@ const selectionOptions = [
 function Section({
   children,
   description,
-  settings,
+  props,
   title,
 }: {
   children: React.ReactNode;
   description: string;
-  settings?: string[];
+  props?: string[];
   title: string;
 }) {
   return (
@@ -64,9 +64,9 @@ function Section({
         <p className="rh-typography-b1">{description}</p>
       </div>
       {children}
-      {settings && (
+      {props && (
         <div className="grid gap-0.5">
-          {settings.map((setting) => (
+          {props.map((setting) => (
             <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>
           ))}
         </div>
@@ -109,7 +109,7 @@ export function CheckboxExamples() {
     <div className="grid min-w-0 gap-10">
       <Section
         description="lg использует control 24 px и увеличенные отступы строки; md — control 20 px, sm — 16 px."
-        settings={["size: lg · md · sm"]}
+        props={["size: lg · md · sm"]}
         title="Размер"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -125,7 +125,7 @@ export function CheckboxExamples() {
 
       <Section
         description="Checkbox поддерживает пустое, выбранное и частично выбранное состояния."
-        settings={["checked: boolean", "indeterminate: boolean"]}
+        props={["checked: boolean", "indeterminate: boolean"]}
         title="Значение"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -143,7 +143,7 @@ export function CheckboxExamples() {
 
       <Section
         description="При выборе части пунктов Checkbox «Выбрать все» переходит в промежуточное состояние."
-        settings={["checked: boolean", "onChange: (event) => void"]}
+        props={["checked: boolean", "onChange: (event) => void"]}
         title="Выбор"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -174,7 +174,7 @@ export function CheckboxExamples() {
 
       <Section
         description="Hover доступен для невыбранного и выбранного Checkbox. Disabled имеет приоритет над выбранным и частично выбранным состояниями."
-        settings={["state: default · hovered", "error: boolean", "disabled: boolean"]}
+        props={["state: default · hovered", "error: boolean", "disabled: boolean"]}
         title="Состояния"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-row auto-rows-fr">
@@ -203,7 +203,7 @@ export function CheckboxExamples() {
 
       <Section
         description="Подпись можно скрыть для табличных строк и компактных интерфейсов. Skeleton занимает ширину 56 px."
-        settings={["label: boolean", "skeleton: boolean"]}
+        props={["label: boolean", "skeleton: boolean"]}
         title="Состав"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">

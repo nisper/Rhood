@@ -24,7 +24,7 @@ export function ExpandableContentExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        settings={["collapsedHeight: 48 · 96"]}
+        props={["collapsedHeight: 48 · 96"]}
         description="У компонента нет визуальных вариантов: высота видимой части контента задаётся collapsedHeight. Значение выбирай по содержанию и контексту экрана."
         panels={[
           <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4" key="48">
@@ -44,7 +44,7 @@ export function ExpandableContentExamples() {
       />
 
       <ShowcaseSection
-        settings={["defaultExpanded: true"]}
+        props={["defaultExpanded: true"]}
         description="По умолчанию контент свёрнут. Нажми на кнопку, чтобы переключить состояние; defaultExpanded задаёт начальное раскрытое состояние."
         panels={[
           <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4" key="expanded">

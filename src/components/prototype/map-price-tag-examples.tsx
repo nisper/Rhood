@@ -43,7 +43,7 @@ export function MapPriceTagExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={priceTagSnippet}
+        compositionExample={priceTagSnippet}
         description="Компактная цена: суммы от миллиона отображаются в миллионах, суммы меньше миллиона — в тысячах. Размер, цвет, типографика и числовое выравнивание заданы компонентом."
         usedComponents={usedComponents}
         panels={[

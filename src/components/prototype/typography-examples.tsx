@@ -6,69 +6,69 @@ import { TableCell } from "@/components/ui/table-cell";
 type TextStyle = {
   className: string;
   name: string;
-  settings: string;
+  props: string;
 };
 
 const styles: TextStyle[] = [
   {
     className: "rh-typography-h1",
     name: "headline/headline1",
-    settings: "Unbounded Bold · 40 / 48 · 0",
+    props: "Unbounded Bold · 40 / 48 · 0",
   },
   {
     className: "rh-typography-h2",
     name: "headline/headline2",
-    settings: "Unbounded Bold · 32 / 40 · 0",
+    props: "Unbounded Bold · 32 / 40 · 0",
   },
   {
     className: "rh-typography-h3",
     name: "headline/headline3",
-    settings: "Unbounded Bold · 24 / 32 · 0",
+    props: "Unbounded Bold · 24 / 32 · 0",
   },
   {
     className: "rh-typography-h4",
     name: "headline/headline4",
-    settings: "Unbounded Bold · 20 / 28 · 0",
+    props: "Unbounded Bold · 20 / 28 · 0",
   },
   {
     className: "rh-typography-b1",
     name: "body/body1",
-    settings: "Inter Regular · 16 / 24 · 0.15",
+    props: "Inter Regular · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b1-med",
     name: "body/body1 medium",
-    settings: "Inter SemiBold · 16 / 24 · 0.15",
+    props: "Inter SemiBold · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b2",
     name: "body/body2",
-    settings: "Inter Regular · 14 / 20 · 0.17",
+    props: "Inter Regular · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b2-med",
     name: "body/body2 medium",
-    settings: "Inter SemiBold · 14 / 20 · 0.17",
+    props: "Inter SemiBold · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b1-mono",
     name: "body/body1 mono",
-    settings: "Inter Regular · tabular nums · 16 / 24 · 0.15",
+    props: "Inter Regular · tabular nums · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b1-mono-med",
     name: "body/body1 mono medium",
-    settings: "Inter SemiBold · tabular nums · 16 / 24 · 0.15",
+    props: "Inter SemiBold · tabular nums · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b2-mono",
     name: "body/body2 mono",
-    settings: "Inter Regular · tabular nums · 14 / 20 · 0.17",
+    props: "Inter Regular · tabular nums · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b2-mono-med",
     name: "body/body2 mono medium",
-    settings: "Inter SemiBold · tabular nums · 14 / 20 · 0.17",
+    props: "Inter SemiBold · tabular nums · 14 / 20 · 0.17",
   },
 ];
 
@@ -102,7 +102,7 @@ function TypeSample({
   style: TextStyle;
 }) {
   const name = style.name.split("/").pop() ?? style.name;
-  const fontSize = style.settings.split(" · ")[1]?.split(" / ")[0];
+  const fontSize = style.props.split(" · ")[1]?.split(" / ")[0];
   const label = compactLabel && fontSize ? `${name} · ${fontSize}px` : style.name;
 
   if (compactLabel) {
@@ -273,7 +273,7 @@ export function TypographyExamples() {
                 </code>
               </TableCell>
               <TableCell role="body" type="text" width="fill">
-                {style.settings}
+                {style.props}
               </TableCell>
             </div>
           ))}

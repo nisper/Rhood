@@ -24,8 +24,10 @@ import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
 import { TypographyExamples } from "./typography-examples";
 import { ModalExamples } from "./modal-examples";
+import { ConfirmExamples } from "./confirm-examples";
 import { FilterModalExamples } from "./filter-modal-examples";
 import { SavedFiltersExamples } from "./saved-filters-examples";
+import { SnackbarExamples } from "./snackbar-examples";
 import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
@@ -219,6 +221,24 @@ const componentDocs: ComponentDoc[] = [
         description: "Содержимое панелей для демонстрации компонента.",
       },
       {
+        name: "exampleVariants",
+        values: "{ label, value, content }[]",
+        defaultValue: "—",
+        description: "Переключаемые случаи применения одного компонента.",
+      },
+      {
+        name: "defaultExampleVariant / exampleVariant",
+        values: "string",
+        defaultValue: "первый вариант",
+        description: "Начальный или выбранный случай примера.",
+      },
+      {
+        name: "onExampleVariantChange",
+        values: "(value) => void",
+        defaultValue: "—",
+        description: "Обработчик выбора случая примера.",
+      },
+      {
         name: "panelFrame",
         values: "boolean",
         defaultValue: "true",
@@ -244,15 +264,15 @@ const componentDocs: ComponentDoc[] = [
       },
       {
         name: "settings",
-        values: "string[]",
-        defaultValue: "—",
-        description: "Короткий список параметров, которые отвечают за вид и поведение примера.",
-      },
-      {
-        name: "codeSnippet",
         values: "ReactNode",
         defaultValue: "—",
-        description: "Необязательный блок кода под Showcase.",
+        description: "Дополнительные элементы управления для настройки примера.",
+      },
+      {
+        name: "compositionExample",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Короткий JSX-фрагмент для примеров композиции или передачи slot.",
       },
     ],
     source: "src/components/ui/showcase-section.tsx",
@@ -1389,6 +1409,7 @@ const componentDocs: ComponentDoc[] = [
       { name: "primaryActionLabel", values: "string", defaultValue: "Показать N объектов", description: "Задаёт подпись основной кнопки, например для сохранения изменений." },
       { name: "containerDisplay", values: "viewport · embedded", defaultValue: "viewport", description: "Режим контейнера модального окна; embedded используется в демонстрационной панели." },
       { name: "containerClassName", values: "string", defaultValue: "—", description: "Дополнительный класс контейнера модального окна." },
+      { name: "defaultActiveTab", values: "filter · saved-searches", defaultValue: "filter", description: "Выбирает вкладку при открытии модального окна." },
     ],
     source: "src/components/ui/filter-modal.tsx",
     render: () => <FilterModalExamples />,
@@ -1517,14 +1538,29 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "snackbar",
     title: "Snackbar",
-    description: "Всплывающее уведомление.",
+    description: "Всплывающее уведомление о результате действия с опциональными кнопками действия и закрытия.",
     group: "Feedback",
     source: "src/components/ui/snackbar.tsx",
-    render: () => (
-      <Canvas tone="dark">
-        <Snackbar />
-      </Canvas>
-    ),
+    render: () => <SnackbarExamples />,
+  },
+  {
+    id: "confirm",
+    title: "Confirm",
+    description: "Подтверждение действия в модальном окне.",
+    group: "Feedback",
+    properties: [
+      { name: "backdrop", values: "boolean", defaultValue: "true", description: "Показывает Confirm с полноэкранным затемнением; false оставляет только диалог." },
+      { name: "open", values: "boolean", defaultValue: "—", description: "Управляет видимостью подтверждения." },
+      { name: "title", values: "ReactNode", defaultValue: "—", description: "Заголовок подтверждения." },
+      { name: "description", values: "ReactNode", defaultValue: "—", description: "Пояснение к действию." },
+      { name: "cancelLabel", values: "string", defaultValue: "Отмена", description: "Подпись кнопки отмены." },
+      { name: "confirmLabel", values: "string", defaultValue: "Подтвердить", description: "Подпись кнопки подтверждения." },
+      { name: "onCancel", values: "() => void", defaultValue: "—", description: "Вызывается при выборе отмены." },
+      { name: "onConfirm", values: "() => void", defaultValue: "—", description: "Вызывается при подтверждении действия." },
+      { name: "onOpenChange", values: "(open: boolean) => void", defaultValue: "—", description: "Сообщает об изменении видимости." },
+    ],
+    source: "src/components/ui/confirm.tsx",
+    render: () => <ConfirmExamples />,
   },
   {
     id: "modal",
@@ -2102,6 +2138,7 @@ const ComponentNavigation = React.forwardRef<
     "input-number",
     "input-number-range",
     "textarea",
+    "confirm",
     "modal",
     "modal-header",
     "drawer",

@@ -5,12 +5,12 @@ import { Textarea } from "@/components/ui/textarea";
 function Section({
   children,
   description,
-  settings,
+  props,
   title,
 }: {
   children: React.ReactNode;
   description: React.ReactNode;
-  settings: string[];
+  props: string[];
   title: string;
 }) {
   return (
@@ -21,7 +21,7 @@ function Section({
       </div>
       {children}
       <div className="grid gap-0.5">
-        {settings.map((setting) => (
+        {props.map((setting) => (
           <p
             className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]"
             key={setting}
@@ -62,7 +62,7 @@ export function TextareaExamples() {
             Высота фиксирована по rows, если autoResize не задана; с autoResize поле растёт по тексту, а maxRows ограничивает рост и включает нативный скролл.
           </>
         }
-        settings={[
+        props={[
           "size: lg · md · sm",
           "rows: number (default: 2)",
           "autoResize: boolean",
@@ -107,7 +107,7 @@ export function TextareaExamples() {
 
       <Section
         description="Neutral использует нейтральную заливку для размещения поля на цветных или разделённых поверхностях."
-        settings={["appearance: default · neutral"]}
+        props={["appearance: default · neutral"]}
         title="Внешний вид"
       >
         <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
@@ -126,7 +126,7 @@ export function TextareaExamples() {
 
       <Section
         description="Hover и focus работают у нативного textarea. Error и disabled имеют приоритет над обычными состояниями."
-        settings={[
+        props={[
           "state: default · hovered · focused",
           "error: boolean",
           "disabled: boolean",

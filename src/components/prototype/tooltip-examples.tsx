@@ -61,7 +61,7 @@ export function TooltipExamples() {
 
     <ShowcaseSection description="Наведи курсор на кнопку или перейди к ней клавишей Tab, чтобы увидеть появление подсказки: fade-in и подъём на 4 px за 160 мс. При включённом prefers-reduced-motion движение отключается." panels={[<TooltipAnimationDemo />]} title="Анимация появления" />
 
-    <ShowcaseSection codeSnippet={<TooltipCompositionSnippet />} description="Передай текст или ReactNode через children. Ширина подсказки ограничена 350 px; длинный текст переносится внутри контейнера." panels={[<div className="flex min-h-[136px] flex-wrap items-center justify-center gap-6 overflow-hidden rounded-xl bg-white px-6 py-4"><Tooltip>Короткая подсказка</Tooltip><Tooltip className="max-w-[220px]">Подсказка с более длинным текстом, который переносится на следующую строку.</Tooltip></div>]} title="Состав" />
+    <ShowcaseSection compositionExample={<TooltipCompositionSnippet />} description="Передай текст или ReactNode через children. Ширина подсказки ограничена 350 px; длинный текст переносится внутри контейнера." panels={[<div className="flex min-h-[136px] flex-wrap items-center justify-center gap-6 overflow-hidden rounded-xl bg-white px-6 py-4"><Tooltip>Короткая подсказка</Tooltip><Tooltip className="max-w-[220px]">Подсказка с более длинным текстом, который переносится на следующую строку.</Tooltip></div>]} title="Состав" />
 
     <section className="mb-10 grid gap-3">
       <div className="grid gap-1"><h2 className="rh-typography-h4">Свойства</h2><p className="rh-typography-b1">Tooltip отображает содержимое в компактном текстовом контейнере и принимает нативные свойства div.</p></div>

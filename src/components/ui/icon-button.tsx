@@ -3,7 +3,7 @@ import { Star } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
-type IconButtonAppearance = "primary" | "secondary" | "ghost" | "contrast" | "inherit"
+type IconButtonAppearance = "primary" | "secondary" | "ghost" | "contrast" | "contrast-ghost" | "inherit"
 type IconButtonSize = "md" | "sm" | "xsm"
 type IconButtonState = "default" | "hovered"
 type LegacyIconButtonAppearance = "filled" | "ghost"
@@ -59,6 +59,11 @@ const toneClasses: Record<
     disabled:
       "bg-[var(--rh-theme-fill-disabled)] text-[var(--rh-theme-text-neutral-disabled)]",
   },
+  "contrast-ghost": {
+    default: "bg-transparent text-[var(--rh-theme-text-neutral-primary-contrast)]",
+    hovered: "bg-transparent text-[var(--rh-theme-text-neutral-primary-contrast)] opacity-70",
+    disabled: "bg-transparent text-[var(--rh-theme-text-neutral-disabled)]",
+  },
   inherit: {
     default: "bg-transparent text-inherit",
     hovered: "bg-[var(--rh-theme-fill-neutral-hover)] text-inherit",
@@ -72,6 +77,7 @@ const hoverClasses: Record<IconButtonAppearance, string> = {
   ghost: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
   contrast:
     "hover:bg-[var(--rh-theme-fill-neutral-dark)] hover:text-[var(--rh-theme-text-neutral-primary-contrast)]",
+  "contrast-ghost": "hover:opacity-70",
   inherit: "hover:bg-[var(--rh-theme-fill-neutral-hover)]",
 }
 
@@ -88,6 +94,7 @@ function resolveAppearance({
     appearance === "secondary" ||
     appearance === "ghost" ||
     appearance === "contrast" ||
+    appearance === "contrast-ghost" ||
     appearance === "inherit"
   ) {
     return appearance

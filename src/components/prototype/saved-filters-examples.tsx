@@ -71,7 +71,7 @@ function SavedFiltersExamples() {
           </div>,
         ]}
         direction="vertical"
-        settings={["variant: new · saved", "subscription: available · subscribed · unavailable", "saved search editing: all parameters + name"]}
+        props={["variant: new · saved", "subscription: available · subscribed · unavailable", "saved search editing: all parameters + name"]}
         title="Состояния"
         usedComponents={[
           { href: "/Rhood/?view=components&component=button", title: "Button" },

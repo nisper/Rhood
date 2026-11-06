@@ -28,7 +28,7 @@ function ObjectBuyersExamples() {
   return (
     <>
       <ShowcaseSection
-        codeSnippet={v1Snippet}
+        compositionExample={v1Snippet}
         description="Компактная карточка для показа покупателей с точным совпадением по объекту."
         usedComponents={usedComponents}
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><ObjectBuyers className="w-full" defaultExpanded /></div>]}
@@ -54,14 +54,14 @@ function ObjectBuyersV2Examples() {
   return (
     <>
       <ShowcaseSection
-        codeSnippet={v2Snippet}
+        compositionExample={v2Snippet}
         description="Секционное представление покупателей с таблицей потребностей и действиями для обновления списка."
         usedComponents={usedComponents}
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><ObjectBuyersV2 className="w-full" /></div>]}
         title="Стиль"
       />
       <ShowcaseSection
-        codeSnippet={v2Snippet}
+        compositionExample={v2Snippet}
         description="Нажми «Показать еще» или «Проверить заново», чтобы увидеть интерактивное поведение компонента."
         usedComponents={usedComponents}
       panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white items-start"><ObjectBuyersV2 className="w-full" /></div>]}
