@@ -1849,7 +1849,7 @@ export function ApartmentListingsScreen({
                 className="absolute right-4 top-4 z-10"
                 endIcon={false}
                 onClick={() => setCardsView(false)}
-                size="sm"
+                size="md"
                 startIcon={<Table2 aria-hidden="true" strokeWidth={2} />}
               >
                 {formatNumber(mapListObjectCount)}{" "}
@@ -1862,7 +1862,7 @@ export function ApartmentListingsScreen({
                   disabled={mapZoom >= 2}
                   icon={<Plus aria-hidden="true" />}
                   onClick={() => setMapZoom((zoom) => Math.min(2, Number((zoom + 0.25).toFixed(2))))}
-                  size="sm"
+                  size="md"
                 />
                 <IconButton
                   aria-label="Уменьшить масштаб карты"
@@ -1870,7 +1870,7 @@ export function ApartmentListingsScreen({
                   disabled={mapZoom <= 1}
                   icon={<Minus aria-hidden="true" />}
                   onClick={() => setMapZoom((zoom) => Math.max(1, Number((zoom - 0.25).toFixed(2))))}
-                  size="sm"
+                  size="md"
                 />
               </div>
             </section>
