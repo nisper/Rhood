@@ -219,7 +219,7 @@
   --rh-theme-fill-success-light: var(--rh-palette-green-100);
   --rh-theme-fill-success-hover: var(--rh-palette-green-600);
   --rh-theme-fill-success-light-hover: var(--rh-palette-green-50);
-  --rh-theme-fill-disabled: rgb(19 29 53 / 0.26);
+  --rh-theme-fill-disabled: var(--rh-palette-neutral-100);
   --rh-theme-fill-contrast-disabled: rgb(255 255 255 / 0.12);
   --rh-theme-fill-input-deprecated: var(--rh-palette-neutral-white);
   --rh-theme-fill-input-neutral: var(--rh-theme-fill-neutral);

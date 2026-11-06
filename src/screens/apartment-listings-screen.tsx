@@ -1,11 +1,13 @@
 import {
   Columns3Cog,
-  ChevronRight,
+  ChevronLeft,
   ChevronsDown,
   ChevronsUp,
   CircleUser,
   Copy,
   Map,
+  Minus,
+  Plus,
   Phone,
   Table2,
 } from "lucide-react";
@@ -1618,14 +1620,29 @@ export function ApartmentListingsScreen({
     }
   });
   const [selectedMapMarkerIndex, setSelectedMapMarkerIndex] = React.useState<number | null>(null);
-  const selectedMapMarkerCount = selectedMapMarkerIndex === null
+  const [closingMapMarkerIndex, setClosingMapMarkerIndex] = React.useState<number | null>(null);
+  const mapSidebarCloseTimer = React.useRef<number | null>(null);
+  const [mapZoom, setMapZoom] = React.useState(1);
+  const visibleMapMarkerIndex = selectedMapMarkerIndex ?? closingMapMarkerIndex;
+  const selectedMapMarkerCount = visibleMapMarkerIndex === null
     ? 0
-    : mapObjectMarkerCounts[selectedMapMarkerIndex] ?? 1;
-  const selectedMapListings = selectedMapMarkerIndex === null || screenListings.length === 0
+    : mapObjectMarkerCounts[visibleMapMarkerIndex] ?? 1;
+  const selectedMapListings = visibleMapMarkerIndex === null || screenListings.length === 0
     ? []
     : Array.from({ length: selectedMapMarkerCount }, (_, offset) => (
-        screenListings[(selectedMapMarkerIndex + offset) % screenListings.length]
+        screenListings[(visibleMapMarkerIndex + offset) % screenListings.length]
       ));
+
+  function closeMapSidebar() {
+    if (selectedMapMarkerIndex === null) return;
+    setClosingMapMarkerIndex(selectedMapMarkerIndex);
+    setSelectedMapMarkerIndex(null);
+    if (mapSidebarCloseTimer.current !== null) window.clearTimeout(mapSidebarCloseTimer.current);
+    mapSidebarCloseTimer.current = window.setTimeout(() => {
+      setClosingMapMarkerIndex(null);
+      mapSidebarCloseTimer.current = null;
+    }, 300);
+  }
 
   function handleSort(column: SortColumn) {
     setSort((current) =>
@@ -1758,71 +1775,31 @@ export function ApartmentListingsScreen({
         </>
         {isMapView ? (
           <div className="relative flex min-h-0 w-full flex-1 gap-0">
-            <section
-              aria-label="Карта объявлений"
-              className={cn(
-                "relative min-w-0 flex-1 bg-cover bg-center",
-                selectedMapMarkerIndex !== null && selectedMapListings.length > 0 && "rounded-tr-[var(--rh-sizing-border-radius-lg)]",
-              )}
-              style={{ backgroundImage: 'url("/Rhood/assets/tyumen-lenina-54-2-map.png")' }}
-            >
-              {mapObjectMarkers.map(([left, top], index) => (
-                <MapPriceTag
-                  className="absolute z-[2] mt-1 -translate-x-1/2 -translate-y-full"
-                  count={mapObjectMarkerCounts[index]}
-                  key={`map-object-${index}`}
-                  onClick={() => setSelectedMapMarkerIndex(index)}
-                  price={Number(screenListings[index % screenListings.length]?.price ?? 0)}
-                  selected={selectedMapMarkerIndex === index}
-                  style={{ left: `${left}%`, top: `${top}%` }}
-                />
-              ))}
-              <Button
-                appearance="contrast"
-                className="absolute left-4 top-4 z-10"
-                endIcon={false}
-                onClick={() => setCardsView(false)}
-                size="sm"
-                startIcon={<Table2 aria-hidden="true" strokeWidth={2} />}
-              >
-                {formatNumber(mapListObjectCount)}{" "}
-                {getArchivePropertyTypeLabel(mapListObjectCount, mapListPropertyType)} списком
-              </Button>
-            </section>
-            {selectedMapMarkerIndex !== null && selectedMapListings.length > 0 && (
-              <div className="absolute right-[348px] top-2 z-10">
-                <IconButton
-                  aria-label="Закрыть панель объектов"
-                  appearance="contrast"
-                  icon={<ChevronRight aria-hidden="true" />}
-                  onClick={() => setSelectedMapMarkerIndex(null)}
-                  size="sm"
-                />
-              </div>
-            )}
             <div
               aria-hidden={selectedMapMarkerIndex === null}
               className={cn(
                 "shrink-0 overflow-hidden transition-[width] duration-300 ease-out",
-                selectedMapMarkerIndex !== null && selectedMapListings.length > 0 ? "w-[340px]" : "w-0",
+                selectedMapMarkerIndex !== null && selectedMapListings.length > 0
+                  ? selectedMapListings.length > 1 ? "w-[540px]" : "w-[276px]"
+                  : "w-0",
               )}
               inert={selectedMapMarkerIndex === null}
             >
               <aside
                 aria-label="Карточки объектов"
                 className={cn(
-                  "relative h-full w-[340px] bg-[var(--rh-theme-surface-bg)] transition-transform duration-300 ease-out",
-                  selectedMapMarkerIndex !== null && selectedMapListings.length > 0 ? "translate-x-0" : "translate-x-full",
+                  "relative h-full w-max bg-[var(--rh-theme-surface-bg)] transition-transform duration-300 ease-out",
+                  selectedMapMarkerIndex !== null && selectedMapListings.length > 0 ? "translate-x-0" : "-translate-x-full",
                 )}
               >
-                <div className="flex h-full flex-col gap-6 overflow-y-auto px-3 pb-3 pt-0">
+                <div className="grid h-full w-full auto-rows-max grid-cols-2 content-start gap-3 overflow-y-auto overflow-x-hidden px-3 pb-3 pt-0">
                   {selectedMapListings.map((listing, index) => (
                     <ObjectCard
                       address={listing.address}
                       author={listing.clientName ?? "Частное лицо"}
-                      className="w-full"
+                      className="h-fit w-[252px] shrink-0"
                       details={getSpecs(listing)}
-                      image={listingCardPhotos[(selectedMapMarkerIndex! + index) % listingCardPhotos.length]}
+                      image={listingCardPhotos[(visibleMapMarkerIndex! + index) % listingCardPhotos.length]}
                       imageAlt={`Объект недвижимости: ${listing.address}`}
                       key={`map-panel-${listing.id}-${index}`}
                       onDetailsClick={() => openListing(listing)}
@@ -1838,6 +1815,76 @@ export function ApartmentListingsScreen({
                 </div>
               </aside>
             </div>
+            <section
+              aria-label="Карта объявлений"
+              className={cn(
+                "relative min-w-0 flex-1 overflow-hidden bg-cover bg-center",
+                selectedMapMarkerIndex !== null && selectedMapListings.length > 0 && "rounded-l-[var(--rh-sizing-border-radius-lg)]",
+              )}
+              style={{
+                backgroundImage: 'url("/Rhood/assets/tyumen-lenina-54-2-map.png")',
+                backgroundSize: `${mapZoom * 100}% auto`,
+              }}
+            >
+              {mapObjectMarkers.map(([left, top], index) => (
+                <MapPriceTag
+                  className="absolute z-[2] mt-1 -translate-x-1/2 -translate-y-full"
+                  count={mapObjectMarkerCounts[index]}
+                  key={`map-object-${index}`}
+                  onClick={() => {
+                    if (mapSidebarCloseTimer.current !== null) {
+                      window.clearTimeout(mapSidebarCloseTimer.current);
+                      mapSidebarCloseTimer.current = null;
+                    }
+                    setClosingMapMarkerIndex(null);
+                    setSelectedMapMarkerIndex(index);
+                  }}
+                  price={Number(screenListings[index % screenListings.length]?.price ?? 0)}
+                  selected={selectedMapMarkerIndex === index}
+                  style={{ left: `${50 + (left - 50) * mapZoom}%`, top: `${50 + (top - 50) * mapZoom}%` }}
+                />
+              ))}
+              <Button
+                appearance="contrast"
+                className="absolute right-4 top-4 z-10"
+                endIcon={false}
+                onClick={() => setCardsView(false)}
+                size="sm"
+                startIcon={<Table2 aria-hidden="true" strokeWidth={2} />}
+              >
+                {formatNumber(mapListObjectCount)}{" "}
+                {getArchivePropertyTypeLabel(mapListObjectCount, mapListPropertyType)} списком
+              </Button>
+              <div aria-label="Масштаб карты" className="absolute right-4 top-1/2 z-10 flex -translate-y-1/2 flex-col gap-1" role="group">
+                <IconButton
+                  aria-label="Увеличить масштаб карты"
+                  appearance="contrast"
+                  disabled={mapZoom >= 2}
+                  icon={<Plus aria-hidden="true" />}
+                  onClick={() => setMapZoom((zoom) => Math.min(2, Number((zoom + 0.25).toFixed(2))))}
+                  size="sm"
+                />
+                <IconButton
+                  aria-label="Уменьшить масштаб карты"
+                  appearance="contrast"
+                  disabled={mapZoom <= 1}
+                  icon={<Minus aria-hidden="true" />}
+                  onClick={() => setMapZoom((zoom) => Math.max(1, Number((zoom - 0.25).toFixed(2))))}
+                  size="sm"
+                />
+              </div>
+            </section>
+            {selectedMapMarkerIndex !== null && selectedMapListings.length > 0 && (
+              <div className={cn("absolute top-2 z-10", selectedMapListings.length > 1 ? "left-[548px]" : "left-[284px]")}>
+                <IconButton
+                  aria-label="Закрыть панель объектов"
+                  appearance="contrast"
+                  icon={<ChevronLeft aria-hidden="true" />}
+                  onClick={closeMapSidebar}
+                  size="sm"
+                />
+              </div>
+            )}
           </div>
         ) : (
           <section

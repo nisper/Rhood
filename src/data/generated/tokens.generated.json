@@ -2411,9 +2411,13 @@
       "name": "fill/disabled",
       "cssVariable": "--rh-theme-fill-disabled",
       "type": "color",
-      "cssValue": "rgb(19 29 53 / 0.26)",
-      "resolvedValue": "rgb(19 29 53 / 0.26)",
-      "alias": null,
+      "cssValue": "var(--rh-palette-neutral-100)",
+      "resolvedValue": "#e8e8e8",
+      "alias": {
+        "collection": "palette",
+        "name": "neutral/100",
+        "source": "dtcg"
+      },
       "figmaVariableId": "VariableID:248:1583"
     },
     {
