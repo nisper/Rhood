@@ -450,7 +450,7 @@ function FilterModal({
               </>
             ) : (
               <>
-                {onSave && isModified && !savedFilterLimitReached && <Button appearance="ghost" className="mr-auto" endIcon={false} onClick={onSave} size="md" startIcon={false}>Сохранить фильтр</Button>}
+                {onSave && isModified && !savedFilterLimitReached && <Button appearance="ghost" className="mr-auto" endIcon={false} onClick={onSave} size="md" startIcon={false}>Сохранить поиск</Button>}
                 <Button appearance="default" endIcon={false} onClick={() => { updateValues(createDefaultFilterModalValues()); onClear?.(); }} size="md" startIcon={false}>Очистить</Button>
                 <Button appearance="primary" endIcon={false} onClick={() => { onApply?.(); onOpenChange?.(false); }} size="md" startIcon={false}>Показать {new Intl.NumberFormat("ru-RU").format(resultCount)} объектов</Button>
               </>
