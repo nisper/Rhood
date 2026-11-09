@@ -17,7 +17,7 @@ export function AvatarExamples() {
             </div>
           </div>
         ))}
-        settings={["size: 20px · 24px · 32px · 40px"]}
+        props={["size: 20px · 24px · 32px · 40px"]}
         title="Размер"
       />
       <ShowcaseSection
@@ -30,7 +30,7 @@ export function AvatarExamples() {
             </div>
           </div>
         ))}
-        settings={["type: image · text · icon · skeleton", "badge: boolean"]}
+        props={["type: image · text · icon · skeleton", "badge: boolean"]}
         title="Состав"
       />
     </div>

@@ -415,7 +415,7 @@ export function TableExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        settings={["bordered: false · true"]}
+        props={["bordered: false · true"]}
         description="bordered добавляет стандартную обводку Table, включая шапку при stickyHeader. По умолчанию prop выключен; включай его, когда таблицу нужно отделить от фона."
         direction="vertical"
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
@@ -437,7 +437,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        settings={["verticalBorders: true"]}
+        props={["verticalBorders: true"]}
         description="verticalBorders включает вертикальные границы между ячейками. По умолчанию они выключены."
         panels={[
           <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
@@ -453,7 +453,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        settings={["compact: false · true", "textSize: b2 · b1"]}
+        props={["compact: false · true", "textSize: b2 · b1"]}
         description='compact уменьшает отступы ячейки, а textSize меняет размер текста body-строк. Для колонок используй width="fill" для равного распределения, число — для фиксированной ширины.'
         direction="vertical"
         panelCount={3}
@@ -483,7 +483,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={stateSnippet}
+        compositionExample={stateSnippet}
         description="Выбор работает через Table.selection: передай ID всех строк, выбранные ID и обработчик изменения. Для checkbox в строке обязательно укажи соответствующий rowId; checkbox в шапке выберет все строки."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <Table
@@ -540,7 +540,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        settings={["hover: boolean"]}
+        props={["hover: boolean"]}
         description="Используй hover только для строк, клик по которым запускает действие: открывает детали, меняет состояние или ведёт на другую страницу."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
@@ -562,7 +562,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={sortingSnippet}
+        compositionExample={sortingSnippet}
         description="Передай sort и обработчик клика каждому сортируемому заголовку. sortDirection показывает направление активной сортировки; состояние и сортировку данных хранит экран."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <SortingTable />
@@ -571,7 +571,7 @@ export function TableExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={compositionSnippet}
+        compositionExample={compositionSnippet}
         description="Table собирается из строк и TableCell. Для type=chip и type=button вертикальные отступы ячейки уменьшаются на внутренний padding содержимого; buttonSize задаёт размер кнопки, для которой рассчитывается отступ."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full gap-5">

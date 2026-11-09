@@ -55,7 +55,7 @@ function MainHeaderExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={<MainHeaderSnippet />}
+        compositionExample={<MainHeaderSnippet />}
         description="У MainHeader нет визуальных вариантов: он использует единый стиль для навигации и управляющих элементов продукта."
         panels={[<HeaderPanel>
               <MainHeader navItems={defaultNavigation} />
@@ -64,14 +64,14 @@ function MainHeaderExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={<MainHeaderSnippet><CodeProp name="navItems" value="{[{ propNew: true }]}" /></MainHeaderSnippet>}
+        compositionExample={<MainHeaderSnippet><CodeProp name="navItems" value="{[{ propNew: true }]}" /></MainHeaderSnippet>}
         description="Маленький красный solid-бейдж отмечает новый раздел."
         panels={[<HeaderPanel key="new"><MainHeader navItems={newNavigation} /></HeaderPanel>]}
         title="Метка нового раздела"
       />
 
       <ShowcaseSection
-        codeSnippet={
+        compositionExample={
           <MainHeaderSnippet>
             <CodeProp name="resp" value='"mob"' />
           </MainHeaderSnippet>
@@ -86,7 +86,7 @@ function MainHeaderExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={
+        compositionExample={
           <MainHeaderSnippet>
             <CodeProp name="navItems" value="{[{ state: &quot;hovered&quot; }]}" />
           </MainHeaderSnippet>
@@ -101,7 +101,7 @@ function MainHeaderExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={
+        compositionExample={
           <MainHeaderSnippet>
             <CodeProp name="controls" value="{false}" />
             <CodeProp name="contentWidth" value='"container"' />

@@ -55,7 +55,7 @@ export function LinkExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        settings={["size: b1 · b2"]}
+        props={["size: b1 · b2"]}
         description="b1 — размер по умолчанию; b2 подходит для плотных интерфейсов. Наведи курсор, чтобы увидеть hover-состояние."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-center justify-center gap-4">
@@ -67,14 +67,14 @@ export function LinkExamples() {
       />
 
       <ShowcaseSection
-        settings={["external: true", "externalLabel: ReactNode"]}
+        props={["external: true", "externalLabel: ReactNode"]}
         description="При наведении ссылка подчёркивается и показывает стрелку внешнего ресурса. Можно добавить необязательную подпись рядом с иконкой. Стрелка и подпись также появляются при клавиатурном фокусе."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white"><div className="flex flex-wrap items-center gap-6"><ExampleLink external>Открыть на агрегаторе</ExampleLink><ExampleLink external externalLabel="Космос">Открыть объект</ExampleLink></div></div>]}
         title="Внешний ресурс"
       />
 
       <ShowcaseSection
-        codeSnippet={compositionSnippet}
+        compositionExample={compositionSnippet}
         description="Иконки уточняют назначение ссылки: слева — тип контента, справа — переход во внешний ресурс."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="flex flex-wrap items-center justify-center gap-4">

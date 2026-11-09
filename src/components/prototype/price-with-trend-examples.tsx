@@ -25,7 +25,7 @@ export function PriceWithTrendExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={priceWithTrendSnippet}
+        compositionExample={priceWithTrendSnippet}
         description="Показывает направление изменения цены: снижение или рост."
         panels={[
           <div className="grid min-h-[120px] content-center justify-items-center gap-4 rounded-xl bg-white px-6 py-4" key="price-with-trend">

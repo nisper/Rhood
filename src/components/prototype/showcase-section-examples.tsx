@@ -1,49 +1,64 @@
-import { Button } from "@/components/ui/button"
-import { ShowcaseSection } from "@/components/ui/showcase-section"
+import * as React from "react"
 
-const showcaseSectionSnippet = (
-  <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"<"}</span>
-    <span className="text-[var(--rh-palette-purple-700)]">ShowcaseSection</span>{"\n  "}
-    <span className="text-[var(--rh-theme-text-info)]">title</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
-    <span className="text-[var(--rh-theme-text-success)]">{"\"Заголовок секции\""}</span>{"\n  "}
-    <span className="text-[var(--rh-theme-text-info)]">description</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
-    <span className="text-[var(--rh-theme-text-success)]">{"\"Описание примера\""}</span>{"\n  "}
-    <span className="text-[var(--rh-theme-text-info)]">panels</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">={`{`}</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"[<"}</span>
-    <span className="text-[var(--rh-palette-purple-700)]">Button</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{" "}</span>
-    <span className="text-[var(--rh-theme-text-info)]">startIcon</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
-    <span className="text-[var(--rh-theme-text-success)]">{"{false}"}</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{" "}</span>
-    <span className="text-[var(--rh-theme-text-info)]">endIcon</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">=</span>
-    <span className="text-[var(--rh-theme-text-success)]">{"{false}"}</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{">"}</span>
-    Primary action
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"</"}</span>
-    <span className="text-[var(--rh-palette-purple-700)]">Button</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{" />]"}</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"}"}</span>
-    <span className="text-[var(--rh-theme-text-neutral-secondary)]">{" />"}</span>
-  </code>
-)
+import { ShowcaseSection } from "@/components/ui/showcase-section"
+import { Switch } from "@/components/ui/switch"
+
+const panelClass = "flex min-h-24 items-center justify-center rounded-xl bg-white px-6 py-4 text-center rh-typography-b2"
 
 export function ShowcaseSectionExamples() {
+  const [settingEnabled, setSettingEnabled] = React.useState(true)
+
   return (
-    <ShowcaseSection
-      codeSnippet={showcaseSectionSnippet}
-      description="Описание объясняет назначение примера до того, как пользователь увидит сам компонент."
-      panels={[
-        <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4" key="button">
-          <Button endIcon={false} startIcon={false}>Primary action</Button>
-        </div>,
-      ]}
-      title="Заголовок секции"
-    />
+    <div className="grid min-w-0">
+      <ShowcaseSection
+        description="Стандартная подложка, скругление и внутренний отступ вокруг панелей."
+        panels={[<div className={panelClass}>Содержимое примера</div>]}
+        title="Панель с рамкой"
+      />
+
+      <ShowcaseSection
+        description="Отключает общую подложку, скругление и внутренний отступ вокруг панелей."
+        panelFrame={false}
+        panels={[<div className={panelClass}>Содержимое без общей подложки</div>]}
+        title="Панель без рамки"
+      />
+
+      <ShowcaseSection
+        description="Переключатель позволяет показать разные случаи применения одного компонента."
+        exampleVariants={[
+          { label: "Карточка", value: "card", content: <div className={panelClass}>Компонент внутри карточки</div> },
+          { label: "Список", value: "list", content: <div className={panelClass}>Компонент в строке списка</div> },
+        ]}
+        title="Варианты примера"
+      />
+
+      <ShowcaseSection
+        description="Необязательные параметры размещаются под примером. Переключатель меняет содержимое панели."
+        panels={[
+          <div className={panelClass} key="setting-state">
+            {settingEnabled ? "Дополнительная опция включена" : "Дополнительная опция выключена"}
+          </div>,
+        ]}
+        settings={(
+          <div className="bg-white px-4">
+            <Switch checked={settingEnabled} onChange={(event) => setSettingEnabled(event.target.checked)} size="sm" switchPosition="left">
+              Дополнительная опция
+            </Switch>
+          </div>
+        )}
+        title="Опциональная настройка"
+      />
+
+      <ShowcaseSection
+        description="Размеры и интерактивные состояния не поддерживаются. Панели можно расположить вертикально и задать число строк через panelCount."
+        direction="vertical"
+        panelCount={2}
+        panels={[
+          <div className={panelClass} key="first">Первая строка</div>,
+          <div className={panelClass} key="second">Вторая строка</div>,
+        ]}
+        title="Состав"
+      />
+    </div>
   )
 }

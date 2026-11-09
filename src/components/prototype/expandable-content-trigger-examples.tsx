@@ -23,7 +23,7 @@ export function ExpandableContentTriggerExamples() {
       <ShowcaseSection
         description="Нажми на кнопку, чтобы переключить состояние и направление шеврона. У компонента один стиль и размер."
         panels={[<div className="flex min-h-[136px] items-center justify-center rounded-xl bg-white px-6 py-4"><TriggerExample /></div>]}
-        settings={["expanded: false · true"]}
+        props={["expanded: false · true"]}
         title="Состояния"
       />
     </div>

@@ -26,7 +26,7 @@ export function PriceHistoryExamples() {
             <PriceHistory history={increasedPriceHistory} />
           </div>,
         ]}
-        settings={["history: createdAt · price · currency"]}
+        props={["history: createdAt · price · currency"]}
         title="Состав"
       />
     </div>

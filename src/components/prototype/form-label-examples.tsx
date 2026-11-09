@@ -13,7 +13,7 @@ export function FormLabelExamples() {
             <FormLabel color="disabled">Имя</FormLabel>
           </div>,
         ]}
-        settings={["color: default · error · disabled"]}
+        props={["color: default · error · disabled"]}
         title="Состояния"
       />
       <ShowcaseSection
@@ -26,7 +26,7 @@ export function FormLabelExamples() {
             <FormLabel startIcon>С иконкой</FormLabel>
           </div>,
         ]}
-        settings={["fontWeight: regular · medium", "required: boolean", "startIcon: boolean"]}
+        props={["fontWeight: regular · medium", "required: boolean", "startIcon: boolean"]}
         title="Состав"
       />
     </div>

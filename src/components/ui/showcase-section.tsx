@@ -1,42 +1,82 @@
 import * as React from "react"
 
+import { Segment } from "@/components/ui/segment"
+import { SegmentedControl } from "@/components/ui/segmented-control"
 import { cn } from "@/lib/utils"
 
 type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
-  codeSnippet?: React.ReactNode
+  compositionExample?: React.ReactNode
   direction?: ShowcaseDirection
   description: React.ReactNode
+  exampleVariants?: ShowcaseExampleVariant[]
+  defaultExampleVariant?: string
+  exampleVariant?: string
+  onExampleVariantChange?: (value: string) => void
+  panelFrame?: boolean
   panelCount?: number
   panels?: React.ReactNode[]
-  settings?: string[]
+  /** @deprecated Props are no longer rendered under the example. Use settings for controls. */
+  props?: string[]
+  settings?: React.ReactNode
   usedComponents?: { href: string; title: React.ReactNode }[]
   title: React.ReactNode
 }
 
 type ShowcaseDirection = "horizontal" | "vertical"
+type ShowcaseExampleVariant = { label: React.ReactNode; value: string; content: React.ReactNode }
 
 function ShowcaseSection({
+  children,
   className,
-  codeSnippet,
+  compositionExample,
   direction,
   description,
+  exampleVariants,
+  defaultExampleVariant,
+  exampleVariant,
+  onExampleVariantChange,
+  panelFrame = true,
   panelCount,
   panels,
   settings,
   usedComponents,
   title,
-  ...props
+  ...sectionProps
 }: ShowcaseSectionProps) {
+  const [uncontrolledExampleVariant, setUncontrolledExampleVariant] = React.useState(
+    () => defaultExampleVariant ?? exampleVariants?.[0]?.value ?? "",
+  )
+  const selectedExampleVariant = exampleVariant ?? uncontrolledExampleVariant
+  const activeExample = exampleVariants?.find(({ value }) => value === selectedExampleVariant) ?? exampleVariants?.[0]
+
+  function handleExampleVariantChange(value: string) {
+    if (exampleVariant === undefined) setUncontrolledExampleVariant(value)
+    onExampleVariantChange?.(value)
+  }
+
   return (
-    <section className={cn("mb-10 grid gap-3", className)} {...props}>
+    <section className={cn("mb-10 grid gap-3", className)} {...sectionProps}>
       <div className="grid gap-1">
         <h2 className="rh-typography-h4">{title}</h2>
         <p className="rh-typography-b1">{description}</p>
       </div>
-      {panels ? (
+      {exampleVariants?.length ? (
+        <>
+          <SegmentedControl
+            aria-label="Вариант примера"
+            className="mt-3"
+            onValueChange={(value) => typeof value === "string" && handleExampleVariantChange(value)}
+            value={activeExample?.value}
+          >
+            {exampleVariants.map(({ label, value }) => <Segment key={value} value={value}>{label}</Segment>)}
+          </SegmentedControl>
+          {activeExample ? <div className={cn("grid gap-1", panelFrame && "rounded-2xl bg-[var(--parser-surface-under-islands)] p-1")}>{activeExample.content}</div> : null}
+        </>
+      ) : panels ? (
         <div
           className={cn(
-            "grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)]",
+            "grid gap-1",
+            panelFrame && "rounded-2xl bg-[var(--parser-surface-under-islands)] p-1",
             direction === "vertical" ? "grid-flow-row auto-rows-fr" : "grid-flow-col auto-cols-fr",
           )}
           style={panelCount ? {
@@ -47,15 +87,8 @@ function ShowcaseSection({
           {panels.map((panel, index) => <React.Fragment key={index}>{panel}</React.Fragment>)}
         </div>
       ) : null}
-      {settings?.length ? (
-        <div className="grid gap-0.5">
-          {settings.map((setting) => (
-            <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>
-              {setting}
-            </p>
-          ))}
-        </div>
-      ) : null}
+      {children}
+      {settings}
       {usedComponents?.length ? (
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pb-4" aria-label="Использованные компоненты">
           <h3 className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">Компоненты:</h3>
@@ -69,9 +102,9 @@ function ShowcaseSection({
           </ul>
         </div>
       ) : null}
-      {codeSnippet && (
+      {compositionExample && (
         <pre className="overflow-x-auto rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-surface-bg)] p-4 font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">
-          {codeSnippet}
+          {compositionExample}
         </pre>
       )}
     </section>

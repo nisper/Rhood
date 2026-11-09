@@ -58,7 +58,7 @@ export function ListExamples() {
     <div className="grid min-w-0">
       <ShowcaseSection
         description="List — контейнер для строк ListItem. У него нет собственных размеров: плотность строки задаёт свойство dense."
-        settings={["dense: boolean"]}
+        props={["dense: boolean"]}
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
                 <div className="grid gap-2">
@@ -76,7 +76,7 @@ export function ListExamples() {
 
       <ShowcaseSection
         description="Нативный hover работает при наведении. Свойства state и selected нужны для статичной демонстрации состояний; disabled блокирует взаимодействие."
-        settings={["state: default · hovered · focused", "selected: boolean", "disabled: boolean"]}
+        props={["state: default · hovered · focused", "selected: boolean", "disabled: boolean"]}
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[640px] gap-5 sm:grid-cols-2">
                 <StateRow label="default" props={{}} />
@@ -91,7 +91,7 @@ export function ListExamples() {
 
       <ShowcaseSection
         description="paddingX управляет горизонтальными отступами строки: true оставляет их, false убирает."
-        settings={["paddingX: true · false"]}
+        props={["paddingX: true · false"]}
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <div className="grid w-full max-w-[480px] gap-4">
                 <div className="grid gap-2">
@@ -109,7 +109,7 @@ export function ListExamples() {
 
       <ShowcaseSection
         description="Строка поддерживает основной и вторичный текст, стартовую и конечную иконки, а также встроенные действия. В навигации выбранный раздел меняется по клику."
-        codeSnippet={<ListCompositionSnippet />}
+        compositionExample={<ListCompositionSnippet />}
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <nav aria-label="Пример навигационного списка" className="w-full max-w-[480px]">
                 <List>

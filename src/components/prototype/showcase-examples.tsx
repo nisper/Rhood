@@ -50,7 +50,7 @@ export function ShowcaseExamples() {
   return (
     <>
       <ShowcaseSection
-        codeSnippet={horizontalCompositionSnippet}
+        compositionExample={horizontalCompositionSnippet}
         description="ShowcaseSection отображает содержимое массива panels по горизонтали или вертикали."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
               <Button>Primary</Button>
@@ -72,7 +72,7 @@ export function ShowcaseExamples() {
       />
 
       <ShowcaseSection
-        codeSnippet={usedComponentsSnippet}
+        compositionExample={usedComponentsSnippet}
         description="usedComponents выводит под примером ссылки на компоненты, из которых собрана композиция. Передавай prop только когда такая связь нужна читателю витрины."
         usedComponents={[{ href: "/Rhood/?view=components&component=button", title: "Button" }, { href: "/Rhood/?view=components&component=icon-button", title: "IconButton" }]}
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">

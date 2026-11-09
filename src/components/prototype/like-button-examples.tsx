@@ -11,8 +11,8 @@ const properties = [
   ["aria-label", "string", "—", "Текстовое описание действия для скринридера."],
 ]
 
-function Section({ children, description, settings, title }: { children: React.ReactNode; description: string; settings?: string[]; title: string }) {
-  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}{settings && <div className="grid gap-0.5">{settings.map(setting => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div>}</section>
+function Section({ children, description, props, title }: { children: React.ReactNode; description: string; props?: string[]; title: string }) {
+  return <section className="grid gap-3"><div className="grid gap-1"><h2 className="rh-typography-h4">{title}</h2><p className="rh-typography-b1">{description}</p></div>{children}{props && <div className="grid gap-0.5">{props.map(setting => <p className="font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]" key={setting}>{setting}</p>)}</div>}</section>
 }
 
 function InteractiveLikeButton({ defaultChecked = false }: { defaultChecked?: boolean }) {
@@ -23,7 +23,7 @@ function InteractiveLikeButton({ defaultChecked = false }: { defaultChecked?: bo
 
 export function LikeButtonExamples() {
   return <div className="grid min-w-0 gap-10">
-    <Section description="LikeButton не имеет вариантов стиля и размера: это круглая кнопка 40 × 40 px с иконкой thumbs-up." title="Состояния" settings={["state: default · hover", "disabled: boolean"]}>
+    <Section description="LikeButton не имеет вариантов стиля и размера: это круглая кнопка 40 × 40 px с иконкой thumbs-up." title="Состояния" props={["state: default · hover", "disabled: boolean"]}>
       <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
         <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
           <div className="grid w-full max-w-[360px] grid-cols-3 justify-items-center gap-3">
@@ -41,7 +41,7 @@ export function LikeButtonExamples() {
       </div>
     </Section>
 
-    <Section description="Thumbs-up — единственный элемент кнопки. Нажми на примеры, чтобы переключить выбранное состояние; нативный hover также работает при наведении." title="Состав" settings={["checked: boolean", "aria-pressed: boolean"]}>
+    <Section description="Thumbs-up — единственный элемент кнопки. Нажми на примеры, чтобы переключить выбранное состояние; нативный hover также работает при наведении." title="Состав" props={["checked: boolean", "aria-pressed: boolean"]}>
       <div className="grid gap-1 rounded-2xl p-1 bg-[var(--parser-surface-under-islands)] grid-flow-col auto-cols-fr">
         <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
           <div className="flex flex-wrap items-center justify-center gap-3">

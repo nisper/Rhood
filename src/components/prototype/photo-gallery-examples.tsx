@@ -76,7 +76,7 @@ const propertyDetails = {
   },
 } satisfies Record<PropertyType, React.ComponentProps<typeof PhotoGallery>["sidebar"]>;
 
-const codeSnippet = (
+const compositionExample = (
   <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
     <span className="text-[var(--rh-theme-text-neutral-secondary)]">{"<"}</span>
     <span className="text-[var(--rh-palette-purple-700)]">PhotoGallery</span>
@@ -136,7 +136,7 @@ function PhotoGalleryExamples() {
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        codeSnippet={codeSnippet}
+        compositionExample={compositionExample}
         description="Передавай фотографии, необязательную карту последним слайдом и, при необходимости, данные для боковой панели. Переключай слайды миниатюрами, кнопками или стрелками на клавиатуре."
         panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 w-full items-center overflow-x-auto p-0">
               <PhotoGalleryDemo />

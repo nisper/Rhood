@@ -14,7 +14,7 @@ export function FormHelperTextExamples() {
             <FormHelperText color="disabled">Недоступно</FormHelperText>
           </div>,
         ]}
-        settings={["color: default · error · warning · disabled"]}
+        props={["color: default · error · warning · disabled"]}
         title="Состояния"
       />
     </div>

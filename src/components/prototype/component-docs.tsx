@@ -19,19 +19,15 @@ import { SwitchExamples } from "./switch-examples";
 import { MenuExamples } from "./menu-examples";
 import { TableExamples } from "./table-examples";
 import { SelectExamples } from "./select-examples";
-import { RoominessSelectExamples } from "./roominess-select-examples";
-import {
-  AreaSelectExamples,
-  FloorSelectExamples,
-  PriceSelectExamples,
-} from "./empty-filter-select-examples";
 import { SegmentedControlExamples } from "./segmented-control-examples";
 import { SearchExamples } from "./search-input-examples";
 import { TabExamples } from "./tab-examples";
 import { TypographyExamples } from "./typography-examples";
 import { ModalExamples } from "./modal-examples";
+import { ConfirmExamples } from "./confirm-examples";
 import { FilterModalExamples } from "./filter-modal-examples";
 import { SavedFiltersExamples } from "./saved-filters-examples";
+import { SnackbarExamples } from "./snackbar-examples";
 import { ModalHeaderExamples } from "./modal-header-examples";
 import { ModalFooterExamples } from "./modal-footer-examples";
 import { DrawerExamples } from "./drawer-examples";
@@ -120,78 +116,6 @@ function getComponentNavigationGroup(
   ) return "Features";
   return "Components";
 }
-
-const emptyFilterSelectProperties = [
-  {
-    name: "defaultExpanded",
-    values: "boolean",
-    defaultValue: "false",
-    description: "Начальное состояние меню при неконтролируемом использовании.",
-  },
-  {
-    name: "expanded",
-    values: "boolean",
-    defaultValue: "—",
-    description: "Управляет открытым состоянием меню извне.",
-  },
-  {
-    name: "onExpandedChange",
-    values: "(expanded) => void",
-    defaultValue: "—",
-    description: "Вызывается при изменении или закрытии меню вне компонента.",
-  },
-  {
-    name: "size",
-    values: "md · sm",
-    defaultValue: "md",
-    description: "Размер поля и типографики значения.",
-  },
-  {
-    name: "disabled",
-    values: "boolean",
-    defaultValue: "false",
-    description: "Блокирует взаимодействие с полем.",
-  },
-  {
-    name: "label",
-    values: "ReactNode · false",
-    defaultValue: "false",
-    description: "Подпись над полем; false скрывает её.",
-  },
-];
-
-const objectFilterProperties = [
-  {
-    name: "contentWidth",
-    values: "full · container",
-    defaultValue: "full",
-    description: "Ширина содержимого: по всей области или в контейнере страницы.",
-  },
-  {
-    name: "filters",
-    values: "city · propertyType · roominess · area · price · source · author",
-    defaultValue: "все фильтры",
-    description: "Набор быстрых фильтров, которые нужно показать. Кнопка «Фильтры» остаётся в начале строки.",
-  },
-  {
-    name: "showFiltersButton",
-    values: "boolean",
-    defaultValue: "true",
-    description: "Показывает кнопку дополнительных фильтров.",
-  },
-  {
-    name: "modalDisplay",
-    values: "viewport · embedded",
-    defaultValue: "viewport",
-    description: "Режим контейнера дополнительных фильтров.",
-  },
-  {
-    name: "…props",
-    values: "ComponentProps&lt;\"section\"&gt;",
-    defaultValue: "—",
-    description: "Нативные свойства корневого section-элемента.",
-  },
-];
 
 function Canvas({
   children,
@@ -297,6 +221,30 @@ const componentDocs: ComponentDoc[] = [
         description: "Содержимое панелей для демонстрации компонента.",
       },
       {
+        name: "exampleVariants",
+        values: "{ label, value, content }[]",
+        defaultValue: "—",
+        description: "Переключаемые случаи применения одного компонента.",
+      },
+      {
+        name: "defaultExampleVariant / exampleVariant",
+        values: "string",
+        defaultValue: "первый вариант",
+        description: "Начальный или выбранный случай примера.",
+      },
+      {
+        name: "onExampleVariantChange",
+        values: "(value) => void",
+        defaultValue: "—",
+        description: "Обработчик выбора случая примера.",
+      },
+      {
+        name: "panelFrame",
+        values: "boolean",
+        defaultValue: "true",
+        description: "Показывает общую подложку, скругление и отступ вокруг панелей.",
+      },
+      {
         name: "direction",
         values: "horizontal · vertical",
         defaultValue: "horizontal",
@@ -316,15 +264,15 @@ const componentDocs: ComponentDoc[] = [
       },
       {
         name: "settings",
-        values: "string[]",
-        defaultValue: "—",
-        description: "Короткий список параметров, которые отвечают за вид и поведение примера.",
-      },
-      {
-        name: "codeSnippet",
         values: "ReactNode",
         defaultValue: "—",
-        description: "Необязательный блок кода под Showcase.",
+        description: "Дополнительные элементы управления для настройки примера.",
+      },
+      {
+        name: "compositionExample",
+        values: "ReactNode",
+        defaultValue: "—",
+        description: "Короткий JSX-фрагмент для примеров композиции или передачи slot.",
       },
     ],
     source: "src/components/ui/showcase-section.tsx",
@@ -784,41 +732,6 @@ const componentDocs: ComponentDoc[] = [
     ],
     source: "src/components/ui/select.tsx",
     render: () => <SelectExamples />,
-  },
-  {
-    id: "roominess",
-    title: "Комнатность",
-    description: "Мультиселект для выбора количества комнат.",
-    group: "Фильтр объектов",
-    source: "src/components/ui/roominess-select.tsx",
-    render: () => <RoominessSelectExamples />,
-  },
-  {
-    id: "area-select",
-    title: "Площадь",
-    description: "Селект площади с пустым выпадающим меню.",
-    group: "Фильтр объектов",
-    properties: emptyFilterSelectProperties,
-    source: "src/components/ui/area-select.tsx",
-    render: () => <AreaSelectExamples />,
-  },
-  {
-    id: "price-select",
-    title: "Цена",
-    description: "Селект цены с пустым выпадающим меню.",
-    group: "Фильтр объектов",
-    properties: emptyFilterSelectProperties,
-    source: "src/components/ui/price-select.tsx",
-    render: () => <PriceSelectExamples />,
-  },
-  {
-    id: "floor-select",
-    title: "Этаж",
-    description: "Селект этажа с пустым выпадающим меню.",
-    group: "Фильтр объектов",
-    properties: emptyFilterSelectProperties,
-    source: "src/components/ui/floor-select.tsx",
-    render: () => <FloorSelectExamples />,
   },
   {
     id: "search",
@@ -1490,8 +1403,13 @@ const componentDocs: ComponentDoc[] = [
       { name: "onOpenChange", values: "(open: boolean) => void", defaultValue: "—", description: "Получает новое состояние при закрытии или применении." },
       { name: "resultCount", values: "number", defaultValue: "50", description: "Число объектов в кнопке применения фильтров." },
       { name: "onClear", values: "() => void", defaultValue: "—", description: "Вызывается при очистке фильтров." },
+      { name: "onDelete", values: "() => void", defaultValue: "—", description: "Вызывается при удалении сохранённого поиска в режиме редактирования." },
+      { name: "searchName", values: "string", defaultValue: "—", description: "Показывает название при редактировании сохранённого поиска." },
+      { name: "onSearchNameChange", values: "(name: string) => void", defaultValue: "—", description: "Получает новое название сохранённого поиска." },
+      { name: "primaryActionLabel", values: "string", defaultValue: "Показать N объектов", description: "Задаёт подпись основной кнопки, например для сохранения изменений." },
       { name: "containerDisplay", values: "viewport · embedded", defaultValue: "viewport", description: "Режим контейнера модального окна; embedded используется в демонстрационной панели." },
       { name: "containerClassName", values: "string", defaultValue: "—", description: "Дополнительный класс контейнера модального окна." },
+      { name: "defaultActiveTab", values: "filter · saved-searches", defaultValue: "filter", description: "Выбирает вкладку при открытии модального окна." },
     ],
     source: "src/components/ui/filter-modal.tsx",
     render: () => <FilterModalExamples />,
@@ -1499,9 +1417,8 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "object-filter",
     title: "ObjectFilter",
-    description: "Панель быстрых фильтров с кнопкой дополнительных параметров.",
+    description: "Панель быстрых фильтров, полная форма фильтрации и действия над изменённым поиском.",
     group: "Фильтр объектов",
-    properties: objectFilterProperties,
     source: "src/components/ui/object-filter.tsx",
     render: () => <ObjectFilterExamples />,
   },
@@ -1621,14 +1538,29 @@ const componentDocs: ComponentDoc[] = [
   {
     id: "snackbar",
     title: "Snackbar",
-    description: "Всплывающее уведомление.",
+    description: "Всплывающее уведомление о результате действия с опциональными кнопками действия и закрытия.",
     group: "Feedback",
     source: "src/components/ui/snackbar.tsx",
-    render: () => (
-      <Canvas tone="dark">
-        <Snackbar />
-      </Canvas>
-    ),
+    render: () => <SnackbarExamples />,
+  },
+  {
+    id: "confirm",
+    title: "Confirm",
+    description: "Подтверждение действия в модальном окне.",
+    group: "Feedback",
+    properties: [
+      { name: "backdrop", values: "boolean", defaultValue: "true", description: "Показывает Confirm с полноэкранным затемнением; false оставляет только диалог." },
+      { name: "open", values: "boolean", defaultValue: "—", description: "Управляет видимостью подтверждения." },
+      { name: "title", values: "ReactNode", defaultValue: "—", description: "Заголовок подтверждения." },
+      { name: "description", values: "ReactNode", defaultValue: "—", description: "Пояснение к действию." },
+      { name: "cancelLabel", values: "string", defaultValue: "Отмена", description: "Подпись кнопки отмены." },
+      { name: "confirmLabel", values: "string", defaultValue: "Подтвердить", description: "Подпись кнопки подтверждения." },
+      { name: "onCancel", values: "() => void", defaultValue: "—", description: "Вызывается при выборе отмены." },
+      { name: "onConfirm", values: "() => void", defaultValue: "—", description: "Вызывается при подтверждении действия." },
+      { name: "onOpenChange", values: "(open: boolean) => void", defaultValue: "—", description: "Сообщает об изменении видимости." },
+    ],
+    source: "src/components/ui/confirm.tsx",
+    render: () => <ConfirmExamples />,
   },
   {
     id: "modal",
@@ -2206,6 +2138,7 @@ const ComponentNavigation = React.forwardRef<
     "input-number",
     "input-number-range",
     "textarea",
+    "confirm",
     "modal",
     "modal-header",
     "drawer",

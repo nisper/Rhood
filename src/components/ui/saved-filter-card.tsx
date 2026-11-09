@@ -15,6 +15,7 @@ type SavedFilterCardProps = Omit<React.ComponentProps<"article">, "onChange"> & 
   name?: string
   onDelete?: () => void
   onEdit?: () => void
+  onApply?: () => void
   onNameChange?: (name: string) => void
   onSave?: (name: string) => void
   onSubscriptionChange?: (subscribed: boolean) => void
@@ -28,6 +29,7 @@ function SavedFilterCard({
   name: controlledName,
   onDelete,
   onEdit,
+  onApply,
   onNameChange,
   onSave,
   onSubscriptionChange,
@@ -49,29 +51,41 @@ function SavedFilterCard({
   }
 
   return (
-    <article className={cn("grid min-w-0 gap-2 rounded-[var(--rh-sizing-border-radius-xlg)] border border-[var(--rh-theme-border-light)] px-4 py-3", className)} {...props}>
+    <article className={cn(
+      "group/card relative grid min-w-0 gap-2 rounded-[var(--rh-sizing-border-radius-xlg)] border border-[var(--rh-theme-border-light)] px-4 py-3",
+      variant === "saved" && "cursor-pointer",
+      className,
+    )} {...props}>
+      {variant === "saved" && onApply && (
+        <button
+          aria-label={`Применить фильтр «${name}»`}
+          className="absolute inset-0 z-0 cursor-pointer rounded-[inherit] border-0 bg-transparent p-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]"
+          onClick={onApply}
+          type="button"
+        />
+      )}
       {variant === "new" ? (
         <div className="grid min-w-0 gap-1">
           <div className="flex min-w-0 items-center gap-2">
-            <Textfield appearance="neutral" aria-label="Название нового фильтра" autoFocus className="min-w-0 flex-1" onChange={(event) => changeName(event.target.value)} onKeyDown={(event) => event.key === "Enter" && save()} placeholder="Название фильтра" size="lg" value={name} />
+            <Textfield appearance="neutral" aria-label="Название поиска" autoFocus className="min-w-0 flex-1" onChange={(event) => changeName(event.target.value)} onKeyDown={(event) => event.key === "Enter" && save()} placeholder="Название поиска" size="lg" value={name} />
             <Button appearance="primary" endIcon={false} onClick={save} size="lg" startIcon={false}>Сохранить</Button>
           </div>
           <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">{details}</p>
         </div>
       ) : (
         <>
-          <div className="grid min-w-0 gap-1">
-            <p className="rh-typography-b1-med break-words text-[var(--rh-theme-text-link)]">{name}</p>
-            <p className="rh-typography-b2 break-words text-[var(--rh-theme-text-neutral-secondary)]">{details}</p>
+          <div className="relative z-10 pointer-events-none grid min-w-0 gap-1">
+            <p className="rh-typography-b1-med break-words text-[var(--rh-theme-text-neutral-primary)]">{name}</p>
+            <p className="rh-typography-b1 break-words text-[var(--rh-theme-text-neutral-secondary)]">{details}</p>
           </div>
-          <div className="flex min-w-0 items-center gap-4">
-            <div className="flex min-w-0 flex-1 items-center gap-2">
+          <div className="relative z-10 pointer-events-none flex min-w-0 items-center gap-4">
+            <div className="pointer-events-auto flex min-w-0 flex-1 items-center gap-2">
               <Checkbox
                 aria-label={`${subscription === "subscribed" ? "Отписаться от" : "Подписаться на"} «${name}»`}
                 checked={subscription === "subscribed"}
                 disabled={subscription === "unavailable"}
                 onChange={(event) => onSubscriptionChange?.(event.target.checked)}
-                size="lg"
+                size="md"
               >
                 Подписаться
               </Checkbox>
@@ -86,7 +100,7 @@ function SavedFilterCard({
                 </span>
               )}
             </div>
-            <div className="flex shrink-0 items-center gap-2">
+            <div className="pointer-events-none flex shrink-0 items-center gap-2 opacity-0 transition-opacity duration-150 group-hover/card:pointer-events-auto group-hover/card:opacity-100 group-focus-within/card:pointer-events-auto group-focus-within/card:opacity-100">
               <IconButton aria-label={`Переименовать «${name}»`} appearance="secondary" icon={<Pencil aria-hidden="true" />} onClick={onEdit} size="md" />
               <IconButton aria-label={`Удалить «${name}»`} appearance="secondary" icon={<Trash2 aria-hidden="true" />} onClick={onDelete} size="md" />
             </div>

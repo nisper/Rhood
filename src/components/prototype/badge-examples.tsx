@@ -53,14 +53,14 @@ export function BadgeExamples() {
             </div>
           ))}
         </div>]}
-        settings={["appearance: default · muted", "color: neutral · brand · error · warning · success · contrast", "shape: default · circle"]}
+        props={["appearance: default · muted", "color: neutral · brand · error · warning · success · contrast", "shape: default · circle"]}
         title="Стиль"
       />
 
       <ShowcaseSection
         description="Круглая форма подходит для коротких счётчиков."
         panels={[<div className="flex min-h-[136px] items-center justify-center gap-4" key="shapes"><Badge>НОВОЕ</Badge><Badge shape="circle">3</Badge><Badge shape="circle">12</Badge><Badge shape="circle">123</Badge></div>]}
-        settings={["shape: default · circle"]}
+        props={["shape: default · circle"]}
         title="Состав"
       />
       <PropertiesTable />
