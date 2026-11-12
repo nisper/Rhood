@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "AGENTS.md",
+                "file": "docs/backlog.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AGENTS"
+              "title": "backlog"
             }
           }
         ]
@@ -83,8 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "24fbdb0caa4bd22e",
@@ -133,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/product/features/Архив объявлений.md",
+                "file": "docs/backlog.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -176,8 +175,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -192,6 +190,9 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "artifacts/responsive/archive-no-subscription/424.png",
+    "artifacts/responsive/archive-no-subscription/375.png",
+    "AGENTS.md",
     "dist/assets/index-C1x8mbHZ.css",
     "dist/assets/index-B-s1jm_E.js",
     "dist/assets/index-3mteFBNF.css",
@@ -205,8 +206,6 @@
     "src/components/prototype/showcase-section-examples.tsx",
     "dist/index.html",
     "dist/assets/index-Bb6C1JcG.js",
-    "dist/assets/index-OmR2323o.js",
-    "AGENTS.md",
     "dist/assets/tyumen-lenina-54-2-map.png",
     "dist/assets/map-tyumen-lenina-54-2.png",
     "dist/assets/map-preview-figma.svg",
@@ -221,7 +220,6 @@
     "artifacts/responsive/archive-no-subscription/585.png",
     "artifacts/responsive/archive-no-subscription/default.png",
     "artifacts/responsive/archive-no-subscription/593.png",
-    "artifacts/responsive/archive-no-subscription/590.png",
     "docs/instructions/Адаптив в проекте.md",
     "docs/Tests/Компоненты.md",
     "docs/instructions/product-design-reasoning.md",

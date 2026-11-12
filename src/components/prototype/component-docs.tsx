@@ -553,6 +553,7 @@ const componentDocs: ComponentDoc[] = [
     group: "Объект в выдаче",
     properties: [
       { name: "id", values: "string", defaultValue: "обязательное", description: "ID строки для выбора объекта в таблице." },
+      { name: "children", values: "ReactNode", defaultValue: "—", description: "Дополнительные ячейки после стандартных колонок строки." },
       { name: "specs · address", values: "string", defaultValue: "обязательное", description: "Краткие характеристики и адрес объекта." },
       { name: "buyerCount", values: "number", defaultValue: "обязательное", description: "Количество покупателей с совпадением." },
       { name: "price · pricePerArea", values: "number", defaultValue: "обязательное", description: "Цена объекта и цена за единицу площади (м² или сотку); значения отображаются без единиц измерения." },

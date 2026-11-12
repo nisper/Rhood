@@ -7,9 +7,7 @@ import { IconButton } from "@/components/ui/icon-button";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
-
-type SortColumn = "object" | "city" | "price";
-type SortState = { column: SortColumn; direction: "asc" | "desc" } | null;
+import { Switch } from "@/components/ui/switch";
 
 const listings = [
   { id: "cosmos", object: "Космос", city: "Екатеринбург", price: 12500000 },
@@ -24,181 +22,43 @@ const cellProperties = [
     "false",
     "Добавляет стандартную обводку таблицы.",
   ],
-  [
-    "verticalBorders",
-    "true / false",
-    "false",
-    "Добавляет вертикальные границы между ячейками.",
-  ],
+  ["children", "ReactNode", "Head / Cell", "Содержимое текстовой или числовой ячейки."],
+  ["compact", "true / false", "false", "Компактная высота для плотных таблиц."],
+  ["hover", "true / false", "false", "Меняет фон строки при наведении."],
   [
     "minWidth",
     "number / CSS length",
     "—",
     "Минимальная ширина таблицы; при недостатке места появляется горизонтальный скролл.",
   ],
-  [
-    "selection",
-    "TableSelection",
-    "—",
-    "Включает выбор строк и всех строк текущей страницы.",
-  ],
-  [
-    "hover",
-    "true / false",
-    "false",
-    "Меняет фон строки при наведении.",
-  ],
+  ["paddingX", "true / false", "true", "Стандартные горизонтальные отступы ячейки."],
   ["role", "head / body", "head", "Ячейка заголовка или данных."],
-  [
-    "type",
-    "text / number / skeleton / checkbox / placeholder / chip / button",
-    "checkbox",
-    "Содержимое ячейки; для chip и button уменьшает вертикальные отступы ячейки на внутренний padding содержимого.",
-  ],
   [
     "rowId",
     "string",
     "—",
     "ID строки для встроенного выбора через Table.selection.",
   ],
-  [
-    "paddingX",
-    "true / false",
-    "true",
-    "Стандартные горизонтальные отступы ячейки.",
-  ],
-  [
-    "compact",
-    "true / false",
-    "false",
-    "Компактная высота для плотных таблиц.",
-  ],
-  [
-    "verticalAlign",
-    "top / center / bottom",
-    "top",
-    "Выравнивает содержимое ячейки по вертикали.",
-  ],
+  ["selection", "TableSelection", "—", "Включает выбор строк и всех строк текущей страницы."],
+  ["sort", "true / false", "false", "Делает заголовок сортируемым."],
+  ["sortDirection", "asc / desc", "—", "Показывает направление активной сортировки."],
   [
     "textSize",
     "b2 / b1",
     "b2",
     "Размер текста body-ячейки; заголовки таблицы не меняются.",
   ],
-  ["sort", "true / false", "false", "Делает заголовок сортируемым."],
-  [
-    "sortDirection",
-    "asc / desc",
-    "—",
-    "Показывает направление активной сортировки.",
-  ],
+  ["type", "text / number / skeleton / checkbox / placeholder / chip / button", "checkbox", "Содержимое ячейки; для chip и button уменьшает вертикальные отступы ячейки на внутренний padding содержимого."],
+  ["verticalAlign", "top / center / bottom", "top", "Выравнивает содержимое ячейки по вертикали."],
+  ["verticalBorders", "true / false", "false", "Добавляет вертикальные границы между ячейками."],
   [
     "width",
     "content / fill / number",
     "content",
     "Ширина колонки: по содержимому, поровну или в пикселях.",
   ],
-  [
-    "children",
-    "ReactNode",
-    "Head / Cell",
-    "Содержимое текстовой или числовой ячейки.",
-  ],
 ];
 
-function CodeProp({ name, value }: { name: string; value?: string }) {
-  return (
-    <>
-      <span className="text-[var(--rh-theme-text-info)]">{name}</span>
-      {value && (
-        <>
-          <span className="text-[var(--rh-theme-text-neutral-secondary)]">
-            =
-          </span>
-          <span className="text-[var(--rh-theme-text-success)]">{value}</span>
-        </>
-      )}
-    </>
-  );
-}
-
-function Snippet({ children }: { children: React.ReactNode }) {
-  return (
-    <code className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-primary)]">
-      {children}
-    </code>
-  );
-}
-
-const syntax = "text-[var(--rh-theme-text-neutral-secondary)]";
-const component = "text-[var(--rh-palette-purple-700)]";
-
-const stateSnippet = (
-  <Snippet>
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>Table</span>
-    {"\n  "}
-    <CodeProp name="selection" />
-    <span className={syntax}>{`={{\n    `}</span>
-    <CodeProp name="rowIds" />
-    <span className={syntax}>{`: `}</span>
-    listings.map(row <span className={syntax}>{`=>`}</span> row.id),
-    {"\n    "}
-    <CodeProp name="selectedIds" />
-    <span className={syntax}>{`,\n    `}</span>
-    <CodeProp name="onSelectedIdsChange" />
-    <span className={syntax}>{`: setSelectedIds,\n  }}\n`}</span>
-    <span className={syntax}>{`>`}</span>
-    {"\n  "}
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>TableCell</span>{" "}
-    <CodeProp name="role" value={'"head"'} />{" "}
-    <CodeProp name="type" value={'"checkbox"'} />
-    <span className={syntax}>{` />\n  <`}</span>
-    <span className={component}>TableCell</span>{" "}
-    <CodeProp name="role" value={'"body"'} />{" "}
-    <CodeProp name="type" value={'"checkbox"'} />{" "}
-    <CodeProp name="rowId" value="{row.id}" />
-    <span className={syntax}>{` />\n</`}</span>
-    <span className={component}>Table</span>
-    <span className={syntax}>{`>`}</span>
-  </Snippet>
-);
-const compositionSnippet = (
-  <Snippet>
-    <span className={syntax}>{`<`}</span><span className={component}>TableCell</span>{" "}<CodeProp name="type" value={'"chip"'} />
-    <span className={syntax}>{`>`}</span><span className={syntax}>{`<`}</span><span className={component}>Chip</span>{" "}<CodeProp name="appearance" value={'"muted"'} /><span className={syntax}>{`>`}</span>Активный<span className={syntax}>{`</`}</span><span className={component}>Chip</span><span className={syntax}>{`>`}</span><span className={syntax}>{`</`}</span><span className={component}>TableCell</span><span className={syntax}>{`>`}</span>
-    {"\n"}
-    <span className={syntax}>{`<`}</span><span className={component}>TableCell</span>{" "}<CodeProp name="type" value={'"button"'} />
-    <span className={syntax}>{`>`}</span><span className={syntax}>{`<`}</span><span className={component}>IconButton</span>{" "}<CodeProp name="size" value={'"sm"'} />{" "}<CodeProp name="icon" value="{<Copy />}" /><span className={syntax}>{` />`}</span><span className={syntax}>{`</`}</span><span className={component}>TableCell</span><span className={syntax}>{`>`}</span>
-  </Snippet>
-);
-const sortingSnippet = (
-  <Snippet>
-    <span className={syntax}>{`<`}</span>
-    <span className={component}>TableCell</span>
-    {"\n  "}
-    <CodeProp name="role" value={'"head"'} />
-    {"\n  "}
-    <CodeProp name="sort" />
-    {"\n  "}
-    <span className="text-[var(--rh-theme-text-info)]">sortDirection</span>
-    <span className={syntax}>{`={`}</span>
-    {"\n    "}
-    <span>sort?.column === </span>
-    <span className="text-[var(--rh-theme-text-success)]">"price"</span>
-    {"\n      ? sort.direction\n      : undefined\n  "}
-    <span className={syntax}>{`}`}</span>
-    {"\n  "}
-    <CodeProp name="onClick" value={'{() => toggleSort("price")}'} />
-    {"\n"}
-    <span className={syntax}>{`>`}</span>
-    Стоимость, ₽
-    <span className={syntax}>{`</`}</span>
-    <span className={component}>TableCell</span>
-    <span className={syntax}>{`>`}</span>
-  </Snippet>
-);
 function ListingTable({
   bordered = true,
   compact = false,
@@ -261,75 +121,6 @@ function ListingTable({
   );
 }
 
-function SortingTable() {
-  const [sort, setSort] = React.useState<SortState>(null);
-  const sortedRows = [...listings].sort((first, second) => {
-    if (!sort) return 0;
-    const result =
-      sort.column === "price"
-        ? first.price - second.price
-        : sort.column === "city"
-          ? first.city.localeCompare(second.city, "ru")
-        : first.object.localeCompare(second.object, "ru");
-    return sort.direction === "asc" ? result : -result;
-  });
-
-  function toggleSort(column: SortColumn) {
-    setSort((current) =>
-      current?.column === column
-        ? { column, direction: current.direction === "asc" ? "desc" : "asc" }
-        : { column, direction: "asc" },
-    );
-  }
-
-  return (
-    <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-      <TableRow>
-        <TableCell
-          helpIcon={false}
-          onClick={() => toggleSort("object")}
-          role="head"
-          sort
-          sortDirection={sort?.column === "object" ? sort.direction : undefined}
-          type="text"
-          width="fill"
-        >
-          Объект
-        </TableCell>
-        <TableCell
-          helpIcon={false}
-          onClick={() => toggleSort("city")}
-          role="head"
-          sort
-          sortDirection={sort?.column === "city" ? sort.direction : undefined}
-          type="text"
-          width="fill"
-        >
-          Город
-        </TableCell>
-        <TableCell
-          helpIcon={false}
-          onClick={() => toggleSort("price")}
-          role="head"
-          sort
-          sortDirection={sort?.column === "price" ? sort.direction : undefined}
-          type="number"
-          width={150}
-        >
-          Стоимость, ₽
-        </TableCell>
-      </TableRow>
-      {sortedRows.map((row) => (
-        <TableRow key={row.id}>
-          <TableCell role="body" type="text" width="fill">{row.object}</TableCell>
-          <TableCell role="body" type="text" width="fill">{row.city}</TableCell>
-          <TableCell role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell>
-        </TableRow>
-      ))}
-    </Table>
-  );
-}
-
 function Properties() {
   const widths = [160, "fill", 140, "fill"] as const;
 
@@ -368,42 +159,42 @@ function Properties() {
   );
 }
 
-function CompositionCellsTable() {
+function CellExamples({ compact }: { compact: boolean }) {
+  const [checked, setChecked] = React.useState(true);
+
   return (
     <Table
-      className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
+      bordered
+      className="w-full !min-w-0"
+      verticalBorders
       columns={[
-        { key: "object", alignment: "left" },
-        { key: "price", alignment: "right" },
-        { key: "status", alignment: "left" },
-        { key: "id", alignment: "center" },
+        { key: "text", alignment: "left" },
+        { key: "number", alignment: "right" },
+        { key: "checkbox", alignment: "center" },
+        { key: "chip", alignment: "left" },
+        { key: "button", alignment: "center" },
+        { key: "defaultText", alignment: "left" },
       ]}
     >
       <TableRow>
-        <TableCell column="object" helpIcon={false} role="head" type="text" width="fill">Объект</TableCell>
-        <TableCell column="price" helpIcon={false} role="head" type="number" width={150}>Стоимость, ₽</TableCell>
-        <TableCell column="status" helpIcon={false} role="head" type="text" width={180}>Статус</TableCell>
-        <TableCell column="id" helpIcon={false} role="head" type="text" width={56}>ID</TableCell>
+        <TableCell column="text" compact={compact} helpIcon={false} role="head" type="text" width={150}>Текст</TableCell>
+        <TableCell column="number" compact={compact} helpIcon={false} role="head" type="number" width={120}>Число</TableCell>
+        <TableCell column="checkbox" compact={compact} helpIcon={false} role="head" type="text" width={88}>Флажок</TableCell>
+        <TableCell column="chip" compact={compact} helpIcon={false} role="head" type="text" width={140}>Статус</TableCell>
+        <TableCell column="button" compact={compact} helpIcon={false} role="head" type="text" width={88}>Кнопка</TableCell>
+        <TableCell column="defaultText" compact={compact} helpIcon={false} role="head" type="text" width={152}>Обычный текст</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell column="object" role="body" type="text" width="fill">Космос</TableCell>
-        <TableCell column="price" role="body" type="number" width={150}>12 500 000</TableCell>
-        <TableCell column="status" role="body" type="chip" width={180}>
+        <TableCell column="text" compact={compact} role="body" type="text" width={150}>Объявление</TableCell>
+        <TableCell column="number" compact={compact} role="body" type="number" width={120}>12 500 000</TableCell>
+        <TableCell checked={checked} className="justify-center" column="checkbox" compact={compact} onCheckedChange={setChecked} paddingX={false} role="body" type="checkbox" width={88} />
+        <TableCell column="chip" compact={compact} role="body" type="chip" width={140}>
           <Chip appearance="muted" color="brand" icon={false} propDelete={false} size="sm">Активный</Chip>
         </TableCell>
-        <TableCell column="id" role="body" type="button" width={56}>
-          <IconButton aria-label="Скопировать ID объекта Космос" appearance="inherit" icon={<Copy aria-hidden="true" strokeWidth={2} />} size="sm" />
+        <TableCell buttonSize="sm" column="button" compact={compact} role="body" type="button" width={88}>
+          <IconButton aria-label="Скопировать ID объекта" appearance="inherit" icon={<Copy aria-hidden="true" strokeWidth={2} />} size="sm" />
         </TableCell>
-      </TableRow>
-      <TableRow>
-        <TableCell column="object" role="body" type="text" width="fill">Маяк</TableCell>
-        <TableCell column="price" role="body" type="number" width={150}>8 900 000</TableCell>
-        <TableCell column="status" role="body" type="chip" width={180}>
-          <Chip appearance="muted" color="warning" icon={false} propDelete={false} size="sm">Приостановлен</Chip>
-        </TableCell>
-        <TableCell column="id" role="body" type="button" width={56}>
-          <IconButton aria-label="Скопировать ID объекта Маяк" appearance="inherit" icon={<Copy aria-hidden="true" strokeWidth={2} />} size="sm" />
-        </TableCell>
+        <TableCell column="defaultText" compact={compact} role="body" type="text" width={152}>Обычная ячейка</TableCell>
       </TableRow>
     </Table>
   );
@@ -411,190 +202,79 @@ function CompositionCellsTable() {
 
 export function TableExamples() {
   const [selectedIds, setSelectedIds] = React.useState<string[]>(["mayak"]);
+  const [compact, setCompact] = React.useState(false);
 
   return (
     <div className="grid min-w-0">
       <ShowcaseSection
-        props={["bordered: false · true"]}
-        description="bordered добавляет стандартную обводку Table, включая шапку при stickyHeader. По умолчанию prop выключен; включай его, когда таблицу нужно отделить от фона."
+        props={["bordered: false · true", "verticalBorders: false · true"]}
+        description="Table поддерживает стандартную обводку и вертикальные границы между ячейками. Сочетания помогают подобрать оформление под плотность и структуру данных."
         direction="vertical"
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full gap-2">
-                <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                  bordered=false
-                </span>
-                <ListingTable bordered={false} />
-              </div>
-            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full gap-2">
-                <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                  bordered=true
-                </span>
-                <ListingTable />
-              </div>
-            </div>]}
+        panelCount={3}
+        panels={[
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
+            <div className="grid w-full gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">Без обводки</span><ListingTable bordered={false} /></div>
+          </div>,
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
+            <div className="grid w-full gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">С обводкой</span><ListingTable /></div>
+          </div>,
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
+            <div className="grid w-full gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">С вертикальными границами</span><ListingTable verticalBorders /></div>
+          </div>,
+        ]}
         title="Стиль"
       />
 
       <ShowcaseSection
-        props={["verticalBorders: true"]}
-        description="verticalBorders включает вертикальные границы между ячейками. По умолчанию они выключены."
-        panels={[
-          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
-            <div className="grid w-full gap-2">
-              <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                verticalBorders=true
-              </span>
-              <ListingTable verticalBorders />
-            </div>
-          </div>,
-        ]}
-        title="Вертикальные границы"
-      />
-
-      <ShowcaseSection
         props={["compact: false · true", "textSize: b2 · b1"]}
-        description='compact уменьшает отступы ячейки, а textSize меняет размер текста body-строк. Для колонок используй width="fill" для равного распределения, число — для фиксированной ширины.'
+        description='compact уменьшает вертикальные отступы ячеек, а textSize меняет размер текста строк с данными. Ширину колонок задавай через width="fill" или фиксированное значение в пикселях.'
         direction="vertical"
         panelCount={3}
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full gap-2">
-                <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                  Стандартный
-                </span>
-                <ListingTable />
-              </div>
-            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full gap-2">
-                <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                  Компактный
-                </span>
-                <ListingTable compact />
-              </div>
-            </div>, <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full gap-2">
-                <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                  textSize=&quot;b1&quot;
-                </span>
-                <ListingTable textSize="b1" />
-              </div>
-            </div>]}
+        panels={[
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="grid w-full gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">Обычная плотность</span><ListingTable /></div></div>,
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="grid w-full gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">Компактная плотность</span><ListingTable compact /></div></div>,
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4"><div className="grid w-full gap-2"><span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">Крупный текст строк</span><ListingTable textSize="b1" /></div></div>,
+        ]}
         title="Размер"
       />
 
       <ShowcaseSection
-        compositionExample={stateSnippet}
-        description="Выбор работает через Table.selection: передай ID всех строк, выбранные ID и обработчик изменения. Для checkbox в строке обязательно укажи соответствующий rowId; checkbox в шапке выберет все строки."
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <Table
-                className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]"
-                selection={{
-                  onSelectedIdsChange: setSelectedIds,
-                  rowIds: listings.map((row) => row.id),
-                  selectedIds,
-                }}
-              >
-                <TableRow>
-                  <TableCell
-                    role="head"
-                    type="checkbox"
-                    width={40}
-                  />
-                  <TableCell role="head" type="text" width="fill">
-                    Объект
-                  </TableCell>
-                  <TableCell
-                    helpIcon={false}
-                    role="head"
-                    type="text"
-                    width="fill"
-                  >
-                    Город
-                  </TableCell>
-                  <TableCell helpIcon={false} role="head" type="number" width={150}>
-                    Стоимость, ₽
-                  </TableCell>
-                </TableRow>
-                {listings.map((row) => (
-                  <TableRow key={row.id}>
-                    <TableCell
-                      role="body"
-                      rowId={row.id}
-                      type="checkbox"
-                      width={40}
-                    />
-                    <TableCell role="body" type="text" width="fill">
-                      {row.object}
-                    </TableCell>
-                    <TableCell role="body" type="text" width="fill">
-                      {row.city}
-                    </TableCell>
-                    <TableCell role="body" type="number" width={150}>
-                      {row.price.toLocaleString("ru-RU")}
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </Table>
-            </div>]}
-        title="Выбор строк"
+        description="Строки могут реагировать на наведение и поддерживать выбор. Наведи курсор на строки справа и переключи чекбоксы в таблице слева — выбранные строки синхронизируются с состоянием примера."
+        direction="vertical"
+        panelCount={2}
+        panels={[
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
+            <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]" selection={{ onSelectedIdsChange: setSelectedIds, rowIds: listings.map((row) => row.id), selectedIds }}>
+              <TableRow><TableCell role="head" type="checkbox" width={40} /><TableCell role="head" type="text" width="fill">Объект</TableCell><TableCell helpIcon={false} role="head" type="text" width="fill">Город</TableCell><TableCell helpIcon={false} role="head" type="number" width={150}>Стоимость, ₽</TableCell></TableRow>
+              {listings.map((row) => <TableRow key={row.id}><TableCell role="body" rowId={row.id} type="checkbox" width={40} /><TableCell role="body" type="text" width="fill">{row.object}</TableCell><TableCell role="body" type="text" width="fill">{row.city}</TableCell><TableCell role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell></TableRow>)}
+            </Table>
+          </div>,
+          <div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl bg-white px-6 py-4">
+            <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
+              <TableRow><TableCell helpIcon={false} role="head" type="text" width="fill">Объект</TableCell><TableCell helpIcon={false} role="head" type="text" width="fill">Город</TableCell><TableCell helpIcon={false} role="head" type="number" width={150}>Стоимость, ₽</TableCell></TableRow>
+              {listings.map((row) => <TableRow hover key={row.id}><TableCell role="body" type="text" width="fill">{row.object}</TableCell><TableCell role="body" type="text" width="fill">{row.city}</TableCell><TableCell role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell></TableRow>)}
+            </Table>
+          </div>,
+        ]}
+        title="Состояния"
       />
 
       <ShowcaseSection
-        props={["hover: boolean"]}
-        description="Используй hover только для строк, клик по которым запускает действие: открывает детали, меняет состояние или ведёт на другую страницу."
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-                <TableRow>
-                  <TableCell helpIcon={false} role="head" type="text" width="fill">Объект</TableCell>
-                  <TableCell helpIcon={false} role="head" type="text" width="fill">Город</TableCell>
-                  <TableCell helpIcon={false} role="head" type="number" width={150}>Стоимость, ₽</TableCell>
-                </TableRow>
-                {listings.map((row) => (
-                  <TableRow hover key={row.id}>
-                    <TableCell role="body" type="text" width="fill">{row.object}</TableCell>
-                    <TableCell role="body" type="text" width="fill">{row.city}</TableCell>
-                    <TableCell role="body" type="number" width={150}>{row.price.toLocaleString("ru-RU")}</TableCell>
-                  </TableRow>
-                ))}
-              </Table>
-            </div>]}
-        title="Поведение при наведении"
-      />
-
-      <ShowcaseSection
-        compositionExample={sortingSnippet}
-        description="Передай sort и обработчик клика каждому сортируемому заголовку. sortDirection показывает направление активной сортировки; состояние и сортировку данных хранит экран."
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <SortingTable />
-            </div>]}
-        title="Сортировка"
-      />
-
-      <ShowcaseSection
-        compositionExample={compositionSnippet}
-        description="Table собирается из строк и TableCell. Для type=chip и type=button вертикальные отступы ячейки уменьшаются на внутренний padding содержимого; buttonSize задаёт размер кнопки, для которой рассчитывается отступ."
-        panels={[<div className="flex min-h-[136px] items-center justify-center overflow-hidden rounded-xl px-6 py-4 bg-white">
-              <div className="grid w-full gap-5">
-                <div className="grid gap-2">
-                  <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Заголовок, данные, статус и действие
-                  </span>
-                  <CompositionCellsTable />
-                </div>
-                <div className="grid max-w-[480px] gap-2">
-                  <span className="text-xs leading-4 text-[var(--rh-theme-text-neutral-secondary)]">
-                    Загрузка
-                  </span>
-                  <Table className="w-full !min-w-0 border border-[var(--parser-border-light)] bg-[var(--rh-theme-surface-bg)]">
-                    <TableRow>
-                      <TableCell role="body" type="skeleton" width="fill" />
-                      <TableCell role="body" type="skeleton" width="fill" />
-                    </TableRow>
-                  </Table>
-                </div>
-              </div>
-            </div>]}
-        title="Состав"
+        description="Показываю ячейки с текстом, числом, флажком, статусом и кнопкой, а в конце — обычную текстовую ячейку. Переключи compact, чтобы сравнить вертикальные отступы."
+        panelFrame={false}
+        panels={[<CellExamples compact={compact} key="cells" />]}
+        settings={(
+          <div className="bg-white px-4">
+            <Switch checked={compact} onChange={(event) => setCompact(event.target.checked)} size="sm" switchPosition="left">
+              compact
+            </Switch>
+          </div>
+        )}
+        usedComponents={[
+          { href: "?view=components&component=chip", title: "Chip" },
+          { href: "?view=components&component=icon-button", title: "IconButton" },
+        ]}
+        title="Ячейки"
       />
 
       <section className="mt-10 grid gap-4">

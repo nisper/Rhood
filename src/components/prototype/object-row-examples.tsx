@@ -1,6 +1,11 @@
 import * as React from "react";
-import { CircleUser, Phone } from "lucide-react";
+import { createPortal } from "react-dom";
+import { CircleUser, Copy, MessageSquareText, MoreHorizontal, Phone, TriangleAlert } from "lucide-react";
 
+import { ButtonFavorite } from "@/components/ui/button-favorite";
+import { IconButton } from "@/components/ui/icon-button";
+import { Menu } from "@/components/ui/menu";
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { ObjectRow } from "@/components/ui/object-row";
 import { Segment } from "@/components/ui/segment";
 import { SegmentedControl } from "@/components/ui/segmented-control";
@@ -18,6 +23,7 @@ const columns = [
   { key: "source", alignment: "left" as const },
   { key: "publishedAt", alignment: "left" as const },
   { key: "status", alignment: "left" as const },
+  { key: "defaultText", alignment: "left" as const },
 ];
 
 const demoListings = [
@@ -68,6 +74,101 @@ const demoListings = [
   },
 ];
 const priceColorVariants = ["neutral", "success", "error"] as const;
+
+function RowActions({ id }: { id: string }) {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [menuPosition, setMenuPosition] = React.useState<{ top: number; right: number } | null>(null);
+  const triggerRef = React.useRef<HTMLButtonElement>(null);
+  const menuRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!isMenuOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (triggerRef.current?.contains(target) || menuRef.current?.contains(target)) return;
+      setIsMenuOpen(false);
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isMenuOpen]);
+
+  function toggleMenu() {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+      return;
+    }
+
+    const rect = triggerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setMenuPosition({ top: rect.bottom + 4, right: window.innerWidth - rect.right });
+    setIsMenuOpen(true);
+  }
+
+  return (
+    <TableCell buttonSize="xsm" column="defaultText" compact role="body" type="button" width={118}>
+      <div className="flex w-full items-center gap-[var(--spacing)]">
+        <ButtonFavorite aria-label="Добавить в избранное" size="xsm" />
+        <IconButton aria-label="Комментарии" appearance="contrast" icon={<MessageSquareText aria-hidden="true" />} size="xsm" />
+        <IconButton
+          aria-expanded={isMenuOpen}
+          aria-haspopup="menu"
+          aria-label="Дополнительные действия"
+          appearance="contrast"
+          icon={<MoreHorizontal aria-hidden="true" />}
+          onClick={toggleMenu}
+          ref={triggerRef}
+          size="xsm"
+        />
+      </div>
+      {isMenuOpen && menuPosition && createPortal(
+        <Menu
+          align="right"
+          aria-label="Действия с объектом"
+          className="fixed z-50"
+          ref={menuRef}
+          role="menu"
+          style={menuPosition}
+        >
+          <MenuItemSingleSelect
+            icon={<Copy aria-hidden="true" className="size-5" />}
+            onClick={() => {
+              void navigator.clipboard?.writeText(id);
+              setIsMenuOpen(false);
+            }}
+            role="menuitem"
+            rightSlot={false}
+            secondaryText={false}
+            selected={false}
+          >
+            Скопировать код
+          </MenuItemSingleSelect>
+          <MenuItemSingleSelect
+            icon={<TriangleAlert aria-hidden="true" className="size-5" />}
+            onClick={() => setIsMenuOpen(false)}
+            role="menuitem"
+            rightSlot={false}
+            secondaryText={false}
+            selected={false}
+          >
+            Дубль
+          </MenuItemSingleSelect>
+        </Menu>,
+        document.body,
+      )}
+    </TableCell>
+  );
+}
 
 export function ObjectRowExamples() {
   const [propertyType, setPropertyType] = React.useState<(typeof demoListings)[number]["propertyType"]>("Квартиры");
@@ -125,6 +226,9 @@ export function ObjectRowExamples() {
           <TableCell column="status" helpIcon={false} role="head" compact sort={false} type="text" width={236}>
             Статус
           </TableCell>
+          <TableCell column="defaultText" helpIcon={false} role="head" compact sort={false} type="text" width={118}>
+            Действия
+          </TableCell>
         </TableRow>
         {priceColorVariants.map((priceColor) => (
           <ObjectRow
@@ -154,7 +258,9 @@ export function ObjectRowExamples() {
             publishedAt={activeListing.publishedAt}
             status={activeListing.status}
             onOpen={() => undefined}
-          />
+          >
+            <RowActions id={activeListing.id} />
+          </ObjectRow>
         ))}
       </Table>
       <div className="mb-3 mt-10 grid gap-1">
@@ -176,6 +282,7 @@ export function ObjectRowExamples() {
                 <TableCell column="source" helpIcon={false} role="head" compact sort={false} type="text" width={190}>Источник</TableCell>
                 <TableCell column="publishedAt" helpIcon={false} role="head" compact sort={false} type="text" width={160}>Опубликован</TableCell>
                 <TableCell column="status" helpIcon={false} role="head" compact sort={false} type="text" width={236}>Статус</TableCell>
+                <TableCell column="defaultText" helpIcon={false} role="head" compact sort={false} type="text" width={118}>Действия</TableCell>
               </TableRow>
               {([
                 { id: "listing-state-default" },
@@ -200,7 +307,9 @@ export function ObjectRowExamples() {
                   onOpen={() => undefined}
                   selected={selected}
                   viewed={viewed}
-                />
+                >
+                  <RowActions id={id} />
+                </ObjectRow>
               ))}
       </Table>
       <p className="mt-2 font-mono text-sm leading-5 text-[var(--parser-text-neutral-secondary)]">

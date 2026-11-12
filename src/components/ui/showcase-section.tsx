@@ -15,7 +15,6 @@ type ShowcaseSectionProps = Omit<React.ComponentProps<"section">, "title"> & {
   panelFrame?: boolean
   panelCount?: number
   panels?: React.ReactNode[]
-  /** @deprecated Props are no longer rendered under the example. Use settings for controls. */
   props?: string[]
   settings?: React.ReactNode
   usedComponents?: { href: string; title: React.ReactNode }[]
@@ -38,6 +37,7 @@ function ShowcaseSection({
   panelFrame = true,
   panelCount,
   panels,
+  props,
   settings,
   usedComponents,
   title,
@@ -88,6 +88,15 @@ function ShowcaseSection({
         </div>
       ) : null}
       {children}
+      {props?.length ? (
+        <div className="grid gap-0.5 bg-white px-4 py-2">
+          {props.map((setting) => (
+            <p className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]" key={setting}>
+              {setting}
+            </p>
+          ))}
+        </div>
+      ) : null}
       {settings}
       {usedComponents?.length ? (
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pb-4" aria-label="Использованные компоненты">

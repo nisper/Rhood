@@ -3,5 +3,5 @@
   "settingsPopoutWindow": false,
   "showInlineTitle": false,
   "readableLineLength": true,
-  "showLineNumber": false
+  "showLineNumber": true
 }

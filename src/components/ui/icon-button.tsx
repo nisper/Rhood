@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Star } from "lucide-react"
 
+import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
 type IconButtonAppearance = "primary" | "secondary" | "ghost" | "contrast" | "contrast-ghost" | "inherit"
@@ -11,6 +12,8 @@ type LegacyIconButtonSize = "lg"
 
 type IconButtonProps = Omit<React.ComponentProps<"button">, "style"> & {
   appearance?: IconButtonAppearance | LegacyIconButtonAppearance
+  counter?: boolean
+  counterValue?: React.ReactNode
   icon?: React.ReactNode | boolean
   iconSize?: IconButtonSize | LegacyIconButtonSize
   isDisabled?: boolean
@@ -20,9 +23,16 @@ type IconButtonProps = Omit<React.ComponentProps<"button">, "style"> & {
 }
 
 const sizeClasses: Record<IconButtonSize, string> = {
-  md: "size-[calc(var(--spacing)*10)] p-[var(--rh-sizing-common-input-py-sm)] [&_svg]:size-[calc(var(--spacing)*6)]",
-  sm: "size-[calc(var(--spacing)*9)] p-[var(--rh-sizing-common-input-py-sm)] [&_svg]:size-[calc(var(--spacing)*5)]",
-  xsm: "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] p-[var(--rh-sizing-common-input-py-xsm)] [&_svg]:size-[calc(var(--spacing)*4)]",
+  md: "size-[calc(var(--spacing)*10)] p-[var(--rh-sizing-common-input-py-sm)]",
+  sm: "size-[calc(var(--spacing)*9)] p-[var(--rh-sizing-common-input-py-sm)]",
+  xsm: "size-[calc(calc(var(--spacing)*8)-calc(var(--spacing)*1))] p-[var(--rh-sizing-common-input-py-xsm)]",
+}
+
+const iconSizeClasses: Record<IconButtonSize | LegacyIconButtonSize, string> = {
+  lg: "[&_svg]:size-[var(--rh-sizing-common-input-icon-width-md)]",
+  md: "[&_svg]:size-[calc(var(--spacing)*6)]",
+  sm: "[&_svg]:size-[calc(var(--spacing)*5)]",
+  xsm: "[&_svg]:size-[calc(var(--spacing)*4)]",
 }
 
 const toneClasses: Record<
@@ -115,6 +125,14 @@ function resolveSize(size: IconButtonProps["size"]): IconButtonSize {
   return "md"
 }
 
+function resolveIconSize(size: IconButtonProps["iconSize"] | undefined, buttonSize: IconButtonSize): IconButtonSize | LegacyIconButtonSize {
+  if (size === "lg" || size === "md" || size === "sm" || size === "xsm") {
+    return size
+  }
+
+  return buttonSize
+}
+
 function renderIcon(icon: React.ReactNode | boolean | undefined) {
   if (icon === false) {
     return null
@@ -130,8 +148,11 @@ function renderIcon(icon: React.ReactNode | boolean | undefined) {
 function IconButton({
   appearance,
   className,
+  counter = false,
+  counterValue = 1,
   disabled = false,
   icon = true,
+  iconSize,
   isDisabled = false,
   size = "md",
   state = "default",
@@ -141,14 +162,17 @@ function IconButton({
 }: IconButtonProps) {
   const resolvedAppearance = resolveAppearance({ appearance, style })
   const resolvedSize = resolveSize(size)
+  const resolvedIconSize = resolveIconSize(iconSize, resolvedSize)
   const resolvedDisabled = disabled || isDisabled
   const resolvedState = resolvedDisabled ? "disabled" : state
 
   return (
     <button
       className={cn(
-        "inline-flex shrink-0 cursor-pointer items-center justify-center overflow-hidden rounded-[var(--rh-sizing-common-input-shape-border-radius)] border-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        "relative inline-flex shrink-0 cursor-pointer items-center justify-center rounded-[var(--rh-sizing-common-input-shape-border-radius)] border-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)] disabled:pointer-events-none disabled:cursor-not-allowed",
+        counter ? "overflow-visible" : "overflow-hidden",
         sizeClasses[resolvedSize],
+        iconSizeClasses[resolvedIconSize],
         toneClasses[resolvedAppearance][resolvedState],
         !resolvedDisabled && resolvedState === "default" && hoverClasses[resolvedAppearance],
         className,
@@ -158,6 +182,16 @@ function IconButton({
       {...props}
     >
       {renderIcon(icon)}
+      {counter && (
+        <Badge
+          aria-hidden="true"
+          className="pointer-events-none absolute right-0 top-0 z-10 translate-x-1/2 -translate-y-1/2"
+          color="brand"
+          shape="circle"
+        >
+          {counterValue}
+        </Badge>
+      )}
     </button>
   )
 }

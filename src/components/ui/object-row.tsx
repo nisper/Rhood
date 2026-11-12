@@ -1,9 +1,14 @@
-import { Phone } from "lucide-react";
+import * as React from "react";
+import { createPortal } from "react-dom";
+import { Copy, MessageSquareText, MoreHorizontal, Phone, TriangleAlert } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Chip } from "@/components/ui/chip";
+import { ButtonFavorite } from "@/components/ui/button-favorite";
 import { IconButton } from "@/components/ui/icon-button";
 import { Link } from "@/components/ui/link";
+import { Menu } from "@/components/ui/menu";
+import { MenuItemSingleSelect } from "@/components/ui/menu-item-single-select";
 import { ObjectPriceCell, type ObjectPriceColor } from "@/components/ui/object-price-cell";
 import type { PriceHistoryEntry } from "@/components/ui/price-history";
 import { TableCell } from "@/components/ui/table-cell";
@@ -29,11 +34,13 @@ type ObjectRowColumn =
   | "duplicates"
   | "savedAt"
   | "crmStatus"
-  | "id";
+  | "id"
+  | "actions";
 
 type ObjectRowPriceColor = ObjectPriceColor;
 
 type ObjectRowProps = {
+  children?: React.ReactNode;
   id: string;
   specs: string;
   address: string;
@@ -53,6 +60,8 @@ type ObjectRowProps = {
   hiddenColumns?: ReadonlySet<ObjectRowColumn>;
   onOpen?: () => void;
   onCall?: () => void;
+  showActions?: boolean;
+  onCommentsClick?: () => void;
 };
 
 const CALL_COLUMN_WIDTH = 56;
@@ -60,6 +69,7 @@ const BUYER_COLUMN_WIDTH = 55;
 const PUBLISHED_AT_COLUMN_WIDTH = 160;
 
 function ObjectRow({
+  children,
   id,
   specs,
   address,
@@ -79,7 +89,50 @@ function ObjectRow({
   hiddenColumns = new Set(),
   onOpen,
   onCall,
+  showActions = false,
+  onCommentsClick,
 }: ObjectRowProps) {
+  const [isFavorite, setIsFavorite] = React.useState(false);
+  const [isDuplicate, setIsDuplicate] = React.useState(false);
+  const [isActionsMenuOpen, setIsActionsMenuOpen] = React.useState(false);
+  const [actionsMenuPosition, setActionsMenuPosition] = React.useState<{ top: number; right: number } | null>(null);
+  const actionsTriggerRef = React.useRef<HTMLButtonElement>(null);
+  const actionsMenuRef = React.useRef<HTMLDivElement>(null);
+
+  React.useEffect(() => {
+    if (!isActionsMenuOpen) return;
+
+    function handlePointerDown(event: PointerEvent) {
+      const target = event.target;
+      if (!(target instanceof Node)) return;
+      if (actionsTriggerRef.current?.contains(target) || actionsMenuRef.current?.contains(target)) return;
+      setIsActionsMenuOpen(false);
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") setIsActionsMenuOpen(false);
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isActionsMenuOpen]);
+
+  function toggleActionsMenu() {
+    if (isActionsMenuOpen) {
+      setIsActionsMenuOpen(false);
+      return;
+    }
+
+    const rect = actionsTriggerRef.current?.getBoundingClientRect();
+    if (!rect) return;
+    setActionsMenuPosition({ top: rect.bottom + 4, right: window.innerWidth - rect.right });
+    setIsActionsMenuOpen(true);
+  }
+
   return (
       <TableRow
         aria-selected={selected || undefined}
@@ -135,12 +188,12 @@ function ObjectRow({
         </TableCell>
       )}
 
-      <TableCell buttonPadding="var(--spacing)" buttonSize="xsm" column="call" custom role="body" compact type="button" verticalAlign="top" width={CALL_COLUMN_WIDTH}>
+      <TableCell buttonSize="xsm" column="call" custom role="body" compact type="button" verticalAlign="top" width={CALL_COLUMN_WIDTH}>
         <div className="grid">
           <IconButton
             appearance="contrast"
             aria-label="Позвонить"
-            className="col-start-1 row-start-1 justify-self-center p-[var(--spacing)]"
+            className="col-start-1 row-start-1 justify-self-center"
             icon={<Phone aria-hidden="true" strokeWidth={2} />}
             onClick={(event) => {
               event.stopPropagation();
@@ -192,6 +245,86 @@ function ObjectRow({
           </Chip>
         </TableCell>
       )}
+      {showActions && (
+        <TableCell column="actions" custom role="body" compact type="button" width={118}>
+          <div className="flex w-full items-center justify-start gap-[var(--spacing)]">
+            <ButtonFavorite
+              aria-label={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
+              checked={isFavorite}
+              iconOnly
+              onClick={(event) => {
+                event.stopPropagation();
+                setIsFavorite((value) => !value);
+              }}
+              size="xsm"
+            />
+            <IconButton
+              aria-label="Посмотреть комментарии"
+              appearance="contrast"
+              className="p-[var(--spacing)]"
+              icon={<MessageSquareText aria-hidden="true" />}
+              onClick={(event) => {
+                event.stopPropagation();
+                onCommentsClick?.();
+              }}
+              size="xsm"
+            />
+            <IconButton
+              aria-expanded={isActionsMenuOpen}
+              aria-haspopup="menu"
+              aria-label="Дополнительные действия"
+              appearance="contrast"
+              className="p-[var(--spacing)]"
+              icon={<MoreHorizontal aria-hidden="true" />}
+              onClick={(event) => {
+                event.stopPropagation();
+                toggleActionsMenu();
+              }}
+              ref={actionsTriggerRef}
+              size="xsm"
+            />
+          </div>
+          {isActionsMenuOpen && actionsMenuPosition && createPortal(
+            <Menu
+              align="right"
+              aria-label="Действия с объектом"
+              className="fixed z-50"
+              ref={actionsMenuRef}
+              role="menu"
+              style={actionsMenuPosition}
+            >
+              <MenuItemSingleSelect
+                icon={<Copy aria-hidden="true" className="size-5" />}
+                onClick={() => {
+                  void navigator.clipboard?.writeText(id);
+                  setIsActionsMenuOpen(false);
+                }}
+                role="menuitem"
+                rightSlot={false}
+                secondaryText={false}
+                selected={false}
+              >
+                Скопировать код
+              </MenuItemSingleSelect>
+              <MenuItemSingleSelect
+                icon={<TriangleAlert aria-hidden="true" className="size-5" />}
+                onClick={() => {
+                  setIsDuplicate((value) => !value);
+                  setIsActionsMenuOpen(false);
+                }}
+                role="menuitem"
+                rightSlot={false}
+                secondaryText={false}
+                selected={false}
+              >
+                {isDuplicate ? "Убрать отметку дубля" : "Дубль"}
+              </MenuItemSingleSelect>
+            </Menu>,
+            document.body,
+          )}
+        </TableCell>
+      )}
+      {children}
       </TableRow>
   );
 }

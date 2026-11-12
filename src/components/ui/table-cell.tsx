@@ -119,7 +119,7 @@ function TableCell({
   const isPlaceholder = type === "placeholder"
   const isChip = type === "chip"
   const isButton = type === "button"
-  const resolvedVerticalAlignment = verticalAlign ?? (isButton ? "center" : "top")
+  const resolvedVerticalAlignment = verticalAlign ?? "top"
   const contentVerticalPadding = isChip
     ? "3px"
     : isButton

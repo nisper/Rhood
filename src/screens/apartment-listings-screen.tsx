@@ -197,6 +197,7 @@ const resultTableColumns = [
   { key: "source", alignment: "left" },
   { key: "publishedAt", alignment: "left" },
   { key: "status", alignment: "left" },
+  { key: "actions", alignment: "center" },
 ] as const;
 const CALL_COLUMN_WIDTH = 56;
 const BUYER_COLUMN_WIDTH = 55;
@@ -823,6 +824,18 @@ function ResultHeader({
           Статус
         </TableCell>
       )}
+      <TableCell
+        aria-label="Действия"
+        column="actions"
+        helpIcon={false}
+        role="head"
+        compact
+        sort={false}
+        type="text"
+        width={118}
+      >
+        Действия
+      </TableCell>
     </TableRow>
   );
 }
@@ -1134,6 +1147,8 @@ function ListingsTable({
           onOpen={() => onOpenObjectInfo(listing)}
           selected={selectedIds.includes(listing.id)}
           viewed={viewedListingIds.has(listing.id)}
+          showActions
+          onCommentsClick={() => onOpenObjectInfo(listing)}
         />
       ))}
     </Table>
