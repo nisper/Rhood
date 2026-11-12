@@ -185,9 +185,9 @@ function IconButton({
       {counter && (
         <Badge
           aria-hidden="true"
-          className="pointer-events-none absolute right-0 top-0 z-10 translate-x-1/2 -translate-y-1/2"
+          className="pointer-events-none absolute right-0 top-0 z-10 translate-x-1/2"
           color="brand"
-          shape="circle"
+          shape="default"
         >
           {counterValue}
         </Badge>

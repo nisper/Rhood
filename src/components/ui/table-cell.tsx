@@ -225,7 +225,7 @@ function TableCell({
 
       {isChip && <div className={cn("flex min-h-5 w-full items-baseline", contentAlignmentClasses[resolvedAlignment])}>{children}</div>}
 
-      {isButton && <div className={cn("flex min-h-5 w-full items-center", contentAlignmentClasses[resolvedAlignment])}>{children}</div>}
+      {isButton && <div className={cn("flex min-h-5 w-full items-center gap-2", contentAlignmentClasses[resolvedAlignment])}>{children}</div>}
 
       {!isCheckbox && !isSkeleton && !isPlaceholder && !isChip && !isButton && (custom ? (
         <div className={cn("flex min-h-5 w-full", contentAlignmentClasses[resolvedAlignment])}>

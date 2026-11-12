@@ -37,7 +37,7 @@ export function SnackbarExamples() {
         ]}
         direction="vertical"
         settings={(
-          <div className="grid content-start gap-0 bg-white px-4">
+          <div className="grid content-start gap-0">
           <Switch checked={showIcon} onChange={(event) => setShowIcon(event.target.checked)} size="sm" switchPosition="left">Иконка</Switch>
           <Switch checked={showAction} onChange={(event) => setShowAction(event.target.checked)} size="sm" switchPosition="left">Кнопка действия</Switch>
           <Switch checked={showClose} onChange={(event) => setShowClose(event.target.checked)} size="sm" switchPosition="left">Кнопка закрытия</Switch>

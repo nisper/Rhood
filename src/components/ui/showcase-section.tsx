@@ -97,7 +97,7 @@ function ShowcaseSection({
           ))}
         </div>
       ) : null}
-      {settings}
+      {settings ? <div className="bg-white">{settings}</div> : null}
       {usedComponents?.length ? (
         <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 pb-4" aria-label="Использованные компоненты">
           <h3 className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">Компоненты:</h3>

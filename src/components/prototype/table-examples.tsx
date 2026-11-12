@@ -264,11 +264,9 @@ export function TableExamples() {
         panelFrame={false}
         panels={[<CellExamples compact={compact} key="cells" />]}
         settings={(
-          <div className="bg-white px-4">
-            <Switch checked={compact} onChange={(event) => setCompact(event.target.checked)} size="sm" switchPosition="left">
-              compact
-            </Switch>
-          </div>
+          <Switch checked={compact} onChange={(event) => setCompact(event.target.checked)} size="sm" switchPosition="left">
+            compact
+          </Switch>
         )}
         usedComponents={[
           { href: "?view=components&component=chip", title: "Chip" },

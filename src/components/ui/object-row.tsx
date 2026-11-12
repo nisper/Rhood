@@ -61,6 +61,7 @@ type ObjectRowProps = {
   onOpen?: () => void;
   onCall?: () => void;
   showActions?: boolean;
+  commentsCount?: number;
   onCommentsClick?: () => void;
 };
 
@@ -90,6 +91,7 @@ function ObjectRow({
   onOpen,
   onCall,
   showActions = false,
+  commentsCount,
   onCommentsClick,
 }: ObjectRowProps) {
   const [isFavorite, setIsFavorite] = React.useState(false);
@@ -247,43 +249,43 @@ function ObjectRow({
       )}
       {showActions && (
         <TableCell column="actions" custom role="body" compact type="button" width={118}>
-          <div className="flex w-full items-center justify-start gap-[var(--spacing)]">
-            <ButtonFavorite
-              aria-label={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
-              checked={isFavorite}
-              iconOnly
-              onClick={(event) => {
-                event.stopPropagation();
-                setIsFavorite((value) => !value);
-              }}
-              size="xsm"
-            />
-            <IconButton
-              aria-label="Посмотреть комментарии"
-              appearance="contrast"
-              className="p-[var(--spacing)]"
-              icon={<MessageSquareText aria-hidden="true" />}
-              onClick={(event) => {
-                event.stopPropagation();
-                onCommentsClick?.();
-              }}
-              size="xsm"
-            />
-            <IconButton
-              aria-expanded={isActionsMenuOpen}
-              aria-haspopup="menu"
-              aria-label="Дополнительные действия"
-              appearance="contrast"
-              className="p-[var(--spacing)]"
-              icon={<MoreHorizontal aria-hidden="true" />}
-              onClick={(event) => {
-                event.stopPropagation();
-                toggleActionsMenu();
-              }}
-              ref={actionsTriggerRef}
-              size="xsm"
-            />
-          </div>
+          <ButtonFavorite
+            aria-label={isFavorite ? "Убрать из избранного" : "Добавить в избранное"}
+            checked={isFavorite}
+            iconOnly
+            onClick={(event) => {
+              event.stopPropagation();
+              setIsFavorite((value) => !value);
+            }}
+            size="xsm"
+          />
+          <IconButton
+            aria-label={commentsCount === undefined ? "Посмотреть комментарии" : `Посмотреть комментарии: ${commentsCount}`}
+            appearance="contrast"
+            counter={commentsCount !== undefined}
+            counterValue={commentsCount}
+            className="p-[var(--spacing)]"
+            icon={<MessageSquareText aria-hidden="true" />}
+            onClick={(event) => {
+              event.stopPropagation();
+              onCommentsClick?.();
+            }}
+            size="xsm"
+          />
+          <IconButton
+            aria-expanded={isActionsMenuOpen}
+            aria-haspopup="menu"
+            aria-label="Дополнительные действия"
+            appearance="contrast"
+            className="p-[var(--spacing)]"
+            icon={<MoreHorizontal aria-hidden="true" />}
+            onClick={(event) => {
+              event.stopPropagation();
+              toggleActionsMenu();
+            }}
+            ref={actionsTriggerRef}
+            size="xsm"
+          />
           {isActionsMenuOpen && actionsMenuPosition && createPortal(
             <Menu
               align="right"

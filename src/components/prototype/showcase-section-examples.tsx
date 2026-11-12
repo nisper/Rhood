@@ -40,11 +40,9 @@ export function ShowcaseSectionExamples() {
           </div>,
         ]}
         settings={(
-          <div className="bg-white px-4">
-            <Switch checked={settingEnabled} onChange={(event) => setSettingEnabled(event.target.checked)} size="sm" switchPosition="left">
-              Дополнительная опция
-            </Switch>
-          </div>
+          <Switch checked={settingEnabled} onChange={(event) => setSettingEnabled(event.target.checked)} size="sm" switchPosition="left">
+            Дополнительная опция
+          </Switch>
         )}
         title="Опциональная настройка"
       />

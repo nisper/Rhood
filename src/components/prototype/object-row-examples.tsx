@@ -117,20 +117,18 @@ function RowActions({ id }: { id: string }) {
 
   return (
     <TableCell buttonSize="xsm" column="defaultText" compact role="body" type="button" width={118}>
-      <div className="flex w-full items-center gap-[var(--spacing)]">
-        <ButtonFavorite aria-label="Добавить в избранное" size="xsm" />
-        <IconButton aria-label="Комментарии" appearance="contrast" icon={<MessageSquareText aria-hidden="true" />} size="xsm" />
-        <IconButton
-          aria-expanded={isMenuOpen}
-          aria-haspopup="menu"
-          aria-label="Дополнительные действия"
-          appearance="contrast"
-          icon={<MoreHorizontal aria-hidden="true" />}
-          onClick={toggleMenu}
-          ref={triggerRef}
-          size="xsm"
-        />
-      </div>
+      <ButtonFavorite aria-label="Добавить в избранное" size="xsm" />
+      <IconButton aria-label="Комментарии" appearance="contrast" icon={<MessageSquareText aria-hidden="true" />} size="xsm" />
+      <IconButton
+        aria-expanded={isMenuOpen}
+        aria-haspopup="menu"
+        aria-label="Дополнительные действия"
+        appearance="contrast"
+        icon={<MoreHorizontal aria-hidden="true" />}
+        onClick={toggleMenu}
+        ref={triggerRef}
+        size="xsm"
+      />
       {isMenuOpen && menuPosition && createPortal(
         <Menu
           align="right"

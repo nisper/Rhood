@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docs/backlog.md",
+                "file": "docs/Tests/Компоненты.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "backlog"
+              "title": "Компоненты"
             }
           }
         ]
@@ -132,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docs/backlog.md",
+                "file": "docs/Tests/Компоненты.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -190,6 +190,9 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "docs/Tests/Тестирование.md",
+    "docs/Tests/Тестирование.md",
+    "docs/backlog.md",
     "artifacts/responsive/archive-no-subscription/424.png",
     "artifacts/responsive/archive-no-subscription/375.png",
     "AGENTS.md",
@@ -219,14 +222,11 @@
     "artifacts/responsive/archive-no-subscription/586.png",
     "artifacts/responsive/archive-no-subscription/585.png",
     "artifacts/responsive/archive-no-subscription/default.png",
-    "artifacts/responsive/archive-no-subscription/593.png",
     "docs/instructions/Адаптив в проекте.md",
     "docs/Tests/Компоненты.md",
     "docs/instructions/product-design-reasoning.md",
     "docs/Tests/Выдача объектов.md",
     "docs/instructions/drawing-a-user-flow.md",
-    "docs/Tests/_route.md",
-    "docs/backlog.md",
     "docs/component-map.md",
     "docs/tokens-generator.md",
     "docs/instructions/formatting-component-showcase-page.md",

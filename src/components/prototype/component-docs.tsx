@@ -266,7 +266,7 @@ const componentDocs: ComponentDoc[] = [
         name: "settings",
         values: "ReactNode",
         defaultValue: "—",
-        description: "Дополнительные элементы управления для настройки примера.",
+        description: "Элементы управления под примером на общей белой подложке без боковых отступов.",
       },
       {
         name: "compositionExample",

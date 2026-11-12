@@ -61,7 +61,6 @@ export function IconButtonExamples() {
             <LabeledButton appearance="contrast-ghost" label="contrast-ghost" />
           </div>,
         ]}
-        props={["appearance: primary · secondary · ghost · contrast · contrast-ghost · inherit"]}
         title="Стиль"
       />
 
@@ -71,13 +70,11 @@ export function IconButtonExamples() {
           <div className={panelClass} key="size">
             <div className="grid justify-items-center gap-3">
               <IconButton aria-label={`IconButton ${size}`} appearance="secondary" size={size} />
-              <span className="font-mono text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">size: {size}</span>
             </div>
           </div>,
         ]}
-        props={["size: md · sm · xsm"]}
         settings={(
-          <div className="bg-white px-4 py-2">
+          <div className="py-2">
             <SegmentedControl aria-label="Размер IconButton" onValueChange={(value) => typeof value === "string" && setSize(value as typeof size)} value={size}>
               <Segment value="md">md</Segment>
               <Segment value="sm">sm</Segment>
@@ -105,7 +102,6 @@ export function IconButtonExamples() {
             </div>
           </div>,
         ]}
-        props={["state: default · hovered", "disabled: boolean", "isDisabled: boolean"]}
         title="Состояния"
       />
 
@@ -119,7 +115,6 @@ export function IconButtonExamples() {
             <LabeledButton appearance="secondary" counter counterValue="9+" icon={<MoreHorizontal aria-hidden="true" />} label="Ещё: 9+" />
           </div>,
         ]}
-        props={["icon: ReactNode · boolean", "counter: boolean", "counterValue: ReactNode"]}
         title="Состав"
         usedComponents={[{ href: "/Rhood/?view=components&component=badge", title: "Badge" }]}
       />

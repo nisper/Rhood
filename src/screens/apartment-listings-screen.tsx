@@ -378,6 +378,14 @@ function getPrice(listing: (typeof listings)[number]) {
   return Number(listing.price);
 }
 
+function getDemoCommentsCount(id: string) {
+  let hash = 0;
+  for (const character of id) {
+    hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
+  }
+  return (hash % 9) + 1;
+}
+
 function getListingPriceColor(listing: (typeof listings)[number]): ObjectRowPriceColor {
   const previousPrice = listing.priceHistory?.[1]?.price;
   if (previousPrice == null) return "neutral";
@@ -1148,6 +1156,7 @@ function ListingsTable({
           selected={selectedIds.includes(listing.id)}
           viewed={viewedListingIds.has(listing.id)}
           showActions
+          commentsCount={getDemoCommentsCount(listing.id)}
           onCommentsClick={() => onOpenObjectInfo(listing)}
         />
       ))}
