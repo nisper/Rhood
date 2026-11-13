@@ -185,7 +185,7 @@ function PhotoGallery({
       alignment="center"
       aria-label="Просмотр фотографий и карты"
       aria-modal={containerDisplay === "viewport" ? true : undefined}
-      className={`!min-h-0 !grid-rows-[minmax(0,1fr)] !overflow-hidden bg-[var(--rh-theme-surface-bg)] ${
+      className={`!min-h-0 !grid-rows-[minmax(0,1fr)] !overflow-hidden !p-0 bg-[var(--rh-theme-surface-bg)] ${
         containerDisplay === "embedded"
           ? "!h-[min(680px,calc(100dvh-32px))]"
           : ""
@@ -267,11 +267,11 @@ function PhotoGallery({
 
         <section
           aria-label="Слайды объекта"
-          className={`group relative col-start-1 row-start-1 grid h-full min-h-0 min-w-0 grid-cols-1 grid-rows-[minmax(0,1fr)_52px] gap-y-4 p-4 max-md:p-2 ${
+          className={`group relative col-start-1 row-start-1 grid h-full min-h-0 min-w-0 grid-cols-1 grid-rows-[minmax(0,1fr)_76px] gap-y-4 bg-[var(--rh-theme-fill-neutral)] max-md:grid-rows-[minmax(0,1fr)_68px] ${
             sidebar ? "max-md:col-start-1 max-md:row-start-1" : ""
           }`}
         >
-          <div className="col-start-1 row-start-1 grid min-h-0 min-w-0 place-items-center overflow-hidden">
+          <div className="col-start-1 row-start-1 grid min-h-0 min-w-0 place-items-center overflow-hidden bg-[var(--rh-theme-fill-neutral)]">
             {isMapSlide ? (
               <div
                 className="h-full w-full min-h-0 min-w-0 overflow-hidden"
@@ -320,7 +320,7 @@ function PhotoGallery({
               </div>
               <div
                 aria-label="Фотографии и карта"
-                className="col-start-1 row-start-2 flex w-full min-w-0 justify-center gap-2 overflow-x-auto"
+                className="col-start-1 row-start-2 flex w-full min-w-0 justify-center gap-2 overflow-x-auto px-4 pb-6 max-md:px-2 max-md:pb-4"
               >
                 {photos.map((photo, index) => (
                   <button
