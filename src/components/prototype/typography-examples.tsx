@@ -13,22 +13,22 @@ const styles: TextStyle[] = [
   {
     className: "rh-typography-h1",
     name: "headline/headline1",
-    props: "Unbounded Bold · 40 / 48 · 0",
+    props: "Unbounded Medium (500) · 40 / 48 · 0",
   },
   {
     className: "rh-typography-h2",
     name: "headline/headline2",
-    props: "Unbounded Bold · 32 / 40 · 0",
+    props: "Unbounded Medium (500) · 32 / 40 · 0",
   },
   {
     className: "rh-typography-h3",
     name: "headline/headline3",
-    props: "Unbounded Bold · 24 / 32 · 0",
+    props: "Unbounded Medium (500) · 24 / 32 · 0",
   },
   {
     className: "rh-typography-h4",
     name: "headline/headline4",
-    props: "Unbounded Bold · 20 / 28 · 0",
+    props: "Unbounded Medium (500) · 20 / 28 · 0",
   },
   {
     className: "rh-typography-b1",
@@ -38,7 +38,7 @@ const styles: TextStyle[] = [
   {
     className: "rh-typography-b1-med",
     name: "body/body1 medium",
-    props: "Inter SemiBold · 16 / 24 · 0.15",
+    props: "Inter · weight 480 · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b2",
@@ -48,7 +48,7 @@ const styles: TextStyle[] = [
   {
     className: "rh-typography-b2-med",
     name: "body/body2 medium",
-    props: "Inter SemiBold · 14 / 20 · 0.17",
+    props: "Inter · weight 480 · 14 / 20 · 0.17",
   },
   {
     className: "rh-typography-b1-mono",
@@ -58,7 +58,7 @@ const styles: TextStyle[] = [
   {
     className: "rh-typography-b1-mono-med",
     name: "body/body1 mono medium",
-    props: "Inter SemiBold · tabular nums · 16 / 24 · 0.15",
+    props: "Inter · weight 480 · tabular nums · 16 / 24 · 0.15",
   },
   {
     className: "rh-typography-b2-mono",
@@ -68,7 +68,7 @@ const styles: TextStyle[] = [
   {
     className: "rh-typography-b2-mono-med",
     name: "body/body2 mono medium",
-    props: "Inter SemiBold · tabular nums · 14 / 20 · 0.17",
+    props: "Inter · weight 480 · tabular nums · 14 / 20 · 0.17",
   },
 ];
 

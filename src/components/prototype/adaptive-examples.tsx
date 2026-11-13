@@ -3,8 +3,9 @@ import { TableCell } from "@/components/ui/table-cell";
 
 const viewports = [
   ["Мобильный", "0–767 px", "Смартфоны"],
-  ["Планшет", "768–1023 px", "Планшеты"],
-  ["Desktop", "от 1024 px", "Ноутбуки и десктопы"],
+  ["Планшет MD", "768–1023 px", "Планшеты"],
+  ["Планшет LG", "1024–1279 px", "Планшеты"],
+  ["Desktop", "от 1280 px", "Ноутбуки и десктопы"],
 ] as const;
 
 export function AdaptiveExamples() {

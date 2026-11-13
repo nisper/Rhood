@@ -166,7 +166,7 @@ const componentDocs: ComponentDoc[] = [
     id: "colors",
     title: "Colors",
     group: "Foundations",
-    source: "src/tmp/palette.json · src/tmp/theme.json",
+    source: "src/data/generated/tokens.generated.json · docs/tokens-generator.md → Результаты",
     render: () => <TokenColorsExamples />,
   },
   {
@@ -184,7 +184,7 @@ const componentDocs: ComponentDoc[] = [
     figmaUrl:
       "https://www.figma.com/design/MbjYVdGZqH95blipWMHXtp/Parser-%E2%80%93%C2%A0Components?node-id=0-1&p=f&t=fFqfPGDMPXDzmfVo-11",
     group: "Foundations",
-    source: "src/styles/typography.css · docs/tokens.md#Typography",
+    source: "src/styles/typography.css",
     render: () => <TypographyExamples />,
   },
   {
