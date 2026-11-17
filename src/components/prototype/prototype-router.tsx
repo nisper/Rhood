@@ -1,7 +1,8 @@
 import * as React from "react";
-import { Component, LayoutDashboard } from "lucide-react";
+import { Component, LayoutDashboard, LogIn } from "lucide-react";
 
 import { ComponentDocs } from "@/components/prototype/component-docs";
+import { LoginScreen } from "@/screens/login-screen";
 import {
   ApartmentListingsScreen,
   ArchiveScreen,
@@ -34,6 +35,14 @@ const prototypeViews: PrototypeView[] = [
     homeLabel: "Набор базы",
     icon: LayoutDashboard,
     View: ApartmentListingsScreen,
+  },
+  {
+    category: "scene",
+    id: "login",
+    title: "Авторизация",
+    homeLabel: "Авторизация",
+    icon: LogIn,
+    View: LoginScreen,
   },
   {
     category: "scene",
