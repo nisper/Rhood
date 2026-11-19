@@ -91,9 +91,7 @@ type SortState = { column: SortColumn; direction: "asc" | "desc" } | null;
 type ColumnKey = ObjectRowColumn;
 
 const listingsTableColumns: { key: ColumnKey; label: string }[] = [
-  { key: "buyer", label: "Покупатели" },
   { key: "price", label: "Цена" },
-  { key: "liquidity", label: "Ликвидность" },
   { key: "source", label: "Источник" },
   { key: "publishedAt", label: "Опубликован" },
   { key: "status", label: "Статус" },
@@ -183,10 +181,8 @@ const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]>
 const resultTableColumns = [
   { key: "selection", alignment: "left" },
   { key: "address", alignment: "left" },
-  { key: "buyer", alignment: "right" },
   { key: "call", alignment: "center" },
   { key: "price", alignment: "right" },
-  { key: "liquidity", alignment: "left" },
   { key: "source", alignment: "left" },
   { key: "publishedAt", alignment: "left" },
   { key: "status", alignment: "left" },
@@ -329,7 +325,7 @@ function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
 
-function getListingIndicator(id: string): { icon: "🔥" | "—"; traits: string[] } {
+function getListingIndicator(id: string): { icon: "flame" | "—"; traits: string[] } {
   const hash = [...id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) >>> 0, 0);
   if (hash % 2 !== 0) return { icon: "—", traits: [] };
 
@@ -340,7 +336,7 @@ function getListingIndicator(id: string): { icon: "🔥" | "—"; traits: string
     ["Высокая ликвидность", "Есть подходящие покупатели"],
   ];
 
-  return { icon: "🔥", traits: traitSets[(hash >>> 1) % traitSets.length] };
+  return { icon: "flame", traits: traitSets[(hash >>> 1) % traitSets.length] };
 }
 
 function getMaximumFractionDigits(values: readonly (number | null | undefined)[]): number {
@@ -1076,6 +1072,7 @@ function ListingsTable({
   sortable?: boolean;
 }) {
   const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
+  const tableHiddenColumns = new Set<ColumnKey>([...hiddenColumns, "buyer", "liquidity"]);
   const sortedListings = [...tableListings]
     .sort((first, second) => {
       if (!sort) return 0;
@@ -1135,7 +1132,7 @@ function ListingsTable({
       verticalBorders
     >
       <ResultHeader
-        hiddenColumns={hiddenColumns}
+        hiddenColumns={tableHiddenColumns}
         onSort={onSort}
         propertyType={propertyType}
         sort={sort}
@@ -1143,7 +1140,7 @@ function ListingsTable({
       />
       {sortedListings.map((listing) => (
         <ObjectRow
-          hiddenColumns={hiddenColumns}
+          hiddenColumns={tableHiddenColumns}
           key={listing.id}
           id={listing.id}
           specs={getSpecs(listing)}

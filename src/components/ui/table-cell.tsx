@@ -108,7 +108,7 @@ function TableCell({
   ...props
 }: TableCellProps) {
   const cellRef = React.useRef<HTMLDivElement>(null)
-  const [tooltipPosition, setTooltipPosition] = React.useState<{ left: number; top: number } | null>(null)
+  const [tooltipPosition, setTooltipPosition] = React.useState<{ left: number; top: number; alignment: TableCellAlignment } | null>(null)
   const tableSelection = useTableSelection()
   const tableColumns = useTableColumns()
   const hasPaddingX = paddingX ?? !disGutters
@@ -186,7 +186,12 @@ function TableCell({
         onMouseEnter?.(event)
         if (!showHelpTooltip) return
         const rect = event.currentTarget.getBoundingClientRect()
-        setTooltipPosition({ left: rect.left + rect.width / 2, top: rect.bottom + 4 })
+        const left = resolvedAlignment === "right"
+          ? rect.right
+          : resolvedAlignment === "center"
+            ? rect.left + rect.width / 2
+            : rect.left
+        setTooltipPosition({ left, top: rect.bottom + 4, alignment: resolvedAlignment })
       }}
       onMouseLeave={(event) => {
         onMouseLeave?.(event)
@@ -248,7 +253,11 @@ function TableCell({
       {isSorted && (sortDirection === "asc" ? <ArrowDown aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} /> : <ArrowUp aria-hidden="true" className="absolute right-[calc(var(--spacing)*1)] top-[calc(var(--spacing)*1)] size-[calc(var(--spacing)*3)] text-[var(--rh-theme-text-neutral-secondary)]" strokeWidth={2} />)}
       {showHelpTooltip && tooltipPosition && typeof document !== "undefined" && createPortal(
         <span
-          className="pointer-events-none fixed z-[2147483647] -translate-x-1/2"
+          className={cn(
+            "pointer-events-none fixed z-[2147483647]",
+            tooltipPosition.alignment === "center" && "-translate-x-1/2",
+            tooltipPosition.alignment === "right" && "-translate-x-full",
+          )}
           style={{ left: tooltipPosition.left, top: tooltipPosition.top }}
         >
           <Tooltip className="max-w-[300px]" role="tooltip">{helpTooltip ?? "Typography"}</Tooltip>

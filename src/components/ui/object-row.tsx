@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { Check, Copy, MessageSquareText, MoreHorizontal, Phone, TriangleAlert } from "lucide-react";
+import { Copy, Flame, MessageSquareText, MoreHorizontal, Phone, TriangleAlert } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Chip } from "@/components/ui/chip";
@@ -40,7 +40,7 @@ type ObjectRowColumn =
 type ObjectRowPriceColor = ObjectPriceColor;
 
 type ObjectRowIndicator = {
-  icon: "🔥" | "—";
+  icon: "flame" | "—";
   traits: string[];
 };
 
@@ -163,16 +163,19 @@ function ObjectRow({
       <TableCell
         className="min-w-[300px]"
         column="address"
-        helpIcon={indicator?.icon === "🔥"}
-        helpTooltip={indicator?.icon === "🔥" ? (
-          <ul className="grid gap-1">
-            {indicator.traits.map((trait) => (
-              <li className="flex items-center gap-1" key={trait}>
-                <Check aria-hidden="true" className="size-5 shrink-0" />
-                <span>{trait}</span>
-              </li>
-            ))}
-          </ul>
+        helpIcon={indicator?.icon === "flame"}
+        helpTooltip={indicator?.icon === "flame" ? (
+          <div className="grid gap-1">
+            <p className="pl-5 text-[var(--rh-theme-text-neutral-secondary-contrast)]">У этого объекта:</p>
+            <ul className="grid gap-1">
+              {indicator.traits.map((trait) => (
+                <li className="flex items-center gap-1" key={trait}>
+                  <Flame aria-hidden="true" className="size-4 shrink-0 text-[var(--rh-palette-orange-500)]" fill="currentColor" />
+                  <span>{trait}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : undefined}
         custom
         role="body"
@@ -181,8 +184,8 @@ function ObjectRow({
         width="fill"
       >
         <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
-          <div className="flex min-h-5 items-center gap-2">
-            {indicator?.icon === "🔥" && <span aria-label="Огонь" className="shrink-0" role="img">🔥</span>}
+          <div className="flex min-h-5 items-center gap-1">
+            {indicator?.icon === "flame" && <Flame aria-label="Огонь" className="size-5 shrink-0 text-[var(--rh-palette-orange-500)]" fill="currentColor" />}
             <Link
               href="#object-info"
               onClick={(event) => {
