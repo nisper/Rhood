@@ -22,6 +22,7 @@ type ObjectRowColumn =
   | "floor"
   | "buyer"
   | "call"
+  | "indicator"
   | "price"
   | "pricePerM2"
   | "pricePerSotka"
@@ -55,6 +56,7 @@ type ObjectRowProps = {
   author: string;
   publishedAt: string;
   status: string;
+  indicator?: "🔥" | "—";
   selected?: boolean;
   viewed?: boolean;
   hiddenColumns?: ReadonlySet<ObjectRowColumn>;
@@ -85,6 +87,7 @@ function ObjectRow({
   author,
   publishedAt,
   status,
+  indicator,
   selected = false,
   viewed = false,
   hiddenColumns = new Set(),
@@ -183,6 +186,12 @@ function ObjectRow({
           <p className={viewed ? "text-[var(--rh-theme-text-neutral-secondary)]" : "text-[var(--parser-text-neutral-primary)]"}>{address}</p>
         </div>
       </TableCell>
+
+      {indicator && (
+        <TableCell column="indicator" role="body" compact type="text" verticalAlign="center" width={48}>
+          {indicator === "🔥" ? <span aria-label="Огонь" role="img">🔥</span> : <span>—</span>}
+        </TableCell>
+      )}
 
       {!hiddenColumns.has("buyer") && (
         <TableCell column="buyer" custom role="body" compact type="number" width={BUYER_COLUMN_WIDTH}>

@@ -484,6 +484,7 @@ function ObjectFilter({
     }
     setSavedFilters((current) => [nextFilter, ...current])
     setNotice("Поиск сохранен")
+    setSubscriptionFilterId(nextFilter.id)
     pendingSaveRef.current = null
     setIsCreatingSavedFilter(false)
   }
@@ -540,8 +541,8 @@ function ObjectFilter({
         onDelete={() => setPendingDeleteFilterId(filter.id)}
         onEdit={() => editSavedFilter(filter)}
         onSubscriptionChange={(subscribed) => {
-          if (subscribed) setSubscriptionFilterId(filter.id)
-          else setSavedFilters((current) => current.map((item) => item.id === filter.id ? { ...item, subscribed: false } : item))
+          setSavedFilters((current) => current.map((item) => item.id === filter.id ? { ...item, subscribed } : item))
+          setNotice(subscribed ? "Подписка на поиск оформлена" : "Подписка на поиск отменена")
         }}
         subscription={filter.subscribed ? "subscribed" : "available"}
       />
@@ -770,17 +771,14 @@ function ObjectFilter({
         <ModalContainer className="fixed inset-0 z-[60]">
           <Modal
             footer={
-              <>
-                <Button appearance="default" endIcon={false} onClick={() => setSubscriptionFilterId(null)} size="md" startIcon={false}>Отмена</Button>
-                <Button appearance="primary" endIcon={false} onClick={confirmSubscription} size="md" startIcon={false}>Подписаться на поиск</Button>
-              </>
+              <Button appearance="default" endIcon={false} onClick={confirmSubscription} size="md" startIcon={false}>Хорошо</Button>
             }
             maxWidth={480}
             onOpenChange={(open) => !open && setSubscriptionFilterId(null)}
             open={Boolean(subscriptionFilterId)}
             title="Подписаться на поиск"
           >
-            <p className="text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">Будем присылать новые объекты по сохранённому фильтру «{savedFilters.find((filter) => filter.id === subscriptionFilterId)?.name}». Подписка на поиск оформляется отдельно от сохранения фильтра.</p>
+            <p className="text-sm leading-5 text-[var(--rh-theme-text-neutral-secondary)]">Будем присылать новые объекты по сохранённому фильтру «{savedFilters.find((filter) => filter.id === subscriptionFilterId)?.name}».</p>
           </Modal>
         </ModalContainer>
       )}

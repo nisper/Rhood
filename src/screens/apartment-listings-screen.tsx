@@ -35,11 +35,9 @@ import { MapPriceTag } from "@/components/ui/map-price-tag";
 import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
 import { Select } from "@/components/ui/select";
-import { TabBar } from "@/components/ui/tab-bar";
 import { Table } from "@/components/ui/table";
 import { TableCell } from "@/components/ui/table-cell";
 import { TableRow } from "@/components/ui/table-row";
-import { Tab } from "@/components/ui/tab";
 import archiveFlatListings from "@/data/mock/archive-flat-listings.json";
 import archiveHouseListings from "@/data/mock/archive-house-listings.json";
 import archiveLandListings from "@/data/mock/archive-land-listings.json";
@@ -113,11 +111,6 @@ const myListingsTableColumns: { key: ColumnKey; label: string }[] = [
 
 type ArchivePropertyType = keyof typeof archiveListingsByPropertyType;
 type ArchiveColumn = { key: ColumnKey; label: string };
-type MyListingsMode = "saved" | "duplicates";
-const myListingsTabs: { label: string; value: MyListingsMode; description: string }[] = [
-  { label: "Объекты из Rhood", value: "saved", description: "Вы сохранили эти объекты из парсера" },
-  { label: "Дубли", value: "duplicates", description: "Дубли ваших объектов из Космоса" },
-];
 type MyListingRow = {
   listing: (typeof listings)[number];
   originalIndex: number;
@@ -190,6 +183,7 @@ const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]>
 const resultTableColumns = [
   { key: "selection", alignment: "left" },
   { key: "address", alignment: "left" },
+  { key: "indicator", alignment: "center" },
   { key: "buyer", alignment: "right" },
   { key: "call", alignment: "center" },
   { key: "price", alignment: "right" },
@@ -334,6 +328,11 @@ const leaderboardColumnWidths = {
 
 function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
+}
+
+function getListingIndicator(id: string): "🔥" | "—" {
+  const hash = [...id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) | 0, 0);
+  return Math.abs(hash) % 2 === 0 ? "🔥" : "—";
 }
 
 function getMaximumFractionDigits(values: readonly (number | null | undefined)[]): number {
@@ -723,6 +722,7 @@ function ResultHeader({
       >
         Адрес
       </TableCell>
+      <TableCell aria-label="Метка" column="indicator" helpIcon={false} role="head" compact sort={false} type="text" width={48} />
       {!hiddenColumns.has("buyer") && (
         <TableCell
           column="buyer"
@@ -1152,6 +1152,7 @@ function ListingsTable({
           author={listing.clientName ?? "Частное лицо"}
           publishedAt={formatPublishedAt(listing.publishedAt)}
           status={listing.userStatus ? "В работе" : "Еще не звонили из Rhood"}
+          indicator={getListingIndicator(listing.id)}
           onOpen={() => onOpenObjectInfo(listing)}
           selected={selectedIds.includes(listing.id)}
           viewed={viewedListingIds.has(listing.id)}
@@ -1176,73 +1177,6 @@ function getObjectCountLabel(count: number) {
         : "объектов";
 
   return `${count} ${noun}`;
-}
-
-function MyListingsTitleTabs({
-  mode,
-  onModeChange,
-}: {
-  mode: MyListingsMode;
-  onModeChange: (mode: MyListingsMode) => void;
-}) {
-  const tabRefs = React.useRef<Array<HTMLButtonElement | null>>([]);
-
-  function handleKeyDown(event: React.KeyboardEvent<HTMLButtonElement>, index: number) {
-    const nextIndex = event.key === "ArrowRight"
-      ? (index + 1) % myListingsTabs.length
-      : event.key === "ArrowLeft"
-        ? (index - 1 + myListingsTabs.length) % myListingsTabs.length
-        : event.key === "Home"
-          ? 0
-          : event.key === "End"
-            ? myListingsTabs.length - 1
-            : -1;
-
-    if (nextIndex < 0) return;
-    event.preventDefault();
-    const nextTab = myListingsTabs[nextIndex];
-    onModeChange(nextTab.value);
-    tabRefs.current[nextIndex]?.focus();
-  }
-
-  return (
-    <div className="relative w-fit">
-      <TabBar aria-label="Режим списка объектов" className="w-fit gap-[var(--rh-sizing-base-module-4)]" indicator={false} role="tablist">
-        {myListingsTabs.map(({ description, label, value }, index) => {
-          const selected = mode === value;
-
-          return (
-            <button
-              aria-label={label}
-              aria-controls="my-listings-panel"
-              aria-selected={selected}
-              className={cn(
-                "flex cursor-pointer items-center border-0 bg-transparent px-0 py-0 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--rh-theme-text-neutral-focus)]",
-              )}
-              id={`my-listings-tab-${value}`}
-              key={value}
-              onClick={() => onModeChange(value)}
-              onKeyDown={(event) => handleKeyDown(event, index)}
-              ref={(element) => { tabRefs.current[index] = element; }}
-              role="tab"
-              tabIndex={selected ? 0 : -1}
-              type="button"
-            >
-              <Tab
-                className="py-0"
-                indicator={false}
-                label={label}
-                secondaryLabel={description}
-                secondaryText
-                selected={selected}
-                size="h2"
-              />
-            </button>
-          );
-        })}
-      </TabBar>
-    </div>
-  );
 }
 
 function MyListingsTable({
@@ -1479,7 +1413,6 @@ export function ApartmentListingsScreen({
 }) {
   const isMyListings = view === "my";
   const isArchive = view === "archive";
-  const [myListingsMode, setMyListingsMode] = React.useState<MyListingsMode>("saved");
   const [myPropertyType, setMyPropertyType] = React.useState<ArchivePropertyType>("Квартиры");
   const [myCrmStatus, setMyCrmStatus] = React.useState("Все статусы");
   const [basePropertyType, setBasePropertyType] = React.useState<ArchivePropertyType>("Квартиры");
@@ -1525,9 +1458,8 @@ export function ApartmentListingsScreen({
         : null,
     crmStatus: myObjectStatuses[originalIndex % myObjectStatuses.length],
   }));
-  const filteredMyObjectRows = myObjectRows.filter(({ listing, duplicateCount, crmStatus }) => (
+  const filteredMyObjectRows = myObjectRows.filter(({ listing, crmStatus }) => (
     listing.type === listingTypeByPropertyType[myPropertyType]
-    && (myListingsMode !== "duplicates" || duplicateCount > 0)
     && (myCrmStatus === "Все статусы" || crmStatus.label === myCrmStatus)
   ));
   const [hiddenColumns, setHiddenColumns] = React.useState<Set<ColumnKey>>(
@@ -1619,13 +1551,10 @@ export function ApartmentListingsScreen({
               <div className="rhood-layout-container">
               {isMyListings ? (
                 <>
-                  <MyListingsTitleTabs
-                    mode={myListingsMode}
-                    onModeChange={(mode) => {
-                      setMyListingsMode(mode);
-                      setCurrentPage(1);
-                    }}
-                  />
+                  <h1 className="rh-typography-h2 mb-1 font-[500]">Мои объекты</h1>
+                  <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">
+                    Объекты, сохранённые из парсера, и дубли ваших объектов из Космоса.
+                  </p>
                 </>
               ) : (
                 <h1 className="rh-typography-h2 mb-1 font-[500]">
@@ -1830,10 +1759,6 @@ export function ApartmentListingsScreen({
           <section
             aria-label={`Список: ${isArchive ? archivePropertyType.toLowerCase() : isMyListings ? "объекты" : basePropertyType.toLowerCase()}`}
             className="mt-3 min-w-0"
-            id={isMyListings ? "my-listings-panel" : undefined}
-            aria-labelledby={isMyListings ? `my-listings-tab-${myListingsMode}` : undefined}
-            role={isMyListings ? "tabpanel" : undefined}
-            tabIndex={isMyListings ? 0 : undefined}
           >
             {cardsView ? (
               <ListingsCardGrid
