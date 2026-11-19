@@ -183,7 +183,6 @@ const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]>
 const resultTableColumns = [
   { key: "selection", alignment: "left" },
   { key: "address", alignment: "left" },
-  { key: "indicator", alignment: "center" },
   { key: "buyer", alignment: "right" },
   { key: "call", alignment: "center" },
   { key: "price", alignment: "right" },
@@ -330,9 +329,18 @@ function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
 
-function getListingIndicator(id: string): "🔥" | "—" {
-  const hash = [...id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) | 0, 0);
-  return Math.abs(hash) % 2 === 0 ? "🔥" : "—";
+function getListingIndicator(id: string): { icon: "🔥" | "—"; traits: string[] } {
+  const hash = [...id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) >>> 0, 0);
+  if (hash % 2 !== 0) return { icon: "—", traits: [] };
+
+  const traitSets = [
+    ["Цена ниже похожих объявлений", "Новое объявление"],
+    ["Цена ниже похожих объявлений", "Есть подходящие покупатели"],
+    ["Высокая ликвидность", "Новое объявление"],
+    ["Высокая ликвидность", "Есть подходящие покупатели"],
+  ];
+
+  return { icon: "🔥", traits: traitSets[(hash >>> 1) % traitSets.length] };
 }
 
 function getMaximumFractionDigits(values: readonly (number | null | undefined)[]): number {
@@ -722,7 +730,6 @@ function ResultHeader({
       >
         Адрес
       </TableCell>
-      <TableCell aria-label="Метка" column="indicator" helpIcon={false} role="head" compact sort={false} type="text" width={48} />
       {!hiddenColumns.has("buyer") && (
         <TableCell
           column="buyer"
@@ -1220,7 +1227,7 @@ function MyListingsTable({
       verticalBorders
     >
       <TableRow>
-        {!hiddenColumns.has("address") && <TableCell column="address" helpIcon helpTooltip="Ссылка откроет объект в Космосе" role="head" sort={false} type="text" width="fill">Адрес</TableCell>}
+        {!hiddenColumns.has("address") && <TableCell column="address" helpIcon={false} role="head" sort={false} type="text" width="fill">Адрес</TableCell>}
         {!hiddenColumns.has("price") && <TableCell column="price" helpIcon helpTooltip="Мы постоянно сравниваем актуальные цены из CRM с изменениями цен на агрегаторе" role="head" sort={false} type="number" width={PRICE_COLUMN_WIDTH}>Цена, ₽</TableCell>}
         {!hiddenColumns.has("pricePerM2") && <TableCell column="pricePerM2" helpIcon={false} role="head" sort={false} type="number" width={PRICE_COLUMN_WIDTH}>Цена за м², ₽</TableCell>}
         {!hiddenColumns.has("duplicates") && <TableCell column="duplicates" helpIcon helpTooltip="Объекты, найденные на других площадках, как возможные дубли" role="head" sort={false} type="text" width={MY_LISTING_DUPLICATES_COLUMN_WIDTH}>Дубли</TableCell>}

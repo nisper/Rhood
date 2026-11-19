@@ -1,6 +1,6 @@
 import * as React from "react";
 import { createPortal } from "react-dom";
-import { Copy, MessageSquareText, MoreHorizontal, Phone, TriangleAlert } from "lucide-react";
+import { Check, Copy, MessageSquareText, MoreHorizontal, Phone, TriangleAlert } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Chip } from "@/components/ui/chip";
@@ -22,7 +22,6 @@ type ObjectRowColumn =
   | "floor"
   | "buyer"
   | "call"
-  | "indicator"
   | "price"
   | "pricePerM2"
   | "pricePerSotka"
@@ -40,6 +39,11 @@ type ObjectRowColumn =
 
 type ObjectRowPriceColor = ObjectPriceColor;
 
+type ObjectRowIndicator = {
+  icon: "🔥" | "—";
+  traits: string[];
+};
+
 type ObjectRowProps = {
   children?: React.ReactNode;
   id: string;
@@ -56,7 +60,7 @@ type ObjectRowProps = {
   author: string;
   publishedAt: string;
   status: string;
-  indicator?: "🔥" | "—";
+  indicator?: ObjectRowIndicator;
   selected?: boolean;
   viewed?: boolean;
   hiddenColumns?: ReadonlySet<ObjectRowColumn>;
@@ -159,6 +163,17 @@ function ObjectRow({
       <TableCell
         className="min-w-[300px]"
         column="address"
+        helpIcon={indicator?.icon === "🔥"}
+        helpTooltip={indicator?.icon === "🔥" ? (
+          <ul className="grid gap-1">
+            {indicator.traits.map((trait) => (
+              <li className="flex items-center gap-1" key={trait}>
+                <Check aria-hidden="true" className="size-5 shrink-0" />
+                <span>{trait}</span>
+              </li>
+            ))}
+          </ul>
+        ) : undefined}
         custom
         role="body"
         compact
@@ -167,6 +182,7 @@ function ObjectRow({
       >
         <div className="flex min-h-5 flex-col text-sm leading-5 tracking-[0.17px]">
           <div className="flex min-h-5 items-center gap-2">
+            {indicator?.icon === "🔥" && <span aria-label="Огонь" className="shrink-0" role="img">🔥</span>}
             <Link
               href="#object-info"
               onClick={(event) => {
@@ -186,12 +202,6 @@ function ObjectRow({
           <p className={viewed ? "text-[var(--rh-theme-text-neutral-secondary)]" : "text-[var(--parser-text-neutral-primary)]"}>{address}</p>
         </div>
       </TableCell>
-
-      {indicator && (
-        <TableCell column="indicator" role="body" compact type="text" verticalAlign="center" width={48}>
-          {indicator === "🔥" ? <span aria-label="Огонь" role="img">🔥</span> : <span>—</span>}
-        </TableCell>
-      )}
 
       {!hiddenColumns.has("buyer") && (
         <TableCell column="buyer" custom role="body" compact type="number" width={BUYER_COLUMN_WIDTH}>
