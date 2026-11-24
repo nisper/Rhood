@@ -3,6 +3,7 @@ import { Component, LayoutDashboard, LogIn } from "lucide-react";
 
 import { ComponentDocs } from "@/components/prototype/component-docs";
 import { LoginScreen } from "@/screens/login-screen";
+import { ApartmentListingsExperimentScreen } from "@/screens/apartment-listings-experiment-screen";
 import {
   ApartmentListingsScreen,
   ArchiveScreen,
@@ -35,6 +36,14 @@ const prototypeViews: PrototypeView[] = [
     homeLabel: "Набор базы",
     icon: LayoutDashboard,
     View: ApartmentListingsScreen,
+  },
+  {
+    category: "scene",
+    id: "apartment-listings-experiment",
+    title: "Набор базы — эксперимент",
+    homeLabel: "Набор базы — эксперимент",
+    icon: LayoutDashboard,
+    View: ApartmentListingsExperimentScreen,
   },
   {
     category: "scene",

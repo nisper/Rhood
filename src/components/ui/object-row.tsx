@@ -65,7 +65,9 @@ type ObjectRowProps = {
   viewed?: boolean;
   hiddenColumns?: ReadonlySet<ObjectRowColumn>;
   onOpen?: () => void;
+  onHover?: () => void;
   onCall?: () => void;
+  showCall?: boolean;
   showActions?: boolean;
   commentsCount?: number;
   onCommentsClick?: () => void;
@@ -96,7 +98,9 @@ function ObjectRow({
   viewed = false,
   hiddenColumns = new Set(),
   onOpen,
+  onHover,
   onCall,
+  showCall = true,
   showActions = false,
   commentsCount,
   onCommentsClick,
@@ -148,6 +152,8 @@ function ObjectRow({
         className={selected ? "bg-[var(--rh-theme-fill-brand-selected)] hover:bg-[var(--rh-theme-surface-neutral-hover)]" : undefined}
         hover={Boolean(onOpen)}
         onClick={onOpen}
+        onFocus={onHover}
+        onMouseEnter={onHover}
       >
       <TableCell
         column="selection"
@@ -212,7 +218,7 @@ function ObjectRow({
         </TableCell>
       )}
 
-      <TableCell buttonSize="xsm" column="call" custom role="body" compact type="button" verticalAlign="top" width={CALL_COLUMN_WIDTH}>
+      {showCall && <TableCell buttonSize="xsm" column="call" custom role="body" compact type="button" verticalAlign="top" width={CALL_COLUMN_WIDTH}>
         <div className="grid">
           <IconButton
             appearance="contrast"
@@ -226,7 +232,7 @@ function ObjectRow({
             size="xsm"
           />
         </div>
-      </TableCell>
+      </TableCell>}
 
       {!hiddenColumns.has("price") && (
         <ObjectPriceCell
