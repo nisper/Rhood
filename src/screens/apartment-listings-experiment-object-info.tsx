@@ -11,7 +11,6 @@ import { Chip } from "@/components/ui/chip";
 import { Comments } from "@/components/ui/comments";
 import { Drawer, DrawerContainer } from "@/components/ui/drawer";
 import { ExpandableContent } from "@/components/ui/expandable-content";
-import { IconButton } from "@/components/ui/icon-button";
 import { ObjectBuyersV2 } from "@/components/ui/object-buyers";
 import { ToggleChip } from "@/components/ui/toggle-chip";
 import { cn } from "@/lib/utils";
@@ -29,6 +28,7 @@ type ExperimentObjectInfoData = {
   commentCount: number;
   constructionYear?: number | null;
   description?: string | null;
+  imageSrc: string;
   phone?: string | null;
   price: number;
   pricePerArea: number;
@@ -43,10 +43,17 @@ type ExperimentObjectInfoData = {
 };
 
 function formatRubles(value: number) {
-  if (value >= 1_000_000) {
-    return `${(value / 1_000_000).toLocaleString("ru-RU", { maximumFractionDigits: 2 })} млн ₽`;
-  }
   return `${value.toLocaleString("ru-RU")} ₽`;
+}
+
+function formatPhone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  const nationalNumber = digits.length === 11 && (digits[0] === "7" || digits[0] === "8")
+    ? digits.slice(1)
+    : digits.length === 10 ? digits : null;
+
+  if (!nationalNumber) return phone;
+  return `+7 ${nationalNumber.slice(0, 3)} ${nationalNumber.slice(3, 6)} ${nationalNumber.slice(6, 8)} ${nationalNumber.slice(8)}`;
 }
 
 const galleryImage = "/Rhood/assets/object-gallery-1.png";
@@ -105,15 +112,15 @@ function ExperimentObjectInfo({ className, data, onClose, presentation = "inline
   return (
     <article
       className={cn(
-        "w-[884px] overflow-hidden rounded-[var(--rh-sizing-border-radius-modal)] bg-[var(--rh-theme-fill-contrast-static)]",
+        "w-[884px] overflow-hidden bg-[var(--rh-theme-fill-contrast-static)]",
         className,
       )}
       {...props}
     >
-      <ExperimentObjectInfoHeader onClose={onClose} />
+      <ExperimentObjectInfoHeader />
 
-      <div className="grid grid-cols-[minmax(0,564px)_320px] items-start">
-        <main className="grid min-w-0 gap-8 px-4 pb-6 pt-3">
+      <div className="grid grid-cols-[minmax(0,1fr)_320px] items-start gap-6">
+        <main className="grid min-w-0 gap-8 pb-6 pt-3">
           <ObjectGallery data={data} />
           {data ? <ExperimentObjectBuyers buyerCount={data.buyerCount} /> : <ObjectBuyersV2 />}
           <section className="grid gap-4" aria-labelledby="object-description">
@@ -137,9 +144,9 @@ function ExperimentObjectInfo({ className, data, onClose, presentation = "inline
   );
 }
 
-function ExperimentObjectInfoHeader({ onClose }: { onClose?: () => void }) {
+function ExperimentObjectInfoHeader() {
   return (
-    <header className="flex items-center gap-2 px-4 pt-2">
+    <header className="flex items-center gap-2">
       <div className="flex min-w-0 flex-1 items-center gap-2">
         <ButtonFavorite appearance="ghost" iconOnly={false} size="sm" />
         <Button appearance="ghost" endIcon={false} size="sm" startIcon={<img alt="" className="size-5 max-w-none shrink-0" src="/Rhood/assets/object-info-header-layers.svg" />}>
@@ -152,7 +159,6 @@ function ExperimentObjectInfoHeader({ onClose }: { onClose?: () => void }) {
           В отдельном окне
         </Button>
       </div>
-      <IconButton aria-label="Закрыть информацию об объекте" appearance="ghost" icon={<img alt="" src="/Rhood/assets/object-info-header-close.svg" />} onClick={onClose} />
     </header>
   );
 }
@@ -177,12 +183,8 @@ function ExperimentObjectBuyers({ buyerCount }: { buyerCount: number }) {
 function ObjectGallery({ data }: { data?: ExperimentObjectInfoData }) {
   return (
     <section className="grid gap-2" aria-label="Галерея объекта">
-      <div className="aspect-video overflow-hidden rounded-[var(--rh-sizing-border-radius-lg)] bg-[var(--rh-theme-fill-neutral)]">
-        {data ? (
-          <div className="grid size-full place-items-center rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">Фотография недоступна</div>
-        ) : (
-          <img alt="Фотография объекта" className="size-full object-cover" src={galleryImage} />
-        )}
+      <div className="aspect-video overflow-hidden bg-[var(--rh-theme-fill-neutral)]">
+        <img alt={data ? `Фото объекта: ${data.address}` : "Фотография объекта"} className="size-full object-cover" src={data?.imageSrc ?? galleryImage} />
       </div>
     </section>
   );
@@ -216,7 +218,7 @@ function ExperimentObjectInfoSidebar({ callStatus, data, onCallStatusChange }: {
             <p className="text-[24px] font-semibold leading-8 tracking-[-0.24px] text-[var(--rh-theme-text-neutral-primary)]">{data ? formatRubles(data.price) : "5 700 000 ₽"}</p>
             <p className="rh-typography-b1 text-[var(--rh-theme-text-neutral-secondary)]">{data ? `${formatRubles(data.pricePerArea)}/${data.pricePerAreaUnit}` : "136 038 ₽/м²"}</p>
           </div>
-          {(!data || data.priceTrend) && <span className="mt-1 flex size-6 shrink-0 items-center justify-center rounded-[var(--rh-sizing-border-radius-md)] bg-[var(--rh-theme-fill-error-light)] text-[var(--rh-theme-text-error)]" title={data?.priceTrend === "down" ? "Цена снизилась" : "Цена выросла"}>
+          {(!data || data.priceTrend) && <span className="mt-1 flex size-6 shrink-0 items-center justify-center bg-[var(--rh-theme-fill-error-light)] text-[var(--rh-theme-text-error)]" title={data?.priceTrend === "down" ? "Цена снизилась" : "Цена выросла"}>
             {data?.priceTrend === "down" ? <ChevronDown aria-hidden="true" className="size-5" strokeWidth={2} /> : <ChevronUp aria-hidden="true" className="size-5" strokeWidth={2} />}
           </span>}
         </div>
@@ -227,19 +229,26 @@ function ExperimentObjectInfoSidebar({ callStatus, data, onCallStatusChange }: {
           <p className="rh-typography-b1"><a className="cursor-pointer text-[var(--rh-theme-text-brand)] underline" href={data?.sourceHref ?? "https://domclick.ru"} rel="noreferrer" target="_blank">{data?.source ?? "Домклик"}</a>, {data?.author ?? "Частное лицо"}</p>
           <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">{data ? `Опубликован: ${data.publishedAt}` : "Последний звонок 15 ч 20 мин назад"}</p>
         </div>
-        <Button className="w-full" disabled={Boolean(data && !data.phone)} endIcon={false} startIcon={false}>{data ? data.phone || "Телефон не указан" : "+7 922 007 6761"}</Button>
+        <Button
+          className="w-full"
+          endIcon={false}
+          onClick={data && !data.phone ? () => window.open(data.sourceHref, "_blank", "noopener,noreferrer") : undefined}
+          startIcon={false}
+        >
+          {data ? data.phone ? formatPhone(data.phone) : "Посмотреть на агрегаторе" : "+7 922 007 67 61"}
+        </Button>
       </section>
 
       <section className="grid gap-2" aria-labelledby="call-status">
         <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]" id="call-status">Статус последнего звонка</p>
         <div className="flex flex-wrap gap-2">
           {statuses.map((status) => (
-            <ToggleChip checked={callStatus === status} icon={false} key={status} onClick={() => onCallStatusChange(status)} size="lg">{status}</ToggleChip>
+            <ToggleChip checked={callStatus === status} icon={false} key={status} onClick={() => onCallStatusChange(status)} size="md">{status}</ToggleChip>
           ))}
         </div>
       </section>
 
-      <div className="grid gap-1 rounded-[var(--rh-sizing-border-radius-lg)] bg-[var(--rh-theme-surface-under-islands)] p-1">
+      <div className="grid gap-1 rounded-[calc(var(--rh-sizing-common-input-shape-border-radius)+var(--spacing))] bg-[var(--rh-theme-surface-under-islands)] p-1">
         <Button appearance="contrast" className="w-full" endIcon={false} startIcon={<BookmarkPlus aria-hidden="true" strokeWidth={2} />}>Сохранить в космос</Button>
         <p className="text-center rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Мы сразу создадим заявку и объект</p>
       </div>

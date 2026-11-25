@@ -1863,7 +1863,10 @@ export function ApartmentListingsScreen({
           ) : (
             <ObjectInfo
               onClose={() => setSelectedListing(null)}
+              phone={selectedListing.phone}
               presentation="drawer"
+              source={formatSource(selectedListing.domain)}
+              sourceHref={sourceHref(selectedListing.domain, selectedListing.url ?? "")}
             />
           )
         )}

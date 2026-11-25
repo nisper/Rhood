@@ -14,12 +14,14 @@ import {
 import * as React from "react";
 
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { ArchiveIntroOverlay } from "@/components/prototype/archive-intro-overlay";
 import { ObjectFilter, type ObjectFilterValues } from "@/components/ui/object-filter";
 import { Chip } from "@/components/ui/chip";
 import { Footer } from "@/components/ui/footer";
 import { IconButton } from "@/components/ui/icon-button";
 import { Link } from "@/components/ui/link";
+import { List } from "@/components/ui/list";
 import { MainHeader } from "@/components/ui/main-header";
 import { Menu } from "@/components/ui/menu";
 import { MenuDivider } from "@/components/ui/menu-divider";
@@ -30,7 +32,7 @@ import { cn } from "@/lib/utils";
 import { Modal, ModalContainer } from "@/components/ui/modal";
 import { ExperimentObjectInfo } from "@/screens/apartment-listings-experiment-object-info";
 import { ObjectCard } from "@/components/ui/object-card";
-import { ObjectRow, type ObjectRowColumn, type ObjectRowPriceColor } from "@/components/ui/object-row";
+import { ObjectRow, type ObjectRowColumn } from "@/components/ui/object-row";
 import { MapPriceTag } from "@/components/ui/map-price-tag";
 import { Pagination } from "@/components/ui/pagination";
 import { PhotoGallery } from "@/components/ui/photo-gallery";
@@ -178,16 +180,6 @@ const archiveColumnsByPropertyType: Record<ArchivePropertyType, ArchiveColumn[]>
   ],
 };
 
-const resultTableColumns = [
-  { key: "selection", alignment: "left" },
-  { key: "address", alignment: "left" },
-  { key: "call", alignment: "center" },
-  { key: "price", alignment: "right" },
-  { key: "source", alignment: "left" },
-  { key: "publishedAt", alignment: "left" },
-  { key: "status", alignment: "left" },
-  { key: "actions", alignment: "center" },
-] as const;
 const CALL_COLUMN_WIDTH = 56;
 const BUYER_COLUMN_WIDTH = 55;
 const PRICE_COLUMN_WIDTH = 128;
@@ -294,18 +286,11 @@ function formatNumber(value: number) {
   return new Intl.NumberFormat("ru-RU").format(value);
 }
 
-function getListingIndicator(id: string): { icon: "flame" | "—"; traits: string[] } {
-  const hash = [...id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) >>> 0, 0);
-  if (hash % 2 !== 0) return { icon: "—", traits: [] };
-
-  const traitSets = [
-    ["Цена ниже похожих объявлений", "Новое объявление"],
-    ["Цена ниже похожих объявлений", "Есть подходящие покупатели"],
-    ["Высокая ликвидность", "Новое объявление"],
-    ["Высокая ликвидность", "Есть подходящие покупатели"],
-  ];
-
-  return { icon: "flame", traits: traitSets[(hash >>> 1) % traitSets.length] };
+function getListingImage(listing: (typeof listings)[number]) {
+  if (listing.type === "HOUSE") return "/Rhood/assets/obj-outside.jpg";
+  if (listing.type === "LAND") return "/Rhood/assets/archive-unsplash-exterior-1.jpg";
+  const hash = [...listing.id].reduce((value, character) => (value * 31 + character.charCodeAt(0)) >>> 0, 0);
+  return listingCardPhotos[hash % listingCardPhotos.length];
 }
 
 function getMaximumFractionDigits(values: readonly (number | null | undefined)[]): number {
@@ -350,29 +335,6 @@ function getPrice(listing: (typeof listings)[number]) {
   return Number(listing.price);
 }
 
-function getDemoCommentsCount(id: string) {
-  let hash = 0;
-  for (const character of id) {
-    hash = (hash * 31 + character.charCodeAt(0)) >>> 0;
-  }
-  return (hash % 9) + 1;
-}
-
-function getListingPriceColor(listing: (typeof listings)[number]): ObjectRowPriceColor {
-  const previousPrice = listing.priceHistory?.[1]?.price;
-  if (previousPrice == null) return "neutral";
-
-  const currentPrice = getPrice(listing);
-  const priorPrice = Number(previousPrice);
-  if (!Number.isFinite(priorPrice)) return "neutral";
-
-  return currentPrice < priorPrice
-    ? "error"
-    : currentPrice > priorPrice
-      ? "success"
-      : "neutral";
-}
-
 function getSpecs(listing: (typeof listings)[number]) {
   if (listing.type === "LAND") {
     return `Участок, ${listing.area.toLocaleString("ru-RU")} сот.`;
@@ -403,6 +365,7 @@ function getObjectInfoData(listing: (typeof listings)[number]) {
     commentCount: listing._count.comments,
     constructionYear: "constructionYear" in listing ? listing.constructionYear : null,
     description: listing.description,
+    imageSrc: getListingImage(listing),
     phone: listing.phone,
     price,
     pricePerArea: Math.round(price / listing.area),
@@ -1050,36 +1013,8 @@ function ArchiveListingsTable({
   );
 }
 
-function ListingsTable({
-  className,
-  currentPage,
-  hiddenColumns,
-  listings: tableListings,
-  onOpenObjectInfo,
-  onPreviewObjectInfo,
-  onSort,
-  propertyType,
-  viewedListingIds,
-  sort,
-  sortable = true,
-}: {
-  className?: string;
-  currentPage: number;
-  hiddenColumns: ReadonlySet<ColumnKey>;
-  propertyType: ArchivePropertyType;
-  listings: readonly (typeof listings)[number][];
-  onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
-  onPreviewObjectInfo: (listing: (typeof listings)[number]) => void;
-  onSort: (column: SortColumn) => void;
-  sort: SortState;
-  viewedListingIds: ReadonlySet<string>;
-  /** Enables sorting by clicking a column header. */
-  sortable?: boolean;
-}) {
-  const [selectedIds, setSelectedIds] = React.useState<string[]>([]);
-  const tableHiddenColumns = new Set<ColumnKey>([...hiddenColumns, "buyer", "liquidity", "publishedAt", "status"]);
-  const sortedListings = [...tableListings]
-    .sort((first, second) => {
+function sortListings(tableListings: readonly (typeof listings)[number][], sort: SortState) {
+  return [...tableListings].sort((first, second) => {
       if (!sort) return 0;
 
       const firstValue =
@@ -1101,13 +1036,29 @@ function ListingsTable({
       const comparison = firstValue - secondValue;
 
       return sort.direction === "asc" ? comparison : -comparison;
-    })
-    .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
+  });
+}
 
-  React.useEffect(() => {
-    const availableIds = new Set(tableListings.map((listing) => listing.id));
-    setSelectedIds((current) => current.filter((id) => availableIds.has(id)));
-  }, [tableListings]);
+function ListingsList({
+  currentPage,
+  listings: tableListings,
+  onOpenObjectInfo,
+  onPreviewObjectInfo,
+  selectedListingId,
+  viewedListingIds,
+  sort,
+}: {
+  currentPage: number;
+  listings: readonly (typeof listings)[number][];
+  onOpenObjectInfo: (listing: (typeof listings)[number]) => void;
+  onPreviewObjectInfo: (listing: (typeof listings)[number]) => void;
+  selectedListingId?: string;
+  sort: SortState;
+  viewedListingIds: ReadonlySet<string>;
+}) {
+  const [selectedListingIds, setSelectedListingIds] = React.useState<ReadonlySet<string>>(() => new Set());
+  const sortedListings = sortListings(tableListings, sort)
+    .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
 
   if (sortedListings.length === 0) {
     return (
@@ -1123,58 +1074,43 @@ function ListingsTable({
   }
 
   return (
-    <Table
-      bordered
-      className={className}
-      columns={resultTableColumns}
-      minWidth={0}
-      stickyHeader
-      style={{ width: "100%" }}
-      selection={{
-        onSelectedIdsChange: setSelectedIds,
-        rowIds: sortedListings.map((listing) => listing.id),
-        selectedIds,
-      }}
-      verticalBorders
-    >
-      <ResultHeader
-        hiddenColumns={tableHiddenColumns}
-        onSort={onSort}
-        propertyType={propertyType}
-        showActions={false}
-        showCall={false}
-        sort={sort}
-        sortable={sortable}
-      />
-      {sortedListings.map((listing) => (
-        <ObjectRow
-          hiddenColumns={tableHiddenColumns}
-          key={listing.id}
-          id={listing.id}
-          specs={getSpecs(listing)}
-          address={listing.address}
-          buyerCount={listing.buyerDemandAvailableCount ?? 0}
-          price={getPrice(listing)}
-          pricePerArea={Math.round(getPrice(listing) / listing.area)}
-          priceColor={getListingPriceColor(listing)}
-          priceHistory={listing.priceHistory}
-          liquidity="Оцениваем"
-          source={formatSource(listing.domain)}
-          sourceHref={sourceHref(listing.domain, listing.url)}
-          author={listing.clientName ?? "Частное лицо"}
-          publishedAt={formatPublishedAt(listing.publishedAt)}
-          status={listing.userStatus ? "В работе" : "Еще не звонили из Rhood"}
-          indicator={getListingIndicator(listing.id)}
-          onOpen={() => onOpenObjectInfo(listing)}
-          onHover={() => onPreviewObjectInfo(listing)}
-          showCall={false}
-          selected={selectedIds.includes(listing.id)}
-          viewed={viewedListingIds.has(listing.id)}
-          commentsCount={getDemoCommentsCount(listing.id)}
-          onCommentsClick={() => onOpenObjectInfo(listing)}
-        />
-      ))}
-    </Table>
+    <List aria-label="Объекты" className="mt-3" role="list">
+      {sortedListings.map((listing) => {
+        const selected = listing.id === selectedListingId;
+        return <div key={listing.id} onMouseEnter={() => onPreviewObjectInfo(listing)} role="listitem">
+          <div className="grid w-full grid-cols-[auto_minmax(0,1fr)] items-start gap-3">
+            <Checkbox
+              aria-label={`Выбрать объект: ${getSpecs(listing)}, ${listing.address}`}
+              checked={selectedListingIds.has(listing.id)}
+              label={false}
+              onChange={(event) => {
+                const checked = event.target.checked;
+                setSelectedListingIds((current) => {
+                  const next = new Set(current);
+                  if (checked) next.add(listing.id);
+                  else next.delete(listing.id);
+                  return next;
+                });
+              }}
+              size="sm"
+            />
+            <button
+              aria-current={selected ? "true" : undefined}
+              className="grid w-full cursor-pointer grid-cols-[minmax(0,1fr)_auto] items-start gap-3 py-2 text-left"
+              onClick={() => onOpenObjectInfo(listing)}
+              onFocus={() => onPreviewObjectInfo(listing)}
+              type="button"
+            >
+              <span className="min-w-0">
+                <span className={cn("block rh-typography-b2", selected || viewedListingIds.has(listing.id) ? "text-[var(--rh-theme-text-neutral-primary)]" : "text-[var(--rh-theme-text-neutral-secondary)]", selected && "font-semibold")}>{getSpecs(listing)}</span>
+                <span className="block truncate rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">{listing.address}</span>
+              </span>
+              <span className={cn("rh-typography-b2 tabular-nums whitespace-nowrap", selected ? "text-[var(--rh-theme-text-neutral-primary)]" : "text-[var(--rh-theme-text-neutral-secondary)]")}>{formatNumber(getPrice(listing))} ₽</span>
+            </button>
+          </div>
+        </div>;
+      })}
+    </List>
   );
 }
 
@@ -1494,6 +1430,11 @@ export function ApartmentListingsExperimentScreen({
     (typeof listings)[number] | null
   >(null);
   const [previewListing, setPreviewListing] = React.useState<(typeof listings)[number] | null>(null);
+  const visibleBaseListings = sortListings(baseListings, sort)
+    .slice((currentPage - 1) * LISTINGS_PER_PAGE, currentPage * LISTINGS_PER_PAGE);
+  const activePreviewListing = visibleBaseListings.find((listing) => listing.id === previewListing?.id)
+    ?? visibleBaseListings[0]
+    ?? null;
   const [viewedListingIds, setViewedListingIds] = React.useState<Set<string>>(() => {
     try {
       const stored = window.localStorage.getItem(VIEWED_LISTINGS_STORAGE_KEY);
@@ -1527,14 +1468,6 @@ export function ApartmentListingsExperimentScreen({
     }, 300);
   }
 
-  function handleSort(column: SortColumn) {
-    setSort((current) =>
-      current?.column === column
-        ? { column, direction: current.direction === "asc" ? "desc" : "asc" }
-        : { column, direction: "asc" },
-    );
-  }
-
   function openListing(listing: (typeof listings)[number]) {
     setViewedListingIds((current) => {
       if (current.has(listing.id)) return current;
@@ -1549,6 +1482,22 @@ export function ApartmentListingsExperimentScreen({
     setSelectedListing(listing);
   }
 
+  const tableToolbar = <TableToolbar
+    archive={isArchive}
+    archivePropertyType={archivePropertyType}
+    hiddenColumns={hiddenColumns}
+    onHiddenColumnsChange={setHiddenColumns}
+    onLeaderboardOpen={() => setLeaderboardOpen(true)}
+    onCardsViewChange={setCardsView}
+    onSortChange={setSort}
+    myListings={isMyListings}
+    cardsView={cardsView}
+    showColumnsControl={isMyListings || isArchive}
+    showLeaderboard={!isMyListings && !isArchive}
+    showMap={!isMyListings}
+    sort={sort}
+  />;
+
   return (
     <div className={cn(
       "overflow-x-clip bg-[var(--rh-theme-surface-bg)] text-[var(--parser-text-neutral-primary)]",
@@ -1561,7 +1510,7 @@ export function ApartmentListingsExperimentScreen({
       />
       <main className={cn("grid min-w-0 gap-0", isMapView && "min-h-0 flex-1 grid-rows-[auto_minmax(0,1fr)]")}>
         <>
-            <section className="py-8">
+            <section className={cn("py-8", !isMyListings && !isArchive && "border-b border-[var(--rh-theme-border-light)]")}>
               <div className="rhood-layout-container">
               {isMyListings ? (
                 <>
@@ -1638,25 +1587,11 @@ export function ApartmentListingsExperimentScreen({
                 )
               )}
             </section>
-            {!isMapView && <section
+            {!isMapView && (isMyListings || isArchive || cardsView) && <section
               aria-label="Управление выдачей"
               className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)]"
             >
-              <TableToolbar
-                archive={isArchive}
-                archivePropertyType={archivePropertyType}
-                hiddenColumns={hiddenColumns}
-                onHiddenColumnsChange={setHiddenColumns}
-                onLeaderboardOpen={() => setLeaderboardOpen(true)}
-                onCardsViewChange={setCardsView}
-                onSortChange={setSort}
-                myListings={isMyListings}
-                cardsView={cardsView}
-                showColumnsControl={isMyListings || isArchive}
-                showLeaderboard={!isMyListings && !isArchive}
-                showMap={!isMyListings}
-                sort={sort}
-              />
+              {tableToolbar}
             </section>}
         </>
         {isMapView ? (
@@ -1775,7 +1710,11 @@ export function ApartmentListingsExperimentScreen({
         ) : (
           <section
             aria-label={`Список: ${isArchive ? archivePropertyType.toLowerCase() : isMyListings ? "объекты" : basePropertyType.toLowerCase()}`}
-            className="mt-3 min-w-0"
+            className={cn(
+              "min-w-0",
+              (cardsView || isMyListings || isArchive) && "mt-3",
+              !cardsView && !isMyListings && !isArchive && "grid grid-cols-[minmax(0,1fr)_884px] items-stretch gap-6 px-[var(--rh-sizing-layout-edge-to-edge-wrapper)]",
+            )}
           >
             {cardsView ? (
               <ListingsCardGrid
@@ -1803,22 +1742,17 @@ export function ApartmentListingsExperimentScreen({
                 sort={sort}
               />
             ) : (
-              <div className={cn(
-                "mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start",
-                previewListing && "gap-4",
-              )}>
-                <div className="min-w-0">
-                  <ListingsTable
+              <>
+                <div className="min-w-0 border-r border-[var(--rh-theme-border-light)] pr-6 pt-6">
+                  <section aria-label="Управление выдачей">{tableToolbar}</section>
+                  <ListingsList
                     currentPage={currentPage}
-                    hiddenColumns={hiddenColumns}
                     listings={screenListings}
                     onOpenObjectInfo={openListing}
                     onPreviewObjectInfo={setPreviewListing}
-                    onSort={handleSort}
-                    propertyType={basePropertyType}
+                    selectedListingId={activePreviewListing?.id}
                     viewedListingIds={viewedListingIds}
                     sort={sort}
-                    sortable={false}
                   />
                   <footer className="flex justify-center pt-4 pb-4">
                     <Pagination
@@ -1831,16 +1765,16 @@ export function ApartmentListingsExperimentScreen({
                     />
                   </footer>
                 </div>
-                {previewListing && (
-                  <aside aria-label="Информация об объекте" className="self-start">
+                {activePreviewListing && (
+                  <aside aria-label="Информация об объекте" className="sticky top-0 max-h-dvh self-start overflow-y-auto pt-6">
                     <ExperimentObjectInfo
-                      data={getObjectInfoData(previewListing)}
-                      key={previewListing.id}
+                      data={getObjectInfoData(activePreviewListing)}
+                      key={activePreviewListing.id}
                       onClose={() => setPreviewListing(null)}
                     />
                   </aside>
                 )}
-              </div>
+              </>
             )}
             {(cardsView || isMyListings || isArchive) && <footer className="mx-[var(--rh-sizing-layout-edge-to-edge-wrapper)] flex justify-center pt-4 pb-4">
               <Pagination
@@ -1908,7 +1842,7 @@ export function ApartmentListingsExperimentScreen({
           )
         )}
       </main>
-      {!isMapView && <Footer className="mt-8" />}
+      {!isMapView && <Footer className={cardsView || isMyListings || isArchive ? "mt-8" : undefined} />}
       {isArchive && !isMapView && <ArchiveIntroOverlay />}
     </div>
   );

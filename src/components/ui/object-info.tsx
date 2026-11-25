@@ -17,8 +17,21 @@ import { cn } from "@/lib/utils";
 
 type ObjectInfoProps = React.ComponentProps<"article"> & {
   onClose?: () => void;
+  phone?: string | null;
   presentation?: "inline" | "drawer";
+  source?: string;
+  sourceHref?: string;
 };
+
+function formatPhone(phone: string) {
+  const digits = phone.replace(/\D/g, "");
+  const nationalNumber = digits.length === 11 && (digits[0] === "7" || digits[0] === "8")
+    ? digits.slice(1)
+    : digits.length === 10 ? digits : null;
+
+  if (!nationalNumber) return phone;
+  return `+7 ${nationalNumber.slice(0, 3)} ${nationalNumber.slice(3, 6)} ${nationalNumber.slice(6, 8)} ${nationalNumber.slice(8)}`;
+}
 
 const galleryImage = "/Rhood/assets/object-gallery-1.png";
 const objectDescription = `✨ Квартира-мечта с дизайнерским ремонтом в ЖК закрытого типа! ✨
@@ -44,7 +57,7 @@ const objectDescription = `✨ Квартира-мечта с дизайнерс
  * Составная информация об объекте. В presentation="drawer" самостоятельно открывается в боковой панели.
  * Figma: https://www.figma.com/design/a0woN7V2kVcvxLLABs6sSs/%25D0%2592%25D1%258B%25D0%25B4%25D0%25B0%25D1%2587%25D0%25B0?node-id=24335-23012
  */
-function ObjectInfo({ className, onClose, presentation = "inline", ...props }: ObjectInfoProps) {
+function ObjectInfo({ className, onClose, phone, presentation = "inline", source = "Домклик", sourceHref = "https://domclick.ru", ...props }: ObjectInfoProps) {
   const [callStatus, setCallStatus] = React.useState("Не выбрано");
   const [drawerOpen, setDrawerOpen] = React.useState(true);
 
@@ -66,6 +79,9 @@ function ObjectInfo({ className, onClose, presentation = "inline", ...props }: O
             {...props}
             className={cn("min-h-full w-full rounded-none", className)}
             onClose={() => setDrawerOpen(false)}
+            phone={phone}
+            source={source}
+            sourceHref={sourceHref}
           />
         </Drawer>
       </DrawerContainer>
@@ -100,6 +116,9 @@ function ObjectInfo({ className, onClose, presentation = "inline", ...props }: O
         <ObjectInfoSidebar
           callStatus={callStatus}
           onCallStatusChange={setCallStatus}
+          phone={phone}
+          source={source}
+          sourceHref={sourceHref}
         />
       </div>
     </article>
@@ -136,7 +155,7 @@ function ObjectGallery() {
   );
 }
 
-function ObjectInfoSidebar({ callStatus, onCallStatusChange }: { callStatus: string; onCallStatusChange: (status: string) => void }) {
+function ObjectInfoSidebar({ callStatus, onCallStatusChange, phone, source, sourceHref }: { callStatus: string; onCallStatusChange: (status: string) => void; phone?: string | null; source: string; sourceHref: string }) {
   const statuses = ["Не выбрано", "Не отвечает", "Думает", "Отказ", "Другое АН"];
 
   return (
@@ -162,10 +181,17 @@ function ObjectInfoSidebar({ callStatus, onCallStatusChange }: { callStatus: str
 
       <section className="grid gap-3" aria-label="Контакт продавца">
         <div className="grid gap-0.5">
-          <p className="rh-typography-b1"><a className="cursor-pointer text-[var(--rh-theme-text-brand)] underline" href="https://domclick.ru" rel="noreferrer" target="_blank">Домклик</a>, Частное лицо</p>
+          <p className="rh-typography-b1"><a className="cursor-pointer text-[var(--rh-theme-text-brand)] underline" href={sourceHref} rel="noreferrer" target="_blank">{source}</a>, Частное лицо</p>
           <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]">Последний звонок 15 ч 20 мин назад</p>
         </div>
-        <Button className="w-full" endIcon={false} startIcon={false}>+7 922 007 6761</Button>
+        <Button
+          className="w-full"
+          endIcon={false}
+          onClick={!phone ? () => window.open(sourceHref, "_blank", "noopener,noreferrer") : undefined}
+          startIcon={false}
+        >
+          {phone ? formatPhone(phone) : "Посмотреть на агрегаторе"}
+        </Button>
       </section>
 
       <section className="grid gap-2" aria-labelledby="call-status">
