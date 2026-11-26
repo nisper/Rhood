@@ -2,6 +2,7 @@ import * as React from "react";
 import {
   BookmarkPlus,
   ChevronUp,
+  Flame,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -13,6 +14,7 @@ import { ExpandableContent } from "@/components/ui/expandable-content";
 import { IconButton } from "@/components/ui/icon-button";
 import { ObjectBuyersV2 } from "@/components/ui/object-buyers";
 import { ToggleChip } from "@/components/ui/toggle-chip";
+import { Tooltip } from "@/components/ui/tooltip";
 import { cn } from "@/lib/utils";
 
 type ObjectInfoProps = React.ComponentProps<"article"> & {
@@ -193,6 +195,20 @@ function ObjectInfoSidebar({ callStatus, onCallStatusChange, phone, source, sour
           {phone ? formatPhone(phone) : "Посмотреть на агрегаторе"}
         </Button>
       </section>
+
+      <Tooltip>
+        <div className="grid gap-1">
+          <p className="pl-5 text-[var(--rh-theme-text-neutral-secondary-contrast)]">У этого объекта:</p>
+          <ul className="grid gap-1">
+            {["Цена ниже похожих объявлений", "Новое объявление"].map((trait) => (
+              <li className="flex items-center gap-1" key={trait}>
+                <Flame aria-hidden="true" className="size-4 shrink-0 text-[var(--rh-palette-orange-500)]" fill="currentColor" />
+                <span>{trait}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Tooltip>
 
       <section className="grid gap-2" aria-labelledby="call-status">
         <p className="rh-typography-b2 text-[var(--rh-theme-text-neutral-secondary)]" id="call-status">Статус последнего звонка</p>

@@ -83,7 +83,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
     "id": "24fbdb0caa4bd22e",
@@ -191,6 +192,9 @@
   },
   "active": "763df968cb3c2d08",
   "lastOpenFiles": [
+    "dist/index.html",
+    "dist/assets/index-CNt1WZzs.css",
+    "dist/assets/index-CWFwLvbk.js",
     "dist/assets/index-N2r_RDXv.css",
     "dist/assets/index-BD2oTUCh.js",
     "dist/assets/index-C20PpWrG.css",
@@ -199,9 +203,6 @@
     "dist/assets/index-72T2R7K-.js",
     "dist/assets/index-Brd2F9-V.css",
     "dist/assets/index-EGT0wD4l.js",
-    "dist/index.html",
-    "dist/assets/index-D8ok0z6R.css",
-    "dist/assets/index-De3odWZV.js",
     "docs/Tests/Счастливый риелтор.md.md",
     "docs/product/features/Счастливый риелтор.md",
     "docs/product/features/schastlivyy-rieltor.md",
